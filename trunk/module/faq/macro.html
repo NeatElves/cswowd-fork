@@ -1,0 +1,753 @@
+<h3>Руководство по макросам</h3>
+<br>
+ <table class=faqctrl>
+  <tr valign="top">
+   <td width="10px">&nbsp;</td>
+   <td>
+    <LI><a href="#1">Общая информация</a></LI>
+    <LI><a href="#2">Заклинания</a></LI>
+    <LI><a href="#3">Инвентарь и Предметы</a></LI>
+    <LI><a href="#4">Интерфейс</a></LI>
+    <LI><a href="#5">Изменение видео опций</a></LI>
+    <LI><a href="#6">Окно чата</a></LI>
+    <LI><a href="#7">Бой</a></LI>
+    <LI><a href="#8">Макросы для петов</a></LI>
+    <LI><a href="#9">Примеры классовых макросов</a></LI>
+    <LI><a href="#10">Прочие макросы</a></LI>
+    <LI><a href="#11">Заключение</a></LI>
+   </td>
+  </tr>
+ </table>
+<br>
+
+<h4 name="1">Общая информация</h4>
+<P>Макросы в ВоВ используются для оптимизации и упрощения интерфейса игрока.
+Начиная от самых простых макросов таких как высказывание в чат «полечите меня 
+срочно», когда ваше здоровье опускается ниже 20%, и заканчивая более сложными 
+макросами такими как смена стоек у воина или каст лечащего заклинания во 2ую или 
+3ю строчку Эмерженси монитора, стандартного для большинства игроков аддона – 
+CT_raid. Итак начнем с общих макросов, и затем перейдем к конкретным примерам.</P>
+<P>Для просмотра макросов на данном персонаже, а так же для
+создания новых и редактирования уже имеющихся используется команда:</P>
+<P><EM><STRONG>/macro</STRONG></EM></P>
+<P>Она позволяет открыть окно менеджмента макросов. Всего у вас
+может быть 18 макросов общих для Аккаунта и 18 для конкретного персонажа, итого
+в сумме 36 макросов, что достаточно много.</p>
+<br>
+
+<h4 name="2">Заклинания</h4>
+<P><STRONG>Замечание:</STRONG> Начиная с патча 1.хх колдовство заклинаний больше не требует
+окончания в записи “(rank X)”. Достаточно записать: <EM><STRONG>/cast Holy 
+Light</STRONG></EM> для колдовства спела максимального ранга. Макросы такого 
+типа не позволяют кастить спелы более низкого ранга на выбранную цель, для 
+использования низких рангов нужно дописывать окончание (rank X), где Х – нужный 
+ранг спела. Пример:<STRONG><EM> /cast Holy Light (rank 1);</EM></STRONG></P>
+
+<P><STRONG>Колдовство заклинаний на самого себя без потери фокуса на цели:</STRONG></P>
+<P><STRONG><EM>/script CastSpellByName('Holy Light', 1)</EM></STRONG></P>
+<P><STRONG>Колдовство заклинаний на самого себя если нельзя колдовать заклинание на выбранную цель:</STRONG><BR>
+Данный макрос кастует заклинание “spell” на самого себя только в том случае если цель враждебна </P>
+<P><STRONG><EM>/script if ( not UnitIsFriend("player", "target") ) then CastSpellByName("Spell", 1); end</EM></STRONG></P>
+
+<P><STRONG>Колдовство заклинаний на цель конкретного класса:</STRONG><BR>
+Используется в основном для баффов рейда, по конкретным
+классам, возможны модификации применительно к ПвП</P>
+<P><STRONG><EM>/script class = UnitClass("target"); if ( ( class 
+== "Rogue" ) or ( class == "Warrior" ) ) then</EM></STRONG></P>
+<P><STRONG><EM>CastSpellByName("Blessing of Might"); else 
+CastSpellByName("Blessing of Wisdom"); end</EM></STRONG></P><EM>
+<P><BR></EM><STRONG>Колдовство заклинаний на цели разных 
+уровней(баффы):</STRONG><BR>
+Используется очень редко, но я все же приведу пример 
+пристовского макроса для баффа на стамину, с проверкой уровня цели:</P>
+
+<P><STRONG><EM>/script Pre="Power Word: Fortitude(Rank " 
+Sp={1,2,14,26,38,50} if (UnitLevel("target") ~= nil and 
+UnitIsFriend("player","target")) then</EM></STRONG></P>
+<P><STRONG><EM>for i=6,1,-1 do if (UnitLevel("target") &gt;= 
+Sp[i]) then CastSpellByName(Pre..i..")") return end end 
+end</EM></STRONG></P><EM>
+<P><BR></EM><STRONG>Колдовство заклинаний на ближайшую цели с 
+проверкой кол-ва % здоровья цели:<BR></STRONG>Приведу пример на основе каста 
+хилиерских заклинаний на ближайшие цели с проверкой на кол-во здоровья цели, 
+макрос лечит ближайшую дружественную цель со здоровьем ниже 70%, проверяются 
+только ближайшие 40 целей.</P>
+<P><STRONG><EM>/script for i=1,40 do TargetNearestFriend(); if 
+UnitHealth("target")/UnitHealthMax("target") &lt; 0.7 then if 
+UnitIsPlayer("target") then CastSpellByName("Lesser Healing Wave") end end end; 
+TargetLastEnemy();</EM></STRONG></P><EM>
+<P><BR></EM><STRONG>Анонсирование кастуемых заклинаний в 
+пати-чат:</STRONG></P>
+<P><STRONG><EM>/cast Healing Touch</EM></STRONG></P>
+<P><STRONG><EM>/party Healing %t in 3.5 
+seconds</EM></STRONG></P><EM>
+
+<P><BR></EM><STRONG>Колдовство заклинаний на конкретных игроков 
+партии:<BR></STRONG>Всегда лечит первого игрока партии Флешкой, при этом не 
+сбивает фокуса на выделенной цели.</P>
+<P><STRONG><EM>/script TargetUnit("party1")</EM></STRONG></P>
+<P><STRONG><EM>/cast Flash Heal</EM></STRONG></P>
+<P><STRONG><EM>/script TargetLastTarget()</EM></STRONG></P>
+<P><STRONG><BR>Колдовство нескольких заклинаний (баффов) с 
+проверкой на наличие оных на цели:</STRONG><BR>Кастует различные баффы на цель, 
+только в том случае если на цели еще нет такого заклинания(баффа), пример версии 
+для друида:</P>
+<P><STRONG><EM>/script i=1;m=0;while(UnitBuff("target",i)~=nil) do 
+if(strfind(UnitBuff("target",i),"Regeneration")~=nil) then m=1; end;i=i+1;end; 
+c=CastSpellByName; if(m==1) then c("Mark of the Wild(Rank 10)");else 
+c("Thorns(Rank 10)");end;</EM></STRONG></P><EM>
+<P><BR></EM><STRONG>Макрос для поиска номера заклинания в книге 
+умений:<BR></STRONG>Иногда использования скриптов CastSpellByName приводит к 
+тому что длинна макроса превышает допустимые 255 символов, например макрос: 
+/script CastSpellByName('Holy Light', 1) занимает достаточно много символов, 
+когда как проще использовать макрос: /script CastSpellByNumber(); Но как же 
+узнать какой номер у того или иного заклинания из вашей книги? На помощь 
+приходит очень полезный и распространенный макрос проверки номера заклинания, он 
+выдает на экран имя спела с соответствующим номером:</P>
+
+<P><STRONG><EM>/script SpellNumber=26; 
+SpellName,SpellRank=GetSpellName(SpellNumber,"spell");</EM></STRONG></P>
+<P><STRONG><EM>M=format("Spell %d: %s 
+%s",SpellNumber,SpellName,SpellRank); 
+DEFAULT_CHAT_FRAME:AddMessage(M);</EM></STRONG></P>
+<br>
+
+<h4 name="3">Инвентарь и Предметы</h4>
+
+<P><STRONG>Использовать предмет:</STRONG></P>
+<P><STRONG><EM>/script UseContainerItem(bag, slot);</EM></STRONG></P>
+
+<UL>
+  <LI><STRONG>Bag</STRONG> – это номер сумки, от 0 до 4, где 0 – начальная сумка.</LI>
+</UL>
+
+<UL>
+  <LI><STRONG>Slot</STRONG> – это номер слота в сумке от 1 до 20.</LI>
+</UL>
+
+<P>Макрос автоматически использует предмет в заданной сумке на 
+заданном месте, полезен при использовании алхимии или просто при переодевании 
+тринкетов.</P>
+<P><BR><STRONG>Быстрое использование Бинтов на самого 
+себя:</STRONG> </P>
+
+<P><STRONG><EM>/target [Player Name]</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script UseContainerItem(#, #);</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script TargetLastEnemy();</EM></STRONG> </P>
+
+<P>Очень полезный макрос для дуэлей 1v1. Вот еще один пример 
+макроса для бинтов, более сложный, с проверкой на наличие бинтов в инвентаре, 
+фокусировки на предыдущей цели или сбросе фокуса, если цель – вы сами: </P>
+
+<P><STRONG><EM>/script if (not GetContainerItemLink(x,x)) then 
+OpenBag([same bag number as before]); else</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P align=justify><STRONG><EM>TargetUnit("player");UseContainerItem(3,15);TargetUnit("playertarget");if
+(UnitIsPlayer("target"))</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>then ClearTarget() end end</EM></STRONG> 
+</P>
+<P><BR><STRONG>Использование предмета из 
+Хот-бара:<BR></STRONG>Приведу пример использования Бинтов лежащих в одном из 
+слоте одного из шести хот-баров, макрос использует бинты на выбранную 
+дружественную цели, или на самого себя если цель враждебна: </P>
+
+<P><STRONG><EM>/script UseAction(ActionID, 0, 1); 
+</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script if( SpellIsTargeting() ) then 
+SpellTargetUnit("player"); end</EM></STRONG> </P>
+
+<UL>
+  <LI>
+  <DIV><STRONG>ActionID</STRONG> – это номер слота одного из шести 
+  хот-баров, он выбирается соответственно из таблицы: </LI></UL>
+
+<P><STRONG>Хот-бар: Номер слота</STRONG><BR>
+1: 1 2 3 4 5 6 7 8 9 10 11 12<BR>
+2: 13 14 15 16 17 18 19 20 21 22 23 24<BR>
+3: 25 26 27 28 29 30 31 32 33 34 35 36<BR>
+4: 37 38 39 40 41 42 43 44 45 46 47 48<BR>
+5: 49 50 51 52 53 54 55 56 57 58 59 60<BR>
+6: 61 62 63 64 65 66 67 68 69 70 71 72</P>
+
+<P>Более продвинутый вариант того же макроса, использует бинты на 
+самого себя в любом случае, даже если цель дружественна и находится в радиусе 
+действия, очень полезен в ПвЕ:</P>
+<P><STRONG><EM> /scriptp="player";t="target";if(not 
+UnitCanAttack(t, p))then ot=UnitName(t);TargetUnit(p);</EM></STRONG></P>
+<P><STRONG><EM>else 
+ot=nil;end;UseAction(ActionID);if(SpellIsTargeting())then 
+SpellTargetUnit(p);</EM></STRONG></P>
+<P><STRONG><EM>end if(ot) then TargetByName(ot);end</EM></STRONG> 
+</P><EM>
+<P><BR></EM><STRONG>Использование точильных камней на 
+оружие:</STRONG><BR>
+Простой макрос сократит вам время</P>
+<P><STRONG><EM>/script UseContainerItem (#,#);</EM></STRONG></P>
+<P><STRONG><EM>/script PickupInventoryItem (16);</EM></STRONG></P>
+
+<P>Меняя в последней строке 16 на 17 получим макросы для заточки 
+правой и левой рук. </P>
+<br>
+
+<h4 name="4">Интерфейс</h4>
+<P><STRONG>Переключение Хот-баров:</STRONG> </P>
+<P><STRONG><EM>/script CURRENT_ACTIONBAR_PAGE = 
+X;</EM></STRONG></P>
+
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script ChangeActionBarPage();</EM></STRONG></P>
+<UL>
+  <LI>Где X – номер нужного нам хот-бара, от 1 до 6.</LI>
+</UL>
+<P><BR><STRONG>Пример готового и усложненного макроса, выводом на экран 
+сообщения о смене макроса:</STRONG></P>
+<P><STRONG><EM>/script CURRENT_ACTIONBAR_PAGE = 1;</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script ChangeActionBarPage(); == Macro Frame 
+Toggling ==</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+
+<P><STRONG><EM>/script if ( not MacroFrame:IsVisible() ) then 
+ShowUIPanel(MacroFrame); </EM></STRONG></P>
+<P><STRONG><EM>else HideUIPanel(MacroFrame); end;</EM></STRONG> 
+
+<h4 name="5">Изменение видео опций</h4>
+<P>Иногда хочется изменить видео опции игры, что бы комфортнее себя чувствовать
+в густо населенных игроками зонах, таких как Банк или Аукцион, так же при
+большой нагрузке в ПвЕ зонах, примером может служить первая фаза Разоргора ( 1
+босс БВЛ ): </P>
+
+<P><STRONG>Для хорошего качества видео:</STRONG></P>
+<P><STRONG><EM>/z SetFarclip(777)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/z SetWorldDetail(2)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/z SetBaseMip(1)</EM></STRONG> </P>
+
+<P><BR><STRONG>Для среднего качества видео:</STRONG></P>
+<P><STRONG><EM>/z SetFarclip(477)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/z SetWorldDetail(1)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/z SetBaseMip(1)</EM></STRONG> </P>
+
+<P><BR><STRONG>Для плохого качества видео:</STRONG></P>
+<P><STRONG></STRONG></P>
+<P><STRONG><EM>/z SetFarclip(177)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/z SetWorldDetail(0)</EM></STRONG></P>
+
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/z SetBaseMip(0)</EM></STRONG> </P>
+
+<P><BR><STRONG>Переключение игры из Full-screen в Window 
+режим:<BR></STRONG>Полезен для съемки видео или просто для удобной настройки 
+посторонних программ: </P>
+<P><STRONG><EM>/script currentRes = GetCurrentResolution(); if
+(currentRes == 3)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>then SetScreenResolution(15); SetCVar("gxWindow", 
+0); SetMultisampleFormat(16);</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>else SetCVar("gxWindow", 1); 
+SetScreenResolution(3); SetMultisampleFormat(1); end;</EM></STRONG></P>
+
+<P>Числовые значения подобраны для переключения из разрешения 
+1600x1200 full anti-aliasing в разрешение 1024x768 1x anti-aliasing </P>
+<P><BR><STRONG>Отключение имен игроков / npc:<BR></STRONG>Полезный 
+макрос, для снятия нагрузки с экрана и любителям скриншотов</P>
+<P><STRONG><BR>Для имен игроков:</STRONG></P>
+
+<P><STRONG><EM>/script if ( GetCVar("UnitNamePlayer") == "1" ) 
+then SetCVar("UnitNamePlayer",0) else SetCVar("UnitNamePlayer",1) 
+end</EM></STRONG> </P>
+
+<P><STRONG><BR>Для имен npc:</STRONG></P>
+
+<P><STRONG><EM>/script if ( GetCVar("UnitNameNPC") == "1" ) then 
+SetCVar("UnitNameNPC",0) else SetCVar("UnitNameNPC",1) end</EM></STRONG></P>
+
+<h4 name="6">Окно чата</h4>
+<P><STRONG>Автоматическая смена чата:<BR></STRONG>Макрос для автоматической
+смены между чатам /s если вы вне партии, /p если вы в партии на 5 человек, /raid 
+если вы находитесь в рейде, макрос только устанавливает чат, но не пишет 
+сообщения:</P>
+<P><STRONG><EM>/script if (GetNumRaidMembers() &gt; 0) then PR = "Raid"; elseif (GetNumPartyMembers() &gt; 0) </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>then PR = "Party"; else PR = "Say"; end;</EM></STRONG> </P>
+<P>Для того что бы автоматически написать какую либо фразу в
+выбранный чат, добавьте строку: </P>
+
+<P><STRONG><EM>/script SendChatMessage("Ты Gijdalah нуб и ничего 
+не понимаешь!!!",PR);</EM></STRONG><P>
+
+<h4 name="7">Бой</h4>
+<P><STRONG>Макросы для помощи танку:<BR></STRONG>Самый простой макрос для атаки
+цели которую атакует выбранный заранее танк: </P>
+
+<P><STRONG><EM>/assist %t </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script AttackTarget();</EM></STRONG> </P>
+
+<P>Этот макрос слишком простой и не может покрыть всего того 
+функционала который необходим зачастую в быстро протекающем бое, попробуем 
+сделать более сложный вариант макроса, разделив при этом часть автоматической 
+выборки подходящего танка, и часть фокуса на цели выбранного танка: </P>
+
+<P><STRONG>---- Для выбора танка ----</STRONG></P>
+
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script LeaderPlayerName = UnitName("target") or UnitName("party1") or "";</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script DEFAULT_CHAT_FRAME:AddMessage("######## Set main assist to: " .. LeaderPlayerName); </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG>---- Для атаки цели танка ----</STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script AssistByName(LeaderPlayerName or UnitName("party1") or UnitName("player"));</EM></STRONG></P>
+<P><STRONG><EM>/script DEFAULT_CHAT_FRAME:AddMessage("######## Assisting ".. LeaderPlayerName .. " with target " .. (UnitName("target") or "NO TARGET")); </EM></STRONG></P>
+<P>При использовании первого макроса, в памяти интерфейса
+запоминается ник выбранного игрока, что бы при нажатии второго макроса,
+выбиралась цель ранее запомненного танка, не зависимо от того где он находится,
+не нужно использовать первый макрос каждый раз, только один раз для начальной
+установки танка.</P>
+<P>Но это два макроса, они будут занимать два слота на вашем
+интерфейсе, хотя они и очень удобные. Попробуем совместить оба макроса в один не 
+потеряв при этом функциональности. Макрос будет выглядеть следующим образом: 
+</P>
+
+<P><STRONG><EM>/script p=PAsi 
+or""u=UnitName;t="target"c=IsControlKeyDown()if(c)then p=u(t)or 
+u("party1")or""else AssistByName(p)end;DEFAULT_CHAT_FRAME:AddMessage("######## 
+"..(c and("Set assist: "..p)or("Assisting "..p.." with "..(u(t)or"NO 
+TARGET"))))PAsi=p</EM></STRONG> </P>
+
+<P>Тот же макрос в более удобном для чтения виде, так как выше 
+приведенный, не читаем из за оптимизации под длину в 255 символов:</P>
+
+<P><STRONG><EM>/script</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>p=PAsi or"";</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+
+<P><STRONG><EM>u=UnitName;</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>t="target";</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>c=IsControlKeyDown(); </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>if(c) then</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>p=u(t) or u("party1") or ""</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>else</EM></STRONG></P>
+
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>AssistByName(p)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>end; </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>DEFAULT_CHAT_FRAME:AddMessage("######## 
+"..</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>(c and</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>("Set assist: "..p)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>or</EM></STRONG></P>
+
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>("Assisting "..p.." with "..(u(t) or "NO 
+TARGET")))); </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>PAsi=p; </EM></STRONG></P>
+
+<P>Итак, как же пользоваться этим макросом:</P>
+<P>Для установки нужного танка, удерживая Ctrl кликните на иконку 
+использования макроса.</P>
+<P>Обычный клик на иконку использования макроса выберет 
+необходимую цель. </P>
+
+
+<P>Модификация этого макроса с возможностью колдовства разных 
+заклинаний на цель выбранного танка (выбрано заклинание Полиморф, что может быть 
+заменено на любое другое): </P>
+
+<P><STRONG><EM>/script t=Tg1 or""c=IsControlKeyDown()if(c)then 
+t=UnitName("target")or""else TargetByName(t)if(IsShiftKeyDown())then 
+CastSpellByName('Polymorph')end end ChatFrame1:AddMessage("######## "..(c 
+and("Tg1 set to: "..t)or("Targeting: "..t)))Tg1=t</EM></STRONG> </P>
+
+<P>Тот же макрос в удобном виде: </P>
+
+<P><STRONG><EM>/script</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>t=Tg1 or""</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>c=IsControlKeyDown() </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+
+<P><STRONG><EM>if(c) then</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>t=UnitName("target")or""</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>else</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>TargetByName(t) </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>if(IsShiftKeyDown()) then</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>CastSpellByName('Polymorph')</EM></STRONG></P>
+
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>end</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>end </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>DEFAULT_CHAT_FRAME:AddMessage("######## 
+"..</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>(c and</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>("Tg1 set to: "..t)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>or</EM></STRONG></P>
+
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>("Targeting: "..t))) </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>Tg1=t </EM></STRONG></P>
+
+<P>Итак, как же пользоваться этим макросом:</P>
+<P>Для установки нужного танка, удерживая Ctrl кликните на иконку 
+использования макроса.</P>
+<P>Обычный клик на иконку использования макроса выберет 
+необходимую цель. </P>
+<P>Если удерживая Shift кликнуть на иконку использования макроса, 
+то персонаж начнет колдовать выбранное заклинание (полиморф) на текущую цель 
+выбранного ранее танка.</P>
+
+
+<P><BR><STRONG>Макросы для уничтожения 
+тотемов:<BR></STRONG>Простейший вариант: </P>
+
+<P><STRONG><EM>/target Totem</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/cast Moonfire(Rank 1) </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>Более сложный вариант: </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script u=UnitName;</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>s=strfind;</EM></STRONG></P>
+
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>t="target";</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>for i = 1,10,1 do 
+TargetNearestEnemy()</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>if (not UnitCanAttack("player",t))then 
+</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>break;</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>end;</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>if ((s(u(t),"Totem") or s(u(t),"Ward")) and not s(UnitCreatureType(t),"Human")) then </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>CastSpellByName("Shoot");</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>break;</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>end;</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>end; </EM></STRONG></P>
+
+<P><BR><STRONG>Таймер:</STRONG> </P>
+
+<P><STRONG><EM>/script if IsAltKeyDown() then L1="Instance Start"; 
+T1=GetTime(); </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>M=format("Timer Set [%s]",L1); else N=GetTime();
+D=N-T1; </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>M=format("Time Elapsed - [%s]: 
+%02dh:%02dm:%02ds",L1, D/3600,mod((D/60),60), mod(D,60)); end</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>SendChatMessage(M,"SAY"); </EM></STRONG></P>
+
+<P>Макрос отсчитывает время с момента установки начального времени 
+отсчета, что бы установить оное, нужно зажав Alt кликнуть на иконку 
+использования макроса. При использовании макроса, выдается искомое время с 
+точностью до секунды.<P>
+<br>
+
+
+<h4 name="8">Макросы для петов</h4>
+<P><STRONG>Атака петом:<BR></STRONG>Простой макрос атаки пета по выбранной
+цели</P>
+
+<P><STRONG><EM>/script PetAttack(); </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>Более продвинутый вариант: </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/target player</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/assist</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script PetAttack();</EM></STRONG> </P>
+<P><BR><STRONG>Атака специальным заклинанием пета (например Dash):</STRONG> </P>
+<P><STRONG><EM>/script PetAttack(); CastPetAction(4);</EM></STRONG> </P>
+<P><BR><STRONG>Команды для пета:<BR></STRONG>Список всех команд пету </P>
+<P><STRONG><EM>/script PetAggressiveMode();</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script PetDefensiveMode();</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script PetPassiveMode();</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script PetFollow();</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+
+<P><STRONG><EM>/script PetAttack();</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script PetStopAttack();</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script CastPetAction(X);</EM></STRONG> </P>
+
+<UL>
+  <LI>Для последней строки, X – номер заклинания пета в панели управления петом.</LI></UL><P>
+<br>
+
+<h4 name="9">Примеры классовых макросов</h4>
+<P>Просто перечислю некоторые примеры оригинальных макросов для каждого класса.</P>
+
+<P><BR><STRONG>Друид:</STRONG> </P>
+<P><STRONG>Nature's Swiftness + Healing Touch – без глобального кулдауна:</STRONG></P>
+
+<P><STRONG><EM>/cast Nature's Swiftness</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script SpellStopCasting();</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/cast Healing Touch(Rank 10)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script if ( SpellIsTargeting() ) then 
+SpellTargetUnit ("player"); end</EM></STRONG> </P>
+
+<P><BR><STRONG>Хантер:</STRONG> </P>
+
+<P><STRONG>Выбор ближайшей цели, если цель рога – выстрел Scatter 
+Shot:</STRONG> </P>
+
+<P><STRONG><EM>/script TargetNearestEnemy(); if 
+(UnitClass("target")=="rogue") then CastSpellByName("Scatter Shot"); 
+CastSpellByName("Hunter's </EM></STRONG></P>
+<P><STRONG><EM>Mark (Rank 4)");end </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>Raptor strike + Wing clip: </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/cast Raptor Strike</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/cast Wing Clip </EM></STRONG></P>
+
+<P><BR><STRONG>Макрос для Пула с одновременной привязкой марки к 
+цели: </STRONG></P>
+
+<P><STRONG><EM>/cast Hunters Mark(Rank #);</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/cast Concussive Shot();</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/cast Autoshoot(); </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><BR>Автоматическое кормление пета: </STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/cast Feed Pet</EM></STRONG></P>
+
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script PickupContainerItem (#,#)</EM></STRONG> 
+</P>
+
+<P><BR><STRONG>Маг:</STRONG> </P>
+
+<P><STRONG>Макрос для вызова всех типов мана-кристалов, требует 
+многочисленного нажатия:</STRONG> </P>
+
+<P><STRONG><EM>/script local c=function(a) local f,d a="Mana "..a 
+for i=0,4 do for k=1,GetContainerNumSlots(i) do</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>d=GetContainerItemLink(i,k) or "" if strfind(d,a) 
+then f = 1 end end end if not f then CastSpellByName("Conjure "..a) end 
+end</EM></STRONG></P>
+
+<P>c "Ruby" c "Citrine" c "Jade" </P>
+
+<P><BR><STRONG>Колдовство заклинаний с использованием тринкетов / 
+ПоМа, как мы знаем ТоеП не стекается с ЗХЧ после патча 1.10, но макрос все равно 
+очень полезен, приведу пример ЗХЧ + ПоМ + фростболт 11 ранга:</STRONG> </P>
+
+<P><EM><STRONG>/script UseAction(37); SpellStopCasting(); 
+CastSpell(82,"spells"); SpellStopCasting(); CastSpell(158,"spells" 
+</STRONG></EM></P>
+
+<P><BR><STRONG>Макрос отправляющий висперы, о прекращении атаки 
+игрокам партии, монстра которого вы хотите полиморфить:</STRONG> </P>
+
+<P><STRONG><EM>/cast Polymorph</EM></STRONG></P>
+
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script local n,p,t=UnitName,"party","target" for 
+i=2,5 do if n(p..i) then if </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>UnitIsUnit(p..i..t,t) then SendChatMessage("I am 
+about to sheep your target, please change </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>targets.","WHISPER",nil,n(p..i)) end end end 
+</EM></STRONG></P>
+
+<P><BR><STRONG>Паладин:</STRONG> </P>
+
+<P><STRONG>Авто-бафф дружественных целей использующих Ману – 
+Wisdom Blessing и остальных, включая себя – Might Blessing:</STRONG> </P>
+
+<P><STRONG><EM>/script power = UnitPowerType("target"); if ( power 
+== 0 ) then CastSpellByName("Blessing of Wisdom") else CastSpellByName("Blessing 
+of Might") end; if ( SpellIsTargeting() ) then CastSpellByName("Blessing of 
+Might"); TargetUnit("player"); end;</EM></STRONG></P>
+<P><EM><BR></EM><STRONG>Рога:</STRONG></P>
+
+<P><STRONG>Макрос для рог которые используют Sinister Strike как 
+основную атаку, макрос использует Riposte, если возможно</STRONG>: </P>
+
+<P>/<STRONG><EM>script if (UnitMana("Player")&gt;=999) then 
+CastSpellByName("Sinister Strike"); end;if (IsUsableAction(18) and 
+UnitMana("Player")&gt;=10) then CastSpellByName("Riposte"); 
+end;</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script if UnitMana("Player")&gt;=40 then 
+CastSpellByName("Sinister Strike"); end;</EM></STRONG> </P>
+
+<P><BR><STRONG>Шаман:</STRONG></P>
+
+<P><STRONG>Nature Swiftness + healing</STRONG></P>
+
+<P><STRONG><EM>/script local a=IsAltKeyDown();local 
+c,d=GetSpellCooldown(157,0);if(c==0)then CastSpell(157,0) else if(a)then 
+TargetUnit("player") </EM></STRONG></P>
+<P><STRONG><EM>end;if(d==0.001)then CastSpell(146,0) else 
+CastSpell(152,0) end;if(a)then TargetLastTarget() end;end </EM></STRONG></P>
+
+<P>Макрос делает следующее:</P>
+<UL>
+  <LI>если Nature Swiftness не на кулдавне, кастует его.</LI>
+  <LI>если на вас активен Nature Swiftness, кастует Healing Wave 9 rank на выбранную цель</LI>
+  <LI>во всех остальных случаях кастует Lesser healing wave rank 6 на выбранную цель.</LI>
+</UL>
+
+
+<P><BR><STRONG>Макрос анонса тотемов в пати-чат:</STRONG> </P>
+<P><STRONG><EM>/party +88 agility totem, 30 yards, stay
+close</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/cast Grace of Air </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>Stormstrike + тринкет: </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script UseInventoryItem(14);</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script SpellStopCasting();</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/cast Stormstrike(Rank 1) </EM></STRONG></P>
+
+
+<P><BR><STRONG>Варлок:</STRONG></P>
+
+<P><STRONG>Колдовство страха и одновременное отключение атаки 
+пета:</STRONG> </P>
+
+<P><STRONG><EM>/cast Fear(Rank #)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script PetFollow(); </EM></STRONG></P>
+
+<P><BR>Воин: </P>
+
+<P><STRONG>Battle stance -&gt; Mocking blow:</STRONG></P>
+
+<P><STRONG><EM>/script texture,name,isActive,isCastable = 
+GetShapeshiftFormInfo(1); if isActive then CastSpellByName("Mocking Blow()"); 
+else CastSpellByName("Battle Stance()"); end;</EM></STRONG></P>
+
+<P>Требуется минимум 2 нажатия. </P>
+
+<P><BR><STRONG>Defensive stance -&gt; Taunt:</STRONG></P>
+
+<P><STRONG><EM>/script texture,name,isActive,isCastable = 
+GetShapeshiftFormInfo(2); if isActive then CastSpellByName("Taunt()"); else 
+CastSpellByName("Defensive Stance()"); end;</EM></STRONG> </P>
+
+<P>Требуется минимум 2 нажатия. </P>
+
+<P><BR><STRONG>Berserker stance -&gt; Berserker rage</STRONG> </P>
+
+<P><STRONG><EM>/script texture,name,isActive,isCastable = 
+GetShapeshiftFormInfo(3); if isActive then CastSpellByName("Berserker Rage()"); 
+else CastSpellByName("Berserker Stance()"); end;</EM></STRONG></P>
+
+<P>Требуется минимум 2 нажатия.<P>
+
+<br>
+
+<h4 name="10">Прочие макросы</h4>
+
+
+<P><STRONG>Серверное время:<BR></STRONG>Макрос выдает на экран, серверное время</P>
+<P><STRONG><EM>/script hour,min=GetGameTime()</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+
+<P><STRONG><EM>/script DEFAULT_CHAT_FRAME:AddMessage(format("Server time is %s:%s",hour,min));</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>Координаты и локация: </EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script px,py=GetPlayerMapPosition("player")</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script DEFAULT_CHAT_FRAME:AddMessage(format("[ %s ] %s , %s",GetZoneText(),px,py));</EM></STRONG></P>
+<P><EM><BR></EM><STRONG>Макрос печатающий цели квеста в пати-чат:</STRONG> </P>
+<P><STRONG><EM>/script i = GetNumQuestLeaderBoards(); for j = 1, i, 1 do a1, a2, a3 = GetQuestLogLeaderBoard(j); SendChatMesssage(a1, "PARTY"); end; </EM></STRONG></P>
+<P><STRONG>Макрос автоматической сдачи квеста неограниченное кол-во раз:</STRONG></P>
+<P><STRONG><EM>/script SelectGossipAvailableQuest(1); CompleteQuest(); GetQuestReward(); </EM></STRONG></P>
+
+<P>Макрос часто используют для неоднократного выполнения квеста – Dark Iron Residue </P>
+<P><BR><STRONG>Макрос лечения 2 строки Эмерженси монитора, аддона
+CT_raid:<BR></STRONG>Очень полезный для любого лекаря макрос, спам которого 
+позволяет сократить оверхил, и четко и быстро реагировать на повреждения 
+рейда</P>
+
+<P><STRONG><EM>/script CT_RA_Emergency_TargetMember(1)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script CT_RA_Emergency_TargetMember(2)</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/cast Lesser Healing Wave(Rank 6);</EM></STRONG></P>
+<P><STRONG><EM></EM></STRONG></P>
+<P><STRONG><EM>/script TargetLastTarget(); </EM></STRONG></P>
+
+<P>Макрос выбирает 2 строчку монитора, если такой нет, то первую, 
+и кастует на цель Lesser healing wave rank 6.<P>
+<br>
+
+<h4 name="11">Заключение</h4>
+
+
+<P>Макросы экстремально полезны для вашей боеспособности или оптимизации игры, 
+так как реакция человека не совершенна, макросы позволяют нам сократить кол-во 
+действий необходимых для выполнения тех или иных необходимостей как в рейдах так
+и в ПвП. </P>
+
+<P>P.S не забывайте, что разнообразие макросов ограничено только 
+вашей фантазией и длинной в 255 символов.</P>
+<P><BR>
+<div class="copyright">Информация с сайта <a href="http://www.worldofwarcraft.ru">www.worldofwarcraft.ru</a>, Атор: <STRONG>Medivhru</STRONG></div></P>

@@ -1,0 +1,36 @@
+BODY {FONT-SIZE: 13px; MARGIN: 0px;BACKGROUND-COLOR: #FFFFFf;COLOR: #000000; FONT-FAMILY: Arial, Garamond, Helvetica;}
+TABLE.foundation {WIDTH: 99%; BORDER: 0; border-collapse: collapse;}
+TABLE.foundation TD.menu {vertical-align: top; width: 155px;}
+TABLE.foundation TD.body {PADDING-LEFT: 10px; VERTICAL-ALIGN: top; padding: 10px; COLOR:#000000;}
+
+DIV.sitetitle {BORDER-RIGHT: #333333 2px solid; BORDER-TOP: #cccccc 2px solid; MARGIN: 0px; BORDER-LEFT: #cccccc 2px solid; WIDTH: 100%; COLOR: #ffdd00; BORDER-BOTTOM: #333333 2px solid; BACKGROUND-COLOR: #000055; FONT-SIZE: 120%;}
+
+DIV.optionbar {BORDER-RIGHT: #333 2px solid; PADDING-RIGHT: 0px; BORDER-TOP: #aaa 2px solid; PADDING-LEFT: 0px; FONT-SIZE: 90%; MARGIN-BOTTOM: 3px; PADDING-BOTTOM: 2px; BORDER-LEFT: #999 2px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #333 2px solid; BACKGROUND-COLOR: #dddddd}
+
+TABLE.thin {BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; FONT-SIZE: 90%; PADDING-BOTTOM: 0px; MARGIN-LEFT: 0px; BORDER-LEFT: 0px; MARGIN-RIGHT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: Arial, Garamond, Helvetica; border-spacing: 0px}
+TABLE.thin TD {BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px}
+
+DIV.menutitle          {BACKGROUND-COLOR: #000055; color: #FFDD00; font-size: 12px;}
+DIV.menutitle input    {width: 100%;}
+DIV.skin_menu_sub      {font-size: 11px; font-weight: bold; color: #000000; padding: 0; background: #dddddd; border: #333333 1px solid;}
+DIV.skin_pop_sub       {width: auto; min-width: 100px; background-color: #dddddd; border: #666666 1px solid;}
+DIV.skin_pop_sub       {font-family: arial; font-size: 11px; font-weight: bold; text-align: left; color: #000000; padding: 0px;}
+DIV.skin_pop_row       {padding: 0px 8px;}
+DIV.skin_pop_row A     {color: #0000FF; display: block;}
+DIV.skin_pop_mrow      {background-color: #999999; padding: 0px 8px; cursor: default;}
+DIV.skin_pop_mrow A    {color: #0033FF; display: block;}
+DIV.skin_pop_arrow     {top: 0px; right: 3px;}
+
+div.faq img            {border: #333366 3px groove;}
+
+TABLE.find                {COLOR: #000000; border: #000066 1px solid;}
+TABLE.find TD             {border:#000066 1px solid;}
+TABLE.find TD.bottom      {COLOR: #FFFFFF;BACKGROUND-COLOR: #000066;}
+TABLE.findtop             {COLOR: #000000;}
+TABLE.findtop TD.topleft  {BACKGROUND-COLOR: #000066;}
+TABLE.findtop TD.top      {COLOR: #FFFFFF; BACKGROUND-COLOR: #000066; }
+TABLE.findtop TD.topright {BACKGROUND-COLOR: #000066;}
+
+TABLE.reagents TD         {BORDER: 0px;}
+table.no_border TD        {BORDER: 0px;}
+table.quest_reward TD     {BORDER: 0px;}

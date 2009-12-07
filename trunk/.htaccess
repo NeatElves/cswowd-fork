@@ -1,0 +1,21 @@
+# Disable access to this files
+#<FilesMatch "\.(conf|php|in)$">
+#	Deny from all
+#</FilesMatch>
+# Enable acces only for index.php and ajax.php
+#<FilesMatch "(index|ajax|arena_ico|arena_small_ico|guild_ico|gps2|find|map|instance).php">
+#	Allow from all
+#</FilesMatch>
+# Default startup page
+DirectoryIndex index.php
+# Disable output dirs
+Options -Indexes
+# UTF8 support
+AddDefaultCharset utf8
+<IfModule mod_charset.c>
+	CharsetDisable on
+	CharsetRecodeMultipartForms Off
+</IfModule>
+php_value default_charset UTF-8
+php_flag zlib.output_compression On
+FileETag none
