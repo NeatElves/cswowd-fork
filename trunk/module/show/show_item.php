@@ -61,6 +61,8 @@ if (!$item)
 else
 {
   $baseLink = '?item='.$str;
+	if ('www_item' != '')
+	echo "<a href=\"".sprintf($config[www_item], $entry)."\" target=\"_blank\"\">".sprintf($config[www_item], $entry)."</a><br>";
   if ($ajaxmode==0)
   {
    echo "<TABLE cellSpacing=0 cellPadding=0 width=500><TBODY><TR>";

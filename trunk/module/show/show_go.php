@@ -29,6 +29,8 @@ if (!$obj)
 else
 {
  $baseLink = '?object='.$entry;
+	if ('www_gameobject' != '')
+	echo "<a href=\"".sprintf($config[www_gameobject], $entry)."\" target=\"_blank\"\">".sprintf($config[www_gameobject], $entry)."</a><br>";
  include_once("module/maps/map.php");
  if ($ajaxmode==0)
  {

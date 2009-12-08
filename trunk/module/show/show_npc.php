@@ -30,6 +30,8 @@ if (!$cr)
 else
 {
  $baseLink = '?npc='.$entry;
+	if ('www_creature' != '')
+	echo "<a href=\"".sprintf($config[www_creature], $entry)."\" target=\"_blank\"\">".sprintf($config[www_creature], $entry)."</a><br>";
  include_once("module/maps/map.php");
  if ($ajaxmode==0)
  {

@@ -38,6 +38,8 @@ if (!$spell)
 else
 {
   $baseLink = '?spell='.$entry;
+	if ('www_spell' != '')
+	echo "<a href=\"".sprintf($config[www_spell], $entry)."\" target=\"_blank\"\">".sprintf($config[www_spell], $entry)."</a><br>";
   if ($ajaxmode==0)
   {
    $icon = getSpellIcon($spell['SpellIconID']);
