@@ -29,6 +29,7 @@ if (!$obj)
 else
 {
  $baseLink = '?object='.$entry;
+ include_once("module/maps/map.php");
  if ($ajaxmode==0)
  {
   echo "<TABLE cellSpacing=0 cellPadding=0 width=500>";

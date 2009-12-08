@@ -77,7 +77,10 @@ include_once("include/map_data.php");
 $map    = @$_REQUEST['map']=='' ? -1 : intval(@$_REQUEST['map']);
 $area   = intval(@$_REQUEST['area']);
 $npc_id = intval(@$_REQUEST['npc']);
-$obj_id = intval(@$_REQUEST['obj']);
+if (!@$_REQUEST['object'])
+	$obj_id = intval(@$_REQUEST['obj']);
+else
+	$obj_id = intval(@$_REQUEST['object']);
 $width  = intval(@$_REQUEST['width']) ? intval(@$_REQUEST['width']) : 900;
 
 $ajaxptr = "";
