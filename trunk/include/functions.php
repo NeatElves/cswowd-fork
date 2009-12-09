@@ -1223,9 +1223,9 @@ function getClass($class)
 function getAllowableClass($mask)
 {
   global $gClassType;
-  $mask&=0x5DF;
+  $mask&=0x5FF;
   // Return zero if for all class (or for none
-  if ($mask == 0x5DF OR $mask == 0)
+  if ($mask == 0x5FF OR $mask == 0)
       return 0;
   return getListFromArray_1($gClassType, $mask);
 }

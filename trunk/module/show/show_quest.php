@@ -96,7 +96,7 @@ else
    echo "<a style='float: right;' href=\"?s=q&ZoneID=".$quest['ZoneOrSort']."\">".getAreaName($quest['ZoneOrSort'])."</a>";
  else
    echo "<a style='float: right;' href=\"?s=q&SortID=".(-$quest['ZoneOrSort'])."\">".getQuestSort(-$quest['ZoneOrSort'])."</a>";
- echo "$lang[quest_level] $quest[QuestLevel]</td></tr>";
+ echo "<br>$lang[quest_level] $quest[QuestLevel]</td></tr>";
 
  echo "<tr><td>$lang[obtained_at_level] $quest[MinLevel]</td></tr>";
 
@@ -112,6 +112,8 @@ else
   renderReqCollect($quest['ReqItemId2'],$quest['ReqItemCount2'],$q_status?$q_status['itemcount2']:0);
   renderReqCollect($quest['ReqItemId3'],$quest['ReqItemCount3'],$q_status?$q_status['itemcount3']:0);
   renderReqCollect($quest['ReqItemId4'],$quest['ReqItemCount4'],$q_status?$q_status['itemcount4']:0);
+  renderReqCollect($quest['ReqItemId5'],$quest['ReqItemCount5'],$q_status?$q_status['itemcount5']:0);
+  renderReqCollect($quest['ReqItemId6'],$quest['ReqItemCount6'],$q_status?$q_status['itemcount6']:0);
  }
 ###
 ### Рек убить
