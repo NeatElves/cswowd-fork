@@ -113,6 +113,7 @@ function noBorderCreatureTable($npc)
 
  echo "<TR><TD>".$game_text['npc_damage']."</TD><TD align=right>$npcdmgmin - $npcdmgmax</TD></TR>";
  echo "<TR><TD>".$game_text['npc_ap']."</TD><TD align=right>$npc[attackpower]</TD></TR>";
+ echo "<TR><TD>".$game_text['dmg_mult']."</TD><TD align=right>$npc[dmg_multiplier]</TD></TR>";
  $attackTime = $npc['baseattacktime']/1000;
  echo "<TR><TD>".$game_text['npc_attack']."</TD><TD align=right>$attackTime сек</TD></TR>";
 

@@ -876,7 +876,7 @@ function getPointData($area_id, &$data, $x, $y)
         if (@$data['type']=='n') $name = getCreatureName($data['id'], 0);
    else if (@$data['type']=='o') $name = getGameobjectName($data['id'], 0);
 //   $text ="$name<br>GUID $data[guid]<br>$mapname - $areaname<br>x = $data[position_x]<br>y = $data[position_y]<br>z = $data[position_z]<br>map = $data[map]<br>Respawn: ".getTimeText($data['spawntimesecs']);
-   $text ="$name ($data[guid])<br>$areaname<br>Respawn: ".getTimeText($data['spawntimesecs']);
+   $text ="$name ($data[guid])<br>$areaname<br>$lang[phase]: $data[phaseMask]<br>Respawn: ".getTimeText($data['spawntimesecs']);
    return array(
          'id'=>$data['id'],
          'x'=>$y,
