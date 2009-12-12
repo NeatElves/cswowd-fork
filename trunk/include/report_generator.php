@@ -1121,9 +1121,19 @@ class QuestReportGenerator extends ReportGenerator{
   $this->doRequirest('`ReqCreatureOrGOId1`= ?d OR `ReqCreatureOrGOId2`= ?d OR `ReqCreatureOrGOId3`= ?d OR `ReqCreatureOrGOId4`= ?d', -$entry, -$entry, -$entry, -$entry);
  }
  // Create quest list require GO for comlete
- function requireCreature($entry)
+ function requireCreature($entry, $kc1, $kc2)
  {
-  $this->doRequirest('`ReqCreatureOrGOId1`= ?d OR `ReqCreatureOrGOId2`= ?d OR `ReqCreatureOrGOId3`= ?d OR `ReqCreatureOrGOId4`= ?d', $entry, $entry, $entry, $entry);
+	if ($kc1!=0 || $kc2!=0)
+	{
+		if ($kc2==0)
+			$this->doRequirest('`ReqCreatureOrGOId1`= ?d OR `ReqCreatureOrGOId2`= ?d OR `ReqCreatureOrGOId3`= ?d OR `ReqCreatureOrGOId4`= ?d OR `ReqCreatureOrGOId1`= ?d OR `ReqCreatureOrGOId2`= ?d OR `ReqCreatureOrGOId3`= ?d OR `ReqCreatureOrGOId4`= ?d', $entry, $entry, $entry, $entry, $kc1, $kc1, $kc1, $kc1);
+		else if ($kc1==0)
+			$this->doRequirest('`ReqCreatureOrGOId1`= ?d OR `ReqCreatureOrGOId2`= ?d OR `ReqCreatureOrGOId3`= ?d OR `ReqCreatureOrGOId4`= ?d OR `ReqCreatureOrGOId1`= ?d OR `ReqCreatureOrGOId2`= ?d OR `ReqCreatureOrGOId3`= ?d OR `ReqCreatureOrGOId4`= ?d', $entry, $entry, $entry, $entry, $kc2, $kc2, $kc2, $kc2);
+		else
+		$this->doRequirest('`ReqCreatureOrGOId1`= ?d OR `ReqCreatureOrGOId2`= ?d OR `ReqCreatureOrGOId3`= ?d OR `ReqCreatureOrGOId4`= ?d OR `ReqCreatureOrGOId1`= ?d OR `ReqCreatureOrGOId2`= ?d OR `ReqCreatureOrGOId3`= ?d OR `ReqCreatureOrGOId4`= ?d OR `ReqCreatureOrGOId1`= ?d OR `ReqCreatureOrGOId2`= ?d OR `ReqCreatureOrGOId3`= ?d OR `ReqCreatureOrGOId4`= ?d', $entry, $entry, $entry, $entry, $kc1, $kc1, $kc1, $kc1, $kc2, $kc2, $kc2, $kc2);	
+	}
+	else
+	$this->doRequirest('`ReqCreatureOrGOId1`= ?d OR `ReqCreatureOrGOId2`= ?d OR `ReqCreatureOrGOId3`= ?d OR `ReqCreatureOrGOId4`= ?d', $entry, $entry, $entry, $entry);
  }
  function oneQuest($entry)
  {

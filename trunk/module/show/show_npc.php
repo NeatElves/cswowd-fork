@@ -167,7 +167,7 @@ else
  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
  if ($reqForQuest->Init($fields, $baseLink, 'qreqLIST', $config['fade_limit'], 'name'))
  {
-    $reqForQuest->requireCreature($entry);
+    $reqForQuest->requireCreature($entry, $cr['KillCredit1'], $cr['KillCredit2']);
     $reqForQuest->createReport($lang['req_for_quest']);
  }
  if ($cr['npcflag']&(UNIT_NPC_FLAG_QUESTGIVER))
