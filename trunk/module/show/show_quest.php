@@ -1,3 +1,17 @@
+<script>
+    flag = new Array();
+    function showinfo(id){
+        if(flag[id] == 0 || flag[id] == undefined){
+             flag[id] = 1;
+            document.getElementById("t"+id).style.display="block";
+            document.getElementById("h"+id).innerHTML = " или";
+        }else{
+             flag[id] = 0;
+            document.getElementById("t"+id).style.display="none";
+            document.getElementById("h"+id).innerHTML = " или";
+         }
+    };
+</script>
 <?php
 include_once("conf.php");
 include_once("include/functions.php");
@@ -36,7 +50,20 @@ function renderReqKillOrCast($text,$ReqCreatureOrGOId,$ReqCreatureOrGOCount,$Req
     if (!$text) $text = $lang['cast'];
     echo "<a href=\"?spell=$ReqSpellCast\">$text</a> $lang[cast_on] ".getCreatureName($ReqCreatureOrGOId);
   }
-  echo ": $count/$ReqCreatureOrGOCount</td></tr>";
+  echo ": $count/$ReqCreatureOrGOCount";
+	if ($Creature=getCreature($ReqCreatureOrGOId, "`entry`, `name`", 1))
+		echo "</br><a id='h1' class='but' href='javascript:showinfo(1);'>или</a><p id='t1' style='display:none;'>";
+  	if ($Creature=getCreature($ReqCreatureOrGOId, "`entry`, `name`", 1))
+	{	
+		foreach ($Creature as $Creatures)
+		{
+			localiseCreature($Creatures);
+			if ($Creatures[name]=="") $Creatures[name] = "npc_$creature_id";
+				echo "<a href=?npc=".$Creatures[entry].">".$Creatures[name]."</br></a>";
+		}
+		echo "</p>";
+	}
+	echo "</td></tr>";
  }
  else if ($ReqCreatureOrGOId<0)
  {

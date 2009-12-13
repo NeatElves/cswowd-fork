@@ -543,9 +543,15 @@ function getGemProperties($GemProperties)
 }
 
 //********************************************************************************
-function getCreature($creature_id, $fields = "*")
+function getCreature($creature_id, $fields = "*", $quest=0)
 {
   global $dDB;
+  if ($quest==1)
+  {
+	if ($Creature = $dDB->select("SELECT * FROM `creature_template` WHERE `KillCredit1` = ?d OR `KillCredit2` = ?d GROUP by `name`", $creature_id, $creature_id))
+	return $Creature;
+	else return;
+  }
   if ($creature = getCache('c'.$creature_id))
       return $creature;
   if ($creature = $dDB->selectRow("SELECT * FROM `creature_template` WHERE `entry` = ?d", $creature_id))
@@ -555,14 +561,14 @@ function getCreature($creature_id, $fields = "*")
 
 function getCreatureName($creature_id, $as_ref=1)
 {
- if ($Creature=getCreature($creature_id, "`entry`, `name`"))
+if ($Creature=getCreature($creature_id, "`entry`, `name`"))
  {
     if ($Creature['name']=="") $Creature['name'] = "npc_$creature_id";
     if ($as_ref)
         return "<a href=?npc=".$Creature['entry'].">".$Creature['name']."</a>";
     return $Creature['name'];
  }
- return "Unknown creature - $creature_id";
+ return "Unknown creature - $creature_id";		
 }
 
 function getCreatureRank($rank, $as_ref=1)
