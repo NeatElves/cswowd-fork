@@ -78,6 +78,12 @@ function noBorderCreatureTable($npc)
 
  if ($npc['ScriptName']=="" && $npc['AIName']=="") {$npcscr='No script';}
  else if ($npc['AIName']=="EventAI" && $npc['ScriptName']=="") {$npcscr='EventAI';}
+ else if ($npc['AIName']=="NullAI" && $npc['ScriptName']=="") {$npcscr='NullAI';}
+ else if ($npc['AIName']=="AggressorAI" && $npc['ScriptName']=="") {$npcscr='AggressorAI';}
+ else if ($npc['AIName']=="ReactorAI" && $npc['ScriptName']=="") {$npcscr='ReactorAI';}
+ else if ($npc['AIName']=="GuardAI" && $npc['ScriptName']=="") {$npcscr='GuardAI';}
+ else if ($npc['AIName']=="PetAI" && $npc['ScriptName']=="") {$npcscr='PetAI';}
+ else if ($npc['AIName']=="TotemAI" && $npc['ScriptName']=="") {$npcscr='TotemAI';}
  else if ($npc['ScriptName']=="generic_creature") {$npcscr='Caster';}
  else if ($npc['ScriptName']<>"" && $npc['AIName']=="EventAI") {$npcscr='EventAI + SD2';}
  else {$npcscr='SD2';}
