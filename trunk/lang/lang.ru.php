@@ -204,6 +204,7 @@ $lang = array(
 // Quest info
 'one_of_this_items' => 'Одна из этих вещей',
 'obtained_at_level' => 'Доступен с уровня',
+'required_races' => 'Сторона:',
 'quest_level' => 'Уровень квеста:',
 'provided' => 'Выдается:',
 'provided_desc' => 'Эта вещь выдается когда принят квест.',
@@ -223,7 +224,7 @@ $lang = array(
 'Rew_money' => 'Деньги:',
 'Rew_XP' => 'Опыт:',
 'Rew_reputation' => 'Репутация:',
-'cast_spell' => 'Скастут:',
+'cast_spell' => 'Скастуют:',
 'learn_spell' => 'Обучат спеллу:',
 'Rew_item'  => 'Вещи:',
 'item_sel_and' => '&nbsp;+&nbsp;',
@@ -509,7 +510,7 @@ $lang = array(
 
 # Search Itemset dialog
 'set_find'=>'Поиск набора',
-'set_not_found'=>'Нфбор не найден',
+'set_not_found'=>'Набор не найден',
 'set_name'=>'Название',
 
 # Search Area dialog
@@ -521,6 +522,20 @@ $lang = array(
 'find_faction'=>'Поиск фракции',
 'faction_name'=>'Название',
 
+# Race
+'required_races1101' => 'Альянс',
+'required_races690' => 'Орда',
+'required_races0' => 'Обе',
+'required_races1' => 'Человек',
+'required_races2' => 'Орк',
+'required_races4' => 'Дварф',
+'required_races8' => 'Ночной эльф',
+'required_races16' => 'Нежить',
+'required_races32' => 'Таурен',
+'required_races64' => 'Гном',
+'required_races128' => 'Тролль',
+'required_races512' => 'Кровавый эльф',
+'required_races1024' => 'Дреней',
 );
 
 ?>

@@ -200,6 +200,7 @@ $lang = array(
 # Quest info
 'one_of_this_items' => 'One of this items',
 'obtained_at_level' => 'Obtained at level',
+'required_races' => 'Side:',
 'quest_level' => 'Quest level:',
 'provided' => 'Provided:',
 'provided_desc' => 'Provided item:',
@@ -515,6 +516,21 @@ $lang = array(
 # Search Faction dialog
 'find_faction'=>'Search Faction',
 'faction_name'=>'Faction name',
+
+# Race
+'required_races1101' => 'Alliance',
+'required_races690' => 'Horde',
+'required_races0' => 'Both',
+'required_races1' => 'Human',
+'required_races2' => 'Orc',
+'required_races4' => 'Dwarf',
+'required_races8' => 'Night Elf',
+'required_races16' => 'Undead',
+'required_races32' => 'Tauren',
+'required_races64' => 'Gnome',
+'required_races128' => 'Troll',
+'required_races512' => 'Blood Elf',
+'required_races1024' => 'Draenei',
 
 );
 
