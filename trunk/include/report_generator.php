@@ -727,6 +727,34 @@ function r_npcRName($data)
   if ($subname)
     echo '<br><div class=subname><a href="?s=n&subname='.$subname.'">&lt;'.$subname.'&gt;</a></div>';
 }
+function r_npcDiff($data)
+{
+  global $dDB;
+  if ($dDB->selectRow('SELECT `entry` FROM `creature_template` WHERE `difficulty_entry_1` = ?d', $data['entry']))
+  {
+  $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
+  $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['subname'];
+  echo '<a href="?npc='.$data['entry'].'">Нормальный 25</a>';
+  if ($subname)
+    echo '<br><div class=subname><a href="?s=n&subname='.$subname.'">&lt;'.$subname.'&gt;</a></div>';
+  }
+  else if ($dDB->selectRow('SELECT `entry` FROM `creature_template` WHERE `difficulty_entry_2` = ?d', $data['entry']))
+  {
+  $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
+  $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['subname'];
+  echo '<a href="?npc='.$data['entry'].'">Героический 10</a>';
+  if ($subname)
+    echo '<br><div class=subname><a href="?s=n&subname='.$subname.'">&lt;'.$subname.'&gt;</a></div>';
+  }
+  else if ($dDB->selectRow('SELECT `entry` FROM `creature_template` WHERE `difficulty_entry_3` = ?d', $data['entry']))
+  {
+  $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
+  $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['subname'];
+  echo '<a href="?npc='.$data['entry'].'">Героический 25</a>';
+  if ($subname)
+    echo '<br><div class=subname><a href="?s=n&subname='.$subname.'">&lt;'.$subname.'&gt;</a></div>';
+  }
+}
 function r_npcReact($data)  {echo getLoyality($data['faction_A']);}
 function r_npcMap($data)    {global $lang; echo '<a href="?map&npc='.$data['entry'].'">'.$lang['map'].'</a>';}
 function r_npcRole($data)
@@ -770,6 +798,7 @@ $npc_report = array(
 // loot
 'LOOT_REPORT_CHANCE'=>array('class'=>'', 'sort'=>'chance', 'text'=>$lang['loot_chance'], 'draw'=>'r_lootChance', 'sort_str'=>'ABS(`ChanceOrQuestChance`) DESC, `name`', 'fields'=>'`ChanceOrQuestChance`, `mincountOrRef`'),
 'LOOT_REPORT_REQ'   =>array('class'=>'', 'sort'=>'',       'text'=>$lang['loot_require'],'draw'=>'r_lootRequire','sort_str'=>'', 'fields'=>'`lootcondition`, `condition_value1`, `condition_value2`'),
+'DIFFICULT'   =>array('class'=>'left', 'sort'=>'', 'text'=>'Сложность',  'draw'=>'r_npcDiff', 'sort_str'=>'', 'fields'=>''),
 );
 
 define('NPC_LOCALE_NAME',    0x01);
@@ -820,6 +849,10 @@ class CreatureReportGenerator extends ReportGenerator{
     $casters = array_unique(array_merge($rows_1, $rows_2, $rows_3));
     if (count($casters))
        $this->doRequirest('`creature_template`.`entry` in (?a)', $casters);
+ }
+ function diff($diff1, $diff2, $diff3)
+ {
+  $this->doRequirest('`creature_template`.`entry` = ?d OR `creature_template`.`entry` = ?d OR `creature_template`.`entry` = ?d', $diff1, $diff2, $diff3);
  }
  function inFaction($entry)
  {

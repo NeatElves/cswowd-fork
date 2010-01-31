@@ -193,7 +193,19 @@ else
     $takeQuest->createReport($lang['take_quest']);
   }
  }
-
+ //**************************************************
+ // Все сложности
+ //**************************************************
+	if ($cr['difficulty_entry_1']!=0)
+	{
+		$diff =& new CreatureReportGenerator('');
+		$fields = array('DIFFICULT', 'NPC_REPORT_MAP');
+		if ($diff->Init($fields, $baseLink, 'diffLIST', $config['fade_limit']))
+		{
+			$diff->diff($cr['difficulty_entry_1'], $cr['difficulty_entry_2'], $cr['difficulty_entry_3']);
+			$diff->createReport('Сложность');
+		}
+	}
  //**************************************************
  // Loot list
  //**************************************************
