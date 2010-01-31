@@ -116,32 +116,36 @@ else
  echo "<TR><TD class=head>$quest[Title]";
  if ($quest['Type'])
    echo "<br><FONT size=-3>&lt;".getQuestType($quest['Type'])."&gt;</FONT>";
- if ($quest[RequiredRaces] == 1)
-  echo "<br>$lang[required_races] $lang[required_races1]</td></tr>";
- if ($quest[RequiredRaces] == 2)
-  echo "<br>$lang[required_races] $lang[required_races2]</td></tr>";
- if ($quest[RequiredRaces] == 4)
-  echo "<br>$lang[required_races] $lang[required_races4]</td></tr>";
- if ($quest[RequiredRaces] == 8)
-  echo "<br>$lang[required_races] $lang[required_races8]</td></tr>";
- if ($quest[RequiredRaces] == 16)
-  echo "<br>$lang[required_races] $lang[required_races16]</td></tr>";
- if ($quest[RequiredRaces] == 32)
-  echo "<br>$lang[required_races] $lang[required_races32]</td></tr>";
- if ($quest[RequiredRaces] == 64)
-  echo "<br>$lang[required_races] $lang[required_races64]</td></tr>";
- if ($quest[RequiredRaces] == 128)
-  echo "<br>$lang[required_races] $lang[required_races128]</td></tr>";
- if ($quest[RequiredRaces] == 512)
-  echo "<br>$lang[required_races] $lang[required_races512]</td></tr>";
- if ($quest[RequiredRaces] == 1024)
-  echo "<br>$lang[required_races] $lang[required_races1024]</td></tr>";
- if ($quest[RequiredRaces] == 690)
-  echo "<br>$lang[required_races] $lang[required_races690]</td></tr>";
- if ($quest[RequiredRaces] == 1101)
-  echo "<br>$lang[required_races] $lang[required_races1101]</td></tr>";
- if (($quest[RequiredRaces] == 0) OR ($quest[RequiredRaces] == 1791))
-  echo "<br>$lang[required_races] $lang[required_races0]</td></tr>";
+switch($quest[RequiredRaces])
+{
+	case 1:    echo "<br>$lang[required_races] $lang[required_races1]</td></tr>";
+		break;
+	case 2:    echo "<br>$lang[required_races] $lang[required_races2]</td></tr>";
+		break;
+	case 4:    echo "<br>$lang[required_races] $lang[required_races4]</td></tr>";
+		break;
+	case 8:    echo "<br>$lang[required_races] $lang[required_races8]</td></tr>";
+		break;
+	case 16:   echo "<br>$lang[required_races] $lang[required_races16]</td></tr>";
+		break;
+	case 32:   echo "<br>$lang[required_races] $lang[required_races32]</td></tr>";
+		break;
+	case 64:   echo "<br>$lang[required_races] $lang[required_races64]</td></tr>";
+		break;
+	case 128:  echo "<br>$lang[required_races] $lang[required_races128]</td></tr>";
+		break;
+	case 512:  echo "<br>$lang[required_races] $lang[required_races512]</td></tr>";
+		break;
+	case 1024: echo "<br>$lang[required_races] $lang[required_races1024]</td></tr>";
+		break;
+	case 960:  echo "<br>$lang[required_races] $lang[required_races690]</td></tr>";
+		break;
+	case 1101: echo "<br>$lang[required_races] $lang[required_races1101]</td></tr>";
+		break;
+	case 0:
+	case 1791: echo "<br>$lang[required_races] $lang[required_races0]</td></tr>";
+		break;
+}
  echo "</TH></TR>";
 
  echo '<tr><td>';
