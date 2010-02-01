@@ -113,6 +113,17 @@ else
    echo "</tbody></table>";
   }/**/
  }
+ if ($config['3d_npc']) // Вывод 3D модели НПС
+ {
+	echo $cr['modeilid_A'];
+	echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
+		<param value='high' name='quality'>
+		<param value='always' name='allowscriptaccess'>
+		<param value='false' name='menu'>
+		<param name='wmode' value='transparent'>
+		<param value='model=$cr[modelid_A]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+	</object>";
+ }
  createReportTab();
  //********************************************************************************
  // Summoned by spell
