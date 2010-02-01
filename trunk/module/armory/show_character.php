@@ -20,24 +20,24 @@ else
 // 3D Char start
 if ($config['3d_model'])
 {
-$item_head = $char_data[258]; 
-$item_neck = $char_data[260]; 
-$item_shoulder = $char_data[262]; 
-$item_shirt = $char_data[264]; 
-$item_chest = $char_data[266]; 
-$item_belt = $char_data[268]; 
-$item_legs = $char_data[270]; 
-$item_feet = $char_data[272]; 
-$item_wrist = $char_data[274]; 
-$item_gloves = $char_data[276]; 
-$item_finger1 = $char_data[278]; 
-$item_finger2 = $char_data[280]; 
-$item_trinket1 = $char_data[282]; 
-$item_trinket2 = $char_data[284]; 
-$item_back = $char_data[286]; 
-$item_main_hand = $char_data[288]; 
-$item_off_hand = $char_data[290]; 
-$item_ranged_slot = $char_data[292]; 
+$item_head = $char_data[283];
+$item_neck = $char_data[285];
+$item_shoulder = $char_data[287];
+$item_shirt = $char_data[289];
+$item_chest = $char_data[291];
+$item_belt = $char_data[293];
+$item_legs = $char_data[295];
+$item_feet = $char_data[297];
+$item_wrist = $char_data[299];
+$item_gloves = $char_data[301];
+$item_finger1 = $char_data[303];
+$item_finger2 = $char_data[305];
+$item_trinket1 = $char_data[307];
+$item_trinket2 = $char_data[309];
+$item_back = $char_data[311];
+$item_main_hand = $char_data[313];
+$item_off_hand = $char_data[315];
+$item_ranged_slot = $char_data[317]; 
 
 function wowhead_did($item)
 	{ 
