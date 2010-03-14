@@ -1,0 +1,64 @@
+<?php
+//==================================================================
+// C.S Wowd config file
+//==================================================================
+$config =array (
+'servername'=>'Your Server name',
+
+// World Database
+'hostname' => '127.0.0.1',    // mysql hostname
+'username' => 'root',         // mysql username
+'password' => '',             // mysql password
+'dbName' => 'mangos',         // mysql data base name (mangos db)
+
+// WowD Database
+'whostname' => '127.0.0.1',   // mysql hostname
+'wusername' => 'root',        // mysql username
+'wpassword' => '',            // mysql password
+'wdbName' => 'wowd',          // mysql wowd base name
+
+// Realm Database
+'rhostname' => '127.0.0.1',   // mysql hostname
+'rusername' => 'root',        // mysql username
+'rpassword' => '',            // mysql password
+'rdbName' =>'realmd',         // mysql data base name (realm db)
+
+// Character database
+'chostname' => '127.0.0.1',   // mysql hostname
+'cusername' => 'root',        // mysql username
+'cpassword' => '',            // mysql password
+'cdbName' =>'characters',     // mysql data base name (characters db)
+
+//Other
+'lang'=>'ru',                 // Язык интерфейса сайта ru,en
+'client_charset'=> 'utf8',    // Кодировка клиента (не рекомендую менять - так как родная кодировка сайта utf8)
+'use_tab_mode'=>'1',          // Tabbed report mode
+
+// Принудительный выбор локализации из таблиц locales_...
+'locales_lang'=>'0',          // работает только если есть заполнение таблицы locales_xxx
+'locales_charset'=>'',        // Символы используемые в локализованых текстах (для определения языка ввода в поиске)
+
+// Выбор скина по умолчанию
+'skin_type'=>'modern',        // default, modern, lofk_skin, dark, wdb, wrath
+
+// Show Debug
+'show_sql_timings'=>'0',      // Выводить статистику подключения
+'show_ajax_sql_timings'=>'0', // Выводить статистику подключения
+'show_db_error'=>'0',         // Выводить ошибки баз данных
+);
+
+//error_reporting(E_ERROR | E_PARSE | E_WARNING);
+error_reporting(E_ALL);
+ini_set('display_errors', 0); //disable on production servers!
+
+//==================================================================
+// Подключенные модули
+//==================================================================
+$modules=array();
+$ajax_modules=array();
+
+//==================================================================
+// дальнейшая настройка в module/module_cfg.php
+//==================================================================
+include("module/module_cfg.php");
+?>

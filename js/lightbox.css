@@ -1,0 +1,30 @@
+#lightbox{
+	background-color:#eee;
+	padding: 10px;
+	border-bottom: 2px solid #666;
+	border-right: 2px solid #666;
+    display: none;
+    position: absolute;
+    z-index: 100;
+    }
+#lightbox img{border: none; clear: both;}
+#lightboxCaption{font-size: 0.8em; padding-top: 0.4em; }
+#closeButton{position: absolute;top: 4px;right: 4px; cursor: pointer;}
+#overlay{
+    background-color: #000;
+    display: none;
+    position: absolute;
+    top: 0pt;
+    left: 0pt;
+    z-index: 90;
+    width: 100%;
+}
+#loadingImage{
+	display: none;
+	position: absolute;
+	z-index: 100;
+}
+
+
+
+	

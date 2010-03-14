@@ -1,0 +1,173 @@
+BODY {FONT-FAMILY: Tahoma; FONT-SIZE: 12px; MARGIN: 0px; COLOR: #9E8D51; BACKGROUND-COLOR: #000000; margin-top: 14px;}
+A       {color: #1E4378; text-decoration: none;}
+A:hover {color: #C60000; text-decoration: none;}
+
+TABLE.main_body               {width: 100%; border-collapse: collapse;}
+TABLE.main_body TD.top_menu   {height: 25px; background: url(img/topbg2.gif) repeat-x scroll 50%;}
+TABLE.main_body TD.top_menu   {color: #D0A803; FONT-SIZE: 11px; font-weight: bold; text-align: right; padding-right: 100px;}
+TABLE.main_body TD.top_menu A {color: #D0A803;}
+
+TABLE.main_body TR.skin_top      {height: 87px; background: url(img/page-bg-top2.jpg) repeat-x scroll 100%;}
+TABLE.main_body TD.skin_topleft  {background: url(img/arthas-top-left.gif) repeat-x scroll 100% 11px; width: 25%; min-width: 170px;}
+TABLE.main_body TD.skin_topcenter{background-color: transparent; width: 800px; vertical-align: top; min-width: 600px; }
+TABLE.main_body TD.skin_topright {width: 10%;}
+
+TABLE.main_body TD.skin_left  {height: 900px;background: #000000 url(img/menu-bg.jpg) repeat-y scroll 100%; width: 25%; min-width: 170px; vertical-align: top;}
+TABLE.main_body TD.skin_center{padding: 0px; vertical-align: top;}
+TABLE.main_body TD.skin_right {background: url(img/page-bg0.jpg) no-repeat; vertical-align: top;}
+
+TABLE.main_body TD.skin_bottom{height: 15px; background: url(img/ironframe-bg.jpg) repeat-x;}
+
+DIV.skin_topleftimg    {width: 248px; height: 103px; background: url(img/wowlogo.gif); position: absolute; top: 1px; left: -196px;}
+DIV.skin_topleft       {width: 140px; height: 103px; background: url(img/border-top-left.gif); position: absolute; top: 64px; left: 0px;}
+DIV.skin_topcenter     {width: 100%;  height:  46px; background: url(img/border-top.gif) repeat-x; position: absolute; top: 64px; left: 0px;}
+DIV.skin_topright      {width: 140px; height: 103px; background: url(img/border-top-right.gif); position: absolute; top: 64px; right: 0px;}
+DIV.skin_leftimg1      {width: 446px; height: 582px; background: url(img/arthas_left.jpg); position: absolute; top: -2px; right: 0px;}
+DIV.skin_leftimg2      {width: 349px; height: 317px; background: url(img/arthas-bottom-left.gif); position: absolute; top: 580px; right: 97px;}
+DIV.skin_rightimg      {width: 100%;  height: 621px; background: url(img/arthas_right.jpg) no-repeat scroll -1px; position: absolute; top: -68px; left: 0px;}
+
+DIV.skin_searchmenu   {position: absolute; top: 6px; right: 20px;}
+TABLE.search          {height: 34px; border-collapse: collapse; padding: 0px;}
+TABLE.search TD       {background: url(img/search/search-bg.gif) repeat-x; padding: 0px 5px 0px;}
+TABLE.search TD.sleft {width: 16px; background: url(img/search/search-left.gif) no-repeat; padding: 0px;}
+TABLE.search TD.sright{width: 8px; background: url(img/search/search-right.gif) no-repeat; padding: 0px;}
+TABLE.search input    {color:#FFAC04; background-color: #040D1A; border-color:#7F7F7F; font-size:11px; position:relative; top:1px;}
+TABLE.search select   {color:#FFAC04; background-color: #040D1A; border-color:#7F7F7F; font-size:11px; position:relative; top:2px;}
+TABLE.search A        {width: 39px; height:20px; background: url(img/search/search_button.gif) no-repeat; display: block; position:relative; top:3px;}
+TABLE.search A:hover  {width: 39px; height:20px; background: url(img/search/search_button_hover.gif) no-repeat;}
+
+DIV.skin_leftmenu   {position: absolute; top: 20px; right: 0px;}
+
+DIV.skin_lm_sub_on  {color: #FFFFFF; width: 148px; height: 27px; background: url(img/menu/leftmenu-button-on.gif)  no-repeat; position:relative; cursor: pointer;}
+DIV.skin_lm_sub_off {color: #AAAAAA; width: 148px; height: 27px; background: url(img/menu/leftmenu-button-off.gif) no-repeat; position:relative; cursor: pointer;}
+DIV.skin_lm_ico  {width:  24px; height: 21px; position: absolute; top: 3px; left: 4px;}
+DIV.skin_lm_name {position: absolute; top: 5px; left: 30px; text-align: left; font-weight: bold; font-size: 13px;}
+DIV.skin_lm_add  {width: 8px; height: 35px; position: absolute; top: -4px; right: -3px; background: url(img/menu/menu-add.gif) no-repeat;}
+
+DIV.skin_lm_sub_top    {width: 145px; background: url(img/menu/leftmenu-cont-top.gif) no-repeat; margin-bottom: 1px;}
+DIV.skin_lm_sub_bottom {width: 145px; height: 6px; background: url(img/menu/leftmenu-cont-bot.gif) no-repeat; font-size: 1px; margin-top: -5px; }
+DIV.skin_lm_sub_body   {width: 145px; background: url(img/menu/leftmenu-back.png) repeat;}
+DIV.skin_lm_sub_left   {background: url(img/menu/leftmenu-cont-mid-left.gif) repeat-y scroll left top;}
+DIV.skin_lm_sub_right  {background: url(img/menu/leftmenu-cont-mid-right.gif) repeat-y scroll right top; padding: 1px 0px 0px 0px;}
+
+DIV.skin_pop_sub       {width: auto; min-width: 100px; background: url(img/tooltip.png) repeat scroll center center; border: #666666 1px solid;}
+DIV.skin_pop_sub       {font-family: arial; font-size: 11px; font-weight: bold; text-align: left; color: #FFFFFF; padding: 0px;}
+DIV.skin_lm_sub_right  {font-family: arial; font-size: 11px; font-weight: bold; text-align: left; color: #FFFFFF; padding: 3px 3px 0px 2px;}
+DIV.skin_pop_row       {padding: 0px 3px 0px 10px; background: url(img/menu/sm_bullet.gif) no-repeat scroll left bottom;}
+DIV.skin_pop_row A     {color: #F4C400; display: block;}
+DIV.skin_pop_mrow      {padding: 0px 3px 0px 10px; background: #000000 url(img/menu/sm_bullet.gif) no-repeat scroll left bottom; cursor: pointer; }
+DIV.skin_pop_mrow A    {color: #FFFFFF; display: block;}
+DIV.skin_pop_arrow     {width: 14px; height: 15px; background: url(img/menu/tri.gif) no-repeat scroll right center; top: 0px; right: 3px;}
+
+TABLE.body              {width:  100%; height: 100%; border-collapse: collapse;}
+TABLE.body TD.bodyleft  {padding-left: 58px; background: url(img/border-left.gif) repeat-y scroll left 14px;}
+TABLE.body TD.bodycenter{width: 100%; COLOR: #000000; background: url(img/light2.jpg) repeat; vertical-align: top; padding: 25px 4px 15px 4px;}
+TABLE.body TD.bodyright {padding-right:58px; background: url(img/border-right.gif) repeat-y scroll right 14px;}
+
+TABLE.body TD.bodybottom  {height: 100%; background: url(img/border-bot.gif) repeat-x; vertical-align: top;}
+DIV.blimg      {width: 132px; height: 93px; background: url(img/border-bot-left.gif); position: absolute; top: 0px; left: 0px;}
+DIV.brimg      {width: 132px; height: 93px; background: url(img/border-bot-right.gif); position: absolute; top: 0px; right: 0px;}
+
+/* site style */
+IMG.reagent {width: 24px; border: 0px;}
+IMG.item    {width: 30px; border: 0px;}
+div.item    {FONT-SIZE: 12px; font-weight: 800;}
+IMG.spell   {width: 30px; border: 0px;}
+
+/* Search dialog style */
+TABLE.find                {padding: 0px; border-spacing: 0px; border: #000066 1px solid; border-collapse: collapse; background: url(img/blue-bg.png) repeat;}
+TABLE.find TD             {padding: 0px 0px 0px 5px; color: #6699FF; font-size: 12px;}
+TABLE.find TD.top         {padding: 0px; color: #000033;}
+TABLE.find TD.bottom      {text-align: center; background: url(img/bg.gif) transparent; padding: 2px;}
+TABLE.findtop             {WIDTH: 100%; BORDER: 0px; border-collapse: collapse;}
+TABLE.findtop TR          {background: url(img/topbg2.gif) scroll center top; height: 26px;}
+TABLE.findtop TD.topleft  {}
+TABLE.findtop TD.top      {color: #CCFFFF; font-size: 13px; font-weight: bold; text-align: center;}
+TABLE.findtop TD.topright {}
+
+TABLE.item             {BACKGROUND-COLOR:transparent; padding: 0px;}
+TABLE.spell            {BACKGROUND-COLOR:transparent; padding: 0px;}
+TABLE.creature         {BACKGROUND-COLOR:transparent; padding: 0px;}
+TABLE.gameobject       {BACKGROUND-COLOR:transparent; padding: 0px;}
+
+TABLE.tooltip              {BORDER: 0px solid;  BACKGROUND-COLOR: transparent; border-collapse: collapse;}
+TABLE.tooltip TD.tiptopl   {WIDTH:  8px;HEIGHT:  8px;BACKGROUND: url(img/tooltip.png)   0%  0% no-repeat;}
+TABLE.tooltip TD.tiptop    {WIDTH: auto;HEIGHT:  8px;BACKGROUND: url(img/tooltip.png)  50%  0% no-repeat;}
+TABLE.tooltip TD.tiptopr   {WIDTH:  8px;HEIGHT:  8px;BACKGROUND: url(img/tooltip.png) 100%  0% no-repeat;}
+TABLE.tooltip TD.tipl      {WIDTH:  8px;HEIGHT: auto;BACKGROUND: url(img/tooltip.png)   0% 50% no-repeat;}
+TABLE.tooltip TD.tipbody   {BACKGROUND: url(img/tooltip.png)  50% 50% no-repeat; padding: 0px;  }
+TABLE.tooltip TD.tipr      {WIDTH:  8px;HEIGHT: auto;BACKGROUND: url(img/tooltip.png) 100%  50% no-repeat;}
+TABLE.tooltip TD.tipbottoml{WIDTH:  8px;HEIGHT:  8px;BACKGROUND: url(img/tooltip.png)   0% 100% no-repeat;}
+TABLE.tooltip TD.tipbottom {WIDTH: auto;HEIGHT:  8px;BACKGROUND: url(img/tooltip.png)  50% 100% no-repeat;}
+TABLE.tooltip TD.tipbottomr{WIDTH:  8px;HEIGHT:  8px;BACKGROUND: url(img/tooltip.png) 100% 100% no-repeat;}
+
+TABLE.border             {BORDER: 0px solid; BACKGROUND-COLOR: transparent; border-collapse: collapse;}
+TABLE.border TD.btopl    {WIDTH: 8px;HEIGHT: 8px;BACKGROUND: url(img/tooltip.png)   0% 0% no-repeat;}
+TABLE.border TD.btop     {           HEIGHT: 8px;BACKGROUND: url(img/tooltip.png)  50% 0% no-repeat;}
+TABLE.border TD.btopr    {WIDTH: 8px;HEIGHT: 8px;BACKGROUND: url(img/tooltip.png) 100% 0% no-repeat;}
+TABLE.border TD.bl       {WIDTH: 8px;BACKGROUND: url(img/tooltip.png)   0% 50% no-repeat;}
+TABLE.border TD.bbody    {           BACKGROUND: url(img/tooltip.png)  50% 50% no-repeat; padding: 0px;}
+TABLE.border TD.br       {WIDTH: 8px;BACKGROUND: url(img/tooltip.png) 100% 50% no-repeat;}
+TABLE.border TD.bbottoml {WIDTH: 8px;HEIGHT: 8px;BACKGROUND: url(img/tooltip.png)   0% 100% no-repeat;}
+TABLE.border TD.bbottom  {           HEIGHT: 8px;BACKGROUND: url(img/tooltip.png)  50% 100% no-repeat;}
+TABLE.border TD.bbottomr {WIDTH: 8px;HEIGHT: 8px;BACKGROUND: url(img/tooltip.png) 100% 100% no-repeat;}
+
+TABLE.report              {width: 100%; BORDER:  0px solid; font-size: 13px;}
+TABLE.report A            {font-weight: bold;}
+TABLE.report TH           {BORDER:#000033 1px solid;  background-color: #000055; }
+TABLE.report TD           {COLOR: #000000; BORDER:#000033 1px solid;}
+TABLE.report TD.head      {BORDER:#000033 1px solid; BACKGROUND: url(img/bg.gif) repeat-x; HEIGHT: 25px; BACKGROUND-COLOR: transparent;}
+TABLE.report TD.head A    {COLOR: #FF6600;}
+TABLE.report TD.page      {COLOR: #FFFFFF; BACKGROUND-COLOR: #000033; TEXT-ALIGN: center;}
+TABLE.report TD.page A    {COLOR: #CCFFFF; text-decoration: underline; margin: 0px;}
+TABLE.report TR.notknow TD {color: #00CCFF; BACKGROUND-COLOR: #000011;}
+TABLE.report TR.notknow A  {color: #00CCFF;}
+TABLE.report TR.notknow DIV{color: #FFFFFF;}
+TABLE.report TD.rank             {COLOR: #330033; TEXT-ALIGN: center;}
+TABLE.report TD.player           {TEXT-ALIGN: center;}
+TABLE.report TD.player A         {COLOR: #660033; TEXT-DECORATION: none}
+TABLE.report TD.skill_category   {COLOR: #FFFF99; background: #003333;}
+TABLE.report TD.skill_name       {COLOR: #000099;}
+TABLE.report TD.teamreputation   {COLOR: #FFFF99; background: #003333;}
+TABLE.report TD.reputation       {COLOR: #000099;}
+TABLE.report TD.rep_value        {COLOR: #000099;}
+
+TABLE.quest         {BACKGROUND:transparent;  BORDER: #330066 4px ridge; width: 100%; padding: 0px; margin: 0px; z-index: 1; font-size: 12px;}
+TABLE.quest A       {text-decoration: none; font-weight: bold;}
+TABLE.quest TD      {padding: 2px 5px 2px;}
+TABLE.quest TD.mark {BACKGROUND-COLOR: transparent;}
+TABLE.quest TD.head {COLOR: #ffdd00; BACKGROUND: transparent url(img/bg.gif) repeat-x; HEIGHT: 25px;}
+
+TABLE.talenttab         {border: #CCCCFF 1px solid; background: #333333;}
+TABLE.talenttab TD      {border: #CCCCFF 1px solid;}
+TABLE.talenttab TD.head {BACKGROUND: transparent url(img/bg.gif) repeat-x; HEIGHT: 25px;}
+TABLE.talent            {BORDER: 0px;}
+TABLE.talent TD         {BORDER: 0px;}
+
+/* Tabs*/
+.reportContainer {border: 0px solid #000;}
+.my_tabs     {font-size: 12px; padding: 3px 0px; margin: 0px 0px 1px 0px;}
+.my_tabs li  {display: inline;margin: 0; color: #2d2b2b;font-weight: normal;}
+.my_tabs li          a{color: #2d2b2b;padding: 3px 7px; margin-right: 2px; border: 1px solid #000; background: url(img/indentbg2.gif) top left repeat-x;}
+.my_tabs li.selected a{background-image: url(img/indentbg.gif);border-bottom-color: transparent;}
+.my_tabs li          a:hover{color: #2d2b2b;}
+.my_tabs li.selected a:hover{color: #2d2b2b;}
+
+DIV.faq    {COLOR: #000000; font-size: 13px; }
+DIV.faq B  {color: #330033; font-weight: bold; }
+DIV.faq H3 {color: #640909; border: 0px; background: transparent; font-size: 18px;}
+DIV.faq H4 {COLOR: #330000; font-size: 14px;}
+DIV.faq H6 {COLOR: #330000; font-size: 14px;}
+DIV.faq P         {margin-top: 4px; margin-bottom: 4px;}
+DIV.faq P.center  {text-align: center;}
+DIV.faq UL        {margin-top: 4px; margin-bottom: 4px;}
+DIV.faq IMG       {margin: 10px; border: #000066 2px ridge;}
+DIV.faq A         {color: #1E4378; text-decoration: none;  font-weight: bold;}
+DIV.faq A:hover   {color: #C60000;}
+
+TABLE.back      {width: 100%; BORDER: #0099FF 1px dotted; BACKGROUND: transparent url(img/topbg2.gif); COLOR: #000000;}
+TABLE.back  A   {COLOR: #00CCFF;}
+
+TABLE.reagents  TD        {BORDER: 0px; font-size: 10px;}
+TABLE.no_border TD        {BORDER: 0px; font-size: 10px;}
+table.quest_reward TD     {BORDER: 0px;}
