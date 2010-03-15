@@ -31,6 +31,8 @@ if (!$cr)
 else
 {
  $baseLink = '?npc='.$entry;
+ if ($config['www_creature'])
+	echo "<a href=\"".sprintf($config['www_creature'], $entry)."\" target=\"_blank\"\">".sprintf($config['www_creature'], $entry)."</a><br>";
  if ($ajaxmode==0)
  {
   echo "<TABLE cellSpacing=0 cellPadding=0 width=500>";

@@ -1111,7 +1111,7 @@ class QuestReportGenerator extends ReportGenerator{
    case 'go_take':   $this->table = '(`quest_template` join `gameobject_involvedrelation` ON `quest_template`.`entry` = `gameobject_involvedrelation`.`quest`)';break;
    case 'npc_giver': $this->table = '(`quest_template` join `creature_questrelation` ON `quest_template`.`entry` = `creature_questrelation`.`quest`)';break;
    case 'npc_take':  $this->table = '(`quest_template` join `creature_involvedrelation` ON `quest_template`.`entry` = `creature_involvedrelation`.`quest`)';break;
-   case 'mail_loot': $this->table = '(`quest_template` join `mail_loot_template` ON `quest_template`.`entry` = `mail_loot_template`.`entry`)';break;
+   case 'mail_loot': $this->table = '(`quest_template` join `mail_loot_template` ON `quest_template`.`RewMailTemplateId` = `mail_loot_template`.`entry`)';break;
    default:          $this->table = '`quest_template`';break;
   }
   $this->db_fields = '`quest_template`.`entry`';
