@@ -8,26 +8,26 @@ $config =array (
 // World Database
 'hostname' => '127.0.0.1',    // mysql hostname
 'username' => 'root',         // mysql username
-'password' => 'root',             // mysql password
-'dbName' => 'mangos_wotlk',   // mysql data base name (mangos db)
+'password' => '1',             // mysql password
+'dbName' => 'ytdb',   // mysql data base name (mangos db)
 
 // WowD Database
 'whostname' => '127.0.0.1',   // mysql hostname
 'wusername' => 'root',        // mysql username
-'wpassword' => 'root',        // mysql password
-'wdbName' => 'wowd_322_en',   // mysql wowd base name
+'wpassword' => '1',        // mysql password
+'wdbName' => 'cswowd',   // mysql wowd base name
 
 // Realm Database
 'rhostname' => '127.0.0.1',   // mysql hostname
 'rusername' => 'root',        // mysql username
-'rpassword' => 'root',        // mysql password
+'rpassword' => '1',        // mysql password
 'rdbName' =>'realmd',         // mysql data base name (realm db)
 
 // Character database
 'chostname' => '127.0.0.1',   // mysql hostname
 'cusername' => 'root',        // mysql username
-'cpassword' => 'root',            // mysql password
-'cdbName' =>'characters_wotlk',     // mysql data base name (characters db)
+'cpassword' => '1',            // mysql password
+'cdbName' =>'char',     // mysql data base name (characters db)
 
 //Other
 'lang'=>'ru',                 // lang ru,en,ua,gb....
@@ -37,6 +37,13 @@ $config =array (
 // Принудительный выбор кодировки из таблиц locales_...
 'locales_lang'=>'8',          // работает только если есть заполнение таблицы locales_xxx
 'locales_charset'=>'',        // Символы используемые в локализованых текстах (для определения языка ввода в поиске)
+ 
+// WWW Адресс сайта Базы Данных официального сервера
+'www_creature'=>'http://ru.wowhead.com/?npc=%d',		// НПС, где %d - номер НПС
+'www_gameobject'=>'http://ru.wowhead.com/?object=%d',	// Объекты, где %d - номер объекта
+'www_item'=>'http://ru.wowhead.com/?item=%d',			// Вещи, где %d - номер вещи
+'www_spell'=>'http://ru.wowhead.com/?spell=%d',			// Спелл, где %d - номер спелла
+'www_quest'=>'http://ru.wowhead.com/?quest=%d',			// Квесты, где %d - номер квеста
 
 // Выбор скина
 'skin_type'=>'wrath',         // default, modern, lofk_skin, dark, wdb
@@ -76,11 +83,11 @@ switch($config['lang'])
 {
     case "ru":
         $config['locales_lang']=8;
-        $config['wdbName'] = 'wowd_322_ru';
+        $config['wdbName'] = 'cswowd';
         break;
     case "en":
         $config['locales_lang']=0;
-        $config['wdbName'] = 'wowd_322_en';
+        $config['wdbName'] = 'cswowd';
         break;
     default:
         break;

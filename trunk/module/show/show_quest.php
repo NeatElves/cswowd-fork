@@ -81,6 +81,8 @@ else
  $q_status = 0;
  if ($guid)
    $q_status = $cDB->selectRow("SELECT * FROM `character_queststatus` WHERE `guid` = ?d AND `quest` = ?d", $guid, $entry);
+ if ($config['www_quest'])
+	echo "<a href=\"".sprintf($config['www_quest'], $entry)."\" target=\"_blank\"\">".sprintf($config['www_quest'], $entry)."</a><br>";
 
  echo "<TABLE class=quest width=550>";
  echo "<TBODY>";
@@ -111,6 +113,8 @@ else
   renderReqCollect($quest['ReqItemId2'],$quest['ReqItemCount2'],$q_status?$q_status['itemcount2']:0);
   renderReqCollect($quest['ReqItemId3'],$quest['ReqItemCount3'],$q_status?$q_status['itemcount3']:0);
   renderReqCollect($quest['ReqItemId4'],$quest['ReqItemCount4'],$q_status?$q_status['itemcount4']:0);
+  renderReqCollect($quest['ReqItemId5'],$quest['ReqItemCount5'],$q_status?$q_status['itemcount5']:0);
+  renderReqCollect($quest['ReqItemId6'],$quest['ReqItemCount6'],$q_status?$q_status['itemcount6']:0);
  }
 ###
 ### Рек убить
