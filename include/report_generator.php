@@ -310,16 +310,6 @@ function getPlayerSpells($guid)
   SELECT `spell` AS ARRAY_KEY FROM `character_spell` WHERE `guid` = ?d AND `disabled` = 0', $guid);
 }
 
-$gheroic = 0;
-function getHeroicList()
-{
-  global $dDB, $gheroic;
-  if (!$gheroic)
-    $gheroic = $dDB->selectCol('-- CACHE: 1h
-	  SELECT `heroic_entry` AS ARRAY_KEY, `entry` FROM `creature_template` WHERE `heroic_entry` <>  0');
-  return $gheroic;
-}
-
 //==============================================================================
 // Callback functions
 //==============================================================================
@@ -720,13 +710,6 @@ function r_npcLvl($data)
 }
 function r_npcName($data)
 {
-  $h = getHeroicList();
-  if (isset($h[$data['entry']]))
-  {
-    $heroic = getCreature($h[$data['entry']]);
-	$data['name']=$heroic['name'].' (Heroic)';
-	$data['subname']=$heroic['subname'];
-  }
   $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
   $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['subname'];
   echo '<a href="?npc='.$data['entry'].'">'.($name?$name:'no name').'</a>';
@@ -735,13 +718,6 @@ function r_npcName($data)
 }
 function r_npcRName($data)
 {
-  $h = getHeroicList();
-  if (isset($h[$data['entry']]))
-  {
-    $heroic = getCreature($h[$data['entry']]);
-	$data['name']=$heroic['name'].' (Heroic)';
-	$data['subname']=$heroic['subname'];
-  }
   $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
   $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['subname'];
   echo '<a href="?npc='.$data['entry'].'">'.($name?$name:'no name').'</a> <font size=-3>('.getLoyality($data['faction_A']).')</font>';
@@ -752,10 +728,6 @@ function r_npcReact($data)  {echo getLoyality($data['faction_A']);}
 function r_npcMap($data)
 {
   global $lang;
-  $h = getHeroicList();
-  if (isset($h[$data['entry']]))
-    echo '<a href="?map&npc='.$h[$data['entry']].'">'.$lang['map'].'</a>';
-  else
     echo '<a href="?map&npc='.$data['entry'].'">'.$lang['map'].'</a>';
 }
 function r_npcRole($data)
@@ -849,11 +821,10 @@ class CreatureReportGenerator extends ReportGenerator{
  }
  function castSpell($entry)
  {
-    global $wDB, $dDB;
-    $rows_1 = $wDB->selectCol('SELECT `entry` FROM `wowd_creature_spells` WHERE `spell` = ?d', $entry);
-    $rows_2 = $dDB->selectCol('SELECT `entry` FROM `creature_template` WHERE `spell1` = ?d OR `spell2` = ?d OR `spell3` = ?d OR `spell4` = ?d', $entry, $entry, $entry, $entry);
-    $rows_3 = $dDB->selectCol('SELECT `creature_id` FROM `creature_ai_scripts` WHERE (`action1_type` = 11 AND `action1_param1`=?d) OR (`action2_type` = 11 AND `action2_param1`=?d) OR (`action3_type` = 11 AND `action3_param1`=?d)', $entry, $entry, $entry);
-    $casters = array_unique(array_merge($rows_1, $rows_2, $rows_3));
+    global $dDB;
+    $rows_1 = $dDB->selectCol('SELECT `entry` FROM `creature_template` WHERE `spell1` = ?d OR `spell2` = ?d OR `spell3` = ?d OR `spell4` = ?d', $entry, $entry, $entry, $entry);
+    $rows_2 = $dDB->selectCol('SELECT `creature_id` FROM `creature_ai_scripts` WHERE (`action1_type` = 11 AND `action1_param1`=?d) OR (`action2_type` = 11 AND `action2_param1`=?d) OR (`action3_type` = 11 AND `action3_param1`=?d)', $entry, $entry, $entry);
+    $casters = array_unique(array_merge($rows_1, $rows_2));
     if (count($casters))
        $this->doRequirest('`creature_template`.`entry` in (?a)', $casters);
  }
@@ -1140,7 +1111,7 @@ class QuestReportGenerator extends ReportGenerator{
    case 'go_take':   $this->table = '(`quest_template` join `gameobject_involvedrelation` ON `quest_template`.`entry` = `gameobject_involvedrelation`.`quest`)';break;
    case 'npc_giver': $this->table = '(`quest_template` join `creature_questrelation` ON `quest_template`.`entry` = `creature_questrelation`.`quest`)';break;
    case 'npc_take':  $this->table = '(`quest_template` join `creature_involvedrelation` ON `quest_template`.`entry` = `creature_involvedrelation`.`quest`)';break;
-   case 'mail_loot': $this->table = '(`quest_template` join `quest_mail_loot_template` ON `quest_template`.`entry` = `quest_mail_loot_template`.`entry`)';break;
+   case 'mail_loot': $this->table = '(`quest_template` join `mail_loot_template` ON `quest_template`.`entry` = `mail_loot_template`.`entry`)';break;
    default:          $this->table = '`quest_template`';break;
   }
   $this->db_fields = '`quest_template`.`entry`';
@@ -1177,7 +1148,7 @@ class QuestReportGenerator extends ReportGenerator{
  // Create quest list require item for comlete
  function requireItem($entry, $giveQuest)
  {
-  $this->doRequirest('(`ReqItemId1`= ?d OR `ReqItemId2`= ?d OR `ReqItemId3`= ?d OR `ReqItemId4`= ?d OR `ReqSourceId1`= ?d OR `ReqSourceId2`= ?d OR `ReqSourceId3`= ?d OR `ReqSourceId4`= ?d) AND `quest_template`.`entry` <> ?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $giveQuest);
+  $this->doRequirest('(`ReqItemId1`= ?d OR `ReqItemId2`= ?d OR `ReqItemId3`= ?d OR `ReqItemId4`= ?d OR `ReqItemId5`= ?d OR `ReqItemId6`= ?d OR `ReqSourceId1`= ?d OR `ReqSourceId2`= ?d OR `ReqSourceId3`= ?d OR `ReqSourceId4`= ?d) AND `quest_template`.`entry` <> ?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $giveQuest);
  }
  // Create quest list prowide item at take
  function provideItem($entry, $giveQuest)
@@ -1383,8 +1354,6 @@ class SpellReportGenerator extends ReportGenerator{
  function castByCreature($creature)
  {
   global $wDB, $dDB;
-  // By own table
-  $spell_list = $wDB->selectCol("SELECT `spell` FROM `wowd_creature_spells` WHERE `entry` = ?d", $creature['entry']);
   // By creature fields
   for ($i=1;$i<5;$i++) if ($creature['spell'.$i]) $spell_list[] = $creature['spell'.$i];
   // By event AI table
