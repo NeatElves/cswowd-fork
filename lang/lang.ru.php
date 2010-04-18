@@ -89,6 +89,10 @@ $lang = array(
 # On kill reputation
 'onkill_rep' => 'Репутация',
 
+# Glyph report
+'glyph_id'     => 'id',
+'glyph_name'   => 'Имя',
+
 # Random suffix report
 'rand_enchant_id'     => 'id',
 'rand_enchant_name'   => 'Тип',
@@ -120,6 +124,10 @@ $lang = array(
 'enchant_id'   => 'id',
 'enchant_name' => 'Описание',
 
+# Talent report
+'talent_id'   => 'id',
+'talent_name' => 'Ветка',
+
 # Zones report
 'zone_id'   => 'id',
 'zone_name' => 'Название',
@@ -128,6 +136,16 @@ $lang = array(
 'at_id'  => 'id',
 'at_name'=> 'Название',
 'at_req' => 'Требования',
+
+#Players list
+'pl_guid'=>'guid',
+'pl_name'=>'Имя',
+'pl_race'=>'Раса',
+'pl_class'=>'Класс',
+'pl_level'=>'lvl',
+'pl_pos'=>'Место',
+'pl_rank'=>'Ранг',
+'pl_note'=>'Инфо',
 
 // Details (spell, go, npc)
 'detail_info' => 'Детальная информация',
@@ -328,8 +346,6 @@ $lang = array(
 'guild_members'=> 'Состав',
 'guild_create_at'=> 'Создана:',
 'guild_money'  => 'Деньги:',
-'guild_rank'   => 'Ранг',
-'guild_note'   => 'Инфо',
 'guild_noexist'=> 'Гильдий нет',
 
 # Arenateams

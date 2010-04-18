@@ -88,7 +88,8 @@ if ($allmode==0 and $ajaxmode==0)
 if ($filter!="")
 {
  $npc_search =& new CreatureReportGenerator();
- $npc_search->disableMark();
+ if (!$allmode)
+   $npc_search->disableMark();
  //==============================================================================
  // Локализация запроса
  //==============================================================================

@@ -89,6 +89,10 @@ $lang = array(
 # On kill reputation
 'onkill_rep' => 'Reputation',
 
+# Glyph report
+'glyph_id'     => 'id',
+'glyph_name'   => 'Name',
+
 # Random suffix/propety report
 'rand_enchant_id'     => 'id',
 'rand_enchant_name'   => 'Name',
@@ -120,6 +124,10 @@ $lang = array(
 'enchant_id'   => 'id',
 'enchant_name' => 'Name',
 
+# Talent report
+'talent_id'   => 'id',
+'talent_name' => 'Tree',
+
 # Zones report
 'zone_id'   => 'id',
 'zone_name' => 'Name',
@@ -128,6 +136,16 @@ $lang = array(
 'at_id'  => 'id',
 'at_name'=> 'Name',
 'at_req' => 'Reqirements',
+
+#Players list
+'pl_guid'=>'guid',
+'pl_name'=>'Name',
+'pl_race'=>'Race',
+'pl_class'=>'Class',
+'pl_level'=>'lvl',
+'pl_pos'=>'Zone',
+'pl_rank'=>'Rank',
+'pl_note'=>'Note',
 
 // Details (spell, go, npc)
 'detail_info' => 'Full info',
@@ -324,8 +342,6 @@ $lang = array(
 'guild_members'=> 'Members',
 'guild_create_at'=> 'Create at:',
 'guild_money'  => 'Money:',
-'guild_rank'   => 'Rank',
-'guild_note'   => 'Note',
 'guild_noexist'=> 'No guilds present',
 
 #Arenateams

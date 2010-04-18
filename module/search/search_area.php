@@ -40,8 +40,9 @@ if ($allmode==0 and $ajaxmode==0)
 
 if ($filter)
 {
- $area_search =& new ZoneReportGenerator();;
- $area_search->disableMark();
+ $area_search =& new ZoneReportGenerator();
+ if (!$allmode)
+   $area_search->disableMark();
  $area_search->Init($show_fields, $FindRefrence, 'searchArea', $config['fade_limit'], 'name');
  $area_search->doRequirest($filter);
  $number = $area_search->getTotalDataCount();

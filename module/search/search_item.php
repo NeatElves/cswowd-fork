@@ -156,7 +156,8 @@ if ($allmode==0 and $ajaxmode==0)
 if ($filter!='')
 {
  $isearch =& new ItemReportGenerator;
- $isearch->disableMark();
+ if (!$allmode)
+   $isearch->disableMark();
 
  //==============================================================================
  // Локализация запроса

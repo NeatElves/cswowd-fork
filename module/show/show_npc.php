@@ -44,7 +44,9 @@ else
 
   if ($cr['mingold']!=0)
    echo "<b>$lang[money]</b>&nbsp;&nbsp;".money ($cr['mingold'])."&nbsp&nbsp;-&nbsp;&nbsp;".money ($cr['maxgold'])."<br>";
-  echo "<a href=\"?map&npc=$entry\">$lang[show_map] (".getCreatureCount($cr['entry']).")</a><br>";
+  $heroic=getHeroicList();
+  $hentry=isset($heroic[$entry])?$heroic[$entry]:$entry;
+  echo "<a href=\"?map&npc=$hentry\">$lang[show_map] (".getCreatureCount($hentry).")</a><br>";
 
 /*
   if ($config['show_npc_detalis'])

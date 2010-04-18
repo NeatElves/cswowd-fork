@@ -183,11 +183,8 @@ function getAchievementValue($a, &$value, &$maxvalue)
 
 function getAchievementFaction($guid, $faction)
 {
-  if (!$guid)
-    return $faction;
-  $player = getCharacter($guid, 'race');
-  if ($player)
-    return getPlayerFaction($player['race']);
+  if ($guid && $player = getCharacter($guid, 'race'))
+    return getPlayerFaction($player['race'])==0?1:0;
   return $faction;
 }
 
@@ -212,7 +209,7 @@ function renderAchievement($id, &$a, $guid)
     return;
   echo '<div class="ach_show'.($a['date'] ? '':' locked').'" onclick="showAchReq(this);">';
   // Render icon
-  echo '<img class=ach_icon  src='.getSpellIcon($a['iconId']).'>';
+  echo '<img class=ach_icon  src="'.getSpellIcon($a['iconId']).'">';
   echo '<div class=ach_frame></div>';
   // Render points
   if ($a['points'])

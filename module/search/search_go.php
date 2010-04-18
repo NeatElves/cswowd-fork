@@ -81,7 +81,8 @@ if ($allmode==0 and $ajaxmode==0)
 if ($filter)
 {
  $go_search =& new GameobjectReportGenerator();
- $go_search->disableMark();
+ if (!$allmode)
+   $go_search->disableMark();
  //==============================================================================
  // Локализация запроса
  //==============================================================================
@@ -98,7 +99,7 @@ if ($filter)
  if ($number <= 0)
     echo $lang['not_found'];
  else if ($number == 1 && $allmode == 0)    // Перенаправляем
-    echo '<meta http-equiv="refresh" content=1;URL=?object='.$npc_search->data_array[0]['entry'].'>';
+    echo '<meta http-equiv="refresh" content=1;URL=?object='.$go_search->data_array[0]['entry'].'>';
  else
     $go_search->createReport($lang['search_results'].' - '.$lang['found'].' '.$number);
 }

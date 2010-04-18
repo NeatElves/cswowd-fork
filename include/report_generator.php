@@ -310,6 +310,16 @@ function getPlayerSpells($guid)
   SELECT `spell` AS ARRAY_KEY FROM `character_spell` WHERE `guid` = ?d AND `disabled` = 0', $guid);
 }
 
+$gheroic = 0;
+function getHeroicList()
+{
+  global $dDB, $gheroic;
+  if (!$gheroic)
+    $gheroic = $dDB->selectCol('-- CACHE: 1h
+	  SELECT `difficulty_entry_1` AS ARRAY_KEY, `entry` FROM `creature_template` WHERE `difficulty_entry_1` <>  0');
+  return $gheroic;
+}
+
 //==============================================================================
 // Callback functions
 //==============================================================================
@@ -710,6 +720,13 @@ function r_npcLvl($data)
 }
 function r_npcName($data)
 {
+  $h = getHeroicList();
+  if (isset($h[$data['entry']]))
+  {
+    $heroic = getCreature($h[$data['entry']]);
+	$data['name']=$heroic['name'].' (Heroic)';
+	$data['subname']=$heroic['subname'];
+  }
   $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
   $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['subname'];
   echo '<a href="?npc='.$data['entry'].'">'.($name?$name:'no name').'</a>';
@@ -718,6 +735,13 @@ function r_npcName($data)
 }
 function r_npcRName($data)
 {
+  $h = getHeroicList();
+  if (isset($h[$data['entry']]))
+  {
+    $heroic = getCreature($h[$data['entry']]);
+	$data['name']=$heroic['name'].' (Heroic)';
+	$data['subname']=$heroic['subname'];
+  }
   $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
   $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['subname'];
   echo '<a href="?npc='.$data['entry'].'">'.($name?$name:'no name').'</a> <font size=-3>('.getLoyality($data['faction_A']).')</font>';
@@ -728,6 +752,10 @@ function r_npcReact($data)  {echo getLoyality($data['faction_A']);}
 function r_npcMap($data)
 {
   global $lang;
+  $h = getHeroicList();
+  if (isset($h[$data['entry']]))
+    echo '<a href="?map&npc='.$h[$data['entry']].'">'.$lang['map'].'</a>';
+  else
     echo '<a href="?map&npc='.$data['entry'].'">'.$lang['map'].'</a>';
 }
 function r_npcRole($data)
@@ -1148,7 +1176,7 @@ class QuestReportGenerator extends ReportGenerator{
  // Create quest list require item for comlete
  function requireItem($entry, $giveQuest)
  {
-  $this->doRequirest('(`ReqItemId1`= ?d OR `ReqItemId2`= ?d OR `ReqItemId3`= ?d OR `ReqItemId4`= ?d OR `ReqItemId5`= ?d OR `ReqItemId6`= ?d OR `ReqSourceId1`= ?d OR `ReqSourceId2`= ?d OR `ReqSourceId3`= ?d OR `ReqSourceId4`= ?d) AND `quest_template`.`entry` <> ?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $giveQuest);
+  $this->doRequirest('(`ReqItemId1`= ?d OR `ReqItemId2`= ?d OR `ReqItemId3`= ?d OR `ReqItemId4`= ?d OR `ReqItemId3`= ?d OR `ReqItemId4`= ?d OR `ReqSourceId1`= ?d OR `ReqSourceId2`= ?d OR `ReqSourceId3`= ?d OR `ReqSourceId4`= ?d) AND `quest_template`.`entry` <> ?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $giveQuest);
  }
  // Create quest list prowide item at take
  function provideItem($entry, $giveQuest)
@@ -1378,6 +1406,36 @@ class SpellReportGenerator extends ReportGenerator{
   $spells = $dDB->select("SELECT `entry` AS ARRAY_KEY, `ChanceOrQuestChance`, `mincountOrRef` FROM `spell_loot_template` WHERE (`item` = ?d  AND `mincountOrRef` > 0) { OR -`mincountOrRef` IN (?a) }", $entry, count($ref_loot)==0 ? DBSIMPLE_SKIP:array_keys($ref_loot));
   if ($spells)
       $this->doRequirest('`id` IN (?a)', array_keys($spells));
+ }
+}
+
+//=================================================================
+// Glyph list report functions and methods
+//=================================================================
+function r_glyphId($data)   {echo $data['id'];}
+function r_glyphName($data) {$spell=getSpell($data['SpellId']); echo $spell['SpellName'];}
+function r_glyphIcon($data) {echo '<img src="'.getSpellIcon($data['iconId']).'">';}
+
+$glyph_report = array(
+'GLYPH_REPORT_ID'  =>array('class'=>'small','sort'=>'','text'=>$lang['glyph_id'  ], 'draw'=>'r_glyphId',  'sort_str'=>'', 'fields'=>'' ),
+'GLYPH_REPORT_NAME'=>array('class'=>'left', 'sort'=>'','text'=>$lang['glyph_name'], 'draw'=>'r_glyphName','sort_str'=>'', 'fields'=>'`SpellId`' ),
+'GLYPH_REPORT_ICON'=>array('class'=>'i_ico','sort'=>'','text'=>'',                  'draw'=>'r_glyphIcon','sort_str'=>'', 'fields'=>'`iconId`'),
+);
+
+class GlyphReportGenerator extends ReportGenerator{
+ // Database depend requirest generator
+ // Select only reuire for report fields from database
+ function GlyphReportGenerator($type='')
+ {
+  global $glyph_report, $wDB;
+  $this->db = &$wDB;
+  $this->column_conf =&$glyph_report;
+  $this->table = '`wowd_glyphproperties`';
+  $this->db_fields = '`id`';
+ }
+ function useSpell($entry)
+ {
+  $this->doRequirest('`SpellId` = ?d', $entry);
  }
 }
 
@@ -1672,6 +1730,32 @@ class EnchantReportGenerator extends ReportGenerator{
 }
 
 //=================================================================
+// Talents list report functions and methods
+//=================================================================
+function r_talentId($data)   {echo $data['TalentTab'];}
+function r_talentName($data) {echo getTalentName($data['TalentTab']);}
+$talent_report = array(
+'TALENT_REPORT_ID'   =>array('class'=>'small','sort'=>'', 'text'=>$lang['talent_id'],  'draw'=>'r_talentId',   'sort_str'=>'', 'fields'=>'`TalentTab`'),
+'TALENT_REPORT_NAME' =>array('class'=>'left', 'sort'=>'', 'text'=>$lang['talent_name'],'draw'=>'r_talentName', 'sort_str'=>'','fields'=>'`TalentTab`'),
+);
+
+class TalentReportGenerator extends ReportGenerator{
+ // Database depend requirest generator
+ // Select only reuire for report fields from database
+ function TalentReportGenerator($type='')
+ {
+  global $talent_report, $wDB;
+  $this->db = &$wDB;
+  $this->column_conf =&$talent_report;
+  $this->table = '`wowd_talents`';
+  $this->db_fields = '`TalentID`';
+ }
+ function useSpell($entry)
+ {
+  $this->doRequirest('`Rank_1` = ?d OR `Rank_2` = ?d OR `Rank_3` = ?d OR `Rank_4` = ?d OR `Rank_5` = ?d', $entry, $entry, $entry, $entry, $entry);
+ }
+}
+//=================================================================
 // Zones list report functions and methods
 //=================================================================
 function r_zoneId($data) {echo $data['id'];}
@@ -1730,13 +1814,13 @@ function r_atReq($data)
 $at_report = array(
 'AT_REPORT_ID'   =>array('class'=>'small','sort'=>'id',   'text'=>$lang['at_id'],  'draw'=>'r_atId',   'sort_str'=>'`id`',  'fields'=>''),
 'AT_REPORT_NAME' =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['at_name'],'draw'=>'r_atName', 'sort_str'=>'`name`','fields'=>'`name`'),
-'AT_REPORT_REQ ' =>array('class'=>'left', 'sort'=>'',     'text'=>$lang['at_req'], 'draw'=>'r_atReq',  'sort_str'=>'',      'fields'=>'`required_level`, `required_item`, `required_item2`, `heroic_key`, `heroic_key2`, `required_quest_done`, `required_quest_done_heroic`'),
+'AT_REPORT_REQ'  =>array('class'=>'left', 'sort'=>'',     'text'=>$lang['at_req'], 'draw'=>'r_atReq',  'sort_str'=>'',      'fields'=>'`required_level`, `required_item`, `required_item2`, `heroic_key`, `heroic_key2`, `required_quest_done`, `required_quest_done_heroic`'),
 );
 
 class AreaTriggerReportGenerator extends ReportGenerator{
  function AreaTriggerReportGenerator($type='')
  {
-  global $zone_report, $wDB;
+  global $at_report, $wDB;
   $this->db = &$wDB;
   $this->column_conf =&$at_report;
   $this->table = '`areatrigger_teleport`';
@@ -1749,6 +1833,87 @@ class AreaTriggerReportGenerator extends ReportGenerator{
  function onArea($area_data)
  {
   $this->doRequirest('`target_map` = ?d AND `target_position_x` > ?d AND `target_position_x` < ?d AND `target_position_y` > ?d AND `target_position_y` < ?d', $area_data[0], $area_data[5], $area_data[4], $area_data[3], $area_data[2]);
+ }
+}
+
+//=================================================================
+// Players list report functions and methods
+//=================================================================
+function r_plGUID($data)  {echo $data['guid'];}
+function r_plName($data)  {echo '<a href=?player='.$data['guid'].'>'.$data['name'].'</a>';}
+function r_plRace($data)  {echo '<img src="'.getRaceImage($data['race'],$data['gender']).'">';}
+function r_plClass($data) {echo '<img src="'.getClassImage($data['class']).'">';}
+function r_plFaction($data){echo '<img src="'.getFactionImage($data['race']).'">';}
+function r_plLevel($data) {echo $data['level'];}
+function r_plPos($data)
+{
+   global $config;
+   $map_name = getMapNameFromPoint($data['map'], $data['position_x'], $data['position_y'], $data['position_z']);
+   $area_name = getAreaNameFromPoint($data['map'], $data['position_x'], $data['position_y'], $data['position_z']);
+   $extra_name = "";
+   if ($area_name)
+   {
+     $extra_name = "<br><font size=-2>".$map_name."</font>";
+     $map_name = "&bdquo;".str_replace(' ','&nbsp;', $area_name)."&ldquo;";
+   }
+   else
+     $map_name = "&bdquo;".str_replace(' ','&nbsp;',$map_name)."&ldquo;";
+
+   if ($config['show_map_ptr'])
+      $map_name = "<a href=\"?map&point=$data[map]:$data[position_x]:$data[position_y]:$data[position_z]\">".$map_name."</a>";
+   echo $map_name.$extra_name;
+}
+function r_plGuildNote($data) {echo $data['pnote']."<br>".$data['offnote'];}
+function r_plGuildRank($data)
+{
+   // Получаем названия рангов в гильдии
+   $rank  = getGuildRankList($data['guildid']);
+   echo @$rank[$data['rank']]['rname'];
+}
+
+function r_plItem($data){show_item_by_data(explode(' ',$data['item_data']));}
+
+$pl_report = array(
+'PL_REPORT_GUID'   =>array('class'=>'small', 'sort'=>'id',    'text'=>$lang['pl_guid'],   'draw'=>'r_plGUID',   'sort_str'=>'`id`',    'fields'=>''),
+'PL_REPORT_NAME'   =>array('class'=>'player','sort'=>'name',  'text'=>$lang['pl_name'],   'draw'=>'r_plName',   'sort_str'=>'`name`',  'fields'=>'`name`'),
+'PL_REPORT_RACE'   =>array('class'=>'i_ico', 'sort'=>'race',  'text'=>$lang['pl_race'],   'draw'=>'r_plRace',   'sort_str'=>'`race`',  'fields'=>'`race`, `gender`'),
+'PL_REPORT_CLASS'  =>array('class'=>'i_ico', 'sort'=>'class', 'text'=>$lang['pl_class'],  'draw'=>'r_plClass',  'sort_str'=>'`class`', 'fields'=>'`class`'),
+'PL_REPORT_FACTION'=>array('class'=>'i_ico', 'sort'=>'',      'text'=>'',                 'draw'=>'r_plFaction','sort_str'=>'',        'fields'=>'`race`'),
+'PL_REPORT_LEVEL'  =>array('class'=>'small', 'sort'=>'level', 'text'=>$lang['pl_level'],  'draw'=>'r_plLevel',  'sort_str'=>'`level` DESC','fields'=>'`level`'),
+'PL_REPORT_POS'    =>array('class'=>'zone',  'sort'=>'level', 'text'=>$lang['pl_pos'],    'draw'=>'r_plPos',    'sort_str'=>'', 'fields'=>'`map`, `position_x`, `position_y`, `position_z`'),
+// Guild member info
+'PL_REPORT_NOTE'   =>array('class'=>'',      'sort'=>'',      'text'=>$lang['pl_note'],   'draw'=>'r_plGuildNote','sort_str'=>'',       'fields'=>'`pnote`, `offnote`'),
+'PL_REPORT_GRANK'  =>array('class'=>'rank',  'sort'=>'rank',  'text'=>$lang['pl_rank'],   'draw'=>'r_plGuildRank','sort_str'=>'`rank`', 'fields'=>'`guildid`,`rank`'),
+// Item owner
+'PL_REPORT_ITEM'   =>array('class'=>'i_ico', 'sort'=>'',      'text'=>'',                 'draw'=>'r_plItem'     ,'sort_str'=>'',       'fields'=>'`item_instance`.`data` AS `item_data`'),
+);
+
+class PlayerReportGenerator extends ReportGenerator{
+ function PlayerReportGenerator($type='')
+ {
+  global $pl_report, $cDB;
+  $this->db = &$cDB;
+  $this->column_conf =&$pl_report;
+  switch ($type){
+   case 'guild': $this->table = '(`characters` join `guild_member` ON `guild_member`.`guid` = `characters`.`guid`)';break;
+   case 'item':  $this->table = '(`characters` join `item_instance` ON `characters`.`guid` = `item_instance`.`owner_guid`)';break;
+   default:      $this->table = '`characters`';break;
+  }
+
+  $this->db_fields = '`characters`.`guid`';
+ }
+ function online()
+ {
+  $this->doRequirest('`online` <> 0 AND NOT `extra_flags`&'.PLAYER_EXTRA_GM_INVISIBLE);
+ }
+ // Select guild members by guild guid
+ function guildMembers($gguid)
+ {
+  $this->doRequirest('`guildid` = ?d', $gguid);
+ }
+ function itemOwner($id)
+ {
+  $this->doRequirest("(SUBSTRING_INDEX( SUBSTRING_INDEX(`item_instance`.`data` , ' ' , ?d) , ' ' , -1 )+0) = ?d", ITEM_FIELD_ENTRY + 1, $id);
  }
 }
 ?>
