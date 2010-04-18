@@ -13,7 +13,8 @@ if (!$char)
 }
 else
 {
- //$powerType =$char['data'];
+ $char_data = explode(' ',$char['equipmentCache']);
+ //$powerType =($char_data[UNIT_FIELD_BYTES_0]>>24)&255;
  $genderId  =$char['gender'];
  $class     =$char['class'];
  $race      =$char['race'];
