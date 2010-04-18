@@ -36,9 +36,9 @@ function getFloatValue($value,$num)
  return round($txt[1],$num);
 }
 // Получаем класс игрока
-function getClassId($char_data)
+function getClassId($char)
 {
- return ($char_data[UNIT_FIELD_BYTES_0]>>8)&255;
+ return $char['class'];
 }
 // Игрок использует ману
 function isManaUser($char_data)

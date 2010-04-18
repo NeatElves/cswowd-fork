@@ -1,18 +1,19 @@
 <?php
 include_once("player_info_generator.php");
 
-function showPlayerEquip($guid, $char, $char_data)
+function showPlayerEquip($guid, $char, $char_data, $char_stats)
 {
+
  global $lang;
  $char_name = $char['name'];
  $powerType =($char_data[UNIT_FIELD_BYTES_0]>>24)&255;
- $genderId  =($char_data[UNIT_FIELD_BYTES_0]>>16)&255;
- $class     =($char_data[UNIT_FIELD_BYTES_0]>> 8)&255;
- $race      =($char_data[UNIT_FIELD_BYTES_0]>> 0)&255;
- $money     = $char_data[PLAYER_FIELD_COINAGE];
- $level     = $char_data[UNIT_FIELD_LEVEL];
- $health    = $char_data[UNIT_FIELD_HEALTH];
- $maxhealth = $char_data[UNIT_FIELD_MAXHEALTH];
+ $genderId  = $char['gender'];
+ $class     = $char['class'];
+ $race      = $char['race'];
+ $money     = $char['money'];
+ $level     = $char['level'];
+ $health    = $char['health'];
+ $maxhealth = $char_stats['maxhealth'];
  $power     = $char_data[UNIT_FIELD_POWER1+$powerType];
  $maxpower  = $char_data[UNIT_FIELD_MAXPOWER1+$powerType];
  // Ярость надо делить на 10
@@ -88,11 +89,11 @@ function showPlayerEquip($guid, $char, $char_data)
  echo '<table class=resistances cellSpacing=0>';
  echo '<tbody>';
  echo "<tr>\n";
- renderResist(SCHOOL_FIRE  ,$char_data); echo "\n";
- renderResist(SCHOOL_NATURE,$char_data); echo "\n";
- renderResist(SCHOOL_FROST ,$char_data); echo "\n";
- renderResist(SCHOOL_SHADOW,$char_data); echo "\n";
- renderResist(SCHOOL_ARCANE,$char_data); echo "\n";
+ $char_stats['resFire']; echo "\n";
+ $char_stats['resNature'];  echo "\n";
+ $char_stats['resFrost'];  echo "\n";
+ $char_stats['resShadow'];  echo "\n";
+ $char_stats['resArcane'];  echo "\n";
  echo "</tr>\n";
  echo '</tbody>';
  echo '</table>';
