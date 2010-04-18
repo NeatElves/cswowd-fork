@@ -1098,7 +1098,7 @@ function getItemIconFromItemId($item_id)
 
 function getItemIconFromItemData($item_data)
 {
- if ($item = getItem($item_data[ITEM_FIELD_ENTRY]))
+ if ($item = getItem($item_data))
     return  getItemIcon($item['displayid']);
  return 'images/icons/wowunknownitem01.jpg';
 }
@@ -1180,21 +1180,12 @@ function getborderText($text, $posx = 'left', $dx=0, $posy = 'top', $dy=0)
 }
 function show_item_by_data($item_data, $style='item', $posx=0, $posy=0)
 {
-  $guid = $item_data[ITEM_FIELD_GUID];
-
-  if (@$item_data[ITEM_FIELD_TYPE] == TYPE_ITEM)
-    $count = $item_data[ITEM_FIELD_STACK_COUNT];
-  else if (@$item_data[ITEM_FIELD_TYPE] == TYPE_CONTAINER)
-    $count = $item_data[CONTAINER_FIELD_NUM_SLOTS];
-  else
-    return;
-  $position="";
   if ($posx OR $posy)
       $position.= 'style="position: absolute; left: '.$posx.'px; top: '.$posy.'px; border: 0px;"';
   $icon = getItemIconFromItemData($item_data);
   if ($count == 1)
   {
-    echo '<a style="float: left;" href="?item=g'.$guid.'">';
+    echo '<a style="float: left;" href="?item=g'.$item_data.'">';
     echo "<IMG class=$style src='$icon' $position></a>";
   }
   else
@@ -1202,7 +1193,7 @@ function show_item_by_data($item_data, $style='item', $posx=0, $posy=0)
     if (empty($position))
         $position = "style=\"position: relative; left: 0px;top: 0px; border: 0px;float: left;\"";
     echo "\n<div class=$style $position>";
-    echo '<a href="?item=g'.$guid.'"><IMG class="'.$style.'" src="'.$icon.'"></a>';
+    echo '<a href="?item=g'.$item_data.'"><IMG class="'.$style.'" src="'.$icon.'"></a>';
     echo getborderText($count, 'right', 3, 'bottom', 1);
     echo "</div>";
   }
@@ -1212,8 +1203,7 @@ function show_item_by_guid($guid, $style='item', $posx=0, $posy=0)
 {
   if ($guid==0)
      return;
-  if ($item_data = getItemData($guid))
-      show_item_by_data($item_data, $style, $posx, $posy);
+      show_item_by_data($guid, $style, $posx, $posy);
 }
 
 //********************************************************************************
