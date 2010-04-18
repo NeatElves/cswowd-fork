@@ -5,18 +5,18 @@ include_once("include/player_data.php");
 
 $guid = intval(@$_REQUEST['player']);
 $tab  = @$_REQUEST['tab'];
-$char=getCharacter($guid);
+$char = getCharacter($guid);
+$char_stats = getCharacterStats($guid);
 
 if (!$char)
 {
 }
 else
 {
- $char_data = explode(' ',$char['data']);
- $powerType =($char_data[UNIT_FIELD_BYTES_0]>>24)&255;
- $genderId  =($char_data[UNIT_FIELD_BYTES_0]>>16)&255;
- $class     =($char_data[UNIT_FIELD_BYTES_0]>> 8)&255;
- $race      =($char_data[UNIT_FIELD_BYTES_0]>> 0)&255;
+ //$powerType =$char['data'];
+ $genderId  =$char['gender'];
+ $class     =$char['class'];
+ $race      =$char['race'];
 
  if (!$ajaxmode)
  echo '
@@ -35,7 +35,7 @@ else
  if ($tab == '')
  {
   include ("show_char_equip.php");
-  showPlayerEquip($guid, $char, $char_data);
+  showPlayerEquip($guid, $char, $char_data, $char_stats);
  }
 
  if (//$config['show_player_fields'] &&

@@ -1251,6 +1251,13 @@ function getCharacter($character_id, $fields = "*")
   SELECT $fields FROM `characters` WHERE `guid` = ?d", $character_id);
 }
 
+function getCharacterStats($character_id, $fields = "*")
+{
+  global $cDB;
+  return $cDB->selectRow("-- CACHE: 1h
+  SELECT $fields FROM `character_stats` WHERE `guid` = ?d", $character_id);
+}
+
 function getCharacterName($character_id)
 {
   global $cDB;
