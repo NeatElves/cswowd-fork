@@ -106,7 +106,7 @@ else
 
  echo "<TR><TD>".getQuestText($quest['Objectives'])."<hr></TD></TR>";
  ### Рек собрать
- if ($quest['ReqItemId1'] OR $quest['ReqItemId2'] OR $quest['ReqItemId3'] OR $quest['ReqItemId4'])
+ if ($quest['ReqItemId1'] OR $quest['ReqItemId2'] OR $quest['ReqItemId3'] OR $quest['ReqItemId4'] OR $quest['ReqItemId5'] OR $quest['ReqItemId6'])
  {
   echo "<TR><TD class=mark>$lang[collect]</TD></TR>";
   renderReqCollect($quest['ReqItemId1'],$quest['ReqItemCount1'],$q_status?$q_status['itemcount1']:0);

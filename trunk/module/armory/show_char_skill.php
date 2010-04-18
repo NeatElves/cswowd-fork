@@ -76,7 +76,7 @@ function showPlayerSkills($guid, $char_data)
 //      $ico = '';
 //      if ($skill['icon'] > 1)
 //          $ico = '<img src='.getSpellIcon($skill['icon']).'>';
-//      echo '<td class=skill_ico>$ico</td>';
+//      echo '<td class=skill_ico>'.$ico.'</td>';
         echo '<td class=skill_name><A href="?skill='.$skill['id'].'&guid='.$guid.'">'.$skill['Name'].'</td>';
         echo '<td class=skill_bar><div class=skill_bar><b class=s1 style="width: '.$pct.'%;"></b><span>'.$text.'</span></div></td>';
         echo '</tr>';

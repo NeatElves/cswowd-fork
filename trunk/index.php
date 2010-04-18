@@ -5,7 +5,7 @@ include("lang/lang.".$config['lang'].".php");
 include("lang/game_text.".$config['lang'].".php");
 ?>
 <HTML>
-<?
+<?php
 //<script type="text/javascript" src="js/blackbird.js"></script>
 //<LINK rel="stylesheet" href="js/blackbird.css" type="text/css">
 ?>

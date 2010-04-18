@@ -813,7 +813,7 @@ function getSpellData($spell)
   $spellData['x2']= $spell['EffectChainTarget_2'];
   $spellData['x3']= $spell['EffectChainTarget_3'];
   $spellData['i'] = $spell['MaxAffectedTargets'];
-  $spellData['d'] = $d;
+  $spellData['d'] = getTimeText($d);
   $spellData['d1']= getTimeText($d);
   $spellData['d2']= getTimeText($d);
   $spellData['d3']= getTimeText($d);

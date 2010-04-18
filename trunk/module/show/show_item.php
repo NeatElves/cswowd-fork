@@ -68,7 +68,7 @@ else
    echo "<TABLE cellSpacing=0 cellPadding=0 width=500><TBODY><TR>";
    echo "<TD vAlign=top align=right width=20%>";
    $icon = getItemIcon($item['displayid']);
-   echo "<br><A href=\"#\"><IMG height=64 width=64 border=0 src='$icon'></A></TD>";
+   echo "<br><A id='no_tip' href=\"?item=$entry\"><IMG height=64 width=64 border=0 src='$icon'></A></TD>";
    echo "<TD>";generateItemTable($item,$item_data,0);echo "</TD>";
    echo "</TR></TBODY></TABLE>";
 
@@ -253,7 +253,7 @@ else
     $reagent_in->createReport($lang['item_use_in_spell']);
   }
   //********************************************************************************
-  // Создана спеллом
+  // Spell loot
   //********************************************************************************
   $created_by =& new SpellReportGenerator;
   $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_RECIPE','SPELL_REPORT_REAGENTS', 'SPELL_REPORT_CREATE');
@@ -326,7 +326,7 @@ else
   // Лут с мобов
   //********************************************************************************
   $loot =& new CreatureReportGenerator('loot');
-  $fields = array('NPC_REPORT_RNAME', 'LOOT_REPORT_REQ', 'LOOT_REPORT_CHANCE', 'NPC_REPORT_MAP');
+  $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'LOOT_REPORT_REQ', 'LOOT_REPORT_CHANCE', 'NPC_REPORT_MAP');
   if ($loot->Init($fields, $baseLink, 'dropLIST', $config['fade_limit'], 'chance'))
   {
     $loot->lootItem($entry);

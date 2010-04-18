@@ -20,6 +20,7 @@ include_once("spell_details.php");
    - Вещи получаемые со спелла
    - Вещи использующие этот спелл
    - Энчанты использующие этот спелл
+   - В какой ветке талатнов этот спелл
    - Глифы использующие этот спелл (wotlk)
    - Наборы использующие этот спелл
    - Мобы кастующие этот спелл
@@ -168,56 +169,24 @@ else
     $enchant->createReport($lang['spell_added_by_enchant']);
   }
   //********************************************************************************
-  // Таланты использующие этот спелл
+  // Ветка Талантов использующие этот спелл
   //********************************************************************************
-  if ($ajaxmode==0)
+  $talent =& new TalentReportGenerator();
+  $fields = array('TALENT_REPORT_ID','TALENT_REPORT_NAME');
+  if ($talent->Init($fields, $baseLink, 'talentLIST', $config['fade_limit'], ''))
   {
-  $rows = $wDB->select(
-  "SELECT `TalentTab` AS `id`
-   FROM `wowd_talents`
-   WHERE
-    `Rank_1` = ?d OR
-    `Rank_2` = ?d OR
-    `Rank_3` = ?d OR
-    `Rank_4` = ?d OR
-    `Rank_5` = ?d", $spell['id'], $spell['id'], $spell['id'], $spell['id'], $spell['id']);
-  if ($rows)
-  {
-    echo "<br><TABLE class=report width=500>";
-    echo "<TBODY>";
-    echo "<TR><TD colSpan=2 class=head>".$lang['spell_talent']."</TD></TR>";
-    echo "<TR><TH>Id</TH><TH>Tree</TH></TR>";
-    foreach ($rows as $talent)
-    {
-     echo "<TR>";
-     echo "<TD align=center>$talent[id]</TD>";
-     echo "<TD>".getTalentName($talent['id'])."</TD>";
-     echo "</TR>";
-    }
-    echo "</TBODY></TABLE>";
-  }
+    $talent->useSpell($entry);
+    $talent->createReport($lang['spell_talent']);
   }
   //********************************************************************************
   // Символы использующие этот спелл
   //********************************************************************************
-  if ($ajaxmode==0)
+  $glyph =& new GlyphReportGenerator();
+  $fields = array('GLYPH_REPORT_ID', 'GLYPH_REPORT_ICON', 'GLYPH_REPORT_NAME');
+  if ($glyph->Init($fields, $baseLink, 'glyphLIST', $config['fade_limit'], ''))
   {
-  $rows = $wDB->select("SELECT * FROM `wowd_glyphproperties` WHERE `SpellId` = ?d", $spell['id']);
-  if ($rows)
-  {
-    echo "<br><TABLE class=report width=500>";
-    echo "<TBODY>";
-    echo "<TR><TD colSpan=2 class=head>".$lang['spell_used_by_glyph']."</TD></TR>";
-    echo "<TR><TH>Id</TH><TH>Name</TH></TR>";
-    foreach ($rows as $glyph)
-    {
-     echo "<TR>";
-     echo "<TD align=center>$glyph[id]</TD>";
-//     echo "<TD><a href=\"?glyph=$glyph[id]\">$glyph[id]</TD>";
-     echo "</TR>";
-    }
-    echo "</TBODY></TABLE>";
-  }
+    $glyph->useSpell($entry);
+    $glyph->createReport($lang['spell_used_by_glyph']);
   }
   //********************************************************************************
   // Наборы использующие этот спелл
@@ -249,9 +218,7 @@ else
     $go->castSpell($entry);
     $go->createReport($lang['spell_go_cast']);
   }
-
 }
-
 ?>
 
 

@@ -18,7 +18,8 @@ else
  // Если это не ajax подгрузка данных
  if ($ajaxmode == 0)
  {
-   $desc_file = 'lang/map_'.$config['lang'].'/'.$mapId.'.html';
+ //$config['lang']
+   $desc_file = 'lang/map_'.'ru'.'/'.$mapId.'.html';
    if (file_exists($desc_file)) include($desc_file);
 
    // Выводим карту если есть дляэтого данные

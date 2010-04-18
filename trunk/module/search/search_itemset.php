@@ -43,7 +43,8 @@ if ($allmode==0 and $ajaxmode==0)
 if ($filter)
 {
  $set_search =& new ItemSetReportGenerator();
- $set_search->disableMark();
+ if (!$allmode)
+   $set_search->disableMark();
  $set_search->Init($show_fields, $FindRefrence, 'searchSet', $config['fade_limit'], 'name');
  $set_search->doRequirest($filter);
  $number = $set_search->getTotalDataCount();

@@ -103,9 +103,9 @@ TABLE.report TD.pfaction         {WIDTH: 1px;}
 TABLE.report TD.emblem           {WIDTH: 1px; vertical-align: top;}
 TABLE.report TD.guild            {COLOR: #008000;FONT-WEIGHT: 600;}
 TABLE.report TD.guild A          {COLOR: #008000;}
-TABLE.report TD.player           {COLOR: #800000;}
+TABLE.report TD.player           {COLOR: #800000;FONT-WEIGHT: 600;}
 TABLE.report TD.player A         {COLOR: #800000;}
-TABLE.report TD.zone             {COLOR: #804000;FONT-WEIGHT: 600}
+TABLE.report TD.zone             {COLOR: #804000;FONT-WEIGHT: 600; width: 1%;}
 TABLE.report TD.zone A           {COLOR: #008000;}
 TABLE.report TD.stat_data        {vertical-align: bottom; background: #000000;}
 TABLE.report TD.skill_category   {font-size: 12px; COLOR: #FFFFCC; background: #000066; FONT-WEIGHT: 800; text-align: left; padding-left: 3px;}

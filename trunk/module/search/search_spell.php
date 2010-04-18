@@ -94,7 +94,8 @@ if ($allmode==0 and $ajaxmode==0)
 if ($filter)
 {
  $spell_search =& new SpellReportGenerator;
- $spell_search->disableMark();
+ if (!$allmode)
+   $spell_search->disableMark();
  $spell_search->Init($show_fields, $FindRefrence, 'searchSpell', $config['fade_limit'], 'name');
  $spell_search->doRequirest($filter);
  $number = $spell_search->getTotalDataCount();

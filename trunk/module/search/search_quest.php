@@ -84,7 +84,8 @@ if ($allmode==0 and $ajaxmode==0)
 if ($filter!="")
 {
  $quest_search =& new QuestReportGenerator();
- $quest_search->disableMark();
+ if (!$allmode)
+   $quest_search->disableMark();
  //==============================================================================
  // Локализация запроса
  //==============================================================================

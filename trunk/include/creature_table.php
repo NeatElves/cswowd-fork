@@ -87,6 +87,8 @@ function noBorderCreatureTable($npc)
  else if ($npc['ScriptName']=="generic_creature") {$npcscr='Caster';}
  else if ($npc['ScriptName']<>"" && $npc['AIName']=="EventAI") {$npcscr='EventAI + SD2';}
  else {$npcscr='SD2';}
+ 
+ $npc['name'] = str_replace('(1)', '(Heroic)', $npc['name']);
 
  echo "<TABLE class=creature cellSpacing=0>";
  echo "<TBODY>";

@@ -80,9 +80,13 @@ var my_AJAX = new function (){
 var scr_includes = new Array();
 function execHTMLScripts(node)
 {
-	var elm = node.getElementsByTagName('script');
-	if (!elm.length) return;
-	var script = node.removeChild(elm[0]);
+	parseScript(node.getElementsByTagName('script'), 0);
+}
+function parseScript(list, n)
+{
+	if (list.length<=n)
+		return;
+	var script = list[n++];
 	var id = script.src ? script.src : script.id;
 	if (id && !scr_includes[id])
 	{
@@ -93,7 +97,7 @@ function execHTMLScripts(node)
 		s.text= script.text;
 		// in IE onload event not work, but work onreadystatechange
 		if (script.src){
-			s.onload			 = function(){this.onload = this.onreadystatechange = function(){}; execHTMLScripts(node);}
+			s.onload			 = function(){this.onload = this.onreadystatechange = function(){}; parseScript(list, n);}
 			s.onreadystatechange = function(){if (this.readyState == 'loaded' || this.readyState == 'complete') this.onload();}
 			s.src = script.src;
 			return;
@@ -101,5 +105,5 @@ function execHTMLScripts(node)
 	}
 	else if (!id)
 		eval(script.text);
-	execHTMLScripts(node);
+	parseScript(list, n);
 }
