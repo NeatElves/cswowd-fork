@@ -113,14 +113,14 @@ class ReportGenerator{
         foreach ($this->data_array as &$data)
         {
             $cb = $this->rowCallback;
-            $class = $cb ? $cb(&$data) : 0;
+            $class = $cb ? $cb($data) : 0;
             $row_class = $class ? ' class='.$class : '';
             echo '<tr'.$row_class.'>';
             foreach ($this->fields as $field)
             {
                 $f =& $this->column_conf[$field];
                 echo $f['class']?'<td class='.$f['class'].'>' : '<td>';
-                $f['draw'](&$data);
+                $f['draw']($data);
                 echo '</td>';
             }
             echo '</tr>';
@@ -207,7 +207,7 @@ class ReportGenerator{
         $fields  = $this->getFieldsRequirest();
         $sort_str= $this->getSortRequirest();
         if ($locale)
-            $this->localiseRequirest($locale, &$tables, &$fields, &$sort_str);
+            $this->localiseRequirest($locale, $tables, $fields, $sort_str);
         $reqString = 'SELECT '.$fields.' FROM '.$tables.' WHERE '.$where_filter.$sort_str.$this->getLimitRequirest();
 //        echo "<br />".$reqString."<br />";
         if ($this->size_limit > 0)

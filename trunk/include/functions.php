@@ -187,7 +187,7 @@ function healthmanaex($hp)
  echo number_format($hp);
 }
 
-function getLootList($lootId, $table, &$totalRecords, $offset=0, $count=0)
+function getLootList($lootId, $table, $totalRecords, $offset=0, $count=0)
 {
   global $dDB;
   $totalRecords = 0;
@@ -1358,7 +1358,7 @@ function getStatTypeName($i)
 function getResistance($i)
 {
  global $gResistance;
- return isset($gResistance[$i]) ? $gResistance[$i] : "Resistance ($index)";
+ return isset($gResistance[$i]) ? $gResistance[$i] : "Resistance ($i)";
 }
 
 function getResistanceText($i, $amount)

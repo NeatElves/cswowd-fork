@@ -13,7 +13,7 @@ switch ($tip)
      $entry = intval(substr($str,2,10));
      if ($item_data = getItemData($entry))
      {
-       if ($item = getItem($item_data[ITEM_FIELD_ENTRY]))
+       if ($item = getItem($entry))
          noBorderItemTable($item, $item_data);
      }
 	 else
