@@ -1,7 +1,7 @@
 <?php
 include_once("player_info_generator.php");
 
-function showPlayerEquip($guid, $char, $char_data, $char_stats)
+function showPlayerEquip($guid, $char, $char_data, $char_stat)
 {
 
  global $lang;
@@ -13,7 +13,7 @@ function showPlayerEquip($guid, $char, $char_data, $char_stats)
  $money     = $char['money'];
  $level     = $char['level'];
  $health    = $char['health'];
- $maxhealth = $char_stats['maxhealth'];
+ $maxhealth = $char_stat['maxhealth'];
  $power     = $char_data[UNIT_FIELD_POWER1+$powerType];
  $maxpower  = $char_data[UNIT_FIELD_MAXPOWER1+$powerType];
  // Ярость надо делить на 10
@@ -89,11 +89,11 @@ function showPlayerEquip($guid, $char, $char_data, $char_stats)
  echo '<table class=resistances cellSpacing=0>';
  echo '<tbody>';
  echo "<tr>\n";
- $char_stats['resFire']; echo "\n";
- $char_stats['resNature'];  echo "\n";
- $char_stats['resFrost'];  echo "\n";
- $char_stats['resShadow'];  echo "\n";
- $char_stats['resArcane'];  echo "\n";
+ renderResist(SCHOOL_FIRE,$char_stat['resFire'],$char); echo "\n";
+ renderResist(SCHOOL_NATURE,$char_stat['resNature'],$char); echo "\n";
+ renderResist(SCHOOL_FROST,$char_stat['resFrost'],$char); echo "\n";
+ renderResist(SCHOOL_SHADOW,$char_stat['resShadow'],$char); echo "\n";
+ renderResist(SCHOOL_ARCANE,$char_stat['resArcane'],$char); echo "\n";
  echo "</tr>\n";
  echo '</tbody>';
  echo '</table>';
@@ -113,12 +113,12 @@ function showPlayerEquip($guid, $char, $char_data, $char_stats)
  echo "<tr><td>".getResistance(SCHOOL_ARMOR).":</td></tr>\n";
  echo "</table>\n";
  echo "<table class=statvalue cellSpacing=0 style=\"position: absolute; left: 0px; top: 0px;\">\n";
- echo "<tr>";renderStatRow(STAT_STRENGTH,$char_data);echo "</tr>\n";
- echo "<tr>";renderStatRow(STAT_AGILITY,$char_data);echo "</tr>\n";
- echo "<tr>";renderStatRow(STAT_STAMINA,$char_data);echo "</tr>\n";
- echo "<tr>";renderStatRow(STAT_INTELLECT,$char_data);echo "</tr>\n";
- echo "<tr>";renderStatRow(STAT_SPIRIT,$char_data);echo "</tr>\n";
- echo "<tr>";renderResist(SCHOOL_ARMOR,$char_data); echo "</tr>\n";
+ echo "<tr>";renderStatRow(STAT_STRENGTH,$char,$char_stat['strength']);echo "</tr>\n";
+ echo "<tr>";renderStatRow(STAT_AGILITY,$char,$char_stat['agility']);echo "</tr>\n";
+ echo "<tr>";renderStatRow(STAT_STAMINA,$char,$char_stat['stamina']);echo "</tr>\n";
+ echo "<tr>";renderStatRow(STAT_INTELLECT,$char,$char_stat['intellect']);echo "</tr>\n";
+ echo "<tr>";renderStatRow(STAT_SPIRIT,$char,$char_stat['spirit']);echo "</tr>\n";
+ echo "<tr>";renderResist(SCHOOL_ARMOR,$char_stat['armor'],$char);echo "</tr>\n";
  echo '</table>';
  echo '</div>';
  echo '</td>';
@@ -127,19 +127,19 @@ function showPlayerEquip($guid, $char, $char_data, $char_stats)
  echo '<div style="position: relative; left: 0px; top: 0px;">';
  echo '<table class=stattext cellSpacing=0>';
  echo '<tr><td>'.$lang['player_armor'].'</td></tr>';
- echo '<tr><td>'.$lang['player_defence'].'</td></tr>';
+// echo '<tr><td>'.$lang['player_defence'].'</td></tr>';
  echo '<tr><td>'.$lang['player_dodge'].'</td></tr>';
  echo '<tr><td>'.$lang['player_parry'].'</td></tr>';
  echo '<tr><td>'.$lang['player_block'].'</td></tr>';
- echo '<tr><td>'.$lang['player_recilence'].'</td></tr>';
+// echo '<tr><td>'.$lang['player_recilence'].'</td></tr>';
  echo '</table>';
  echo '<table class=statvalue cellSpacing=0 style="position: absolute; left: 0px; top: 0px;">';
- echo "<tr>";@renderResist(SCHOOL_ARMOR,$char_data);echo "</tr>\n";
- echo "<tr>";@renderDefence($char_data);echo "</tr>\n";
- echo "<tr>";@renderDodge($char_data);echo "</tr>\n";
- echo "<tr>";@renderParry($char_data);echo "</tr>\n";
- echo "<tr>";@renderBlock($char_data);echo "</tr>\n";
- echo "<tr>";@renderRecilence($char_data);echo "</tr>\n";
+ echo "<tr>";@renderResist(SCHOOL_ARMOR,$char_stat['armor'],$char);echo "</tr>\n";
+// echo "<tr>";@renderDefence($char_data);echo "</tr>\n";
+ echo "<tr>";@renderDodge($char_data);echo "</tr>\n"; // dodgePct
+ echo "<tr>";@renderParry($char_data);echo "</tr>\n"; // parryPct
+ echo "<tr>";@renderBlock($char_data);echo "</tr>\n"; // blockPct
+// echo "<tr>";@renderRecilence($char_data);echo "</tr>\n";
  echo '</table>';
  echo '</div>';
  echo '</td>';

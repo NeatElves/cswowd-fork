@@ -182,25 +182,17 @@ function createEndTable($valueClass, $value)
  ob_end_clean();
  echo '<td '.addTooltip($data, 'WIDTH, 400, OFFSETX, 30, OFFSETY, 20, STICKY, false').' class='.$valueClass.'>'.$value.'</td>';
 }
-function createHeader($name,$base,$posBuff,$negBuff, $valueClass)
+function createHeader($name,$base,$valueClass)
 {
  createTopTable();
- $real = $base-$posBuff-$negBuff;
  echo "<TR><TD class=head>$name <span class=$valueClass>$base</span>";
- if ($posBuff>0 OR $negBuff<0)
- {
-  echo " ($real";
-  if ($posBuff>0) echo " + <span class=posStat>$posBuff</span>";
-  if ($negBuff<0) echo " - <span class=negStat>$negBuff</span>";
-  echo ")";
- }
  echo "</TD></TR>";
 }
 
 //=========================================
 // Создаём тултип по одному из статов:
 // 0 - Броня, 1-9 ... Resistance
-function renderResist($statIndex, $char_data)
+function renderResist($statIndex, $stat, $char_data)
 {
  $ResistType = array(
   0=>"armor",
@@ -211,35 +203,31 @@ function renderResist($statIndex, $char_data)
   5=>"shadow",
   6=>"arcane",
  );
- $class = getClassId($char_data);
- $effective = $char_data[UNIT_FIELD_RESISTANCES+$statIndex];
- $posBuff = getFloatValue($char_data[UNIT_FIELD_RESISTANCEBUFFMODSPOSITIVE+$statIndex],0);
- $negBuff = getFloatValue($char_data[UNIT_FIELD_RESISTANCEBUFFMODSNEGATIVE+$statIndex],0);
- $valueClass = "normStat";
- if      (abs($negBuff)>$posBuff) $valueClass = "negStat";
- else if (abs($negBuff)<$posBuff) $valueClass = "posStat";
+ $class = $char_data['class'];
 
- createHeader(getResistance($statIndex),$effective,$posBuff,$negBuff,$valueClass);
+ $valueClass = "normStat";
+
+ createHeader(getResistance($statIndex),$stat,$valueClass);
  echo "<TR><TD>";
  if ($statIndex==SCHOOL_ARMOR)
  {
-	$levelModifier = $char_data[UNIT_FIELD_LEVEL];
+	$levelModifier = $char_data['level'];
 	if ($levelModifier > 59 ) $levelModifier = $levelModifier + (4.5 * ($levelModifier-59));
-	$armorReduction = 0.1*$effective/(8.5*$levelModifier + 40);
+	$armorReduction = 0.1*$stat/(8.5*$levelModifier + 40);
 	$armorReduction = $armorReduction/(1+$armorReduction)*100;
 	if ($armorReduction > 75) $armorReduction = 75;
 	if ($armorReduction <  0) $armorReduction = 0;
     printf("Reduces Physical Damage taken by %0.2f%%",$armorReduction);
-    $petBonus = ComputePetBonus(PET_BONUS_ARMOR, $effective, $class);
+    $petBonus = ComputePetBonus(PET_BONUS_ARMOR, $stat, $class);
 	if( $petBonus > 0 )
 		printf("<br>Increases your pet`s Armor by %d", $petBonus);
     echo "</TD></TR>";
-    createEndTable($valueClass, $effective) ;
+    createEndTable($valueClass, $stat);
  }
  else
  {
-  $unitLevel = max($char_data[UNIT_FIELD_LEVEL],20);
-  $magicResistanceNumber = $effective/$unitLevel;
+  $unitLevel = max($char_data['level'],20);
+  $magicResistanceNumber = $stat/$unitLevel;
   if     ($magicResistanceNumber > 5   ) $resistanceLevel = "Excellent";
   elseif ($magicResistanceNumber > 3.75) $resistanceLevel = "Very Good";
   elseif ($magicResistanceNumber > 2.5 ) $resistanceLevel = "Good";
@@ -248,26 +236,23 @@ function renderResist($statIndex, $char_data)
   else                                   $resistanceLevel = "None";
   printf("Increases the ability to resist %s-based attacks, spells and abilities.<br />",getSchool($statIndex));
   printf("Resistance against level %d: %s",$unitLevel,$resistanceLevel);
-  $petBonus = ComputePetBonus(PET_BONUS_RES,$effective,$class);
+  $petBonus = ComputePetBonus(PET_BONUS_RES,$stat,$class);
   if($petBonus > 0)
      printf("<br>Increases your pet`s Resistance by %d",$petBonus);
   echo "</TD></TR>";
-  createEndTable($ResistType[$statIndex], $effective) ;
+  createEndTable($ResistType[$statIndex], $stat) ;
  }
 }
 
 //=========================================
 // Stats panel
 // Создаём тултип по одному из статов:
-function renderStatRow($statIndex, $char_data)
+function renderStatRow($statIndex, $char_data, $stat)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $StatText = getStatTypeName($statIndex);
- $class = getClassId($char_data);
- $effectiveStat = $char_data[UNIT_FIELD_STAT0+$statIndex];
- $posBuff = getFloatValue($char_data[UNIT_FIELD_POSSTAT0+$statIndex],0);
- $negBuff = getFloatValue($char_data[UNIT_FIELD_NEGSTAT0+$statIndex],0);
- $stat = $effectiveStat-$posBuff-$negBuff;
+ $class = $char_data['class'];
+ $effectiveStat = $stat;
  createHeader($StatText,$effectiveStat,$posBuff,$negBuff,"normStat");
  echo "<TR><TD>";
  if ($statIndex==STAT_STRENGTH)
@@ -388,12 +373,12 @@ function renderSpellHeal($char_data)
 
 function renderSpellHit($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $valueRating = $char_data[PLAYER_FIELD_SPELL_HIT_RATING];
  $RatingPct   = $valueRating/GetRatingCoefficient($rating, CR_HIT_SPELL);
  createTopTable();
  printf ("<TR><TD class=head>Hit Rating %d</TD></TR>", $valueRating);
- printf ("<TR><TD>Increases your spell chance to hit a target of level %d by %.2f%%</TD></TR>", $char_data[UNIT_FIELD_LEVEL], $RatingPct);
+ printf ("<TR><TD>Increases your spell chance to hit a target of level %d by %.2f%%</TD></TR>", $char_data['level'], $RatingPct);
  $penetration = $char_data[PLAYER_FIELD_MOD_TARGET_RESISTANCE];
  printf ("<TR><TD><br>Spell penetration %d (Reduces enemy resistances by %d)</TD></TR>", $penetration, -$penetration);
  createEndTable("normStat", $valueRating);
@@ -402,7 +387,7 @@ function renderSpellHit($char_data)
 // Создаём тултип по спелл криту:
 function renderSpellCrit($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $spellCritRating = $char_data[PLAYER_FIELD_SPELL_CRIT_RATING];
  $minCrit = getFloatValue($char_data[PLAYER_SPELL_CRIT_PERCENTAGE+1],2);
  $critRatingPct =  $spellCritRating/GetRatingCoefficient($rating, CR_CRIT_SPELL);
@@ -420,7 +405,7 @@ function renderSpellCrit($char_data)
 
 function renderSpellHaste($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $valueRating = $char_data[PLAYER_FIELD_SPELL_HASTE_RATING];
  $RatingPct   = $valueRating/GetRatingCoefficient($rating, CR_HASTE_SPELL);
  createTopTable();
@@ -442,7 +427,7 @@ function renderManaRegen($char_data)
 // Render melee panel
 function renderMeleeSkill($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $skillID = getSkillFromItemID($char_data[PLAYER_VISIBLE_ITEM_MAIN_HAND]);
  $skill   = getSkill($skillID,$char_data);
  $defRating = $char_data[PLAYER_FIELD_MELEE_WEAPON_SKILL_RATING];
@@ -489,7 +474,7 @@ function renderMeleeDamage($char_data)
 
 function renderMeleeSpeed($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $main_speed = getFloatValue($char_data[UNIT_FIELD_BASEATTACKTIME],2)/1000;
  $offhand_speed = getFloatValue($char_data[UNIT_FIELD_OFFHANDATTACKTIME],2)/1000;
  $speed = round($main_speed,2);
@@ -525,12 +510,12 @@ function renderMeleeAP($char_data)
 
 function renderMeleeHit($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $valueRating = $char_data[PLAYER_FIELD_MELEE_HIT_RATING];
  $RatingPct   = $valueRating/GetRatingCoefficient($rating, CR_HIT_MELEE);
  createTopTable();
  printf ("<TR><TD class=head>Hit Rating %d</TD></TR>", $valueRating);
- printf ("<TR><TD>Increases your melee chance to hit a target of level %d by %.2f%%</TD></TR>", $char_data[UNIT_FIELD_LEVEL], $RatingPct);
+ printf ("<TR><TD>Increases your melee chance to hit a target of level %d by %.2f%%</TD></TR>", $char_data['level'], $RatingPct);
  $penetration = $char_data[PLAYER_FIELD_MOD_TARGET_PHYSICAL_RESISTANCE];
  printf ("<TR><TD><br>Enemy Armor reduced by %d</TD></TR>", $penetration);
  createEndTable("normStat", $valueRating);
@@ -538,7 +523,7 @@ function renderMeleeHit($char_data)
 
 function renderMeleeCrit($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $meleeCrit       = getFloatValue($char_data[PLAYER_CRIT_PERCENTAGE],2);
  $meleeCritRating = $char_data[PLAYER_FIELD_MELEE_CRIT_RATING];
  $critRatingPct   = $meleeCritRating/GetRatingCoefficient($rating, CR_CRIT_MELEE);
@@ -551,7 +536,7 @@ function renderMeleeCrit($char_data)
 // Render ranged panel
 function renderRangedSkill($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $skillID = getSkillFromItemID($char_data[PLAYER_VISIBLE_ITEM_RANGED]);
  if ($skillID==SKILL_UNARMED)
  {
@@ -599,7 +584,7 @@ function renderRangedDamage($char_data)
 }
 function renderRangedSpeed($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $skillID = getSkillFromItemID($char_data[PLAYER_VISIBLE_ITEM_RANGED]);
  if ($skillID==SKILL_UNARMED)
  {
@@ -646,12 +631,12 @@ function renderRangedAP($char_data)
 
 function renderRangedHit($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $valueRating = $char_data[PLAYER_FIELD_RANGED_HIT_RATING];
  $RatingPct   = $valueRating/GetRatingCoefficient($rating, CR_HIT_RANGED);
  createTopTable();
  printf ("<TR><TD class=head>Hit Rating %d</TD></TR>", $valueRating);
- printf ("<TR><TD>Increases your ranged chance to hit a target of level %d by %.2f%%</TD></TR>", $char_data[UNIT_FIELD_LEVEL], $RatingPct);
+ printf ("<TR><TD>Increases your ranged chance to hit a target of level %d by %.2f%%</TD></TR>", $char_data['level'], $RatingPct);
  $penetration = $char_data[PLAYER_FIELD_MOD_TARGET_PHYSICAL_RESISTANCE];
  printf ("<TR><TD><br>Enemy Armor reduced by %d</TD></TR>", $penetration);
  createEndTable("normStat", $valueRating);
@@ -659,7 +644,7 @@ function renderRangedHit($char_data)
 
 function renderRangedCrit($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $rangedCrit       = getFloatValue($char_data[PLAYER_RANGED_CRIT_PERCENTAGE],2);
  $rangedCritRating = $char_data[PLAYER_FIELD_RANGED_CRIT_RATING];
  $critRatingPct    = $rangedCritRating/GetRatingCoefficient($rating, CR_CRIT_RANGED);
@@ -673,7 +658,7 @@ function renderRangedCrit($char_data)
 //
 function renderDefence($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $skill = getSkill(SKILL_DEFENCE,$char_data);
 
  $defRating = $char_data[PLAYER_FIELD_DEFENCE_RATING];
@@ -681,7 +666,7 @@ function renderDefence($char_data)
  $Buff          = $skill[4]+$skill[5]+intval($RatingAdd);
  $effectiveStat = $skill[2]+$Buff;
 
- $defensePercent = DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE * ($effectiveStat - $char_data[UNIT_FIELD_LEVEL]*5);
+ $defensePercent = DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE * ($effectiveStat - $char_data['level']*5);
  $defensePercent = max($defensePercent, 0);
  createTopTable();
  printf("<TR><TD class=head>Defense %d</TD></TR>", $effectiveStat);
@@ -696,7 +681,7 @@ function renderDefence($char_data)
 
 function renderDodge($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $value       = getFloatValue($char_data[PLAYER_DODGE_PERCENTAGE],2);
  $valueRating = $char_data[PLAYER_FIELD_DODGE_RATING];
  $RatingPct   = $valueRating/GetRatingCoefficient($rating, CR_DODGE);
@@ -708,7 +693,7 @@ function renderDodge($char_data)
 
 function renderParry($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $value       = getFloatValue($char_data[PLAYER_PARRY_PERCENTAGE],2);
  $valueRating = $char_data[PLAYER_FIELD_PARRY_RATING];
  $RatingPct   = $valueRating/GetRatingCoefficient($rating, CR_PARRY);
@@ -720,7 +705,7 @@ function renderParry($char_data)
 
 function renderBlock($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = getRating($char_data['level']);
  $value       = getFloatValue($char_data[PLAYER_BLOCK_PERCENTAGE],2);
  $valueRating = $char_data[PLAYER_FIELD_BLOCK_RATING];
  $RatingPct   = $valueRating/GetRatingCoefficient($rating, CR_BLOCK);
@@ -734,7 +719,7 @@ function renderBlock($char_data)
 
 function renderRecilence($char_data)
 {
- $rating = getRating($char_data[UNIT_FIELD_LEVEL]);
+ $rating = $char_data['level'];
  $melee  = $char_data[PLAYER_FIELD_CRIT_TAKEN_MELEE_RATING];
  $ranged = $char_data[PLAYER_FIELD_CRIT_TAKEN_RANGED_RATING];
  $spell  = $char_data[PLAYER_FIELD_CRIT_TAKEN_SPELL_RATING];

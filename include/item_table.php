@@ -82,7 +82,7 @@ define('BAG_FAMILY_MASK_QUEST_ITEMS', 0x00004000);
 function getCharacterLevel($character_id)
 {
   global $cDB;
-  if ($lvl = $cDB->selectCell("SELECT (SUBSTRING_INDEX( SUBSTRING_INDEX( `data` , ' ' , ?d) , ' ' , -1 )+0) AS `level` FROM `characters` WHERE `guid`= ?d", UNIT_FIELD_LEVEL+1, $character_id))
+  if ($lvl = $cDB->selectCell("SELECT `level` FROM `characters` WHERE `guid`= ?d", $character_id))
       return $lvl;
   return 80;
 }
@@ -148,9 +148,9 @@ function renderEnchant($item_data, $id, $random_suffix)
    if ($random_suffix)
    {
        $i = 0;
-       if ($item_data[$id] == $random_suffix['EnchantID_1']) $i = $random_suffix['Prefix_1'] * $item_data[ITEM_FIELD_SUFFIX_FACTOR]/10000;
-       if ($item_data[$id] == $random_suffix['EnchantID_2']) $i = $random_suffix['Prefix_2'] * $item_data[ITEM_FIELD_SUFFIX_FACTOR]/10000;
-       if ($item_data[$id] == $random_suffix['EnchantID_3']) $i = $random_suffix['Prefix_3'] * $item_data[ITEM_FIELD_SUFFIX_FACTOR]/10000;
+       if ($item_data[$id] == $random_suffix['EnchantID_1']) $i = $random_suffix['Prefix_1'] * $item_data['ITEM_FIELD_SUFFIX_FACTOR']/10000;
+       if ($item_data[$id] == $random_suffix['EnchantID_2']) $i = $random_suffix['Prefix_2'] * $item_data['ITEM_FIELD_SUFFIX_FACTOR']/10000;
+       if ($item_data[$id] == $random_suffix['EnchantID_3']) $i = $random_suffix['Prefix_3'] * $item_data['ITEM_FIELD_SUFFIX_FACTOR']/10000;
        $desc = str_replace('$i',intval($i),$desc);
    }
    $time = floor($item_data[$id+1]/1000/60);
@@ -161,11 +161,11 @@ function renderEnchant($item_data, $id, $random_suffix)
    echo '</td></tr>';
 }
 // Одета ли вещь на игроке (если нет данных о игроке выводим как одетую вещь)
-function isItemOnPlayer($id, $char_data)
+function isItemOnPlayer($id, $char_eqip)
 {
-  if ($char_data)
+  if ($char_eqip)
     for ($i=0;$i<19;$i++)
-      if ($char_data[PLAYER_VISIBLE_ITEM_1_ENTRYID+$i*2]==$id) return 1;
+      if ($char_eqip[PLAYER_VISIBLE_ITEM_1_ENTRYID+$i*2]==$id) return 1;
   return 0;
 }
 
