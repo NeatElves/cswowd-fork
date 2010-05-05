@@ -1176,7 +1176,7 @@ class QuestReportGenerator extends ReportGenerator{
  // Create quest list require item for comlete
  function requireItem($entry, $giveQuest)
  {
-  $this->doRequirest('(`ReqItemId1`= ?d OR `ReqItemId2`= ?d OR `ReqItemId3`= ?d OR `ReqItemId4`= ?d OR `ReqItemId3`= ?d OR `ReqItemId4`= ?d OR `ReqSourceId1`= ?d OR `ReqSourceId2`= ?d OR `ReqSourceId3`= ?d OR `ReqSourceId4`= ?d) AND `quest_template`.`entry` <> ?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $giveQuest);
+  $this->doRequirest('(`ReqItemId1`= ?d OR `ReqItemId2`= ?d OR `ReqItemId3`= ?d OR `ReqItemId4`= ?d OR `ReqItemId5`= ?d OR `ReqItemId6`= ?d OR `ReqSourceId1`= ?d OR `ReqSourceId2`= ?d OR `ReqSourceId3`= ?d OR `ReqSourceId4`= ?d) AND `quest_template`.`entry` <> ?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $giveQuest);
  }
  // Create quest list prowide item at take
  function provideItem($entry, $giveQuest)
