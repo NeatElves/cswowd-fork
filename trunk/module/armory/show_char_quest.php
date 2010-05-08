@@ -4,21 +4,32 @@
 //==============================================================================
 include_once("include/report_generator.php");
 
+function getCharacterQueststatus($character_id)
+{
+  global $cDB;
+  return $cDB->select("-- CACHE: 1h
+  SELECT * FROM `character_queststatus` WHERE `guid` = ?d ORDER BY `quest`", $character_id);
+}
+
 function showPlayerQuests($guid, $char_data)
 {
   global $lang;
+  $quests = getCharacterQueststatus($guid);
   // Показ активных квестов
   echo "<TABLE class=report width=500><TBODY>";
   echo "<TR><TD colspan=3 class=head>".$lang['player_active_quest']."</TD></TR>";
-  for ($i=0;$i<25;$i++)
+  
+  if ($quests)
+  foreach ($quests as $quest)
   {
-   $questId = $char_data[PLAYER_QUEST_LOG_1_1 + $i*4];
-   if ($questId AND $quest=getQuest($questId))
+   $questId = $quest['quest'];
+   if ($questId AND $questinfo=getQuest($questId) AND 
+	(($quest['status'] == 1 OR $quest['status'] == 3 OR $quest['status'] == 5) AND $quest['rewarded'] != 1))
    {
     echo '<tr>';
-    echo '<td>';r_questLvl($quest); echo '</td>';
-    echo '<td class=left>';r_questName($quest); echo '</td>';
-    echo '<td class=left>';r_questReward($quest);echo '</td>';
+    echo '<td>';r_questLvl($questinfo); echo '</td>';
+    echo '<td class=left>';r_questName($questinfo); echo '</td>';
+    echo '<td class=left>';r_questReward($questinfo);echo '</td>';
     echo '</tr>';
    }
   }
