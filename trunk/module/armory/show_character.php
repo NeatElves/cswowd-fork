@@ -55,7 +55,7 @@ else
  if ($tab == 'talents')
  {
   include("show_char_talents.php");
-  showPlayerTalents($guid, $class, $char_data[UNIT_FIELD_LEVEL]);
+  showPlayerTalents($guid, $class, $char['level']);
  }
 
  if ($tab == 'skill')
@@ -86,7 +86,7 @@ else
  if ($tab == 'quests')
  {
   include("show_char_quest.php");
-  showPlayerQuests($guid, $char_data);
+  showPlayerQuests($guid);
  }
 
  if (!$ajaxmode)

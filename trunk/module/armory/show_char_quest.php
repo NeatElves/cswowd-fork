@@ -11,7 +11,7 @@ function getCharacterQueststatus($character_id)
   SELECT * FROM `character_queststatus` WHERE `guid` = ?d ORDER BY `quest`", $character_id);
 }
 
-function showPlayerQuests($guid, $char_data)
+function showPlayerQuests($guid)
 {
   global $lang;
   $quests = getCharacterQueststatus($guid);
