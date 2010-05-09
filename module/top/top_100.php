@@ -17,16 +17,7 @@ if ($output_mode == "TOP_MONEY")
 {
  $gm_accs = $rDB->selectCol("SELECT `id` FROM `account` WHERE `gmlevel`<>'0'");
  $rows = $cDB->select(
- "SELECT
-   guid,
-   data,
-   name,
-   account,
-   (SUBSTRING_INDEX( SUBSTRING_INDEX( `data` , ' ' , ?d) , ' ' , -1 )+0) AS `money`
-  FROM `characters`
- {WHERE `account` NOT IN (?a)}
-  ORDER BY `money` DESC
-  LIMIT ?d", PLAYER_FIELD_COINAGE+1, empty($gm_accs)?DBSIMPLE_SKIP:$gm_accs, $config['top_money_limit']);
+ "SELECT `guid`, `name` , `race` , `class`, `gender`, `level` , `money` FROM `characters`  WHERE `money`>'0' ORDER BY `money` DESC LIMIT ?d",$config['top_money_limit']);
  if ($rows)
  {
   echo "<TABLE class=report width=500>";
@@ -47,11 +38,11 @@ if ($output_mode == "TOP_MONEY")
    $imgsize=24;
    $char_data = explode(' ',$player['data']);
    $char_info = str_pad(dechex($char_data[UNIT_FIELD_BYTES_0]), 8, 0, STR_PAD_LEFT);
-   $gender    = hexdec($char_info[3]);
-   $class     = hexdec($char_info[5]);
-   $race      = hexdec($char_info[7]);
-   $level     = $char_data[UNIT_FIELD_LEVEL];
-   $money     = $char_data[PLAYER_FIELD_COINAGE];
+   $gender    = $player['gender'];
+   $class     = $player['class'];
+   $race      = $player['race'];
+   $level     = $player['level'];
+   $money     = $player['money'];
 //   if (sizeof($char_data)!=PLAYER_FIELD_PADDING+2)
 //    continue;
    echo "<TR>";
@@ -71,20 +62,10 @@ if ($output_mode == "TOP_MONEY")
 else if ($output_mode == "TOP_HONOR")
 {
  $sort = @$_REQUEST['sort'];
- if ($sort == 'kills') $sort_str = 'kills';
- else                  $sort_str = 'honor';
+ if ($sort == 'kills') $sort_str = 'totalKills';
+ else                  $sort_str = 'totalHonorPoints';
  $gm_accs = $rDB->selectCol("SELECT `id` FROM `account` WHERE `gmlevel`<>'0'");
- $rows = $cDB->select(
- "SELECT
-   guid,
-   data,
-   name,
-   (SUBSTRING_INDEX( SUBSTRING_INDEX( `data` , ' ' , ?d) , ' ' , -1 )+0) AS `honor`,
-   (SUBSTRING_INDEX( SUBSTRING_INDEX( `data` , ' ' , ?d) , ' ' , -1 )+0) AS `kills`
-  FROM `characters`
- {WHERE `account` NOT IN (?a)}
-  ORDER BY `$sort_str`
-  DESC LIMIT ?d", PLAYER_FIELD_HONOR_CURRENCY+1, PLAYER_FIELD_LIFETIME_HONORBALE_KILLS+1, empty($gm_accs)?DBSIMPLE_SKIP:$gm_accs, $config['top_honor_limit']);
+ $rows = $cDB->select("SELECT `guid`, `name` , `race` , `class`, `gender`, `level` , `totalHonorPoints`, `totalKills` FROM `characters`  WHERE `totalHonorPoints`>'0'  ORDER BY `$sort_str` DESC LIMIT ?d",$config['top_honor_limit']);
  if ($rows)
  {
   echo "<TABLE class=report width=500>";
@@ -106,12 +87,12 @@ else if ($output_mode == "TOP_HONOR")
    $imgsize=24;
    $char_data = explode(' ',$player['data']);
    $char_info = str_pad(dechex($char_data[UNIT_FIELD_BYTES_0]), 8, 0, STR_PAD_LEFT);
-   $gender    = hexdec($char_info[3]);
-   $class     = hexdec($char_info[5]);
-   $race      = hexdec($char_info[7]);
-   $level     = $char_data[UNIT_FIELD_LEVEL];
-   $honor     = $char_data[PLAYER_FIELD_HONOR_CURRENCY];
-   $kills     = $char_data[PLAYER_FIELD_LIFETIME_HONORBALE_KILLS];
+   $gender    = $player['gender'];
+   $class     = $player['class'];
+   $race      = $player['race'];
+   $level     = $player['level'];
+   $honor     = $player['totalHonorPoints'];
+   $kills     = $player['totalKills'];
 //   if (sizeof($char_data)!=PLAYER_FIELD_PADDING+2)
 //    continue;
    echo "<TR>";
