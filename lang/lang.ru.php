@@ -468,9 +468,9 @@ $lang = array(
 'class skills'=>'Классовые умения',
 
 # TOP 100
-'top_lookup'=>'TOP:',
+'top_lookup'=>'TOП:',
 'top_money'=>'Toп богатейших игроков',
-'top_honor'=>'Top хонор',
+'top_honor'=>'Toп хонор',
 'top_arena2'=>'Toп арена 2x2',
 'top_arena3'=>'Toп арена 3x3',
 'top_arena5'=>'Toп арена 5x5',

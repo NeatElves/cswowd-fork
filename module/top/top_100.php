@@ -17,7 +17,7 @@ if ($output_mode == "TOP_MONEY")
 {
  $gm_accs = $rDB->selectCol("SELECT `id` FROM `account` WHERE `gmlevel`<>'0'");
  $rows = $cDB->select(
- "SELECT `guid`, `name` , `race` , `class`, `gender`, `level` , `money` FROM `characters`  WHERE `money`>'0' ORDER BY `money` DESC LIMIT ?d",$config['top_money_limit']);
+ "SELECT `guid`, `name` , `race` , `class`, `gender`, `level` , `money` , `account` FROM `characters`  {WHERE `account` NOT IN (?a) AND `money`>'0'} ORDER BY `money` DESC LIMIT ?d", empty($gm_accs)?DBSIMPLE_SKIP:$gm_accs, $config['top_money_limit']);
  if ($rows)
  {
   echo "<TABLE class=report width=500>";
@@ -36,8 +36,6 @@ if ($output_mode == "TOP_MONEY")
   foreach ($rows as $player)
   {
    $imgsize=24;
-   $char_data = explode(' ',$player['data']);
-   $char_info = str_pad(dechex($char_data[UNIT_FIELD_BYTES_0]), 8, 0, STR_PAD_LEFT);
    $gender    = $player['gender'];
    $class     = $player['class'];
    $race      = $player['race'];
@@ -65,7 +63,7 @@ else if ($output_mode == "TOP_HONOR")
  if ($sort == 'kills') $sort_str = 'totalKills';
  else                  $sort_str = 'totalHonorPoints';
  $gm_accs = $rDB->selectCol("SELECT `id` FROM `account` WHERE `gmlevel`<>'0'");
- $rows = $cDB->select("SELECT `guid`, `name` , `race` , `class`, `gender`, `level` , `totalHonorPoints`, `totalKills` FROM `characters`  WHERE `totalHonorPoints`>'0'  ORDER BY `$sort_str` DESC LIMIT ?d",$config['top_honor_limit']);
+$rows = $cDB->select("SELECT `guid`, `name` , `race` , `class`, `gender`, `level` , `totalHonorPoints`, `totalKills` FROM `characters`  {WHERE `account` NOT IN (?a) AND `totalHonorPoints`>'0'}  ORDER BY `$sort_str` DESC LIMIT ?d", empty($gm_accs)?DBSIMPLE_SKIP:$gm_accs, $config['top_honor_limit']);
  if ($rows)
  {
   echo "<TABLE class=report width=500>";
@@ -85,8 +83,6 @@ else if ($output_mode == "TOP_HONOR")
   foreach ($rows as $player)
   {
    $imgsize=24;
-   $char_data = explode(' ',$player['data']);
-   $char_info = str_pad(dechex($char_data[UNIT_FIELD_BYTES_0]), 8, 0, STR_PAD_LEFT);
    $gender    = $player['gender'];
    $class     = $player['class'];
    $race      = $player['race'];
