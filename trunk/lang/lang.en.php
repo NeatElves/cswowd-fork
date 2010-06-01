@@ -558,6 +558,9 @@ $lang = array(
 'find_faction'=>'Search Faction',
 'faction_name'=>'Faction name',
 
+# Side
+'Alliance'=>'Alliance',
+'Horde'=>'Horde',
+'Blackwater'=>'Blackwater',
 );
-
 ?>
