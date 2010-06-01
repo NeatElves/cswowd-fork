@@ -618,6 +618,7 @@ $game_text = array(
 'talent_next_rank'=>'Следующий ранг:',
 'talent_req_points'=>'Требует <num> талант(ов) в ветке <name>',
 
-'other_faction'=>'Остальные'
+'other_faction'=>'Остальные',
+'item_heroic'=>'Героический',
 );
 ?>
