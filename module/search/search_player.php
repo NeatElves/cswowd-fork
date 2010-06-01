@@ -55,7 +55,6 @@ if ($filter)
  else if ($number == 1)    // Перенаправляем
     echo '<meta http-equiv="refresh" content=1;URL=?player='.$p_search->data_array[0]['guid'].'>';
  else
- {
     $p_search->createReport($lang['search_results'].' - '.$lang['found'].' '.$number);
 }
 ?>

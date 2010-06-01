@@ -1185,7 +1185,7 @@ function show_item_by_data($item_data, $style='item', $posx=0, $posy=0)
   $icon = getItemIconFromItemData($item_data);
   if ($count == 1)
   {
-    echo '<a style="float: left;" href="?item=g'.$item_data.'">';
+    echo '<a style="float: left;" href="?item='.$item_data.'">';
     echo "<IMG class=$style src='$icon' $position></a>";
   }
   else
@@ -1193,7 +1193,7 @@ function show_item_by_data($item_data, $style='item', $posx=0, $posy=0)
     if (empty($position))
         $position = "style=\"position: relative; left: 0px;top: 0px; border: 0px;float: left;\"";
     echo "\n<div class=$style $position>";
-    echo '<a href="?item=g'.$item_data.'"><IMG class="'.$style.'" src="'.$icon.'"></a>';
+    echo '<a href="?item='.$item_data.'"><IMG class="'.$style.'" src="'.$icon.'"></a>';
     echo getborderText($count, 'right', 3, 'bottom', 1);
     echo "</div>";
   }

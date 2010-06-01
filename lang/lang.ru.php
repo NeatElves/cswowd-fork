@@ -562,6 +562,9 @@ $lang = array(
 'find_faction'=>'Поиск фракции',
 'faction_name'=>'Название',
 
+# Side
+'Alliance'=>'Альянс',
+'Horde'=>'Орда',
+'Blackwater'=>'Нейтральный',
 );
-
 ?>
