@@ -620,5 +620,6 @@ $game_text = array(
 'talent_req_points'=>'Require <num> points in <name> tree',
 
 'other_faction'=>'Other',
+'item_heroic'=>'Heroic',
 );
 ?>
