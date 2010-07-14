@@ -547,10 +547,17 @@ function r_vendorCost($data)
 {
   if ($data['ExtendedCost']>0)
   {
-    if ($cost = getExtendCost($data['ExtendedCost']))
+    if ($cost = getExtendCost(abs($data['ExtendedCost'])))
       r_excostCost($cost);
     else
-      echo 'Ex cost '.$data['ExtendedCost'];
+      echo 'Ex cost '.abs($data['ExtendedCost']);
+  }
+   if ($data['ExtendedCost']<0)
+  {
+    if ($cost = getExtendCost(abs($data['ExtendedCost'])))
+      r_excostCost($cost);
+    else
+      echo 'Ex cost '.money($data['BuyPrice']).''.abs($data['ExtendedCost']);
   }
   else
     echo money($data['BuyPrice']);
