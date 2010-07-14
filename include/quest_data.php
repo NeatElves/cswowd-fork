@@ -12,6 +12,13 @@ define('QUEST_FLAGS_HIDDEN_REWARDS',0x00000200);                // Items and mon
 define('QUEST_FLAGS_AUTO_REWARDED', 0x00000400);                // These quests are automatically rewarded on quest complete and they will never appear in quest log client side.
 define('QUEST_FLAGS_TBC_RACES',     0x00000800);                // Not used currently: Blood elf/Draenei starting zone quests
 define('QUEST_FLAGS_DAILY',         0x00001000);                // Used to know quest is Daily one
+define('QUEST_FLAGS_FLAGS_PVP',         0x00002000);                // activates PvP on accept
+define('QUEST_FLAGS_UNK4',         0x00004000);                // ? Membership Card Renewal
+define('QUEST_FLAGS_WEEKLY',         0x00008000);                // Weekly quest. Can be done once a week. Quests reset at regular intervals for all players.
+define('QUEST_FLAGS_AUTOCOMPLETE',         0x00010000);                // auto complete
+define('QUEST_FLAGS_UNK5',         0x00020000);                // has something to do with ReqItemId and SrcItemId
+define('QUEST_FLAGS_UNK6',         0x00040000);                // use Objective text as Complete text
+define('QUEST_FLAGS_AUTO_ACCEPT',         0x00080000);                // quests in starting areas
 
     // Mangos flags for set SpecialFlags in DB if required but used only at server
 define('QUEST_MANGOS_FLAGS_REPEATABLE',          0x010000);     // Set by 1 in SpecialFlags from DB

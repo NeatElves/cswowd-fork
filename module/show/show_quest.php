@@ -195,6 +195,29 @@ if ($quest['RewSpell'] || $quest['RewSpellCast'])
  echo "<TR><TD class=reward>&nbsp;";show_spell($spell['id'], $spell['SpellIconID']);
  echo " <A href=\"?spell=$spell[id]\">$spell[SpellName]</a></TD></TR>";
 }
+
+for ($i = 1; $i <= 5; $i++) 
+{
+ switch (ABS($quest['RewRepValueId'.$i])): 
+  case 1:  $RepValueId[$i] = 10;   break; 
+  case 2:  $RepValueId[$i] = 25;   break; 
+  case 3:  $RepValueId[$i] = 75;   break; 
+  case 4:  $RepValueId[$i] = 150;  break; 
+  case 5:  $RepValueId[$i] = 250;  break; 
+  case 6:  $RepValueId[$i] = 350;  break; 
+  case 7:  $RepValueId[$i] = 500;  break; 
+  case 8:  $RepValueId[$i] = 1000; break; 
+  case 9:  $RepValueId[$i] = 5;    break; 
+  default: $RepValueId[$i] = 0; 
+ endswitch; 
+
+ if ($quest['RewRepValueId'.$i] < 0) 
+  $RepValueId[$i] = -$RepValueId[$i]; 
+
+ if (!$quest['RewRepValue'.$i] && $quest['RewRepValueId'.$i]) 
+  $quest['RewRepValue'.$i] = $RepValueId[$i]; 
+}
+
 if ($quest['RewRepFaction1'] OR $quest['RewRepFaction2'] OR
     $quest['RewRepFaction3'] OR $quest['RewRepFaction4'] OR
     $quest['RewRepFaction5'])
