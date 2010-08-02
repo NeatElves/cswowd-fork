@@ -1,16 +1,16 @@
 <?php
 include_once("include/simple_cacher.php");
 
-function generateCharacterBild($guid, $class)
+function generateCharacterBild($guid, $class, $spec)
 {
   global $talentTabId, $cDB, $wDB;
   $tab_set = $wDB->selectCol('SELECT `id` FROM `wowd_talent_tab` WHERE `class_mask` & ?d ORDER BY `tab` ', 1<<($class-1));
   if (!$tab_set)
       return;
-  $spellList = $cDB->select('SELECT `spell` AS ARRAY_KEY  FROM `character_spell` WHERE `guid` = ?d and `disabled` = 0', $guid);
   $bild = '';
   $tinfo = $wDB->select(
   'SELECT
+   `TalentID`,
    `TalentTab` AS ARRAY_KEY_1,
    `Row` AS ARRAY_KEY_2,
    `Col` AS ARRAY_KEY_3,
@@ -29,12 +29,9 @@ function generateCharacterBild($guid, $class)
     foreach($tinfo[$tab] as $row=>$rows)
         foreach($rows as $col=>$data)
         {
-         $rank = 0;
-               if (isset($spellList[$data['Rank_5']])) $rank = 5;
-          else if (isset($spellList[$data['Rank_4']])) $rank = 4;
-          else if (isset($spellList[$data['Rank_3']])) $rank = 3;
-          else if (isset($spellList[$data['Rank_2']])) $rank = 2;
-          else if (isset($spellList[$data['Rank_1']])) $rank = 1;
+		  $rank = $cDB->selectCell('SELECT `current_rank`  FROM `character_talent` WHERE `guid` = ?d and `spec` = ?d AND `talent_id`=?d', $guid, $spec, $data['TalentID']);
+		  if (isset($rank)) ++$rank;
+			else $rank = 0;
           $bild.= $rank;
           $points[$i]+=$rank;
           $total+=$rank;

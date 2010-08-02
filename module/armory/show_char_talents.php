@@ -4,10 +4,10 @@
 //==============================================================================
 include_once("include/talent_calc.php");
 
-function showPlayerTalents($guid, $class, $level)
+function showPlayerTalents($guid, $class, $level, $spec)
 {
   global $lang;
-  $bild = generateCharacterBild($guid, $class);
+  $bild = generateCharacterBild($guid, $class, $spec);
   $calc = array('none', 'warrior', 'paladin', 'hunter', 'rogue', 'priest', 'FUTURE_1', 'shaman', 'mage', 'warlock', 'FUTURE_2', 'druid');
   echo '<div id="talent"></div>';
   echo '<a href="?talent='.$calc[$class].'" id=talent_bild_link>'.$lang['player_talent_calc'].'</a><br>';
