@@ -1098,7 +1098,7 @@ function getItemIconFromItemId($item_id)
 
 function getItemIconFromItemData($item_data)
 {
- if ($item = getItem($item_data))
+ if ($item = getItem($item_data[ITEM_FIELD_ENTRY]))
     return  getItemIcon($item['displayid']);
  return 'images/icons/wowunknownitem01.jpg';
 }
@@ -1180,30 +1180,50 @@ function getborderText($text, $posx = 'left', $dx=0, $posy = 'top', $dy=0)
 }
 function show_item_by_data($item_data, $style='item', $posx=0, $posy=0)
 {
-  if ($posx OR $posy)
-      $position.= 'style="position: absolute; left: '.$posx.'px; top: '.$posy.'px; border: 0px;"';
-  $icon = getItemIconFromItemData($item_data);
-  if ($count == 1)
-  {
-    echo '<a style="float: left;" href="?item='.$item_data.'">';
-    echo "<IMG class=$style src='$icon' $position></a>";
-  }
-  else
-  {
-    if (empty($position))
-        $position = "style=\"position: relative; left: 0px;top: 0px; border: 0px;float: left;\"";
-    echo "\n<div class=$style $position>";
-    echo '<a href="?item='.$item_data.'"><IMG class="'.$style.'" src="'.$icon.'"></a>';
-    echo getborderText($count, 'right', 3, 'bottom', 1);
-    echo "</div>";
-  }
+	$guid = $item_data[ITEM_FIELD_GUID];
+
+	if (@$item_data[ITEM_FIELD_TYPE] == TYPE_ITEM)
+		$count = $item_data[ITEM_FIELD_STACK_COUNT];
+	else if (@$item_data[ITEM_FIELD_TYPE] == TYPE_CONTAINER)
+		$count = $item_data[CONTAINER_FIELD_NUM_SLOTS];
+	else
+		return;
+	$position="";
+	if ($posx OR $posy)
+		$position.= 'style="position: absolute; left: '.$posx.'px; top: '.$posy.'px; border: 0px;"';
+	$icon = getItemIconFromItemData($item_data);
+	if ($count == 1)
+	{
+		echo '<a style="float: left;" href="?item=g'.$guid.'">';
+		echo "<IMG class=$style src='$icon' $position></a>";
+	}
+	else
+	{
+		if (empty($position))
+			$position = "style=\"position: relative; left: 0px;top: 0px; border: 0px;float: left;\"";
+		echo "\n<div class=$style $position>";
+		echo '<a href="?item=g'.$guid.'"><IMG class="'.$style.'" src="'.$icon.'"></a>';
+		echo getborderText($count, 'right', 3, 'bottom', 1);
+		echo "</div>";
+	}
 }
 
 function show_item_by_guid($guid, $style='item', $posx=0, $posy=0)
 {
-  if ($guid==0)
-     return;
-      show_item_by_data($guid, $style, $posx, $posy);
+	if ($guid==0)
+		return;
+	if ($item_data = getItemData($guid))
+		show_item_by_data($item_data, $style, $posx, $posy);
+}
+
+function show_item_from_char($id, $guid, $style='item', $posx=0, $posy=0)
+{
+	global $cDB;
+	if ($id==0)
+		return;
+	$item_data = $cDB->selectCell("SELECT `guid` FROM `item_instance` WHERE `owner_guid`=?d AND (SUBSTRING_INDEX( SUBSTRING_INDEX(`data` , ' ' , 9) , ' ' , -1 )+0)=?d AND (SUBSTRING_INDEX( SUBSTRING_INDEX(`data` , ' ' , 4) , ' ' , -1 )+0)=$id", $guid, $guid, $id);
+	if ($item_data = getItemData($item_data))
+		show_item_by_data($item_data, $style, $posx, $posy);
 }
 
 //********************************************************************************
