@@ -29,5 +29,5 @@ if (file_exists($skinfile)) include($skinfile);
 else include('skin/default/skin.php');
 ?>
 <br><hr width=90%>
-<CENTER><FONT size=-1> C.S. WoWD from Chestr and Skel 2007-2010</FONT></CENTER>
+<CENTER><FONT size=-1> C.S. WoWD from Chestr and Skel 2007-2010 (fork by KiriX)</FONT></CENTER>
 </BODY></HTML>

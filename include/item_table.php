@@ -149,9 +149,9 @@ function renderEnchant($item_data, $id, $random_suffix)
    if ($random_suffix)
    {
        $i = 0;
-       if ($item_data[$id] == $random_suffix['EnchantID_1']) $i = $random_suffix['Prefix_1'] * $item_data['ITEM_FIELD_SUFFIX_FACTOR']/10000;
-       if ($item_data[$id] == $random_suffix['EnchantID_2']) $i = $random_suffix['Prefix_2'] * $item_data['ITEM_FIELD_SUFFIX_FACTOR']/10000;
-       if ($item_data[$id] == $random_suffix['EnchantID_3']) $i = $random_suffix['Prefix_3'] * $item_data['ITEM_FIELD_SUFFIX_FACTOR']/10000;
+       if ($item_data[$id] == $random_suffix['EnchantID_1']) $i = $random_suffix['Prefix_1'] * $item_data[ITEM_FIELD_SUFFIX_FACTOR]/10000;
+       if ($item_data[$id] == $random_suffix['EnchantID_2']) $i = $random_suffix['Prefix_2'] * $item_data[ITEM_FIELD_SUFFIX_FACTOR]/10000;
+       if ($item_data[$id] == $random_suffix['EnchantID_3']) $i = $random_suffix['Prefix_3'] * $item_data[ITEM_FIELD_SUFFIX_FACTOR]/10000;
        $desc = str_replace('$i',intval($i),$desc);
    }
    $time = floor($item_data[$id+1]/1000/60);
