@@ -211,11 +211,18 @@ for ($i = 1; $i <= 5; $i++)
   default: $RepValueId[$i] = 0; 
  endswitch; 
 
+ $quest_rate[$i] = getRepRewRate($quest['RewRepFaction'.$i]);
+
  if ($quest['RewRepValueId'.$i] < 0) 
   $RepValueId[$i] = -$RepValueId[$i]; 
 
+ if ($quest['RewRepValue'.$i] && $quest['RewRepValueId'.$i]) 
+  $quest['RewRepValue'.$i] = $quest['RewRepValue'.$i]/100; 
+
  if (!$quest['RewRepValue'.$i] && $quest['RewRepValueId'.$i]) 
   $quest['RewRepValue'.$i] = $RepValueId[$i]; 
+
+ $quest['RewRepValue'.$i]=$quest['RewRepValue'.$i]*$quest_rate[$i];
 }
 
 if ($quest['RewRepFaction1'] OR $quest['RewRepFaction2'] OR

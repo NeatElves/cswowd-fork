@@ -935,6 +935,16 @@ function getQuestXPValue($quest)
    else if ($quest['QuestLevel'] <= 10) return intval($quest['RewMoneyMaxLevel'] / 0.6);
    return 0;
 }
+function getRepRewRate($faction_id)
+{
+  global $dDB, $config;
+  $faction = $dDB->selectCell("-- CACHE: 1h
+  SELECT `quest_rate` FROM `reputation_reward_rate` WHERE `faction` = ?d", $faction_id);
+  if (!$faction)
+    $faction=1;
+  return $faction;
+}
+
 
 //********************************************************************************
 $Quality = array(

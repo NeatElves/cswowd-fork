@@ -1115,11 +1115,18 @@ function r_questReward($quest)
   default: $RepValueId[$i] = 0; 
  endswitch; 
 
+ $quest_rate[$i] = getRepRewRate($quest['RewRepFaction'.$i]);
+
  if ($quest['RewRepValueId'.$i] < 0) 
   $RepValueId[$i] = -$RepValueId[$i]; 
 
+ if ($quest['RewRepValue'.$i] && $quest['RewRepValueId'.$i]) 
+  $quest['RewRepValue'.$i] = $quest['RewRepValue'.$i]/100; 
+
  if (!$quest['RewRepValue'.$i] && $quest['RewRepValueId'.$i]) 
   $quest['RewRepValue'.$i] = $RepValueId[$i]; 
+
+ $quest['RewRepValue'.$i]=$quest['RewRepValue'.$i]*$quest_rate[$i];
   }
   if ($quest['RewRepFaction1'])echo getFactionName($quest['RewRepFaction1']).': '.$quest['RewRepValue1'].'<br>';
   if ($quest['RewRepFaction2'])echo getFactionName($quest['RewRepFaction2']).': '.$quest['RewRepValue2'].'<br>';
