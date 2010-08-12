@@ -83,6 +83,4 @@ if ($rows)
 else
  echo "<TR><TD colspan=4 align=center>Empty</TD></TR>";
 echo "</TBODY></TABLE>";
-echo $item_data;
-echo $auc_data['itementry'];
 ?>
