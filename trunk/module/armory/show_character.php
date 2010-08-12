@@ -66,7 +66,7 @@ else
  if ($tab == 'talents')
  {
   include("show_char_talents.php");
-  showPlayerTalents($guid, $class, $char['level'], $char['activespec']);
+  showPlayerTalents($guid, $class, $char['level'], $char['activeSpec']);
  }
 
  if ($tab == 'skill')
