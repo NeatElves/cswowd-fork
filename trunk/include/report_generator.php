@@ -462,7 +462,7 @@ class LootReportGenerator extends ReportGenerator{
     echo "<TR>";
     if ($loot['mincountOrRef'] > 0)
     {
-     if ($item = GetItem($loot['item'],"`entry`, `Quality`, `name`, `displayid`"))
+     if ($item = getItem($loot['item'],"`entry`, `Quality`, `name`, `displayid`"))
      {
        echo '<TD class=i_ico>';r_itemIcon($item);echo '</TD>';
        echo '<TD class=left>';r_itemName($item);echo '</TD>';
@@ -545,19 +545,14 @@ function r_itemFlag($data)    {echo dechex($data['Flags']);}
 // Vendor
 function r_vendorCost($data)
 {
+    $flags2 = getItemFlags2($data['entry']);
   if ($data['ExtendedCost']>0)
   {
-    if ($cost = getExtendCost(abs($data['ExtendedCost'])))
-      r_excostCost($cost);
+       $cost = getExtendCost($data['ExtendedCost']);
+       if ($flags2&ITEM_FLAGS2_EXT_COST_REQUIRES_GOLD)
+            echo money($data['BuyPrice']).''.r_excostCost($cost);
     else
-      echo 'Ex cost '.abs($data['ExtendedCost']);
-  }
-   if ($data['ExtendedCost']<0)
-  {
-    if ($cost = getExtendCost(abs($data['ExtendedCost'])))
       r_excostCost($cost);
-    else
-      echo 'Ex cost '.money($data['BuyPrice']).''.abs($data['ExtendedCost']);
   }
   else
     echo money($data['BuyPrice']);
