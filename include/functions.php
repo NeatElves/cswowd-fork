@@ -976,6 +976,14 @@ function getItemName($item_id)
   return "Unknown item - $item_id";
 }
 
+function getItemFlags2($item_id)
+{
+  global $dDB, $config;
+  $item = $dDB->selectCell("-- CACHE: 1h
+  SELECT `Flags2` FROM `item_template` WHERE `entry` = ?d", $item_id);
+  return $item;
+}
+
 function getItemBonusText($i, $amount)
 {
     global $iBonus;

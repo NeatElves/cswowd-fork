@@ -54,6 +54,8 @@ $mark  = @$_REQUEST['mark'];
 // Получаем вещь
 $item = getItem($entry);
 
+$flags2 = getItemFlags2($entry);
+
 if (!$item)
 {
    RenderError("$lang[item_not_found]");
@@ -72,6 +74,9 @@ else
    echo "<TD>";generateItemTable($item,$item_data,0);echo "</TD>";
    echo "</TR></TBODY></TABLE>";
 
+   if ($flags2&ITEM_FLAGS2_HORDE_ONLY) echo "<FONT color=#ff0000> $lang[reqirement]: $lang[Horde]</FONT>";
+   if ($flags2&ITEM_FLAGS2_ALLIANCE_ONLY) echo "<FONT color=#0000ff> $lang[reqirement]: $lang[Alliance]</FONT>";
+   echo "<br />";
    if ($item['BuyPrice']) echo "$lang[buy_price]: ".money($item['BuyPrice']);
    echo "<br />";
 
