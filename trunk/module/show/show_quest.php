@@ -185,6 +185,23 @@ if ($quest['RewChoiceItemId1'] OR $quest['RewChoiceItemId2'] OR $quest['RewChoic
  if ($quest['RewChoiceItemId6']) {echo $lang['item_sel_or'];show_item($quest['RewChoiceItemId6']);}
  echo "</TD></TR>";
 }
+if ($quest['RewMailTemplateId'])
+{
+ $MailTime=$quest['RewMailDelaySecs']/60/60;
+ $ItemMail=getItemMail($quest['RewMailTemplateId']);
+ if ($ItemMail)
+  {
+    echo "<TR><TD class=mark>$lang[Rew_mail] $lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
+    echo "<TR><TD class=mark>$lang[Rew_item_mail]</TD></TR>";
+    echo "<TR><TD class=reward>&nbsp;";{show_item($ItemMail);}
+    echo "</TD></TR>";
+  }
+  else
+  {
+    echo "<TR><TD class=mark>$lang[Rew_mail] $lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
+    echo "</TD></TR>";
+  }
+}
 if ($quest['RewSpell'] || $quest['RewSpellCast'])
 {
  $learn = $quest['RewSpell'] ? $quest['RewSpell'] : $quest['RewSpellCast'];
