@@ -17,8 +17,8 @@ CREATE INDEX `idx_item` ON `skinning_loot_template`     (`item`);
 CREATE INDEX `idx_ref`  ON `skinning_loot_template`     (`mincountOrRef`);
 CREATE INDEX `idx_item` ON `milling_loot_template`      (`item`);
 CREATE INDEX `idx_ref`  ON `milling_loot_template`      (`mincountOrRef`);
-CREATE INDEX `idx_item` ON `quest_mail_loot_template`   (`item`);
-CREATE INDEX `idx_ref`  ON `quest_mail_loot_template`   (`mincountOrRef`);
+CREATE INDEX `idx_item` ON `mail_loot_template`   		(`item`);
+CREATE INDEX `idx_ref`  ON `mail_loot_template`   		(`mincountOrRef`);
 CREATE INDEX `idx_item` ON `reference_loot_template`    (`item`);
 CREATE INDEX `idx_ref`  ON `reference_loot_template`    (`mincountOrRef`);
 

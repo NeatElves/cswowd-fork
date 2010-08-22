@@ -984,6 +984,14 @@ function getItemFlags2($item_id)
   return $item;
 }
 
+function getItemMail($item_id)
+{
+  global $dDB, $config;
+  $item = $dDB->selectCell("-- CACHE: 1h
+  SELECT `item` FROM `mail_loot_template` WHERE `entry` = ?d", $item_id);
+  return $item;
+}
+
 function getItemBonusText($i, $amount)
 {
     global $iBonus;
