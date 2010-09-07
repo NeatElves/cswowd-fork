@@ -566,5 +566,7 @@ $lang = array(
 'Alliance'=>'Alliance',
 'Horde'=>'Horde',
 'Blackwater'=>'Blackwater',
+'items'=>'items',
+
 );
 ?>
