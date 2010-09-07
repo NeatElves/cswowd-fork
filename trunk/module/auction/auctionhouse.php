@@ -51,17 +51,17 @@ echo "<TABLE class=report width=500>";
 echo "<TBODY>";
 echo "<TR><TD colspan=4 class=head>";
 echo "<img src=\"images/gold.gif\">";
-echo " <a href=\"?auction=Alliance\" style=\"Text-decoration: none; color:gold;\">Alliance</a>";
+echo " <a href=\"?auction=Alliance\" style=\"Text-decoration: none; color:gold;\">$lang[Alliance]</a>";
 echo " <img src=\"images/gold.gif\">";
-echo " <a href=\"?auction=Horde\" style=\"Text-decoration: none; color:gold;\">Horde</a>";
+echo " <a href=\"?auction=Horde\" style=\"Text-decoration: none; color:gold;\">$lang[Horde]</a>";
 echo " <img src=\"images/gold.gif\">";
-echo " <a href=\"?auction=Blackwater\" style=\"Text-decoration: none; color:gold;\">Blackwater</a>";
+echo " <a href=\"?auction=Blackwater\" style=\"Text-decoration: none; color:gold;\">$lang[Blackwater]</a>";
 echo " <img src=\"images/gold.gif\">";
 echo "</TD></TR>";
 
 if ($rows)
 {
- echo "<TR><TD colspan=4 class=head><font color=gold>$type Auction House: </font> $number items</TD></TR>";
+ echo "<TR><TD colspan=4 class=head><font color=gold>$lang[auction] $type: </font> $number $lang[items]</TD></TR>";
  echo "<TR>";
  echo "<TH width=1px></TH>";
  echo "<TH width=50%>".$lang['auction_seller']."</TH>";
