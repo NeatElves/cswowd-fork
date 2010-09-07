@@ -26,6 +26,8 @@ define('POWER_RAGE', 1);
 define('POWER_FOCUS', 2);
 define('POWER_ENERGY', 3);
 define('POWER_HAPPINESS', 4);
+define('POWER_RUNE', 5);
+define('POWER_RUNIC_POWER', 6);
 // Тип стата
 define('STAT_STRENGTH', 0);
 define('STAT_AGILITY', 1);
