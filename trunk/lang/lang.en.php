@@ -436,6 +436,10 @@ $lang = array(
 'stat_online'    => 'Online:',
 'stat_classes'   => 'Class statistic',
 'stat_races'     => 'Race statistic',
+'stat_timers'     => 'Timers:',
+'ap_date'     => 'Date of scoring arena:',
+'daily_quest_date'     => 'Date reset daily quests:',
+'weekly_quest_date'     => 'Date reset weekly quests:',
 
 # Main menu
 'main'=>'Main',
