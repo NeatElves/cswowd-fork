@@ -3,7 +3,14 @@
 // Скрипт предназначен для вывода скилов игрока
 //==============================================================================
 
-function showPlayerSkills($guid, $char_data)
+function getCharacterSkills($guid_id)
+{
+  global $cDB;
+  return $cDB->select("-- CACHE: 1h
+  SELECT * FROM `character_skills` WHERE `guid` = ?d", $guid_id);
+}
+
+function showPlayerSkills($guid)
 {
   global $wDB, $lang;
   $skill_category = $wDB->select('-- CACHE: 1h
@@ -11,21 +18,20 @@ function showPlayerSkills($guid, $char_data)
   $skill_rev = array();
   // Помещаем данные о скилах в буфер для сотрировки их по классу
   $playerSkill=array();
-  for ($i=0;$i<128;$i++)
-  {
-   $data0 = $char_data[PLAYER_SKILL_INFO_1_1 + $i*3];
-   $data1 = $char_data[PLAYER_SKILL_INFO_1_1 + $i*3 + 1];
-   $data2 = $char_data[PLAYER_SKILL_INFO_1_1 + $i*3 + 2];
-   $skillId   = $data0&0x0000FFFF; // skill id
+
+  $skillcount = getCharacterSkills($guid);
+  if ($skillcount)
+  foreach ($skillcount as $guid)
+ {
+   $skillId   = $guid['skill']; // skill id
    if ($skillId == 0)
        continue;
-   $skillFlag = $data0>>16;        // Unlearn button enabled if & 1
 
-   $skill     = $data1&0x0000FFFF; // skill
-   $maxskill  = $data1>>16;        // max skill
+   $skill     = $guid['value']; // skill
+   $maxskill  = $guid['max'];        // max skill
 
-   $skillPerm  = $data2&0x0000FFFF; // Баф с талантов (добавляется и к skill, и к maxSkill
-   $skillTemp  = $data2>>16;        // Временный баф, влияет только на skill
+   $skillPerm  = 0; // Баф с талантов (добавляется и к skill, и к maxSkill(занулил пока)
+   $skillTemp  = 0;        // Временный баф, влияет только на skill(занулил пока)
 
    if ($skillLine = getSkillLine($skillId))
    {

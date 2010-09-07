@@ -666,6 +666,17 @@ function getCreatureFlagsList($mask, $as_ref=1)
       return getListFromArray_0($gCreatureFlags, $mask, "?s=n&flag=%d");
   return getListFromArray_0($gCreatureFlags, $mask);
 }
+
+function getCreatureRewRate($faction_id)
+{
+  global $dDB;
+  $creature = $dDB->selectCell("-- CACHE: 1h
+  SELECT `creature_rate` FROM `reputation_reward_rate` WHERE `faction` = ?d", $faction_id);
+  if (!$creature)
+    $creature=1;
+  return $creature;
+}
+
 //********************************************************************************
 function getGameobject($gameobject_id, $fields="*")
 {
@@ -937,7 +948,7 @@ function getQuestXPValue($quest)
 }
 function getRepRewRate($faction_id)
 {
-  global $dDB, $config;
+  global $dDB;
   $faction = $dDB->selectCell("-- CACHE: 1h
   SELECT `quest_rate` FROM `reputation_reward_rate` WHERE `faction` = ?d", $faction_id);
   if (!$faction)
@@ -945,6 +956,12 @@ function getRepRewRate($faction_id)
   return $faction;
 }
 
+function getRepSpillover($faction_id)
+{
+  global $dDB;
+  return $dDB->select("-- CACHE: 1h
+  SELECT * FROM `reputation_spillover_template` WHERE `faction` = ?d", $faction_id);
+}
 
 //********************************************************************************
 $Quality = array(

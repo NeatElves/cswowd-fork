@@ -781,8 +781,10 @@ define('UNIT_NPC_FLAG_STABLEMASTER', 0x00400000);*/
 }
 function r_OnKillRep($data)
 {
-   if ($data['RewOnKillRepFaction1']) echo        ($data['RewOnKillRepValue1']>0?'+':'').$data['RewOnKillRepValue1'].' '.getFactionName($data['RewOnKillRepFaction1']).' ('.getReputationRankName($data['MaxStanding1']).')';
-   if ($data['RewOnKillRepFaction2']) echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2'].' '.getFactionName($data['RewOnKillRepFaction2']).' ('.getReputationRankName($data['MaxStanding2']).')';
+   $creature_rate1 = getCreatureRewRate($data['RewOnKillRepFaction1']);
+   $creature_rate2 = getCreatureRewRate($data['RewOnKillRepFaction2']);
+   if ($data['RewOnKillRepFaction1']) echo        ($data['RewOnKillRepValue1']>0?'+':'').$data['RewOnKillRepValue1']*$creature_rate1.' '.getFactionName($data['RewOnKillRepFaction1']).' ('.getReputationRankName($data['MaxStanding1']).')';
+   if ($data['RewOnKillRepFaction2']) echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate2.' '.getFactionName($data['RewOnKillRepFaction2']).' ('.getReputationRankName($data['MaxStanding2']).')';
 }
 // NPC report generator config
 $npc_report = array(
@@ -1123,6 +1125,38 @@ function r_questReward($quest)
 
  $quest['RewRepValue'.$i]=$quest['RewRepValue'.$i]*$quest_rate[$i];
   }
+
+ if ($quest['RewRepFaction1'] AND !$quest['RewRepFaction2'] AND
+    !$quest['RewRepFaction3'] AND !$quest['RewRepFaction4'] AND
+    !$quest['RewRepFaction5'])
+ {
+  $spillover=getRepSpillover($quest['RewRepFaction1']);
+  if ($spillover)
+   foreach ($spillover as $faction)
+   {
+     if ($faction['faction1'])
+     {
+     $quest['RewRepFaction2']=$faction['faction1'];
+     $quest['RewRepValue2']=$quest['RewRepValue1']*$faction['rate_1'];
+     }
+     if ($faction['faction2'])
+     {
+     $quest['RewRepFaction3']=$faction['faction2'];
+     $quest['RewRepValue3']=$quest['RewRepValue1']*$faction['rate_2'];
+     }
+     if ($faction['faction3'])
+     {
+     $quest['RewRepFaction4']=$faction['faction3'];
+     $quest['RewRepValue4']=$quest['RewRepValue1']*$faction['rate_3'];
+     }
+     if ($faction['faction4'])
+     {
+     $quest['RewRepFaction5']=$faction['faction4'];
+     $quest['RewRepValue5']=$quest['RewRepValue1']*$faction['rate_4'];
+     }
+   }
+ }
+
   if ($quest['RewRepFaction1'])echo getFactionName($quest['RewRepFaction1']).': '.$quest['RewRepValue1'].'<br>';
   if ($quest['RewRepFaction2'])echo getFactionName($quest['RewRepFaction2']).': '.$quest['RewRepValue2'].'<br>';
   if ($quest['RewRepFaction3'])echo getFactionName($quest['RewRepFaction3']).': '.$quest['RewRepValue3'].'<br>';
