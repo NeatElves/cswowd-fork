@@ -242,6 +242,37 @@ for ($i = 1; $i <= 5; $i++)
  $quest['RewRepValue'.$i]=$quest['RewRepValue'.$i]*$quest_rate[$i];
 }
 
+ if ($quest['RewRepFaction1'] AND !$quest['RewRepFaction2'] AND
+    !$quest['RewRepFaction3'] AND !$quest['RewRepFaction4'] AND
+    !$quest['RewRepFaction5'])
+ {
+  $spillover=getRepSpillover($quest['RewRepFaction1']);
+  if ($spillover)
+   foreach ($spillover as $faction)
+   {
+     if ($faction['faction1'])
+     {
+     $quest['RewRepFaction2']=$faction['faction1'];
+     $quest['RewRepValue2']=$quest['RewRepValue1']*$faction['rate_1'];
+     }
+     if ($faction['faction2'])
+     {
+     $quest['RewRepFaction3']=$faction['faction2'];
+     $quest['RewRepValue3']=$quest['RewRepValue1']*$faction['rate_2'];
+     }
+     if ($faction['faction3'])
+     {
+     $quest['RewRepFaction4']=$faction['faction3'];
+     $quest['RewRepValue4']=$quest['RewRepValue1']*$faction['rate_3'];
+     }
+     if ($faction['faction4'])
+     {
+     $quest['RewRepFaction5']=$faction['faction4'];
+     $quest['RewRepValue5']=$quest['RewRepValue1']*$faction['rate_4'];
+     }
+   }
+ }
+
 if ($quest['RewRepFaction1'] OR $quest['RewRepFaction2'] OR
     $quest['RewRepFaction3'] OR $quest['RewRepFaction4'] OR
     $quest['RewRepFaction5'])

@@ -72,7 +72,7 @@ else
  if ($tab == 'skill')
  {
   include("show_char_skill.php");
-  showPlayerSkills($guid, $char_data);
+  showPlayerSkills($guid);
  }
 
  if ($tab == 'achievements')
