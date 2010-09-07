@@ -295,15 +295,15 @@ $menu = array(
     array('link'=>'?s=p',      'text'=>$lang['player_lookup']),
     array('link'=>'',          'text'=>$lang['achievement'],
           'sub'=>array(
-                 array('link'=>'?achievement&faction=1',  'text'=>'Alliance'),
-                 array('link'=>'?achievement&faction=0',  'text'=>'Horde'))
+                 array('link'=>'?achievement&faction=1',  'text'=>$lang['Alliance']),
+                 array('link'=>'?achievement&faction=0',  'text'=>$lang['Horde']))
     ),
     array('link'=>'?auction',
           'text'=>$lang['auction'],
           'sub'=>array(
-                 array('link'=>'?auction=Alliance',  'text'=>'Alliance'),
-                 array('link'=>'?auction=Horde',     'text'=>'Horde'),
-                 array('link'=>'?auction=Blackwater','text'=>'Blackwater'))
+                 array('link'=>'?auction=Alliance',  'text'=>$lang['Alliance']),
+                 array('link'=>'?auction=Horde',     'text'=>$lang['Horde']),
+                 array('link'=>'?auction=Blackwater','text'=>$lang['Blackwater']))
     ),
     array('link'=>'?guild',    'text'=>$lang['guild']),
     array('link'=>'?location',
