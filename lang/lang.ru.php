@@ -27,8 +27,8 @@ $lang = array(
 
 # Item report
 'item_name' => 'Имя вещи',
-'item_level' => 'lvl',
-'item_req_level' => 'Req lvl',
+'item_level' => 'Уровень',
+'item_req_level' => 'Требует уровень',
 'item_gem_details' => 'Свойства камня',
 'item_armor' => 'Броня',
 'item_block' => 'Блок',
@@ -47,14 +47,14 @@ $lang = array(
 'item_incrtime' => 'Поставка',
 
 # Quest report
-'quest_lvl'=>'lvl',
-'quest_reqlvl'=>'Req level',
+'quest_lvl'=>'Уровень',
+'quest_reqlvl'=>'Требует уровень',
 'quest_name'=>'Название квеста',
 'quest_giver'=>'Выдаёт',
 'quest_rewards'=>'Награды',
 
 # Spell report
-'spell_level' => 'lvl',
+'spell_level' => 'Уровень',
 'spell_name' => 'Имя спелла',
 'spell_skill' => 'Ветка',
 'spell_power' => 'Power',
@@ -68,7 +68,7 @@ $lang = array(
 'trainer_spell'=>'Спелл',
 'trainer_skill'=>'Нужно знать',
 'trainer_value'=>'Навык',
-'trainer_level'=>'Req lvl',
+'trainer_level'=>'Требует уровень',
 
 # GO report
 'go_name' => 'Название',
@@ -76,7 +76,7 @@ $lang = array(
 'map' => 'Карта',
 
 # Creature report
-'creature_level' => 'lvl',
+'creature_level' => 'Уровень',
 'creature_name'  => 'Имя существа',
 'creature_react' => 'Отношение',
 'creature_role'  => 'Назначение',
@@ -142,7 +142,7 @@ $lang = array(
 'pl_name'=>'Имя',
 'pl_race'=>'Раса',
 'pl_class'=>'Класс',
-'pl_level'=>'lvl',
+'pl_level'=>'Уровень',
 'pl_pos'=>'Место',
 'pl_rank'=>'Ранг',
 'pl_note'=>'Инфо',
@@ -173,6 +173,7 @@ $lang = array(
 'req_for_quest' => 'Требуется для квеста',
 'kill_kredit_group' => 'Группа',
 'give_quest' => 'Даёт квесты',
+'give_quest_event' => 'Даёт квесты(в событие)',
 'take_quest' => 'Принимает квесты',
 'give_skin'  => 'Можно снять шкуру',
 'can_pickpocketing' => 'Можно украсть...',
@@ -327,7 +328,7 @@ $lang = array(
 
 # PLAYER list
 'player_name'  => 'Имя',
-'player_level' => 'lvl',
+'player_level' => 'Уровень',
 'player_race'  => 'Раса',
 'player_class' => 'Класс',
 'player_zone'  => 'Зона',
@@ -527,7 +528,7 @@ $lang = array(
 
 # Search NPC dialog
 'mob_name'=>'Имя моба',
-'mob_subname'=>'Subname',
+'mob_subname'=>'Роль',
 'level' =>'Уровень',
 'search'=>'Поиск',
 'reset'=>'Сброс',
@@ -541,8 +542,8 @@ $lang = array(
 'item_name' =>'Название',
 'item_class' => 'Класс',
 'item_type' => 'Тип',
-'item_min_level' => 'Min level',
-'item_max_level' => 'Max level',
+'item_min_level' => 'Mин уровень',
+'item_max_level' => 'Mакс уровень',
 'find_mob' =>'Поиск мобов',
 
 # Search Spell dialog
@@ -571,6 +572,7 @@ $lang = array(
 'faction_name'=>'Название',
 
 # Side
+'Both'=>'Обе',
 'Alliance'=>'Альянс',
 'Horde'=>'Орда',
 'Blackwater'=>'Нейтральный',

@@ -938,14 +938,25 @@ function getNumPalayersWithThisQuest($entry)
 
 function getQuestXPValue($quest)
 {
-        if ($quest['QuestLevel'] >= 15) return intval($quest['RewMoneyMaxLevel'] / 6);
-   else if ($quest['QuestLevel'] == 14) return intval($quest['RewMoneyMaxLevel'] / 4.8);
-   else if ($quest['QuestLevel'] == 13) return intval($quest['RewMoneyMaxLevel'] / 3.666);
-   else if ($quest['QuestLevel'] == 12) return intval($quest['RewMoneyMaxLevel'] / 2.4);
-   else if ($quest['QuestLevel'] == 11) return intval($quest['RewMoneyMaxLevel'] / 1.2);
-   else if ($quest['QuestLevel'] <= 10) return intval($quest['RewMoneyMaxLevel'] / 0.6);
-   return 0;
+  if ($quest['QuestLevel'] > 0)
+	$rawXPcount=getRewQuestXP($quest['QuestLevel']);
+  else
+	$rawXPcount=getRewQuestXP(79);
+
+  foreach ($rawXPcount as $field)
+  {
+    $realXP = $field['Field'.($quest['RewXPId']+1)];
+  }
+  return $realXP;
 }
+
+function getRewQuestXP($questlevel_id)
+{
+  global $wDB;
+  return $wDB->select("-- CACHE: 1h
+  SELECT * FROM `wowd_questxp` WHERE `id` = ?d", $questlevel_id);
+}
+
 function getRepRewRate($faction_id)
 {
   global $dDB;

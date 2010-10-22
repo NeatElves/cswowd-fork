@@ -90,6 +90,31 @@ else
  echo "<TR><TD class=head>$quest[Title]";
  if ($quest['Type'])
    echo "<br><FONT size=-3>&lt;".getQuestType($quest['Type'])."&gt;</FONT>";
+
+ echo "</br>";
+
+ if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 1101))
+ {
+     echo "<br><FONT color=#0000ff>$lang[required_races] $lang[Alliance]</FONT>";
+     echo '<br><FONT color=#0000ff>'.$game_text['allowable_race'].' '.getAllowableRace($quest['RequiredRaces']).'</FONT>';
+ }
+ 
+if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 690))
+ {
+     echo "<br><FONT color=#ff0000>$lang[required_races] $lang[Horde]</FONT>";
+     echo '<br><FONT color=#ff0000>'.$game_text['allowable_race'].' '.getAllowableRace($quest['RequiredRaces']).'</FONT>';
+ }
+
+if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
+ {
+     echo "<br><FONT color=#008800>$lang[required_races] $lang[Both]</FONT>";
+     echo '<br><FONT color=#008800>'.$game_text['allowable_race'].' '.getAllowableRace(1791).'</FONT>';
+ }
+
+ if (getAllowableClass($quest['RequiredClasses']) &&  $quest['ZoneOrSort']>0)
+     echo '<br><FONT color=#000000>'.$game_text['allowable_class'].' '.getAllowableClass($quest['RequiredClasses']).'</FONT>';
+
+ echo "</TH></TR>";
  echo "</TH></TR>";
 
  echo '<tr><td>';
@@ -102,7 +127,13 @@ else
  echo "<tr><td>$lang[obtained_at_level] $quest[MinLevel]</td></tr>";
 
  if ($quest['RequiredMinRepFaction'])
-   echo "<TR><TD>".getFactionName($quest['RequiredMinRepFaction'])." - $quest[RequiredMinRepValue]</TD></TR>";
+   echo "<TR><TD>$lang[item_faction_rank]:</TD></TR>";
+
+ if ($quest['RequiredMinRepFaction'])
+   echo "<TR><TD> ".getFactionName($quest['RequiredMinRepFaction']).": $quest[RequiredMinRepValue]($lang[item_min_level])</TD></TR>";
+
+ if ($quest['RequiredMaxRepFaction'])
+   echo "<TR><TD>".getFactionName($quest['RequiredMaxRepFaction']).": $quest[RequiredMaxRepValue]($lang[item_max_level])</TD></TR>";
 
  echo "<TR><TD>".getQuestText($quest['Objectives'])."<hr></TD></TR>";
  ### Рек собрать
@@ -295,6 +326,23 @@ if ($rows = $dDB->select("SELECT *
                           WHERE
                           `creature_questrelation`.`quest` = ?d AND
                           `creature_questrelation`.`id` = `creature_template`.`entry`", $quest['entry']))
+foreach ($rows as $creature)
+{
+  localiseCreature($creature);
+  $loyality = getLoyality($creature['faction_A']);
+  echo "<TR><TD><A style='float: right;' href=\"?map&npc=$creature[entry]\">$lang[map]</A>";
+  echo "<A href=\"?npc=$creature[entry]\">$creature[name]</A> ($loyality)";
+  if ($creature['subname'] != "")
+   echo "<BR><FONT color=#008800 size=-3>&lt;$creature[subname]&gt;</FONT>";
+  echo "</TD></TR>";
+  $number++;
+}
+else
+if ($rows = $dDB->select("SELECT *
+                          FROM `creature_template` join `game_event_creature_quest`
+                          WHERE
+                          `game_event_creature_quest`.`quest` = ?d AND
+                          `game_event_creature_quest`.`id` = `creature_template`.`entry`", $quest['entry']))
 foreach ($rows as $creature)
 {
   localiseCreature($creature);
