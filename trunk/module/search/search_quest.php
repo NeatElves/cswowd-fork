@@ -68,9 +68,9 @@ if ($allmode==0 and $ajaxmode==0)
     echo '</td></tr>';
     echo '<tr><td>'.$lang['quest_name'].':</td><td><input class=ls_search alt="q" name="name" value="'.$name.'" size="39">';
     echo '<select name="side">';
-    echo '<option value="both">Both</option>';
-    echo '<option value="alliance">Allince</option>';
-    echo '<option value="horde">Horde</option>';
+    echo '<option value="both">'.$lang['Both'].'</option>';
+    echo '<option value="alliance">'.$lang['Alliance'].'</option>';
+    echo '<option value="horde">'.$lang['Horde'].'</option>';
     echo '</select>';
     echo '</td></tr>';
     echo '<tr><td>'.$lang['level'].':</td><td><input name="level_min" value="'.$level_min.'" size="21"> - <input name="level_max" value="'.$level_max.'" size="21"></td></tr>';

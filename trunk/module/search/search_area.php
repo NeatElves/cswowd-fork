@@ -32,7 +32,7 @@ if ($allmode==0 and $ajaxmode==0)
     echo '<tr><td class=top colspan=4>';
     echo '<table class=findtop><tr><td class=topleft>&nbsp;</td><td class=top>'.$lang['area_find'].'</td><td class=topright>&nbsp;</td></tr></table>';
     echo '</td></tr>';
-    echo '<tr><td>'.$lang['area_name'].'</td><td colspan=3><input class=ls_search alt="a" name="name" value="'.$name.'" size="30"></td></tr>';
+    echo '<tr><td>'.$lang['area_name'].':</td><td colspan=3><input class=ls_search alt="a" name="name" value="'.$name.'" size="30"></td></tr>';
     echo '<tr><td class=bottom colspan=4><input type=submit value="'.$lang['search'].'"></td></tr>';
     echo '</table>';
     echo '</form>';

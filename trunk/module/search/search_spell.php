@@ -84,8 +84,8 @@ if ($allmode==0 and $ajaxmode==0)
     echo'<tr><td class=top colspan=2>';
     echo'<table class=findtop><tr><td class=topleft>&nbsp;</td><td class=top>'.$lang['find_spell'].'</td><td class=topright>&nbsp;</td></tr></table>';
     echo'</td></tr>';
-    echo'<tr><td align="center">'.$lang['spell_name'].'</td><td><input class=ls_search alt="s" name="name" value="'.$name.'" size="35"></td></tr>';
-    echo'<tr><td align="center">'.$lang['spell_desc'].'</td><td><input name="desc" value="'.$desc.'" size="35"></td></tr>';
+    echo'<tr><td align="center">'.$lang['spell_name'].':</td><td><input class=ls_search alt="s" name="name" value="'.$name.'" size="35"></td></tr>';
+    echo'<tr><td align="center">'.$lang['spell_desc'].':</td><td><input name="desc" value="'.$desc.'" size="35"></td></tr>';
     echo'<tr><td class=bottom colspan=2><input type=submit value="'.$lang['search'].'"></td></tr>';
     echo'</table>';
     echo'</form>';

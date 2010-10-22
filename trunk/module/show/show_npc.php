@@ -193,6 +193,17 @@ else
     $giveQuest->createReport($lang['give_quest']);
   }
  }
+
+ if ($cr['npcflag']&(UNIT_NPC_FLAG_QUESTGIVER))
+ {
+  $giveQuest =&new QuestReportGenerator('npc_giver_event');
+  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
+  if ($giveQuest->Init($fields, $baseLink, 'qgeLIST', $config['fade_limit'], 'name'))
+  {
+    $giveQuest->getGiveTakeList($entry);
+    $giveQuest->createReport($lang['give_quest_event']);
+  }
+ }
  //**************************************************
  // Take quests
  //**************************************************

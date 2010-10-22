@@ -172,6 +172,7 @@ $lang = array(
 'req_for_quest' => 'Required for quest',
 'kill_kredit_group' => 'Group',
 'give_quest' => 'Give quest',
+'give_quest_event' => 'Give quest(in event)',
 'take_quest' => 'Take quest',
 'give_skin'  => 'Skinning',
 'can_pickpocketing' => 'Pickpocketing...',
@@ -567,6 +568,7 @@ $lang = array(
 'faction_name'=>'Faction name',
 
 # Side
+'Both'=>'Both',
 'Alliance'=>'Alliance',
 'Horde'=>'Horde',
 'Blackwater'=>'Blackwater',

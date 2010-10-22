@@ -72,7 +72,7 @@ if ($allmode==0 and $ajaxmode==0)
     echo'<tr><td class=top colspan=2>';
     echo'<table class=findtop><tr><td class=topleft>&nbsp;</td><td class=top>'.$lang['go_find'].'</td><td class=topright>&nbsp;</td></tr></table>';
     echo'</td></tr>';
-    echo'<tr><td align="center">'.$lang['go_name'].':</td<td><input class=ls_search alt=g name="name" value="'.$name.'" size=35></td></tr>';
+    echo'<tr><td align="center">'.$lang['go_name'].':</td><td><input class=ls_search alt=g name="name" value="'.$name.'" size=35></td></tr>';
     echo'<tr><td class=bottom colspan=2><input type=submit value="'.$lang['search'].'"></td></tr>';
     echo'</table>';
     echo'</form>';
