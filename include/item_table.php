@@ -368,7 +368,16 @@ if ($item['Flags']& ITEM_FLAGS_HEROIC || ((isset($item['itemset']) && $item['ite
  default:
  break;
  }
-
+// Уровень предмета
+ if ($item['ItemLevel']) echo '<tr><td>'.sprintf($game_text['ilevel'], $item['ItemLevel']).'</td></tr>';
+// Вывод времени продолжительности
+ if ($item['Duration'])
+ {
+  if ($item['ExtraFlags']&2)
+     echo '<tr><td>'.sprintf($game_text['idurationr'], getTimeText($item['Duration'])).'</td></tr>';
+ else
+    echo '<tr><td>'.sprintf($game_text['iduration'], getTimeText($item['Duration'])).'</td></tr>';
+ }
  // Вывод урона наносимого оружием но не боеприпасами
  if ($item['dmg_min1'] > 0 AND $class!=6)
  {

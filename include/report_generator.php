@@ -1033,12 +1033,18 @@ function r_questReqLvl($data) {echo $data['MinLevel'];}
 function r_questName($data)
 {
   $name = @$data['Title_loc']?$data['Title_loc']:$data['Title'];
-  echo '<a href="?quest='.$data['entry'].'">'.($name?$name:'no name').'</a>';
+  echo '<a href="?quest='.$data['entry'].'">'.($name?$name:'no name').'</a><br>';
   if ($data['ZoneOrSort']>0)
-    echo '<br><div class=areaname><a href="?s=q&ZoneID='.$data['ZoneOrSort'].'">'.getAreaName($data['ZoneOrSort']).'</a></div>';
-  else if ($data['ZoneOrSort']<0)
-    echo '<br><div class=areaname><a href="?s=q&SortID='.(-$data['ZoneOrSort']).'">'.getQuestSort(-$data['ZoneOrSort']).'</a></div>';
-}
+echo '<br><div class=areaname><a href=\"?s=q&ZoneID='.$data['ZoneOrSort'].'">'.getAreaName($data['ZoneOrSort']).'</a></div>';
+  if ($data['RequiredSkill'])
+    echo '<div class=areaname><a href="?s=q&ZoneID='.$data['ZoneOrSort'].'">'.getAreaName($data['ZoneOrSort']).'</a></div>';
+  else  if (($data['ZoneOrSort']<0  && $data['RequiredSkillValue'] == 0) and ($data['ZoneOrSort'] != -263) and ($data['ZoneOrSort'] != -262) and ($data['ZoneOrSort'] != -261) and ($data['ZoneOrSort'] != -372)
+              and ($data['ZoneOrSort'] != -161) and ($data['ZoneOrSort'] != -162) and ($data['ZoneOrSort'] != -82) and ($data['ZoneOrSort'] != -141) and ($data['ZoneOrSort'] != -61) and ($data['ZoneOrSort'] != -81))
+    echo '<div class=areaname><a href="?s=q&SortID='.(-$data['ZoneOrSort']).'">'.getQuestSort(-$data['ZoneOrSort']).'</a></div>';
+  if ($data['RequiredClasses'])
+    echo '<FONT color=#008800 size=-3>'.getAllowableClass($data['RequiredClasses']).'<br>';
+  if ($data['RequiredSkill'])
+    echo '<div class=areaname><a href=\"?s=q&SortID='.($data['RequiredSkill']).'>'.getSkillName($data['RequiredSkill'], 0).'('.$data['RequiredSkillValue'].')</a></div>';
 function r_questGiver($data)
 {
   global $dDB;
@@ -1166,11 +1172,11 @@ function r_questReward($quest)
    }
  }
 
-  if ($quest['RewRepFaction1'])echo getFactionName($quest['RewRepFaction1']).': '.$quest['RewRepValue1'].'<br>';
-  if ($quest['RewRepFaction2'])echo getFactionName($quest['RewRepFaction2']).': '.$quest['RewRepValue2'].'<br>';
-  if ($quest['RewRepFaction3'])echo getFactionName($quest['RewRepFaction3']).': '.$quest['RewRepValue3'].'<br>';
-  if ($quest['RewRepFaction4'])echo getFactionName($quest['RewRepFaction4']).': '.$quest['RewRepValue4'].'<br>';
-  if ($quest['RewRepFaction5'])echo getFactionName($quest['RewRepFaction5']).': '.$quest['RewRepValue5'].'<br>';
+  if ($quest['RewRepFaction1'] && $quest['RewRepValue1'])echo getFactionName($quest['RewRepFaction1']).': '.$quest['RewRepValue1'].'<br>';
+  if ($quest['RewRepFaction2'] && $quest['RewRepValue2'])echo getFactionName($quest['RewRepFaction2']).': '.$quest['RewRepValue2'].'<br>';
+  if ($quest['RewRepFaction3'] && $quest['RewRepValue3'])echo getFactionName($quest['RewRepFaction3']).': '.$quest['RewRepValue3'].'<br>';
+  if ($quest['RewRepFaction4'] && $quest['RewRepValue4'])echo getFactionName($quest['RewRepFaction4']).': '.$quest['RewRepValue4'].'<br>';
+  if ($quest['RewRepFaction5'] && $quest['RewRepValue5'])echo getFactionName($quest['RewRepFaction5']).': '.$quest['RewRepValue5'].'<br>';
   if ($quest['RewMoneyMaxLevel'])
     echo $lang['Rew_XP'].' '.getQuestXPValue($quest).' xp<br>';
   if ($quest['RewOrReqMoney'])
@@ -1189,7 +1195,7 @@ $quest_reward_fields =
 $quest_report = array(
 'QUEST_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level',  'text'=>$lang['quest_lvl'],     'draw'=>'r_questLvl',   'sort_str'=>'`QuestLevel` DESC',      'fields'=>'`QuestLevel`' ),
 'QUEST_REPORT_REQLEVEL'=>array('class'=>'small','sort'=>'req_lvl','text'=>$lang['quest_reqlvl'],  'draw'=>'r_questReqLvl','sort_str'=>'`MinLevel` DESC',        'fields'=>'`MinLevel`' ),
-'QUEST_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name',   'text'=>$lang['quest_name'],    'draw'=>'r_questName',  'sort_str'=>'`Title`',                'fields'=>'`Title`, `ZoneOrSort`, `RequiredSkill`, `RequiredClasses`'),
+'QUEST_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name',   'text'=>$lang['quest_name'],    'draw'=>'r_questName',  'sort_str'=>'`Title`',                'fields'=>'`Title`, `ZoneOrSort`, `RequiredSkill`, `RequiredSkillValue`, `RequiredClasses`'),
 'QUEST_REPORT_GIVER'   =>array('class'=>'left', 'sort'=>'',       'text'=>$lang['quest_giver'],   'draw'=>'r_questGiver', 'sort_str'=>'',                       'fields'=>''),
 'QUEST_REPORT_REWARD'  =>array('class'=>'full', 'sort'=>'reward', 'text'=>$lang['quest_rewards'], 'draw'=>'r_questReward','sort_str'=>'`RewMoneyMaxLevel` DESC','fields'=>&$quest_reward_fields),
 // loot

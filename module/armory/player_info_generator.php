@@ -43,8 +43,19 @@ function getClassId($char)
 // Игрок использует ману
 function isManaUser($char_data)
 {
- $powerType =($char_data[UNIT_FIELD_BYTES_0]>>24)&255;
- if ($powerType==POWER_MANA) return true;
+ switch ($char_data['class'])
+ {
+	case 2:
+	case 3:
+	case 5:
+	case 7:
+	case 8:
+	case 9:
+	case 11:  	$powerType = 0;   break;
+	default: 	$powerType = 1;
+ }
+
+ if ($powerType==0) return true;
  return false;
 }
 // Получаем скилл игрока
@@ -107,7 +118,8 @@ function GetCritChanceFromAgility($rating, $char_data)
  $base = Array(3.1891, 3.2685, -1.532, -0.295, 3.1765, 3.1890, 2.922, 3.454, 2.6222, 20, 7.4755);
  $ratingkey = array_keys($rating);
  $class     = getClassId($char_data);
- $agi       = $char_data[UNIT_FIELD_STAT1];
+ $char_stat = getCharacterStats($char_data['guid']);
+ $agi       = $char_stat['agility'];
  return $base[$class-1] + $agi*$rating[$ratingkey[$class]]*100;
 }
 function GetSpellCritChanceFromIntellect($rating, $char_data)
@@ -115,7 +127,8 @@ function GetSpellCritChanceFromIntellect($rating, $char_data)
  $base = Array(0, 3.3355, 3.602, 0, 1.2375, 0, 2.201, 0.9075, 1.7, 20, 1.8515);
  $ratingkey = array_keys($rating);
  $class     = getClassId($char_data);
- $int       = $char_data[UNIT_FIELD_STAT3];
+ $char_stat = getCharacterStats($char_data['guid']);
+ $int       = $char_stat['intellect'];
  return $base[$class-1] + $int*$rating[$ratingkey[11+$class]]*100;
 }
 function GetAttackPowerForStat($statIndex, $effectiveStat, $class)
@@ -253,7 +266,7 @@ function renderStatRow($statIndex, $char_data, $stat)
  $StatText = getStatTypeName($statIndex);
  $class = $char_data['class'];
  $effectiveStat = $stat;
- createHeader($StatText,$effectiveStat,$posBuff,$negBuff,"normStat");
+ createHeader($StatText,$effectiveStat,"normStat");
  echo "<TR><TD>";
  if ($statIndex==STAT_STRENGTH)
  {
@@ -316,8 +329,6 @@ function renderStatRow($statIndex, $char_data, $stat)
  }
  echo "</TD></TR>";
  $valueClass = "normStat";
- if ($negBuff<0)      $valueClass = "negStat";
- else if ($posBuff>0) $valueClass = "posStat";
  createEndTable($valueClass, $effectiveStat);
 }
 //=========================================
@@ -503,7 +514,7 @@ function renderMeleeAP($char_data)
       if ($Buff>0) {$posBuff=$Buff;$valueClass = "posStat";}
  else if ($Buff<0) {$negBuff=$Buff;$valueClass = "negStat";}
  $stat = $effectiveStat+$Buff;
- createHeader("Attack Power",$stat,$posBuff,$negBuff,"normStat");
+ createHeader("Attack Power",$stat,"normStat");
  printf ("<TR><TD>Increases damage with melee weapons by %.1f damage per second.</TD></TR>",max($stat, 0)/ATTACK_POWER_MAGIC_NUMBER);
  createEndTable($valueClass, $stat);
 }
@@ -618,7 +629,7 @@ function renderRangedAP($char_data)
       if ($Buff>0) {$posBuff=$Buff;$valueClass = "posStat";}
  else if ($Buff<0) {$negBuff=$Buff;$valueClass = "negStat";}
  $stat = $effectiveStat+$Buff;
- createHeader("Attack Power",$stat,$posBuff,$negBuff,"normStat");
+ createHeader("Attack Power",$stat,"normStat");
  printf ("<TR><TD>Increases damage with ranged weapons by %.1f damage per second.</TD></TR>",max($stat, 0)/ATTACK_POWER_MAGIC_NUMBER);
 
  if ($petAp = ComputePetBonus(PET_BONUS_RAP_TO_AP, $stat, $class))

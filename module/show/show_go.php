@@ -37,7 +37,7 @@ else
   echo "<TBODY>";
   echo "<TR>";
   // $icon = "--";//getObjIcon($obj[displayId]);
-  // echo "<TD vAlign=top align=right width=20%><br><A href=\"#\"><IMG height=64 width=64 border=0 src='$icon'></A></TD>";
+  // echo "<TD vAlign=top align=right width=20><br><A href=\"#\"><IMG height=64 width=64 border=0 src='$icon'></A></TD>";
   echo "<TD align=center>";generateGameobjectTable($obj);echo "</TD>";
   echo "</TR>";
   echo "<TR><TD colSpan=2 align=center><a href=\"?map&obj=$obj[entry]\">$lang[show_map] (".getGameobjectCount($obj['entry']).")</a></TD></TR>";

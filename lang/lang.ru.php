@@ -232,6 +232,7 @@ $lang = array(
 // Quest info
 'one_of_this_items' => 'Одна из этих вещей',
 'obtained_at_level' => 'Доступен с уровня',
+'required_races' => 'Сторона:',
 'quest_level' => 'Уровень квеста:',
 'provided' => 'Выдается:',
 'provided_desc' => 'Эта вещь выдается когда принят квест.',
@@ -445,6 +446,7 @@ $lang = array(
 'ap_date'     => 'Дата начисления очков арены:',
 'daily_quest_date'     => 'Дата сброса ежедневных квестов:',
 'weekly_quest_date'     => 'Дата сброса еженедельных квестов:',
+'monthly_quest_date'     => 'Дата сброса ежемесячных квестов:',
 
 # Main menu
 'main'=>'Главная',
@@ -469,7 +471,9 @@ $lang = array(
 'auction'=>'Аукцион',
 'guild'=>'Гильдии',
 'zone'=>'Зоны',
-'instance'=>'Инстансы',
+'instance'=>'Подземелья',
+'instances'=>'Подземелье',
+'in_zone'=>'В зоне',
 'statistic'=>'Статистика',
 'item_set'=>'Комплекты',
 'faction_lookup' =>'Поиск Фракции',

@@ -60,16 +60,19 @@ else
  $ap_dateSql = $cDB->selectCell("SELECT `NextArenaPointDistributionTime` FROM `saved_variables`"); 
  $daily_quest_dateSql = $cDB->selectCell("SELECT `NextDailyQuestResetTime` FROM `saved_variables`"); 
  $weekly_quest_dateSql = $cDB->selectCell("SELECT `NextWeeklyQuestResetTime` FROM `saved_variables`"); 
+ $monthly_quest_dateSql = $cDB->selectCell("SELECT `NextMonthlyQuestResetTime` FROM `saved_variables`"); 
 
  $ap_date = date("H:i:s d.m.Y", $ap_dateSql);  
  $daily_quest_date = date("H:i:s d.m.Y", $daily_quest_dateSql); 
  $weekly_quest_date = date("H:i:s d.m.Y", $weekly_quest_dateSql);  
+ $monthly_quest_date = date("H:i:s d.m.Y", $monthly_quest_dateSql);  
 
  echo "<table class=report width=100%>";
  echo "<tr><td colspan=2 class=head>".$lang['stat_timers']."</td></tr>";
  echo "<tr><td>".$lang['ap_date']."</td><td>".$ap_date."</td></tr>";
  echo "<tr><td>".$lang['daily_quest_date']."</td><td>".$daily_quest_date."</td></tr>";
  echo "<tr><td>".$lang['weekly_quest_date']."</td><td>".$weekly_quest_date."</td></tr>"; 
+ echo "<tr><td>".$lang['monthly_quest_date']."</td><td>".$monthly_quest_date."</td></tr>"; 
  echo "</table>";
 
   if ($number <= 0)

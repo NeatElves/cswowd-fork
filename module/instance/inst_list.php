@@ -70,7 +70,7 @@ if (checkUseCacheHtml($cacheFilename, 24*60*60))
 {
  echo "<table class=report width=100%>";
  echo "<td class=head colspan=4>Instances</td>";
- echo "<tr><th width=1px></th><th>Уровень</th><th>Подземелье</th><th>В зоне</th></tr>";
+ echo "<tr><th width=1px></th><th>$lang[level]</th><th>$lang[instances]</th><th>$lang[in_zone]</th></tr>";
  foreach($inst_list as $inst)
  {
    $level = $inst[0]==$inst[1] ? $inst[0]:$inst[0]."-".$inst[1];
