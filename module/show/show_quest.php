@@ -346,23 +346,6 @@ foreach ($rows as $creature)
   echo "</TD></TR>";
   $number++;
 }
-else
-if ($rows = $dDB->select("SELECT *
-                          FROM `creature_template` join `game_event_creature_quest`
-                          WHERE
-                          `game_event_creature_quest`.`quest` = ?d AND
-                          `game_event_creature_quest`.`id` = `creature_template`.`entry`", $quest['entry']))
-foreach ($rows as $creature)
-{
-  localiseCreature($creature);
-  $loyality = getLoyality($creature['faction_A']);
-  echo "<TR><TD><A style='float: right;' href=\"?map&npc=$creature[entry]\">$lang[map]</A>";
-  echo "<A href=\"?npc=$creature[entry]\">$creature[name]</A> ($loyality)";
-  if ($creature['subname'] != "")
-   echo "<BR><FONT color=#008800 size=-3>&lt;$creature[subname]&gt;</FONT>";
-  echo "</TD></TR>";
-  $number++;
-}
 
 if ($rows = $dDB->select("SELECT *
                           FROM `gameobject_template` join `gameobject_questrelation`

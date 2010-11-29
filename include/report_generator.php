@@ -1058,15 +1058,6 @@ function r_questGiver($data)
     foreach ($src as $creature){localiseCreature($creature);r_npcRName($creature);}
     return;
   }
-  else
-  if ($src = $dDB->select(
-   'SELECT `entry`, `name`, `subname`, `faction_A`
-    FROM  `creature_template` left join `game_event_creature_quest` ON `creature_template`.`entry` = `game_event_creature_quest`.`id`
-    WHERE `game_event_creature_quest`.`quest` = ?d', $data['entry']))
-  {
-    foreach ($src as $creature){localiseCreature($creature);r_npcRName($creature);}
-    return;
-  }
   // Search GO quest giver
   if ($src = $dDB->select(
   'SELECT `entry`, `name`
@@ -1219,7 +1210,6 @@ class QuestReportGenerator extends ReportGenerator{
    case 'go_giver':  $this->table = '(`quest_template` join `gameobject_questrelation` ON `quest_template`.`entry` = `gameobject_questrelation`.`quest`)';break;
    case 'go_take':   $this->table = '(`quest_template` join `gameobject_involvedrelation` ON `quest_template`.`entry` = `gameobject_involvedrelation`.`quest`)';break;
    case 'npc_giver': $this->table = '(`quest_template` join `creature_questrelation` ON `quest_template`.`entry` = `creature_questrelation`.`quest`)';break;
-   case 'npc_giver_event': $this->table = '(`quest_template` join `game_event_creature_quest` ON `quest_template`.`entry` = `game_event_creature_quest`.`quest`)';break;
    case 'npc_take':  $this->table = '(`quest_template` join `creature_involvedrelation` ON `quest_template`.`entry` = `creature_involvedrelation`.`quest`)';break;
    case 'mail_loot': $this->table = '(`quest_template` join `mail_loot_template` ON `quest_template`.`RewMailTemplateId` = `mail_loot_template`.`entry`)';break;
    default:          $this->table = '`quest_template`';break;
