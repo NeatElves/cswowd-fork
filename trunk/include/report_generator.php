@@ -1045,6 +1045,7 @@ echo '<br><div class=areaname><a href=\"?s=q&ZoneID='.$data['ZoneOrSort'].'">'.g
     echo '<FONT color=#008800 size=-3>'.getAllowableClass($data['RequiredClasses']).'<br>';
   if ($data['RequiredSkill'])
     echo '<div class=areaname><a href=\"?s=q&SortID='.($data['RequiredSkill']).'>'.getSkillName($data['RequiredSkill'], 0).'('.$data['RequiredSkillValue'].')</a></div>';
+}
 function r_questGiver($data)
 {
   global $dDB;
