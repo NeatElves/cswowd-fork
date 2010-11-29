@@ -21,10 +21,10 @@ if (!$arenateam_data)
 
 if ($arenateam_data AND $arenateam_stats AND $arenateam_member)
 {
- $losses_week    = $arenateam_stats['games'] - $arenateam_stats['wins'];
- $winperc_week   = $arenateam_stats['games'] ? round(($arenateam_stats['wins']/$arenateam_stats['games']) * 100) : 0;
- $losses_season  = $arenateam_stats['played'] - $arenateam_stats['wins2'];
- $winperc_season = $arenateam_stats['played'] ? round(($arenateam_stats['wins2']/$arenateam_stats['played']) * 100) : 0;
+ $losses_week    = $arenateam_stats['games_week'] - $arenateam_stats['wins_week'];
+ $winperc_week   = $arenateam_stats['games_week'] ? round(($arenateam_stats['wins_week']/$arenateam_stats['games_week']) * 100) : 0;
+ $losses_season  = $arenateam_stats['games_season'] - $arenateam_stats['wins_season'];
+ $winperc_season = $arenateam_stats['games_season'] ? round(($arenateam_stats['wins_season']/$arenateam_stats['games_season']) * 100) : 0;
 
  $type   = $arenateam_data['type'];
  $back   = ($arenateam_data['BackgroundColor']+0)&0xFFFFFF;
@@ -40,15 +40,15 @@ if ($arenateam_data AND $arenateam_stats AND $arenateam_member)
   </tr>
   <tr>
     <td colspan=2>".$lang['arena_this_week']."</td>
-    <td colspan=2>".$lang['arena_played'].": $arenateam_stats[games]</td>
-    <td colspan=2>".$lang['arena_wins'].": $arenateam_stats[wins]</td>
+    <td colspan=2>".$lang['arena_played'].": $arenateam_stats[games_week]</td>
+    <td colspan=2>".$lang['arena_wins'].": $arenateam_stats[wins_week]</td>
     <td colspan=2>".$lang['arena_lose'].": $losses_week</td>
     <td colspan=2>".$lang['arena_win_pct'].": $winperc_week %</td>
   </tr>
   <tr>
     <td colspan=2>".$lang['arena_total_stat']."</td>
-    <td colspan=2>".$lang['arena_played'].": $arenateam_stats[played]</td>
-    <td colspan=2>".$lang['arena_wins'].": $arenateam_stats[wins2]</td>
+    <td colspan=2>".$lang['arena_played'].": $arenateam_stats[games_season]</td>
+    <td colspan=2>".$lang['arena_wins'].": $arenateam_stats[wins_season]</td>
     <td colspan=2>".$lang['arena_lose'].": $losses_season</td>
     <td colspan=2>".$lang['arena_win_pct'].": $winperc_season %</td>
   </tr>

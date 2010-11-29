@@ -74,6 +74,9 @@ else
    echo "<TD>";generateItemTable($item,$item_data,0);echo "</TD>";
    echo "</TR></TBODY></TABLE>";
 
+   if ($item['minMoneyLoot']) echo "$lang[Rew_money] ".money($item['minMoneyLoot']);
+   if (($item['maxMoneyLoot']) && ($item['maxMoneyLoot']>$item['minMoneyLoot'])) echo " - ".money($item['maxMoneyLoot']);
+
    if ($flags2&ITEM_FLAGS2_HORDE_ONLY) echo "<FONT color=#ff0000> $lang[reqirement]: $lang[Horde]</FONT>";
    if ($flags2&ITEM_FLAGS2_ALLIANCE_ONLY) echo "<FONT color=#0000ff> $lang[reqirement]: $lang[Alliance]</FONT>";
    echo "<br />";

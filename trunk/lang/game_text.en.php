@@ -578,7 +578,9 @@ $game_text = array(
 'weapon_speed'=>'Speed %2.2f',
 'weapon_dps'=>'(%2.2f damage per second)',
 'ammo_dps'=>'Adds %2.2f damage per second',
-
+'ilevel'=>'Item level: %d',
+'iduration'=>'Duration: %s',
+'idurationr'=>'Duration: %s (real time)',
 'socket_bonus'=>'Socket Bonus: %s',
 'random_enchant'=>'&lt;Random enchantment&gt;',
 'prospectable'=>'Prospectable',

@@ -229,6 +229,7 @@ $lang = array(
 # Quest info
 'one_of_this_items' => 'One of this items',
 'obtained_at_level' => 'Obtained at level',
+'required_races' => 'Side:',
 'quest_level' => 'Quest level:',
 'provided' => 'Provided:',
 'provided_desc' => 'Provided item:',
@@ -441,6 +442,7 @@ $lang = array(
 'ap_date'     => 'Date of scoring arena:',
 'daily_quest_date'     => 'Date reset daily quests:',
 'weekly_quest_date'     => 'Date reset weekly quests:',
+'monthly_quest_date'     => 'Date reset monthly quests:',
 
 # Main menu
 'main'=>'Main',
@@ -466,6 +468,8 @@ $lang = array(
 'guild'=>'Guilds',
 'zone'=>'Zones',
 'instance'=>'Instances',
+'instances'=>'Instance',
+'in_zone'=>'In zone',
 'statistic'=>'Statistic',
 'item_set'=>'Item Sets',
 'faction_lookup' =>'Search Faction',

@@ -21,9 +21,8 @@ else
 
  if (!$ajaxmode){
  echo '
- <ul class=my_tabs>
- <li><a onclick="return uploadFromHref(this, \'reportContainer\');" href=?player='.$guid.'>Персонаж</a></li>
- ';
+ <ul class=my_tabs><center>
+ <li><a onclick="return uploadFromHref(this, \'reportContainer\');" href=?player='.$guid.'>Персонаж</a></li>';
  if ($config['show_player_3d']) echo '<li><a onclick="return uploadFromHref(this, \'reportContainer\');" href=?player='.$guid.'&tab=3d>Персонаж 3D</a></li>';
  echo '
  <li><a onclick="return uploadFromHref(this, \'reportContainer\');" href=?player='.$guid.'&tab=talents>Таланты</a></li>
@@ -33,7 +32,7 @@ else
  <li><a onclick="return uploadFromHref(this, \'reportContainer\');" href=?player='.$guid.'&tab=quests>Квесты</a></li>';
  //<li><a onclick="return uploadFromHref(this, \'reportContainer\');" href=?player='.$guid.'&tab=inventory>Инвентарь</a></li>
  //<li><a onclick="return uploadFromHref(this, \'reportContainer\');" href=?player='.$guid.'&tab=guild>Гильдия</a></li>
- echo '</ul>
+ echo '</ul></center>
  <div id=reportContainer>';
  };
 
