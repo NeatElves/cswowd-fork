@@ -98,7 +98,7 @@ $gSpellEffect = array(
 '94'=>'Self resurrect',
 '95'=>'Skinning',
 '96'=>'Charge',
-'97'=>'SPELL_EFFECT_97',
+'97'=>'Summon all totems',
 '98'=>'Knock back',
 '99'=>'Disenchant',
 '100'=>'Inebriate',
@@ -139,7 +139,7 @@ $gSpellEffect = array(
 '135'=>'Call pet',
 '136'=>'Heal pct',
 '137'=>'Energize pct',
-'138'=>'SPELL_EFFECT_138',
+'138'=>'Leap back',
 '139'=>'Clear quest',
 '140'=>'Force cast',
 '141'=>'SPELL_EFFECT_141',
@@ -150,7 +150,7 @@ $gSpellEffect = array(
 '146'=>'Activate rune',
 '147'=>'Quest fail',
 '148'=>'SPELL_EFFECT_148',
-'149'=>'SPELL_EFFECT_149',
+'149'=>'Charge 2',
 '150'=>'SPELL_EFFECT_150',
 '151'=>'Trigger spell 2',
 '152'=>'SPELL_EFFECT_152',
@@ -164,6 +164,7 @@ $gSpellEffect = array(
 '160'=>'SPELL_EFFECT_160',
 '161'=>'Learn a Talent Specialization',
 '162'=>'Activate Spec',
+'163'=>'SPELL_EFFECT_163',
 );
 
 $gSpellAuraName = array(
@@ -758,8 +759,8 @@ function getBasePointDesc($spell, $index)
 {
   if (empty($spell))
       return;
-  $s = $spell['EffectBasePoints_'.$index]+$spell['EffectBaseDice_'.$index];
-  if ($spell['EffectDieSides_'.$index] > $spell['EffectBaseDice_'.$index])
+  $s = $spell['EffectBasePoints_'.$index]+1;
+  if ($spell['EffectDieSides_'.$index] > 1)
     $s.=" - ".abs($spell['EffectBasePoints_'.$index]+$spell['EffectDieSides_'.$index]);
 
   if ($spell['EffectRealPointsPerLevel_'.$index])
@@ -775,12 +776,12 @@ function getBasePointDesc($spell, $index)
 function getSpellData($spell)
 {
   // Basepoints
-  $s1 = abs($spell['EffectBasePoints_1']+$spell['EffectBaseDice_1']);
-  $s2 = abs($spell['EffectBasePoints_2']+$spell['EffectBaseDice_2']);
-  $s3 = abs($spell['EffectBasePoints_3']+$spell['EffectBaseDice_3']);
-  if ($spell['EffectDieSides_1']>$spell['EffectBaseDice_1']) $s1.=" - ".abs($spell['EffectBasePoints_1']+$spell['EffectDieSides_1']);
-  if ($spell['EffectDieSides_2']>$spell['EffectBaseDice_2']) $s2.=" - ".abs($spell['EffectBasePoints_2']+$spell['EffectDieSides_2']);
-  if ($spell['EffectDieSides_3']>$spell['EffectBaseDice_3']) $s3.=" - ".abs($spell['EffectBasePoints_3']+$spell['EffectDieSides_3']);
+  $s1 = abs($spell['EffectBasePoints_1']+1);
+  $s2 = abs($spell['EffectBasePoints_2']+1);
+  $s3 = abs($spell['EffectBasePoints_3']+1);
+  if ($spell['EffectDieSides_1']>1) $s1.=" - ".abs($spell['EffectBasePoints_1']+$spell['EffectDieSides_1']);
+  if ($spell['EffectDieSides_2']>1) $s2.=" - ".abs($spell['EffectBasePoints_2']+$spell['EffectDieSides_2']);
+  if ($spell['EffectDieSides_3']>1) $s3.=" - ".abs($spell['EffectBasePoints_3']+$spell['EffectDieSides_3']);
 
   $d  = 0;
   if ($spell['DurationIndex'])
@@ -812,7 +813,7 @@ function getSpellData($spell)
   $spellData['x1']= $spell['EffectChainTarget_1'];
   $spellData['x2']= $spell['EffectChainTarget_2'];
   $spellData['x3']= $spell['EffectChainTarget_3'];
-  $spellData['i'] = $spell['MaxAffectedTargets'];
+//  $spellData['i'] = $spell['MaxAffectedTargets'];
   $spellData['d'] = getTimeText($d);
   $spellData['d1']= getTimeText($d);
   $spellData['d2']= getTimeText($d);

@@ -4,6 +4,7 @@ include_once ("spell_table.php");
 include_once ("talent_table.php");
 include_once ("gameobject_table.php");
 include_once ("enchant_table.php");
+include_once("include/quest_data.php");
 
 function getLPageOffset($page, $limit)
 {
@@ -972,6 +973,20 @@ function getRepSpillover($faction_id)
   global $dDB;
   return $dDB->select("-- CACHE: 1h
   SELECT * FROM `reputation_spillover_template` WHERE `faction` = ?d", $faction_id);
+}
+
+function getGameEventQuest($quest_id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `event` FROM `game_event_quest` WHERE `quest` = ?d", $quest_id);
+}
+
+function getGameEventName($event_id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `description` FROM `game_event` WHERE `entry` = ?d", $event_id);
 }
 
 //********************************************************************************

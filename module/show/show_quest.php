@@ -124,10 +124,30 @@ if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
  if (($quest['ZoneOrSort']<0 && $quest['RequiredSkillValue'] == 0) and ($quest['ZoneOrSort'] != -263) and ($quest['ZoneOrSort'] != -262) and ($quest['ZoneOrSort'] != -261) and ($quest['ZoneOrSort'] != -372)
  and ($quest['ZoneOrSort'] != -161) and ($quest['ZoneOrSort'] != -162) and ($quest['ZoneOrSort'] != -82) and ($quest['ZoneOrSort'] != -141) and ($quest['ZoneOrSort'] != -61) and ($quest['ZoneOrSort'] != -81))
    echo "<a style='float: right;' href=\"?s=q&SortID=".(-$quest['ZoneOrSort'])."\">".getQuestSort(-$quest['ZoneOrSort'], 0)."</a>";
- echo "$lang[quest_level] $quest[QuestLevel]</td></tr>";
- if ($quest['RequiredSkill'])
+
+ echo "$lang[quest_level] $quest[QuestLevel]<br>";
+
+if ($quest['RequiredSkill'])
    echo "<a style='float: right;' href=\"?s=q&SortID=".($quest['RequiredSkill'])."\">".getSkillName($quest['RequiredSkill'], 0)." ($quest[RequiredSkillValue])</a>";
-   echo "$lang[obtained_at_level] $quest[MinLevel]</td></tr>";
+ echo "$lang[obtained_at_level] $quest[MinLevel]</td></tr>";
+
+ if (getGameEventQuest($quest['entry']))
+  {
+  $qevent=getGameEventQuest($quest['entry']);
+   echo '<TR><TD>'.$lang['obtained_at_event'].': <FONT color=#E614E6>'.getGameEventName($qevent).'</FONT></td></tr>';
+  }
+
+ if ($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
+     echo "<TR><TD>$lang[item_type]: <b>$lang[quest_type3]</b></TD></TR>";
+
+ if ($quest['QuestFlags'] & QUEST_FLAGS_WEEKLY)
+     echo "<TR><TD>$lang[item_type]: <b>$lang[quest_type2]</b></TD></TR>";
+
+ if ($quest['QuestFlags'] & QUEST_FLAGS_DAILY)
+     echo "<TR><TD>$lang[item_type]: <b>$lang[quest_type1]</b></TD></TR>";
+
+ if (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_REPEATABLE) && (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY) ==0)&& ($quest['QuestFlags'] & (QUEST_FLAGS_DAILY | QUEST_FLAGS_WEEKLY))  == 0)
+     echo "<TR><TD>$lang[item_type]: <b>$lang[quest_type0]</b></TD></TR>";
 
  if ($quest['RequiredMinRepFaction'])
    echo "<TR><TD>$lang[item_faction_rank]:</TD></TR>";
@@ -325,6 +345,14 @@ if ($quest['RewRepFaction1'] OR $quest['RewRepFaction2'] OR
  if ($quest['RewRepFaction5'] && $quest['RewRepValue5'])echo "<TR><TD>&nbsp;".getFactionName($quest['RewRepFaction5']).": $quest[RewRepValue5]</TD></TR>";
 }
 if($quest['RewMoneyMaxLevel'])  echo "<TR><TD class=mark>$lang[Rew_XP] ".getQuestXPValue($quest)." xp";
+if($quest['RewHonorAddition'] or $quest['RewHonorMultiplier'])
+{
+if ($quest['RewHonorMultiplier'])
+  $ihonor=getTeamContributionPoints(79)*$quest['RewHonorMultiplier']*0.1000000014901161+$quest['RewHonorAddition'];
+else
+ $ihonor=$quest['RewHonorAddition'];
+ echo "<TR><TD class=mark>$lang[Rew_honor] ".$ihonor;
+}
 if($quest['RewOrReqMoney']) echo "<TR><TD class=mark>$lang[Rew_money]&nbsp;".money($quest['RewOrReqMoney'])."</TD></TR>";
 ###
 

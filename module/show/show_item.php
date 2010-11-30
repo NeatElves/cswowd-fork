@@ -208,7 +208,7 @@ else
   //********************************************************************************
   if ($item['startquest'])
   {
-   $giveQuest =&new QuestReportGenerator('item_giver');
+   $giveQuest =& new QuestReportGenerator('item_giver');
    $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
    if ($giveQuest->Init($fields, $baseLink, 'qgLIST', $config['fade_limit'], 'name'))
    {
@@ -222,7 +222,7 @@ else
   if ($ajaxmode==0)
   {
   // Как с сундука
-  if ($item['Flags' ]& ITEM_FLAGS_OPENABLE)
+  if ($item['Flags'] & ITEM_FLAGS_OPENABLE)
   {
    $page_seek = init_pagePerMark($mark, "lock_lootLIST", $page);
    $rows = getLootList($item['entry'], "item_loot_template", $totalRecords, $page_seek, $config['fade_limit']);
@@ -293,7 +293,7 @@ else
   //********************************************************************************
   // Quest list reward this item
   //********************************************************************************
-  $qReward =&new QuestReportGenerator();
+  $qReward =& new QuestReportGenerator();
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
   if ($qReward->Init($fields, $baseLink, 'qrewardLIST', $config['fade_limit'], 'name'))
   {
@@ -303,7 +303,7 @@ else
   //********************************************************************************
   // Required for quest (except if this item quest)
   //********************************************************************************
-  $reqForQuest =&new QuestReportGenerator();
+  $reqForQuest =& new QuestReportGenerator();
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
   if ($reqForQuest->Init($fields, $baseLink, 'qreqLIST', $config['fade_limit'], 'name'))
   {
@@ -313,7 +313,7 @@ else
   //********************************************************************************
   // Give on quest take (except if this item quest)
   //********************************************************************************
-  $srcForQuest =&new QuestReportGenerator();
+  $srcForQuest =& new QuestReportGenerator();
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
   if ($srcForQuest->Init($fields, $baseLink, 'qgiveLIST', $config['fade_limit'], 'name'))
   {
