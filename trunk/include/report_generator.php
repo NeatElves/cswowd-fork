@@ -363,7 +363,8 @@ function r_lootRequire($data)
      echo 'Equipped '.text_show_item($item['entry'], $item['displayid']);
      break;
    case  4: // CONDITION_ZONEID - zone_id, 0
-     echo 'In '.getAreaName($data['condition_value1']);
+     if ($data['condition_value2'] > 0 ) echo 'Not in '.getAreaName($data['condition_value1']);
+     if ($data['condition_value2'] == 0) echo 'In '.getAreaName($data['condition_value1']);
      break;
    case  5: // CONDITION_REPUTATION_RANK - faction_id, min_rank
      echo getFactionName($data['condition_value1']).'('.$data['condition_value2'].')';
@@ -1035,8 +1036,6 @@ function r_questName($data)
   $name = @$data['Title_loc']?$data['Title_loc']:$data['Title'];
   echo '<a href="?quest='.$data['entry'].'">'.($name?$name:'no name').'</a><br>';
   if ($data['ZoneOrSort']>0)
-echo '<br><div class=areaname><a href=\"?s=q&ZoneID='.$data['ZoneOrSort'].'">'.getAreaName($data['ZoneOrSort']).'</a></div>';
-  if ($data['RequiredSkill'])
     echo '<div class=areaname><a href="?s=q&ZoneID='.$data['ZoneOrSort'].'">'.getAreaName($data['ZoneOrSort']).'</a></div>';
   else  if (($data['ZoneOrSort']<0  && $data['RequiredSkillValue'] == 0) and ($data['ZoneOrSort'] != -263) and ($data['ZoneOrSort'] != -262) and ($data['ZoneOrSort'] != -261) and ($data['ZoneOrSort'] != -372)
               and ($data['ZoneOrSort'] != -161) and ($data['ZoneOrSort'] != -162) and ($data['ZoneOrSort'] != -82) and ($data['ZoneOrSort'] != -141) and ($data['ZoneOrSort'] != -61) and ($data['ZoneOrSort'] != -81))

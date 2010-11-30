@@ -172,7 +172,6 @@ $lang = array(
 'req_for_quest' => 'Required for quest',
 'kill_kredit_group' => 'Group',
 'give_quest' => 'Give quest',
-'give_quest_event' => 'Give quest(in event)',
 'take_quest' => 'Take quest',
 'give_skin'  => 'Skinning',
 'can_pickpocketing' => 'Pickpocketing...',
@@ -229,6 +228,7 @@ $lang = array(
 # Quest info
 'one_of_this_items' => 'One of this items',
 'obtained_at_level' => 'Obtained at level',
+'obtained_at_event' => 'Available only in the event',
 'required_races' => 'Side:',
 'quest_level' => 'Quest level:',
 'provided' => 'Provided:',
@@ -248,6 +248,7 @@ $lang = array(
 'req_items' => 'Req items:',
 'Rew_money' => 'Money:',
 'Rew_XP' => 'Experience:',
+'Rew_honor' => 'Addition honor:',
 'Rew_reputation' => 'Reputation:',
 'cast_spell' => 'Cast on you:',
 'learn_spell' => 'Learn spell:',
@@ -261,6 +262,10 @@ $lang = array(
 'Rew_select_item'  => 'Item select:',
 'req_for_quest'    => 'Require for quest:',
 'additional_info'  => 'Additional info',
+'quest_type0' => 'Repeatable',
+'quest_type1' => 'Daily',
+'quest_type2' => 'Weekly',
+'quest_type3' => 'Monthly',
 
 # Spell info
 'spell_casted_by' => 'Creature cast',
