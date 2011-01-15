@@ -179,13 +179,18 @@ function isItemOnPlayer($id, $char_eqip)
 
 function noBorderItemTable($item, $item_data=0)
 {
+ global $lang;
+ $flags2 = getItemFlags2($item['entry']);
  echo '<table class=item cellSpacing=0><tbody>';
  renderItemData($item, $item_data);
  // Extra data
+ if ($flags2 & ITEM_FLAGS2_HORDE_ONLY) echo '<tr><td>'.$lang['reqirement'].': '.$lang['Horde'].'</td></tr>';
+ if ($flags2 & ITEM_FLAGS2_ALLIANCE_ONLY) echo '<tr><td>'.$lang['reqirement'].': '.$lang['Alliance'].'</td></tr>';
+
  if ($item['SellPrice'])
-  echo '<tr><td class=sellprice>&nbsp;Sell Price:&nbsp;'.money($item['SellPrice'], 8).'</td></tr>';
+  echo '<tr><td class=sellprice>&nbsp;'.$lang['sell_price'].': '.money($item['SellPrice']).'</td></tr>';
  else
-  echo '<tr><td class=sellprice>&nbsp;No sell price</td></tr>';
+  echo '<tr><td class=sellprice>&nbsp;'.$lang['no_sell_price'].'</td></tr>';
 // echo '<tr><td class=bottom>This is from MaNGOS database!</td></tr>';
  echo '</tbody></table>';
 }

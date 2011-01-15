@@ -40,6 +40,8 @@ else
   // echo "<TD vAlign=top align=right width=20><br><A href=\"#\"><IMG height=64 width=64 border=0 src='$icon'></A></TD>";
   echo "<TD align=center>";generateGameobjectTable($obj);echo "</TD>";
   echo "</TR>";
+  if ($obj['mingold']) echo "<TD align=center><FONT color=#000000>$lang[Rew_money] ".money($obj['mingold']);
+  if (($obj['maxgold']) && ($obj['maxgold']>$obj['mingold'])) echo " - ".money($obj['maxgold']);
   echo "<TR><TD colSpan=2 align=center><a href=\"?map&obj=$obj[entry]\">$lang[show_map] (".getGameobjectCount($obj['entry']).")</a></TD></TR>";
   echo "</TBODY></TABLE>";
 
@@ -362,7 +364,7 @@ else
  //********************************************************************************
  // Required for quest list
  //********************************************************************************
- $reqForQuest =&new QuestReportGenerator();
+ $reqForQuest =& new QuestReportGenerator();
  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
  if ($reqForQuest->Init($fields, $baseLink, 'qreqLIST', $config['fade_limit'], 'name'))
  {
@@ -372,7 +374,7 @@ else
  //********************************************************************************
  // Give quest list
  //********************************************************************************
- $giveQuest =&new QuestReportGenerator('go_giver');
+ $giveQuest =& new QuestReportGenerator('go_giver');
  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
  if ($giveQuest->Init($fields, $baseLink, 'qgLIST', $config['fade_limit'], 'name'))
  {
@@ -382,7 +384,7 @@ else
  //********************************************************************************
  // Take quest list
  //********************************************************************************
- $takeQuest =&new QuestReportGenerator('go_take');
+ $takeQuest =& new QuestReportGenerator('go_take');
  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
  if ($takeQuest->Init($fields, $baseLink, 'qtLIST', $config['fade_limit'], 'name'))
  {

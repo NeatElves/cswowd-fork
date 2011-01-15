@@ -81,6 +81,6 @@ if ($rows)
  generatePage($number, $page, "<A href=\"?auction=$type&page=%d\">%d </A>", 4);
 }
 else
- echo "<TR><TD colspan=4 align=center>Empty</TD></TR>";
-echo "</TBODY></TABLE>";
+ echo "<tr><td colspan=4 align=center>$lang[empty]</td></tr>";
+echo "</tbody></table>";
 ?>
