@@ -91,22 +91,21 @@ else
  if ($quest['Type'])
    echo "<br><FONT size=-3>&lt;".getQuestType($quest['Type'])."&gt;</FONT>";
 
- echo "</br>";
-
  if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 1101) && ($quest['RequiredRaces'] !=1791))
  {
-     echo "<br><FONT color=#0000ff>$lang[required_races] $lang[Alliance]</FONT>";
+     echo "<br><FONT color=#0000ff>$lang[required_races]&nbsp;$lang[Alliance]&nbsp;</FONT><img width=22 height=22 src='images/player_info/factions_img/alliance.gif'>";
      echo '<br><FONT color=#0000ff>'.$game_text['allowable_race'].' '.getAllowableRace($quest['RequiredRaces']).'</FONT>';
  }
  
 if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 690) && ($quest['RequiredRaces'] !=1791))
  {
-     echo "<br><FONT color=#ff0000>$lang[required_races] $lang[Horde]</FONT>";
+     echo "<br><FONT color=#ff0000>$lang[required_races]&nbsp;$lang[Horde]&nbsp;</FONT><img width=22 height=22 src='images/player_info/factions_img/horde.gif'>";
      echo '<br><FONT color=#ff0000>'.$game_text['allowable_race'].' '.getAllowableRace($quest['RequiredRaces']).'</FONT>';
  }
 
 if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
  {
+     echo "</br>";
      echo "<br><FONT color=#008800>$lang[required_races] $lang[Both]</FONT>";
      echo '<br><FONT color=#008800>'.$game_text['allowable_race'].' '.getAllowableRace(1791).'</FONT>';
  }
@@ -130,6 +129,12 @@ if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
 if ($quest['RequiredSkill'])
    echo "<a style='float: right;' href=\"?s=q&SortID=".($quest['RequiredSkill'])."\">".getSkillName($quest['RequiredSkill'], 0)." ($quest[RequiredSkillValue])</a>";
  echo "$lang[obtained_at_level] $quest[MinLevel]</td></tr>";
+
+ if ($quest['SuggestedPlayers'])
+     echo "<TR><TD>$lang[suggestedplayers] $quest[SuggestedPlayers]</TD></TR>";
+
+ if ($quest['LimitTime'])
+     echo '<TR><TD>'.$lang['qlimittime'].' '.getTimeText($quest['LimitTime']).'</TD></TR>';
 
  if (getGameEventQuest($quest['entry']))
   {
@@ -470,14 +475,14 @@ if ($quest['PrevQuestId'] != 0 or $quest['NextQuestId'] != 0 or $needForQuest)
      $qinfo = $prevquest[$list-$step];
      echo "<TR><TD>";
      echo "<div style='float: right;'>($lang[level] $qinfo[QuestLevel])</div>";
-     echo "Step ($step)&nbsp;<A href=\"?quest=$qinfo[entry]\">$qinfo[Title]</A>";
+     echo "$lang[step]($step)&nbsp;<A href=\"?quest=$qinfo[entry]\">$qinfo[Title]</A>";
      echo "</TD></TR>";
      $step++;
     }
  }
  echo "<TR><TD>";
  echo "<div style='float: right;'>($lang[level] $quest[QuestLevel])</div>";
- echo "Step ($step)&nbsp;$quest[Title]";
+ echo "$lang[step]($step)&nbsp;$quest[Title]";
  echo "</TD></TR>";
  $step++;
  // Пытаемся найти следующие квесты
@@ -490,7 +495,7 @@ if ($quest['PrevQuestId'] != 0 or $quest['NextQuestId'] != 0 or $needForQuest)
      $nextquest = getQuest(abs($nextquest['NextQuestId']));
      echo "<TR><TD>";
      echo "<div style='float: right;'>($lang[level] $nextquest[QuestLevel])</div>";
-     echo "Step ($step)&nbsp;<A href=\"?quest=$nextquest[entry]\">$nextquest[Title]</A>";
+     echo "$lang[step]($step)&nbsp;<A href=\"?quest=$nextquest[entry]\">$nextquest[Title]</A>";
      echo "</TD></TR>";
    }
    // Если не вышло то по полю PrevQuestId = $nextquest[entry](у других квестов)
@@ -502,7 +507,7 @@ if ($quest['PrevQuestId'] != 0 or $quest['NextQuestId'] != 0 or $needForQuest)
      $nextquest=$needForQuest;
      echo "<TR><TD>";
      echo "<div style='float: right;'>($lang[level] $nextquest[QuestLevel])</div>";
-     echo "Step ($step)&nbsp;<A href=\"?quest=$nextquest[entry]\">$nextquest[Title]</A>";
+     echo "$lang[step]($step)&nbsp;<A href=\"?quest=$nextquest[entry]\">$nextquest[Title]</A>";
      echo "</TD></TR>";
      $needForQuest = $dDB->selectRow("SELECT * FROM `quest_template` WHERE ABS(`PrevQuestId`) = ?d", $nextquest['entry']);
     }

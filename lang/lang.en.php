@@ -27,7 +27,7 @@ $lang = array(
 
 # Item report
 'item_name' => 'Item name',
-'item_level' => 'lvl',
+'item_level' => 'Level',
 'item_req_level' => 'Req lvl',
 'item_gem_details' => 'Gem details',
 'item_armor' => 'Armor',
@@ -47,14 +47,14 @@ $lang = array(
 'item_incrtime' => 'Time add',
 
 # Quest report
-'quest_lvl'=>'lvl',
+'quest_lvl'=>'Level',
 'quest_reqlvl'=>'Req level',
 'quest_name'=>'Quest name',
 'quest_giver'=>'Quest giver',
 'quest_rewards'=>'Rewards',
 
 # Spell report
-'spell_level' => 'lvl',
+'spell_level' => 'Level',
 'spell_name' => 'Spell name',
 'spell_skill' => 'Spell skill',
 'spell_power' => 'Power',
@@ -68,7 +68,7 @@ $lang = array(
 'trainer_spell'=>'Spell name',
 'trainer_skill'=>'Require skill',
 'trainer_value'=>'Require',
-'trainer_level'=>'Req lvl',
+'trainer_level'=>'Req level',
 
 # GO report
 'go_name' => 'Gameobject name',
@@ -76,7 +76,7 @@ $lang = array(
 'map' => 'Map',
 
 # Creature report
-'creature_level' => 'lvl',
+'creature_level' => 'Level',
 'creature_name'  => 'Creature name',
 'creature_react' => 'Reaction',
 'creature_role'  => 'Role',
@@ -142,7 +142,7 @@ $lang = array(
 'pl_name'=>'Name',
 'pl_race'=>'Race',
 'pl_class'=>'Class',
-'pl_level'=>'lvl',
+'pl_level'=>'Level',
 'pl_pos'=>'Zone',
 'pl_rank'=>'Rank',
 'pl_note'=>'Note',
@@ -156,6 +156,7 @@ $lang = array(
 'next' => 'Next',
 'go' => 'Go',
 'compressed' => 'Main page',
+'no_sell_price' => 'No sell price',
 'sell_price' => 'Sell price',
 'buy_price' => 'Buy price',
 
@@ -238,8 +239,12 @@ $lang = array(
 'end_q' => 'Get quest',
 'q_next' => 'Next quest:',
 'q_prev' => 'Prev quest:',
+'step' => 'Step ',
+'step' => 'Step ',
 'players_with_this_quest'=>'Players with this quest',
 'players_completed_quest'=>'Players complete this quest',
+'suggestedplayers'=>'Suggested players:',
+'qlimittime'=>'You must perform a',
 'kill' => 'Kill:',
 'cast' => 'Cast:',
 'cast_on' => 'on',
@@ -330,7 +335,7 @@ $lang = array(
 
 # PLAYER list
 'player_name'  => 'Name',
-'player_level' => 'lvl',
+'player_level' => 'Level',
 'player_race'  => 'Race',
 'player_class' => 'Class',
 'player_zone'  => 'Zone',
@@ -351,6 +356,7 @@ $lang = array(
 'guild_leader' => 'Leader',
 'guild_create' => 'Create',
 'guild_members'=> 'Members',
+'empty'          => 'Empty',
 'guild_create_at'=> 'Create at:',
 'guild_money'  => 'Money:',
 'guild_noexist'=> 'No guilds present',
@@ -454,7 +460,7 @@ $lang = array(
 'find'=>'Find',
 'item_lookup'=>'Search item',
 'quest_lookup'=>'Search quest',
-'creature_lookup'=>'Search creatures',
+'creature_lookup'=>'Search NPC',
 'creature_by_type'=>'NPC type',
 'creature_by_family'=>'Family',
 'creature_by_role'=>'NPC role',
@@ -477,7 +483,7 @@ $lang = array(
 'in_zone'=>'In zone',
 'statistic'=>'Statistic',
 'item_set'=>'Item Sets',
-'faction_lookup' =>'Search Faction',
+'faction_lookup' =>'Search faction',
 'achievement'=>'Achievements',
 'class skills'=>'Class skills',
 
@@ -563,17 +569,17 @@ $lang = array(
 'go_name'=>'Name',
 
 # Search Itemset dialog
-'set_find'=>'Search Set',
+'set_find'=>'Search set',
 'set_not_found'=>'Itemset not found',
 'set_name'=>'Name',
 
 # Search Area dialog
-'area_find'=>'Search Area',
+'area_find'=>'Search area',
 'area_not_found'=>'Area not found',
 'area_name'=>'Name',
 
 # Search Faction dialog
-'find_faction'=>'Search Faction',
+'find_faction'=>'Search faction',
 'faction_name'=>'Faction name',
 
 # Side

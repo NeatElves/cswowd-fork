@@ -57,7 +57,7 @@ function noBorderGameobjectTable($obj)
      echo "<TR><TD colSpan=2>".$game_text['locked']."</TD></TR>";
  echo "<TR width=1%><TD>".$game_text['go_type']."</TD><TD align=right>".getGameobjectType($obj['type'])."</TD></TR>";
  if ($obj['faction'])
-    echo "<tr><td>".$game_text['faction']."</tdD><td align=right>".getFactionName($obj['faction'])."</td></tr>";
+    echo "<tr><td>".$game_text['faction']."</td><td align=right>".getFactionTemplateName($obj['faction'])."</td></tr>";
  echo "<TR><TD>".$game_text['entry']."</TD><TD align=right>$obj[entry]</TD></TR>";
 // echo "<TR><TD colSpan=2 class=bottom>This is from MaNGOS database!</TD></TR>";
  echo "</TBODY></TABLE>";

@@ -68,8 +68,9 @@ function outInstRow($id, $level, $zone, $comment)
 $cacheFilename = 'inst_list_'.$config['lang'].'.html';
 if (checkUseCacheHtml($cacheFilename, 24*60*60))
 {
+ global $lang;
  echo "<table class=report width=100%>";
- echo "<td class=head colspan=4>Instances</td>";
+ echo '<td class=head colspan=4>$lang[instance]</td>';
  echo "<tr><th width=1px></th><th>$lang[level]</th><th>$lang[instances]</th><th>$lang[in_zone]</th></tr>";
  foreach($inst_list as $inst)
  {

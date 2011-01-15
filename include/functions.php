@@ -188,7 +188,7 @@ function healthmanaex($hp)
  echo number_format($hp);
 }
 
-function getLootList($lootId, $table, $totalRecords, $offset=0, $count=0)
+function getLootList($lootId, $table, &$totalRecords, $offset=0, $count=0)
 {
   global $dDB;
   $totalRecords = 0;
@@ -987,6 +987,13 @@ function getGameEventName($event_id)
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
   SELECT `description` FROM `game_event` WHERE `entry` = ?d", $event_id);
+}
+
+function getTeamContributionPoints($level_id)
+{
+  global $wDB;
+  return $wDB->selectCell("-- CACHE: 1h
+  SELECT `Field1` FROM `wowd_teamcontributionpoints` WHERE `id` = ?d", $level_id);
 }
 
 //********************************************************************************

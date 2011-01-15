@@ -54,8 +54,6 @@ $mark  = @$_REQUEST['mark'];
 // Получаем вещь
 $item = getItem($entry);
 
-$flags2 = getItemFlags2($entry);
-
 if (!$item)
 {
    RenderError("$lang[item_not_found]");
@@ -77,10 +75,7 @@ else
    if ($item['minMoneyLoot']) echo "$lang[Rew_money] ".money($item['minMoneyLoot']);
    if (($item['maxMoneyLoot']) && ($item['maxMoneyLoot']>$item['minMoneyLoot'])) echo " - ".money($item['maxMoneyLoot']);
 
-   if ($flags2&ITEM_FLAGS2_HORDE_ONLY) echo "<FONT color=#ff0000> $lang[reqirement]: $lang[Horde]</FONT>";
-   if ($flags2&ITEM_FLAGS2_ALLIANCE_ONLY) echo "<FONT color=#0000ff> $lang[reqirement]: $lang[Alliance]</FONT>";
-   echo "<br />";
-   if ($item['BuyPrice']) echo "$lang[buy_price]: ".money($item['BuyPrice']);
+   if ($item['BuyPrice']) echo '<br>'.$lang['buy_price'].': '.money($item['BuyPrice']);
    echo "<br />";
 
    //********************************************************************************

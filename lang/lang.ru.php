@@ -77,7 +77,7 @@ $lang = array(
 
 # Creature report
 'creature_level' => 'Уровень',
-'creature_name'  => 'Имя существа',
+'creature_name'  => 'Название существа',
 'creature_react' => 'Отношение',
 'creature_role'  => 'Назначение',
 
@@ -91,7 +91,7 @@ $lang = array(
 
 # Glyph report
 'glyph_id'     => 'id',
-'glyph_name'   => 'Имя',
+'glyph_name'   => 'Название',
 
 # Random suffix report
 'rand_enchant_id'     => 'id',
@@ -156,9 +156,9 @@ $lang = array(
 'next' => 'Дальше',
 'go' => 'Вперед',
 'compressed' => 'На главную',
-
-'sell_price' => 'Цена за продажу',
-'buy_price' => 'Цена за покупку',
+'no_sell_price' => 'Не для продажи',
+'sell_price' => 'Цена продажи',
+'buy_price' => 'Цена выкупа',
 
 // GO, NPC info
 'show_map' => 'На карте',
@@ -181,7 +181,7 @@ $lang = array(
 'summoned_by_spell' => 'Призван спеллом',
 
 'id'  => 'id',
-'item_list' => 'Вещи',
+'item_list' => 'Предметы',
 'reqirement' => 'Требование',
 'drop' => 'Дроп',
 'level' => 'Уровень',
@@ -241,8 +241,12 @@ $lang = array(
 'end_q' => 'Принимает квест',
 'q_next' => 'Следующий:',
 'q_prev' => 'Предыдущий:',
+'step' => 'Шаг ',
+'step' => 'Шаг ',
 'players_with_this_quest'=>'Игроков выполняющих квест',
 'players_completed_quest'=>'Игроков выполнивших квест',
+'suggestedplayers'=>'Рекомендуемое количество игроков:',
+'qlimittime'=>'Необходимо выполнить за',
 'kill' => 'Убить:',
 'cast' => 'Каст:',
 'cast_on' => 'на',
@@ -276,9 +280,9 @@ $lang = array(
 'spell_req_focus' => 'Требует: %s',
 'spell_req_totem' => 'Инструмент: %s',
 'spell_learned_by_recipe' => 'Можно выучить свитком:',
-'spell_contain_loot' => 'Получены вещи:',
+'spell_contain_loot' => 'Получены предметы:',
 'spell_trigger' => 'Стартует от спелла:',
-'spell_added_by_enchant' => 'Добавляется энчантом:',
+'spell_added_by_enchant' => 'Добавляется зачарованием:',
 'spell_added_by_set' => 'Добавляется коллекцией',
 'spell_affected_by' => 'Может быть улучшен спеллом:',
 'spell_used_by_glyph' => 'Используется символом:',
@@ -347,7 +351,8 @@ $lang = array(
 # Auction
 'auction_seller' => 'Продавец',
 'auction_cost'   => 'Стоимость',
-'auction_bye'    => 'Выкупили',
+'auction_bye'    => 'Выкуп',
+'empty'          => 'Пусто',
 
 # Guilds
 'guild_list'   => 'Гильдии - ',
@@ -456,14 +461,14 @@ $lang = array(
 # Main menu
 'main'=>'Главная',
 'find'=>'Поиск:',
-'item_lookup'=>'Поиск вещи',
+'item_lookup'=>'Поиск предмета',
 'quest_lookup'=>'Поиск квеста',
-'creature_lookup'=>'Поиск существ',
+'creature_lookup'=>'Поиск НПС',
 'creature_by_type'=>'Типы НПС',
 'creature_by_family'=>'Подвиды',
 'creature_by_role'=>'Назначение',
 'spell_lookup'=>'Поиск заклинания',
-'object_lookup'=>'Поиск ГО',
+'object_lookup'=>'Поиск объекта',
 'area_lookup'=>'Поиск зоны',
 'search_database'=>'Поиск в базе',
 'menu_faq'=>'F.A.Q.:',
@@ -481,7 +486,7 @@ $lang = array(
 'in_zone'=>'В зоне',
 'statistic'=>'Статистика',
 'item_set'=>'Комплекты',
-'faction_lookup' =>'Поиск Фракции',
+'faction_lookup' =>'Поиск фракции',
 'achievement'=>'Достижения',
 'class skills'=>'Классовые умения',
 
@@ -509,7 +514,7 @@ $lang = array(
 'prof_inscription'=>'Начертание',
 
 'prof_secondary'=>'Вторичные навыки',
-'prof_cooking'=>'Приготовление пищи',
+'prof_cooking'=>'Кулинария',
 'prof_first_aid'=>'Первая помощь',
 'prof_fishing'=>'Рыбная ловля',
 
@@ -536,7 +541,7 @@ $lang = array(
 'not_found'=>'Не найдено',
 
 # Search NPC dialog
-'mob_name'=>'Имя моба',
+'mob_name'=>'Название НПС',
 'mob_subname'=>'Роль',
 'level' =>'Уровень',
 'search'=>'Поиск',
@@ -559,7 +564,7 @@ $lang = array(
 'find_spell' =>'Поиск заклинаний',
 'spell_name'=>'Название',
 'spell_desc'=>'Описание',
-'find_item'=>'Поиск вещи',
+'find_item'=>'Поиск предмета',
 
 # Search GO dialog
 'go_find'=>'Поиск геймобьекта',

@@ -165,7 +165,7 @@ else
  //********************************************************************************
  // Required for quest list
  //********************************************************************************
- $reqForQuest =&new QuestReportGenerator();
+ $reqForQuest =& new QuestReportGenerator();
  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
  if ($reqForQuest->Init($fields, $baseLink, 'qreqLIST', $config['fade_limit'], 'name'))
  {
@@ -185,7 +185,7 @@ else
 
  if ($cr['npcflag']&(UNIT_NPC_FLAG_QUESTGIVER))
  {
-  $giveQuest =&new QuestReportGenerator('npc_giver');
+  $giveQuest =& new QuestReportGenerator('npc_giver');
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
   if ($giveQuest->Init($fields, $baseLink, 'qgLIST', $config['fade_limit'], 'name'))
   {
@@ -198,7 +198,7 @@ else
  //**************************************************
  if ($cr['npcflag']&(UNIT_NPC_FLAG_QUESTGIVER))
  {
-  $takeQuest =&new QuestReportGenerator('npc_take');
+  $takeQuest =& new QuestReportGenerator('npc_take');
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
   if ($takeQuest->Init($fields, $baseLink, 'qtLIST', $config['fade_limit'], 'name'))
   {
