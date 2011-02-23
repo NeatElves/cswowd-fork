@@ -672,10 +672,14 @@ function r_trainerSpell($data)
 {
   if ($spell = getSpell($data['spell']))
   {
-     echo '<div style="float: left;">';
      if (!r_spellCreate($spell))
         r_spellIcon($spell);
-     echo '</div>';
+  }
+}
+function r_trainerNSpell($data)
+{
+  if ($spell = getSpell($data['spell']))
+  {
      echo getSpellName($spell);
   }
 }
@@ -686,7 +690,8 @@ function r_trainerLevel($data) {echo $data['reqlevel']?$data['reqlevel']:'';}
 
 $train_report = array(
 'TRAIN_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level','text'=>$lang['trainer_level'], 'draw'=>'r_trainerLevel', 'sort_str'=>'`reqlevel`, `reqskillvalue`', 'fields'=>'`reqlevel`' ),
-'TRAIN_REPORT_NAME'    =>array('class'=>'icon', 'sort'=>'',     'text'=>$lang['trainer_spell'], 'draw'=>'r_trainerSpell', 'sort_str'=>'',               'fields'=>'`spell`' ),
+'TRAIN_REPORT_ICON'    =>array('class'=>'i_ico', 'sort'=>'',     'text'=>'', 'draw'=>'r_trainerSpell', 'sort_str'=>'',               'fields'=>'`spell`' ),
+'TRAIN_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'spell',     'text'=>$lang['trainer_spell'], 'draw'=>'r_trainerNSpell', 'sort_str'=>'`spell`',               'fields'=>'`spell`' ),
 'TRAIN_REPORT_COST'    =>array('class'=>'cost', 'sort'=>'cost', 'text'=>$lang['trainer_cost'],  'draw'=>'r_trainerCost',  'sort_str'=>'`spellcost`',    'fields'=>'`spellcost`'),
 'TRAIN_REPORT_SKILL'   =>array('class'=>'small','sort'=>'skill','text'=>$lang['trainer_skill'], 'draw'=>'r_trainerSkill', 'sort_str'=>'`reqskill`',     'fields'=>'`reqskill`' ),
 'TRAIN_REPORT_VALUE'   =>array('class'=>'small','sort'=>'value','text'=>$lang['trainer_value'], 'draw'=>'r_trainerValue', 'sort_str'=>'`reqskillvalue`','fields'=>'`reqskillvalue`'),
@@ -1064,7 +1069,7 @@ if (getAllowableRace($data['RequiredRaces']) && ($data['RequiredRaces'] & 690) &
   if ($data['RequiredClasses'])
     echo '<FONT color=#008800 size=-3>'.getAllowableClass($data['RequiredClasses']).'<br>';
   if ($data['RequiredSkill'])
-    echo '<div class=areaname><a href=\"?s=q&SortID='.($data['RequiredSkill']).'>'.getSkillName($data['RequiredSkill'], 0).'('.$data['RequiredSkillValue'].')</a></div>';
+    echo '<div class=areaname><a href="?s=q&SkillID='.($data['RequiredSkill']).'">'.getSkillName($data['RequiredSkill'], 0).'('.$data['RequiredSkillValue'].')</a></div>';
 }
 function r_questGiver($data)
 {

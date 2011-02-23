@@ -43,10 +43,10 @@ $modules['enchant'] = "module/show/show_enchant.php";
 $modules['faction'] = "module/show/show_faction.php";
 $modules['itemset'] = "module/show/show_set.php";
 $modules['zone']    = "module/show/show_zone.php";
-
 $modules['object']  = "module/show/show_go.php";
-$config['show_go_details'] = 1;
 
+$config['show_go_details'] = 1;
+$config['show_npc_detalis'] = 0;
 //==================================================================
 // Модуль добавления Open Search в браузеры
 //==================================================================

@@ -31,7 +31,7 @@ if ($level_max = intval(@$_REQUEST['level_max']))
   $filter." AND `MinLevel` <= '$level_max'";
   $FindRefrence.="&level_max=$level_max";
 }
-// Фмльтр по зоне
+// Фильтр по зоне
 if ($ZoneID = intval(@$_REQUEST['ZoneID']))
 {
   $filter.= " AND `ZoneOrSort` = '$ZoneID'";
@@ -42,6 +42,12 @@ if ($SortID = intval(@$_REQUEST['SortID']))
 {
   $filter.= " AND `ZoneOrSort` = '-$SortID'";
   $FindRefrence.="&SortID=$SortID";
+}
+// Фильтр по профе
+if ($SkillID = intval(@$_REQUEST['SkillID']))
+{
+  $filter.= " AND `RequiredSkill` = '$SkillID'";
+  $FindRefrence.="&SkillID=$SkillID";
 }
 // Фильтр c
 if ($side = @$_REQUEST['side'])

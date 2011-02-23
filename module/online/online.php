@@ -12,12 +12,10 @@ function onlineMapRenderCallback($data, $x, $y)
    $x = round($x-$imgX/2, 0);
    $y = round($y-$imgY/2, 0);
 
-   $char_data = explode(' ',$data['data']);
-   $powerType =($char_data[UNIT_FIELD_BYTES_0]>>24)&255;
-   $gender    =($char_data[UNIT_FIELD_BYTES_0]>>16)&255;
-   $class     =($char_data[UNIT_FIELD_BYTES_0]>> 8)&255;
-   $race      =($char_data[UNIT_FIELD_BYTES_0]>> 0)&255;
-   $level     = $char_data[UNIT_FIELD_LEVEL];
+   $gender    = $data['gender'];
+   $class     = $data['class'];
+   $race      = $data['race'];
+   $level     = $data['level'];
    $faction   = getPlayerFaction($race);
    $map_name  = getMapName($data['map']);
    $area_name = getAreaNameFromPoint($data['map'], $data['position_x'], $data['position_y'], $data['position_z']);
@@ -57,10 +55,14 @@ else
   $list->online();
   $number = $list->getTotalDataCount();
 
- $ap_dateSql = $cDB->selectCell("SELECT `NextArenaPointDistributionTime` FROM `saved_variables`"); 
- $daily_quest_dateSql = $cDB->selectCell("SELECT `NextDailyQuestResetTime` FROM `saved_variables`"); 
- $weekly_quest_dateSql = $cDB->selectCell("SELECT `NextWeeklyQuestResetTime` FROM `saved_variables`"); 
- $monthly_quest_dateSql = $cDB->selectCell("SELECT `NextMonthlyQuestResetTime` FROM `saved_variables`"); 
+ $ap_dateSql = $cDB->selectCell("-- CACHE: 1h
+  SELECT `NextArenaPointDistributionTime` FROM `saved_variables`"); 
+ $daily_quest_dateSql = $cDB->selectCell("-- CACHE: 1h
+  SELECT `NextDailyQuestResetTime` FROM `saved_variables`"); 
+ $weekly_quest_dateSql = $cDB->selectCell("-- CACHE: 1h
+  SELECT `NextWeeklyQuestResetTime` FROM `saved_variables`"); 
+ $monthly_quest_dateSql = $cDB->selectCell("-- CACHE: 1h
+  SELECT `NextMonthlyQuestResetTime` FROM `saved_variables`"); 
 
  $ap_date = date("H:i:s d.m.Y", $ap_dateSql);  
  $daily_quest_date = date("H:i:s d.m.Y", $daily_quest_dateSql); 

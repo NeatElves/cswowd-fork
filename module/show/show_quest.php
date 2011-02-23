@@ -113,8 +113,11 @@ if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
  if (getAllowableClass($quest['RequiredClasses']))
      echo '<br><FONT color=#000000>'.$game_text['allowable_class'].' '.getAllowableClass($quest['RequiredClasses']).'</FONT>';
 
- echo "</TH></TR>";
- echo "</TH></TR>";
+ if ($entry == getQuestOld($entry))
+    echo '<br><FONT color=#ff0000><b>'.$lang['quest_marked'].'</FONT></b>';
+
+ echo "</th></tr>";
+ echo "</th></tr>";
 
  echo '<tr><td>';
  if ($quest['ZoneOrSort']>0)
@@ -127,11 +130,11 @@ if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
  echo "$lang[quest_level] $quest[QuestLevel]<br>";
 
 if ($quest['RequiredSkill'])
-   echo "<a style='float: right;' href=\"?s=q&SortID=".($quest['RequiredSkill'])."\">".getSkillName($quest['RequiredSkill'], 0)." ($quest[RequiredSkillValue])</a>";
+   echo "<a style='float: right;' href=\"?s=q&SkillID=".($quest['RequiredSkill'])."\">".getSkillName($quest['RequiredSkill'], 0)." ($quest[RequiredSkillValue])</a>";
  echo "$lang[obtained_at_level] $quest[MinLevel]</td></tr>";
 
  if ($quest['SuggestedPlayers'])
-     echo "<TR><TD>$lang[suggestedplayers] $quest[SuggestedPlayers]</TD></TR>";
+     echo "<tr><td>$lang[suggestedplayers]&nbsp;<b>$quest[SuggestedPlayers]</b></td></tr>";
 
  if ($quest['LimitTime'])
      echo '<TR><TD>'.$lang['qlimittime'].' '.getTimeText($quest['LimitTime']).'</TD></TR>';
@@ -204,7 +207,12 @@ if ($quest['ReqSourceId1'] != 0 OR $quest['ReqSourceId2'] != 0 OR
 }
 
 ###
-echo "<TR><TD>".getQuestText($quest['Details'])."</TD></TR>";
+echo "<tr><td>".getQuestText($quest['Details'])."</td></tr>";
+ if ($quest['CompletedText'])
+{
+   echo "<tr><td class = head>$lang[quest_completed]</td></tr>";
+   echo '<tr><td>'.$quest['CompletedText'].'</td></tr>';
+}
 if ($quest['SrcItemId'] || $quest['SrcSpell'])
 {
  echo "<TR><TD class = head>$lang[provided]</TD></TR>";
@@ -403,7 +411,7 @@ foreach ($rows as $item)
 }
 
 if ($number==0)
-echo "<TR><TD bgColor=#ff0000>-----NOT&nbsp;FOUND!------</TD></TR>";
+echo "<tr><td bgColor=#ff0000>$lang[quest_not_found]</td></tr>";
 
 $number = 0;
 echo "<TR><TD class = head>$lang[end_q]:</TD></TR>";
@@ -438,7 +446,7 @@ foreach ($rows as $go)
 }
 
 if ($number==0)
-echo "<TR><TD bgColor=#ff0000>-----NOT&nbsp;FOUND!------</TD></TR>";
+echo "<tr><td bgColor=#ff0000>$lang[quest_not_found]</td></tr>";
 
 ### этот квест часть серии:
 $needForQuest = $dDB->selectRow("SELECT * FROM `quest_template` WHERE ABS(`PrevQuestId`) = ?d", $quest['entry']);
