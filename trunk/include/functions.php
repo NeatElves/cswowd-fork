@@ -284,6 +284,7 @@ function localiseQuest(&$quest)
    `OfferRewardText_loc'.$locale.'` as `OfferRewardText`,
    `RequestItemsText_loc'.$locale.'` as `RequestItemsText`,
    `EndText_loc'.$locale.'` as `EndText`,
+   `CompletedText_loc'.$locale.'` as `CompletedText`,
    `ObjectiveText1_loc'.$locale.'` as `ObjectiveText1`,
    `ObjectiveText2_loc'.$locale.'` as `ObjectiveText2`,
    `ObjectiveText3_loc'.$locale.'` as `ObjectiveText3`,
@@ -297,6 +298,7 @@ function localiseQuest(&$quest)
     if ($lang['OfferRewardText']) $quest['OfferRewardText'] = $lang['OfferRewardText'];
     if ($lang['RequestItemsText'])$quest['RequestItemsText']= $lang['RequestItemsText'];
     if ($lang['EndText'])         $quest['EndText']         = $lang['EndText'];
+    if ($lang['CompletedText'])   $quest['CompletedText']   = $lang['CompletedText'];
     if ($lang['ObjectiveText1'])  $quest['ObjectiveText1']  = $lang['ObjectiveText1'];
     if ($lang['ObjectiveText2'])  $quest['ObjectiveText2']  = $lang['ObjectiveText2'];
     if ($lang['ObjectiveText3'])  $quest['ObjectiveText3']  = $lang['ObjectiveText3'];
@@ -909,6 +911,13 @@ function getQuestName($quest_id, $ashref=1)
   return "Unknown quest - $quest_id";
 }
 
+function getQuestOld($quest_id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `entry`  FROM `quest_template` WHERE (`Title` LIKE '%<CHANGE TO GOSSIP>%' OR `Title` LIKE '%EPRECATE%' OR `Title` LIKE '%REUSE%' OR `Title` LIKE '%<NYI>%' OR `Title` LIKE '%COPY' OR `Title` LIKE '%UNUSED%' OR `Title` LIKE '%<TXT>%' OR `Title` LIKE '%[PH]%' OR `Title` LIKE '%[%') AND `entry` = ?d", $quest_id);
+}
+
 function getQuestSort($sort)
 {
     global $wDB;
@@ -1326,7 +1335,7 @@ function getGuildRankList($id)
   $rankList=array();
   if ($rows)
   foreach ($rows as $rank)
-      $rankList[$rank['rid']-1] = $rank;
+      $rankList[$rank['rid']] = $rank;
   return $rankList;
 }
 //********************************************************************************
@@ -1442,7 +1451,7 @@ function getFamilyImage($family)
  $l = $wDB->selectCol('-- CACHE: 1h
  SELECT `id` AS ARRAY_KEY, `icon` FROM `wowd_creature_family`');
  if (isset($l[$family]))
-    return "images/icons/".$l[$family].".jpg";
+    return "images/icons/".strtolower($l[$family]).".jpg";
  return "images/icons/wowunknownitem01.jpg";
 }
 function getStatTypeName($i)
