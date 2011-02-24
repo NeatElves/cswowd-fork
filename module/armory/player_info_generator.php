@@ -730,7 +730,7 @@ function renderBlock($char_data)
 
 function renderRecilence($char_data)
 {
- $rating = $char_data['level'];
+ $rating = getRating($char_data['level']);
  $melee  = $char_data[PLAYER_FIELD_CRIT_TAKEN_MELEE_RATING];
  $ranged = $char_data[PLAYER_FIELD_CRIT_TAKEN_RANGED_RATING];
  $spell  = $char_data[PLAYER_FIELD_CRIT_TAKEN_SPELL_RATING];

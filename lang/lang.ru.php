@@ -3,7 +3,7 @@
  * Потдержка русского языка сайтом
  */
 $lang = array(
-'search_database' => 'Поиск в базе',
+'search_database' => 'Поиск по базе',
 'find' => 'Найти',
 'main'=> 'Главная',
 
@@ -11,13 +11,13 @@ $lang = array(
 'search_results'    => 'Результаты поиска',
 'found'             => 'Найдено',
 'not_found'         => 'Не найдено',
-'go_not_found'      => 'Обьект не найден',
+'go_not_found'      => 'Объект не найден',
 'creature_not_found'=> 'Существо не найдено',
-'item_not_found'    => 'Вещь не найдена',
+'item_not_found'    => 'Предмет не найден',
 'quest_not_found'   => 'Задание не найдено',
 'spell_not_found'   => 'Заклинание не найдено',
-'search_item_req'   => 'Запрос на поиск вещи',
-'search_set_req'    => 'Запрос на поиск набора',
+'search_item_req'   => 'Запрос на поиск предмета',
+'search_set_req'    => 'Запрос на поиск комплекта',
 'search_faction_req'=> 'Запрос на поиск фракции',
 'search_npc_req'    => 'Запрос на поиск НПС',
 'search_quest_req'  => 'Запрос на поиск задания',
@@ -26,10 +26,10 @@ $lang = array(
 'search_area_req'   => 'Запрос на поиск зон',
 
 # Item report
-'item_name' => 'Имя вещи',
+'item_name' => 'Название предмета',
 'item_level' => 'Уровень',
 'item_req_level' => 'Треб. уровень',
-'item_gem_details' => 'Свойства камня',
+'item_gem_details' => 'Свойства самоцвета',
 'item_armor' => 'Броня',
 'item_block' => 'Блок',
 'item_dps' => 'УВС',
@@ -55,9 +55,9 @@ $lang = array(
 
 # Spell report
 'spell_level' => 'Уровень',
-'spell_name' => 'Имя спелла',
+'spell_name' => 'Название заклинания',
 'spell_skill' => 'Ветка',
-'spell_power' => 'Power',
+'spell_power' => 'Стоимость',
 'spell_range' => 'Дальность',
 'spell_school' => 'Школа',
 'spell_reagent' => 'Реагенты',
@@ -66,7 +66,7 @@ $lang = array(
 # Trainer report
 'trainer_cost' =>'Цена',
 'trainer_spell'=>'Заклинание',
-'trainer_skill'=>'Нужно знать',
+'trainer_skill'=>'Необходимо знать',
 'trainer_value'=>'Навык',
 'trainer_level'=>'Требует уровень',
 
@@ -105,12 +105,12 @@ $lang = array(
 # Extend cost report
 'excost_id'   => 'id',
 'excost_cost' => 'Цена',
-'excost_items'=> 'Вещи',
+'excost_items'=> 'Предметы',
 
 # Item set report
 'set_id'   => 'id',
 'set_name' => 'Название',
-'set_items'=> 'Вещи',
+'set_items'=> 'Предметы',
 'set_spells'=> 'Заклинания',
 'set_class' => 'Класс',
 'set_level' => 'Уровень',
@@ -143,12 +143,12 @@ $lang = array(
 'pl_race'=>'Раса',
 'pl_class'=>'Класс',
 'pl_level'=>'Уровень',
-'pl_pos'=>'Место',
+'pl_pos'=>'Позиция',
 'pl_rank'=>'Ранг',
 'pl_note'=>'Инфо',
 
 // Details (spell, go, npc)
-'detail_info' => 'Детальная информация',
+'detail_info' => 'Подробная информация',
 
 //Page
 'page' => 'Страница',
@@ -163,7 +163,7 @@ $lang = array(
 // GO, NPC info
 'show_map' => 'На карте',
 'money' => 'Деньги',
-'sold'  => 'Продаёт вещи',
+'sold'  => 'Продаёт предметы',
 'train' => 'Обучает',
 'go_locked' => 'Объект заперт',
 'go_cast_spell' => 'Способности',
@@ -175,15 +175,15 @@ $lang = array(
 'give_quest' => 'Выдает задания',
 'take_quest' => 'Принимает задания',
 'give_skin'  => 'Можно снять шкуру',
-'can_pickpocketing' => 'Можно украсть...',
-'can_loot'  => 'Выпадает вещей',
+'can_pickpocketing' => 'Можно украсть:',
+'can_loot'  => 'Выпадают предметы:',
 'cast_spells' => 'Способности...',
 'summoned_by_spell' => 'Призван заклинанием',
 
 'id'  => 'id',
 'item_list' => 'Предметы',
 'reqirement' => 'Требование',
-'drop' => 'Выпад',
+'drop' => 'Шанс',
 'level' => 'Уровень',
 
 #Loot info
@@ -196,12 +196,12 @@ $lang = array(
 'item_use_in_spell' => 'Используется заклинанием:',
 'create_from_spell' => 'Создана заклинанием',
 'loot_from_spell'   => 'Получена заклинанием',
-'prospecting_loot'  => 'Просеяно с руды',
+'prospecting_loot'  => 'Просеяно из руды',
 'milling_loot'      => 'Измельчено из растений',
 
-//'item_loot'         => '(Вещи) Падает с...',
-'item_contain_loot' => '(Вещи) Можно извлечь...',
-'disenchant_loot'   => '(Вещи) Распыление из:',
+//'item_loot'         => '(Предметы) Падает с...',
+'item_contain_loot' => '(Предметы) Можно извлечь...',
+'disenchant_loot'   => '(Предметы) Распыление из:',
 'pickpocketing_loot'=> 'Украдено у...',
 'skinning_loot'     => 'Ошкурено с...',
 'fishing_loot'      => 'Выловить в...',
@@ -214,18 +214,18 @@ $lang = array(
 'go_drop_loot'      => 'Получено из ...',
 'item_lock_loot'    => 'Извлечь из...',
 'locked_item'       => 'Заперто:',
-'can_unlock'        => 'Является ключём для:',
+'can_unlock'        => 'Является ключом для:',
 'locked_list'       => 'Список',
-'no_found'          => 'не найдено',
+'no_found'          => 'Не найдено',
 'recipe_for'        => 'Рецепт для создания',
-'random_enchants'   => 'Рандом энчанты',
-'random_enc_name'   => 'Расширеное имя',
+'random_enchants'   => 'Случайные энчанты',
+'random_enc_name'   => 'Расширенное название',
 'random_enc_info'   => 'Подробности',
 'random_enc_cnance' => 'Шанс %',
 'no_name'           => 'без имени',
 
 'anything' => '- Любая -',
-'this_item_part_of_set' => 'Эта вещь часть набора',
+'this_item_part_of_set' => 'Этот предмет часть комплекта',
 'item_is_ex_cost'   => 'Можно обменять на:',
 
 // Quest info
@@ -303,16 +303,16 @@ $lang = array(
 'faction_in'     => 'Входит в состав',
 'faction_npc' => 'Входят существа',
 'faction_go' => 'Входят ГО',
-'faction_item' => 'Вещи, требующие репутации',
+'faction_item' => 'Предметы, требующие репутации',
 'faction_quest_rew' => 'Награды за задания',
 'faction_kill_rew'=> 'Награды за убийство',
 'faction_spell_rew'=>'Получено от заклинания',
 
 #Zone info
 'zone_parent'=>'Часть зоны',
-'zone_subzones'=>'Субзоны',
+'zone_subzones'=>'Подзоны',
 'zone_npc_in'=>  'Существа в зоне',
-'zone_go_in' =>  'ГО в зоне',
+'zone_go_in' =>  'Объекты в зоне',
 'zone_fishing_in' => 'Рыбалка',
 
 #Show map
@@ -331,7 +331,7 @@ $lang = array(
 'arena_team' => 'Состав',
 
 # Item owners
-'owner_list'     => 'Владельцев таких вещей: %d',
+'owner_list'     => 'Владельцы таких предметов: %d',
 'owner_no_found' => 'Владельцев не найдено',
 
 # Online list
@@ -401,45 +401,45 @@ $lang = array(
 'player_talents'     => 'Таланты персонажа',
 'player_talent_calc' => 'Ссылка в калькулятор талантов',
 'player_active_quest'=> 'Активные квесты',
-'player_page_base'   =>'Base Stats',
+'player_page_base'   =>'Базовые статы',
 'player_page_defence'=>'Защита',
 'player_armor'    => 'Броня:',
 'player_defence'  => 'Защита:',
-'player_dodge'    => 'Уворот:',
+'player_dodge'    => 'Уклонение:',
 'player_parry'    => 'Парирование:',
 'player_block'    => 'Блок:',
 'player_recilence'=> 'Устойчивость:',
 'player_melee'    => 'Ближний бой',
-'player_m_skill'  => 'Weapon skill:',
+'player_m_skill'  => 'Скилл:',
 'player_m_damage' => 'Урон:',
 'player_m_speed'  => 'Скорость:',
 'player_m_power'  => 'Сила:',
-'player_m_hit'    => 'Рейтинг меткости:',
-'player_m_crit'   => 'Шанс крита:',
+'player_m_hit'    => 'Рейтинг метк.:',
+'player_m_crit'   => 'Рейтинг крит.:',
 'player_ranged'   => 'Дальний бой',
-'player_r_skill'  => 'Weapon skill:',
+'player_r_skill'  => 'Скилл:',
 'player_r_damage' => 'Урон:',
 'player_r_speed'  => 'Скорость:',
 'player_r_power'  => 'Сила:',
-'player_r_hit'    => 'Рейтинг меткости:',
-'player_r_crit'   => 'Шанс крита:',
+'player_r_hit'    => 'Рейтинг метк.:',
+'player_r_crit'   => 'Рейтинг крит.:',
 'player_spell'    => 'Заклинания',
 'player_s_damage' => 'Бонус урона:',
-'player_s_healing'=> 'Бонус хила:',
-'player_s_hit'    => 'Hit Raiting:',
-'player_s_crit'   => 'Шанс крита:',
+'player_s_healing'=> 'Бонус лечен.:',
+'player_s_hit'    => 'Рейтинг метк.:',
+'player_s_crit'   => 'Рейтинг крит.:',
 'player_s_haste'  => 'Ускорение:',
-'player_s_regen'  => 'Востановление маны:',
+'player_s_regen'  => 'Восстан. маны:',
 
 # Instance
-'inst_no_map_present' => 'Нет карт для ',
+'inst_no_map_present' => 'Нет карты для ',
 'inst_creature_list'  => 'Существа на карте',
 'inst_go_list'        => 'Объекты на карте',
 
 # Achievement
 'achievment_total'    => 'Обзор',
 'achievment_complete' => 'Всего выполнено:',
-'achievment_last'     => 'Последние выолненые:',
+'achievment_last'     => 'Последние выполненные:',
 
 # Stat
 'stat_total'     => 'Общая статистика:',
@@ -463,7 +463,7 @@ $lang = array(
 # Main menu
 'main'=>'Главная',
 'find'=>'Поиск:',
-'item_lookup'=>'Поиск вещей',
+'item_lookup'=>'Поиск предметов',
 'quest_lookup'=>'Поиск заданий',
 'creature_lookup'=>'Поиск НПС',
 'creature_by_type'=>'Типы НПС',
@@ -530,7 +530,7 @@ $lang = array(
 'about_aggro'=>'Аггро система',
 'about_city'=>'Города',
 'about_guild'=>'Создание гильдий',
-'about_socket'=>'Сокет вещи',
+'about_socket'=>'Предметы с гнездами',
 'about_macro'=> 'Макросы',
 'about_raid_hill'=>'Лечение в рейде',
 
@@ -570,12 +570,12 @@ $lang = array(
 
 # Search GO dialog
 'go_find'=>'Поиск объекта',
-'go_not_found'=>'Обьект не найден',
+'go_not_found'=>'Объект не найден',
 'go_name'=>'Название',
 
 # Search Itemset dialog
-'set_find'=>'Поиск набора',
-'set_not_found'=>'Набор не найден',
+'set_find'=>'Поиск комплекта',
+'set_not_found'=>'Комплект не найден',
 'set_name'=>'Название',
 
 # Search Area dialog
