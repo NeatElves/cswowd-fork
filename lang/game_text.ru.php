@@ -18,7 +18,7 @@ $ls_type_name = array(
 $UseorEquip = array(
 '0'=>'Исп:',
 '1'=>'Одета:',
-'2'=>'Шанс при ударе:',
+'2'=>'Шанс при попадании:',
 '4'=>'Soulstone:',
 '5'=>'',
 '6'=>'Изучить:'
@@ -32,16 +32,16 @@ $iBonus = array(
  '5'=>'%d к интеллекту',       // ITEM_MOD_INTELLECT = 5,
  '6'=>'%d к духу',             // ITEM_MOD_SPIRIT    = 6,
  '7'=>'%d к выносливости',     // ITEM_MOD_STAMINA   = 7,
-'12'=>'Одета: Увеличение рейтинга защиты на %d.',             // ITEM_MOD_DEFENSE_SKILL_RATING     = 12,
-'13'=>'Одета: Увеличение рейтинга уворачивания на %d.',       // ITEM_MOD_DODGE_RATING             = 13,
-'14'=>'Одета: Увеличение рейтинга парирования на %d.',        // ITEM_MOD_PARRY_RATING             = 14,
-'15'=>'Одета: Увеличение рейтинга блокирования на %d.',       // ITEM_MOD_BLOCK_RATING             = 15,
-'16'=>'Одета: Increases melee hit raiting by %d.',            // ITEM_MOD_HIT_MELEE_RATING         = 16,
-'17'=>'Одета: Increases ranged hit raiting by %d.',           // ITEM_MOD_HIT_RANGED_RATING        = 17,
-'18'=>'Одета: Increases spell hit raiting by %d.',            // ITEM_MOD_HIT_SPELL_RATING         = 18,
-'19'=>'Одета: Improves melee critical strike rating by %d.',  // ITEM_MOD_CRIT_MELEE_RATING        = 19,
-'20'=>'Одета: Improves ranged critical strike rating by %d.', // ITEM_MOD_CRIT_RANGED_RATING       = 20,
-'21'=>'Одета: Improves spell critical strike rating by %d.',  // ITEM_MOD_CRIT_SPELL_RATING        = 21,
+'12'=>'Одета: Рейтинг защиты +%d.',                           // ITEM_MOD_DEFENSE_SKILL_RATING     = 12,
+'13'=>'Одета: Рейтинг уклонения +%d.',                        // ITEM_MOD_DODGE_RATING             = 13,
+'14'=>'Одета: Рейтинг парирования +%d.',                      // ITEM_MOD_PARRY_RATING             = 14,
+'15'=>'Одета: Рейтинг блокирования щитом +%d.',               // ITEM_MOD_BLOCK_RATING             = 15,
+'16'=>'Одета: Увеличение рейтинга меткости оруж. ближнего боя +%d.',      // ITEM_MOD_HIT_MELEE_RATING         = 16,
+'17'=>'Одета: Увеличение рейтинга меткости оруж. дальнего боя +%d.',      // ITEM_MOD_HIT_RANGED_RATING        = 17,
+'18'=>'Одета: Увеличение рейтинга меткости (заклинания) +%d.',            // ITEM_MOD_HIT_SPELL_RATING         = 18,
+'19'=>'Одета: Рейтинг крит. удара оруж. ближнего боя +%d.',   // ITEM_MOD_CRIT_MELEE_RATING        = 19,
+'20'=>'Одета: Рейтинг крит. удара оруж. дальнего боя +%d.',   // ITEM_MOD_CRIT_RANGED_RATING       = 20,
+'21'=>'Одета: Рейтинг критического удара (заклинания) +%d.',  // ITEM_MOD_CRIT_SPELL_RATING        = 21,
 '22'=>'Одета: Melee hit taken by %d.',                        // ITEM_MOD_HIT_TAKEN_MELEE_RATING   = 22,
 '23'=>'Одета: Ranged hit taken by %d.',                       // ITEM_MOD_HIT_TAKEN_RANGED_RATING  = 23,
 '24'=>'Одета: Spell hit taken by %d.',                        // ITEM_MOD_HIT_TAKEN_SPELL_RATING   = 24,
@@ -50,22 +50,25 @@ $iBonus = array(
 '27'=>'Одета: Spell crit taken by %d.',                       // ITEM_MOD_CRIT_TAKEN_SPELL_RATING  = 27,
 '28'=>'Одета: Melee haste by %d.',                            // ITEM_MOD_HASTE_MELEE_RATING       = 28,
 '29'=>'Одета: Ranged haste by %d.',                           // ITEM_MOD_HASTE_RANGED_RATING      = 29,
-'30'=>'Одета: Spell haste by %d.',                            // ITEM_MOD_HASTE_SPELL_RATING       = 30,
+'30'=>'Одета: Увеличивает рейтинг скорости на %d.',           // ITEM_MOD_HASTE_SPELL_RATING       = 30,
 '31'=>'Одета: Рейтинг меткости +%d.',                         // ITEM_MOD_HIT_RATING               = 31,
 '32'=>'Одета: Рейтинг критического удара +%d.',               // ITEM_MOD_CRIT_RATING              = 32,
-'33'=>'Одета: Hit taken by %d.',                              // ITEM_MOD_HIT_TAKEN_RATING         = 33,
-'34'=>'Одета: Crit taken by %d.',                             // ITEM_MOD_CRIT_TAKEN_RATING        = 34,
-'35'=>'Одета: Рейтинг устойчивости %d.',                      // ITEM_MOD_RESILIENCE_RATING        = 35,
+'33'=>'Одета: Рейтинг уклонения от удара +%d.',               // ITEM_MOD_HIT_TAKEN_RATING         = 33,
+'34'=>'Одета: Рейтинг уклонения от крит. удара +%d.',         // ITEM_MOD_CRIT_TAKEN_RATING        = 34,
+'35'=>'Одета: Рейтинг устойчивости +%d.',                     // ITEM_MOD_RESILIENCE_RATING        = 35,
 '36'=>'Одета: Рейтинг скорости +%d.',                         // ITEM_MOD_HASTE_RATING             = 36
-'37'=>'Одета: Increases your expertise rating by %d.',        // ITEM_MOD_EXPERTISE_RATING         = 37
-'38'=>'Одета: Сила атаки увеличена на %d.',                   // ITEM_MOD_ATTACK_POWER             = 38
+'37'=>'Одета: Рейтинг мастерства +%d.',                       // ITEM_MOD_EXPERTISE_RATING         = 37
+'38'=>'Одета: Увеличивает силу атаки на %d.',                 // ITEM_MOD_ATTACK_POWER             = 38
 '39'=>'Одета: Increases ranged attack power by %d.',          // ITEM_MOD_RANGED_ATTACK_POWER      = 39
 '40'=>'Одета: Increases attack power by %d in Cat, Bear, Dire Bear, and Moonkin forms only.',// ITEM_MOD_FERAL_ATTACK_POWER       = 40
 '41'=>'Одета: Increases healing done by magical spells and effects by up to %d.',            // ITEM_MOD_SPELL_HEALING_DONE       = 41
 '42'=>'Одета: Increases damage done by magical spells and effects by up to %d.',             // ITEM_MOD_SPELL_DAMAGE_DONE        = 42
 '43'=>'Одета: Восполнение %d ед. маны в 5 секунд',            // ITEM_MOD_MANA_REGENERATION        = 43
-'44'=>'Одета: Increases your armor penetration rating by %d.',// ITEM_MOD_ARMOR_PENETRATION_RATING = 44
-'45'=>'Одета: Увеличивает силу заклинаний на %d.'             // ITEM_MOD_SPELL_POWER              = 45
+'44'=>'Одета: Повышает рейтинг пробивания брони на %d.',      // ITEM_MOD_ARMOR_PENETRATION_RATING = 44
+'45'=>'Одета: Увеличивает силу заклинаний на %d.',            // ITEM_MOD_SPELL_POWER              = 45
+'46'=>'Одета: Восполнение %d ед. здоровья раз в 5 секунд',    // ITEM_MOD_HEALTH_REGEN             = 46
+'47'=>'Одета: Увеличивает проникающую способность заклинаний на %d.',   // ITEM_MOD_SPELL_PENETRATION        = 47
+'48'=>'Одета: Увеличивает показатель блокирования щита на %d.'// ITEM_MOD_BLOCK_VALUE              = 48
 );
 
 $gInventoryType = array(
@@ -81,21 +84,21 @@ $gInventoryType = array(
 '9'=>'Запястья',
 '10'=>'Кисть руки',
 '11'=>'Кольца',
-'12'=>'Ожерелья',
+'12'=>'Аксессуар',
 '13'=>'Одноручный',
 '14'=>'Щиты',
-'15'=>'Ranged',
+'15'=>'Дальний бой',
 '16'=>'Спина',
 '17'=>'Двуручный',
 '18'=>'Сумка',
 '19'=>'Гербовая накидка',
-'20'=>'Robe',
+'20'=>'Грудь',
 '21'=>'Основная рука',
 '22'=>'Держится в левой руке',
 '23'=>'Левая рука',
-'24'=>'Снаряды',
-'25'=>'Метательное оружие',
-'26'=>'Ranged',
+'24'=>'Боеприпасы',
+'25'=>'Метательное',
+'26'=>'Дальний бой',
 '27'=>'Колчан',
 '28'=>'Реликвия',
 '29'=>'Inventory types',
@@ -216,7 +219,7 @@ $itemClassSubclass = array(
 '9.9'=>'Рыбная ловля',
 '9.10'=>'Ювелирное дело',
 
-'10'=>'Деньги(НЕ ИСП.)',
+'10'=>'Деньги',
 '10.0'=>'Деньги (НЕ ИСП.)',
 
 '11'=>'Амуниция',
@@ -228,7 +231,7 @@ $itemClassSubclass = array(
 '12'=>'Задания',
 '12.0'=>'Задания',
 
-'13'=>'Ключи и Отмычки',
+'13'=>'Ключи',
 '13.0'=>'Ключ',
 '13.1'=>'Отмычка',
 
@@ -366,7 +369,7 @@ $gSkillRank = array(
 );
 
 $gCreatureRank=array(
-'0'=>'Normal',
+'0'=>'Обычный',
 '1'=>'Элитный',
 '2'=>'Редкий, элитный',
 '3'=>'Мировой босс',
