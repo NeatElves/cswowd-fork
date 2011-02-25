@@ -118,7 +118,7 @@ function renderPrimalStat($stat_type,$stat_value)
 }
 function renderSpellStat($stat_type,$stat_value)
 {
-  if ($stat_value AND $stat_type > 8 AND $stat_type < 46)
+  if ($stat_value AND $stat_type > 8 AND $stat_type < 49)
      echo '<tr><td class=SpellStat>'.getItemBonusText($stat_type, $stat_value).'</td></tr>';
 }
 // Вывод типа сокета
