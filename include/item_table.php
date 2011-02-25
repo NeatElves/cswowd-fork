@@ -373,16 +373,6 @@ if ($item['Flags']& ITEM_FLAGS_HEROIC || ((isset($item['itemset']) && $item['ite
  default:
  break;
  }
-// Уровень предмета
- if ($item['ItemLevel']) echo '<tr><td>'.sprintf($game_text['ilevel'], $item['ItemLevel']).'</td></tr>';
-// Вывод времени продолжительности
- if ($item['Duration'])
- {
-  if ($item['ExtraFlags']&2)
-     echo '<tr><td>'.sprintf($game_text['idurationr'], getTimeText($item['Duration'])).'</td></tr>';
- else
-    echo '<tr><td>'.sprintf($game_text['iduration'], getTimeText($item['Duration'])).'</td></tr>';
- }
  // Вывод урона наносимого оружием но не боеприпасами
  if ($item['dmg_min1'] > 0 AND $class!=6)
  {
@@ -394,10 +384,9 @@ if ($item['Flags']& ITEM_FLAGS_HEROIC || ((isset($item['itemset']) && $item['ite
     echo '<tr><td>'.sprintf($game_text['weapon_dps'],$dps).'</td></tr>';
  }
  // вывод брони
- if ($item['armor']) echo '<tr><td>'.$item['armor'].' Armor</td></tr>';
+ if ($item['armor']) echo '<tr><td>'.sprintf($game_text['iarmor'],$item['armor']).'</td></tr>';
  // вывод блока
- if ($item['block']) echo '<tr><td>'.$item['block'].' Block</td></tr>';
-
+ if ($item['block']) echo '<tr><td>'.sprintf($game_text['iblock'],$item['block']).'</td></tr>';
  // Вывод статов на силу, ловкость, стамину, интелект, стамину
  if ($ssd)
    for ($i=1;$i<=10;$i++)
@@ -473,9 +462,19 @@ if ($item['Flags']& ITEM_FLAGS_HEROIC || ((isset($item['itemset']) && $item['ite
  // Вывод требований классов
  if ($text = getAllowableClass($item['AllowableClass']))
      echo '<tr><td>'.$game_text['allowable_class'].' '.$text.'</td></tr>';
+// Вывод времени продолжительности
+ if ($item['Duration'])
+ {
+  if ($item['ExtraFlags']&2)
+     echo '<tr><td>'.sprintf($game_text['idurationr'], getTimeText($item['Duration'])).'</td></tr>';
+ else
+    echo '<tr><td>'.sprintf($game_text['iduration'], getTimeText($item['Duration'])).'</td></tr>';
+ }
  // Вывод требования уровня
  if ($item['RequiredLevel'] > 1)
      echo '<tr><td class=req>'.sprintf($game_text['req_level'], $item['RequiredLevel']).'</td></tr>';
+// Уровень предмета
+ if ($item['ItemLevel']) echo '<tr><td>'.sprintf($game_text['ilevel'], $item['ItemLevel']).'</td></tr>';
  // Вывод prospectable если надо (Prospectable)    0x40000
  if ($item['Flags'] & ITEM_FLAGS_PROSPECTABLE)
    echo '<tr><td>'.$game_text['prospectable'].'</td></tr>';

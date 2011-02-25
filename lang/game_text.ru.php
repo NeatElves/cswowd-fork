@@ -25,13 +25,13 @@ $UseorEquip = array(
 );
 
 $iBonus = array(
- '0'=>'%d Маны',             // ITEM_MOD_MANA      = 0,
- '1'=>'%d Здоровья',         // ITEM_MOD_HEALTH    = 1,
- '3'=>'%d Ловкости',         // ITEM_MOD_AGILITY   = 3,
- '4'=>'%d Силы',             // ITEM_MOD_STRENGTH  = 4,
- '5'=>'%d Интеллекта',       // ITEM_MOD_INTELLECT = 5,
- '6'=>'%d Духа',             // ITEM_MOD_SPIRIT    = 6,
- '7'=>'%d Выносливости',     // ITEM_MOD_STAMINA   = 7,
+ '0'=>'%d к мане',             // ITEM_MOD_MANA      = 0,
+ '1'=>'%d к здоровью',         // ITEM_MOD_HEALTH    = 1,
+ '3'=>'%d к ловкости',         // ITEM_MOD_AGILITY   = 3,
+ '4'=>'%d к силе',             // ITEM_MOD_STRENGTH  = 4,
+ '5'=>'%d к интеллекту',       // ITEM_MOD_INTELLECT = 5,
+ '6'=>'%d к духу',             // ITEM_MOD_SPIRIT    = 6,
+ '7'=>'%d к выносливости',     // ITEM_MOD_STAMINA   = 7,
 '12'=>'Одета: Увеличение рейтинга защиты на %d.',             // ITEM_MOD_DEFENSE_SKILL_RATING     = 12,
 '13'=>'Одета: Увеличение рейтинга уворачивания на %d.',       // ITEM_MOD_DODGE_RATING             = 13,
 '14'=>'Одета: Увеличение рейтинга парирования на %d.',        // ITEM_MOD_PARRY_RATING             = 14,
@@ -87,7 +87,7 @@ $gInventoryType = array(
 '15'=>'Ranged',
 '16'=>'Спина',
 '17'=>'Двуручный',
-'18'=>'Сумки',
+'18'=>'Сумка',
 '19'=>'Гербовая накидка',
 '20'=>'Robe',
 '21'=>'Основная рука',
@@ -102,7 +102,7 @@ $gInventoryType = array(
 );
 
 $itemClassSubclass = array(
-'-1'=>'Все вещи',
+'-1'=>'Все предметы',
 '0'=>'Расходуемые',
 '0.0'=>'Расходуемые',
 '0.1'=>'Зелье',
@@ -257,9 +257,9 @@ $itemClassSubclass = array(
 );
 
 $gBonding = array(
-'-1'=>'Именная',
+'-1'=>'Становится персональным при получении',
 '0'=>'',
-'1'=>'Становится персональным при поднятии',
+'1'=>'Становится персональным при получении',
 '2'=>'Становится персональным при надевании',
 '3'=>'Становится персональным при использовании',
 '4'=>'Предмет, необходимый для задания',
@@ -270,7 +270,7 @@ $gStatType = array(
 '-1'=>'Все',
 '0'=>'Сила',
 '1'=>'Ловкость',
-'2'=>'Выносливость',
+'2'=>'Вынослив.',
 '3'=>'Интеллект',
 '4'=>'Дух'
 );
@@ -297,20 +297,20 @@ $gResistanceType = array(
 
 //Обьекты
 $gameobjectType = array(
-'0'=>'Door',
-'1'=>'Button',
+'0'=>'Дверь',
+'1'=>'Кнопка',
 '2'=>'Questgiver',
-'3'=>'Chest',
+'3'=>'Сундук',
 '4'=>'Binder',
 '5'=>'Generic',
-'6'=>'Trap',
+'6'=>'Ловушка',
 '7'=>'Chair',
 '8'=>'Spellfocus',
-'9'=>'Text',
+'9'=>'Текст',
 '10'=>'Gobber',
-'11'=>'Transport',
+'11'=>'Транспорт',
 '12'=>'Areadamage',
-'13'=>'Camera',
+'13'=>'Камера',
 '14'=>'Map Object',
 '15'=>'Map Object Transport',
 '16'=>'Duel Arbiter',
@@ -347,8 +347,8 @@ $gReputationRank = array(
 );
 
 $GenderType = array(
-'0'=>'Male',
-'1'=>'Female',
+'0'=>'Муж.',
+'1'=>'Жен.',
 );
 
 $FactionType = array(
@@ -448,7 +448,7 @@ $gRuneName = array(
 );
 
 $gSpellMechanic = array(
-'0'=>'n/a',
+'0'=>'н/а',
 '1'=>'Подчинение',
 '2'=>'Дезориентация',
 '3'=>'Без оружия',
@@ -483,7 +483,7 @@ $gSpellMechanic = array(
 );
 
 $gDmgClass = array(
-'0'=>'None',
+'0'=>'Нет',
 '1'=>'Magic',
 '2'=>'Melee',
 '3'=>'Ranged'
@@ -563,12 +563,14 @@ $gRatingNames = array(
 
 $game_text = array(
 // Item tooltip
-'meta_socket'=>'Мета оправа',
-'red_socket'=>'Красная оправа',
-'yellow_socket'=>'Жёлтая оправа',
-'blue_socket'=>'Синяя оправа',
+'meta_socket'=>'особое гнездо',
+'red_socket'=>'красное гнездо',
+'yellow_socket'=>'желтое гнездо',
+'blue_socket'=>'синее гнездо',
 'charges'=>'%d Зарядов',
 'min'=>'мин.',
+'iarmor'=>'Броня: %d',
+'iblock'=>'Блокирование: %d',
 'conjured_item'=>'Сотворенный предмет',
 'right_click'=>'<Щелкните правой кнопкой мыши, чтобы открыть.>',
 'unique'=>'Уникальный',
@@ -580,21 +582,21 @@ $game_text = array(
 'ilevel'=>'Уровень предмета: %d',
 'iduration'=>'Исчезнет через %s',
 'idurationr'=>'Исчезнет через %s (реального времени)',
-'socket_bonus'=>'Бонус оправы: %s',
+'socket_bonus'=>'При соответствии цвета: %s',
 'random_enchant'=>'&lt;Случайный бонус&gt;',
-'prospectable'=>'Prospectable',
-'millable'=>'Millable',
+'prospectable'=>'Просеиваемое',
+'millable'=>'Можно растолочь',
 'ssd_req_level'=>'Необходим уровень 1 - %d (%d)',
 'durability'=>'Прочность %d / %d',
 'allowable_race'=>'Раса:',
 'allowable_class'=>'Класс:',
-'req_level'=>'Необходим %d уровень',
+'req_level'=>'Требуется уровень: %d',
 'req_skill'=>'Требует %s (%d)',
 'req_spell'=>'Требует',
-'req_reputation'=>'Требует: %s - %s',
-'req_ingridients'=>'Нужно:',
+'req_reputation'=>'Требуется: %s - %s',
+'req_ingridients'=>'Необходимо:',
 'made_by'=>'Сделано %s',
-'start_quest'=>'Вещь начинает квест',
+'start_quest'=>'Предмет начинает квест',
 
 'entry'=>'Номер',
 'locked'=>'Заперто',
