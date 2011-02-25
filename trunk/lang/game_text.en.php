@@ -31,13 +31,13 @@ $iBonus = array(
  '5'=>'%d Intellect',   // ITEM_MOD_INTELLECT = 5
  '6'=>'%d Spirit',      // ITEM_MOD_SPIRIT    = 6
  '7'=>'%d Stamina',     // ITEM_MOD_STAMINA   = 7
-'12'=>'Equip: Increases defense rating by %d.',              // ITEM_MOD_DEFENSE_SKILL_RATING     = 12
-'13'=>'Equip: Increases dodge rating by %d.',                // ITEM_MOD_DODGE_RATING             = 13
-'14'=>'Equip: Increases parry rating by %d.',                // ITEM_MOD_PARRY_RATING             = 14
-'15'=>'Equip: Increases block rating by %d.',                // ITEM_MOD_BLOCK_RATING             = 15
-'16'=>'Equip: Increases melee hit rating by %d.',            // ITEM_MOD_HIT_MELEE_RATING         = 16
-'17'=>'Equip: Increases ranged hit rating by %d.',           // ITEM_MOD_HIT_RANGED_RATING        = 17
-'18'=>'Equip: Increases spell hit rating by %d.',            // ITEM_MOD_HIT_SPELL_RATING         = 18
+'12'=>'Equip: Increases defense rating by %d.',               // ITEM_MOD_DEFENSE_SKILL_RATING     = 12
+'13'=>'Equip: Increases dodge rating by %d.',                 // ITEM_MOD_DODGE_RATING             = 13
+'14'=>'Equip: Increases parry rating by %d.',                 // ITEM_MOD_PARRY_RATING             = 14
+'15'=>'Equip: Increases your shield block rating by %d.',     // ITEM_MOD_BLOCK_RATING             = 15
+'16'=>'Equip: Increases melee hit rating by %d.',             // ITEM_MOD_HIT_MELEE_RATING         = 16
+'17'=>'Equip: Increases ranged hit rating by %d.',            // ITEM_MOD_HIT_RANGED_RATING        = 17
+'18'=>'Equip: Increases spell hit rating by %d.',             // ITEM_MOD_HIT_SPELL_RATING         = 18
 '19'=>'Equip: Improves melee critical strike rating by %d.',  // ITEM_MOD_CRIT_MELEE_RATING        = 19
 '20'=>'Equip: Improves ranged critical strike rating by %d.', // ITEM_MOD_CRIT_RANGED_RATING       = 20
 '21'=>'Equip: Improves spell critical strike rating by %d.',  // ITEM_MOD_CRIT_SPELL_RATING        = 21
@@ -50,12 +50,12 @@ $iBonus = array(
 '28'=>'Equip: Melee haste by %d.',                            // ITEM_MOD_HASTE_MELEE_RATING       = 28
 '29'=>'Equip: Ranged haste by %d.',                           // ITEM_MOD_HASTE_RANGED_RATING      = 29
 '30'=>'Equip: Spell haste by %d.',                            // ITEM_MOD_HASTE_SPELL_RATING       = 30
-'31'=>'Equip: Improves hit rating by %d.',                   // ITEM_MOD_HIT_RATING               = 31
+'31'=>'Equip: Improves hit rating by %d.',                    // ITEM_MOD_HIT_RATING               = 31
 '32'=>'Equip: Improves critical strike rating by %d.',        // ITEM_MOD_CRIT_RATING              = 32
 '33'=>'Equip: Hit taken by %d.',                              // ITEM_MOD_HIT_TAKEN_RATING         = 33
 '34'=>'Equip: Crit taken by %d.',                             // ITEM_MOD_CRIT_TAKEN_RATING        = 34
 '35'=>'Equip: Improves your resilience rating by %d.',        // ITEM_MOD_RESILIENCE_RATING        = 35
-'36'=>'Equip: Improves haste rating by %d.',                 // ITEM_MOD_HASTE_RATING             = 36
+'36'=>'Equip: Improves haste rating by %d.',                  // ITEM_MOD_HASTE_RATING             = 36
 '37'=>'Equip: Increases your expertise rating by %d.',        // ITEM_MOD_EXPERTISE_RATING         = 37
 '38'=>'Equip: Increases attack power by %d.',                 // ITEM_MOD_ATTACK_POWER             = 38
 '39'=>'Equip: Increases ranged attack power by %d.',          // ITEM_MOD_RANGED_ATTACK_POWER      = 39
@@ -64,7 +64,10 @@ $iBonus = array(
 '42'=>'Equip: Increases damage done by magical spells and effects by up to %d.',             // ITEM_MOD_SPELL_DAMAGE_DONE        = 42
 '43'=>'Equip: Restores %d mana per 5 sec.',                   // ITEM_MOD_MANA_REGENERATION        = 43
 '44'=>'Equip: Increases your armor penetration rating by %d.',// ITEM_MOD_ARMOR_PENETRATION_RATING = 44
-'45'=>'Equip: Increases spell power by %d.'                   // ITEM_MOD_SPELL_POWER              = 45
+'45'=>'Equip: Increases spell power by %d.',                  // ITEM_MOD_SPELL_POWER              = 45
+'46'=>'Equip: Restores %d health per 5 sec.',                 // ITEM_MOD_HEALTH_REGEN             = 46
+'47'=>'Equip: Increases spell penetration by %d',             // ITEM_MOD_SPELL_PENETRATION        = 47
+'48'=>'Equip: Increases the block value of your shield by %d' // ITEM_MOD_BLOCK_VALUE              = 48
 );
 
 $gInventoryType = array(
