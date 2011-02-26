@@ -7,6 +7,15 @@ $lang = array(
 'find' => 'Найти',
 'main'=> 'Главная',
 
+# Site
+'www_creature'=>'http://ru.wowhead.com/npc=%d',
+'www_gameobject'=>'http://ru.wowhead.com/object=%d',
+'www_item'=>'http://ru.wowhead.com/item=%d',
+'www_spell'=>'http://ru.wowhead.com/spell=%d',
+'www_quest'=>'http://ru.wowhead.com/quest=%d',
+'www_faction'=>'http://ru.wowhead.com/faction=%d',
+'www_zone'=>'http://ru.wowhead.com/zone=%d',
+
 # Search
 'search_results'    => 'Результаты поиска',
 'found'             => 'Найдено',
@@ -175,6 +184,9 @@ $lang = array(
 'give_quest' => 'Выдает задания',
 'take_quest' => 'Принимает задания',
 'give_skin'  => 'Можно снять шкуру',
+'give_mining'  => 'Можно снять шахтеру',
+'give_herb'  => 'Можно снять травнику',
+'give_engineer'  => 'Можно снять инженеру',
 'can_pickpocketing' => 'Можно украсть:',
 'can_loot'  => 'Выпадают предметы:',
 'cast_spells' => 'Способности...',

@@ -31,11 +31,11 @@ else
   $baseLink = "?faction=$entry";
 
   if ($ajaxmode==0)
-    generateFactionTable($faction);
-
-  createReportTab();
-  if ($ajaxmode==0)
   {
+  if ($lang['www_faction'])
+    echo "<a href=\"".sprintf($lang['www_faction'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_faction'], $entry)."</a><br>"; 
+    generateFactionTable($faction);
+    createReportTab();
     // Входящие в состав фракции
     $page_seek = init_pagePerMark($mark, "teamLIST", $page);
     $rows = $wDB->selectPage($totalRecords,

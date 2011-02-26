@@ -38,13 +38,6 @@ $config =array (
 'locales_lang'=>'0',          // работает только если есть заполнение таблицы locales_xxx
 'locales_charset'=>'',        // Символы используемые в локализованых текстах (для определения языка ввода в поиске)
 
-// WWW Адресс сайта Базы Данных официального сервера
-'www_creature'=>'http://ru.wowhead.com/?npc=%d',		// НПС, где %d - номер НПС
-'www_gameobject'=>'http://ru.wowhead.com/?object=%d',	// Объекты, где %d - номер объекта
-'www_item'=>'http://ru.wowhead.com/?item=%d',			// Вещи, где %d - номер вещи
-'www_spell'=>'http://ru.wowhead.com/?spell=%d',			// Спелл, где %d - номер спелла
-'www_quest'=>'http://ru.wowhead.com/?quest=%d',			// Квесты, где %d - номер квеста
-
 // Выбор скина по умолчанию
 'skin_type'=>'modern',        // default, modern, lofk_skin, dark, wdb, wrath
 

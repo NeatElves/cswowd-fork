@@ -7,6 +7,15 @@ $lang = array(
 'find' => 'Find',
 'main' => 'Main',
 
+# Site
+'www_creature'=>'http://wowhead.com/npc=%d',
+'www_gameobject'=>'http://wowhead.com/object=%d',
+'www_item'=>'http://wowhead.com/item=%d',
+'www_spell'=>'http://wowhead.com/spell=%d',
+'www_quest'=>'http://wowhead.com/quest=%d',
+'www_faction'=>'http://wowhead.com/faction=%d',
+'www_zone'=>'http:/wowhead.com/zone=%d',
+
 # Search
 'search_results   ' => 'Search result',
 'found'             => 'Found',
@@ -175,7 +184,10 @@ $lang = array(
 'give_quest' => 'Give quest',
 'take_quest' => 'Take quest',
 'give_skin'  => 'Skinning',
-'can_pickpocketing' => 'Pickpocketing...',
+'give_mining'  => 'Mining',
+'give_herb'  => 'Herbalism',
+'give_engineer'  => 'Engineering',
+'can_pickpocketing' => 'Pickpocketing',
 'can_loot'  => 'Loot',
 'cast_spells' => 'Cast spells...',
 'summoned_by_spell' => 'Summoned by spell',

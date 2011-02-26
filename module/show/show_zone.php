@@ -44,6 +44,8 @@ else
   {
      if ($ajaxmode==0)
      {
+  if ($lang['www_zone'])
+    echo "<a href=\"".sprintf($lang['www_zone'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_zone'], $entry)."</a><br>"; 
        if ($zentry!=$entry)
            echo $area['name'].'<br>';
        echo "<div id=mapper>";
