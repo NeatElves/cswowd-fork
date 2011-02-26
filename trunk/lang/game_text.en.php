@@ -66,8 +66,8 @@ $iBonus = array(
 '44'=>'Equip: Increases your armor penetration rating by %d.',// ITEM_MOD_ARMOR_PENETRATION_RATING = 44
 '45'=>'Equip: Increases spell power by %d.',                  // ITEM_MOD_SPELL_POWER              = 45
 '46'=>'Equip: Restores %d health per 5 sec.',                 // ITEM_MOD_HEALTH_REGEN             = 46
-'47'=>'Equip: Increases spell penetration by %d',             // ITEM_MOD_SPELL_PENETRATION        = 47
-'48'=>'Equip: Increases the block value of your shield by %d' // ITEM_MOD_BLOCK_VALUE              = 48
+'47'=>'Equip: Increases spell penetration by %d.',            // ITEM_MOD_SPELL_PENETRATION        = 47
+'48'=>'Equip: Increases the block value of your shield by %d.'// ITEM_MOD_BLOCK_VALUE              = 48
 );
 
 $gInventoryType = array(
@@ -370,10 +370,10 @@ $gSkillRank = array(
 
 $gCreatureRank=array(
 '0'=>'Normal',
-'1'=>'Rare',
-'2'=>'Elite',
+'1'=>'Elite',
+'2'=>'Rare Elite',
 '3'=>'Boss',
-'4'=>'World Boss',
+'4'=>'Rare',
 );
 
 $gCreatureFlags = array(

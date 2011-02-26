@@ -63,7 +63,7 @@ $iBonus = array(
 '40'=>'Одета: Increases attack power by %d in Cat, Bear, Dire Bear, and Moonkin forms only.',// ITEM_MOD_FERAL_ATTACK_POWER       = 40
 '41'=>'Одета: Increases healing done by magical spells and effects by up to %d.',            // ITEM_MOD_SPELL_HEALING_DONE       = 41
 '42'=>'Одета: Increases damage done by magical spells and effects by up to %d.',             // ITEM_MOD_SPELL_DAMAGE_DONE        = 42
-'43'=>'Одета: Восполнение %d ед. маны в 5 секунд',            // ITEM_MOD_MANA_REGENERATION        = 43
+'43'=>'Одета: Восполнение %d ед. маны раз в 5 секунд',        // ITEM_MOD_MANA_REGENERATION        = 43
 '44'=>'Одета: Повышает рейтинг пробивания брони на %d.',      // ITEM_MOD_ARMOR_PENETRATION_RATING = 44
 '45'=>'Одета: Увеличивает силу заклинаний на %d.',            // ITEM_MOD_SPELL_POWER              = 45
 '46'=>'Одета: Восполнение %d ед. здоровья раз в 5 секунд',    // ITEM_MOD_HEALTH_REGEN             = 46
@@ -372,7 +372,7 @@ $gCreatureRank=array(
 '0'=>'Обычный',
 '1'=>'Элитный',
 '2'=>'Редкий, элитный',
-'3'=>'Мировой босс',
+'3'=>'Босс',
 '4'=>'Редкий',
 );
 

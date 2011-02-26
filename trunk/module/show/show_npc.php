@@ -31,10 +31,11 @@ if (!$cr)
 else
 {
  $baseLink = '?npc='.$entry;
- if ($config['www_creature'])
-	echo "<a href=\"".sprintf($config['www_creature'], $entry)."\" target=\"_blank\"\">".sprintf($config['www_creature'], $entry)."</a><br>";
+
  if ($ajaxmode==0)
  {
+ if ($lang['www_creature'])
+	echo "<a href=\"".sprintf($lang['www_creature'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_creature'], $entry)."</a><br>";
   echo "<TABLE cellSpacing=0 cellPadding=0 width=500>";
   echo "<TBODY>";
   echo "<TR>";
@@ -228,6 +229,13 @@ else
   {
    $page_seek = init_pagePerMark($mark, "skinLIST", $page);
    $rows = getLootList($cr['skinloot'], "skinning_loot_template", $totalRecords, $page_seek, $config['fade_limit']);
+  if ($cr['type_flags'] & CREATURE_TYPEFLAGS_HERBLOOT)
+   renderLootTableList($rows, $lang['give_herb'], $page_seek, $totalRecords, $baseLink, "skinLIST");
+  else if ($cr['type_flags'] & CREATURE_TYPEFLAGS_MININGLOOT)
+   renderLootTableList($rows, $lang['give_mining'], $page_seek, $totalRecords, $baseLink, "skinLIST");
+  else if ($cr['type_flags'] & CREATURE_TYPEFLAGS_ENGINEERLOOT)
+   renderLootTableList($rows, $lang['give_engineer'], $page_seek, $totalRecords, $baseLink, "skinLIST");
+  else
    renderLootTableList($rows, $lang['give_skin'], $page_seek, $totalRecords, $baseLink, "skinLIST");
   }
  }

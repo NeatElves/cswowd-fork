@@ -39,10 +39,10 @@ if (!$spell)
 else
 {
   $baseLink = '?spell='.$entry;
-  if ($config['www_spell'])
-	echo "<a href=\"".sprintf($config['www_spell'], $entry)."\" target=\"_blank\"\">".sprintf($config['www_spell'], $entry)."</a><br>";
   if ($ajaxmode==0)
   {
+  if ($lang['www_spell'])
+   echo "<a href=\"".sprintf($lang['www_spell'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_spell'], $entry)."</a><br>";
    $icon = getSpellIcon($spell['SpellIconID']);
    echo "<TABLE cellSpacing=0 cellPadding=0 width=500><TBODY>";
    echo "<TR>";

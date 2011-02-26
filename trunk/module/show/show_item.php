@@ -61,10 +61,10 @@ if (!$item)
 else
 {
   $baseLink = '?item='.$str;
-  if ($config['www_item'])
-	echo "<a href=\"".sprintf($config['www_item'], $entry)."\" target=\"_blank\"\">".sprintf($config['www_item'], $entry)."</a><br>";
   if ($ajaxmode==0)
   {
+  if ($lang['www_item'])
+   echo "<a href=\"".sprintf($lang['www_item'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_item'], $entry)."</a><br>";
    echo "<TABLE cellSpacing=0 cellPadding=0 width=500><TBODY><TR>";
    echo "<TD vAlign=top align=right width=20%>";
    $icon = getItemIcon($item['displayid']);
