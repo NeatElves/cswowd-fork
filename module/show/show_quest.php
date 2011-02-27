@@ -14,7 +14,7 @@ function renderReqCollect($item_id, $maxcount, $count)
  if (!$item_id > 0)
    return;
  $name=getItemName($item_id);
- echo "<TR><TD>&nbsp;&nbsp;<A href=\"?item=$item_id\">$name</A>: $count/$maxcount</TD></TR>";
+ echo "<tr><td>&nbsp;&nbsp;<a href=\"?item=$item_id\">$name</a>: $count/$maxcount</td></tr>";
 }
 
 function renderReqKillOrCast($text,$ReqCreatureOrGOId,$ReqCreatureOrGOCount,$ReqSpellCast, $count)
@@ -26,7 +26,7 @@ function renderReqKillOrCast($text,$ReqCreatureOrGOId,$ReqCreatureOrGOCount,$Req
   if ($ReqSpellCast==0) // Требуется убить моба
   {
    if ($text)
-     echo "<A href=\"?npc=$ReqCreatureOrGOId\">$text</A>";
+     echo "<a href=\"?npc=$ReqCreatureOrGOId\">$text</a>";
    else
      echo $lang['kill'].' '.getCreatureName($ReqCreatureOrGOId);
   }
@@ -41,11 +41,11 @@ function renderReqKillOrCast($text,$ReqCreatureOrGOId,$ReqCreatureOrGOCount,$Req
  else if ($ReqCreatureOrGOId<0)
  {
   $ReqCreatureOrGOId=-$ReqCreatureOrGOId;
-  echo "<TR><TD><A style='float: right;' href=\"?map&obj=$ReqCreatureOrGOId\">$lang[map]</A>&nbsp;&nbsp;";
+  echo "<tr><td><a style='float: right;' href=\"?map&obj=$ReqCreatureOrGOId\">$lang[map]</a>&nbsp;&nbsp;";
   if ($ReqSpellCast==0) // Требуется использовать геймобьект
   {
    if ($text)
-     echo "<A href=\"?object=$ReqCreatureOrGOId\">$text</A>";
+     echo "<a href=\"?object=$ReqCreatureOrGOId\">$text</a>";
    else
      echo $lang['use'].' '.getGameobjectName($ReqCreatureOrGOId);
   }
@@ -53,9 +53,9 @@ function renderReqKillOrCast($text,$ReqCreatureOrGOId,$ReqCreatureOrGOCount,$Req
   {
     if (!$text) $text = $lang['cast'];
 //    $spell_name=getSpellName($ReqSpellCast);
-    echo "<A href=\"?spell=$ReqSpellCast\">$text</A> $lang[cast_on] ".getGameobjectName($ReqCreatureOrGOId);
+    echo "<a href=\"?spell=$ReqSpellCast\">$text</a> $lang[cast_on] ".getGameobjectName($ReqCreatureOrGOId);
   }
-  echo ": $count/$ReqCreatureOrGOCount</TD></TR>";
+  echo ": $count/$ReqCreatureOrGOCount</td></tr>";
  }
 }
 function renderQuestSource($srcID, $srcCount)
@@ -63,7 +63,7 @@ function renderQuestSource($srcID, $srcCount)
  if (!$srcID)
    return;
  $name=getItemName($srcID);
- echo "<TR><TD>&nbsp;&nbsp;<A href=\"?item=$srcID\">$name</a>".($srcCount?' x '.$srcCount:'').'</TD></TR>';
+ echo "<tr><td>&nbsp;&nbsp;<a href=\"?item=$srcID\">$name</a>".($srcCount?' x '.$srcCount:'').'</td></tr>';
 }
 
 ########
@@ -84,10 +84,10 @@ else
  if ($lang['www_quest'])
 	echo "<a href=\"".sprintf($lang['www_quest'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_quest'], $entry)."</a><br>";
 
- echo "<TABLE class=quest width=550>";
- echo "<TBODY>";
+ echo "<table class=quest width=550>";
+ echo "<tbody>";
 
- echo "<TR><TD class=head>$quest[Title]";
+ echo "<tr><td class=head>$quest[Title]";
  if ($quest['Type'])
    echo "<br><FONT size=-3>&lt;".getQuestType($quest['Type'])."&gt;</FONT>";
 
@@ -137,46 +137,46 @@ if ($quest['RequiredSkill'])
      echo "<tr><td>$lang[suggestedplayers]&nbsp;<b>$quest[SuggestedPlayers]</b></td></tr>";
 
  if ($quest['LimitTime'])
-     echo '<TR><TD>'.$lang['qlimittime'].' '.getTimeText($quest['LimitTime']).'</TD></TR>';
+     echo '<tr><td>'.$lang['qlimittime'].' '.getTimeText($quest['LimitTime']).'</td></tr>';
 
  if (getGameEventQuest($quest['entry']))
   {
   $qevent=getGameEventQuest($quest['entry']);
-   echo '<TR><TD>'.$lang['obtained_at_event'].': <FONT color=#E614E6>'.getGameEventName($qevent).'</FONT></td></tr>';
+   echo '<tr><td>'.$lang['obtained_at_event'].': <FONT color=#E614E6>'.getGameEventName($qevent).'</FONT></td></tr>';
   }
 
  if ($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
-     echo "<TR><TD>$lang[item_type]: <b>$lang[quest_type3]</b></TD></TR>";
+     echo "<tr><td>$lang[item_type]: <b>$lang[quest_type3]</b></td></tr>";
 
  if ($quest['QuestFlags'] & QUEST_FLAGS_WEEKLY)
-     echo "<TR><TD>$lang[item_type]: <b>$lang[quest_type2]</b></TD></TR>";
+     echo "<tr><td>$lang[item_type]: <b>$lang[quest_type2]</b></td></tr>";
 
  if ($quest['QuestFlags'] & QUEST_FLAGS_DAILY)
-     echo "<TR><TD>$lang[item_type]: <b>$lang[quest_type1]</b></TD></TR>";
+     echo "<tr><td>$lang[item_type]: <b>$lang[quest_type1]</b></td></tr>";
 
  if (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_REPEATABLE) && (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY) ==0)&& ($quest['QuestFlags'] & (QUEST_FLAGS_DAILY | QUEST_FLAGS_WEEKLY))  == 0)
-     echo "<TR><TD>$lang[item_type]: <b>$lang[quest_type0]</b></TD></TR>";
+     echo "<tr><td>$lang[item_type]: <b>$lang[quest_type0]</b></td></tr>";
 
  if ($quest['RequiredMinRepFaction'])
-   echo "<TR><TD>$lang[item_faction_rank]:</TD></TR>";
+   echo "<tr><td>$lang[item_faction_rank]:</td></tr>";
 
  if ($quest['RequiredMinRepFaction'])
-   echo "<TR><TD> ".getFactionName($quest['RequiredMinRepFaction']).": $quest[RequiredMinRepValue]($lang[item_min_level])</TD></TR>";
+   echo "<tr><td> ".getFactionName($quest['RequiredMinRepFaction']).": $quest[RequiredMinRepValue]($lang[item_min_level])</td></tr>";
 
  if ($quest['RequiredMaxRepFaction'])
-   echo "<TR><TD>".getFactionName($quest['RequiredMaxRepFaction']).": $quest[RequiredMaxRepValue]($lang[item_max_level])</TD></TR>";
+   echo "<tr><td>".getFactionName($quest['RequiredMaxRepFaction']).": $quest[RequiredMaxRepValue]($lang[item_max_level])</td></tr>";
 
- echo "<TR><TD>".getQuestText($quest['Objectives'])."<hr></TD></TR>";
+ echo "<tr><td>".getQuestText($quest['Objectives'])."<hr></td></tr>";
  ### Рек собрать
  if ($quest['RepObjectiveFaction'])
-   echo "<TR><TD>$lang[item_faction_rank]:</TD></TR>";
+   echo "<tr><td>$lang[item_faction_rank]:</td></tr>";
 
  if ($quest['RepObjectiveFaction'])
-   echo "<TR><TD> ".getFactionName($quest['RepObjectiveFaction']).": $quest[RepObjectiveValue]($lang[item_min_level])</TD></TR>";
+   echo "<tr><td> ".getFactionName($quest['RepObjectiveFaction']).": $quest[RepObjectiveValue]($lang[item_min_level])</td></tr>";
 
  if ($quest['ReqItemId1'] OR $quest['ReqItemId2'] OR $quest['ReqItemId3'] OR $quest['ReqItemId4'] OR $quest['ReqItemId5'] OR $quest['ReqItemId6'])
  {
-  echo "<TR><TD class=mark>$lang[collect]</TD></TR>";
+  echo "<tr><td class=mark>$lang[collect]</td></tr>";
   renderReqCollect($quest['ReqItemId1'],$quest['ReqItemCount1'],$q_status?$q_status['itemcount1']:0);
   renderReqCollect($quest['ReqItemId2'],$quest['ReqItemCount2'],$q_status?$q_status['itemcount2']:0);
   renderReqCollect($quest['ReqItemId3'],$quest['ReqItemCount3'],$q_status?$q_status['itemcount3']:0);
@@ -189,7 +189,7 @@ if ($quest['RequiredSkill'])
 if ($quest['ReqCreatureOrGOId1'] != 0 OR $quest['ReqCreatureOrGOId2'] != 0 OR
     $quest['ReqCreatureOrGOId3'] != 0 OR $quest['ReqCreatureOrGOId4'] != 0 )
 {
-// echo "<TR><TD class=mark>$lang[kill]</TD></TR>";
+// echo "<tr><td class=mark>$lang[kill]</td></tr>";
  renderReqKillOrCast($quest['ObjectiveText1'],$quest['ReqCreatureOrGOId1'],$quest['ReqCreatureOrGOCount1'],$quest['ReqSpellCast1'],$q_status?$q_status['mobcount1']:0);
  renderReqKillOrCast($quest['ObjectiveText2'],$quest['ReqCreatureOrGOId2'],$quest['ReqCreatureOrGOCount2'],$quest['ReqSpellCast2'],$q_status?$q_status['mobcount2']:0);
  renderReqKillOrCast($quest['ObjectiveText3'],$quest['ReqCreatureOrGOId3'],$quest['ReqCreatureOrGOCount3'],$quest['ReqSpellCast3'],$q_status?$q_status['mobcount3']:0);
@@ -199,7 +199,7 @@ if ($quest['ReqCreatureOrGOId1'] != 0 OR $quest['ReqCreatureOrGOId2'] != 0 OR
 if ($quest['ReqSourceId1'] != 0 OR $quest['ReqSourceId2'] != 0 OR
     $quest['ReqSourceId3'] != 0 OR $quest['ReqSourceId4'] != 0 )
 {
- echo "<TR><TD class=mark>$lang[req_items]</TD></TR>";
+ echo "<tr><td class=mark>$lang[req_items]</td></tr>";
  renderQuestSource($quest['ReqSourceId1'],$quest['ReqSourceCount1']);
  renderQuestSource($quest['ReqSourceId2'],$quest['ReqSourceCount2']);
  renderQuestSource($quest['ReqSourceId3'],$quest['ReqSourceCount3']);
@@ -215,48 +215,48 @@ echo "<tr><td>".getQuestText($quest['Details'])."</td></tr>";
 }
 if ($quest['SrcItemId'] || $quest['SrcSpell'])
 {
- echo "<TR><TD class = head>$lang[provided]</TD></TR>";
+ echo "<tr><td class = head>$lang[provided]</td></tr>";
  if ($quest['SrcItemId'])
  {
    $item = getItem($quest['SrcItemId'], "`entry`, `name`, `Quality`, `displayid`");
-   echo '<TR><TD class=reward>&nbsp;'.text_show_item($item['entry'], $item['displayid']);
+   echo '<tr><td class=reward>&nbsp;'.text_show_item($item['entry'], $item['displayid']);
    echo '&nbsp;<a class='.$Quality[$item['Quality']].' href="?item='.$item['entry'].'">'.$item['name'].'</a>';
    if ($quest['SrcItemCount']>1) echo "&nbsp;x$quest[SrcItemCount]";
-   echo "</TD></TR>";
+   echo "</td></tr>";
  }
  if ($quest['SrcSpell'])
  {
   $spell=getSpell($quest['SrcSpell']); // Кастуемый спелл
   if ($spell) $spellName = getSpellName($spell);
   else        $spellName = "Spell $quest[SrcSpell]";
-  echo "<TR><TD class=reward>&nbsp;";show_spell($spell['id'], $spell['SpellIconID']);
-  echo " <A href=\"?spell=$spell[id]\">$spell[SpellName]</a></TD></TR>";
+  echo "<tr><td class=reward>&nbsp;";show_spell($spell['id'], $spell['SpellIconID']);
+  echo " <a href=\"?spell=$spell[id]\">$spell[SpellName]</a></td></tr>";
  }
 }
-echo "<TR><TD class = head>$lang[quest_rewards]</TD></TR>";
+echo "<tr><td class = head>$lang[quest_rewards]</td></tr>";
 
 if ($quest['RewItemId1'] OR $quest['RewItemId1'] OR $quest['RewItemId1'] OR $quest['RewItemId1'])
 {
- echo "<TR><TD class=mark>$lang[Rew_item]</TD></TR>";
- echo "<TR><TD class=reward>&nbsp;";
+ echo "<tr><td class=mark>$lang[Rew_item]</td></tr>";
+ echo "<tr><td class=reward>&nbsp;";
  if ($quest['RewItemId1']) {show_item($quest['RewItemId1']);}
  if ($quest['RewItemId2']) {echo $lang['item_sel_and'];show_item($quest['RewItemId2']);}
  if ($quest['RewItemId3']) {echo $lang['item_sel_and'];show_item($quest['RewItemId3']);}
  if ($quest['RewItemId4']) {echo $lang['item_sel_and'];show_item($quest['RewItemId4']);}
- echo "</TD></TR>";
+ echo "</td></tr>";
 }
 if ($quest['RewChoiceItemId1'] OR $quest['RewChoiceItemId2'] OR $quest['RewChoiceItemId3'] OR
     $quest['RewChoiceItemId4'] OR $quest['RewChoiceItemId5'] OR $quest['RewChoiceItemId6'])
 {
- echo "<TR><TD class=mark>$lang[Rew_select_item]</TD></TR>";
- echo "<TR><TD class=reward>&nbsp;";
+ echo "<tr><td class=mark>$lang[Rew_select_item]</td></tr>";
+ echo "<tr><td class=reward>&nbsp;";
  if ($quest['RewChoiceItemId1']) {show_item($quest['RewChoiceItemId1']);}
  if ($quest['RewChoiceItemId2']) {echo $lang['item_sel_or'];show_item($quest['RewChoiceItemId2']);}
  if ($quest['RewChoiceItemId3']) {echo $lang['item_sel_or'];show_item($quest['RewChoiceItemId3']);}
  if ($quest['RewChoiceItemId4']) {echo $lang['item_sel_or'];show_item($quest['RewChoiceItemId4']);}
  if ($quest['RewChoiceItemId5']) {echo $lang['item_sel_or'];show_item($quest['RewChoiceItemId5']);}
  if ($quest['RewChoiceItemId6']) {echo $lang['item_sel_or'];show_item($quest['RewChoiceItemId6']);}
- echo "</TD></TR>";
+ echo "</td></tr>";
 }
 if ($quest['RewMailTemplateId'])
 {
@@ -264,15 +264,15 @@ if ($quest['RewMailTemplateId'])
  $ItemMail=getItemMail($quest['RewMailTemplateId']);
  if ($ItemMail)
   {
-    echo "<TR><TD class=mark>$lang[Rew_mail] $lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
-    echo "<TR><TD class=mark>$lang[Rew_item_mail]</TD></TR>";
-    echo "<TR><TD class=reward>&nbsp;";{show_item($ItemMail);}
-    echo "</TD></TR>";
+    echo "<tr><td class=mark>$lang[Rew_mail] $lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
+    echo "<tr><td class=mark>$lang[Rew_item_mail]</td></tr>";
+    echo "<tr><td class=reward>&nbsp;";{show_item($ItemMail);}
+    echo "</td></tr>";
   }
   else
   {
-    echo "<TR><TD class=mark>$lang[Rew_mail] $lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
-    echo "</TD></TR>";
+    echo "<tr><td class=mark>$lang[Rew_mail] $lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
+    echo "</td></tr>";
   }
 }
 if ($quest['RewSpell'] || $quest['RewSpellCast'])
@@ -281,9 +281,9 @@ if ($quest['RewSpell'] || $quest['RewSpellCast'])
  $spell=getSpell($learn);
  if ($spell) $spellName = getSpellName($spell);
  else        $spellName = "Spell $learn";
- echo '<TR><TD class=mark>'.($quest['RewSpell']?$lang['learn_spell']:$lang['cast_spell']).'</TD></TR>';
- echo "<TR><TD class=reward>&nbsp;";show_spell($spell['id'], $spell['SpellIconID']);
- echo " <A href=\"?spell=$spell[id]\">$spell[SpellName]</a></TD></TR>";
+ echo '<tr><td class=mark>'.($quest['RewSpell']?$lang['learn_spell']:$lang['cast_spell']).'</td></tr>';
+ echo "<tr><td class=reward>&nbsp;";show_spell($spell['id'], $spell['SpellIconID']);
+ echo " <a href=\"?spell=$spell[id]\">$spell[SpellName]</a></td></tr>";
 }
 
 for ($i = 1; $i <= 5; $i++) 
@@ -350,27 +350,27 @@ if ($quest['RewRepFaction1'] OR $quest['RewRepFaction2'] OR
     $quest['RewRepFaction3'] OR $quest['RewRepFaction4'] OR
     $quest['RewRepFaction5'])
 {
- echo "<TR><TD class=mark>$lang[Rew_reputation]</TD></TR>";
- if ($quest['RewRepFaction1'] && $quest['RewRepValue1'])echo "<TR><TD>&nbsp;".getFactionName($quest['RewRepFaction1']).": $quest[RewRepValue1]</TD></TR>";
- if ($quest['RewRepFaction2'] && $quest['RewRepValue2'])echo "<TR><TD>&nbsp;".getFactionName($quest['RewRepFaction2']).": $quest[RewRepValue2]</TD></TR>";
- if ($quest['RewRepFaction3'] && $quest['RewRepValue3'])echo "<TR><TD>&nbsp;".getFactionName($quest['RewRepFaction3']).": $quest[RewRepValue3]</TD></TR>";
- if ($quest['RewRepFaction4'] && $quest['RewRepValue4'])echo "<TR><TD>&nbsp;".getFactionName($quest['RewRepFaction4']).": $quest[RewRepValue4]</TD></TR>";
- if ($quest['RewRepFaction5'] && $quest['RewRepValue5'])echo "<TR><TD>&nbsp;".getFactionName($quest['RewRepFaction5']).": $quest[RewRepValue5]</TD></TR>";
+ echo "<tr><td class=mark>$lang[Rew_reputation]</td></tr>";
+ if ($quest['RewRepFaction1'] && $quest['RewRepValue1'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction1']).": $quest[RewRepValue1]</td></tr>";
+ if ($quest['RewRepFaction2'] && $quest['RewRepValue2'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction2']).": $quest[RewRepValue2]</td></tr>";
+ if ($quest['RewRepFaction3'] && $quest['RewRepValue3'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction3']).": $quest[RewRepValue3]</td></tr>";
+ if ($quest['RewRepFaction4'] && $quest['RewRepValue4'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction4']).": $quest[RewRepValue4]</td></tr>";
+ if ($quest['RewRepFaction5'] && $quest['RewRepValue5'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction5']).": $quest[RewRepValue5]</td></tr>";
 }
-if($quest['RewMoneyMaxLevel'])  echo "<TR><TD class=mark>$lang[Rew_XP] ".getQuestXPValue($quest)." xp";
+if($quest['RewMoneyMaxLevel'])  echo "<tr><td class=mark>$lang[Rew_XP] ".getQuestXPValue($quest)." xp";
 if($quest['RewHonorAddition'] or $quest['RewHonorMultiplier'])
 {
 if ($quest['RewHonorMultiplier'])
   $ihonor=getTeamContributionPoints(79)*$quest['RewHonorMultiplier']*0.1000000014901161+$quest['RewHonorAddition'];
 else
  $ihonor=$quest['RewHonorAddition'];
- echo "<TR><TD class=mark>$lang[Rew_honor] ".$ihonor;
+ echo "<tr><td class=mark>$lang[Rew_honor] ".$ihonor;
 }
-if($quest['RewOrReqMoney']) echo "<TR><TD class=mark>$lang[Rew_money]&nbsp;".money($quest['RewOrReqMoney'])."</TD></TR>";
+if($quest['RewOrReqMoney']) echo "<tr><td class=mark>$lang[Rew_money]&nbsp;".money($quest['RewOrReqMoney'])."</td></tr>";
 ###
 
 $number = 0;
-echo "<TR><TD class = head>$lang[start]:</TD></TR>";
+echo "<tr><td class = head>$lang[start]:</td></tr>";
 if ($rows = $dDB->select("SELECT *
                           FROM `creature_template` join `creature_questrelation`
                           WHERE
@@ -380,11 +380,11 @@ foreach ($rows as $creature)
 {
   localiseCreature($creature);
   $loyality = getLoyality($creature['faction_A']);
-  echo "<TR><TD><A style='float: right;' href=\"?map&npc=$creature[entry]\">$lang[map]</A>";
-  echo "<A href=\"?npc=$creature[entry]\">$creature[name]</A> ($loyality)";
+  echo "<tr><td><a style='float: right;' href=\"?map&npc=$creature[entry]\">$lang[map]</a>";
+  echo "<a href=\"?npc=$creature[entry]\">$creature[name]</a> ($loyality)";
   if ($creature['subname'] != "")
-   echo "<BR><FONT color=#008800 size=-3>&lt;$creature[subname]&gt;</FONT>";
-  echo "</TD></TR>";
+   echo "<br><FONT color=#008800 size=-3>&lt;$creature[subname]&gt;</FONT>";
+  echo "</td></tr>";
   $number++;
 }
 
@@ -396,8 +396,8 @@ if ($rows = $dDB->select("SELECT *
 foreach ($rows as $go)
 {
   localiseGameobject($go);
-  echo "<TR><TD><A style='float: right;' href=\"?map&obj=$go[entry]\">$lang[map]</A>";
-  echo "<A href=\"?object=$go[entry]\">$go[name]</A></TD></TR>";
+  echo "<tr><td><a style='float: right;' href=\"?map&obj=$go[entry]\">$lang[map]</a>";
+  echo "<a href=\"?object=$go[entry]\">$go[name]</a></td></tr>";
   $number++;
 }
 
@@ -405,7 +405,7 @@ if ($rows = $dDB->select("SELECT `entry`, `name`,`Quality`, `displayid` FROM `it
 foreach ($rows as $item)
 {
  localiseItem($item);
- echo '<TR><TD class=reward>&nbsp;'.text_show_item($item['entry'], $item['displayid']);
+ echo '<tr><td class=reward>&nbsp;'.text_show_item($item['entry'], $item['displayid']);
  echo '&nbsp;<a class='.$Quality[$item['Quality']].' href="?item='.$item['entry'].'">'.$item['name'].'</a>';
  $number++;
 }
@@ -414,7 +414,7 @@ if ($number==0)
 echo "<tr><td bgColor=#ff0000>$lang[quest_not_found]</td></tr>";
 
 $number = 0;
-echo "<TR><TD class = head>$lang[end_q]:</TD></TR>";
+echo "<tr><td class = head>$lang[end_q]:</td></tr>";
 if ($rows = $dDB->select("SELECT *
                           FROM `creature_template` join `creature_involvedrelation`
                           WHERE
@@ -424,11 +424,11 @@ foreach ($rows as $creature)
 {
   localiseCreature($creature);
   $loyality = getLoyality($creature['faction_A']);
-  echo "<TR><TD><A style='float: right;' href=\"?map&npc=$creature[entry]\">$lang[map]</A>";
-  echo "<A href=\"?npc=$creature[entry]\">$creature[name]</A> ($loyality)";
+  echo "<tr><td><a style='float: right;' href=\"?map&npc=$creature[entry]\">$lang[map]</a>";
+  echo "<a href=\"?npc=$creature[entry]\">$creature[name]</a> ($loyality)";
   if ($creature['subname'] != "")
-   echo "<BR><FONT color=#008800 size=-3>&lt;$creature[subname]&gt;</FONT>";
-  echo "</TD></TR>";
+   echo "<br><FONT color=#008800 size=-3>&lt;$creature[subname]&gt;</FONT>";
+  echo "</td></tr>";
   $number++;
 }
 
@@ -440,8 +440,8 @@ if ($rows = $dDB->select("SELECT *
 foreach ($rows as $go)
 {
   localiseGameobject($go);
-  echo "<TR><TD><A style='float: right;' href=\"?map&obj=$go[entry]\">$lang[map]</A>";
-  echo "<A href=\"?object=$go[entry]\">$go[name]</A></TD></TR>";
+  echo "<tr><td><a style='float: right;' href=\"?map&obj=$go[entry]\">$lang[map]</a>";
+  echo "<a href=\"?object=$go[entry]\">$go[name]</a></td></tr>";
   $number++;
 }
 
@@ -452,7 +452,7 @@ echo "<tr><td bgColor=#ff0000>$lang[quest_not_found]</td></tr>";
 $needForQuest = $dDB->selectRow("SELECT * FROM `quest_template` WHERE ABS(`PrevQuestId`) = ?d", $quest['entry']);
 if ($quest['PrevQuestId'] != 0 or $quest['NextQuestId'] != 0 or $needForQuest)
 {
- echo "<TR><TD class = head>$lang[this_quest_is_part_of_a_series]</TD></TR>";
+ echo "<tr><td class = head>$lang[this_quest_is_part_of_a_series]</td></tr>";
  $step=0;
  // Разматываем цепочку квестов назад
  if ($quest['PrevQuestId']!=0)
@@ -481,17 +481,17 @@ if ($quest['PrevQuestId'] != 0 or $quest['NextQuestId'] != 0 or $needForQuest)
     while ($step<$list)
     {
      $qinfo = $prevquest[$list-$step];
-     echo "<TR><TD>";
+     echo "<tr><td>";
      echo "<div style='float: right;'>($lang[level] $qinfo[QuestLevel])</div>";
-     echo "$lang[step]($step)&nbsp;<A href=\"?quest=$qinfo[entry]\">$qinfo[Title]</A>";
-     echo "</TD></TR>";
+     echo "$lang[step]($step)&nbsp;<a href=\"?quest=$qinfo[entry]\">$qinfo[Title]</a>";
+     echo "</td></tr>";
      $step++;
     }
  }
- echo "<TR><TD>";
+ echo "<tr><td>";
  echo "<div style='float: right;'>($lang[level] $quest[QuestLevel])</div>";
  echo "$lang[step]($step)&nbsp;$quest[Title]";
- echo "</TD></TR>";
+ echo "</td></tr>";
  $step++;
  // Пытаемся найти следующие квесты
  $nextquest = $quest;
@@ -501,10 +501,10 @@ if ($quest['PrevQuestId'] != 0 or $quest['NextQuestId'] != 0 or $needForQuest)
    if ($nextquest['NextQuestId']!=0)
    {
      $nextquest = getQuest(abs($nextquest['NextQuestId']));
-     echo "<TR><TD>";
+     echo "<tr><td>";
      echo "<div style='float: right;'>($lang[level] $nextquest[QuestLevel])</div>";
-     echo "$lang[step]($step)&nbsp;<A href=\"?quest=$nextquest[entry]\">$nextquest[Title]</A>";
-     echo "</TD></TR>";
+     echo "$lang[step]($step)&nbsp;<a href=\"?quest=$nextquest[entry]\">$nextquest[Title]</a>";
+     echo "</td></tr>";
    }
    // Если не вышло то по полю PrevQuestId = $nextquest[entry](у других квестов)
    else
@@ -513,10 +513,10 @@ if ($quest['PrevQuestId'] != 0 or $quest['NextQuestId'] != 0 or $needForQuest)
     {
      localiseQuest($needForQuest);
      $nextquest=$needForQuest;
-     echo "<TR><TD>";
+     echo "<tr><td>";
      echo "<div style='float: right;'>($lang[level] $nextquest[QuestLevel])</div>";
-     echo "$lang[step]($step)&nbsp;<A href=\"?quest=$nextquest[entry]\">$nextquest[Title]</A>";
-     echo "</TD></TR>";
+     echo "$lang[step]($step)&nbsp;<a href=\"?quest=$nextquest[entry]\">$nextquest[Title]</a>";
+     echo "</td></tr>";
      $needForQuest = $dDB->selectRow("SELECT * FROM `quest_template` WHERE ABS(`PrevQuestId`) = ?d", $nextquest['entry']);
     }
     else
@@ -529,21 +529,21 @@ if ($quest['PrevQuestId'] != 0 or $quest['NextQuestId'] != 0 or $needForQuest)
 $needForQuest = $dDB->selectPage($number, "SELECT * FROM `quest_template` WHERE ABS(`PrevQuestId`) = ?d", $quest['entry']);
 if ($needForQuest AND $number > 1) // если == 1 то мы уже вывели это в цепочке
 {
- echo "<TR><TD class = head>$lang[req_for_quest]</TD></TR>";
+ echo "<tr><td class = head>$lang[req_for_quest]</td></tr>";
  foreach ($needForQuest as $nextquest)
  {
   localiseQuest($nextquest);
-  echo "<TR><TD>";
+  echo "<tr><td>";
   echo "<div style='float: right;'>($lang[level] $nextquest[QuestLevel])</div>";
-  echo "<A href=\"?quest=$nextquest[entry]\">$nextquest[Title]</A>";
-  echo "</TD></TR>";
+  echo "<a href=\"?quest=$nextquest[entry]\">$nextquest[Title]</a>";
+  echo "</td></tr>";
  }
 }
 
 ###
-echo "<TR><TD class = head>$lang[additional_info]</TD></TR>";
-echo "<TR><TD><b style='float: right;'>".getNumPalayersCompletedQuest($quest['entry'])."</b>{$lang['players_completed_quest']}:</TD></TR>";
-echo "<TR><TD><b style='float: right;'>".getNumPalayersWithThisQuest($quest['entry'])."</b>{$lang['players_with_this_quest']}:</TD></TR>";
-echo "</TBODY></TABLE>";
+echo "<tr><td class = head>$lang[additional_info]</td></tr>";
+echo "<tr><td><b style='float: right;'>".getNumPalayersCompletedQuest($quest['entry'])."</b>{$lang['players_completed_quest']}:</td></tr>";
+echo "<tr><td><b style='float: right;'>".getNumPalayersWithThisQuest($quest['entry'])."</b>{$lang['players_with_this_quest']}:</td></tr>";
+echo "</tbody></table>";
 }
 ?>

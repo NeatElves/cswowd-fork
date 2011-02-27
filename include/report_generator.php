@@ -355,14 +355,14 @@ function r_lootRequire($data)
      break;
    case  2: // CONDITION_ITEM - item_id, count
      $item = getItem($data['condition_value1'], '`entry`, `displayid`');
-     echo 'Have '.text_show_item($item['entry'], $item['displayid'], 'quest');
+     echo 'Have(bank no) '.text_show_item($item['entry'], $item['displayid'], 'quest');
      if ($data['condition_value2'] > 1) echo 'x'.$data['condition_value2'];
      break;
    case  3: // CONDITION_ITEM_EQUIPPED -  item_id, 0
      $item = getItem($data['condition_value1'], '`entry`, `displayid`');
      echo 'Equipped '.text_show_item($item['entry'], $item['displayid'], 'quest');
      break;
-   case  4: // CONDITION_ZONEID - zone_id, 0
+   case  4: // CONDITION_AREAID - area_id  0, 1 (0: in (sub)area, 1: not in (sub)area)
      if ($data['condition_value2'] > 0 ) echo 'Not in '.getAreaName($data['condition_value1']);
      if ($data['condition_value2'] == 0) echo 'In '.getAreaName($data['condition_value1']);
      break;
@@ -387,10 +387,60 @@ function r_lootRequire($data)
      break;
    case 11: // CONDITION_NO_AURA  spell_id, effindex
      $spell = getSpell($data['condition_value1'], '`id`, `SpellIconID`');
-     echo 'No '; show_spell($spell['id'], $spell['SpellIconID']);
+     echo 'No aura'; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
      break;
-   case 12: // CONDITION_ACTIVE_EVENT  event_id
-     echo 'Event '.$data['condition_value1'];
+   case 12: // CONDITION_ACTIVE_GAME_EVENT  event_id
+     echo 'Active event '.$data['condition_value1'];
+     break;
+   case 13: // CONDITION_AREA_FLAG  area_flag    area_flag_not
+     if ($data['condition_value1'] > 0) echo 'In (sub)area flags '.$data['condition_value1'];
+     if ($data['condition_value2'] > 0) echo 'Not in (sub)area flags '.$data['condition_value2'];
+     break;
+   case 14: // CONDITION_RACE_CLASS  race_mask    class_mask
+     if ($data['condition_value1'] > 0) echo getAllowableRace($data['condition_value1']).'<br>';
+     if ($data['condition_value2'] > 0) echo getAllowableClass($data['condition_value2']);
+     break;
+   case 15: // CONDITION_LEVEL  player_level     0, 1 or 2
+     if ($data['condition_value1'] > 0) echo 'Player level '.$data['condition_value1'];        
+     if (($data['condition_value1'] > 0) && ($data['condition_value2'] == 0)) echo ' equal to';
+     if (($data['condition_value1'] > 0) && ($data['condition_value2'] == 1)) echo ' equal or higher than';
+     if (($data['condition_value1'] > 0) && ($data['condition_value2'] == 2)) echo ' equal or less than';
+     break;
+   case 16: // CONDITION_NOITEM  item_id      count
+     $item = getItem($data['condition_value1'], '`entry`, `displayid`');
+     echo 'Not have(bank no) '.text_show_item($item['entry'], $item['displayid'], 'quest');
+     if ($data['condition_value1'] > 1) echo 'x'.$data['condition_value2'];
+     break;
+   case 17: // CONDITION_SPELL  spell_id     0, 1 (0: has spell, 1: hasn't spell)
+     $spell = getSpell($data['condition_value1'], '`id`, `SpellIconID`');
+     if ($data['condition_value2'] > 0) { echo 'Player\'s has spell '; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
+     else { echo 'Player\'s hasn\'t spell '; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
+     break;
+   case 20: // CONDITION_ACHIEVEMENT  ach_id       0, 1 (0: has achievement, 1: hasn't achievement) for player
+     if ($data['condition_value2'] > 0) echo 'Player\'s has achievement '.$data['condition_value1'];
+     else echo 'Player\'s hasn\'t achievement '.$data['condition_value1'];
+     break;
+   case 22: // CONDITION_QUEST_NONE  quest_id 
+     if ($data['condition_value1'] > 0) echo 'No take and no rewarded for '.getQuestName($data['condition_value1']);
+     break;
+   case  23: // CONDITION_ITEM_WITH_BANK- item_id, count
+     $item = getItem($data['condition_value1'], '`entry`, `displayid`');
+     echo 'Have(bank yes) '.text_show_item($item['entry'], $item['displayid'], 'quest');
+     if ($data['condition_value2'] > 1) echo 'x'.$data['condition_value2'];
+     break;
+   case 24: // NOITEM_WITH_BANK  item_id      count
+     $item = getItem($data['condition_value1'], '`entry`, `displayid`');
+     echo 'Not have(bank yes) '.text_show_item($item['entry'], $item['displayid'], 'quest');
+     if ($data['condition_value1'] > 1) echo 'x'.$data['condition_value2'];
+     break;
+   case 25: // CONDITION_NOT_ACTIVE_GAME_EVENT  event_id
+     echo 'No active event '.$data['condition_value1'];
+     break;
+   case 26: // CONDITION_ACTIVE_HOLIDAY  holiday_id
+     echo 'Holiday '.$data['condition_value1'];
+     break;
+   case 27: // CONDITION_NOT_ACTIVE_HOLIDAY  holiday_id
+     echo 'No active holiday '.$data['condition_value1'];
      break;
   }
 }

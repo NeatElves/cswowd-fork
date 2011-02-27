@@ -9,10 +9,10 @@ if ($debug == "ex_cost")
  $rows = $wDB->select("SELECT * FROM `wowd_item_ex_cost`");
  if ($rows)
  {
-    echo "<br><TABLE class=report width=500>";
-    echo "<TBODY>";
-    echo "<TR><TD colSpan=3 class=head>Ex costs</TD></TR>";
-    echo "<TR><TH width=20>$lang[id]</TH><TH width=100%>$lang[item_list]</TH><TH>$lang[cost]</TH></TR>";
+    echo "<br><table class=report width=500>";
+    echo "<tbody>";
+    echo "<tr><td colspan=3 class=head>Ex costs</td></tr>";
+    echo "<tr><th width=20>$lang[id]</th><th width=100%>$lang[item_list]</th><th>$lang[cost]</th></tr>";
     foreach ($rows as $cost)
     {
       echo "<tr>";
@@ -26,11 +26,11 @@ if ($debug == "ex_cost")
        echo "</td>";
       }
       else
-          echo "<td align=center>no found</td>";
+          echo "<td align=center>$lang['not_found']</td>";
       echo "<td align=center>".showExtendCostData($cost, 0)."</td>";
       echo "</tr>";
     }
-    echo "</TBODY></TABLE>";
+    echo "</tbody></table>";
  }
 }
 //********************************************************************************
@@ -42,15 +42,15 @@ if ($debug == "lock")
  $rows = $wDB->select("SELECT * FROM `wowd_lock`");
  if ($rows)
  {
-  echo "<br><TABLE class=report width=500>";
-  echo "<TBODY>";
-  echo "<TR><TD colSpan=3 class=head>lock</TD></TR>";
-  echo "<TR><TH width=1%>id</TH><TH>info</TH><TH>items and obj</TH></TR>";
+  echo "<br><table class=report width=500>";
+  echo "<tbody>";
+  echo "<tr><td colspan=3 class=head>lock</td></tr>";
+  echo "<tr><th width=1%>id</th><th>info</th><th>items and obj</th></tr>";
   foreach ($rows as $lock)
   {
-   echo "<TR>";
-   echo "<TD>$lock[id]</TD>";
-   echo "<TD>";
+   echo "<tr>";
+   echo "<td>$lock[id]</td>";
+   echo "<td>";
    for ($i=0;$i<8;$i++)
    {
       $type = $lock['keytype_'.$i];
@@ -66,7 +66,7 @@ if ($debug == "lock")
           echo getLockType($key).($reqskill?" ($reqskill)":"")." - $unk";
       echo "<br>";
    }
-   echo "</TD>";
+   echo "</td>";
    echo "<td align=center>";
    $data0 = array(2,3,6,10,13);
    $data1 = array(0, 1);
@@ -86,11 +86,11 @@ if ($debug == "lock")
       echo "<a href=\"?object=$go[entry]\">$go[name]</a><br>";
    }
    if ($items AND $go_list == 0)
-      echo "no found";
+      echo "$lang['not_found']";
    echo "</td>";
-   echo "</TR>";
+   echo "</tr>";
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
  }
 }
 //********************************************************************************
@@ -99,30 +99,30 @@ if ($debug == "lock")
 else
 if ($debug == "race_class_info")
 {
-  echo "<br><TABLE class=report width = 800><TBODY>";
-  echo "<TR><TD colspan=8 class=head>skill_race_class_info</TD></TR>";
-  echo "<TR>";
+  echo "<br><table class=report width = 800><tbody>";
+  echo "<tr><td colspan=8 class=head>skill_race_class_info</td></tr>";
+  echo "<tr>";
   $skillraceclass = $wDB->select("SELECT * FROM `wowd_skill_race_class_info` order by classMask, id");
   foreach ($skillraceclass as $info)
   {
    $skillLine = getSkillLine($info['skillId']);
    if (empty($skillLine) or @$skillLine['Category']!=@$_REQUEST['cat']) continue;
 
-   echo "<TR>";
-   echo "<TD>$info[Id]</TD>";
+   echo "<tr>";
+   echo "<td>$info[Id]</td>";
    if ($skillLine)
-    echo "<TD>".$skillLine['Name']."-".$info['skillId']."</TD>";
+    echo "<td>".$skillLine['Name']."-".$info['skillId']."</td>";
    else
-    echo "<TD>".$info['skillId']."</TD>";
-   echo "<TD>".getAllowableRace($info['raceMask'])."</TD>";
-   echo "<TD>".getAllowableClass($info['classMask'])."</TD>";
-   echo "<TD>$info[Unc_5]</TD>";
-   echo "<TD>$info[reqLevel]</TD>";
-   echo "<TD>$info[skillTiers]</TD>";
-   echo "<TD>$info[Unc_8]</TD>";
-   echo "</TR>";
+   echo "<td>".$info['skillId']."</td>";
+   echo "<td>".getAllowableRace($info['raceMask'])."</td>";
+   echo "<td>".getAllowableClass($info['classMask'])."</td>";
+   echo "<td>$info[Unc_5]</td>";
+   echo "<td>$info[reqLevel]</td>";
+   echo "<td>$info[skillTiers]</td>";
+   echo "<td>$info[Unc_8]</td>";
+   echo "</tr>";
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
 }
 //********************************************************************************
 // Таблица skill_line_ability
@@ -130,9 +130,9 @@ if ($debug == "race_class_info")
 else
 if ($debug == "skill_line")
 {
-  echo "<br><TABLE class=report width = 500><TBODY>";
-  echo "<TR><TD colspan=12 class=head>skill_line_ability</TD></TR>";
-  echo "<TR>";
+  echo "<br><table class=report width = 500><tbody>";
+  echo "<tr><td colspan=12 class=head>skill_line_ability</td></tr>";
+  echo "<tr>";
   $skillAbility = $wDB->select("
   SELECT *
   FROM `wowd_skill_line_ability`
@@ -151,15 +151,15 @@ if ($debug == "skill_line")
    if ($skillLine['Category'] != 11) continue;
 
   if ($n)
-      echo "<TR><TD colspan=12 class=head>".$skillLine['Name']."(".$skillLine['Category'].")</TD></TR>";
+      echo "<tr><td colspan=12 class=head>".$skillLine['Name']."(".$skillLine['Category'].")</td></tr>";
    $spell = getSpell($skill['spellId'],"`id`, `SpellIconID`, `SpellName`, `Rank`");
    if ($spell==0)
      continue;
-   echo "<TR>";
-//   echo "<TD width=1px>";show_spell($spell['id'], $spell['SpellIconID'], "spell");echo "</TD>";
-   echo "<TD>($skill[spellId])<a href=\"?q=s&entry=$spell[id]\">$spell[SpellName]</a>";
+   echo "<tr>";
+//   echo "<td width=1px>";show_spell($spell['id'], $spell['SpellIconID'], "spell");echo "</td>";
+   echo "<td>($skill[spellId])<a href=\"?q=s&entry=$spell[id]\">$spell[SpellName]</a>";
    if ($spell['Rank'] != "") echo "<div class=srank>($spell[Rank])</div>";
-   echo "</TD>";
+   echo "</td>";
    echo "<td>";echo getAllowableRace($skill['RaceMask']);echo "</td>";
    echo "<td>";echo getAllowableClass($skill['ClassMask']);echo "</td>";
    echo "<td>".$skill['unk3']."</td>";
@@ -168,9 +168,9 @@ if ($debug == "skill_line")
    if ($skill['forward_spellid'])
    {
  	  $spell = getSpell($skill['forward_spellid'],"`id`, `SpellIconID`, `SpellName`, `Rank`");
-      echo "<TD><a href=\"?q=s&entry=$spell[id]\">$spell[SpellName]</a>";
+      echo "<td><a href=\"?q=s&entry=$spell[id]\">$spell[SpellName]</a>";
       if ($spell['Rank'] != "") echo "<div class=srank>($spell[Rank])</div>";
-      echo "</TD>";
+      echo "</td>";
    }
    else
       echo "<td></td>";
@@ -179,9 +179,9 @@ if ($debug == "skill_line")
    echo "<td>".$skill['unk6']."</td>";
    echo "<td>".$skill['unk7']."</td>";
    echo "<td>".$skill['reqtrainpoints']."</td>";
-   echo "</TR>";
+   echo "</tr>";
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
 }
 //********************************************************************************
 // Таблица Glyph Properties
@@ -189,19 +189,19 @@ if ($debug == "skill_line")
 else
 if ($debug == "glyph")
 {
-  echo "<br><TABLE class=report width = 500><TBODY>";
-  echo "<TR><TD colspan=12 class=head>GLUPH</TD></TR>";
+  echo "<br><table class=report width = 500><tbody>";
+  echo "<tr><td colspan=12 class=head>GLUPH</td></tr>";
   $glyphs = $wDB->select("SELECT * FROM `wowd_glyphproperties`");
   foreach($glyphs as $glyph)
   {
-   echo "<TR>";
+   echo "<tr>";
    echo "<td>$glyph[id]</td>";
    echo "<td>".getSpellName(getSpell($glyph['SpellId']))."</td>";
    echo "<td>$glyph[TypeFlags]</td>";
    echo "<td>$glyph[Unk1]</td><td><img src=".getSpellIcon($glyph['Unk1'])." width=24></td>";
-   echo "</TR>";
+   echo "</tr>";
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
 }
 //********************************************************************************
 // Таблица Achievement
@@ -209,8 +209,8 @@ if ($debug == "glyph")
 else
 if ($debug == "achievement")
 {
-  echo "<br><TABLE class=report width = 100%><TBODY>";
-  echo "<TR><TD colspan=13 class=head>Achievement</TD></TR>";
+  echo "<br><table class=report width = 100%><tbody>";
+  echo "<tr><td colspan=13 class=head>Achievement</td></tr>";
   $achievements = $wDB->select("
   SELECT *
   FROM `wowd_achievement`
@@ -235,7 +235,7 @@ if ($debug == "achievement")
      echo "<td>".$wDB->selectCell("SELECT `description` FROM `wowd_achievement` WHERE `id` = ?d", $a['refAchievement'])."</td>";
      echo "</tr>";
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
 }
 else
 if ($debug == "chain")
@@ -299,8 +299,8 @@ if ($debug == "chain")
 else
 if ($debug == "summon")
 {
-  echo "<br><TABLE class=report width = 100%><TBODY>";
-  echo "<TR><TD colspan=13 class=head>Summon type</TD></TR>";
+  echo "<br><table class=report width = 100%><tbody>";
+  echo "<tr><td colspan=13 class=head>Summon type</td></tr>";
   $summons = $wDB->select("SELECT * FROM `wowd_summon_type` WHERE `unk2` <> 0 ORDER BY unk2");
   foreach ($summons as $s)
   {
@@ -328,13 +328,13 @@ if ($debug == "summon")
      echo "</td>";
      echo "</tr>";
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
 }
 else
 if ($debug == "talent")
 {
-  echo "<br><TABLE class=report width = 100%><TBODY>";
-  echo "<TR><TD colspan=13 class=head>Talent</TD></TR>";
+  echo "<br><table class=report width = 100%><tbody>";
+  echo "<tr><td colspan=13 class=head>Talent</td></tr>";
 //  $talent = $wDB->select("SELECT * FROM `wowd_talents` WHERE `unkFlags1` <> 0  ORDER BY `TalentTab`, `Row`, `Col`");
    $petId = 0;
    $petMask1=0;
@@ -363,6 +363,6 @@ if ($debug == "talent")
      echo "<td>".getHunterPetList($t['unkFlags1'])."</td>";
      echo "</tr>";
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
 }
 ?>

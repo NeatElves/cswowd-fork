@@ -65,12 +65,12 @@ else
   {
   if ($lang['www_item'])
    echo "<a href=\"".sprintf($lang['www_item'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_item'], $entry)."</a><br>";
-   echo "<TABLE cellSpacing=0 cellPadding=0 width=500><TBODY><TR>";
-   echo "<TD vAlign=top align=right width=20%>";
+   echo "<table cellspacing=0 cellpadding=0 width=500><tbody><tr>";
+   echo "<td valign=top align=right width=20%>";
    $icon = getItemIcon($item['displayid']);
-   echo "<br><A id='no_tip' href=\"?item=$entry\"><IMG height=64 width=64 border=0 src='$icon'></A></TD>";
-   echo "<TD>";generateItemTable($item,$item_data,0);echo "</TD>";
-   echo "</TR></TBODY></TABLE>";
+   echo "<br><a id='no_tip' href=\"?item=$entry\"><img height=64 width=64 border=0 src='$icon'></a></td>";
+   echo "<td>";generateItemTable($item,$item_data,0);echo "</td>";
+   echo "</tr></tbody></table>";
 
    if ($item['minMoneyLoot']) echo "$lang[Rew_money] ".money($item['minMoneyLoot']);
    if (($item['maxMoneyLoot']) && ($item['maxMoneyLoot']>$item['minMoneyLoot'])) echo " - ".money($item['maxMoneyLoot']);
@@ -87,15 +87,15 @@ else
     $setkey = array_keys($set);
     if ($set)
     {
-     echo "<TABLE class=report width=500 border = 1>";
-     echo "<TBODY>";
-     echo '<TR><TD class=head>'.$lang['this_item_part_of_set'].' - ';r_setName($set); echo '</TD></TR>';
-     echo "<TR><TD class=set>";r_setItems($set);echo "</TD></TR>";
-     echo "<TR><TD class=left>";r_setSpells($set);echo "</TD></TR>";
+     echo "<table class=report width=500 border = 1>";
+     echo "<tbody>";
+     echo '<tr><td class=head>'.$lang['this_item_part_of_set'].' - ';r_setName($set); echo '</td></tr>';
+     echo "<tr><td class=set>";r_setItems($set);echo "</td></tr>";
+     echo "<tr><td class=left>";r_setSpells($set);echo "</td></tr>";
     }
     else
-     echo "<TR><TD>Unknown SET = $item[itemset]</TD></TR>";
-    echo "</TBODY></TABLE>";
+     echo "<tr><td>Unknown SET = $item[itemset]</td></tr>";
+    echo "</tbody></table>";
    }
   }
   createReportTab();
@@ -126,7 +126,7 @@ else
        addTab($lang['random_enchants'].' ('.$totalRecords.')', 'randList');
        echo "<table class=report width=500>";
        echo "<tbody>";
-       echo "<TR class=head><TD colSpan=4>$lang[random_enchants]</TD></TR>";
+       echo "<tr class=head><td colspan=4>$lang[random_enchants]</td></tr>";
        echo "<tr><th>$lang[enchant_id]</th><th>$lang[random_enc_name]</th><th>$lang[random_enc_info]</th><th>$lang[random_enc_cnance]</th></tr>";
        foreach ($rows as $i_ench)
        {

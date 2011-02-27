@@ -591,6 +591,6 @@ function createSpellDetails($spell)
    showEffectData($spell, 1);
    showEffectData($spell, 2);
    showEffectData($spell, 3);
-   echo '</TBODY></TABLE>';
+   echo '</tbody></table>';
 }
 ?>

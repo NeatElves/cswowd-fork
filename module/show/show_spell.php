@@ -44,16 +44,16 @@ else
   if ($lang['www_spell'])
    echo "<a href=\"".sprintf($lang['www_spell'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_spell'], $entry)."</a><br>";
    $icon = getSpellIcon($spell['SpellIconID']);
-   echo "<TABLE cellSpacing=0 cellPadding=0 width=500><TBODY>";
-   echo "<TR>";
-   echo "<TD vAlign=top align=right width=20%>";
+   echo "<table cellspacing=0 celloadding=0 width=500><tbody>";
+   echo "<tr>";
+   echo "<td valign=top align=right width=20%>";
    echo "<br><a href=\"#\"><img border=0 src='$icon' width=64></a></td>";
-   echo "<TD>";generateSpellTable($spell);echo "</TD>";
-   echo "</TR>";
+   echo "<td>";generateSpellTable($spell);echo "</td>";
+   echo "</tr>";
    if ($spell['ToolTip'] && $spell['ToolTip']!=$spell['Description'])
    {
     echo "<tr>";
-    echo "<td vAlign=top align=right>";
+    echo "<td valign=top align=right>";
     if ($spell['activeIconID'] && $spell['SpellIconID']!=$spell['activeIconID'])
     {
        $buff_icon = getSpellIcon($spell['activeIconID']);
@@ -63,7 +63,7 @@ else
     echo "<td>";generateSpellBuffTable($spell);echo "</td>";
     echo "</tr>";
    }
-   echo "</TBODY></TABLE>";
+   echo "</tbody></table>";
    echo "<br>";
    //********************************************************************************
    // Вывод данных по спеллу

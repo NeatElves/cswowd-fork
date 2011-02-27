@@ -92,7 +92,9 @@ function noBorderCreatureTable($npc)
  else if ($npc['ScriptName']<>"" && $npc['AIName']=="EventAI") {$npcscr='EventAI + SD2';}
  else {$npcscr='SD2';}
  
- $npc['name'] = str_replace('(1)', '(Heroic)', $npc['name']);
+ $npc['name'] = str_replace('(1)', '(difficulty_1)', $npc['name']);
+ $npc['name'] = str_replace('(2)', '(difficulty_2)', $npc['name']);
+ $npc['name'] = str_replace('(3)', '(difficulty_3)', $npc['name']);
 
  echo "<TABLE class=creature cellSpacing=0>";
  echo "<TBODY>";
