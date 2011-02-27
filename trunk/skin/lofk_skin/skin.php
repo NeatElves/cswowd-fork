@@ -2,39 +2,39 @@
 include_once("include/functions.php");
 include_once("include/simple_cacher.php");
 ?>
-<LINK href="skin/lofk_skin/style.css" type=text/css rel=stylesheet>
+<link href="skin/lofk_skin/style.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="skin/lofk_skin/menu.js"></script>
-<TABLE class=foundation cellSpacing=0 cellPadding=0>
-  <TBODY>
-  <TR>
-    <TD class=lefttitle></TD>
-    <TD align=center>
-          <table class=sitetitle cellSpacing=0 cellPadding=0>
+<table class="foundation" cellspacing="0" cellpadding="0">
+  <tbody>
+  <tr>
+    <td class="lefttitle"></td>
+    <td align="center">
+          <table class="sitetitle" cellspacing="0" cellpadding="0">
           <tbody>
            <tr>
-            <td class=ugverhfon>&nbsp;</td>
-            <td class=topfon>&nbsp;</td>
-            <td class=fonmenu><?php  echo $config['servername']; ?></td>
-            <td class=topfon>&nbsp;</td>
-            <td class=ugverhfon2>&nbsp;</td>
+            <td class="ugverhfon">&nbsp;</td>
+            <td class="topfon">&nbsp;</td>
+            <td class="fonmenu"><?php  echo $config['servername']; ?></td>
+            <td class="topfon">&nbsp;</td>
+            <td class="ugverhfon2">&nbsp;</td>
            </tr>
           </tbody>
           </table>
-    </TD>
-    <TD class=righttitle></TD>
-  </TR>
-  <TR>
-    <TD class=leftmenu>
-      <TABLE class=mainmenu>
-       <TBODY>
-       <TR><TD class=top></TD></TR>
-       <TR>
-        <TD class=body>
+    </td>
+    <td class="righttitle"></td>
+  </tr>
+  <tr>
+    <td class="leftmenu">
+      <table class="mainmenu">
+       <tbody>
+       <tr><td class=top></td></tr>
+       <tr>
+        <td class="body">
          <!--<?php  echo $lang['search_database']; ?><br> -->
-          <FORM style="DISPLAY: inline" method=get>
+          <form style="display: inline" method="get">
            <input name="s" type="hidden" value="all">
-           <INPUT class=ls_search alt="all" name=name style="width: 190px;"><br />
+           <input class="ls_search" alt="all" name="name" style="width: 190;"><br />
           </form>
 <?php
    // Получаем данные для левого меню (сначала из кэша)
@@ -47,35 +47,35 @@ include_once("include/simple_cacher.php");
      flushJsCache($left_menu_file);
    }
 ?>
-        </TD>
-        </TR>
-        <TR><TD class=bottom></TD></TR>
-       </TBODY>
-      </TABLE>
-    </TD>
-    <TD class=mybody>
+        </td>
+        </tr>
+        <tr><td class="bottom"></td></tr>
+       </tbody>
+      </table>
+    </td>
+    <td class="mybody">
 <!--  -->
-    <TABLE class=mainbody cellSpacing=0 cellPadding=0>
-    <TBODY>
-    <TR>
-        <TD class=bodytopleft></TD>
-        <TD class=bodytop></TD>
-        <TD class=bodytopright></TD>
-    </TR>
-    <TR>
-        <TD class=bodyleft></TD>
-        <TD class=body><center><?php include("main.php");?></center></TD>
-        <TD class=bodyright></TD></TR>
-    <TR>
-        <TD class=bodybottomleft></TD>
-        <TD class=bodybottom></TD>
-        <TD class=bodybottomright></TD>
-    </TR>
-</TBODY>
-</TABLE>
+    <table class="mainbody" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+        <td class="bodytopleft"></td>
+        <td class="bodytop"></td>
+        <td class="bodytopright"></td>
+    </tr>
+    <tr>
+        <td class="bodyleft"></td>
+        <td class="body"><center><?php include("main.php");?></center></td>
+        <td class="bodyright"></td></tr>
+    <tr>
+        <td class="bodybottomleft"></td>
+        <td class="bodybottom"></td>
+        <td class="bodybottomright"></td>
+    </tr>
+</tbody>
+</table>
 <!-- -->
-  </TD>
-  <TD class=secondmenu></TD>
-  </TR>
-  </TBODY>
-</TABLE>
+  </td>
+  <td class="secondmenu"></td>
+  </tr>
+  </tbody>
+</table>

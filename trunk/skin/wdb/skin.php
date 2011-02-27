@@ -1,4 +1,4 @@
-<LINK href="skin/wdb/style.css" type=text/css rel=stylesheet>
+<link href="skin/wdb/style.css" type="text/css" rel="stylesheet">
 <p align="center">
  <table width="1020" border="0" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#FFFFFF">
   <tr>
@@ -24,7 +24,7 @@
   </tr>
   <tr>
    <td width="1020" valign="top" background="skin/wdb/WDB-middle.jpg">
-     <table  class = mainbody width="1020" border="0" cellspacing="0" cellpadding="0">
+     <table class="mainbody" width="1020" border="0" cellspacing="0" cellpadding="0">
       <tr>
        <td width="25" height="2"></td>
        <td width="735" height="2"></td>
@@ -38,8 +38,8 @@
        <td width="35"></td>
        <td width="195" align="left" valign="top">
 
-        <?php  echo $lang['search_database']; ?>:<FORM style="DISPLAY: inline" method=get>
-        <input name="s" type="hidden" value="all"><input class=ls_search alt="all" name=name></form><br>
+        <?php  echo $lang['search_database']; ?>:<form style="display: inline" method="get">
+        <input name="s" type="hidden" value="all"><input class="ls_search" alt="all" name="name"></form><br>
         <hr>
 
         <?php  echo $lang['find']; ?>:<br>
@@ -54,7 +54,7 @@
         <A href="?instance"><?php  echo $lang['instance']; ?></A><br />  
         <hr>
 
-        <span style="DISPLAY: inline">
+        <span style="display: inline">
 	    <?php  echo $config['servername']; ?></span><br>
 
         <A href="index.php"><?php  echo $lang['main']; ?></A><br>
