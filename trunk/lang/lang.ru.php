@@ -6,6 +6,7 @@ $lang = array(
 'search_database' => 'Поиск по базе',
 'find' => 'Найти',
 'main'=> 'Главная',
+'error' => 'Ошибка',
 
 # Site
 'www_creature'=>'http://ru.wowhead.com/npc=%d',
