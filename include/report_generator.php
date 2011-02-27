@@ -95,7 +95,7 @@ class ReportGenerator{
 
         echo '<table class=report width=500>';
         echo '<thead>';
-        echo '<tr class=head><td colSpan='.$columns.'>'.$header.'</td></tr>';
+        echo '<tr class=head><td colspan='.$columns.'>'.$header.'</td></tr>';
         echo '<tr>';
         foreach ($this->fields as $field)
         {
@@ -130,7 +130,7 @@ class ReportGenerator{
         {
             $totalPage = floor($this->total_data/$this->size_limit+0.9999);
             $page = $this->page;
-            echo '<tr><td colSpan='.$columns.' class=page>';
+            echo '<tr><td colspan='.$columns.' class=page>';
             for ($i=1;$i<=$totalPage;$i++)
             {
                 if ($i!=$page) echo $this->createHref($i, $this->sort_method, $i).' ';
@@ -529,29 +529,29 @@ class LootReportGenerator extends ReportGenerator{
         echo "<tr><th colspan = 4>Group $loot[groupid]</th></tr>";
         $curloot = $loot['groupid'];
     }
-    echo "<TR>";
+    echo "<tr>";
     if ($loot['mincountOrRef'] > 0)
     {
      if ($item = getItem($loot['item'],"`entry`, `Quality`, `name`, `displayid`"))
      {
-       echo '<TD class=i_ico>';r_itemIcon($item);echo '</TD>';
-       echo '<TD class=left>';r_itemName($item);echo '</TD>';
+       echo '<td class=i_ico>';r_itemIcon($item);echo '</td>';
+       echo '<td class=left>';r_itemName($item);echo '</td>';
      }
      else
-       echo "<TD>-</TD><TD>Unknown item $loot[item]</TD>";
+       echo "<td>-</td><td>Unknown item $loot[item]</td>";
     }
     else // Используется список вещей (падает только одна вещь из списка)
     {
-      echo "<TD>".$loot['maxcount']."x</TD>";
-      echo "<TD class=forsub>$gtext<TABLE class=sublist><TBODY>";
+      echo "<td>".$loot['maxcount']."x</td>";
+      echo "<td class=forsub>$gtext<table class=sublist><tbody>";
       $this->renderSubList($loot['item']);
-      echo "</TBODY></TABLE></TD>";
+      echo "</tbody></table></td>";
     }
     if ($loot['lootcondition']){echo '<td>'; r_lootRequire($loot); echo '</td>';}
     else echo '<td></td>';
-         if ($loot['ChanceOrQuestChance'] < 0) echo "<TD align=center>Q".(-$loot['ChanceOrQuestChance'])."%</TD>";
-    else if ($loot['ChanceOrQuestChance'] > 0) echo "<TD align=center>".$loot['ChanceOrQuestChance']."%</TD>";
-    echo "</TR>";
+         if ($loot['ChanceOrQuestChance'] < 0) echo "<td align=center>Q".(-$loot['ChanceOrQuestChance'])."%</td>";
+    else if ($loot['ChanceOrQuestChance'] > 0) echo "<td align=center>".$loot['ChanceOrQuestChance']."%</td>";
+    echo "</tr>";
   }
  }
  function createReport($header)
@@ -561,12 +561,12 @@ class LootReportGenerator extends ReportGenerator{
      return;
   if ($this->ajax_mode==0)
      echo '<div id="'.$this->mark.'">';
-  echo '<TABLE class=report width=500>';
-  echo '<TBODY>';
-  echo '<TR><TD colSpan=4 class=head>'.$header.'</TD></TR>';
-  echo '<TR><TH width=1%></TH><TH>'.$lang['item_name'].'</TH><th></th><TH>'.$lang['drop'].'%</TH></TR>';
+  echo '<table class=report width=500>';
+  echo '<tbody>';
+  echo '<tr><td colspan=4 class=head>'.$header.'</td></tr>';
+  echo '<tr><th width=1%></th><th>'.$lang['item_name'].'</th><th></th><th>'.$lang['drop'].'%</th></tr>';
   $this->renderSubList($this->data_array);
-  echo '</TBODY></TABLE>';
+  echo '</tbody></table>';
   if ($this->ajax_mode==0)
   {
     echo '</div>';

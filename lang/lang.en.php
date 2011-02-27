@@ -6,6 +6,7 @@ $lang = array(
 'search_database' => 'Search',
 'find' => 'Find',
 'main' => 'Main',
+'error' => 'Error',
 
 # Site
 'www_creature'=>'http://wowhead.com/npc=%d',

@@ -25,7 +25,7 @@ function generateLPage($totalRecords, $currentPage, $link, $limit, $colSpan)
    if ($totalPage <=1) return;
    if ($currentPage<1)
        $currentPage = 1;
-   echo "<tr><td colSpan=$colSpan class=page>";
+   echo "<tr><td colspan=$colSpan class=page>";
    for ($i=1;$i<=$totalPage;$i++)
    {
     if ($i!=$currentPage) printf($link, $i, $i);
@@ -42,7 +42,8 @@ function generatePage($totalRecords, $currentPage, $link, $colSpan)
 
 function RenderError($text)
 {
- echo "Error - $text";
+ global $lang;
+ echo "$lang[error] - $text";
 }
 function money($many, $height=10)
 {
