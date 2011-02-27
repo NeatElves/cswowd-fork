@@ -320,6 +320,25 @@ function getHeroicList()
   return $gheroic;
 }
 
+$gheroic1 = 0;
+function getHeroicList1()
+{
+  global $dDB, $gheroic1;
+  if (!$gheroic1)
+    $gheroic1 = $dDB->selectCol('-- CACHE: 1h
+	  SELECT `difficulty_entry_2` AS ARRAY_KEY, `entry` FROM `creature_template` WHERE `difficulty_entry_2` <>  0');
+  return $gheroic1;
+}
+
+$gheroic2 = 0;
+function getHeroicList2()
+{
+  global $dDB, $gheroic2;
+  if (!$gheroic2)
+    $gheroic2 = $dDB->selectCol('-- CACHE: 1h
+	  SELECT `difficulty_entry_3` AS ARRAY_KEY, `entry` FROM `creature_template` WHERE `difficulty_entry_3` <>  0');
+  return $gheroic2;
+}
 //==============================================================================
 // Callback functions
 //==============================================================================
@@ -779,10 +798,27 @@ function r_npcLvl($data)
 function r_npcName($data)
 {
   $h = getHeroicList();
+  $h1 = getHeroicList1();
+  $h2 = getHeroicList2();
   if (isset($h[$data['entry']]))
   {
     $heroic = getCreature($h[$data['entry']]);
-	$data['name']=$heroic['name'].' (Heroic)';
+	$data['name']=$heroic['name'].' (difficulty_1)';
+	$data['name_loc']=$heroic['name'].' (difficulty_1)';
+	$data['subname']=$heroic['subname'];
+  }
+  if (isset($h1[$data['entry']]))
+  {
+    $heroic = getCreature($h1[$data['entry']]);
+	$data['name']=$heroic['name'].' (difficulty_2)';
+	$data['name_loc']=$heroic['name'].' (difficulty_2)';
+	$data['subname']=$heroic['subname'];
+  }
+  if (isset($h2[$data['entry']]))
+  {
+    $heroic = getCreature($h2[$data['entry']]);
+	$data['name']=$heroic['name'].' (difficulty_3)';
+	$data['name_loc']=$heroic['name'].' (difficulty_3)';
 	$data['subname']=$heroic['subname'];
   }
   $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
@@ -794,10 +830,27 @@ function r_npcName($data)
 function r_npcRName($data)
 {
   $h = getHeroicList();
+  $h1 = getHeroicList1();
+  $h2 = getHeroicList2();
   if (isset($h[$data['entry']]))
   {
     $heroic = getCreature($h[$data['entry']]);
-	$data['name']=$heroic['name'].' (Heroic)';
+	$data['name']=$heroic['name'].' (difficulty_1)';
+	$data['name_loc']=$heroic['name'].' (difficulty_1)';
+	$data['subname']=$heroic['subname'];
+  }
+  if (isset($h1[$data['entry']]))
+  {
+    $heroic = getCreature($h1[$data['entry']]);
+	$data['name']=$heroic['name'].' (difficulty_2)';
+	$data['name_loc']=$heroic['name'].' (difficulty_2)';
+	$data['subname']=$heroic['subname'];
+  }
+  if (isset($h2[$data['entry']]))
+  {
+    $heroic = getCreature($h2[$data['entry']]);
+	$data['name']=$heroic['name'].' (difficulty_3)';
+	$data['name_loc']=$heroic['name'].' (difficulty_3)';
 	$data['subname']=$heroic['subname'];
   }
   $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
@@ -811,6 +864,15 @@ function r_npcMap($data)
 {
   global $lang;
   $h = getHeroicList();
+  $h1 = getHeroicList1();
+  $h2 = getHeroicList2();
+
+  if (isset($h2[$data['entry']]))
+    echo '<a href="?map&npc='.$h2[$data['entry']].'">'.$lang['map'].'</a>';
+  else
+  if (isset($h1[$data['entry']]))
+    echo '<a href="?map&npc='.$h1[$data['entry']].'">'.$lang['map'].'</a>';
+  else
   if (isset($h[$data['entry']]))
     echo '<a href="?map&npc='.$h[$data['entry']].'">'.$lang['map'].'</a>';
   else
