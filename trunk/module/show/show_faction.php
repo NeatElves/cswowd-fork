@@ -24,12 +24,11 @@ $mark=@$_REQUEST['mark'];
 $faction=getFaction($entry);
 if (!$faction)
 {
-  RenderError("Faction not found");
+  RenderError($lang['faction_not_found']);
 }
 else
 {
   $baseLink = "?faction=$entry";
-
   if ($ajaxmode==0)
   {
   if ($lang['www_faction'])

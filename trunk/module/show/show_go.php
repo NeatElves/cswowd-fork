@@ -33,22 +33,22 @@ else
  {
  if ($lang['www_gameobject'])
   echo "<a href=\"".sprintf($lang['www_gameobject'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_gameobject'], $entry)."</a><br>";
-  echo "<TABLE cellSpacing=0 cellPadding=0 width=500>";
-  echo "<TBODY>";
-  echo "<TR>";
+  echo "<table cellspacing=0 cellpadding=0 width=500>";
+  echo "<tbody>";
+  echo "<tr>";
   // $icon = "--";//getObjIcon($obj[displayId]);
-  // echo "<TD vAlign=top align=right width=20><br><A href=\"#\"><IMG height=64 width=64 border=0 src='$icon'></A></TD>";
-  echo "<TD align=center>";generateGameobjectTable($obj);echo "</TD>";
-  echo "</TR>";
-  if ($obj['mingold']) echo "<TD align=center><FONT color=#000000>$lang[Rew_money] ".money($obj['mingold']);
+  // echo "<td valign=top align=right width=20><br><a href=\"#\"><IMG height=64 width=64 border=0 src='$icon'></a></td>";
+  echo "<td align=center>";generateGameobjectTable($obj);echo "</td>";
+  echo "</tr>";
+  if ($obj['mingold']) echo "<td align=center><FONT color=#000000>$lang[Rew_money] ".money($obj['mingold']);
   if (($obj['maxgold']) && ($obj['maxgold']>$obj['mingold'])) echo " - ".money($obj['maxgold']);
-  echo "<TR><TD colSpan=2 align=center><a href=\"?map&obj=$obj[entry]\">$lang[show_map] (".getGameobjectCount($obj['entry']).")</a></TD></TR>";
-  echo "</TBODY></TABLE>";
+  echo "<tr><td colspan=2 align=center><a href=\"?map&obj=$obj[entry]\">$lang[show_map] (".getGameobjectCount($obj['entry']).")</a></td></tr>";
+  echo "</tbody></table>";
 
   if ($config['show_go_details'])
   {
-   echo "<br><TABLE class=details width=600>";
-   echo "<TBODY>";
+   echo "<br><table class=details width=600>";
+   echo "<tbody>";
    echo "<tr><td colspan=4 class=head>$lang[detail_info]</td></tr>";
 //   echo "<tr><th width=100px></th><th></th></tr>";
    echo "<tr><th>Type</th><td colspan=3>".getGameobjectType($obj['type'])."</td></tr>";
@@ -307,7 +307,7 @@ else
      break;
    }
    echo "";
-   echo "</TBODY></TABLE><br>";
+   echo "</tbody></table><br>";
   }
  }
  createReportTab();

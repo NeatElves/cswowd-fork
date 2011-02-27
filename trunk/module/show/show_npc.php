@@ -36,12 +36,12 @@ else
  {
  if ($lang['www_creature'])
 	echo "<a href=\"".sprintf($lang['www_creature'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_creature'], $entry)."</a><br>";
-  echo "<TABLE cellSpacing=0 cellPadding=0 width=500>";
-  echo "<TBODY>";
-  echo "<TR>";
-  echo "<TD align=center>";generateCreatureTable($cr);echo "</TD>";
-  echo "</TR>";
-  echo "</TBODY></TABLE>";
+  echo "<table cellspacing=0 cellpadding=0 width=500>";
+  echo "<tbody>";
+  echo "<tr>";
+  echo "<td align=center>";generateCreatureTable($cr);echo "</td>";
+  echo "</tr>";
+  echo "</tbody></table>";
 
   if ($cr['mingold']!=0)
    echo "<b>$lang[money]</b>&nbsp;&nbsp;".money ($cr['mingold'])."&nbsp&nbsp;-&nbsp;&nbsp;".money ($cr['maxgold'])."<br>";
@@ -164,7 +164,9 @@ else
     $kredit->kreditGroup($entry);
     $kredit->createReport($lang['kill_kredit_group']);
  }
-
+ //**************************************************
+ // Give quests
+ //**************************************************
  if ($cr['npcflag']&(UNIT_NPC_FLAG_QUESTGIVER))
  {
   $giveQuest =& new QuestReportGenerator('npc_giver');

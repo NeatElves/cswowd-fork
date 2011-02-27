@@ -19,19 +19,19 @@ $mark  = @$_REQUEST['mark'];
 $enc=getEnchantment($entry);
 if (!$enc)
 {
-  RenderError("Enchant not found");
+  RenderError($lang['enchant_not_found']);
 }
 else
 {
   $baseLink = '?enchant='.$entry;
   if ($ajaxmode==0)
   {
-   echo "<TABLE cellSpacing=0 cellPadding=0 width=500>";
-   echo "<TBODY>";
-   echo "<TR>";
-   echo "<TD align=center>";generateEnchantTable($enc);echo "</TD>";
-   echo "</TR>";
-   echo "</TBODY></TABLE>";
+   echo "<table cellspacing=0 cellpadding=0 width=500>";
+   echo "<tbody>";
+   echo "<tr>";
+   echo "<td align=center>";generateEnchantTable($enc);echo "</td>";
+   echo "</tr>";
+   echo "</tbody></table>";
   }
   createReportTab();
   //********************************************************************************
