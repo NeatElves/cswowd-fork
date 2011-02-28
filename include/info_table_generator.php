@@ -70,28 +70,28 @@ function renderSubList($lootList)
         echo "<tr><th colspan = 3>Group $loot[groupid]</th></tr>";
         $curloot = $loot['groupid'];
     }
-    echo "<TR>";
+    echo "<tr>";
     if ($loot['mincountOrRef'] > 0)
     {
      if ($item = GetItem($loot['item'],"`entry`, `Quality`, `name`, `displayid`"))
      {
       $colorname = $item['Quality'];
-      echo "<TD width=1%>";show_item($item['entry'], $item['displayid'], 'reagent');echo "</TD>";
-      echo "<TD class=left><A class=$Quality[$colorname] href=\"?item=$item[entry]\">$item[name]</A></TD>";
+      echo "<td width=1%>";show_item($item['entry'], $item['displayid'], 'reagent');echo "</td>";
+      echo "<td class=left><a class=$Quality[$colorname] href=\"?item=$item[entry]\">$item[name]</a></td>";
      }
      else
-       echo "<TD>-</TD><TD>Unknown item $loot[item]</TD>";
+       echo "<td>-</td><td>Unknown item $loot[item]</td>";
     }
     else // Используется список вещей (падает только одна вещь из списка)
     {
-      echo "<TD align=center>".$loot['maxcount']."x</TD>";
-      echo "<TD class=forsub>$gtext<TABLE class=sublist><TBODY>";
+      echo "<td align=center>".$loot['maxcount']."x</td>";
+      echo "<td class=forsub>$gtext<table class=sublist><tbody>";
       renderSubList($loot['item']);
-      echo "</TBODY></TABLE></TD>";
+      echo "</tbody></table></td>";
     }
-         if ($loot['ChanceOrQuestChance'] < 0) echo "<TD align=center>Q".(-$loot['ChanceOrQuestChance'])."%</TD>";
-    else if ($loot['ChanceOrQuestChance'] > 0) echo "<TD align=center>".$loot['ChanceOrQuestChance']."%</TD>";
-    echo "</TR>";
+         if ($loot['ChanceOrQuestChance'] < 0) echo "<td align=center>Q".(-$loot['ChanceOrQuestChance'])."%</td>";
+    else if ($loot['ChanceOrQuestChance'] > 0) echo "<td align=center>".$loot['ChanceOrQuestChance']."%</td>";
+    echo "</tr>";
   }
 }
 
@@ -102,13 +102,13 @@ function renderLootTableList($lootList, $header, $page_seek, $totalRecords, $bas
      return;
   echo '<div class=reportContainer id='.$headMARK.'>';
   addTab($header.' ('.$totalRecords.')', $headMARK);
-  echo "<TABLE class=report width=500>";
-  echo "<TBODY>";
-  echo "<TR class=head><TD colSpan=3><a name=\"$headMARK\">$header</a></TD></TR>";
-  echo "<TR><TH width=1%></TH><TH>$lang[item_name]</TH><TH>$lang[drop]%</TH></TR>";
+  echo "<table class=report width=500>";
+  echo "<tbody>";
+  echo "<tr class=head><td colspan=3><a name=\"$headMARK\">$header</a></td></tr>";
+  echo "<tr><th width=1%></th><th>$lang[item_name]</th><th>$lang[drop]%</th></tr>";
   renderSubList($lootList);
   render_Page($page_seek, $totalRecords, 3, $baseLink, $headMARK);
-  echo "</TBODY></TABLE></div>";
+  echo "</tbody></table></div>";
 }
 
 //=======================================================================================
@@ -121,19 +121,19 @@ function renderItemFishingList($lootList, $refLoot, $header, $page_seek, $totalR
       return;
   echo '<div class=reportContainer id='.$headMARK.'>';
   addTab($header.' ('.$totalRecords.')', $headMARK);
-  echo "<TABLE class=report width=500>";
-  echo "<TBODY>";
-  echo "<TR><TD colSpan=2 class=head><a name=\"$headMARK\">$header</a></TD></TR>";
-  echo "<TR><TH>Area</TH><TH>$lang[drop]%</TH></TR>";
+  echo "<table class=report width=500>";
+  echo "<tbody>";
+  echo "<tr><td colSpan=2 class=head><a name=\"$headMARK\">$header</a></td></tr>";
+  echo "<tr><th>Area</th><th>$lang[drop]%</th></tr>";
   foreach ($lootList as $area_loot)
   {
-    echo "<TR>";
-    echo '<TD class=left>'.getFullAreaName($area_loot['loot_entry']).'</TD>';
-    if ($area_loot['ChanceOrQuestChance'] < 0) echo "<TD>Q".(-$area_loot['ChanceOrQuestChance'])."%</TD>";
-    else                                       echo "<TD>".$area_loot['ChanceOrQuestChance']."%</TD>";
-    echo "</TR>";
+    echo "<tr>";
+    echo '<td class=left>'.getFullAreaName($area_loot['loot_entry']).'</td>';
+    if ($area_loot['ChanceOrQuestChance'] < 0) echo "<td>Q".(-$area_loot['ChanceOrQuestChance'])."%</td>";
+    else echo "<td>".$area_loot['ChanceOrQuestChance']."%</td>";
+    echo "</tr>";
   }
   render_Page($page_seek, $totalRecords, 2, $baseLink, $headMARK);
-  echo "</TBODY></TABLE></div>";
+  echo "</tbody></table></div>";
 }
 ?>
