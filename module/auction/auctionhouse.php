@@ -47,40 +47,40 @@ WHERE
 LIMIT ?d, ?d",
 ITEM_FIELD_ENTRY+1,
 getPageOffset($page), $config['fade_limit']);
-echo "<TABLE class=report width=500>";
-echo "<TBODY>";
-echo "<TR><TD colspan=4 class=head>";
+echo "<table class=report width=500>";
+echo "<tbody>";
+echo "<tr><td colspan=4 class=head>";
 echo "<img src=\"images/gold.gif\">";
-echo " <a href=\"?auction=Alliance\" style=\"Text-decoration: none; color:gold;\">$lang[Alliance]</a>";
-echo " <img src=\"images/gold.gif\">";
-echo " <a href=\"?auction=Horde\" style=\"Text-decoration: none; color:gold;\">$lang[Horde]</a>";
-echo " <img src=\"images/gold.gif\">";
-echo " <a href=\"?auction=Blackwater\" style=\"Text-decoration: none; color:gold;\">$lang[Blackwater]</a>";
-echo " <img src=\"images/gold.gif\">";
-echo "</TD></TR>";
+echo "<a href=\"?auction=Alliance\" style=\"Text-decoration: none; color:gold;\">$lang[Alliance]</a>";
+echo "<img src=\"images/gold.gif\">";
+echo "<a href=\"?auction=Horde\" style=\"Text-decoration: none; color:gold;\">$lang[Horde]</a>";
+echo "<img src=\"images/gold.gif\">";
+echo "<a href=\"?auction=Blackwater\" style=\"Text-decoration: none; color:gold;\">$lang[Blackwater]</a>";
+echo "<img src=\"images/gold.gif\">";
+echo "</td></tr>";
 
 if ($rows)
 {
- echo "<TR><TD colspan=4 class=head><font color=gold>$lang[auction] $type: </font> $number $lang[items]</TD></TR>";
- echo "<TR>";
- echo "<TH width=1px></TH>";
- echo "<TH width=50%>".$lang['auction_seller']."</TH>";
- echo "<TH width=25%>".$lang['auction_cost']."</TH>";
- echo "<TH width=25%>".$lang['auction_bye']."</TH>";
- echo "</TR>\n";
+ echo "<tr><td colspan=4 class=head><font color=gold>$lang[auction] $type: </font> $number $lang[items]</td></tr>";
+ echo "<tr>";
+ echo "<th width=1px></th>";
+ echo "<th width=50%>".$lang['auction_seller']."</th>";
+ echo "<th width=25%>".$lang['auction_cost']."</th>";
+ echo "<th width=25%>".$lang['auction_bye']."</th>";
+ echo "</tr>\n";
  foreach ($rows as $auc_data)
  {
    $item_data = explode(' ', $auc_data['data']);
-   echo "<TR>";
-   echo "<TD>"; show_item_by_data($item_data, 'auction'); echo "</TD>";
-   echo "<TD><A href=?player=$auc_data[itemowner]>".getCharacterName($auc_data['itemowner'])."</A></TD>";
-   echo "<TD align=center>".money($auc_data['startbid'])."</TD>";
-   echo "<TD align=center>".money($auc_data['buyoutprice'])."</TD>";
-   echo "</TR>\n";
+   echo "<tr>";
+   echo "<td>"; show_item_by_data($item_data, 'auction'); echo "</td>";
+   echo "<td><a href=?player=$auc_data[itemowner]>".getCharacterName($auc_data['itemowner'])."</a></td>";
+   echo "<td align=center>".money($auc_data['startbid'])."</td>";
+   echo "<td align=center>".money($auc_data['buyoutprice'])."</td>";
+   echo "</tr>\n";
  }
- generatePage($number, $page, "<A href=\"?auction=$type&page=%d\">%d </A>", 4);
+ generatePage($number, $page, "<a href=\"?auction=$type&page=%d\">%d </a>", 4);
 }
 else
  echo "<tr><td colspan=4 align=center>$lang[empty]</td></tr>";
-echo "</tbody></table>";
+ echo "</tbody></table>";
 ?>

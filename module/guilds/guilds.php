@@ -32,7 +32,7 @@ if ($guildid)
       echo '<td>'.$guild['info'].'&nbsp;</td>';
       echo '</tr>';
       if ($allow_show_all_info)
-        echo '<tr><td>'.$guild['motd'].'&nbsp;</td></tr>';
+      echo '<tr><td>'.$guild['motd'].'&nbsp;</td></tr>';
       echo '<tr><td>'.$lang['guild_create_at'].'&nbsp;'.date('d-m-y', $guild['createdate']).'&nbsp;</td></tr>';
       echo '<tr><td>'.$lang['guild_money'].'&nbsp;'.money($guild['BankMoney']).'&nbsp;</td></tr>';
       echo '</tbody>';
@@ -80,7 +80,7 @@ else
         	if (!$leader)
         	    continue;
             echo "<tr>";
-			echo "<td><img src=".getGuildEmblem($guild)." width=48></td>";
+            echo "<td><img src=".getGuildEmblem($guild)." width=48></td>";
             echo "<td class=guild>&laquo;<a href=\"?guild=$guild[guildid]\">".$guild['name']."</a>&raquo;</td>";
             echo "<td align=center><font size=-3>".date("d-m-y", $guild['createdate'])."</font></td>";
             echo "<td class=player><a href=\"?player=$guild[leaderguid]\">".$leader['name']."</a></td>";
