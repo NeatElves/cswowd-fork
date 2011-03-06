@@ -109,11 +109,11 @@ if ($allmode==0 and $ajaxmode==0)
     echo '<table class=findtop><tr><td class=topleft>&nbsp;</td><td class=top>'.$lang['find_item'].'</td><td class=topright>&nbsp;</td></tr></table>';
     echo '</td></tr>';
 
-    echo'<tr><td>'.$lang['item_name'].':</td>';
-    echo'<td colSpan=5><input class=ls_search alt=i name="name" style="width: 100%;" value="'.$name.'"></td></tr>';
-    echo'<tr><td>'.$lang['item_class'].':</td><td colSpan=5>';
-    echo'<select name="class" style="width: 100%;">\n';
-    echo"\n<option value=''>".getClassName(-1)."</option>\n";
+    echo '<tr><td>'.$lang['item_name'].':</td>';
+    echo '<td colSpan=5><input class=ls_search alt=i name="name" style="width: 100%;" value="'.$name.'"></td></tr>';
+    echo '<tr><td>'.$lang['item_class'].':</td><td colspan=5>';
+    echo '<select name="class" style="width: 100%;">\n';
+    echo "\n<option value=''>".getClassName(-1)."</option>\n";
     $key = array_keys($ItemClass_list);
     for($i=0; $i<count($ItemClass_list); $i++)
     {
@@ -132,13 +132,13 @@ if ($allmode==0 and $ajaxmode==0)
            echo $style.=' selected = "selected"';
         echo "<option $style value='$value'>$text</option>\n";
     }
-    echo'</select></td></tr>';
-    echo'<tr><td>'.$lang['item_min_level'].':</td>';
-    echo'<td><input name="level_min" value="'.$level_min.'" style="WIDTH: 30px"></td>';
-    echo'<td width=90>'.$lang['item_max_level'].':</td>';
-    echo'<td><input name="level_max" value="'.$level_max.'" style="WIDTH: 30px"></td>';
-    echo'<td>'.$lang['item_type'].':</td><td><select name="type">\n';
-    echo"\n<option value=''>".getInventoryType(0)."</option>\n";
+    echo '</select></td></tr>';
+    echo '<tr><td>'.$lang['item_min_level'].':</td>';
+    echo '<td><input name="level_min" value="'.$level_min.'" style="WIDTH: 30px"></td>';
+    echo '<td width=90>'.$lang['item_max_level'].':</td>';
+    echo '<td><input name="level_max" value="'.$level_max.'" style="WIDTH: 30px"></td>';
+    echo '<td>'.$lang['item_type'].':</td><td><select name="type">\n';
+    echo "\n<option value=''>".getInventoryType(0)."</option>\n";
     $key = array_keys($itemType_list);
     for($i=0; $i<count($itemType_list); $i++)
     {
@@ -147,10 +147,10 @@ if ($allmode==0 and $ajaxmode==0)
 		if ($type==$value) echo "<option \"selected\" value=$value>$text</option>\n";
 		else               echo "<option value=$value>$text</option>\n";
 	}
-	echo'</select></td></tr><tr>';
-    echo'<tr><td colspan=6 class=bottom><input type=submit value="'.$lang['search'].'">&nbsp;<input type=RESET value="'.$lang['reset'].'"></td></tr>';
-    echo'</table>';
-    echo'</form>';
+    echo '</select></td></tr><tr>';
+    echo '<tr><td colspan=6 class=bottom><input type=submit value="'.$lang['search'].'">&nbsp;<input type=RESET value="'.$lang['reset'].'"></td></tr>';
+    echo '</table>';
+    echo '</form>';
 }
 
 if ($filter!='')

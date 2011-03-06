@@ -1281,14 +1281,14 @@ function show_item_by_data($item_data, $style='item', $posx=0, $posy=0)
 	if ($count == 1)
 	{
 		echo '<a style="float: left;" href="?item=g'.$guid.'">';
-		echo "<IMG class=$style src='$icon' $position></a>";
+		echo "<img class=$style src='$icon' $position></a>";
 	}
 	else
 	{
 		if (empty($position))
 			$position = "style=\"position: relative; left: 0px;top: 0px; border: 0px;float: left;\"";
 		echo "\n<div class=$style $position>";
-		echo '<a href="?item=g'.$guid.'"><IMG class="'.$style.'" src="'.$icon.'"></a>';
+		echo '<a href="?item=g'.$guid.'"><img class="'.$style.'" src="'.$icon.'"></a>';
 		echo getborderText($count, 'right', 3, 'bottom', 1);
 		echo "</div>";
 	}
