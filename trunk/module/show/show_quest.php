@@ -361,7 +361,7 @@ if($quest['RewMoneyMaxLevel'])  echo "<tr><td class=mark>$lang[Rew_XP] ".getQues
 if($quest['RewHonorAddition'] or $quest['RewHonorMultiplier'])
 {
 if ($quest['RewHonorMultiplier'])
-  $ihonor=getTeamContributionPoints(79)*$quest['RewHonorMultiplier']*0.1000000014901161+$quest['RewHonorAddition'];
+  $ihonor=getTeamContributionPoints(79)*$quest['RewHonorMultiplier']*0.1+$quest['RewHonorAddition'];
 else
  $ihonor=$quest['RewHonorAddition'];
  echo "<tr><td class=mark>$lang[Rew_honor] ".$ihonor;

@@ -37,6 +37,12 @@ $lang = array(
 'search_spell_req'  => 'Запрос на поиск заклинания',
 'search_area_req'   => 'Запрос на поиск зон',
 
+#Time
+'days' =>'д.',
+'hours' =>'ч.',
+'min' =>'минут(-а,-ы)',
+'sec' =>'секунд(-а,-ы)',
+
 # Item report
 'item_name' => 'Название предмета',
 'item_level' => 'Уровень',

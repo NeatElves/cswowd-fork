@@ -37,6 +37,12 @@ $lang = array(
 'search_spell_req'  => 'Spell search',
 'search_area_req'   => 'Area search',
 
+#Time
+'days' =>'day(-s)',
+'hours' =>'hour(-s)',
+'min' =>'min',
+'sec' =>'sec',
+
 # Item report
 'item_name' => 'Item name',
 'item_level' => 'Level',
