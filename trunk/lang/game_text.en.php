@@ -300,7 +300,6 @@ $gResistanceType = array(
 
 //***************** Gameobject enums ***********************************
 $gameobjectType = array(
-'-1'=>'All types',
 '0'=>'Door',
 '1'=>'Button',
 '2'=>'Questgiver',

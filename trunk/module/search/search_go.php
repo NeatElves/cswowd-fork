@@ -3,45 +3,6 @@ include_once("include/functions.php");
 include_once("include/gameobject_table.php");
 include_once("include/report_generator.php");
 
-// “о что будет выводитс€ в запросе поиска типа го (пол€ одинаковые)
-$goType_list = array(
-'0'=>&$show_fields,
-'1'=>&$show_fields,
-'2'=>&$show_fields,
-'3'=>&$show_fields,
-'4'=>&$show_fields,
-'5'=>&$show_fields,
-'6'=>&$show_fields,
-'7'=>&$show_fields,
-'8'=>&$show_fields,
-'9'=>&$show_fields,
-'10'=>&$show_fields,
-'11'=>&$show_fields,
-'12'=>&$show_fields,
-'13'=>&$show_fields,
-'14'=>&$show_fields,
-'15'=>&$show_fields,
-'16'=>&$show_fields,
-'17'=>&$show_fields,
-'18'=>&$show_fields,
-'19'=>&$show_fields,
-'20'=>&$show_fields,
-'21'=>&$show_fields,
-'22'=>&$show_fields,
-'23'=>&$show_fields,
-'24'=>&$show_fields,
-'25'=>&$show_fields,
-'26'=>&$show_fields,
-'27'=>&$show_fields,
-'28'=>&$show_fields,
-'29'=>&$show_fields,
-'30'=>&$show_fields,
-'31'=>&$show_fields,
-'32'=>&$show_fields,
-'33'=>&$show_fields,
-'34'=>&$show_fields,
-);
-
 // ќпредел€ем режим поиска
 $allmode = @$_REQUEST['s']=='all';
 
@@ -112,17 +73,6 @@ if ($allmode==0 and $ajaxmode==0)
     echo '<table class=findtop><tr><td class=topleft>&nbsp;</td><td class=top>'.$lang['go_find'].'</td><td class=topright>&nbsp;</td></tr></table>';
     echo '</td></tr>';
     echo '<tr><td align="center">'.$lang['go_name'].':</td><td><input class=ls_search alt=g name="name" value="'.$name.'" size=35></td></tr>';
-    echo '<td>'.$lang['go_type'].':</td><td><select name="type">\n';
-    echo "\n<option value=''>".getGameobjectType(-1)."</option>\n";
-    $key = array_keys($goType_list);
-    for($i=0; $i<count($goType_list); $i++)
-    {
-        $value = $key[$i];
-        $text = getGameobjectType($value);
-        if ($type==$value) echo "<option \"selected\" value=$value>$text</option>\n";
-	        else           echo "<option value=$value>$text</option>\n";
-	}
-    echo '</select></td></tr>';
     echo '<tr><td class=bottom colspan=2><input type=submit value="'.$lang['search'].'"></td></tr>';
     echo '</table>';
     echo '</form>';
