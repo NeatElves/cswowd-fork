@@ -25,7 +25,7 @@ $item_permanent  = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAM
 $item_junk       = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAME','ITEM_REPORT_REQLEVEL','ITEM_REPORT_SUBCLASS');
 $item_glyph      = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAME','ITEM_REPORT_REQLEVEL','ITEM_REPORT_SPELL');
 
-// То что будет выводится в запросе поиска типа вещи (и то какие поля бвдут выводится)
+// То что будет выводится в запросе поиска типа вещи (и то какие поля будут выводится)
 $itemType_list = array(
 '1'=>&$item_armor,      // Шлемы
 '2'=>&$item_trinket,    // Ожерелья
@@ -58,7 +58,7 @@ $itemType_list = array(
 '29'=>&$item_all,       // Inventory types
 );
 
-// То какие поля будут выводится ри запросе класса и субкласса вещи (и то какие поля бвдут выводится)
+// То какие поля будут выводится ри запросе класса и субкласса вещи (и то какие поля будут выводится)
 $ItemClass_list = array(
 '0'  =>&$item_consumable, // Consumable
 '0.0'=>&$item_consumable, // Consumable

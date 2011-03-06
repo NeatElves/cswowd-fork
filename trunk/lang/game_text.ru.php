@@ -300,6 +300,7 @@ $gResistanceType = array(
 
 //Обьекты
 $gameobjectType = array(
+'-1'=>'Все типы',
 '0'=>'Дверь',
 '1'=>'Кнопка',
 '2'=>'Questgiver',
@@ -444,10 +445,10 @@ $gSpellModsType = array(
 );
 
 $gRuneName = array(
-'0'=>'Blood',
-'1'=>'Unholy',
-'2'=>'Frost',
-'3'=>'Death'
+'0'=>'Кровь',
+'1'=>'Нечестивость',
+'2'=>'Лед',
+'3'=>'Смерть'
 );
 
 $gSpellMechanic = array(
@@ -487,13 +488,13 @@ $gSpellMechanic = array(
 
 $gDmgClass = array(
 '0'=>'Нет',
-'1'=>'Magic',
-'2'=>'Melee',
-'3'=>'Ranged'
+'1'=>'Магический',
+'2'=>'Ближний',
+'3'=>'Дальний'
 );
 
 $gSpellSchool = array(
-'0'=>'Physical',
+'0'=>'Физ. урон',
 '1'=>'Света',
 '2'=>'Огня',
 '3'=>'Природы',
@@ -503,7 +504,7 @@ $gSpellSchool = array(
 );
 
 $gSpellPowerType = array(
-'-1'=>'Health',
+'-1'=>'Здоровье',
 '0'=>'Мана',
 '1'=>'Ярость',
 '2'=>'Тонус',
