@@ -72,11 +72,12 @@ function money($many, $height=10)
 
 function getTimeText($seconds)
 {
+  global $lang;
   $text = "";
-  if ($seconds >=24*3600) {$text.= intval($seconds/(24*3600))." days"; if ($seconds%=24*3600) $text.=" ";}
-  if ($seconds >=   3600) {$text.= intval($seconds/3600)." hours"; if ($seconds%=3600) $text.=" ";}
-  if ($seconds >=     60) {$text.= intval($seconds/60)." min"; if ($seconds%=60) $text.=" ";}
-  if ($seconds >       0) {$text.= $seconds." sec";}
+  if ($seconds >=24*3600) {$text.= intval($seconds/(24*3600))." $lang[days]"; if ($seconds%=24*3600) $text.=" ";}
+  if ($seconds >=   3600) {$text.= intval($seconds/3600)." $lang[hours]"; if ($seconds%=3600) $text.=" ";}
+  if ($seconds >=     60) {$text.= intval($seconds/60)." $lang[min]"; if ($seconds%=60) $text.=" ";}
+  if ($seconds >       0) {$text.= $seconds." $lang[sec]";}
   return $text;
 }
 
