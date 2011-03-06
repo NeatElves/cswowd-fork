@@ -300,7 +300,6 @@ $gResistanceType = array(
 
 //Обьекты
 $gameobjectType = array(
-'-1'=>'Все типы',
 '0'=>'Дверь',
 '1'=>'Кнопка',
 '2'=>'Questgiver',
