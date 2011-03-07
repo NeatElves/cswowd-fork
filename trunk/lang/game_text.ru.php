@@ -290,42 +290,42 @@ $gResistance = array(
 
 $gResistanceType = array(
 '0'=>'%d Брони',
-'1'=>'%d Holy Resistance',
-'2'=>'%d Fire Resistance',
-'3'=>'%d Nature Resistance',
-'4'=>'%d Frost Resistance',
-'5'=>'%d Shadow Resistance',
-'6'=>'%d Arcane Resistance'
+'1'=>'%d к сопротивлению (Свет)',
+'2'=>'%d к сопротивлению (Огонь)',
+'3'=>'%d к сопротивлению (Природа)',
+'4'=>'%d к сопротивлению (Лед)',
+'5'=>'%d к сопротивлению (Тьма)',
+'6'=>'%d к сопротивлению (Тайная магия)'
 );
 
 //Обьекты
 $gameobjectType = array(
 '0'=>'Дверь',
 '1'=>'Кнопка',
-'2'=>'Questgiver',
-'3'=>'Сундук',
+'2'=>'Задание',
+'3'=>'Контейнер',
 '4'=>'Binder',
-'5'=>'Generic',
+'5'=>'Общее',
 '6'=>'Ловушка',
-'7'=>'Chair',
-'8'=>'Spellfocus',
-'9'=>'Текст',
-'10'=>'Gobber',
+'7'=>'Мебель',
+'8'=>'Спеллфокус',
+'9'=>'Книга',
+'10'=>'Общее',
 '11'=>'Транспорт',
 '12'=>'Areadamage',
 '13'=>'Камера',
 '14'=>'Map Object',
 '15'=>'Map Object Transport',
 '16'=>'Duel Arbiter',
-'17'=>'Fishing Node',
+'17'=>'Рыбалка, поплавок',
 '18'=>'Summoning portal',
-'19'=>'Mailbox',
-'20'=>'Auction House',
+'19'=>'Почтовый ящик',
+'20'=>'Аукционный дом',
 '21'=>'Guardpost',
 '22'=>'Spellcaster',
 '23'=>'Meetingstone',
 '24'=>'Flag Stand',
-'25'=>'Fishing hole',
+'25'=>'Рыбалка, лунка',
 '26'=>'Flag drop',
 '27'=>'Minigame',
 '28'=>'Lottery Kiosk',
@@ -333,8 +333,8 @@ $gameobjectType = array(
 '30'=>'Aura Generator',
 '31'=>'Dungeon Difficulty',
 '32'=>'Barbershop Chair',
-'33'=>'Destructable building',
-'34'=>'Guild Bank'
+'33'=>'Разрушаемый объект',
+'34'=>'Хранилище гильдии'
 );
 
 // Игроки
