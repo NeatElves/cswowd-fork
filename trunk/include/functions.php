@@ -546,7 +546,7 @@ function getSpellTargetPosition($id)
 function getSpellScriptTarget($id)
 {
  global $dDB;
- return $dDB->selectRow("SELECT * FROM `spell_script_target` WHERE `entry` = ?d", $id);
+ return $dDB->select("SELECT * FROM `spell_script_target` WHERE `entry` = ?d", $id);
 }
 
 function getEnchantment($enchantmentId)
