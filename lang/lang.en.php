@@ -197,8 +197,8 @@ $lang = array(
 'give_herb'  => 'Herbalism',
 'give_engineer'  => 'Engineering',
 'can_pickpocketing' => 'Pickpocketing',
-'can_loot'  => 'Loot',
-'cast_spells' => 'Cast spells...',
+'can_loot'  => 'Drops',
+'cast_spells' => 'Abilities',
 'summoned_by_spell' => 'Summoned by spell',
 
 'reqirement' => 'Reqirement',
