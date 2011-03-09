@@ -367,99 +367,100 @@ function r_lootChance($data)
 }
 function r_lootRequire($data)
 {
+  global $lang;
   switch ($data['lootcondition']){
    case  1: // CONDITION_AURA - spell_id, effindex
      $spell = getSpell($data['condition_value1'], '`id`, `SpellIconID`');
-     echo 'Aura '; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
+     echo $lang['condition1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
      break;
    case  2: // CONDITION_ITEM - item_id, count
      $item = getItem($data['condition_value1'], '`entry`, `displayid`');
-     echo 'Have(bank no) '.text_show_item($item['entry'], $item['displayid'], 'quest');
+     echo $lang['condition2'].text_show_item($item['entry'], $item['displayid'], 'quest');
      if ($data['condition_value2'] > 1) echo 'x'.$data['condition_value2'];
      break;
    case  3: // CONDITION_ITEM_EQUIPPED -  item_id, 0
      $item = getItem($data['condition_value1'], '`entry`, `displayid`');
-     echo 'Equipped '.text_show_item($item['entry'], $item['displayid'], 'quest');
+     echo $lang['condition3'].text_show_item($item['entry'], $item['displayid'], 'quest');
      break;
    case  4: // CONDITION_AREAID - area_id  0, 1 (0: in (sub)area, 1: not in (sub)area)
-     if ($data['condition_value2'] > 0 ) echo 'Not in '.getAreaName($data['condition_value1']);
-     if ($data['condition_value2'] == 0) echo 'In '.getAreaName($data['condition_value1']);
+     if ($data['condition_value2'] > 0 ) echo $lang['condition4_1'].getAreaName($data['condition_value1']);
+     if ($data['condition_value2'] == 0) echo getAreaName($data['condition_value1']);
      break;
    case  5: // CONDITION_REPUTATION_RANK - faction_id, min_rank
      echo getFactionName($data['condition_value1']).'('.$data['condition_value2'].')';
      break;
    case  6: // CONDITION_TEAM  player_team, 0      (469 - Alliance 67 - Horde)
-     echo 'Team '.getFactionName($data['condition_value1']);
+     echo getFactionName($data['condition_value1']);
      break;
    case  7: // CONDITION_SKILL skill_id, skill_value
      echo getSkillName($data['condition_value1']);
      if ($data['condition_value2'] > 1) echo ' ('.$data['condition_value2'].')';
      break;
    case  8: // CONDITION_QUESTREWARDED quest_id, 0
-     echo 'Complete '.getQuestName($data['condition_value1']);
+     echo $lang['condition8'].getQuestName($data['condition_value1']);
      break;
    case  9: // CONDITION_QUESTTAKEN quest_id     0,   for condition true while quest active.
-     echo 'Take '.getQuestName($data['condition_value1']);
+     echo $lang['condition9'].getQuestName($data['condition_value1']);
      break;
    case 10: // CONDITION_AD_COMMISSION_AURA   0, 0    for condition true while one from AD сommission aura active
-     echo 'AD aura';
+     echo $lang['condition10'];
      break;
    case 11: // CONDITION_NO_AURA  spell_id, effindex
      $spell = getSpell($data['condition_value1'], '`id`, `SpellIconID`');
-     echo 'No aura'; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
+     echo $lang['condition11']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
      break;
    case 12: // CONDITION_ACTIVE_GAME_EVENT  event_id
-     echo 'Active event '.$data['condition_value1'];
+     echo $lang['condition12'].$data['condition_value1'];
      break;
    case 13: // CONDITION_AREA_FLAG  area_flag    area_flag_not
-     if ($data['condition_value1'] > 0) echo 'In (sub)area flags '.$data['condition_value1'];
-     if ($data['condition_value2'] > 0) echo 'Not in (sub)area flags '.$data['condition_value2'];
+     if ($data['condition_value1'] > 0) echo $lang['condition13_1'].$data['condition_value1'];
+     if ($data['condition_value2'] > 0) echo $lang['condition13_2'].$data['condition_value2'];
      break;
    case 14: // CONDITION_RACE_CLASS  race_mask    class_mask
      if ($data['condition_value1'] > 0) echo getAllowableRace($data['condition_value1']).'<br>';
      if ($data['condition_value2'] > 0) echo getAllowableClass($data['condition_value2']);
      break;
    case 15: // CONDITION_LEVEL  player_level     0, 1 or 2
-     if ($data['condition_value1'] > 0) echo 'Player level '.$data['condition_value1'];        
-     if (($data['condition_value1'] > 0) && ($data['condition_value2'] == 0)) echo ' equal to';
-     if (($data['condition_value1'] > 0) && ($data['condition_value2'] == 1)) echo ' equal or higher than';
-     if (($data['condition_value1'] > 0) && ($data['condition_value2'] == 2)) echo ' equal or less than';
+     if ($data['condition_value1'] > 0) echo $data['condition_value1'];        
+     if (($data['condition_value1'] > 0) && ($data['condition_value2'] == 0)) echo $lang['condition15_1'];
+     if (($data['condition_value1'] > 0) && ($data['condition_value2'] == 1)) echo $lang['condition15_2'];
+     if (($data['condition_value1'] > 0) && ($data['condition_value2'] == 2)) echo $lang['condition15_3'];
      break;
    case 16: // CONDITION_NOITEM  item_id      count
      $item = getItem($data['condition_value1'], '`entry`, `displayid`');
-     echo 'Not have(bank no) '.text_show_item($item['entry'], $item['displayid'], 'quest');
+     echo $lang['condition16'].text_show_item($item['entry'], $item['displayid'], 'quest');
      if ($data['condition_value1'] > 1) echo 'x'.$data['condition_value2'];
      break;
    case 17: // CONDITION_SPELL  spell_id     0, 1 (0: has spell, 1: hasn't spell)
      $spell = getSpell($data['condition_value1'], '`id`, `SpellIconID`');
-     if ($data['condition_value2'] > 0) { echo 'Player\'s has spell '; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
-     else { echo 'Player\'s hasn\'t spell '; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
+     if ($data['condition_value2'] > 0) { echo $lang['condition17_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
+     else { echo $lang['condition17_2']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
      break;
    case 20: // CONDITION_ACHIEVEMENT  ach_id       0, 1 (0: has achievement, 1: hasn't achievement) for player
-     if ($data['condition_value2'] > 0) echo 'Player\'s has achievement '.$data['condition_value1'];
-     else echo 'Player\'s hasn\'t achievement '.$data['condition_value1'];
+     if ($data['condition_value2'] > 0) echo $lang['condition20_1'].$data['condition_value1'];
+     else echo $lang['condition20_2'].$data['condition_value1'];
      break;
    case 22: // CONDITION_QUEST_NONE  quest_id 
-     if ($data['condition_value1'] > 0) echo 'No take and no rewarded for '.getQuestName($data['condition_value1']);
+     if ($data['condition_value1'] > 0) echo $lang['condition22'].getQuestName($data['condition_value1']);
      break;
    case  23: // CONDITION_ITEM_WITH_BANK- item_id, count
      $item = getItem($data['condition_value1'], '`entry`, `displayid`');
-     echo 'Have(bank yes) '.text_show_item($item['entry'], $item['displayid'], 'quest');
+     echo $lang['condition23'].text_show_item($item['entry'], $item['displayid'], 'quest');
      if ($data['condition_value2'] > 1) echo 'x'.$data['condition_value2'];
      break;
    case 24: // NOITEM_WITH_BANK  item_id      count
      $item = getItem($data['condition_value1'], '`entry`, `displayid`');
-     echo 'Not have(bank yes) '.text_show_item($item['entry'], $item['displayid'], 'quest');
+     echo $lang['condition24'].text_show_item($item['entry'], $item['displayid'], 'quest');
      if ($data['condition_value1'] > 1) echo 'x'.$data['condition_value2'];
      break;
    case 25: // CONDITION_NOT_ACTIVE_GAME_EVENT  event_id
-     echo 'No active event '.$data['condition_value1'];
+     echo $lang['condition25'].$data['condition_value1'];
      break;
    case 26: // CONDITION_ACTIVE_HOLIDAY  holiday_id
-     echo 'Holiday '.$data['condition_value1'];
+     echo $lang['condition26'].$data['condition_value1'];
      break;
    case 27: // CONDITION_NOT_ACTIVE_HOLIDAY  holiday_id
-     echo 'No active holiday '.$data['condition_value1'];
+     echo $lang['condition27'].$data['condition_value1'];
      break;
   }
 }
@@ -1207,8 +1208,9 @@ if (getAllowableRace($data['RequiredRaces']) && ($data['RequiredRaces'] & 690) &
   echo '<a href="?quest='.$data['entry'].'">'.($name?$name:'no name').'</a><br>';
   if ($data['ZoneOrSort']>0)
     echo '<div class=areaname><a href="?s=q&ZoneID='.$data['ZoneOrSort'].'">'.getAreaName($data['ZoneOrSort']).'</a></div>';
-  else  if (($data['ZoneOrSort']<0  && $data['RequiredSkillValue'] == 0) and ($data['ZoneOrSort'] != -263) and ($data['ZoneOrSort'] != -262) and ($data['ZoneOrSort'] != -261) and ($data['ZoneOrSort'] != -372)
-              and ($data['ZoneOrSort'] != -161) and ($data['ZoneOrSort'] != -162) and ($data['ZoneOrSort'] != -82) and ($data['ZoneOrSort'] != -141) and ($data['ZoneOrSort'] != -61) and ($data['ZoneOrSort'] != -81))
+   else
+  if ($data['ZoneOrSort']<0 AND ((-$data['ZoneOrSort']) >= 374 OR (-$data['ZoneOrSort']) == 221 OR (-$data['ZoneOrSort']) == 241 OR ((-$data['ZoneOrSort']) >= 344 AND (-$data['ZoneOrSort']) < 371) or
+    (-$data['ZoneOrSort']) == 284 OR (-$data['ZoneOrSort']) == 25 OR (-$data['ZoneOrSort']) == 41 OR (-$data['ZoneOrSort']) < 24))
     echo '<div class=areaname><a href="?s=q&SortID='.(-$data['ZoneOrSort']).'">'.getQuestSort(-$data['ZoneOrSort']).'</a></div>';
   if ($data['RequiredClasses'])
     echo '<FONT color=#008800 size=-3>'.getAllowableClass($data['RequiredClasses']).'<br>';
