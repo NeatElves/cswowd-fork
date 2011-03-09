@@ -901,8 +901,40 @@ function r_OnKillRep($data)
 {
    $creature_rate1 = getCreatureRewRate($data['RewOnKillRepFaction1']);
    $creature_rate2 = getCreatureRewRate($data['RewOnKillRepFaction2']);
-   if ($data['RewOnKillRepFaction1']) echo        ($data['RewOnKillRepValue1']>0?'+':'').$data['RewOnKillRepValue1']*$creature_rate1.' '.getFactionName($data['RewOnKillRepFaction1']).' ('.getReputationRankName($data['MaxStanding1']).')';
-   if ($data['RewOnKillRepFaction2']) echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate2.' '.getFactionName($data['RewOnKillRepFaction2']).' ('.getReputationRankName($data['MaxStanding2']).')';
+   if ($data['RewOnKillRepFaction1'])
+  {
+   echo ($data['RewOnKillRepValue1']>0?'+':'').$data['RewOnKillRepValue1']*$creature_rate1.' '.getFactionName($data['RewOnKillRepFaction1']).' ('.getReputationRankName($data['MaxStanding1']).')';
+   $spillover=getRepSpillover($data['RewOnKillRepFaction1']);
+   if ($spillover && $data['IsTeamAward1'] == 1)
+   foreach ($spillover as $faction)
+   {
+     if ($faction['faction1'])
+      echo '<br>'.($data['RewOnKillRepValue1']>0?'+':'').$data['RewOnKillRepValue1']*$creature_rate1*$faction['rate_1'].' '.getFactionName($faction['faction1']).' ('.getReputationRankName($data['MaxStanding1']).')';
+     if ($faction['faction2'])
+      echo '<br>'.($data['RewOnKillRepValue1']>0?'+':'').$data['RewOnKillRepValue1']*$creature_rate1*$faction['rate_2'].' '.getFactionName($faction['faction2']).' ('.getReputationRankName($data['MaxStanding1']).')';
+     if ($faction['faction3'])
+      echo '<br>'.($data['RewOnKillRepValue1']>0?'+':'').$data['RewOnKillRepValue1']*$creature_rate1*$faction['rate_3'].' '.getFactionName($faction['faction3']).' ('.getReputationRankName($data['MaxStanding1']).')';
+     if ($faction['faction4'])
+      echo '<br>'.($data['RewOnKillRepValue1']>0?'+':'').$data['RewOnKillRepValue1']*$creature_rate1*$faction['rate_4'].' '.getFactionName($faction['faction4']).' ('.getReputationRankName($data['MaxStanding1']).')';
+   }
+  }
+   if ($data['RewOnKillRepFaction2'])
+  {
+   echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate2.' '.getFactionName($data['RewOnKillRepFaction2']).' ('.getReputationRankName($data['MaxStanding2']).')';
+   $spillover=getRepSpillover($data['RewOnKillRepFaction2']);
+   if ($spillover && $data['IsTeamAward2'] == 1)
+   foreach ($spillover as $faction)
+   {
+     if ($faction['faction1'])
+      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate1*$faction['rate_1'].' '.getFactionName($faction['faction1']).' ('.getReputationRankName($data['MaxStanding2']).')';
+     if ($faction['faction2'])
+      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate1*$faction['rate_2'].' '.getFactionName($faction['faction2']).' ('.getReputationRankName($data['MaxStanding2']).')';
+     if ($faction['faction3'])
+      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate1*$faction['rate_3'].' '.getFactionName($faction['faction3']).' ('.getReputationRankName($data['MaxStanding2']).')';
+     if ($faction['faction4'])
+      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate1*$faction['rate_4'].' '.getFactionName($faction['faction4']).' ('.getReputationRankName($data['MaxStanding2']).')';
+   }
+  }
 }
 // NPC report generator config
 $npc_report = array(
@@ -926,7 +958,7 @@ $npc_report = array(
 'LOOT_REPORT_CHANCE'=>array('class'=>'', 'sort'=>'chance', 'text'=>$lang['loot_chance'], 'draw'=>'r_lootChance', 'sort_str'=>'ABS(`ChanceOrQuestChance`) DESC, `name`', 'fields'=>'`ChanceOrQuestChance`, `mincountOrRef`'),
 'LOOT_REPORT_REQ'   =>array('class'=>'', 'sort'=>'',       'text'=>$lang['loot_require'],'draw'=>'r_lootRequire','sort_str'=>'', 'fields'=>'`lootcondition`, `condition_value1`, `condition_value2`'),
 // reputation
-'ONKILL_REPUTATION' =>array('class'=>'left', 'sort'=>'rep','text'=>$lang['onkill_rep'],'draw'=>'r_OnKillRep','sort_str'=>'`RewOnKillRepValue1` DESC, `RewOnKillRepValue2` DESC', 'fields'=>'`RewOnKillRepFaction1`, `RewOnKillRepValue1`, `MaxStanding1`, `RewOnKillRepValue2`, `RewOnKillRepFaction2`, `MaxStanding2`'),
+'ONKILL_REPUTATION' =>array('class'=>'left', 'sort'=>'rep','text'=>$lang['onkill_rep'],'draw'=>'r_OnKillRep','sort_str'=>'`RewOnKillRepValue1` DESC, `RewOnKillRepValue2` DESC', 'fields'=>'`RewOnKillRepFaction1`, `RewOnKillRepValue1`, `MaxStanding1`, `IsTeamAward1`, `RewOnKillRepValue2`, `RewOnKillRepFaction2`, `MaxStanding2`, `IsTeamAward2`'),
 );
 
 define('NPC_LOCALE_NAME',    0x01);
