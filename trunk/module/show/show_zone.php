@@ -26,6 +26,7 @@ $mark  = @$_REQUEST['mark'];
 $area = getArea($entry);
 if (!$area)
 {
+   RenderError($lang['area_not_found']);
 }
 else
 {
