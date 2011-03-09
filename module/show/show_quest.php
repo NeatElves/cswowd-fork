@@ -123,8 +123,8 @@ if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
  if ($quest['ZoneOrSort']>0)
    echo "<a style='float: right;' href=\"?s=q&ZoneID=".$quest['ZoneOrSort']."\">".getAreaName($quest['ZoneOrSort'], 0)."</a>";
  else
- if (($quest['ZoneOrSort']<0 && $quest['RequiredSkillValue'] == 0) and ($quest['ZoneOrSort'] != -263) and ($quest['ZoneOrSort'] != -262) and ($quest['ZoneOrSort'] != -261) and ($quest['ZoneOrSort'] != -372)
- and ($quest['ZoneOrSort'] != -161) and ($quest['ZoneOrSort'] != -162) and ($quest['ZoneOrSort'] != -82) and ($quest['ZoneOrSort'] != -141) and ($quest['ZoneOrSort'] != -61) and ($quest['ZoneOrSort'] != -81))
+ if ($quest['ZoneOrSort']<0 AND ((-$quest['ZoneOrSort']) >= 374 OR (-$quest['ZoneOrSort']) == 221 OR (-$quest['ZoneOrSort']) == 241 OR ((-$quest['ZoneOrSort']) >= 344 AND (-$quest['ZoneOrSort']) < 371) or
+    (-$quest['ZoneOrSort']) == 284 OR (-$quest['ZoneOrSort']) == 25 OR (-$quest['ZoneOrSort']) == 41 OR (-$quest['ZoneOrSort']) < 24))
    echo "<a style='float: right;' href=\"?s=q&SortID=".(-$quest['ZoneOrSort'])."\">".getQuestSort(-$quest['ZoneOrSort'], 0)."</a>";
 
  echo "$lang[quest_level] $quest[QuestLevel]<br>";
@@ -450,7 +450,7 @@ echo "<tr><td bgColor=#ff0000>$lang[quest_not_found]</td></tr>";
 
 ### этот квест часть серии:
 $needForQuest = $dDB->selectRow("SELECT * FROM `quest_template` WHERE ABS(`PrevQuestId`) = ?d", $quest['entry']);
-if ($quest['PrevQuestId'] != 0 or $quest['NextQuestId'] != 0 or $needForQuest)
+if ($quest['PrevQuestId'] != 0 OR $quest['NextQuestId'] != 0 OR $needForQuest)
 {
  echo "<tr><td class = head>$lang[this_quest_is_part_of_a_series]</td></tr>";
  $step=0;
