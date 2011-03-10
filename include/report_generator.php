@@ -387,7 +387,7 @@ function r_lootRequire($data)
      if ($data['condition_value2'] == 0) echo getAreaName($data['condition_value1']);
      break;
    case  5: // CONDITION_REPUTATION_RANK - faction_id, min_rank
-     echo getFactionName($data['condition_value1']).'('.$data['condition_value2'].')';
+     echo getFactionName($data['condition_value1']).'('.getReputationRankName($data['condition_value2']).')';
      break;
    case  6: // CONDITION_TEAM  player_team, 0      (469 - Alliance 67 - Horde)
      echo getFactionName($data['condition_value1']);
