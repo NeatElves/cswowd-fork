@@ -906,7 +906,7 @@ function r_OnKillRep($data)
   {
    echo ($data['RewOnKillRepValue1']>0?'+':'').$data['RewOnKillRepValue1']*$creature_rate1.' '.getFactionName($data['RewOnKillRepFaction1']).' ('.getReputationRankName($data['MaxStanding1']).')';
    $spillover=getRepSpillover($data['RewOnKillRepFaction1']);
-   if ($spillover && $data['IsTeamAward1'] == 1)
+   if ($spillover)
    foreach ($spillover as $faction)
    {
      if ($faction['faction1'])
@@ -923,7 +923,7 @@ function r_OnKillRep($data)
   {
    echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate2.' '.getFactionName($data['RewOnKillRepFaction2']).' ('.getReputationRankName($data['MaxStanding2']).')';
    $spillover=getRepSpillover($data['RewOnKillRepFaction2']);
-   if ($spillover && $data['IsTeamAward2'] == 1)
+   if ($spillover)
    foreach ($spillover as $faction)
    {
      if ($faction['faction1'])
@@ -959,7 +959,7 @@ $npc_report = array(
 'LOOT_REPORT_CHANCE'=>array('class'=>'', 'sort'=>'chance', 'text'=>$lang['loot_chance'], 'draw'=>'r_lootChance', 'sort_str'=>'ABS(`ChanceOrQuestChance`) DESC, `name`', 'fields'=>'`ChanceOrQuestChance`, `mincountOrRef`'),
 'LOOT_REPORT_REQ'   =>array('class'=>'', 'sort'=>'',       'text'=>$lang['loot_require'],'draw'=>'r_lootRequire','sort_str'=>'', 'fields'=>'`lootcondition`, `condition_value1`, `condition_value2`'),
 // reputation
-'ONKILL_REPUTATION' =>array('class'=>'left', 'sort'=>'rep','text'=>$lang['onkill_rep'],'draw'=>'r_OnKillRep','sort_str'=>'`RewOnKillRepValue1` DESC, `RewOnKillRepValue2` DESC', 'fields'=>'`RewOnKillRepFaction1`, `RewOnKillRepValue1`, `MaxStanding1`, `IsTeamAward1`, `RewOnKillRepValue2`, `RewOnKillRepFaction2`, `MaxStanding2`, `IsTeamAward2`'),
+'ONKILL_REPUTATION' =>array('class'=>'left', 'sort'=>'rep','text'=>$lang['onkill_rep'],'draw'=>'r_OnKillRep','sort_str'=>'`RewOnKillRepValue1` DESC, `RewOnKillRepValue2` DESC', 'fields'=>'`RewOnKillRepFaction1`, `RewOnKillRepValue1`, `MaxStanding1`, `RewOnKillRepValue2`, `RewOnKillRepFaction2`, `MaxStanding2`'),
 );
 
 define('NPC_LOCALE_NAME',    0x01);
