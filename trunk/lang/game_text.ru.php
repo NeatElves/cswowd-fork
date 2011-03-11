@@ -617,8 +617,10 @@ $game_text = array(
 'npc_ap'=>'Сила атаки',
 'npc_attack'=>'Задержка атаки',
 'display'=>'Модель',
-'displayA'=>'Модель A',
-'displayH'=>'Модель H',
+'display1'=>'Модель 1',
+'display2'=>'Модель 2',
+'display3'=>'Модель 3',
+'display4'=>'Модель 4',
 'npc_script'=>'Скрипт',
 
 'talent_rank'=>'Ранг',
