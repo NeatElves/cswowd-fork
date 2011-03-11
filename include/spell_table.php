@@ -3,12 +3,12 @@ include_once("spell_data.php");
 
 function noBorderSpellTable($spell)
 {
- echo "<TABLE class=spell><TBODY>";
+ echo "<table class=spell><tbody>";
  $name = $spell['SpellName'];
  if ($spell['Rank'])
-     echo "<TR><TD class=Name>".$name."</TD><TD class=Rank align=right>".$spell['Rank']."</TD></TR>";
+     echo "<tr><td class=Name>".$name."</td><td class=Rank align=right>".$spell['Rank']."</td></tr>";
  else
-     echo "<TR><TD class=Name colSpan=2>".$name."</TD></TR>";
+     echo "<tr><td class=Name colspan=2>".$name."</td></tr>";
  $cost = getSpellCostText($spell);
  if ($cost or $spell['rangeIndex']>1)
  {
@@ -37,25 +37,25 @@ function noBorderSpellTable($spell)
    $cooldown = "";
 
  if ($cast_time OR $cooldown)
-     echo "<TR><TD>".$cast_time."</TD><TD align=right>".$cooldown."</TD></TR>";
+     echo "<tr><td>".$cast_time."</td><td align=right>".$cooldown."</td></tr>";
 
  // Тотем категория
  if ($spell['TotemCategory_1'] OR $spell['TotemCategory_2'])
  {
-     echo "<TR><TD colspan=2 class=tool> Tools: ";
+     echo "<tr><td colspan=2 class=tool> Tools: ";
      if ($spell['TotemCategory_1'])
          echo getTotemCategory($spell['TotemCategory_1']);
      if ($spell['TotemCategory_2'])
          echo ", ".getTotemCategory($spell['TotemCategory_2']);
-     echo "</TD></TR>";
+     echo "</td></tr>";
  }
 
  $itemClass = $spell['EquippedItemClass'];
  // Требования мили или рангед оружия
  if ($spell['Attributes'] & 0x2)
-     echo "<TR><TD colSpan=2>Requires Ranged Weapon</TD></TR>";
+     echo "<tr><td colspan=2>Requires Ranged Weapon</td></tr>";
  else if ($spell['Attributes'] & 0x4)
-     echo "<TR><TD colSpan=2>Requires Melee Weapon</TD></TR>";
+     echo "<tr><td colspan=2>Requires Melee Weapon</td></tr>";
  else if ($itemClass == 2)  // Требует оружия
  {
      echo "<tr><td colSpan=2 class=req>";
@@ -67,19 +67,19 @@ function noBorderSpellTable($spell)
  }
  $reqForm = getAllowableForm($spell['Stances'], 0);
  if ($reqForm)
-     echo "<TR><TD colSpan=2>Requires: ".$reqForm."</TD></TR>";
+     echo "<tr><td colspan=2>Requires: ".$reqForm."</td></tr>";
 
  $notreqForm = getAllowableForm($spell['StancesNot'], 0);
  if ($notreqForm)
-     echo "<TR><TD class=SpellErr colSpan=2>Not cast in: ".$notreqForm."</TD></TR>";
+     echo "<tr><td class=SpellErr colspan=2>Not cast in: ".$notreqForm."</td></tr>";
 
- echo "<TR><TD colSpan=2 class=SpellDesc><a href=\"?spell=$spell[id]\">".getSpellDesc($spell)."</a></TD></TR>";
- echo "</TBODY></TABLE>";
+ echo "<tr><td colspan=2 class=SpellDesc><a href=\"?spell=$spell[id]\">".getSpellDesc($spell)."</a></td></tr>";
+ echo "</tbody></table>";
 }
 
 function generateSpellTable($spell)
 {
- echo "<table class=border cellSpacing=0 cellPadding=0><tbody>";
+ echo "<table class=border cellspacing=0 cellpadding=0><tbody>";
  echo "<tr><td class=btopl></td><td class=btop></td><td class=btopr></td></tr>";
  echo "<tr><td class=bl></td><td class=bbody>";
  noBorderSpellTable($spell);
@@ -91,7 +91,7 @@ function generateSpellTable($spell)
 // Вывод tooltip спелла (то что выводится в подсказке ауры на игроке)
 function generateSpellBuffTable($spell)
 {
- echo "<table class=border cellSpacing=0 cellPadding=0><tbody>";
+ echo "<table class=border cellspacing=0 cellpadding=0><tbody>";
  echo "<tr><td class=btopl></td><td class=btop></td><td class=btopr></td></tr>";
  echo "<tr><td class=bl></td><td class=bbody>";
 

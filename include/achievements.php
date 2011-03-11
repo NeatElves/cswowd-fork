@@ -402,8 +402,8 @@ function renderAchievementData($category, $guid, $faction)
     $baseptr.= "&faction=".$faction;
 
   echo '<br><script type="text/javascript" src="js/achievement.js"></script>';
-  echo '<TABLE class=achievement cellSpacing=0 cellPadding=0><TBODY>';
-  echo '<TR><TD class="a_cat" id="a_category">';
+  echo '<table class=achievement cellSpacing=0 cellPadding=0><tbody>';
+  echo '<tr><td class="a_cat" id="a_category">';
 
   // Output player achievement statistic
   echo '<div class=a_topcat></div>';
@@ -450,16 +450,16 @@ function renderAchievementData($category, $guid, $faction)
   }
   echo '</div>';
   echo '<div class=a_bottomcat></div>';
-  echo '</TD>';
-  echo '<TD class="a_data">';
+  echo '</td>';
+  echo '<td class="a_data">';
   echo '<div class="a_topdata"></div>';
   echo '<div class="a_bdydata" id="a_data">';
   renderAchievementCategoryList($category, $faction, $guid);
   echo '</div>';
   echo '<div class="a_btmdata"></div>';
-  echo '</TD>';
-  echo '</TR>';
-  echo '</TBODY></TABLE>';
+  echo '</td>';
+  echo '</tr>';
+  echo '</tbody></table>';
   echo '<script type="text/javascript">
   ChangeCssProperty(".ach_show .ach_req", "display", "none");
   ChangeCssProperty("div.a_bodycat a.sub", "display", "none");

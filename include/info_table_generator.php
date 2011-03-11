@@ -123,7 +123,7 @@ function renderItemFishingList($lootList, $refLoot, $header, $page_seek, $totalR
   addTab($header.' ('.$totalRecords.')', $headMARK);
   echo "<table class=report width=500>";
   echo "<tbody>";
-  echo "<tr><td colSpan=2 class=head><a name=\"$headMARK\">$header</a></td></tr>";
+  echo "<tr><td colspan=2 class=head><a name=\"$headMARK\">$header</a></td></tr>";
   echo "<tr><th>Area</th><th>$lang[drop]%</th></tr>";
   foreach ($lootList as $area_loot)
   {

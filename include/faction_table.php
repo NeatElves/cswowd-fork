@@ -3,7 +3,7 @@
 function noBorderFactionTable($faction)
 {
  global $game_text;
- echo '<table class=factiontip cellSpacing=0>';
+ echo '<table class=factiontip cellspacing=0>';
  echo '<tbody>';
  echo '<tr><td class=name>'.$faction['name'].'</td></tr>';
  if ($faction['team'])
@@ -14,7 +14,7 @@ function noBorderFactionTable($faction)
 }
 function generateFactionTable($faction)
 {
- echo "<table class=border cellSpacing=0 cellPadding=0><tbody>";
+ echo "<table class=border cellspacing=0 cellpadding=0><tbody>";
  echo "<tr><td class=btopl></td><td class=btop></td><td class=btopr></td></tr>";
  echo "<tr><td class=bl></td><td class=bbody>";
  noBorderFactionTable($faction);

@@ -5,8 +5,8 @@ include_once("spell_data.php");
 function noBorderEnchantTable($enc)
 {
  global $UseorEquip, $game_text;
- echo "<TABLE class=spell><TBODY>";
- echo "<TR><TD class=Name>".$enc['description']."</TD></TR>";
+ echo "<table class=spell><tbody>";
+ echo "<tr><td class=Name>".$enc['description']."</td></tr>";
  // Вывод требования скила
  if ($enc['requiredSkill'])
     echo '<tr><td class=req>'.sprintf($game_text['req_skill'], getSkillName($enc['requiredSkill']), $enc['requiredSkillRank']).'</td></tr>';
@@ -80,17 +80,17 @@ function noBorderEnchantTable($enc)
            echo "<tr><td class=SpellEnch>Add Socket Enchant</td></tr>";
        break;
        default:
-           echo "<tr><td>Err type $type</TD></TR>";
+           echo "<tr><td>Err type $type</td></tr>";
        break;
      }
    }
  }
- echo "</TBODY></TABLE>";
+ echo "</tbody></table>";
 }
 
 function generateEnchantTable($enc)
 {
- echo "<table class=border cellSpacing=0 cellPadding=0><tbody>";
+ echo "<table class=border cellspacing=0 cellpadding=0><tbody>";
  echo "<tr><td class=btopl></td><td class=btop></td><td class=btopr></td></tr>";
  echo "<tr><td class=bl></td><td class=bbody>";
  noBorderEnchantTable($enc);

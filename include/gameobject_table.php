@@ -50,22 +50,22 @@ define('GO_FLAG_UNK2', 0x80);
 function noBorderGameobjectTable($obj)
 {
  global $game_text;
- echo "<TABLE class=gameobject cellSpacing=0>";
- echo "<TBODY>";
- echo "<TR><TD colSpan=2><b>$obj[name]</b></TD></TR>";
+ echo "<table class=gameobject cellspacing=0>";
+ echo "<tbody>";
+ echo "<tr><td colspan=2><b>$obj[name]</b></td></tr>";
  if ($obj['flags'] & GO_FLAG_LOCKED)
-     echo "<TR><TD colSpan=2>".$game_text['locked']."</TD></TR>";
- echo "<TR width=1%><TD>".$game_text['go_type']."</TD><TD align=right>".getGameobjectType($obj['type'])."</TD></TR>";
+     echo "<tr><td colspan=2>".$game_text['locked']."</td></tr>";
+ echo "<tr width=1%><td>".$game_text['go_type']."</td><td align=right>".getGameobjectType($obj['type'])."</td></tr>";
  if ($obj['faction'])
     echo "<tr><td>".$game_text['faction']."</td><td align=right>".getFactionTemplateName($obj['faction'])."</td></tr>";
- echo "<TR><TD>".$game_text['entry']."</TD><TD align=right>$obj[entry]</TD></TR>";
-// echo "<TR><TD colSpan=2 class=bottom>This is from MaNGOS database!</TD></TR>";
- echo "</TBODY></TABLE>";
+ echo "<tr><td>".$game_text['entry']."</td><td align=right>$obj[entry]</td></tr>";
+// echo "<tr><td colspan=2 class=bottom>This is from MaNGOS database!</td></tr>";
+ echo "</tbody></table>";
 }
 
 function generateGameobjectTable($obj)
 {
- echo "<table class=border cellSpacing=0 cellPadding=0><tbody>";
+ echo "<table class=border cellspacing=0 cellpadding=0><tbody>";
  echo "<tr><td class=btopl></td><td class=btop></td><td class=btopr></td></tr>";
  echo "<tr><td class=bl></td><td class=bbody>";
  noBorderGameobjectTable($obj);
