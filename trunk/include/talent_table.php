@@ -15,19 +15,19 @@ function noBorderTalentTable($talentTab, $rank)
   else if ($talentTab["Rank_2"]) $maxRank = 2;
   else if ($talentTab["Rank_1"]) $maxRank = 1;
 
-  echo "<TABLE class=spell><TBODY>";
+  echo "<table class=spell><tbody>";
   $name = $spell['SpellName'];
 //  if ($spell['Rank']) $name .=" ($spell[Rank])";
-  echo "<TR><TD class=Name>".$name."</TD></TR>";
-  echo "<TR><TD>".$game_text['talent_rank']." $rank / $maxRank</TD></TR>";
-  echo "<TR><TD class=Talent>".getSpellDesc($spell)."</TD></TR>";
+  echo "<tr><td class=Name>".$name."</td></tr>";
+  echo "<tr><td>".$game_text['talent_rank']." $rank / $maxRank</td></tr>";
+  echo "<tr><td class=Talent>".getSpellDesc($spell)."</td></tr>";
   if ($rank!=0 && $rank!=$maxRank)
   {
-   echo "<TR><TD><br>".$game_text['talent_next_rank']."</TD></TR>";
+   echo "<tr><td><br>".$game_text['talent_next_rank']."</td></tr>";
    $spell = getSpell($talentTab["Rank_".($rank+1)]);
-   echo "<TR><TD class=Talent>".getSpellDesc($spell)."</TD></TR>";
+   echo "<tr><td class=Talent>".getSpellDesc($spell)."</td></tr>";
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
  }
  else
  {
@@ -36,7 +36,7 @@ function noBorderTalentTable($talentTab, $rank)
 }
 function generateTalentTable($talentTab, $rank)
 {
- echo "<table class=border cellSpacing=0 cellPadding=0><tbody>";
+ echo "<table class=border cellspacing=0 cellpadding=0><tbody>";
  echo "<tr><td class=btopl></td><td class=btop></td><td class=btopr></td></tr>";
  echo "<tr><td class=bl></td><td class=bbody>";
  noBorderTalentTable($talentTab, $rank);

@@ -181,7 +181,7 @@ function noBorderItemTable($item, $item_data=0)
 {
  global $lang;
  $flags2 = getItemFlags2($item['entry']);
- echo '<table class=item cellSpacing=0><tbody>';
+ echo '<table class=item cellspacing=0><tbody>';
  renderItemData($item, $item_data);
  // Extra data
  if ($flags2 & ITEM_FLAGS2_HORDE_ONLY) echo '<tr><td>'.$lang['reqirement'].': '.$lang['Horde'].'</td></tr>';
@@ -197,7 +197,7 @@ function noBorderItemTable($item, $item_data=0)
 
 function generateItemTable($item, $item_data=0)
 {
- echo '<table class=border cellSpacing=0 cellPadding=0><tbody>';
+ echo '<table class=border cellspacing=0 cellpadding=0><tbody>';
  echo '<tr><td class=btopl></td><td class=btop></td><td class=btopr></td></tr>';
  echo '<tr><td class=bl></td><td class=bbody>';
  noBorderItemTable($item, $item_data);
