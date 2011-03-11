@@ -60,7 +60,6 @@ if ($side = @$_REQUEST['side'])
 // Убираем ненужный AND в начале строки
 $filter = substr($filter, 5);
 
-
 // Вывод диалога поиска
 if ($allmode==0 and $ajaxmode==0)
 {
@@ -98,7 +97,7 @@ if ($filter!="")
  if ($config['locales_lang'] > 0 && $name)
  {
     if (preg_match($config['locales_charset'], $name))
-       $filter = str_replace("`Title`", "`Title_loc".$config['locales_lang']."`",$filter);
+       $filter = str_replace('`Title`', '`Title_loc'.$config['locales_lang'].'`', $filter);
     else
        $quest_search->disableNameLocalisation();
  }

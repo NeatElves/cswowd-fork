@@ -403,7 +403,5 @@ else
    renderLootTableList($rows,  $lang['can_loot'], $page_seek, $totalRecords, $baseLink, "g_lootLIST");
   }
  }
-
 }
-
-
+?>

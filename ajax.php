@@ -72,3 +72,4 @@ if ($config['show_ajax_sql_timings'])
  echo "</tbody>";
  echo "</table>";
 }
+?>
