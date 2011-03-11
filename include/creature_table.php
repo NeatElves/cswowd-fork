@@ -96,62 +96,62 @@ function noBorderCreatureTable($npc)
  $npc['name'] = str_replace('(2)', '(difficulty_2)', $npc['name']);
  $npc['name'] = str_replace('(3)', '(difficulty_3)', $npc['name']);
 
- echo "<TABLE class=creature cellSpacing=0>";
- echo "<TBODY>";
- echo "<TR><TD colSpan=2><b>$npc[name] ($loyality)</b>";
+ echo "<table class=creature cellspacing=0>";
+ echo "<tbody>";
+ echo "<tr><td colspan=2><b>$npc[name] ($loyality)</b>";
  if ($npc['subname']!="")
      echo "<br><FONT color=#008800 size=-3>&lt;$npc[subname]&gt;</FONT>";
  echo "</td></tr>";
 
  if ($rank)
-     echo "<td>".$game_text['npc_rank']."</td><td align=right>".getCreatureRank($rank)."</TD></TR>";
+     echo "<td>".$game_text['npc_rank']."</td><td align=right>".getCreatureRank($rank)."</td></tr>";
 
- echo "<TR><TD>".$game_text['npc_type']."</TD><TD align=right>".getCreatureType($type)."</TD></TR>";
+ echo "<tr><td>".$game_text['npc_type']."</td><td align=right>".getCreatureType($type)."</td></tr>";
  if ($npc['family']!=0)
- echo "<TR><TD>".$game_text['npc_family']."</TD><TD align=right>".getCreatureFamily($family)."</TD></TR>";
+ echo "<tr><td>".$game_text['npc_family']."</td><td align=right>".getCreatureFamily($family)."</td></tr>";
 
- echo "<TR><TD>".$game_text['npc_level']."</TD><TD align=right>$npc[maxlevel]</TD></TR>";
+ echo "<tr><td>".$game_text['npc_level']."</td><td align=right>$npc[maxlevel]</td></tr>";
  if ($npc['minhealth']==$npc['maxhealth'])
-     echo "<TR><TD>".$game_text['npc_health']."</TD><TD align=right>$npc[maxhealth]</TD></TR>";
+     echo "<tr><td>".$game_text['npc_health']."</td><td align=right>$npc[maxhealth]</td></tr>";
  else
-     echo "<TR><TD>".$game_text['npc_health']."</TD><TD align=right>$npc[minhealth]-$npc[maxhealth]</TD></TR>";
+     echo "<tr><td>".$game_text['npc_health']."</td><td align=right>$npc[minhealth]-$npc[maxhealth]</td></tr>";
  if ($npc['minmana']!=0)
  {
      if ($npc['minmana']!=$npc['maxmana'])
-         echo "<TR><TD>".$game_text['npc_mana']."</TD><TD align=right>$npc[minmana]-$npc[maxmana]</TD></TR>";
+         echo "<tr><td>".$game_text['npc_mana']."</td><td align=right>$npc[minmana]-$npc[maxmana]</td></tr>";
      else
-         echo "<TR><TD>".$game_text['npc_mana']."</TD><TD align=right>$npc[minmana]</TD></TR>";
+         echo "<tr><td>".$game_text['npc_mana']."</td><td align=right>$npc[minmana]</td></tr>";
  }
  if ($npc['armor']!=0)
-     echo "<TR><TD>".$game_text['npc_armor']."</TD><TD align=right>$npc[armor]</TD></TR>";
+     echo "<tr><td>".$game_text['npc_armor']."</td><td align=right>$npc[armor]</td></tr>";
 
- echo "<TR><TD>".$game_text['npc_damage']."</TD><TD align=right>$npcdmgmin - $npcdmgmax</TD></TR>";
- echo "<TR><TD>".$game_text['npc_ap']."</TD><TD align=right>$npc[attackpower]</TD></TR>";
+ echo "<tr><td>".$game_text['npc_damage']."</td><td align=right>$npcdmgmin - $npcdmgmax</td></tr>";
+ echo "<tr><td>".$game_text['npc_ap']."</td><td align=right>$npc[attackpower]</td></tr>";
  $attackTime = $npc['baseattacktime']/1000;
- echo "<TR><TD>".$game_text['npc_attack']."</TD><TD align=right>$attackTime сек</TD></TR>";
+ echo "<tr><td>".$game_text['npc_attack']."</td><td align=right>$attackTime сек</td></tr>";
 
- echo "<TR><TD>".$game_text['faction']."</TD><TD align=right>".getFactionTemplateName($npc['faction_A'])."</TD></TR>";
-// echo "<TR><TD>Радиус аггро</TD><TD align=right>$npc[combat_reach]</TD></TR>";
-// echo "<TR><TD>".$game_text['entry']."</TD><TD align=right>$npc[entry]</TD></TR>";
-/*
- if ($npc['modelid_A']!=$npc['modelid_H'])
- {
-  echo "<TR><TD>".$game_text['displayA']."</TD><TD align=right>$npc[modelid_A]</TD></TR>";
-  echo "<TR><TD>".$game_text['displayH']."</TD><TD align=right>$npc[modelid_H]</TD></TR>";
- }
- else
-  echo "<TR><TD>".$game_text['display']."</TD><TD align=right>$npc[modelid_A]</TD></TR>";
-*/
- echo "<TR><TD>".$game_text['npc_script']."</TD><TD align=right>$npcscr</TD></TR>";
+ echo "<tr><td>".$game_text['faction']."</td><td align=right>".getFactionTemplateName($npc['faction_A'])."</td></tr>";
+// echo "<tr><td>Радиус аггро</td><td align=right>$npc[combat_reach]</td></tr>";
+// echo "<tr><td>".$game_text['entry']."</td><td align=right>$npc[entry]</td></tr>";
+ if ($npc['modelid_1'])
+  echo "<tr><td>".$game_text['display1']."</td><td align=right>$npc[modelid_1]</td></tr>";
+ if ($npc['modelid_2'])
+  echo "<tr><td>".$game_text['display2']."</td><td align=right>$npc[modelid_2]</td></tr>";
+ if ($npc['modelid_3'])
+  echo "<tr><td>".$game_text['display3']."</td><td align=right>$npc[modelid_3]</td></tr>";
+ if ($npc['modelid_4'])
+  echo "<tr><td>".$game_text['display4']."</td><td align=right>$npc[modelid_4]</td></tr>";
+
+ echo "<tr><td>".$game_text['npc_script']."</td><td align=right>$npcscr</td></tr>";
  if ($npc['npcflag'])
-     echo "<TR><TD colspan=2>".getCreatureFlagsList($npc['npcflag'])."</TD></TR>";
+     echo "<tr><td colspan=2>".getCreatureFlagsList($npc['npcflag'])."</td></tr>";
 
-// echo "<TR><TD colSpan=2 class=bottom>This is from MaNGOS database!</TD></TR>";
- echo "</TBODY></TABLE>";
+// echo "<tr><td colspan=2 class=bottom>This is from MaNGOS database!</td></tr>";
+ echo "</tbody></table>";
 }
 function generateCreatureTable($npc)
 {
- echo "<table class=border cellSpacing=0 cellPadding=0><tbody>";
+ echo "<table class=border cellspacing=0 cellpadding=0><tbody>";
  echo "<tr><td class=btopl></td><td class=btop></td><td class=btopr></td></tr>";
  echo "<tr><td class=bl></td><td class=bbody>";
  noBorderCreatureTable($npc);
