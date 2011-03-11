@@ -85,3 +85,4 @@ else
     $rnd_suffix->createReport($lang['enchant_by_rand_suff']);
   }
 }
+?>

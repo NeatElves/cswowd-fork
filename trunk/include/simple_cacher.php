@@ -60,3 +60,4 @@ function flushHtmlCache($filename)
   ob_end_clean();
   include ('cache/'.$filename);
 }
+?>
