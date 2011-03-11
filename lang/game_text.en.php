@@ -618,8 +618,10 @@ $game_text = array(
 'npc_ap'=>'Attack Power',
 'npc_attack'=>'Attack Time',
 'display'=>'Display',
-'displayA'=>'Display A',
-'displayH'=>'Display H',
+'display1'=>'Display 1',
+'display2'=>'Display 2',
+'display3'=>'Display 3',
+'display4'=>'Display 4',
 'npc_script'=>'Script',
 
 'talent_rank'=>'Rank',
