@@ -18,12 +18,12 @@ else
 {
  if ($ajaxmode==0)
  {
-   echo "<TABLE cellSpacing=0 cellPadding=0 width=500><TBODY><TR>";
-   echo "<TD vAlign=top align=right width=20%>";
+   echo "<table cellspacing=0 cellpadding=0 width=500><tbody><tr>";
+   echo "<td vAlign=top align=right width=20%>";
    $icon = getItemIcon($item['displayid']);
-   echo "<br><A href=\"#\"><IMG height=64 width=64 border=0 src='$icon'></A></TD>";
-   echo "<TD>";generateItemTable($item);echo "</TD>";
-   echo "</TR></TBODY></TABLE>";
+   echo "<br><a href=\"#\"><img height=64 width=64 border=0 src='$icon'></a></td>";
+   echo "<td>";generateItemTable($item);echo "</td>";
+   echo "</tr></tbody></table>";
 
    if ($item['BuyPrice']) echo "$lang[buy_price]: ".money($item['BuyPrice']);
    echo "<br /><br />";
