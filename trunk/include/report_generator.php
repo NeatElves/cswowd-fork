@@ -1179,43 +1179,35 @@ class GameobjectReportGenerator extends ReportGenerator{
 //=================================================================
 // Quest list report functions and methods
 //=================================================================
-function r_questLvl($data)
-{
-global $lang;
-echo $data['QuestLevel'].'<br>';
- if ($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
-     echo '<FONT size=-5>'.$lang['quest_type3'];
-
- if ($data['QuestFlags'] & QUEST_FLAGS_WEEKLY)
-     echo '<FONT size=-5>'.$lang['quest_type2'];
-
- if ($data['QuestFlags'] & QUEST_FLAGS_DAILY)
-     echo '<FONT size=-5>'.$lang['quest_type1'];
-
- if (($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_REPEATABLE) && (($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY) ==0) && ($data['QuestFlags'] & (QUEST_FLAGS_DAILY | QUEST_FLAGS_WEEKLY))  == 0)
-     echo '<FONT size=-5>'.$lang['quest_type0'];
-}
+function r_questLvl($data)    {echo $data['QuestLevel'];}
 function r_questReqLvl($data) {echo $data['MinLevel'];}
 function r_questName($data)
 {
+  global $lang;
   $name = @$data['Title_loc']?$data['Title_loc']:$data['Title'];
  if (getAllowableRace($data['RequiredRaces']) && ($data['RequiredRaces'] & 1101) && ($data['RequiredRaces'] !=1791))
      echo "<img width=22 height=22 src='images/player_info/factions_img/alliance.gif'>&nbsp;";
- 
-if (getAllowableRace($data['RequiredRaces']) && ($data['RequiredRaces'] & 690) && ($data['RequiredRaces'] !=1791))
+ if (getAllowableRace($data['RequiredRaces']) && ($data['RequiredRaces'] & 690) && ($data['RequiredRaces'] !=1791))
      echo "<img width=22 height=22 src='images/player_info/factions_img/horde.gif'>&nbsp;";
-
-  echo '<a href="?quest='.$data['entry'].'">'.($name?$name:'no name').'</a><br>';
-  if ($data['ZoneOrSort']>0)
+ echo '<a href="?quest='.$data['entry'].'">'.($name?$name:'no name').'</a><br>';
+ if ($data['ZoneOrSort']>0)
     echo '<div class=areaname><a href="?s=q&ZoneID='.$data['ZoneOrSort'].'">'.getAreaName($data['ZoneOrSort']).'</a></div>';
-   else
-  if ($data['ZoneOrSort']<0 AND ((-$data['ZoneOrSort']) >= 374 OR (-$data['ZoneOrSort']) == 221 OR (-$data['ZoneOrSort']) == 241 OR ((-$data['ZoneOrSort']) >= 344 AND (-$data['ZoneOrSort']) < 371) or
+ else
+ if ($data['ZoneOrSort']<0 AND ((-$data['ZoneOrSort']) >= 374 OR (-$data['ZoneOrSort']) == 221 OR (-$data['ZoneOrSort']) == 241 OR ((-$data['ZoneOrSort']) >= 344 AND (-$data['ZoneOrSort']) < 371) or
     (-$data['ZoneOrSort']) == 284 OR (-$data['ZoneOrSort']) == 25 OR (-$data['ZoneOrSort']) == 41 OR (-$data['ZoneOrSort']) < 24))
     echo '<div class=areaname><a href="?s=q&SortID='.(-$data['ZoneOrSort']).'">'.getQuestSort(-$data['ZoneOrSort']).'</a></div>';
-  if ($data['RequiredClasses'])
+ if ($data['RequiredClasses'])
     echo '<FONT color=#008800 size=-3>'.getAllowableClass($data['RequiredClasses']).'<br>';
-  if ($data['RequiredSkill'])
+ if ($data['RequiredSkill'])
     echo '<div class=areaname><a href="?s=q&SkillID='.($data['RequiredSkill']).'">'.getSkillName($data['RequiredSkill'], 0).'('.$data['RequiredSkillValue'].')</a></div>';
+ if ($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
+    echo '<FONT size=-5>'.$lang['quest_type3'];
+ if ($data['QuestFlags'] & QUEST_FLAGS_WEEKLY)
+    echo '<FONT size=-5>'.$lang['quest_type2'];
+ if ($data['QuestFlags'] & QUEST_FLAGS_DAILY)
+    echo '<FONT size=-5>'.$lang['quest_type1'];
+ if (($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_REPEATABLE) && (($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY) ==0) && ($data['QuestFlags'] & (QUEST_FLAGS_DAILY | QUEST_FLAGS_WEEKLY))  == 0)
+    echo '<FONT size=-5>'.$lang['quest_type0'];
 }
 function r_questGiver($data)
 {
@@ -1356,9 +1348,9 @@ $quest_reward_fields =
  `RewOrReqMoney`, `RewMoneyMaxLevel`, `RewSpell`, `RewSpellCast`, `RewMailTemplateId`, `RewMailDelaySecs`';
 
 $quest_report = array(
-'QUEST_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'',  'text'=>$lang['quest_lvl'],     'draw'=>'r_questLvl',   'sort_str'=>'',      'fields'=>'`QuestLevel`, `QuestFlags`, `SpecialFlags`' ),
+'QUEST_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level',  'text'=>$lang['quest_lvl'],     'draw'=>'r_questLvl',   'sort_str'=>'`QuestLevel` DESC',      'fields'=>'`QuestLevel`' ),
 'QUEST_REPORT_REQLEVEL'=>array('class'=>'small','sort'=>'req_lvl','text'=>$lang['quest_reqlvl'],  'draw'=>'r_questReqLvl','sort_str'=>'`MinLevel` DESC',        'fields'=>'`MinLevel`' ),
-'QUEST_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name',   'text'=>$lang['quest_name'],    'draw'=>'r_questName',  'sort_str'=>'`Title`',                'fields'=>'`Title`, `ZoneOrSort`, `RequiredSkill`, `RequiredSkillValue`, `RequiredClasses`, `RequiredRaces`'),
+'QUEST_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name',   'text'=>$lang['quest_name'],    'draw'=>'r_questName',  'sort_str'=>'`Title`',                'fields'=>'`Title`, `ZoneOrSort`, `RequiredSkill`, `RequiredSkillValue`, `RequiredClasses`, `RequiredRaces`, `QuestFlags`, `SpecialFlags`'),
 'QUEST_REPORT_GIVER'   =>array('class'=>'left', 'sort'=>'',       'text'=>$lang['quest_giver'],   'draw'=>'r_questGiver', 'sort_str'=>'',                       'fields'=>''),
 'QUEST_REPORT_REWARD'  =>array('class'=>'full', 'sort'=>'reward', 'text'=>$lang['quest_rewards'], 'draw'=>'r_questReward','sort_str'=>'`RewMoneyMaxLevel` DESC','fields'=>&$quest_reward_fields),
 // loot
