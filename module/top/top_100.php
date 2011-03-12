@@ -20,18 +20,18 @@ if ($output_mode == "TOP_MONEY")
  "SELECT `guid`, `name` , `race` , `class`, `gender`, `level` , `money` , `account` FROM `characters`  {WHERE `account` NOT IN (?a) AND `money`>'0'} ORDER BY `money` DESC LIMIT ?d", empty($gm_accs)?DBSIMPLE_SKIP:$gm_accs, $config['top_money_limit']);
  if ($rows)
  {
-  echo "<TABLE class=report width=500>";
-  echo "<TBODY>";
-  echo "<TR><TD colspan=7 class=head>$lang[top_money_header]</TD></TR>";
-  echo "<TR>";
-  echo "<TH></TH>";
-  echo "<TH width=1px></TH>";
-  echo "<TH>$lang[player_level]</TH>";
-  echo "<TH width=50%>$lang[player_name]</TH>";
-  echo "<TH width=50%>$lang[player_money]</TH>";
-  echo "<TH width=1px>$lang[player_race]</TH>";
-  echo "<TH width=1px>$lang[player_class]</TH>";
-  echo "</TR>\n";
+  echo "<table class=report width=500>";
+  echo "<tbody>";
+  echo "<tr><td colspan=7 class=head>$lang[top_money_header]</td></tr>";
+  echo "<tr>";
+  echo "<th></th>";
+  echo "<th width=1px></th>";
+  echo "<th>$lang[player_level]</th>";
+  echo "<th width=50%>$lang[player_name]</th>";
+  echo "<th width=50%>$lang[player_money]</th>";
+  echo "<th width=1px>$lang[player_race]</th>";
+  echo "<th width=1px>$lang[player_class]</th>";
+  echo "</tr>\n";
   $count=1;
   foreach ($rows as $player)
   {
@@ -43,18 +43,18 @@ if ($output_mode == "TOP_MONEY")
    $money     = $player['money'];
 //   if (sizeof($char_data)!=PLAYER_FIELD_PADDING+2)
 //    continue;
-   echo "<TR>";
-   echo "<TD align = center>$count</TD>";
-   echo "<TD><img width=$imgsize height=$imgsize src=\"".getFactionImage($race)."\"></TD>";
-   echo "<TD align=center>$level</TD>";
-   echo "<TD><A href=?player=$player[guid]>$player[name]</a></TD>";
-   echo "<TD align=center>".money($money)."</TD>";
-   echo "<TD align=center><img width=$imgsize height=$imgsize src=\"".getRaceImage($race,$gender)."\"></TD>";
-   echo "<TD align=center><img width=$imgsize height=$imgsize src=\"".getClassImage($class)."\"></TD>";
-   echo "</TR>\n";
+   echo "<tr>";
+   echo "<td align = center>$count</td>";
+   echo "<td><img width=$imgsize height=$imgsize src=\"".getFactionImage($race)."\"></td>";
+   echo "<td align=center>$level</td>";
+   echo "<td><a href=?player=$player[guid]>$player[name]</a></td>";
+   echo "<td align=center>".money($money)."</td>";
+   echo "<td align=center><img width=$imgsize height=$imgsize src=\"".getRaceImage($race,$gender)."\"></td>";
+   echo "<td align=center><img width=$imgsize height=$imgsize src=\"".getClassImage($class)."\"></td>";
+   echo "</tr>\n";
    $count++;
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
  }
 }
 else if ($output_mode == "TOP_HONOR")
@@ -66,19 +66,19 @@ else if ($output_mode == "TOP_HONOR")
 $rows = $cDB->select("SELECT `guid`, `name` , `race` , `class`, `gender`, `level` , `totalHonorPoints`, `totalKills` FROM `characters`  {WHERE `account` NOT IN (?a) AND `totalHonorPoints`>'0'}  ORDER BY `$sort_str` DESC LIMIT ?d", empty($gm_accs)?DBSIMPLE_SKIP:$gm_accs, $config['top_honor_limit']);
  if ($rows)
  {
-  echo "<TABLE class=report width=500>";
-  echo "<TBODY>";
-  echo "<TR><TD colspan=8 class=head>$lang[top_honor_header]</TD></TR>";
-  echo "<TR>";
-  echo "<TH></TH>";
-  echo "<TH width=1px></TH>";
-  echo "<TH>$lang[player_level]</TH>";
-  echo "<TH width=50%>$lang[player_name]</TH>";
-  echo "<TH width=50%><a href=\"?top=honor\">$lang[player_honor]</a></TH>";
-  echo "<TH><a href=\"?top=honor&sort=kills\">$lang[player_kills]</a></TH>";
-  echo "<TH width=1px>$lang[player_race]</TH>";
-  echo "<TH width=1px>$lang[player_class]</TH>";
-  echo "</TR>\n";
+  echo "<table class=report width=500>";
+  echo "<tbody>";
+  echo "<tr><td colspan=8 class=head>$lang[top_honor_header]</td></tr>";
+  echo "<tr>";
+  echo "<th></th>";
+  echo "<th width=1px></th>";
+  echo "<th>$lang[player_level]</th>";
+  echo "<th width=50%>$lang[player_name]</th>";
+  echo "<th width=50%><a href=\"?top=honor\">$lang[player_honor]</a></th>";
+  echo "<th><a href=\"?top=honor&sort=kills\">$lang[player_kills]</a></th>";
+  echo "<th width=1px>$lang[player_race]</th>";
+  echo "<th width=1px>$lang[player_class]</th>";
+  echo "</tr>\n";
   $count = 1;
   foreach ($rows as $player)
   {
@@ -91,19 +91,19 @@ $rows = $cDB->select("SELECT `guid`, `name` , `race` , `class`, `gender`, `level
    $kills     = $player['totalKills'];
 //   if (sizeof($char_data)!=PLAYER_FIELD_PADDING+2)
 //    continue;
-   echo "<TR>";
-   echo "<TD align = center>$count</TD>";
-   echo "<TD><img width=$imgsize height=$imgsize src=\"".getFactionImage($race)."\"></TD>";
-   echo "<TD align=center>$level</TD>";
-   echo "<TD><A href=?player=$player[guid]>$player[name]</a></TD>";
-   echo "<TD>".$honor."</TD>";
-   echo "<TD>".$kills."</TD>";
-   echo "<TD align=center><img width=$imgsize height=$imgsize src=\"".getRaceImage($race,$gender)."\"></TD>";
-   echo "<TD align=center><img width=$imgsize height=$imgsize src=\"".getClassImage($class)."\"></TD>";
-   echo "</TR>\n";
+   echo "<tr>";
+   echo "<td align = center>$count</td>";
+   echo "<td><img width=$imgsize height=$imgsize src=\"".getFactionImage($race)."\"></td>";
+   echo "<td align=center>$level</td>";
+   echo "<td><a href=?player=$player[guid]>$player[name]</a></td>";
+   echo "<td>".$honor."</td>";
+   echo "<td>".$kills."</td>";
+   echo "<td align=center><img width=$imgsize height=$imgsize src=\"".getRaceImage($race,$gender)."\"></td>";
+   echo "<td align=center><img width=$imgsize height=$imgsize src=\"".getClassImage($class)."\"></td>";
+   echo "</tr>\n";
    $count++;
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
  }
 }
 else if ($output_mode == "TOP_ARENA")
@@ -157,7 +157,7 @@ else if ($output_mode == "TOP_ARENA")
        echo "</tr>\n";
 	}
     else
-       echo "<tr><td colspan=4 align=center>Empty</td></tr>";
+       echo "<tr><td colspan=4 align=center>$lang[empty]</td></tr>";
 	echo "</tbody></table>";
 }
 ?>

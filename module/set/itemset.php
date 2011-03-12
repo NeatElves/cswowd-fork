@@ -41,16 +41,16 @@ else
 {
  echo "<table class=report width=500>\n";
  echo "<tbody>\n";
- echo "<tr><td colspan=4 class=head>Наборы</td></tr>\n";
+ echo "<tr><td colspan=4 class=head>$lang[item_set]</td></tr>\n";
 
  // Делаем ссылку для сортировки
  $SortRefrence = $FindRefrence;
  if ($page>1) $SortRefrence.="&page=$page";
 
  echo "<tr>";
- echo "<TH><a href=\"$SortRefrence\">Set name</a></TH>";
- echo "<TH width=260px>Items</TH>";
- echo "<TH>Info</TH>";
+ echo "<th><a href=\"$SortRefrence\">$lang[set_name]</a></th>";
+ echo "<th width=260px>Items</th>";
+ echo "<th>Info</th>";
  echo "</tr>\n";
  foreach ($rows as $set)
  {
@@ -90,6 +90,6 @@ else
  $pageRefrence = $FindRefrence;
  if ($sort) $pageRefrence.="&sort=$sort";
  generatePage($number, $page, "<a href=\"$pageRefrence&page=%d\">%d </a>", 4);
- echo "</TBODY></TABLE>";
+ echo "</tbody></table>";
 }
 ?>
