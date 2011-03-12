@@ -927,13 +927,13 @@ function r_OnKillRep($data)
    foreach ($spillover as $faction)
    {
      if ($faction['faction1'])
-      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate1*$faction['rate_1'].' '.getFactionName($faction['faction1']).' ('.getReputationRankName($data['MaxStanding2']).')';
+      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate2*$faction['rate_1'].' '.getFactionName($faction['faction1']).' ('.getReputationRankName($data['MaxStanding2']).')';
      if ($faction['faction2'])
-      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate1*$faction['rate_2'].' '.getFactionName($faction['faction2']).' ('.getReputationRankName($data['MaxStanding2']).')';
+      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate2*$faction['rate_2'].' '.getFactionName($faction['faction2']).' ('.getReputationRankName($data['MaxStanding2']).')';
      if ($faction['faction3'])
-      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate1*$faction['rate_3'].' '.getFactionName($faction['faction3']).' ('.getReputationRankName($data['MaxStanding2']).')';
+      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate2*$faction['rate_3'].' '.getFactionName($faction['faction3']).' ('.getReputationRankName($data['MaxStanding2']).')';
      if ($faction['faction4'])
-      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate1*$faction['rate_4'].' '.getFactionName($faction['faction4']).' ('.getReputationRankName($data['MaxStanding2']).')';
+      echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate2*$faction['rate_4'].' '.getFactionName($faction['faction4']).' ('.getReputationRankName($data['MaxStanding2']).')';
    }
   }
 }
