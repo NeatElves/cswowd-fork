@@ -1197,7 +1197,7 @@ function r_questName($data)
     (-$data['ZoneOrSort']) == 284 OR (-$data['ZoneOrSort']) == 25 OR (-$data['ZoneOrSort']) == 41 OR (-$data['ZoneOrSort']) < 24))
     echo '<div class=areaname><a href="?s=q&SortID='.(-$data['ZoneOrSort']).'">'.getQuestSort(-$data['ZoneOrSort']).'</a></div>';
  if ($data['RequiredClasses'])
-    echo '<FONT color=#008800 size=-3>'.getAllowableClass($data['RequiredClasses']).'<br>';
+    echo '<FONT color=#008800 size=-3>'.getAllowableClass($data['RequiredClasses']).'</FONT><br>';
  if ($data['RequiredSkill'])
     echo '<div class=areaname><a href="?s=q&SkillID='.($data['RequiredSkill']).'">'.getSkillName($data['RequiredSkill'], 0).'('.$data['RequiredSkillValue'].')</a></div>';
  if ($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
