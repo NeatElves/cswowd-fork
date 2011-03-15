@@ -38,10 +38,10 @@ $lang = array(
 'search_area_req'   => 'Area search',
 
 #Time
-'days' =>'day(-s)',
-'hours' =>'hour(-s)',
-'min' =>'min',
-'sec' =>'sec',
+'days' =>'d.',
+'hours' =>'h.',
+'min' =>'min.',
+'sec' =>'sec.',
 
 #Condition
 'condition1' => 'Aura ',

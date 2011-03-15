@@ -40,8 +40,8 @@ $lang = array(
 #Time
 'days' =>'д.',
 'hours' =>'ч.',
-'min' =>'минут(-а,-ы)',
-'sec' =>'секунд(-а,-ы)',
+'min' =>'мин.',
+'sec' =>'сек.',
 
 #Condition
 'condition1' => 'Аура ',

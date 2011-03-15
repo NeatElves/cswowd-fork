@@ -49,6 +49,30 @@ if ($SkillID = intval(@$_REQUEST['SkillID']))
   $filter.= " AND `RequiredSkill` = '$SkillID'";
   $FindRefrence.="&SkillID=$SkillID";
 }
+// Фильтр по повтору
+if ($Sfr = intval(@$_REQUEST['Sfr']))
+{
+  $filter.= " AND `SpecialFlags` & 1 AND (`SpecialFlags` & 4 = 0 AND `QuestFlags` & 36864  = 0)";
+  $FindRefrence.="&Sfr=$Sfr";
+}
+// Фильтр по ежеднев
+if ($Sfd = intval(@$_REQUEST['Sfd']))
+{
+  $filter.= " AND `QuestFlags` & 4096";
+  $FindRefrence.="&Sfd=$Sfd";
+}
+// Фильтр по еженед
+if ($Sfw = intval(@$_REQUEST['Sfw']))
+{
+  $filter.= " AND `QuestFlags` & 32768";
+  $FindRefrence.="&Sfw=$Sfw";
+}
+// Фильтр по ежемес
+if ($Sfm = intval(@$_REQUEST['Sfm']))
+{
+  $filter.= " AND `SpecialFlags` = '$Sfm'";
+  $FindRefrence.="&Sfm=$Sfm";
+}
 // Фильтр c
 if ($side = @$_REQUEST['side'])
 {
