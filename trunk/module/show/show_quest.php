@@ -146,16 +146,16 @@ if ($quest['RequiredSkill'])
   }
 
  if ($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
-     echo "<tr><td>$lang[item_type]: <b>$lang[quest_type3]</b></td></tr>";
+     echo "<tr><td>$lang[item_type]:&nbsp;<a href=\"?s=q&Sfm=".($quest['SpecialFlags'])."\">".$lang['quest_type3']."</a></td></tr>";
 
  if ($quest['QuestFlags'] & QUEST_FLAGS_WEEKLY)
-     echo "<tr><td>$lang[item_type]: <b>$lang[quest_type2]</b></td></tr>";
+     echo "<tr><td>$lang[item_type]:&nbsp;<a href=\"?s=q&Sfw=".($quest['QuestFlags'])."\">".$lang['quest_type2']."</a></td></tr>";
 
  if ($quest['QuestFlags'] & QUEST_FLAGS_DAILY)
-     echo "<tr><td>$lang[item_type]: <b>$lang[quest_type1]</b></td></tr>";
+     echo "<tr><td>$lang[item_type]:&nbsp;<a href=\"?s=q&Sfd=".($quest['QuestFlags'])."\">".$lang['quest_type1']."</a></td></tr>";
 
  if (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_REPEATABLE) && (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY) ==0)&& ($quest['QuestFlags'] & (QUEST_FLAGS_DAILY | QUEST_FLAGS_WEEKLY))  == 0)
-     echo "<tr><td>$lang[item_type]: <b>$lang[quest_type0]</b></td></tr>";
+     echo "<tr><td>$lang[item_type]:&nbsp;<a href=\"?s=q&Sfr=".($quest['SpecialFlags'])."\">".$lang['quest_type0']."</a></td></tr>";
 
  if ($quest['RequiredMinRepFaction'])
    echo "<tr><td>$lang[item_faction_rank]:</td></tr>";
@@ -358,7 +358,7 @@ if ($quest['RewRepFaction1'] OR $quest['RewRepFaction2'] OR
  if ($quest['RewRepFaction5'] && $quest['RewRepValue5'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction5']).": $quest[RewRepValue5]</td></tr>";
 }
 if($quest['RewMoneyMaxLevel'])  echo "<tr><td class=mark>$lang[Rew_XP] ".getQuestXPValue($quest)." xp";
-if($quest['RewHonorAddition'] or $quest['RewHonorMultiplier'])
+if($quest['RewHonorAddition'] OR $quest['RewHonorMultiplier'])
 {
 if ($quest['RewHonorMultiplier'])
   $ihonor=getTeamContributionPoints(79)*$quest['RewHonorMultiplier']*0.1+$quest['RewHonorAddition'];

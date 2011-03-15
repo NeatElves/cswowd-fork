@@ -1201,13 +1201,13 @@ function r_questName($data)
  if ($data['RequiredSkill'])
     echo '<div class=areaname><a href="?s=q&SkillID='.($data['RequiredSkill']).'">'.getSkillName($data['RequiredSkill'], 0).'('.$data['RequiredSkillValue'].')</a></div>';
  if ($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
-    echo '<FONT size=-5>'.$lang['quest_type3'];
+    echo '<div class=areaname><a href="?s=q&Sfm='.($data['SpecialFlags']).'">'.$lang['quest_type3'].'</a></div>';
  if ($data['QuestFlags'] & QUEST_FLAGS_WEEKLY)
-    echo '<FONT size=-5>'.$lang['quest_type2'];
+    echo '<div class=areaname><a href="?s=q&Sfw='.($data['QuestFlags']).'">'.$lang['quest_type2'].'</a></div>';
  if ($data['QuestFlags'] & QUEST_FLAGS_DAILY)
-    echo '<FONT size=-5>'.$lang['quest_type1'];
+    echo '<div class=areaname><a href="?s=q&Sfd='.($data['QuestFlags']).'">'.$lang['quest_type1'].'</a></div>';
  if (($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_REPEATABLE) && (($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY) ==0) && ($data['QuestFlags'] & (QUEST_FLAGS_DAILY | QUEST_FLAGS_WEEKLY))  == 0)
-    echo '<FONT size=-5>'.$lang['quest_type0'];
+    echo '<div class=areaname><a href="?s=q&Sfr='.($data['SpecialFlags']).'">'.$lang['quest_type0'].'</a></div>';
 }
 function r_questGiver($data)
 {
