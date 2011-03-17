@@ -74,7 +74,7 @@ $guid  = intval(@$_REQUEST['guid']);
 $quest=getQuest($entry);
 if (!$quest)
 {
-  RenderError("$lang[quest_not_found]");
+  RenderError("$lang[quest_not_found1]");
 }
 else
 {
