@@ -1064,6 +1064,10 @@ class CreatureReportGenerator extends ReportGenerator{
  {
   $this->doRequirest('`RewOnKillRepFaction1` = ?d OR `RewOnKillRepFaction1` = ?d', $id, $id);
  }
+ function rewardNpcFactionReputation($entry)
+ {
+  $this->doRequirest('`creature_id` = ?d', $entry);
+ }
 }
 
 //=================================================================

@@ -252,5 +252,15 @@ else
    renderLootTableList($rows, $lang['give_skin'], $page_seek, $totalRecords, $baseLink, "skinLIST");
   }
  }
+ //**************************************************
+ // Reputation
+ //**************************************************
+  $r_knpc =& new CreatureReportGenerator('reputation');
+  $fields = array('ONKILL_REPUTATION');
+  if ($r_knpc->Init($fields, $baseLink, 'r_ccreatureLIST', $config['fade_limit'], 'rep'))
+  {
+    $r_knpc->rewardNpcFactionReputation($entry);
+    $r_knpc->createReport($lang['faction_kill_rew']);
+  }
 }
 ?>
