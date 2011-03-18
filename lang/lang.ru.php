@@ -42,6 +42,7 @@ $lang = array(
 'hours' =>'ч.',
 'min' =>'мин.',
 'sec' =>'сек.',
+'minustime' =>'действие',
 
 #Condition
 'condition1' => 'Аура ',

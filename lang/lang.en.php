@@ -42,6 +42,7 @@ $lang = array(
 'hours' =>'h.',
 'min' =>'min.',
 'sec' =>'sec.',
+'minustime' =>'action',
 
 #Condition
 'condition1' => 'Aura ',
