@@ -74,6 +74,7 @@ function getTimeText($seconds)
 {
   global $lang;
   $text = "";
+  if ($seconds < 0) {$text.= "$lang[minustime]";}
   if ($seconds >=24*3600) {$text.= intval($seconds/(24*3600))." $lang[days]"; if ($seconds%=24*3600) $text.=" ";}
   if ($seconds >=   3600) {$text.= intval($seconds/3600)." $lang[hours]"; if ($seconds%=3600) $text.=" ";}
   if ($seconds >=     60) {$text.= intval($seconds/60)." $lang[min]"; if ($seconds%=60) $text.=" ";}
