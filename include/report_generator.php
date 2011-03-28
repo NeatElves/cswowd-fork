@@ -921,6 +921,9 @@ function r_OnKillRep($data)
   }
    if ($data['RewOnKillRepFaction2'])
   {
+   if ($data['RewOnKillRepFaction1'] == 0)
+   echo ($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate2.' '.getFactionName($data['RewOnKillRepFaction2']).' ('.getReputationRankName($data['MaxStanding2']).')';
+   else
    echo '<br>'.($data['RewOnKillRepValue2']>0?'+':'').$data['RewOnKillRepValue2']*$creature_rate2.' '.getFactionName($data['RewOnKillRepFaction2']).' ('.getReputationRankName($data['MaxStanding2']).')';
    $spillover=getRepSpillover($data['RewOnKillRepFaction2']);
    if ($spillover)
