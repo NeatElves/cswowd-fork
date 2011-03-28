@@ -58,7 +58,7 @@ function renderFactionGroupList($parent, $list, $header, $page_seek, $totalRecor
 //=======================================================================================
 function renderSubList($lootList)
 {
-  global  $Quality;
+  global  $Quality, $lang;
   if (!$lootList)
      return;
   $curloot = -1;
@@ -67,7 +67,7 @@ function renderSubList($lootList)
     $gtext = "";
     if ($loot['groupid']!=$curloot)
     {
-        echo "<tr><th colspan = 3>Group $loot[groupid]</th></tr>";
+        echo "<tr><th colspan = 3>$lang[kill_kredit_group]&nbsp;$loot[groupid]</th></tr>";
         $curloot = $loot['groupid'];
     }
     echo "<tr>";
@@ -80,7 +80,7 @@ function renderSubList($lootList)
       echo "<td class=left><a class=$Quality[$colorname] href=\"?item=$item[entry]\">$item[name]</a></td>";
      }
      else
-       echo "<td>-</td><td>Unknown item $loot[item]</td>";
+       echo "<td>-</td><td>$lang[item_not_found]&nbsp;$loot[item]</td>";
     }
     else // Используется список вещей (падает только одна вещь из списка)
     {
@@ -124,7 +124,7 @@ function renderItemFishingList($lootList, $refLoot, $header, $page_seek, $totalR
   echo "<table class=report width=500>";
   echo "<tbody>";
   echo "<tr><td colspan=2 class=head><a name=\"$headMARK\">$header</a></td></tr>";
-  echo "<tr><th>Area</th><th>$lang[drop]%</th></tr>";
+  echo "<tr><th>$lang[zone_name]</th><th>$lang[drop]%</th></tr>";
   foreach ($lootList as $area_loot)
   {
     echo "<tr>";
