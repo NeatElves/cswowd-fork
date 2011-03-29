@@ -883,19 +883,20 @@ function r_npcRole($data)
 {
   $flag = $data['npcflag'];
   if ($flag == 0) {return;}
-  if ($flag&0x00000002) echo '<img src=images/map_points/available_quest_icon.gif> ';
-  if ($flag&0x00000070) echo '<img src=images/map_points/trainer_icon.gif> ';
-  if ($flag&0x00000F80) echo '<img src=images/map_points/vendor_icon.gif> ';
-//  if ($flag&0x00001000) echo '<img src=images/map_points/repair.gif> ';
-  if ($flag&0x00002000) echo '<img src=images/map_points/taxi_icon.gif> ';
-  if ($flag&0x00820000) echo '<img src=images/map_points/banker_icon.gif> ';
-  if ($flag&0x00100000) echo '<img src=images/map_points/battle_master_icon.gif> ';
-  if ($flag&0x000C0000) echo '<img src=images/map_points/tabard_icon.gif> ';
+  if ($flag&0x00000001) echo '<img src=images/map_points/gossip_icon.png>';
+  if ($flag&0x00000002) echo '<img src=images/map_points/available_quest_icon.gif>';
+  if ($flag&0x00000070) echo '<img src=images/map_points/trainer_icon.gif>';
+  if ($flag&0x00000F80) echo '<img src=images/map_points/vendor_icon.gif>';
+//  if ($flag&0x00001000) echo '<img src=images/map_points/repair.gif>';
+  if ($flag&0x00002000) echo '<img src=images/map_points/taxi_icon.gif>';
+  if ($flag&0x00010000) echo '<img src=images/map_points/inn_icon.png>';
+  if ($flag&0x00820000) echo '<img src=images/map_points/banker_icon.gif>';
+  if ($flag&0x00100000) echo '<img src=images/map_points/battle_master_icon.gif>';
+  if ($flag&0x00200000) echo '<img src=images/map_points/banker_icon.gif>';
+  if ($flag&0x000C0000) echo '<img src=images/map_points/tabard_icon.gif>';
 /*
 define('UNIT_NPC_FLAG_SPIRITHEALER', 0x00004000);
 define('UNIT_NPC_FLAG_SPIRITGUIDE', 0x00008000);
-define('UNIT_NPC_FLAG_INNKEEPER', 0x00010000);
-define('UNIT_NPC_FLAG_AUCTIONEER', 0x00200000);
 define('UNIT_NPC_FLAG_STABLEMASTER', 0x00400000);*/
 }
 function r_OnKillRep($data)
