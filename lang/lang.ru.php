@@ -369,6 +369,8 @@ $lang = array(
 'map_maps'=>'Карты',
 'map_gps'=>'GPS',
 'map_no_found'=>'Не найдено',
+'respawn'=>'Респавн:',
+'no_image'=>'Нет изображения местности',
 
 # TOP 100
 'top_money_header' => 'Богатейшие игроки',
@@ -384,7 +386,7 @@ $lang = array(
 'owner_no_found' => 'Владельцев не найдено',
 
 # Online list
-'online_players'    => ' игроков онлайн',
+'online_players'    => 'онлайн',
 'online_no_players' => 'Нет игроков онлайн',
 
 # PLAYER list
