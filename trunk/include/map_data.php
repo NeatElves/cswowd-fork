@@ -197,9 +197,9 @@ function getRenderAreaData($area)
 }
 
 // Преобразует кординаты для ареа карт  (файл worldMapTransform.dbc)
-// Когда обьект физически находится на:
+// Когда объект физически находится на:
 // - разных картах (карты островов)
-// А вывод идт на одну картинку но по другим координатам
+// А вывод идeт на одну картинку но по другим координатам
 // формат map, y1, y2, x1, x2, newmap, dx, dy
 $areaMapTransform = array(
 2=>array(530,    -4000,  -10000,   14000,  5000, 0,    -2400,  2400),
@@ -225,7 +225,7 @@ function transformAreaCoordinates(&$map, &$x, &$y)
 }
 
 // Преобразует кординаты
-// Когда обьект физически находится на:
+// Когда объект физически находится на:
 // - разных картах (карты островов)
 // - карта многоэтажная
 // А вывод идёт на одну картинку, но по другим координатам
@@ -392,7 +392,24 @@ static $gMapCoord =array(
 //621=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not use Transport: Moa'ki to Kamagua
 //622=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not use Transport: Orgrim's Hammer
 //623=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not use Transport: The Skybreaker
-//624=>array(      ,       ,      ,      ,    ,    ,"WintergraspRaid.jpg")
+//624=>array(      ,       ,      ,      ,    ,    ,"WintergraspRaid.jpg"),
+//628=>array(      ,       ,      ,      ,    ,    ,"IsleofConquest.jpg"),
+//631=>array(      ,       ,      ,      ,    ,    ,"IcecrownCitadel.jpg"),
+//632=>array(      ,       ,      ,      ,    ,    ,"IcecrownCitadel5Man.jpg"),
+//641=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not useTransport_AllianceAirshipBG
+//642=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not useTransport_HordeAirshipBG
+//647=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not useTransport_Orgrimmar_to_Thunderbluff
+//649=>array(      ,       ,      ,      ,    ,    ,"ArgentTournamentRaid.jpg"),
+//650=>array(      ,       ,      ,      ,    ,    ,"ArgentTournamentDungeon.jpg"),
+//658=>array(      ,       ,      ,      ,    ,    ,"QuarryofTears.jpg"),
+//668=>array(      ,       ,      ,      ,    ,    ,"HallsOfReflection.jpg"),
+//672=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not useTransport197347
+//673=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not useTransport197348
+//712=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not useTransport197349
+//713=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not useTransport197350
+//718=>array(      ,       ,      ,      ,    ,    ,".jpg"),                      // not useTransport201834
+//723=>array(      ,       ,      ,      ,    ,    ,"Stormwind.jpg"),
+//724=>array(      ,       ,      ,      ,    ,    ,"ChamberofAspectsRed.jpg"),
 );
 
 function getRenderMapData($map)
@@ -469,7 +486,7 @@ function getMapIcon($map)
  return "images/map_icons/".$ico;
 }
 
-// Вывод картинки на обьщей карте GPS
+// Вывод картинки на общей карте GPS
 // формат:
 // posX - координата левого верхнего угла карты
 // posY - координата левого верхнего угла карты
@@ -573,6 +590,7 @@ function getMapNameFromPoint($posMap, $posX, $posY, $posZ)
 // Саllback функция для вывода точек и их информации на картах.
 function defaultMapRenderCallback($data, $x, $y)
 {
+   global $lang;
    $img    = "images/map_points/gps_icon.png";
    $imgX   = 16;
    $imgY   = 16;
@@ -585,9 +603,9 @@ function defaultMapRenderCallback($data, $x, $y)
    else
      $areaname = '';
    if ($data['type']=='n')
-    $text = getCreatureName($data['id'], 0)." ($data[guid])<br>$areaname<br>Respawn: ".getTimeText($data['spawntimesecs']);
+    $text = getCreatureName($data['id'], 0)." ($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
    if ($data['type']=='o')
-    $text = getGameobjectName($data['id'], 0)." ($data[guid])<br>$areaname<br>Respawn: ".getTimeText($data['spawntimesecs']);
+    $text = getGameobjectName($data['id'], 0)." ($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
    if ($data['type']=='i')
     $text = $areaname;
    if ($data['type']=='w')
@@ -597,7 +615,7 @@ function defaultMapRenderCallback($data, $x, $y)
 
 function defaultAreaRenderCallback($area_id, $data, $x, $y)
 {
-   global $gZoneToAreaImage;
+   global $gZoneToAreaImage, $lang;
    $area = getAreaIdFromPoint($data['map'], $data['position_x'], $data['position_y'], $data['position_z']);
    if (!$area)
        return;
@@ -608,9 +626,9 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    $areaname = $area_data['zone_id'] ? getAreaName($area_data['zone_id'],0)." (".$area_data['name'].")" : $area_data['name'];
 
    if ($data['type']=='n')
-    $text = getCreatureName($data['id'], 0)." ($data[guid])<br>$mapname - $areaname<br>Respawn: ".getTimeText($data['spawntimesecs']);
+    $text = getCreatureName($data['id'], 0)." ($data[guid])<br>$mapname - $areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
    if ($data['type']=='o')
-    $text = getGameobjectName($data['id'], 0)." ($data[guid])<br>$mapname - $areaname<br>Respawn: ".getTimeText($data['spawntimesecs']);
+    $text = getGameobjectName($data['id'], 0)." ($data[guid])<br>$mapname - $areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
    if ($data['type']=='i')
     $text = "$mapname - $areaname";
    if ($data['type']=='w')
@@ -674,7 +692,7 @@ function getAreaNameFromId($areaId)
 {
   $area = getRenderAreaData($areaId);
   if (empty($area))
-      return "Error area $areaId";
+      return "$lang[map_no_found]&nbsp;$areaId";
   if ($area[1] == 0)
       return getMapName($area[0]);
   return getAreaName($area[1]);
@@ -686,7 +704,7 @@ function renderArea($areaId, $outSizeX = 0, $pointsList = 0, $render = 'defaultA
   $area = getRenderAreaData($areaId);
   if (empty($area))
   {
-      echo "No area present $areaId<br>";
+      echo "$lang[map_no_found]&nbsp;$areaId<br>";
       return;
   }
   // Данные карты
@@ -735,17 +753,17 @@ function renderArea($areaId, $outSizeX = 0, $pointsList = 0, $render = 'defaultA
 
 function renderMap($mapId, $outSizeX = 0, $pointsList = 0, $render = 'defaultMapRenderCallback')
 {
-  global $gMapCoord, $gmapName;
+  global $gMapCoord, $gmapName, $lang;
   $mapName = '<a href=?instance='.$mapId.'>'.getMapName($mapId).'</a>';
   if (empty($mapName))
   {
-      echo "Wrong map $mapId<br>";
+      echo "$lang[map_no_found]&nbsp;$mapId<br>";
       return;
   }
   $map = getRenderMapData($mapId);
   if (empty($map))
   {
-      echo "No map image present $mapName ($mapId)<br>";
+      echo "$lang[no_image]&nbsp;$mapName&nbsp;($mapId)<br>";
       return;
   }
   // Данные карты
@@ -908,7 +926,7 @@ class mapPoints{
 
 function getPointData($area_id, &$data, $x, $y)
 {
-   global $gZoneToAreaImage;
+   global $gZoneToAreaImage, $lang;
 
    $area = getAreaIdFromPoint($data['map'], $data['position_x'], $data['position_y'], $data['position_z']);
    $area_data = getArea($area);
@@ -923,8 +941,8 @@ function getPointData($area_id, &$data, $x, $y)
    $name = '';
         if (@$data['type']=='n') $name = getCreatureName($data['id'], 0);
    else if (@$data['type']=='o') $name = getGameobjectName($data['id'], 0);
-//   $text ="$name<br>GUID $data[guid]<br>$mapname - $areaname<br>x = $data[position_x]<br>y = $data[position_y]<br>z = $data[position_z]<br>map = $data[map]<br>Respawn: ".getTimeText($data['spawntimesecs']);
-   $text ="$name ($data[guid])<br>$areaname<br>Respawn: ".getTimeText($data['spawntimesecs']);
+//   $text ="$name<br>GUID $data[guid]<br>$mapname - $areaname<br>x = $data[position_x]<br>y = $data[position_y]<br>z = $data[position_z]<br>map = $data[map]<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
+   $text ="$name ($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
    return array(
          'id'=>$data['id'],
          'x'=>$y,
@@ -941,7 +959,7 @@ function get_mapAreaData($areaId, $pointsList = 0)
   $area = getRenderAreaData($areaId);
   if (empty($area))
   {
-      echo "No area present $areaId<br>";
+      echo "$lang[map_no_found]&nbsp;$areaId<br>";
       return;
   }
   $map = array();

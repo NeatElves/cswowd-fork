@@ -367,6 +367,8 @@ $lang = array(
 'map_maps'=>'Maps',
 'map_gps'=>'GPS',
 'map_no_found'=>'No found on map',
+'respawn'=>'Respawn:',
+'no_image'=>'No map image present',
 
 # TOP 100
 'top_money_header' => 'Top money',
