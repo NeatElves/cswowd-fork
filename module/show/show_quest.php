@@ -14,7 +14,7 @@ function renderReqCollect($item_id, $maxcount, $count)
  if (!$item_id > 0)
    return;
  $name=getItemName($item_id);
- echo "<tr><td>&nbsp;&nbsp;<a href=\"?item=$item_id\">$name</a>: $count/$maxcount</td></tr>";
+ echo "<tr><td>&nbsp;&nbsp;<a href=\"?item=$item_id\">$name</a>:&nbsp;$count/$maxcount</td></tr>";
 }
 
 function renderReqKillOrCast($text,$ReqCreatureOrGOId,$ReqCreatureOrGOCount,$ReqSpellCast, $count)
@@ -28,15 +28,15 @@ function renderReqKillOrCast($text,$ReqCreatureOrGOId,$ReqCreatureOrGOCount,$Req
    if ($text)
      echo "<a href=\"?npc=$ReqCreatureOrGOId\">$text</a>";
    else
-     echo $lang['kill'].' '.getCreatureName($ReqCreatureOrGOId);
+     echo $lang['kill'].'&nbsp;'.getCreatureName($ReqCreatureOrGOId);
   }
   else
   {
 //    $spell_name=getSpellName($ReqSpellCast);
     if (!$text) $text = $lang['cast'];
-    echo "<a href=\"?spell=$ReqSpellCast\">$text</a> $lang[cast_on] ".getCreatureName($ReqCreatureOrGOId);
+    echo "<a href=\"?spell=$ReqSpellCast\">$text</a>&nbsp;$lang[cast_on]&nbsp;".getCreatureName($ReqCreatureOrGOId);
   }
-  echo ": $count/$ReqCreatureOrGOCount</td></tr>";
+  echo ":&nbsp;$count/$ReqCreatureOrGOCount</td></tr>";
  }
  else if ($ReqCreatureOrGOId<0)
  {
@@ -47,15 +47,15 @@ function renderReqKillOrCast($text,$ReqCreatureOrGOId,$ReqCreatureOrGOCount,$Req
    if ($text)
      echo "<a href=\"?object=$ReqCreatureOrGOId\">$text</a>";
    else
-     echo $lang['use'].' '.getGameobjectName($ReqCreatureOrGOId);
+     echo $lang['use'].'&nbsp;'.getGameobjectName($ReqCreatureOrGOId);
   }
   else
   {
     if (!$text) $text = $lang['cast'];
 //    $spell_name=getSpellName($ReqSpellCast);
-    echo "<a href=\"?spell=$ReqSpellCast\">$text</a> $lang[cast_on] ".getGameobjectName($ReqCreatureOrGOId);
+    echo "<a href=\"?spell=$ReqSpellCast\">$text</a> $lang[cast_on]&nbsp;".getGameobjectName($ReqCreatureOrGOId);
   }
-  echo ": $count/$ReqCreatureOrGOCount</td></tr>";
+  echo ":&nbsp;$count/$ReqCreatureOrGOCount</td></tr>";
  }
 }
 function renderQuestSource($srcID, $srcCount)
@@ -63,7 +63,7 @@ function renderQuestSource($srcID, $srcCount)
  if (!$srcID)
    return;
  $name=getItemName($srcID);
- echo "<tr><td>&nbsp;&nbsp;<a href=\"?item=$srcID\">$name</a>".($srcCount?' x '.$srcCount:'').'</td></tr>';
+ echo "<tr><td>&nbsp;&nbsp;<a href=\"?item=$srcID\">$name</a>".($srcCount?'&nbsp;x&nbsp;'.$srcCount:'').'</td></tr>';
 }
 
 ########
@@ -94,24 +94,24 @@ else
  if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 1101) && ($quest['RequiredRaces'] !=1791))
  {
      echo "<br><FONT color=#0000ff>$lang[required_races]&nbsp;$lang[Alliance]&nbsp;</FONT><img width=22 height=22 src='images/player_info/factions_img/alliance.gif'>";
-     echo '<br><FONT color=#0000ff>'.$game_text['allowable_race'].' '.getAllowableRace($quest['RequiredRaces']).'</FONT>';
+     echo '<br><FONT color=#0000ff>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace($quest['RequiredRaces']).'</FONT>';
  }
  
 if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 690) && ($quest['RequiredRaces'] !=1791))
  {
      echo "<br><FONT color=#ff0000>$lang[required_races]&nbsp;$lang[Horde]&nbsp;</FONT><img width=22 height=22 src='images/player_info/factions_img/horde.gif'>";
-     echo '<br><FONT color=#ff0000>'.$game_text['allowable_race'].' '.getAllowableRace($quest['RequiredRaces']).'</FONT>';
+     echo '<br><FONT color=#ff0000>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace($quest['RequiredRaces']).'</FONT>';
  }
 
 if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
  {
      echo "</br>";
      echo "<br><FONT color=#008800>$lang[required_races] $lang[Both]</FONT>";
-     echo '<br><FONT color=#008800>'.$game_text['allowable_race'].' '.getAllowableRace(1791).'</FONT>';
+     echo '<br><FONT color=#008800>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace(1791).'</FONT>';
  }
 
  if (getAllowableClass($quest['RequiredClasses']))
-     echo '<br><FONT color=#000000>'.$game_text['allowable_class'].' '.getAllowableClass($quest['RequiredClasses']).'</FONT>';
+     echo '<br><FONT color=#000000>'.$game_text['allowable_class'].'&nbsp;'.getAllowableClass($quest['RequiredClasses']).'</FONT>';
 
  if ($entry == getQuestOld($entry))
     echo '<br><FONT color=#ff0000><b>'.$lang['quest_marked'].'</FONT></b>';
@@ -127,22 +127,22 @@ if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
     (-$quest['ZoneOrSort']) == 284 OR (-$quest['ZoneOrSort']) == 25 OR (-$quest['ZoneOrSort']) == 41 OR (-$quest['ZoneOrSort']) < 24))
    echo "<a style='float: right;' href=\"?s=q&SortID=".(-$quest['ZoneOrSort'])."\">".getQuestSort(-$quest['ZoneOrSort'], 0)."</a>";
 
- echo "$lang[quest_level] $quest[QuestLevel]<br>";
+ echo "$lang[quest_level]&nbsp;$quest[QuestLevel]<br>";
 
 if ($quest['RequiredSkill'])
-   echo "<a style='float: right;' href=\"?s=q&SkillID=".($quest['RequiredSkill'])."\">".getSkillName($quest['RequiredSkill'], 0)." ($quest[RequiredSkillValue])</a>";
- echo "$lang[obtained_at_level] $quest[MinLevel]</td></tr>";
+   echo "<a style='float: right;' href=\"?s=q&SkillID=".($quest['RequiredSkill'])."\">".getSkillName($quest['RequiredSkill'], 0)."&nbsp;($quest[RequiredSkillValue])</a>";
+ echo "$lang[obtained_at_level]&nbsp;$quest[MinLevel]</td></tr>";
 
  if ($quest['SuggestedPlayers'])
      echo "<tr><td>$lang[suggestedplayers]&nbsp;<b>$quest[SuggestedPlayers]</b></td></tr>";
 
  if ($quest['LimitTime'])
-     echo '<tr><td>'.$lang['qlimittime'].' '.getTimeText($quest['LimitTime']).'</td></tr>';
+     echo '<tr><td>'.$lang['qlimittime'].'&nbsp;'.getTimeText($quest['LimitTime']).'</td></tr>';
 
  if (getGameEventQuest($quest['entry']))
   {
   $qevent=getGameEventQuest($quest['entry']);
-   echo '<tr><td>'.$lang['obtained_at_event'].': <FONT color=#E614E6>'.getGameEventName($qevent).'</FONT></td></tr>';
+   echo '<tr><td>'.$lang['obtained_at_event'].':&nbsp;<FONT color=#E614E6>'.getGameEventName($qevent).'</FONT></td></tr>';
   }
 
  if ($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
@@ -161,10 +161,10 @@ if ($quest['RequiredSkill'])
    echo "<tr><td>$lang[item_faction_rank]:</td></tr>";
 
  if ($quest['RequiredMinRepFaction'])
-   echo "<tr><td> ".getFactionName($quest['RequiredMinRepFaction']).": $quest[RequiredMinRepValue]($lang[item_min_level])</td></tr>";
+   echo "<tr><td> ".getFactionName($quest['RequiredMinRepFaction']).":&nbsp;$quest[RequiredMinRepValue]($lang[item_min_level])</td></tr>";
 
  if ($quest['RequiredMaxRepFaction'])
-   echo "<tr><td>".getFactionName($quest['RequiredMaxRepFaction']).": $quest[RequiredMaxRepValue]($lang[item_max_level])</td></tr>";
+   echo "<tr><td>".getFactionName($quest['RequiredMaxRepFaction']).":&nbsp;$quest[RequiredMaxRepValue]($lang[item_max_level])</td></tr>";
 
  echo "<tr><td>".getQuestText($quest['Objectives'])."<hr></td></tr>";
  ### Рек собрать
@@ -172,7 +172,7 @@ if ($quest['RequiredSkill'])
    echo "<tr><td>$lang[item_faction_rank]:</td></tr>";
 
  if ($quest['RepObjectiveFaction'])
-   echo "<tr><td> ".getFactionName($quest['RepObjectiveFaction']).": $quest[RepObjectiveValue]($lang[item_min_level])</td></tr>";
+   echo "<tr><td> ".getFactionName($quest['RepObjectiveFaction']).":&nbsp;$quest[RepObjectiveValue]($lang[item_min_level])</td></tr>";
 
  if ($quest['ReqItemId1'] OR $quest['ReqItemId2'] OR $quest['ReqItemId3'] OR $quest['ReqItemId4'] OR $quest['ReqItemId5'] OR $quest['ReqItemId6'])
  {
@@ -264,14 +264,14 @@ if ($quest['RewMailTemplateId'])
  $ItemMail=getItemMail($quest['RewMailTemplateId']);
  if ($ItemMail)
   {
-    echo "<tr><td class=mark>$lang[Rew_mail] $lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
+    echo "<tr><td class=mark>$lang[Rew_mail]&nbsp;$lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
     echo "<tr><td class=mark>$lang[Rew_item_mail]</td></tr>";
     echo "<tr><td class=reward>&nbsp;";{show_item($ItemMail);}
     echo "</td></tr>";
   }
   else
   {
-    echo "<tr><td class=mark>$lang[Rew_mail] $lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
+    echo "<tr><td class=mark>$lang[Rew_mail]&nbsp;$lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
     echo "</td></tr>";
   }
 }
@@ -351,20 +351,20 @@ if ($quest['RewRepFaction1'] OR $quest['RewRepFaction2'] OR
     $quest['RewRepFaction5'])
 {
  echo "<tr><td class=mark>$lang[Rew_reputation]</td></tr>";
- if ($quest['RewRepFaction1'] && $quest['RewRepValue1'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction1']).": $quest[RewRepValue1]</td></tr>";
- if ($quest['RewRepFaction2'] && $quest['RewRepValue2'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction2']).": $quest[RewRepValue2]</td></tr>";
- if ($quest['RewRepFaction3'] && $quest['RewRepValue3'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction3']).": $quest[RewRepValue3]</td></tr>";
- if ($quest['RewRepFaction4'] && $quest['RewRepValue4'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction4']).": $quest[RewRepValue4]</td></tr>";
- if ($quest['RewRepFaction5'] && $quest['RewRepValue5'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction5']).": $quest[RewRepValue5]</td></tr>";
+ if ($quest['RewRepFaction1'] && $quest['RewRepValue1'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction1']).":&nbsp;$quest[RewRepValue1]</td></tr>";
+ if ($quest['RewRepFaction2'] && $quest['RewRepValue2'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction2']).":&nbsp;$quest[RewRepValue2]</td></tr>";
+ if ($quest['RewRepFaction3'] && $quest['RewRepValue3'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction3']).":&nbsp;$quest[RewRepValue3]</td></tr>";
+ if ($quest['RewRepFaction4'] && $quest['RewRepValue4'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction4']).":&nbsp;$quest[RewRepValue4]</td></tr>";
+ if ($quest['RewRepFaction5'] && $quest['RewRepValue5'])echo "<tr><td>&nbsp;".getFactionName($quest['RewRepFaction5']).":&nbsp;$quest[RewRepValue5]</td></tr>";
 }
-if($quest['RewMoneyMaxLevel'])  echo "<tr><td class=mark>$lang[Rew_XP] ".getQuestXPValue($quest)." xp";
+if($quest['RewMoneyMaxLevel'])  echo "<tr><td class=mark>$lang[Rew_XP]&nbsp;".getQuestXPValue($quest)."&nbsp;xp";
 if($quest['RewHonorAddition'] OR $quest['RewHonorMultiplier'])
 {
 if ($quest['RewHonorMultiplier'])
   $ihonor=getTeamContributionPoints(79)*$quest['RewHonorMultiplier']*0.1+$quest['RewHonorAddition'];
 else
  $ihonor=$quest['RewHonorAddition'];
- echo "<tr><td class=mark>$lang[Rew_honor] ".$ihonor;
+ echo "<tr><td class=mark>$lang[Rew_honor]&nbsp;".$ihonor;
 }
 if($quest['RewOrReqMoney']) echo "<tr><td class=mark>$lang[Rew_money]&nbsp;".money($quest['RewOrReqMoney'])."</td></tr>";
 ###
@@ -482,14 +482,14 @@ if ($quest['PrevQuestId'] != 0 OR $quest['NextQuestId'] != 0 OR $needForQuest)
     {
      $qinfo = $prevquest[$list-$step];
      echo "<tr><td>";
-     echo "<div style='float: right;'>($lang[level] $qinfo[QuestLevel])</div>";
+     echo "<div style='float: right;'>($lang[level]&nbsp;$qinfo[QuestLevel])</div>";
      echo "$lang[step]($step)&nbsp;<a href=\"?quest=$qinfo[entry]\">$qinfo[Title]</a>";
      echo "</td></tr>";
      $step++;
     }
  }
  echo "<tr><td>";
- echo "<div style='float: right;'>($lang[level] $quest[QuestLevel])</div>";
+ echo "<div style='float: right;'>($lang[level]&nbsp;$quest[QuestLevel])</div>";
  echo "$lang[step]($step)&nbsp;$quest[Title]";
  echo "</td></tr>";
  $step++;
@@ -502,7 +502,7 @@ if ($quest['PrevQuestId'] != 0 OR $quest['NextQuestId'] != 0 OR $needForQuest)
    {
      $nextquest = getQuest(abs($nextquest['NextQuestId']));
      echo "<tr><td>";
-     echo "<div style='float: right;'>($lang[level] $nextquest[QuestLevel])</div>";
+     echo "<div style='float: right;'>($lang[level]&nbsp;$nextquest[QuestLevel])</div>";
      echo "$lang[step]($step)&nbsp;<a href=\"?quest=$nextquest[entry]\">$nextquest[Title]</a>";
      echo "</td></tr>";
    }
@@ -514,7 +514,7 @@ if ($quest['PrevQuestId'] != 0 OR $quest['NextQuestId'] != 0 OR $needForQuest)
      localiseQuest($needForQuest);
      $nextquest=$needForQuest;
      echo "<tr><td>";
-     echo "<div style='float: right;'>($lang[level] $nextquest[QuestLevel])</div>";
+     echo "<div style='float: right;'>($lang[level]&nbsp;$nextquest[QuestLevel])</div>";
      echo "$lang[step]($step)&nbsp;<a href=\"?quest=$nextquest[entry]\">$nextquest[Title]</a>";
      echo "</td></tr>";
      $needForQuest = $dDB->selectRow("SELECT * FROM `quest_template` WHERE ABS(`PrevQuestId`) = ?d", $nextquest['entry']);
@@ -534,7 +534,7 @@ if ($needForQuest AND $number > 1) // если == 1 то мы уже вывел�
  {
   localiseQuest($nextquest);
   echo "<tr><td>";
-  echo "<div style='float: right;'>($lang[level] $nextquest[QuestLevel])</div>";
+  echo "<div style='float: right;'>($lang[level]&nbsp;$nextquest[QuestLevel])</div>";
   echo "<a href=\"?quest=$nextquest[entry]\">$nextquest[Title]</a>";
   echo "</td></tr>";
  }
