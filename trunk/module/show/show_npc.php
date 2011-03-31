@@ -44,7 +44,7 @@ else
   echo "</tbody></table>";
 
   if ($cr['mingold']!=0)
-   echo "<b>$lang[money]</b>&nbsp;&nbsp;".money ($cr['mingold'])."&nbsp&nbsp;-&nbsp;&nbsp;".money ($cr['maxgold'])."<br>";
+   echo "<b>$lang[money]</b>&nbsp;&nbsp;".money ($cr['mingold'])."&nbsp;&nbsp;-&nbsp;&nbsp;".money ($cr['maxgold'])."<br>";
   $heroic=getHeroicList();
   $heroic1=getHeroicList1();
   $heroic2=getHeroicList2();
@@ -52,13 +52,13 @@ else
   $hentry1=isset($heroic1[$entry])?$heroic1[$entry]:$entry;
   $hentry2=isset($heroic2[$entry])?$heroic2[$entry]:$entry;
   if ($hentry2) 
-  echo "<a href=\"?map&npc=$hentry2\">$lang[show_map] (".getCreatureCount($hentry2).")</a><br>";
+  echo "<a href=\"?map&npc=$hentry2\">$lang[show_map]&nbsp;(".getCreatureCount($hentry2).")</a><br>";
   else
   if ($hentry1) 
-  echo "<a href=\"?map&npc=$hentry1\">$lang[show_map] (".getCreatureCount($hentry1).")</a><br>";
+  echo "<a href=\"?map&npc=$hentry1\">$lang[show_map]&nbsp;(".getCreatureCount($hentry1).")</a><br>";
   else
   if ($hentry) 
-  echo "<a href=\"?map&npc=$hentry\">$lang[show_map] (".getCreatureCount($hentry).")</a><br>";
+  echo "<a href=\"?map&npc=$hentry\">$lang[show_map]&nbsp;(".getCreatureCount($hentry).")</a><br>";
 
   if ($config['show_npc_detalis'])
   {

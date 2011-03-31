@@ -72,10 +72,10 @@ else
    echo "<td>";generateItemTable($item,$item_data,0);echo "</td>";
    echo "</tr></tbody></table>";
 
-   if ($item['minMoneyLoot']) echo "$lang[Rew_money] ".money($item['minMoneyLoot']);
-   if (($item['maxMoneyLoot']) && ($item['maxMoneyLoot']>$item['minMoneyLoot'])) echo " - ".money($item['maxMoneyLoot']);
+   if ($item['minMoneyLoot']) echo "$lang[Rew_money]&nbsp;".money($item['minMoneyLoot']);
+   if (($item['maxMoneyLoot']) && ($item['maxMoneyLoot']>$item['minMoneyLoot'])) echo "&nbsp;-&nbsp;".money($item['maxMoneyLoot']);
 
-   if ($item['BuyPrice']) echo '<br>'.$lang['buy_price'].': '.money($item['BuyPrice']);
+   if ($item['BuyPrice']) echo '<br>'.$lang['buy_price'].':&nbsp;'.money($item['BuyPrice']);
    echo "<br />";
 
    //********************************************************************************
@@ -89,7 +89,7 @@ else
     {
      echo "<table class=report width=500 border = 1>";
      echo "<tbody>";
-     echo '<tr><td class=head>'.$lang['this_item_part_of_set'].' - ';r_setName($set); echo '</td></tr>';
+     echo '<tr><td class=head>'.$lang['this_item_part_of_set'].'&nbsp;-&nbsp;';r_setName($set); echo '</td></tr>';
      echo "<tr><td class=set>";r_setItems($set);echo "</td></tr>";
      echo "<tr><td class=left>";r_setSpells($set);echo "</td></tr>";
     }
