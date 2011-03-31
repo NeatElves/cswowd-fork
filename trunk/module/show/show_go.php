@@ -40,7 +40,7 @@ else
   // echo "<td valign=top align=right width=20><br><a href=\"#\"><IMG height=64 width=64 border=0 src='$icon'></a></td>";
   echo "<td align=center>";generateGameobjectTable($obj);echo "</td>";
   echo "</tr>";
-  if ($obj['mingold']) echo "<td align=center><FONT color=#000000>$lang[Rew_money]&nbsp;".money($obj['mingold']);
+  if ($obj['mingold']) echo "<td align=center><b><FONT color=#000000>$lang[Rew_money]</b>&nbsp;".money($obj['mingold']);
   if (($obj['maxgold']) && ($obj['maxgold']>$obj['mingold'])) echo "&nbsp;-&nbsp;".money($obj['maxgold']);
   echo "<tr><td colspan=2 align=center><a href=\"?map&obj=$obj[entry]\">$lang[show_map]&nbsp;(".getGameobjectCount($obj['entry']).")</a></td></tr>";
   echo "</tbody></table>";

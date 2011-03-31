@@ -43,8 +43,9 @@ else
   echo "</tr>";
   echo "</tbody></table>";
 
-  if ($cr['mingold']!=0)
-   echo "<b>$lang[money]</b>&nbsp;&nbsp;".money ($cr['mingold'])."&nbsp;&nbsp;-&nbsp;&nbsp;".money ($cr['maxgold'])."<br>";
+  if ($cr['mingold']) echo "<b>$lang[Rew_money]</b>&nbsp;&nbsp;".money($cr['mingold']);
+  if (($cr['maxgold']) && ($cr['maxgold']>$cr['mingold'])) echo "&nbsp;-&nbsp;".money($cr['maxgold']);
+  if ($cr['mingold']) echo "<br>";
   $heroic=getHeroicList();
   $heroic1=getHeroicList1();
   $heroic2=getHeroicList2();
