@@ -72,7 +72,7 @@ else
    echo "<td>";generateItemTable($item,$item_data,0);echo "</td>";
    echo "</tr></tbody></table>";
 
-   if ($item['minMoneyLoot']) echo "$lang[Rew_money]&nbsp;".money($item['minMoneyLoot']);
+   if ($item['minMoneyLoot']) echo "<b>$lang[Rew_money]</b>&nbsp;".money($item['minMoneyLoot']);
    if (($item['maxMoneyLoot']) && ($item['maxMoneyLoot']>$item['minMoneyLoot'])) echo "&nbsp;-&nbsp;".money($item['maxMoneyLoot']);
 
    if ($item['BuyPrice']) echo '<br>'.$lang['buy_price'].':&nbsp;'.money($item['BuyPrice']);
