@@ -111,7 +111,7 @@ if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
  }
 
  if (getAllowableClass($quest['RequiredClasses']))
-     echo '<br><FONT color=#000000>'.$game_text['allowable_class'].'&nbsp;'.getAllowableClass($quest['RequiredClasses']).'</FONT>';
+     echo '<br><FONT color=#000000>'.$game_text['allowable_class'].'&nbsp;'.getQAllowableClass($quest['RequiredClasses']).'</FONT>';
 
  if ($entry == getQuestOld($entry))
     echo '<br><FONT color=#ff0000><b>'.$lang['quest_marked'].'</FONT></b>';

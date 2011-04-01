@@ -1391,6 +1391,16 @@ function getAllowableClass($mask)
   return getListFromArray_1(getClassNames(), $mask);
 }
 
+function getQAllowableClass($mask)
+{
+  $mask&=0x5FF;
+  // Return zero if for all class (or for none
+  if ($mask == 0x5FF OR $mask == 0)
+      return 0;
+  return getListFromArray_1(getClassNames(), $mask, "?s=q&RedClass=%d");
+
+}
+
 function getRaceNames()
 {
   global $wDB;

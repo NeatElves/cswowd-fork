@@ -49,6 +49,25 @@ if ($SkillID = intval(@$_REQUEST['SkillID']))
   $filter.= " AND `RequiredSkill` = '$SkillID'";
   $FindRefrence.="&SkillID=$SkillID";
 }
+// Фильтр по класу
+if ($RedClass = intval(@$_REQUEST['RedClass']))
+{
+ switch ($RedClass):
+  case 1:  $RedClass1 = 1;   break;
+  case 2:  $RedClass1 = 2;   break;
+  case 3:  $RedClass1 = 4;   break;
+  case 4:  $RedClass1 = 8;  break;
+  case 5:  $RedClass1 = 16;  break;
+  case 6:  $RedClass1 = 32;  break;
+  case 7:  $RedClass1 = 64;  break;
+  case 8:  $RedClass1 = 128; break;
+  case 9:  $RedClass1 = 256;    break;
+  case 11:  $RedClass1 = 1024;    break;
+  default: $RedClass1 = 0;
+ endswitch;
+  $filter.= " AND `RequiredClasses` & '$RedClass1'";
+  $FindRefrence.="&RedClass=$RedClass";
+}
 // Фильтр по повтору
 if ($Sfr = intval(@$_REQUEST['Sfr']))
 {

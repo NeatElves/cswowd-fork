@@ -54,6 +54,8 @@ div.rank      {COLOR: #330066; font-size: 10px; }
 div.rank     A{COLOR: #330066; text-decoration: none;}
 div.areaname  {COLOR: #330066; font-size: 10px; }
 div.areaname A{COLOR: #330066; text-decoration: none;}
+div.classqname  {COLOR: #000000; font-size: 10px; }
+div.classqname A{COLOR: #000000; text-decoration: none;}
 div.reqfocus  {COLOR: #330066; font-size: 10px; }
 div.reqfocus A{COLOR: #330066; text-decoration: none;}
 
