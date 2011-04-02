@@ -884,7 +884,8 @@ function r_npcRole($data)
   $flag = $data['npcflag'];
   if ($flag == 0) {return;}
   if ($flag&0x00000001) echo '<img src=images/map_points/gossip_icon.png>';
-  if ($flag&0x00000002) echo '<img src=images/map_points/available_quest_icon.gif>';
+  if ($flag&0x00000002 && getNpcQuestrelation($data['entry'])) echo '<img src=images/map_points/available_quest_icon.gif>';
+  if ($flag&0x00000002 && getNpcInvolvedrelation($data['entry'])) echo '<img src=images/map_points/active_quest_icon.gif>';
   if ($flag&0x00000070) echo '<img src=images/map_points/trainer_icon.gif>';
   if ($flag&0x00000F80) echo '<img src=images/map_points/vendor_icon.gif>';
 //  if ($flag&0x00001000) echo '<img src=images/map_points/repair.gif>';
