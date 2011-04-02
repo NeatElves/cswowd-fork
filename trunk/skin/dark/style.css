@@ -133,6 +133,8 @@ div.rank        {COLOR: #CC9933; font-size: 9px;}
 div.rank     A  {COLOR: #CC9933; font-size: 9px;}
 div.areaname    {COLOR: #CC9933; font-size: 9px;}
 div.areaname A  {COLOR: #CC9933; font-size: 9px;}
+div.classqname    {COLOR: #CC9933; font-size: 9px;}
+div.classqname A  {COLOR: #CC9933; TEXT-DECORATION: none;}
 div.reqfocus    {COLOR: #CC9933; font-size: 9px;}
 div.reqfocus A  {COLOR: #99CC33; font-size: 9px;}
 

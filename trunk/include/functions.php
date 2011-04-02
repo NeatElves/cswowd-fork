@@ -1008,6 +1008,17 @@ function getTeamContributionPoints($level_id)
   SELECT `Field1` FROM `wowd_teamcontributionpoints` WHERE `id` = ?d", $level_id);
 }
 
+function getNpcQuestrelation($npc_id)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `creature_questrelation` WHERE `id` = ?d", $npc_id);
+}
+
+function getNpcInvolvedrelation($npc_id)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `creature_involvedrelation` WHERE `id` = ?d", $npc_id);
+}
 //********************************************************************************
 $Quality = array(
 '0'=>'quality0',
