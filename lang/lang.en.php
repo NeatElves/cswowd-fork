@@ -53,7 +53,7 @@ $lang = array(
 'condition9' => 'Take ',
 'condition10' => 'AD aura',
 'condition11' => 'No aura ',
-'condition12' => 'Active event ',
+'condition12' => 'In ',
 'condition13_1' => 'In (sub)area flags ',
 'condition13_2' => 'Not in (sub)area flags ',
 'condition15_1' => ' level equal to',
@@ -67,9 +67,9 @@ $lang = array(
 'condition22' => 'No take and no rewarded for ',
 'condition23' => 'Have(bank yes) ',
 'condition24' => 'Not have(bank yes) ',
-'condition25' => 'No active event ',
-'condition26' => 'Holiday ',
-'condition27' => 'No active holiday ',
+'condition25' => 'No in ',
+'condition26' => 'In ',
+'condition27' => 'No in ',
 
 # Item report
 'item_name' => 'Item name',

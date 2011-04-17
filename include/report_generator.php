@@ -410,7 +410,7 @@ function r_lootRequire($data)
      echo $lang['condition11']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
      break;
    case 12: // CONDITION_ACTIVE_GAME_EVENT  event_id
-     echo $lang['condition12'].$data['condition_value1'];
+     echo $lang['condition12'].getGameEventName($data['condition_value1']);
      break;
    case 13: // CONDITION_AREA_FLAG  area_flag    area_flag_not
      if ($data['condition_value1'] > 0) echo $lang['condition13_1'].$data['condition_value1'];
@@ -454,13 +454,13 @@ function r_lootRequire($data)
      if ($data['condition_value1'] > 1) echo 'x'.$data['condition_value2'];
      break;
    case 25: // CONDITION_NOT_ACTIVE_GAME_EVENT  event_id
-     echo $lang['condition25'].$data['condition_value1'];
+     echo $lang['condition25'].getGameEventName($data['condition_value1']);
      break;
    case 26: // CONDITION_ACTIVE_HOLIDAY  holiday_id
-     echo $lang['condition26'].$data['condition_value1'];
+     echo $lang['condition26'].getGameHolidayName($data['condition_value1']);
      break;
    case 27: // CONDITION_NOT_ACTIVE_HOLIDAY  holiday_id
-     echo $lang['condition27'].$data['condition_value1'];
+     echo $lang['condition27'].getGameHolidayName($data['condition_value1']);
      break;
   }
 }
