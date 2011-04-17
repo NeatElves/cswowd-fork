@@ -1001,6 +1001,13 @@ function getGameEventName($event_id)
   SELECT `description` FROM `game_event` WHERE `entry` = ?d", $event_id);
 }
 
+function getGameHolidayName($holiday_id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `description` FROM `game_event` WHERE `holiday` = ?d", $holiday_id);
+}
+
 function getTeamContributionPoints($level_id)
 {
   global $wDB;

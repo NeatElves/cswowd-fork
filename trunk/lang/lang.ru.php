@@ -53,7 +53,7 @@ $lang = array(
 'condition9' => 'Взято ',
 'condition10' => 'AD аура',
 'condition11' => 'Нет ауры ',
-'condition12' => 'В событие ',
+'condition12' => 'В ',
 'condition13_1' => 'Флаг у местности ',
 'condition13_2' => 'Нет флага у местности ',
 'condition15_1' => ' уровень',
@@ -67,9 +67,9 @@ $lang = array(
 'condition22' => 'Не бралось и не выполнялось ',
 'condition23' => 'Есть в сумках(есть в банке) ',
 'condition24' => 'Нет в сумках(есть в банке) ',
-'condition25' => 'Не в событие ',
-'condition26' => 'В праздник ',
-'condition27' => 'Не в праздник ',
+'condition25' => 'Не в ',
+'condition26' => 'В ',
+'condition27' => 'Не в ',
 
 # Item report
 'item_name' => 'Название предмета',
