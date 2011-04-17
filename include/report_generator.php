@@ -518,7 +518,7 @@ class LootReportGenerator extends ReportGenerator{
  }
  function renderSubList($lootList)
  {
-  global  $Quality;
+  global  $Quality, $lang;
   if (!$lootList)
      return;
   $curloot = -1;
@@ -527,7 +527,7 @@ class LootReportGenerator extends ReportGenerator{
     $gtext = "";
     if ($loot['groupid']!=$curloot)
     {
-        echo "<tr><th colspan = 4>Group $loot[groupid]</th></tr>";
+        echo "<tr><th colspan = 4>$lang[kill_kredit_group]&nbsp;$loot[groupid]</th></tr>";
         $curloot = $loot['groupid'];
     }
     echo "<tr>";
@@ -539,7 +539,7 @@ class LootReportGenerator extends ReportGenerator{
        echo '<td class=left>';r_itemName($item);echo '</td>';
      }
      else
-       echo "<td>-</td><td>Unknown item $loot[item]</td>";
+       echo "<td>-</td><td>$lang[item_not_found]&nbsp;$loot[item]</td>";
     }
     else // Используется список вещей (падает только одна вещь из списка)
     {
