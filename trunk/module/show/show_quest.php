@@ -361,10 +361,10 @@ if($quest['RewMoneyMaxLevel'])  echo "<tr><td class=mark>$lang[Rew_XP]&nbsp;".ge
 if($quest['RewHonorAddition'] OR $quest['RewHonorMultiplier'])
 {
 if ($quest['RewHonorMultiplier'])
-  $ihonor=getTeamContributionPoints(79)*$quest['RewHonorMultiplier']*0.1+$quest['RewHonorAddition'];
+  $ihonor=round(getTeamContributionPoints(79)*$quest['RewHonorMultiplier']*0.1+$quest['RewHonorAddition']);
 else
- $ihonor=$quest['RewHonorAddition'];
- echo "<tr><td class=mark>$lang[Rew_honor]&nbsp;".$ihonor;
+ $ihonor=round($quest['RewHonorAddition']);
+ echo "<tr><td class=mark>$lang[Rew_honor]&nbsp;".substr($ihonor, 0, 4);
 }
 if($quest['RewOrReqMoney']) echo "<tr><td class=mark>$lang[Rew_money]&nbsp;".money($quest['RewOrReqMoney'])."</td></tr>";
 ###
