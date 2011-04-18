@@ -70,6 +70,8 @@ $lang = array(
 'condition25' => 'Не в ',
 'condition26' => 'В ',
 'condition27' => 'Не в ',
+'condition28_1' => 'Нет ',
+'condition28_2' => ' и нет ',
 
 # Item report
 'item_name' => 'Название предмета',

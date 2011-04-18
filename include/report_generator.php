@@ -462,6 +462,11 @@ function r_lootRequire($data)
    case 27: // CONDITION_NOT_ACTIVE_HOLIDAY  holiday_id
      echo $lang['condition27'].getGameHolidayName($data['condition_value1']);
      break;
+   case 28: // CONDITION_LEARNABLE_ABILITY  spell_id     0 or item_id
+     $spell = getSpell($data['condition_value1'], '`id`, `SpellIconID`');
+     if ($data['condition_value2'] > 0) { $item = getItem($data['condition_value2'], '`entry`, `displayid`'); echo $lang['condition28_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest'); echo $lang['condition28_2'].text_show_item($item['entry'], $item['displayid'], 'quest');}
+     else {echo $lang['condition28_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
+     break;
   }
 }
 
