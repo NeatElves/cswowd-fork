@@ -70,6 +70,8 @@ $lang = array(
 'condition25' => 'No in ',
 'condition26' => 'In ',
 'condition27' => 'No in ',
+'condition28_1' => 'No ',
+'condition28_2' => ' & no ',
 
 # Item report
 'item_name' => 'Item name',
