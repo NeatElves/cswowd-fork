@@ -309,14 +309,12 @@ function showEffectInfo($spell, $effect, $eff_id)
     if ($t = getSpellTargetPosition($spell['id']))
       echo '<a style="float: right;" href="?map&point='.$t['target_map'].':'.$t['target_position_x'].':'.$t['target_position_y'].':'.$t['target_position_z'].'">'.$lang['map'].'</a>';
     // Spell target
-    $number = 0;
 	if ($s = getSpellScriptTarget($spell['id']))
     foreach ($s as $s1)
     {
       if ($s1['type']==0) echo '<br><a style="float: right;" href="?object='.$s1['targetEntry'].'">'.getGameobjectName($s1['targetEntry'],0).'</a>';
         else if ($s1['type']==1) echo '<br><a style="float: right;" href="?npc='.$s1['targetEntry'].'">'.getCreatureName($s1['targetEntry'],0).'</a>';
           else if ($s1['type']==2) echo '<br><a style="float: right;" href="?npc='.$s1['targetEntry'].'">'.getCreatureName($s1['targetEntry'],0).'</a>';
-      $number++;
     }
   }
 }
