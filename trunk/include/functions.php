@@ -1001,6 +1001,12 @@ function getGameEventName($event_id)
   SELECT `description` FROM `game_event` WHERE `entry` = ?d", $event_id);
 }
 
+function getGameEventActive()
+{
+ global $cDB;
+ return $cDB->selectPage("SELECT `event` FROM `game_event_status`");
+}
+
 function getGameHolidayName($holiday_id)
 {
   global $dDB;

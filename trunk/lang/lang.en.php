@@ -504,11 +504,12 @@ $lang = array(
 'stat_online'    => 'Online:',
 'stat_classes'   => 'Class statistic',
 'stat_races'     => 'Race statistic',
-'stat_timers'     => 'Timers:',
+'stat_timers'     => 'Timers & event:',
 'ap_date'     => 'Date of scoring arena:',
 'daily_quest_date'     => 'Date reset daily quests:',
 'weekly_quest_date'     => 'Date reset weekly quests:',
 'monthly_quest_date'     => 'Date reset monthly quests:',
+'active_event' => 'Active event:',
 
 # Main menu
 'main'=>'Main',
