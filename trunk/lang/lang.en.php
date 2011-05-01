@@ -15,7 +15,7 @@ $lang = array(
 'www_spell'=>'http://wowhead.com/spell=%d',
 'www_quest'=>'http://wowhead.com/quest=%d',
 'www_faction'=>'http://wowhead.com/faction=%d',
-'www_zone'=>'http:/wowhead.com/zone=%d',
+'www_zone'=>'http://wowhead.com/zone=%d',
 
 # Search
 'search_results   ' => 'Search result',
