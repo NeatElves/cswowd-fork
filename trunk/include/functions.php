@@ -1007,6 +1007,13 @@ function getGameEventActive()
  return $cDB->select("SELECT `event` FROM `game_event_status`");
 }
 
+function getGameEventActiveName($event_id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `holiday` FROM `game_event` WHERE `entry` = ?d", $event_id);
+}
+
 function getGameHolidayName($holiday_id)
 {
   global $dDB;
