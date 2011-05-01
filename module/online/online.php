@@ -76,9 +76,13 @@ else
  echo "<tr><td>".$lang['weekly_quest_date']."</td><td>".$weekly_quest_date."</td></tr>"; 
  echo "<tr><td>".$lang['monthly_quest_date']."</td><td>".$monthly_quest_date."</td></tr>"; 
  if ($s = getGameEventActive())
- foreach ($s as $s1)
- {
- echo "<tr><td>".$lang['active_event']."</td><td>".getGameEventName($s1['event'])."</td></tr>"; 
+{
+ echo "<tr><td colspan=2 class=head>".$lang['active_event']."</td></tr>"; 
+   foreach ($s as $s1)
+   {
+   if (getGameEventActiveName($s1['event']))
+     echo "<tr><td colspan=2>".getGameEventName($s1['event'])."</td></tr>"; 
+   }
  }
  echo "</table>";
 
