@@ -64,7 +64,7 @@ include_once("include/simple_cacher.php");
      </tr>
      <tr>
         <td class="bodyleft"></td>
-        <td class="body>"<center><?php include("main.php");?></center></td>
+        <td class="body"><center><?php include("main.php");?></center></td>
         <td class="bodyright"></td>
      </tr>
      <tr>
