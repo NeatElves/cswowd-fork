@@ -106,7 +106,7 @@ if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 690)
 if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
  {
      echo "</br>";
-     echo "<br><FONT color=#008800>$lang[required_races] $lang[Both]</FONT>";
+     echo "<br><FONT color=#008800>$lang[required_races]&nbsp;$lang[Both]</FONT>";
      echo '<br><FONT color=#008800>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace(1791).'</FONT>';
  }
 
