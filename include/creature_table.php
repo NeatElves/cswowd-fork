@@ -1,36 +1,37 @@
 <?php
 
-define('UNIT_FLAG_UNKNOWN7', 0x00000001);
+define('UNIT_FLAG_UNK_0', 0x00000001);
 define('UNIT_FLAG_NON_ATTACKABLE', 0x00000002);
 define('UNIT_FLAG_DISABLE_MOVE', 0x00000004);
 define('UNIT_FLAG_PVP_ATTACKABLE', 0x00000008);
 define('UNIT_FLAG_RENAME', 0x00000010);
-define('UNIT_FLAG_RESTING', 0x00000020);
-define('UNIT_FLAG_UNKNOWN9', 0x00000040);
+define('UNIT_FLAG_PREPARATION', 0x00000020);
+define('UNIT_FLAG_UNK_6', 0x00000040);
 define('UNIT_FLAG_NOT_ATTACKABLE_1', 0x00000080);
-define('UNIT_FLAG_UNKNOWN2', 0x00000100);
-define('UNIT_FLAG_UNKNOWN11', 0x00000200);
+define('UNIT_FLAG_OOC_NOT_ATTACKABLE', 0x00000100);
+define('UNIT_FLAG_PASSIVE', 0x00000200);
 define('UNIT_FLAG_LOOTING', 0x00000400);
 define('UNIT_FLAG_PET_IN_COMBAT', 0x00000800);
 define('UNIT_FLAG_PVP', 0x00001000);
 define('UNIT_FLAG_SILENCED', 0x00002000);
-define('UNIT_FLAG_UNKNOWN4', 0x00004000);
-define('UNIT_FLAG_UNKNOWN13', 0x00008000);
-define('UNIT_FLAG_UNKNOWN14', 0x00010000);
+define('UNIT_FLAG_UNK_14', 0x00004000);
+define('UNIT_FLAG_UNK_15', 0x00008000);
+define('UNIT_FLAG_UNK_16', 0x00010000);
 define('UNIT_FLAG_PACIFIED', 0x00020000);
-define('UNIT_FLAG_DISABLE_ROTATE', 0x00040000);
+define('UNIT_FLAG_STUNNED', 0x00040000);
 define('UNIT_FLAG_IN_COMBAT', 0x00080000);
 define('UNIT_FLAG_TAXI_FLIGHT', 0x00100000);
 define('UNIT_FLAG_DISARMED', 0x00200000);
 define('UNIT_FLAG_CONFUSED', 0x00400000);
 define('UNIT_FLAG_FLEEING', 0x00800000);
-define('UNIT_FLAG_UNKNOWN5', 0x01000000);
+define('UNIT_FLAG_PLAYER_CONTROLLED', 0x01000000);
 define('UNIT_FLAG_NOT_SELECTABLE', 0x02000000);
 define('UNIT_FLAG_SKINNABLE', 0x04000000);
 define('UNIT_FLAG_MOUNT', 0x08000000);
-define('UNIT_FLAG_UNKNOWN17', 0x10000000);
-define('UNIT_FLAG_UNKNOWN6', 0x20000000);
+define('UNIT_FLAG_UNK_28', 0x10000000);
+define('UNIT_FLAG_UNK_29', 0x20000000);
 define('UNIT_FLAG_SHEATHE', 0x40000000);
+define('UNIT_FLAG_UNK_31', 0x80000000);
 
 define('CREATURE_TYPEFLAGS_HERBLOOT', 0x00000100);
 define('CREATURE_TYPEFLAGS_MININGLOOT', 0x00000200);
@@ -39,8 +40,8 @@ define('CREATURE_TYPEFLAGS_ENGINEERLOOT', 0x00008000);
 define('UNIT_NPC_FLAG_NONE', 0x00000000);
 define('UNIT_NPC_FLAG_GOSSIP', 0x00000001);
 define('UNIT_NPC_FLAG_QUESTGIVER', 0x00000002);
-define('UNIT_NPC_FLAG_UNK2', 0x00000004);
-define('UNIT_NPC_FLAG_UNK3', 0x00000008);
+define('UNIT_NPC_FLAG_UNK1', 0x00000004);
+define('UNIT_NPC_FLAG_UNK2', 0x00000008);
 define('UNIT_NPC_FLAG_TRAINER', 0x00000010);
 define('UNIT_NPC_FLAG_TRAINER_CLASS', 0x00000020);
 define('UNIT_NPC_FLAG_TRAINER_PROFESSION', 0x00000040);
@@ -61,18 +62,18 @@ define('UNIT_NPC_FLAG_BATTLEMASTER', 0x00100000);
 define('UNIT_NPC_FLAG_AUCTIONEER', 0x00200000);
 define('UNIT_NPC_FLAG_STABLEMASTER', 0x00400000);
 define('UNIT_NPC_FLAG_GUILD_BANKER', 0x00800000);
-define('UNIT_NPC_FLAG_UNK24',  0x01000000);
+define('UNIT_NPC_FLAG_SPELLCLIC',  0x01000000);
 define('UNIT_NPC_FLAG_UNK25', 0x02000000);
 define('UNIT_NPC_FLAG_UNK26', 0x04000000);
 define('UNIT_NPC_FLAG_UNK27', 0x08000000);
-define('UNIT_NPC_FLAG_GUARD', 0x10000000);
+define('UNIT_NPC_FLAG_UNK28', 0x10000000);
 define('UNIT_NPC_FLAG_UNK29', 0x20000000);
 define('UNIT_NPC_FLAG_UNK30', 0x40000000);
 define('UNIT_NPC_FLAG_UNK31', 0x80000000);
 
 function noBorderCreatureTable($npc)
 {
- global $game_text;
+ global $game_text, $lang;
  $loyality= getLoyality($npc['faction_A']);
  $type = $npc['type'];
  $rank =  $npc['rank'];
@@ -125,10 +126,10 @@ function noBorderCreatureTable($npc)
  if ($npc['armor']!=0)
      echo "<tr><td>".$game_text['npc_armor']."</td><td align=right>$npc[armor]</td></tr>";
 
- echo "<tr><td>".$game_text['npc_damage']."</td><td align=right>$npcdmgmin - $npcdmgmax</td></tr>";
+ echo "<tr><td>".$game_text['npc_damage']."</td><td align=right>$npcdmgmin&nbsp;-&nbsp;$npcdmgmax</td></tr>";
  echo "<tr><td>".$game_text['npc_ap']."</td><td align=right>$npc[attackpower]</td></tr>";
  $attackTime = $npc['baseattacktime']/1000;
- echo "<tr><td>".$game_text['npc_attack']."</td><td align=right>$attackTime сек</td></tr>";
+ echo "<tr><td>".$game_text['npc_attack']."</td><td align=right>$attackTime&nbsp;$lang[sec]</td></tr>";
 
  echo "<tr><td>".$game_text['faction']."</td><td align=right>".getFactionTemplateName($npc['faction_A'])."</td></tr>";
 // echo "<tr><td>Радиус аггро</td><td align=right>$npc[combat_reach]</td></tr>";
