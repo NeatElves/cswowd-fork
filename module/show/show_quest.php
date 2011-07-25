@@ -131,6 +131,8 @@ if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
 
 if ($quest['RequiredSkill'])
    echo "<a style='float: right;' href=\"?s=q&SkillID=".($quest['RequiredSkill'])."\">".getSkillName($quest['RequiredSkill'], 0)."&nbsp;($quest[RequiredSkillValue])</a>";
+
+ if ($quest['MinLevel'])
  echo "$lang[obtained_at_level]&nbsp;$quest[MinLevel]</td></tr>";
 
  if ($quest['SuggestedPlayers'])
