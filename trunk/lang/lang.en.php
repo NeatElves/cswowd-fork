@@ -7,6 +7,7 @@ $lang = array(
 'find' => 'Find',
 'main' => 'Main',
 'error' => 'Error',
+'offline' => 'Server is offline',
 
 # Site
 'www_creature'=>'http://wowhead.com/npc=%d',
