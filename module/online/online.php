@@ -36,6 +36,13 @@ function onlineMapRenderCallback($data, $x, $y)
    return '<img src="images/map_points/'.$img.'" class=point style="left: '.$x.'; top: '.$y.';" '.addTooltip($text).'>'."\n";
 }
 
+function onoff_realm()
+{
+	global $config;
+	$s = @fsockopen($config['host'], $config['port'], $errno, $errstr, (float)0.5);
+	if($s){@fclose($s);return true;} else return false;
+}
+
 $online = @$_REQUEST['online'];
 $width  = isset($_REQUEST['width']) ? $_REQUEST['width'] : 700;
 
@@ -75,20 +82,24 @@ else
  echo "<tr><td>".$lang['daily_quest_date']."</td><td>".$daily_quest_date."</td></tr>";
  echo "<tr><td>".$lang['weekly_quest_date']."</td><td>".$weekly_quest_date."</td></tr>"; 
  echo "<tr><td>".$lang['monthly_quest_date']."</td><td>".$monthly_quest_date."</td></tr>"; 
- if ($s = getGameEventActive())
+ if ($ae = getGameEventActive())
 {
  echo "<tr><td colspan=2 class=head>".$lang['active_event']."</td></tr>"; 
-   foreach ($s as $s1)
+   foreach ($ae as $ae1)
    {
-   if (getGameEventActiveName($s1['event']))
-     echo "<tr><td colspan=2>".getGameEventName($s1['event'])."</td></tr>"; 
+   if (getGameEventActiveName($ae1['event']))
+     echo "<tr><td colspan=2>".getGameEventName($ae1['event'])."</td></tr>"; 
    }
  }
  echo "</table>";
-
+if (onoff_realm())
+{
   if ($number <= 0)
     echo $lang['online_no_players'];
   else
     $list->createReport($number.' '.$lang['online_players']);
+}
+else 
+  echo $lang['offline'];
 }
 ?>

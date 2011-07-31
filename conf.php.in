@@ -29,6 +29,10 @@ $config =array (
 'cpassword' => '',            // mysql password
 'cdbName' =>'characters',     // mysql data base name (characters db)
 
+// Server on\off(online status)
+'host' => '127.0.0.1',         // host
+'port' => '8085',              // port
+
 //Other
 'lang'=>'ru',                 // Язык интерфейса сайта ru,en
 'client_charset'=> 'utf8',    // Кодировка клиента (не рекомендую менять - так как родная кодировка сайта utf8)

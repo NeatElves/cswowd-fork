@@ -7,6 +7,7 @@ $lang = array(
 'find' => 'Найти',
 'main'=> 'Главная',
 'error' => 'Ошибка',
+'offline' => 'Сервер выключен',
 
 # Site
 'www_creature'=>'http://ru.wowhead.com/npc=%d',

@@ -348,6 +348,7 @@ else
   // Ошкурено с мобов
   //********************************************************************************
   $skin =& new CreatureReportGenerator('skin');
+  $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'LOOT_REPORT_REQ', 'LOOT_REPORT_CHANCE', 'NPC_REPORT_MAP');
   if ($skin->Init($fields, $baseLink, 'skinLIST', $config['fade_limit'], 'chance'))
   {
     $skin->lootItem($entry);
