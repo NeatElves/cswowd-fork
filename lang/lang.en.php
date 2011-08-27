@@ -405,6 +405,7 @@ $lang = array(
 'auction_seller' => 'Seller',
 'auction_cost'   => 'Cost',
 'auction_bye'    => 'Bye',
+'auctionbot'    => 'Auction[bot]',
 
 # Guilds
 'guild_list'   => 'Guilds - ',

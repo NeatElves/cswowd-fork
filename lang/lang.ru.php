@@ -409,6 +409,7 @@ $lang = array(
 'auction_cost'   => 'Стоимость',
 'auction_bye'    => 'Выкуп',
 'empty'          => 'Пусто',
+'auctionbot'    => 'Аукцион[бот]',
 
 # Guilds
 'guild_list'   => 'Гильдии - ',
