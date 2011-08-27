@@ -12,8 +12,6 @@ switch ($type)
 	case "Horde":
 	$houseid="(houseid=4 or houseid=5 or houseid=6)";
 	break;
-	case "Blackwater":
-	$houseid="(houseid=7)";
 	default:
 	$type="Blackwater";
 	$houseid="(houseid=7)";
@@ -51,17 +49,17 @@ echo "<table class=report width=500>";
 echo "<tbody>";
 echo "<tr><td colspan=4 class=head>";
 echo "<img src=\"images/gold.gif\">";
-echo "<a href=\"?auction=Alliance\" style=\"Text-decoration: none; color:gold;\">$lang[Alliance]</a>";
+echo "<a href=\"?auction=Alliance\" style=\"Text-decoration: none; color:gold;\">&nbsp;$lang[Alliance]&nbsp;</a>";
 echo "<img src=\"images/gold.gif\">";
-echo "<a href=\"?auction=Horde\" style=\"Text-decoration: none; color:gold;\">$lang[Horde]</a>";
+echo "<a href=\"?auction=Horde\" style=\"Text-decoration: none; color:gold;\">&nbsp;$lang[Horde]&nbsp;</a>";
 echo "<img src=\"images/gold.gif\">";
-echo "<a href=\"?auction=Blackwater\" style=\"Text-decoration: none; color:gold;\">$lang[Blackwater]</a>";
+echo "<a href=\"?auction=Blackwater\" style=\"Text-decoration: none; color:gold;\">&nbsp;$lang[Blackwater]&nbsp;</a>";
 echo "<img src=\"images/gold.gif\">";
 echo "</td></tr>";
 
 if ($rows)
 {
- echo "<tr><td colspan=4 class=head><font color=gold>$lang[auction] $type: </font> $number $lang[items]</td></tr>";
+ echo "<tr><td colspan=4 class=head>$number $lang[items]</td></tr>";
  echo "<tr>";
  echo "<th width=1px></th>";
  echo "<th width=50%>".$lang['auction_seller']."</th>";
@@ -73,6 +71,9 @@ if ($rows)
    $item_data = explode(' ', $auc_data['data']);
    echo "<tr>";
    echo "<td>"; show_item_by_data($item_data, 'auction'); echo "</td>";
+ if ($auc_data['itemowner'] == 0)
+   echo "<td align=center><font color=#ff0000>".$lang['auctionbot']."</font></td>";
+ else
    echo "<td><a href=?player=$auc_data[itemowner]>".getCharacterName($auc_data['itemowner'])."</a></td>";
    echo "<td align=center>".money($auc_data['startbid'])."</td>";
    echo "<td align=center>".money($auc_data['buyoutprice'])."</td>";
