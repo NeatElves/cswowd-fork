@@ -918,7 +918,7 @@ function getQuestOld($quest_id)
 {
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
-  SELECT `entry`  FROM `quest_template` WHERE (`Title` LIKE '%<CHANGE TO GOSSIP>%' OR `Title` LIKE '%EPRECATE%' OR `Title` LIKE '%REUSE%' OR `Title` LIKE '%<NYI>%' OR `Title` LIKE '%COPY' OR `Title` LIKE '%UNUSED%' OR `Title` LIKE '%<TXT>%' OR `Title` LIKE '%ZZOLD%' OR `Title` LIKE '%[PH]%' OR `Title` LIKE '%[%') AND `entry` = ?d", $quest_id);
+  SELECT `entry`  FROM `quest_template` WHERE (`Title` LIKE '%<CHANGE TO GOSSIP>%' OR `Title` LIKE '%EPRECATE%' OR `Title` LIKE '%DEPRICATED%' OR `Title` LIKE '%REUSE%' OR `Title` LIKE '%<NYI>%' OR `Title` LIKE '%COPY' OR `Title` LIKE '%UNUSED%' OR `Title` LIKE '%<TXT>%' OR `Title` LIKE '%ZZOLD%' OR `Title` LIKE '%[PH]%' OR `Title` LIKE '%[%') AND `entry` = ?d", $quest_id);
 }
 
 function getQuestSort($sort)
