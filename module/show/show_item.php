@@ -339,6 +339,7 @@ else
   // Украдено у мобов
   //********************************************************************************
   $pick =& new CreatureReportGenerator('pick');
+  $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'LOOT_REPORT_REQ', 'LOOT_REPORT_CHANCE', 'NPC_REPORT_MAP');
   if ($pick->Init($fields, $baseLink, 'pickLIST', $config['fade_limit'], 'chance'))
   {
     $pick->lootItem($entry);
