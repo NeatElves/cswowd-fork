@@ -239,7 +239,7 @@ $lang = array(
 'level' => 'Уровень',
 
 #Loot info
-'loot_details'      => 'Подробнее...',
+'loot_details'      => 'Подробнее',
 'contain_prospecting_loot' => 'Просеивание:',
 'contain_milling_loot'     => 'Измельчение:',
 'contain_fishing_loot'     => 'Рыбалка:',
@@ -251,7 +251,7 @@ $lang = array(
 'prospecting_loot'  => 'Просеяно из руды',
 'milling_loot'      => 'Измельчено из растений',
 
-//'item_loot'         => '(Предметы) Падает с...',
+//'item_loot'         => '(Предметы) Падает с',
 'item_contain_loot' => 'Содержит',
 'disenchant_loot'   => 'Распыляется из',
 'pickpocketing_loot'=> 'Можно украсть у',
@@ -261,7 +261,7 @@ $lang = array(
 'quest_req_loot'    => 'Требуется для задания',
 'quest_src_loot'    => 'Выдают с заданием',
 'quest_mail_loot'   => 'С задания',
-'npc_sold_loot'     => 'Продают...',
+'npc_sold_loot'     => 'Продают',
 'drop_loot'         => 'Падает с ',
 'go_drop_loot'      => 'Получено из ',
 'item_lock_loot'    => 'Извлечь из ',
