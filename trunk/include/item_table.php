@@ -49,7 +49,6 @@ define('CONTAINER_END',                   ITEM_END + 0x004A);
 define('ITEM_FLAGS_BINDED',          0x00000001);
 define('ITEM_FLAGS_CONJURED',        0x00000002);
 define('ITEM_FLAGS_OPENABLE',        0x00000004);
-define('ITEM_FLAGS_WRAPPED',         0x00000008);
 define('ITEM_FLAGS_HEROIC',          0x00000008);
 define('ITEM_FLAGS_WRAPPER',         0x00000200); // used or not used wrapper
 define('ITEM_FLAGS_PARTY_LOOT',      0x00000800); // determines if item is party loot or not
@@ -298,9 +297,9 @@ function renderItemData($item, $item_data=0)
  // Вывод имени
  echo '<tr><td class=name><SPAN class='.$Quality[$colorname].'>'.$item['name'].'</SPAN></td></tr>';
 
-// Heroic item (green)
-if ($item['Flags']& ITEM_FLAGS_HEROIC || ((isset($item['itemset']) && $item['itemset'] > 0 && $item['Flags'] == 4104)) )
-    echo '<tr><td class=SpellStat>'.$game_text['item_heroic'].'</td></tr>';
+ // Heroic item (green)
+ if ($item['Flags'] & ITEM_FLAGS_HEROIC)
+     echo '<tr><td class=SpellStat>'.$game_text['item_heroic'].'</td></tr>';
 
  if ($item['area'])
      echo '<tr><td>'.getAreaName($item['area']).'</td></tr>';
@@ -462,6 +461,7 @@ if ($item['Flags']& ITEM_FLAGS_HEROIC || ((isset($item['itemset']) && $item['ite
  // Вывод требований классов
  if ($text = getAllowableClass($item['AllowableClass']))
      echo '<tr><td>'.$game_text['allowable_class'].' '.$text.'</td></tr>';
+
 // Вывод времени продолжительности
  if ($item['Duration'])
  {
@@ -470,12 +470,15 @@ if ($item['Flags']& ITEM_FLAGS_HEROIC || ((isset($item['itemset']) && $item['ite
  else
     echo '<tr><td>'.sprintf($game_text['iduration'], getTimeText($item['Duration'])).'</td></tr>';
  }
+
  // Вывод требования уровня
  if ($item['RequiredLevel'] > 1)
      echo '<tr><td class=req>'.sprintf($game_text['req_level'], $item['RequiredLevel']).'</td></tr>';
+
 // Уровень предмета
  if ($item['ItemLevel']) echo '<tr><td>'.sprintf($game_text['ilevel'], $item['ItemLevel']).'</td></tr>';
- // Вывод prospectable если надо (Prospectable)    0x40000
+
+ // Вывод prospectable если надо 0x40000
  if ($item['Flags'] & ITEM_FLAGS_PROSPECTABLE)
    echo '<tr><td>'.$game_text['prospectable'].'</td></tr>';
 
@@ -537,7 +540,7 @@ if ($item['Flags']& ITEM_FLAGS_HEROIC || ((isset($item['itemset']) && $item['ite
    {
      // Получаем игрока чтобы вывести инфу о сете
      if ($item_data && $char=getCharacter($item_data[ITEM_FIELD_OWNER]))
-         $char_data = explode(' ',$char['data']);
+         $char_data = explode(' ',$char['equipmentCache']);
 
      $text = "";
      $count = 0;
