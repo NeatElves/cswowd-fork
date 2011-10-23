@@ -1,0 +1,25 @@
+Installation:
+Download  from SVN folder cswowd, sql and files icons.rar, bwicons.rar, guilds.rar, map_image.rar
+
+cswowd contains all php scripts and images.
+
+sql contan sql files in zip achives
+wowd335en.sql  - en database for site
+wowd335ru.sql - rus database for site
+one of them need upload in MySQL database wowd (by default).
+
+icons.rar contain item icons (unpack in images/ should get folder icons in it).
+bwicons.rar contains BW icons (unpack in images/ should get folder bwicons in it).
+guilds.rar contains guild emblems (unpack in images/player_info/ should get folder guilds in it).
+map_image.rar contains map images (unpack in map/img/ should get map_image in it).
+At the root of the site to create a directory cache (I have a www / wowd / cache /) and to allow entry there (to give her 777 for the right Linux users)
+
+Rename file сonf.php.in in сonf.php and edit options.
+
+For enable tooltips on links to item/spell (for example on forum) need script cs_powered.js (in js directory)
+1) Need set full patch to C.S Wowd
+   var cs_patch = 'http://localhost/cswowd/';
+2) And include script
+   <script type="text/javascript" src="http://localhost/cswowd/js/cs_powered.js"></script>
+Now any links like ?item=item_id ?spell=spell_id have tooltip (any links to wowhead now also have tooltips).
+WARNING this script automaticly include CSS style cs_powered.css.
