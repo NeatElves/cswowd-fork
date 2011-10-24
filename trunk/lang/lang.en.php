@@ -644,6 +644,8 @@ $lang = array(
 'Both'=>'Both',
 'Alliance'=>'Alliance',
 'Horde'=>'Horde',
+'Allianceonly'=>'Alliance only',
+'Hordeonly'=>'Horde only',
 'Blackwater'=>'Blackwater',
 'items'=>'items',
 

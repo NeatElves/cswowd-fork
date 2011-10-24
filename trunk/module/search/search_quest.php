@@ -96,8 +96,10 @@ if ($Sfm = intval(@$_REQUEST['Sfm']))
 if ($side = @$_REQUEST['side'])
 {
   $races = 0;
-       if ($side=='alliance') $filter.= ' AND ((`RequiredRaces`&'.(1 + 4 + 8 + 64 + 1024).') OR `RequiredRaces`=0)';
-  else if ($side=='horde'   ) $filter.= ' AND ((`RequiredRaces`&'.(2 + 16 + 32 + 128 + 512).') OR `RequiredRaces`=0)';
+  if ($side=='allianceonly') $filter.= " AND `RequiredRaces` = 1101";
+  else if ($side=='alliance') $filter.= ' AND ((`RequiredRaces`&'.(1 + 4 + 8 + 64 + 1024).') OR `RequiredRaces`=0)';
+  else if ($side=='hordeonly') $filter.= " AND `RequiredRaces` = 690";
+  else if ($side=='horde') $filter.= ' AND ((`RequiredRaces`&'.(2 + 16 + 32 + 128 + 512).') OR `RequiredRaces`=0)';
   $FindRefrence.='&side='.$side;
 }
 // Убираем ненужный AND в начале строки
@@ -119,6 +121,8 @@ if ($allmode==0 and $ajaxmode==0)
     echo '<option value="both">'.$lang['Both'].'</option>';
     echo '<option value="alliance">'.$lang['Alliance'].'</option>';
     echo '<option value="horde">'.$lang['Horde'].'</option>';
+    echo '<option value="allianceonly">'.$lang['Allianceonly'].'</option>';
+    echo '<option value="hordeonly">'.$lang['Hordeonly'].'</option>';
     echo '</select>';
     echo '</td></tr>';
     echo '<tr><td>'.$lang['level'].':</td><td><input name="level_min" value="'.$level_min.'" size="21"> - <input name="level_max" value="'.$level_max.'" size="21"></td></tr>';
