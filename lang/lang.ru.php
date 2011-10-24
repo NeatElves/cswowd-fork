@@ -647,6 +647,8 @@ $lang = array(
 'Both'=>'Обе',
 'Alliance'=>'Альянс',
 'Horde'=>'Орда',
+'Allianceonly'=>'Альянс только',
+'Hordeonly'=>'Орда только',
 'Blackwater'=>'Нейтральный',
 'items'=>'предмет(-а,-ов)',
 );
