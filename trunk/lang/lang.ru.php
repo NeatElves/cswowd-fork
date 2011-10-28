@@ -98,7 +98,7 @@ $lang = array(
 # Quest report
 'quest_lvl'=>'Уровень',
 'quest_reqlvl'=>'Требует уровень',
-'quest_name'=>'Название квеста',
+'quest_name'=>'Название задания',
 'quest_giver'=>'Выдаёт',
 'quest_rewards'=>'Награды',
 
@@ -455,7 +455,7 @@ $lang = array(
 'player_skills'      => 'Навыки персонажа',
 'player_talents'     => 'Таланты персонажа',
 'player_talent_calc' => 'Ссылка в калькулятор талантов',
-'player_active_quest'=> 'Активные квесты',
+'player_active_quest'=> 'Активные задания',
 'player_page_base'   =>'Базовые статы',
 'player_page_defence'=>'Защита',
 'player_armor'    => 'Броня:',
@@ -511,9 +511,9 @@ $lang = array(
 'stat_races'     => 'Статистика по расам',
 'stat_timers'     => 'Таймеры:',
 'ap_date'     => 'Дата начисления очков арены:',
-'daily_quest_date'     => 'Дата сброса ежедневных квестов:',
-'weekly_quest_date'     => 'Дата сброса еженедельных квестов:',
-'monthly_quest_date'     => 'Дата сброса ежемесячных квестов:',
+'daily_quest_date'     => 'Дата сброса ежедневных заданий:',
+'weekly_quest_date'     => 'Дата сброса еженедельных заданий:',
+'monthly_quest_date'     => 'Дата сброса ежемесячных заданий:',
 'active_event' => 'Активные события:',
 
 # Main menu
