@@ -599,7 +599,7 @@ $game_text = array(
 'req_reputation'=>'Требуется: %s - %s',
 'req_ingridients'=>'Необходимо:',
 'made_by'=>'Сделано %s',
-'start_quest'=>'Предмет начинает квест',
+'start_quest'=>'Этот предмет позволяет получить задание.',
 
 'entry'=>'Номер',
 'locked'=>'Заперто',
