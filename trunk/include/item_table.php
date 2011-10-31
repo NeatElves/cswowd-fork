@@ -96,7 +96,7 @@ function getCharacterLevel($character_id)
 
 function renderSpell($spell_id,$spell_trigger,$spell_charges,$spellcolldown,$spellcategorycooldown)
 {
-  global $UseorEquip;
+  global $UseorEquip, $game_text;
   if ($spell_id==0) return;
   $desc = get_spell_details($spell_id);
   if ($desc)
