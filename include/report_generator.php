@@ -680,7 +680,7 @@ class ItemReportGenerator extends ReportGenerator{
      $this->column_conf =&$item_report;
   $this->db_fields = '`item_template`.`entry`';
   switch ($type){
-   case 'vendor' :   $this->table = '(`item_template` join `npc_vendor` ON `item_template`.`entry` = `npc_vendor`.`item`)';break;
+   case 'vendor' :   $this->table = '(`item_template` join `npc_vendor` ON `item_template`.`entry` = `npc_vendor`.`item`)'; break;
    case 'loot':      $this->table = '(`item_loot_template` right join `item_template` ON `item_template`.`entry` = `item_loot_template`.`entry`)'; break;
    case 'disenchant':$this->table = '(`disenchant_loot_template` right join `item_template` ON `item_template`.`DisenchantID` = `disenchant_loot_template`.`entry`)'; break;
    case 'milling':   $this->table = '(`milling_loot_template` right join `item_template` ON `item_template`.`entry` = `milling_loot_template`.`entry`)'; break;
@@ -986,14 +986,14 @@ class CreatureReportGenerator extends ReportGenerator{
   $this->column_conf =&$npc_report;
   $this->db_fields = '`creature_template`.`entry`';
   switch ($type) {
-   case 'vendor': $this->table = '(`creature_template` join `npc_vendor` ON `creature_template`.`entry` = `npc_vendor`.`entry`)';break;;
-   case 'trainer':$this->table = '(`creature_template` join `npc_trainer` ON `creature_template`.`entry` = `npc_trainer`.`entry`)';break;;
-   case 'loot':   $this->table = '(`creature_template` join `creature_loot_template` ON `creature_template`.`lootid` = `creature_loot_template`.`entry`)';break;
-   case 'pick':   $this->table = '(`creature_template` join `pickpocketing_loot_template` ON `creature_template`.`pickpocketloot` = `pickpocketing_loot_template`.`entry`)';break;
-   case 'skin':   $this->table = '(`creature_template` join `skinning_loot_template` ON `creature_template`.`skinloot` = `skinning_loot_template`.`entry`)';break;
-   case 'position':$this->table ='(`creature_template` join `creature` ON `creature_template`.`entry` = `creature`.`id`)';break;
-   case 'reputation':$this->table ='(`creature_template` join `creature_onkill_reputation` ON `creature_template`.`entry` = `creature_onkill_reputation`.`creature_id`)';break;
-   default:       $this->table = '`creature_template`';break;
+   case 'vendor': $this->table = '(`creature_template` join `npc_vendor` ON `creature_template`.`entry` = `npc_vendor`.`entry`)'; break;
+   case 'trainer':$this->table = '(`creature_template` join `npc_trainer` ON `creature_template`.`entry` = `npc_trainer`.`entry`)'; break;
+   case 'loot':   $this->table = '(`creature_template` join `creature_loot_template` ON `creature_template`.`lootid` = `creature_loot_template`.`entry`)'; break;
+   case 'pick':   $this->table = '(`creature_template` join `pickpocketing_loot_template` ON `creature_template`.`pickpocketloot` = `pickpocketing_loot_template`.`entry`)'; break;
+   case 'skin':   $this->table = '(`creature_template` join `skinning_loot_template` ON `creature_template`.`skinloot` = `skinning_loot_template`.`entry`)'; break;
+   case 'position':$this->table ='(`creature_template` join `creature` ON `creature_template`.`entry` = `creature`.`id`)'; break;
+   case 'reputation':$this->table ='(`creature_template` join `creature_onkill_reputation` ON `creature_template`.`entry` = `creature_onkill_reputation`.`creature_id`)'; break;
+   default:       $this->table = '`creature_template`'; break;
   }
  }
  function disableNameLocalisation() {$this->dolocale &= ~NPC_LOCALE_NAME;}
