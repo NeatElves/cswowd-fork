@@ -683,6 +683,13 @@ function getCreatureRewRate($faction_id)
   return $creature;
 }
 
+function getCreatureEvent($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `event` FROM `game_event_creature` WHERE `guid` = ?d", $creature_guid);
+}
+
 //********************************************************************************
 function getGameobject($gameobject_id, $fields="*")
 {
@@ -723,6 +730,12 @@ function getGameobjectCount($gameobject_id)
   return $dDB->selectCell("SELECT count(*) FROM `gameobject` WHERE `id` = ?d", $gameobject_id);
 }
 
+function getGameobjectEvent($gameobject_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `event` FROM `game_event_gameobject` WHERE `guid` = ?d", $gameobject_guid);
+}
 //********************************************************************************
 function getFaction($faction_id, $fields="*")
 {
