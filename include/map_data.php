@@ -607,18 +607,18 @@ function defaultMapRenderCallback($data, $x, $y)
    if (getGameEventName(getCreatureEvent($data['guid'])))
     $text = substr_replace("<br>$lang[obtained_at_event]&nbsp;-&nbsp;".getGameEventName(getCreatureEvent($data['guid'])), $text, 0, 0);
    if (getCreaturePool($data['guid']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getCreaturePool($data['guid']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePool($data['guid']).")", $text, 0, 0);
    if (getCreaturePoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getCreaturePoolTemplate($data['id']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
    }
    if ($data['type']=='o') {
     $text = getGameobjectName($data['id'], 0)." ($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
    if (getGameEventName(getGameobjectEvent($data['guid'])))
     $text = substr_replace("<br>$lang[obtained_at_event]&nbsp;-&nbsp;".getGameEventName(getGameobjectEvent($data['guid'])), $text, 0, 0);
    if (getGameobjectPool($data['guid']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getGameobjectPool($data['guid']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPool($data['guid']).")", $text, 0, 0);
    if (getGameobjectPoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getGameobjectPoolTemplate($data['id']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
    }
    if ($data['type']=='i')
     $text = $areaname;
@@ -644,18 +644,18 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    if (getGameEventName(getCreatureEvent($data['guid'])))
     $text = substr_replace("<br>$lang[obtained_at_event]&nbsp;-&nbsp;".getGameEventName(getCreatureEvent($data['guid'])), $text, 0, 0);
    if (getCreaturePool($data['guid']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getCreaturePool($data['guid']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePool($data['guid']).")", $text, 0, 0);
    if (getCreaturePoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getCreaturePoolTemplate($data['id']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
    }
    if ($data['type']=='o') {
     $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$mapname&nbsp;-&nbsp;$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
    if (getGameEventName(getGameobjectEvent($data['guid'])))
     $text = substr_replace("<br>$lang[obtained_at_event]&nbsp;-&nbsp;".getGameEventName(getGameobjectEvent($data['guid'])), $text, 0, 0);
    if (getGameobjectPool($data['guid']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getGameobjectPool($data['guid']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPool($data['guid']).")", $text, 0, 0);
    if (getGameobjectPoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getGameobjectPoolTemplate($data['id']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
    }
    if ($data['type']=='i')
     $text = "$mapname - $areaname";
@@ -972,18 +972,18 @@ function getPointData($area_id, &$data, $x, $y)
    if (getGameEventName(getCreatureEvent($data['guid'])))
     $text = substr_replace("<br>$lang[obtained_at_event]&nbsp;-&nbsp;".getGameEventName(getCreatureEvent($data['guid'])), $text, 0, 0);
    if (getCreaturePool($data['guid']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getCreaturePool($data['guid']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePool($data['guid']).")", $text, 0, 0);
    if (getCreaturePoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getCreaturePoolTemplate($data['id']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
    }
    if (@$data['type']=='o') {
     $text =getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
    if (getGameEventName(getGameobjectEvent($data['guid'])))
     $text = substr_replace("<br>$lang[obtained_at_event]&nbsp;-&nbsp;".getGameEventName(getGameobjectEvent($data['guid'])), $text, 0, 0);
    if (getGameobjectPool($data['guid']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getGameobjectPool($data['guid']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPool($data['guid']).")", $text, 0, 0);
    if (getGameobjectPoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;-&nbsp;".getGameobjectPoolTemplate($data['id']), $text, 0, 0);
+    $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
    }
    return array(
          'id'=>$data['id'],
