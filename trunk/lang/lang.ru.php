@@ -231,7 +231,7 @@ $lang = array(
 'can_loot'  => 'Добыча',
 'cast_spells' => 'Способности',
 'summoned_by_spell' => 'Призван заклинанием',
-
+'pool' => 'Пул',
 'id'  => 'id',
 'item_list' => 'Предметы',
 'reqirement' => 'Требование',

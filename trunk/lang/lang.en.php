@@ -231,7 +231,7 @@ $lang = array(
 'can_loot'  => 'Drops',
 'cast_spells' => 'Abilities',
 'summoned_by_spell' => 'Summoned by spell',
-
+'pool' => 'Pool',
 'reqirement' => 'Reqirement',
 'drop' => 'Drop',
 'level' => 'Level',
