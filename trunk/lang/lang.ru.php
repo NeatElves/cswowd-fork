@@ -36,7 +36,7 @@ $lang = array(
 'search_quest_req'  => 'Запрос на поиск задания',
 'search_go_req'     => 'Запрос на поиск объекта',
 'search_spell_req'  => 'Запрос на поиск заклинания',
-'search_area_req'   => 'Запрос на поиск зон',
+'search_area_req'   => 'Запрос на поиск местности',
 
 #Time
 'days' =>'д.',
@@ -240,10 +240,10 @@ $lang = array(
 
 #Loot info
 'loot_details'      => 'Подробнее',
-'contain_prospecting_loot' => 'Просеивание:',
-'contain_milling_loot'     => 'Измельчение:',
-'contain_fishing_loot'     => 'Рыбалка:',
-'contain_disenchant_loot'  => 'Распыление:',
+'contain_prospecting_loot' => 'Просеивание',
+'contain_milling_loot'     => 'Измельчение',
+'contain_fishing_loot'     => 'Рыбалка',
+'contain_disenchant_loot'  => 'Распыление',
 'item_uses_spell'   => 'Вещи, использующие заклинание',
 'item_use_in_spell' => 'Используется заклинанием:',
 'create_from_spell' => 'Создана заклинанием',
@@ -361,14 +361,14 @@ $lang = array(
 'faction_spell_rew'=>'Получено от заклинания',
 
 #Zone info
-'zone_parent'=>'Часть зоны',
-'zone_subzones'=>'Подзоны',
-'zone_npc_in'=>  'Существа в зоне',
-'zone_go_in' =>  'Объекты в зоне',
+'zone_parent'=>'Часть местности',
+'zone_subzones'=>'Состоит из',
+'zone_npc_in'=>  'Существа',
+'zone_go_in' =>  'Объекты',
 'zone_fishing_in' => 'Рыбалка',
 
 #Show map
-'map_areas'=>'Зоны',
+'map_areas'=>'Местности',
 'map_maps'=>'Карты',
 'map_gps'=>'GPS',
 'map_no_found'=>'Не найдено',
@@ -397,7 +397,7 @@ $lang = array(
 'player_level' => 'Уровень',
 'player_race'  => 'Раса',
 'player_class' => 'Класс',
-'player_zone'  => 'Зона',
+'player_zone'  => 'Местность',
 'player_money' => 'Деньги',
 'player_honor' => 'Честь',
 'player_kills' => 'Убил',
@@ -527,7 +527,7 @@ $lang = array(
 'creature_by_role'=>'Назначение',
 'spell_lookup'=>'Поиск заклинаний',
 'object_lookup'=>'Поиск объектов',
-'area_lookup'=>'Поиск зоны',
+'area_lookup'=>'Поиск местности',
 'search_database'=>'Поиск в базе',
 'menu_faq'=>'F.A.Q.:',
 'menu_5'=>'Скрипты:',
@@ -538,10 +538,10 @@ $lang = array(
 'cartograph'=>'WoWD: Картограф',
 'auction'=>'Аукцион',
 'guild'=>'Гильдии',
-'zone'=>'Зоны',
+'zone'=>'Местности',
 'instance'=>'Подземелья',
 'instances'=>'Подземелье',
-'in_zone'=>'В зоне',
+'in_zone'=>'Местность',
 'statistic'=>'Статистика',
 'item_set'=>'Комплекты',
 'faction_lookup' =>'Поиск фракции',
@@ -635,8 +635,8 @@ $lang = array(
 'set_name'=>'Название',
 
 # Search Area dialog
-'area_find'=>'Поиск зоны',
-'area_not_found'=>'Зона не найдена',
+'area_find'=>'Поиск местности',
+'area_not_found'=>'Местность не найдена',
 'area_name'=>'Название',
 
 # Search Faction dialog
