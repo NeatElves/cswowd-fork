@@ -690,6 +690,19 @@ function getCreatureEvent($creature_guid)
   SELECT `event` FROM `game_event_creature` WHERE `guid` = ?d", $creature_guid);
 }
 
+function getCreaturePool($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `pool_entry` FROM `creature_gameobject` WHERE `guid` = ?d", $creature_guid);
+}
+
+function getCreaturePoolTemplate($creature_id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `pool_entry` FROM `pool_creature_template` WHERE `id` = ?d", $creature_id);
+}
 //********************************************************************************
 function getGameobject($gameobject_id, $fields="*")
 {
@@ -735,6 +748,20 @@ function getGameobjectEvent($gameobject_guid)
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
   SELECT `event` FROM `game_event_gameobject` WHERE `guid` = ?d", $gameobject_guid);
+}
+
+function getGameobjectPool($gameobject_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `pool_entry` FROM `pool_gameobject` WHERE `guid` = ?d", $gameobject_guid);
+}
+
+function getGameobjectPoolTemplate($gameobject_id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `pool_entry` FROM `pool_gameobject_template` WHERE `id` = ?d", $gameobject_id);
 }
 //********************************************************************************
 function getFaction($faction_id, $fields="*")
