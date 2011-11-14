@@ -235,6 +235,8 @@ $lang = array(
 'reqirement' => 'Reqirement',
 'drop' => 'Drop',
 'level' => 'Level',
+'spawn_at_event' => 'Appear in the event',
+'despawn_at_event' => 'Disappear in the event',
 
 # Loot info
 'loot_details'      => 'Details',

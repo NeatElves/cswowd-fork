@@ -237,6 +237,8 @@ $lang = array(
 'reqirement' => 'Требование',
 'drop' => 'Шанс',
 'level' => 'Уровень',
+'spawn_at_event' => 'Появится в событие',
+'despawn_at_event' => 'Исчезнет в событие',
 
 #Loot info
 'loot_details'      => 'Подробнее',
