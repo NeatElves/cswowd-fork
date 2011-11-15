@@ -1276,9 +1276,14 @@ function r_questReward($quest)
     if ($quest['RewChoiceItemId6']) echo $lang['item_sel_or'].text_show_item($quest['RewChoiceItemId6'], 0, 'quest');
     echo "<br>";
   }
-  if ($quest['RewSpell'])
+  if ($quest['RewSpell'] AND $quest['RewSpellCast'])
   {
     show_spell($quest['RewSpell'], 0, 'quest');
+    echo '<br>';
+  }
+  if (!$quest['RewSpell'] AND $quest['RewSpellCast'])
+  {
+    show_spell($quest['RewSpellCast'], 0, 'quest');
     echo '<br>';
   }
   for ($i = 1; $i <= 5; $i++) 
