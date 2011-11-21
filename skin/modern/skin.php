@@ -84,15 +84,15 @@ include_once("include/simple_cacher.php");
        <tr>
         <td class="rbody">
          <form name="langform">
-	     Язык:
+	     <?php echo $lang['lang']; ?>
           <select name="lang" style="width: 120;border: 0px none; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);" onchange="document.langform.submit();">
 	       <option <?php if ($config['lang']=='ru') echo "selected=\"selected\""; ?> value="ru">Русский</option>
-           <option <?php if ($config['lang']=='en') echo "selected=\"selected\""; ?> value="en">Английский</option>
+           <option <?php if ($config['lang']=='en') echo "selected=\"selected\""; ?> value="en">English</option>
           </select>
          </form>
 
          <form name="skinform">
-	     Скин:
+	     <?php echo $lang['skin']; ?>
           <select name="skin" style="width: 120;border: 0px none; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);" onchange="document.skinform.submit();">
 	       <option <?php if ($config['skin_type']=='default') echo "selected=\"selected\""; ?> value="default">Default</option>
            <option <?php if ($config['skin_type']=='modern') echo "selected=\"selected\""; ?> value="modern">Modern</option>
