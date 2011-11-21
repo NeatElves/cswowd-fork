@@ -8,6 +8,8 @@ $lang = array(
 'main'=> 'Главная',
 'error' => 'Ошибка',
 'offline' => 'Сервер выключен',
+'lang' => 'Язык сайта',
+'skin' => 'Скин сайта',
 
 # Site
 'www_creature'=>'http://ru.wowhead.com/npc=%d',

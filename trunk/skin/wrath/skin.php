@@ -5,8 +5,8 @@
 <tr>
 <!-- TOP MENU -->
  <td class="top_menu" colspan="3">
-   <a id="langmenu_0" onmouseover="dd_Select(this);" onmouseout="dd_Unselect(this);" style="cursor:pointer;">Laungage</a>&nbsp;&nbsp;*&nbsp;&nbsp;
-   <a id="skinmenu_0" onmouseover="dd_Select(this);" onmouseout="dd_Unselect(this);" style="cursor:pointer;">Skin</a>
+   <a id="langmenu_0" onmouseover="dd_Select(this);" onmouseout="dd_Unselect(this);" style="cursor:pointer;"><?php echo $lang['lang']; ?></a>&nbsp;&nbsp;*&nbsp;&nbsp;
+   <a id="skinmenu_0" onmouseover="dd_Select(this);" onmouseout="dd_Unselect(this);" style="cursor:pointer;"><?php echo $lang['skin']; ?></a>
  </td>
 </tr>
 <tr class="skin_top">

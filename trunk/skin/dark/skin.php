@@ -104,14 +104,14 @@ include_once("include/simple_cacher.php");
      <td width="14" background="skin/dark/img/4.gif"><img height="14" src="skin/dark/img/spacer.gif" width="14" border="0"></td>
      <td>
           <form name="langform">
-	      Язык сайта:
+	      <?php echo $lang['lang']; ?>
           <select name="lang" style="width: 100%;border: 0px none; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);" onChange="document.langform.submit();">
 	      <option <?php if ($config['lang']=='ru') echo "selected=\"selected\""; ?> value="ru">Русский</option>
-          <option <?php if ($config['lang']=='en') echo "selected=\"selected\""; ?> value="en">Английский</option>
+          <option <?php if ($config['lang']=='en') echo "selected=\"selected\""; ?> value="en">English</option>
           </select></form>
 
           <form name="skinform">
-	      Выберите скин сайта:
+	      <?php echo $lang['skin']; ?>
           <select name="skin" style="width: 100%;border: 0px none; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);" onChange="document.skinform.submit();">
 	      <option <?php if ($config['skin_type']=='default') echo "selected=\"selected\""; ?> value="default">Default</option>
           <option <?php if ($config['skin_type']=='modern') echo "selected=\"selected\""; ?> value="modern">Modern</option>
