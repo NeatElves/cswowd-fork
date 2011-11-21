@@ -656,7 +656,7 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    }
    if ($data['type']=='o') {
     $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$mapname&nbsp;-&nbsp;$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
-   if (getGameobjectEvent($data['guid']>0)
+   if (getGameobjectEvent($data['guid'])>0)
     $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName(getGameobjectEvent($data['guid'])), $text, 0, 0);
    if (getGameobjectEvent($data['guid'])<0)
     $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs(getGameobjectEvent($data['guid']))), $text, 0, 0);
