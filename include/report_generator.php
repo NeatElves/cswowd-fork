@@ -1636,6 +1636,7 @@ class SpellReportGenerator extends ReportGenerator{
  function castByCreature($creature)
  {
   global $wDB, $dDB;
+  $spell_list = array();
   // By creature fields
   for ($i=1;$i<5;$i++) if ($creature['spell'.$i]) $spell_list[] = $creature['spell'.$i];
   // By event AI table
