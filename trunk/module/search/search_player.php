@@ -10,6 +10,9 @@ include_once("include/report_generator.php");
 
 $page = intval(@$_REQUEST['page']);
 
+// Определяем режим поиска
+$allmode = @$_REQUEST['s']=='all';
+
 // Создаём SQL запрос исходя из заданых пользователем параметров
 $filter = "";
 // Создаём ссылку на страницу, игнорируем дефолтные значения
