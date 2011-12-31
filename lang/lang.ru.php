@@ -52,6 +52,7 @@ $lang = array(
 'condition2' => 'Есть в сумках(нет в банке) ',
 'condition3' => 'Одет ',
 'condition4_1' => 'Не в ',
+'condition7' => 'Знать ',
 'condition8' => 'Завершено ',
 'condition9' => 'Взято ',
 'condition10' => 'AD аура',
@@ -75,6 +76,7 @@ $lang = array(
 'condition27' => 'Не в ',
 'condition28_1' => 'Нет ',
 'condition28_2' => ' и нет ',
+'condition29' => 'Не знать ',
 
 # Item report
 'item_name' => 'Название предмета',
@@ -241,6 +243,7 @@ $lang = array(
 'level' => 'Уровень',
 'spawn_at_event' => 'Появится в событие',
 'despawn_at_event' => 'Исчезнет в событие',
+'view3dnpc' => 'Показать 3D-модель существа',
 
 #Loot info
 'loot_details'      => 'Подробнее',

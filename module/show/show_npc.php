@@ -109,6 +109,166 @@ else
    echo "</tbody></table>";
   }
  }
+
+//==========================================================
+ if ($config['show_3d_model_npc']) // Вывод 3D модели НПС
+ {
+                echo '<br><span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
+                echo "       onClick=\"if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') ";
+                echo "{ this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; ";
+                echo "  this.innerText = ''; ";
+                echo "  this.value = '-'; } ";
+                echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
+                echo " this.innerText = ''; ";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$lang[view3dnpc]</b></div>";
+                echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
+                echo '<div style="display: none;">';
+ {
+   if ($cr['modelid_1'])
+   {
+                echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
+                echo "       onClick=\"if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') ";
+                echo "{ this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; ";
+                echo "  this.innerText = ''; ";
+                echo "  this.value = '-'; } ";
+                echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
+                echo " this.innerText = ''; ";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display1]&nbsp;($cr[modelid_1])</b></div>";
+                echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
+                echo '<div style="display: none;">';
+   switch ($cr['type']):
+    case 6:
+    case 7:
+        echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
+                <param value='high' name='quality'>
+                <param value='always' name='allowscriptaccess'>
+                <param value='false' name='menu'>
+                <param name='wmode' value='transparent'>
+                <param value='model=$cr[modelid_1]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+        </object>";
+    break;
+    default:
+        echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
+                <param value='high' name='quality'>
+                <param value='always' name='allowscriptaccess'>
+                <param value='false' name='menu'>
+                <param name='wmode' value='transparent'>
+                <param value='model=$cr[modelid_1]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+        </object>";
+    endswitch;
+   echo "</div></div></span>";
+   }
+   if ($cr['modelid_2'])
+   {
+                echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
+                echo "       onClick=\"if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') ";
+                echo "{ this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; ";
+                echo "  this.innerText = ''; ";
+                echo "  this.value = '-'; } ";
+                echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
+                echo " this.innerText = ''; ";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display2]&nbsp;($cr[modelid_2])</b></div>";
+                echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
+                echo '<div style="display: none;">';
+   switch ($cr['type']):
+    case 6:
+    case 7:
+        echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
+                <param value='high' name='quality'>
+                <param value='always' name='allowscriptaccess'>
+                <param value='false' name='menu'>
+                <param name='wmode' value='transparent'>
+                <param value='model=$cr[modelid_2]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+        </object>";
+    break;
+    default:
+        echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
+                <param value='high' name='quality'>
+                <param value='always' name='allowscriptaccess'>
+                <param value='false' name='menu'>
+                <param name='wmode' value='transparent'>
+                <param value='model=$cr[modelid_2]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+        </object>";
+    endswitch;
+   echo "</div></div></span>";
+   }
+   if ($cr['modelid_3'])
+   {
+                echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
+                echo "       onClick=\"if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') ";
+                echo "{ this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; ";
+                echo "  this.innerText = ''; ";
+                echo "  this.value = '-'; } ";
+                echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
+                echo " this.innerText = ''; ";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display3]&nbsp;($cr[modelid_3])</b></div>";
+                echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
+                echo '<div style="display: none;">';
+   switch ($cr['type']):
+    case 6:
+    case 7:
+        echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
+                <param value='high' name='quality'>
+                <param value='always' name='allowscriptaccess'>
+                <param value='false' name='menu'>
+                <param name='wmode' value='transparent'>
+                <param value='model=$cr[modelid_3]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+        </object>";
+    break;
+    default:
+        echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
+                <param value='high' name='quality'>
+                <param value='always' name='allowscriptaccess'>
+                <param value='false' name='menu'>
+                <param name='wmode' value='transparent'>
+                <param value='model=$cr[modelid_3]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+        </object>";
+    endswitch;
+   echo "</div></div></span>";
+   }
+   if ($cr['modelid_4'])
+   {
+                echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
+                echo "       onClick=\"if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') ";
+                echo "{ this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; ";
+                echo "  this.innerText = ''; ";
+                echo "  this.value = '-'; } ";
+                echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
+                echo " this.innerText = ''; ";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display4]&nbsp;($cr[modelid_4])</b></div>";
+                echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
+                echo '<div style="display: none;">';
+   switch ($cr['type']):
+    case 6:
+    case 7:
+        echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
+                <param value='high' name='quality'>
+                <param value='always' name='allowscriptaccess'>
+                <param value='false' name='menu'>
+                <param name='wmode' value='transparent'>
+                <param value='model=$cr[modelid_4]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+        </object>";
+    break;
+    default:
+        echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
+                <param value='high' name='quality'>
+                <param value='always' name='allowscriptaccess'>
+                <param value='false' name='menu'>
+                <param name='wmode' value='transparent'>
+                <param value='model=$cr[modelid_4]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+        </object>";
+    endswitch;
+   echo "</div></div></span>";
+   }
+  echo "</div></div></span>";
+  }
+ }
+
  createReportTab();
  //********************************************************************************
  // Summoned by spell

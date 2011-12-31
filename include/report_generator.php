@@ -393,7 +393,7 @@ function r_lootRequire($data)
      echo getFactionName($data['condition_value1']);
      break;
    case  7: // CONDITION_SKILL skill_id, skill_value
-     echo getSkillName($data['condition_value1']);
+     echo $lang['condition7'].getSkillName($data['condition_value1']);
      if ($data['condition_value2'] > 1) echo ' ('.$data['condition_value2'].')';
      break;
    case  8: // CONDITION_QUESTREWARDED quest_id, 0
@@ -466,6 +466,10 @@ function r_lootRequire($data)
      $spell = getSpell($data['condition_value1'], '`id`, `SpellIconID`');
      if ($data['condition_value2'] > 0) { $item = getItem($data['condition_value2'], '`entry`, `displayid`'); echo $lang['condition28_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest'); echo $lang['condition28_2'].text_show_item($item['entry'], $item['displayid'], 'quest');}
      else {echo $lang['condition28_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
+     break;
+   case  29: // CONDITION_SKILL_BELOW skill_id, skill_value
+     echo $lang['condition29'].getSkillName($data['condition_value1']);
+     if ($data['condition_value2'] > 1) echo ' ('.$data['condition_value2'].')';
      break;
   }
 }
