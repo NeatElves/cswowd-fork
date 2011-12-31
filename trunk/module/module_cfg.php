@@ -47,6 +47,7 @@ $modules['object']  = "module/show/show_go.php";
 
 $config['show_go_details'] = 1;
 $config['show_npc_detalis'] = 0;
+$config['show_3d_model_npc'] = 0;
 //==================================================================
 // Модуль добавления Open Search в браузеры
 //==================================================================

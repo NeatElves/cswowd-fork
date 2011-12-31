@@ -52,6 +52,7 @@ $lang = array(
 'condition2' => 'Have(bank no) ',
 'condition3' => 'Equipped ',
 'condition4_1' => 'Not in ',
+'condition7' => 'Know ',
 'condition8' => 'Complete ',
 'condition9' => 'Take ',
 'condition10' => 'AD aura',
@@ -75,6 +76,7 @@ $lang = array(
 'condition27' => 'No in ',
 'condition28_1' => 'No ',
 'condition28_2' => ' & no ',
+'condition29' => 'Do not know ',
 
 # Item report
 'item_name' => 'Item name',
@@ -239,6 +241,7 @@ $lang = array(
 'level' => 'Level',
 'spawn_at_event' => 'Appear in the event',
 'despawn_at_event' => 'Disappear in the event',
+'view3dnpc' => 'Show 3D-model npc',
 
 # Loot info
 'loot_details'      => 'Details',
