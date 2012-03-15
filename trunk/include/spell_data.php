@@ -165,6 +165,7 @@ $gSpellEffect = array(
 '161'=>'Learn a Talent Specialization',
 '162'=>'Activate Spec',
 '163'=>'SPELL_EFFECT_163',
+'164'=>'Cancel aura'
 );
 
 $gSpellAuraName = array(
@@ -451,7 +452,40 @@ $gSpellAuraName = array(
 '280'=>"MOD_TARGET_ARMOR_PCT",
 '281'=>"MOD_HONOR_GAIN",
 '282'=>"MOD_BASE_HEALTH_PCT",
-'283'=>"MOD_HEALING_RECEIVED"
+'283'=>"MOD_HEALING_RECEIVED",
+'284'=>"284",
+'285'=>"SPELL_AURA_MOD_ATTACK_POWER_OF_ARMOR",
+'286'=>"SPELL_AURA_ABILITY_PERIODIC_CRIT",
+'287'=>"SPELL_AURA_DEFLECT_SPELLS",
+'288'=>"SPELL_AURA_MOD_PARRY_FROM_BEHIND_PERCENT",
+'289'=>"289",
+'290'=>"SPELL_AURA_MOD_ALL_CRIT_CHANCE",
+'291'=>"SPELL_AURA_MOD_QUEST_XP_PCT",
+'292'=>"292",
+'293'=>"SPELL_AURA_ADD_MECHANIC_ABILITIES",
+'294'=>"SPELL_AURA_STOP_NATURAL_MANA_REGEN",
+'295'=>"295",
+'296'=>"296",
+'297'=>"297",
+'298'=>"298",
+'299'=>"299",
+'300'=>"300",
+'301'=>"SPELL_AURA_HEAL_ABSORB",
+'302'=>"302",
+'303'=>"303",
+'304'=>"304",
+'305'=>"SPELL_AURA_MOD_MINIMUM_SPEED",
+'306'=>"306",
+'307'=>"307",
+'308'=>"308",
+'309'=>"309",
+'310'=>"SPELL_AURA_MOD_PET_AOE_DAMAGE_AVOIDANCE",
+'311'=>"311",
+'312'=>"312",
+'313'=>"313",
+'314'=>"314",
+'315'=>"315",
+'316'=>"316"
 );
 
 function getSpellFamilyNames()
