@@ -4,8 +4,8 @@ include_once("include/functions.php");
 
 function getQuestText($quest_text)
 {
-  $letter = array( '$b' ,'$B$B', '$B' ,  '$N'  ,   '$n'  , '$C'    , '$r');
-  $values = array('<br>','<br>','<br>','(Name)', '(Name)','(Class)', '(Race)');
+  $letter = array( '$b' ,'$B$B', '$B' ,  '$N'  ,   '$n'  , '$C'    ,   '$c'  ,  '$r'  ,  '$R'  ,'<a' ,'<A');
+  $values = array('<br>','<br>','<br>','(Name)', '(Name)','(Class)','(Class)','(Race)','(Race)','< a','< A');
   return str_replace($letter, $values, $quest_text);
 }
 
@@ -88,6 +88,7 @@ else
  echo "<tbody>";
 
  echo "<tr><td class=head>$quest[Title]";
+
  if ($quest['Type'])
    echo "<br><FONT size=-3>&lt;".getQuestType($quest['Type'])."&gt;</FONT>";
 
@@ -156,7 +157,7 @@ if ($quest['RequiredSkill'])
  if ($quest['QuestFlags'] & QUEST_FLAGS_DAILY)
      echo "<tr><td>$lang[item_type]:&nbsp;<a href=\"?s=q&Sfd=".($quest['QuestFlags'])."\">".$lang['quest_type1']."</a></td></tr>";
 
- if (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_REPEATABLE) && (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY) ==0)&& ($quest['QuestFlags'] & (QUEST_FLAGS_DAILY | QUEST_FLAGS_WEEKLY))  == 0)
+ if (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_REPEATABLE) && (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY) ==0) && ($quest['QuestFlags'] & (QUEST_FLAGS_DAILY | QUEST_FLAGS_WEEKLY))  == 0)
      echo "<tr><td>$lang[item_type]:&nbsp;<a href=\"?s=q&Sfr=".($quest['SpecialFlags'])."\">".$lang['quest_type0']."</a></td></tr>";
 
  if ($quest['RequiredMinRepFaction'])
@@ -168,13 +169,22 @@ if ($quest['RequiredSkill'])
  if ($quest['RequiredMaxRepFaction'])
    echo "<tr><td>".getFactionName($quest['RequiredMaxRepFaction']).":&nbsp;$quest[RequiredMaxRepValue]($lang[item_max_level])</td></tr>";
 
- echo "<tr><td>".getQuestText($quest['Objectives'])."<hr></td></tr>";
+ $questobjectives = getQuestText($quest['Objectives']);
+ $questrequestitemstext = getQuestText($quest['RequestItemsText']);
+ $questofferrewardtext = getQuestText($quest['OfferRewardText']);
+ if ($questobjectives)
+   echo "<tr><td>$questobjectives<hr></td></tr>";
+     else  if ($questrequestitemstext)
+       echo "<tr><td>$questrequestitemstext<hr></td></tr>";
+         else  if ($questofferrewardtext)
+           echo "<tr><td>$questofferrewardtext<hr></td></tr>";
+
  ### Рек собрать
  if ($quest['RepObjectiveFaction'])
    echo "<tr><td>$lang[item_faction_rank]:</td></tr>";
 
  if ($quest['RepObjectiveFaction'])
-   echo "<tr><td> ".getFactionName($quest['RepObjectiveFaction']).":&nbsp;$quest[RepObjectiveValue]($lang[item_min_level])</td></tr>";
+   echo "<tr><td>".getFactionName($quest['RepObjectiveFaction']).":&nbsp;$quest[RepObjectiveValue]($lang[item_min_level])</td></tr>";
 
  if ($quest['ReqItemId1'] OR $quest['ReqItemId2'] OR $quest['ReqItemId3'] OR $quest['ReqItemId4'] OR $quest['ReqItemId5'] OR $quest['ReqItemId6'])
  {
