@@ -694,7 +694,7 @@ function getCreaturePool($creature_guid)
 {
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
-  SELECT `pool_entry` FROM `creature_gameobject` WHERE `guid` = ?d", $creature_guid);
+  SELECT `pool_entry` FROM `pool_creature` WHERE `guid` = ?d", $creature_guid);
 }
 
 function getCreaturePoolTemplate($creature_id)
