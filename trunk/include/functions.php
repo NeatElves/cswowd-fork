@@ -226,7 +226,7 @@ function getLootList($lootId, $table, &$totalRecords, $offset=0, $count=0)
        // Получаем список
        $subcount = 0;
        $loot['item']  = getLootList(-$loot['mincountOrRef'], "reference_loot_template", $subcount);
-       $loot['maxcount'] = $dDB->selectCell("SELECT count(*) FROM `$table` WHERE `entry` = ?d AND `mincountOrRef` = ?d", $lootId, $loot['mincountOrRef']);
+       $loot['maxcount'] = $dDB->selectCell("SELECT `maxcount` FROM `$table` WHERE `entry` = ?d AND `mincountOrRef` = ?d", $lootId, $loot['mincountOrRef']);
     }
   }
   return $rows;
@@ -1383,6 +1383,13 @@ function show_item_from_char($id, $guid, $style='item', $posx=0, $posy=0)
 	$item_data = $cDB->selectCell("SELECT `guid` FROM `item_instance` WHERE `owner_guid`=?d AND (SUBSTRING_INDEX( SUBSTRING_INDEX(`data` , ' ' , 9) , ' ' , -1 )+0)=?d AND (SUBSTRING_INDEX( SUBSTRING_INDEX(`data` , ' ' , 4) , ' ' , -1 )+0)=$id", $guid, $guid, $id);
 	if ($item_data = getItemData($item_data))
 		show_item_by_data($item_data, $style, $posx, $posy);
+}
+
+function getConditionItem($condition_id)
+{
+  global $dDB;
+  return $dDB->select("-- CACHE: 1h
+  SELECT * FROM `conditions` WHERE `condition_entry` = ?d", $condition_id);
 }
 
 //********************************************************************************
