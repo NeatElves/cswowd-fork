@@ -1027,7 +1027,7 @@ class CreatureReportGenerator extends ReportGenerator{
  function castSpell($entry)
  {
     global $dDB;
-    $rows_1 = $dDB->selectCol('SELECT `entry` FROM `creature_template` WHERE `spell1` = ?d OR `spell2` = ?d OR `spell3` = ?d OR `spell4` = ?d', $entry, $entry, $entry, $entry);
+    $rows_1 = $dDB->selectCol('SELECT `entry` FROM `creature_template_spells` WHERE `spell1` = ?d OR `spell2` = ?d OR `spell3` = ?d OR `spell4` = ?d OR `spell5` = ?d OR `spell6` = ?d OR `spell7` = ?d OR `spell8` = ?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry);
     $rows_2 = $dDB->selectCol('SELECT `creature_id` FROM `creature_ai_scripts` WHERE (`action1_type` = 11 AND `action1_param1`=?d) OR (`action2_type` = 11 AND `action2_param1`=?d) OR (`action3_type` = 11 AND `action3_param1`=?d)', $entry, $entry, $entry);
     $casters = array_unique(array_merge($rows_1, $rows_2));
     if (count($casters))
@@ -1649,11 +1649,15 @@ class SpellReportGenerator extends ReportGenerator{
  {
   global $wDB, $dDB;
   $spell_list = array();
+
   // By creature fields
-  for ($i=1;$i<5;$i++) if ($creature['spell'.$i]) $spell_list[] = $creature['spell'.$i];
+  for ($i=1;$i<9;$i++)
+    $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `spell'.$i.'` FROM `creature_template_spells` WHERE `entry` = ?d', $creature['entry']));
+
   // By event AI table
   for ($i=1;$i<=3;$i++)
     $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `action1_param'.$i.'` as `id` FROM `creature_ai_scripts` WHERE `creature_id` = ?d AND `action'.$i.'_type` = 11', $creature['entry']));
+
   if (count($spell_list))
     $this->doRequirest('`id` IN (?a)', array_unique($spell_list));
  }
