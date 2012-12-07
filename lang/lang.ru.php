@@ -600,8 +600,7 @@ $lang = array(
 # Search player dialog
 'player_lookup'=>'Поиск игрока',
 'player_name'=>'Имя игрока',
-'map'=>'Карта',
-'search_results' =>'Результаты поиска',
+'search_results'=>'Результаты поиска',
 'found'=>'Найдено',
 'not_found'=>'Не найдено',
 

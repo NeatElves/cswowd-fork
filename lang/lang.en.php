@@ -597,8 +597,7 @@ $lang = array(
 # Search player dialog
 'player_lookup'=>'Player search',
 'player_name'=>'Player name',
-'map'=>'Map',
-'search_results' =>'Search result',
+'search_results'=>'Search result',
 'found'=>'Found',
 'not_found'=>'Not found',
 
