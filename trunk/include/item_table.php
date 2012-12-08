@@ -523,7 +523,7 @@ function renderItemData($item, $item_data=0)
    for ($i=1;$i<=$item['StatsCount'];$i++)
      renderSpellStat($item['stat_type'.$i],$item['stat_value'.$i]);
 
- if ($item['spellid_1'] != 483)
+ if ($item['spellid_1'] != 483 AND $item['spellid_1'] != 55884)
  {
   renderSpell($item['spellid_1'],$item['spelltrigger_1'],$item_data?$item_data[ITEM_FIELD_SPELL_CHARGES+0]:$item['spellcharges_1'],$item['spellcooldown_1'],$item['spellcategory_1'],$item['spellcategorycooldown_1']);
   renderSpell($item['spellid_2'],$item['spelltrigger_2'],$item_data?$item_data[ITEM_FIELD_SPELL_CHARGES+1]:$item['spellcharges_2'],$item['spellcooldown_2'],$item['spellcategory_2'],$item['spellcategorycooldown_2']);
@@ -583,7 +583,7 @@ function renderItemData($item, $item_data=0)
 
  if ($item['description'] != "")
  {
-     if ($item['spellid_1'] == 483)
+     if ($item['spellid_1'] == 483 OR $item['spellid_1'] == 55884)
      {
          echo '<tr><td><a href="?spell='.$item['spellid_2'].'">'.$UseorEquip[$item['spelltrigger_2']].' '.$item['description'].'</a></td></tr>';
          if ($spell = getSpell($item['spellid_2']))
