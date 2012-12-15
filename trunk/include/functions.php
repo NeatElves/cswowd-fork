@@ -82,7 +82,7 @@ function getTimeText($seconds)
   return $text;
 }
 
-// Функция разделения строки по точке
+// Р¤СѓРЅРєС†РёСЏ СЂР°Р·РґРµР»РµРЅРёСЏ СЃС‚СЂРѕРєРё РїРѕ С‚РѕС‡РєРµ
 function mergeStrByPoint($str, &$a, &$b)
 {
   $len = strlen($str);
@@ -147,7 +147,7 @@ function php2js($a=false)
     }
 }
 
-// составляет список
+// СЃРѕСЃС‚Р°РІР»СЏРµС‚ СЃРїРёСЃРѕРє
 function getListFromArray($array, $i, $mask, $href)
 {
   $text = "";
@@ -168,12 +168,12 @@ function getListFromArray($array, $i, $mask, $href)
   }
   return $text;
 }
-// составляет список c 0
+// СЃРѕСЃС‚Р°РІР»СЏРµС‚ СЃРїРёСЃРѕРє c 0
 function getListFromArray_0($array, $mask, $href="")
 {
   return getListFromArray($array, 0, $mask, $href);
 }
-// составляет список c 1
+// СЃРѕСЃС‚Р°РІР»СЏРµС‚ СЃРїРёСЃРѕРє c 1
 function getListFromArray_1($array, $mask, $href="")
 {
   return getListFromArray($array, 1, $mask, $href);
@@ -223,7 +223,7 @@ function getLootList($lootId, $table, &$totalRecords, $offset=0, $count=0)
     }
     if ($loot['mincountOrRef'] < 0)
     {
-       // Получаем список
+       // РџРѕР»СѓС‡Р°РµРј СЃРїРёСЃРѕРє
        $subcount = 0;
        $loot['item']  = getLootList(-$loot['mincountOrRef'], "reference_loot_template", $subcount);
        $loot['maxcount'] = $dDB->selectCell("SELECT `maxcount` FROM `$table` WHERE `entry` = ?d AND `mincountOrRef` = ?d", $lootId, $loot['mincountOrRef']);
@@ -233,7 +233,7 @@ function getLootList($lootId, $table, &$totalRecords, $offset=0, $count=0)
 }
 
 //******************************************************************************
-// Локализация данных
+// Р›РѕРєР°Р»РёР·Р°С†РёСЏ РґР°РЅРЅС‹С…
 //******************************************************************************
 function localiseCreature(&$creature)
 {
@@ -451,7 +451,7 @@ function getLockType($id, $asref=1)
     return $name;
 }
 
-// Работа с lock
+// Р Р°Р±РѕС‚Р° СЃ lock
 function getLock($id)
 {
   global $wDB;
@@ -480,7 +480,7 @@ function getSpellFocusName($id, $reftype=0)
   return "Spellfocus_$id";
 }
 
-// Работа со скилами
+// Р Р°Р±РѕС‚Р° СЃРѕ СЃРєРёР»Р°РјРё
 function getSkillLineAbility($spellId)
 {
   global $wDB;
@@ -1280,7 +1280,7 @@ function getRecipeItem($recipe)
   global $wDB;
   if ($recipe['spellid_1'] == 483)
   {
-    // Получаем спелл которому обучает
+    // РџРѕР»СѓС‡Р°РµРј СЃРїРµР»Р» РєРѕС‚РѕСЂРѕРјСѓ РѕР±СѓС‡Р°РµС‚
     $spell = getSpell($recipe['spellid_2']);
     if ($spell = getSpell($recipe['spellid_2']))
       return getItem($spell['EffectItemType_1']);
@@ -1375,14 +1375,43 @@ function show_item_by_guid($guid, $style='item', $posx=0, $posy=0)
 		show_item_by_data($item_data, $style, $posx, $posy);
 }
 
-function show_item_from_char($id, $guid, $style='item', $posx=0, $posy=0)
+function show_item_from_char($id, $guid, $style='item', $posx=0, $posy=0, $empty_item)
 {
-	global $cDB;
-	if ($id==0)
-		return;
-	$item_data = $cDB->selectCell("SELECT `guid` FROM `item_instance` WHERE `owner_guid`=?d AND (SUBSTRING_INDEX( SUBSTRING_INDEX(`data` , ' ' , 9) , ' ' , -1 )+0)=?d AND (SUBSTRING_INDEX( SUBSTRING_INDEX(`data` , ' ' , 4) , ' ' , -1 )+0)=$id", $guid, $guid, $id);
-	if ($item_data = getItemData($item_data))
-		show_item_by_data($item_data, $style, $posx, $posy);
+    global $cDB;
+    if ($id != 0)
+    {
+    $item_data = $cDB->selectCell("SELECT `guid` FROM `item_instance` WHERE `owner_guid`=?d AND (SUBSTRING_INDEX( SUBSTRING_INDEX(`data` , ' ' , 9) , ' ' , -1 )+0)=?d AND (SUBSTRING_INDEX( SUBSTRING_INDEX(`data` , ' ' , 4) , ' ' , -1 )+0)=$id", $guid, $guid, $id);
+    if ($item_data = getItemData($item_data))
+        show_item_by_data($item_data, $style, $posx, $posy);
+    }
+    else { empty_show_item_from_char($style, $posx, $posy, $empty_item); }
+}
+
+function empty_show_item_from_char($style='item', $posx=0, $posy=0, $empty_item="")
+{
+    switch ($empty_item): 
+        case ("head"):     $icon = "images/player_info/empty_icon/head.png";     break;
+        case ("neck"):     $icon = "images/player_info/empty_icon/neck.png";     break;
+        case ("shoulder"): $icon = "images/player_info/empty_icon/shoulder.png"; break;
+        case ("back"):     $icon = "images/player_info/empty_icon/back.png";     break;
+        case ("chest"):    $icon = "images/player_info/empty_icon/chest.png";    break;
+        case ("shirt"):    $icon = "images/player_info/empty_icon/shirt.png";    break;
+        case ("tabard"):   $icon = "images/player_info/empty_icon/tabard.png";   break;
+        case ("wrist"):    $icon = "images/player_info/empty_icon/wrist.png";    break;
+        case ("gloves"):   $icon = "images/player_info/empty_icon/gloves.png";   break;
+        case ("belt"):     $icon = "images/player_info/empty_icon/belt.png";     break;
+        case ("legs"):     $icon = "images/player_info/empty_icon/legs.png";     break;
+        case ("feet"):     $icon = "images/player_info/empty_icon/feet.png";     break;
+        case ("finger"):   $icon = "images/player_info/empty_icon/finger.png";   break;
+        case ("trinket"):  $icon = "images/player_info/empty_icon/trinket.png";  break;
+        case ("main"):     $icon = "images/player_info/empty_icon/main.png";     break;
+        case ("off"):      $icon = "images/player_info/empty_icon/off.png";      break;
+        case ("ranged"):   $icon = "images/player_info/empty_icon/ranged.png";   break;
+    endswitch;
+
+ if ($posx OR $posy) { $position = 'style="position: absolute; left: '.$posx.'px; top: '.$posy.'px; border: 0px;"'; }
+ if (empty($position)) { $position = "style=\"position: relative; left: 0px;top: 0px; border: 0px;float: left;\""; }
+ echo"\n<div class=$style $position><img class='".$style."' src='".$icon."'></div>";
 }
 
 function getConditionItem($condition_id)

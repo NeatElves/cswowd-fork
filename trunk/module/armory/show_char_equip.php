@@ -246,27 +246,27 @@ function showPlayerEquip($guid, $char, $char_data, $char_stat)
  echo '</table>';
 
  $imgsize="armory";
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_HEAD],$guid,$imgsize,22,73);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_NECK],$guid,$imgsize,22,114);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_SHOULDER],$guid,$imgsize,22,155);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_BACK],$guid,$imgsize,22,196);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_CHEST],$guid,$imgsize,22,237);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_SHIRT],$guid,$imgsize,22,278);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_TABARD],$guid,$imgsize,22,319);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_WRIST],$guid,$imgsize,22,360);
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_HEAD],$guid,$imgsize,22,73,"head");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_NECK],$guid,$imgsize,22,114,"neck");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_SHOULDER],$guid,$imgsize,22,155,"shoulder");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_BACK],$guid,$imgsize,22,196,"back");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_CHEST],$guid,$imgsize,22,237,"chest");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_SHIRT],$guid,$imgsize,22,278,"shirt");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_TABARD],$guid,$imgsize,22,319,"tabard");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_WRIST],$guid,$imgsize,22,360,"wrist");
 
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_GLOVES],$guid,$imgsize,306,73);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_BELT],$guid,$imgsize,306,114);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_LEGS],$guid,$imgsize,306,155);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_FEET],$guid,$imgsize,306,196);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_FINGER1],$guid,$imgsize,306,237);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_FINGER2],$guid,$imgsize,306,278);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_TRINKET1],$guid,$imgsize,306,319);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_TRINKET2],$guid,$imgsize,306,360);
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_GLOVES],$guid,$imgsize,306,73,"gloves");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_BELT],$guid,$imgsize,306,114,"belt");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_LEGS],$guid,$imgsize,306,155,"legs");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_FEET],$guid,$imgsize,306,196,"feet");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_FINGER1],$guid,$imgsize,306,237,"finger");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_FINGER2],$guid,$imgsize,306,278,"finger");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_TRINKET1],$guid,$imgsize,306,319,"trinket");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_TRINKET2],$guid,$imgsize,306,360,"trinket");
 
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_MAIN_HAND],$guid,$imgsize,122,384);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_OFF_HAND],$guid,$imgsize,164,384);
- show_item_from_char($char_data[PLAYER_SLOT_ITEM_RANGED],$guid,$imgsize,206,384);
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_MAIN_HAND],$guid,$imgsize,122,384,"main");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_OFF_HAND],$guid,$imgsize,164,384,"off");
+ show_item_from_char($char_data[PLAYER_SLOT_ITEM_RANGED],$guid,$imgsize,206,384,"ranged");
 // Bags
 // show_item_by_guid($char_data[PLAYER_SLOT_ITEM_TABARD+2],$imgsize,0,400);
 // show_item_by_guid($char_data[PLAYER_SLOT_ITEM_TABARD+4],$imgsize,40,400);
