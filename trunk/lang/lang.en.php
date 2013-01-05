@@ -11,6 +11,9 @@ $lang = array(
 'lang' => 'Language site',
 'skin' => 'Skin site',
 
+# Map
+'maplang'=>'',
+
 # Site
 'www_creature'=>'http://wowhead.com/npc=%d',
 'www_gameobject'=>'http://wowhead.com/object=%d',
@@ -66,6 +69,11 @@ $lang = array(
 'condition16' => 'Not have(bank no) ',
 'condition17_1' => 'Has spell ',
 'condition17_2' => 'Hasn\'t spell ',
+'condition18_0' => 'Normal mode',
+'condition18_1' => 'Hard mode',
+'condition18_2' => 'Hard mode 2',
+'condition18_3' => 'Hard mode 3',
+'condition18_4' => 'Hard mode 4',
 'condition20_1' => 'Has achievement ',
 'condition20_2' => 'Hasn\'t achievement ',
 'condition22' => 'No take and no rewarded for ',

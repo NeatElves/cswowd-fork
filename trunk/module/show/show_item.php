@@ -419,9 +419,7 @@ else
     `fishing_loot_template`.`groupid` AS `groupid`,
     `fishing_loot_template`.`mincountOrRef` AS `mincountOrRef`,
     `fishing_loot_template`.`maxcount` AS `maxcount`,
-    `fishing_loot_template`.`lootcondition` AS `lootcondition`,
-    `fishing_loot_template`.`condition_value1` AS `condition_value1`,
-    `fishing_loot_template`.`condition_value2` AS `condition_value2`
+    `fishing_loot_template`.`condition_id` AS `condition_id`
    FROM
        `fishing_loot_template`
    WHERE

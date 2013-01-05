@@ -11,6 +11,9 @@ $lang = array(
 'lang' => 'Язык сайта',
 'skin' => 'Скин сайта',
 
+# Map
+'maplang'=>'_ru',
+
 # Site
 'www_creature'=>'http://ru.wowhead.com/npc=%d',
 'www_gameobject'=>'http://ru.wowhead.com/object=%d',
@@ -66,6 +69,11 @@ $lang = array(
 'condition16' => 'Нет в сумках(нет в банке) ',
 'condition17_1' => 'Выучен спелл ',
 'condition17_2' => 'Не выучен спелл ',
+'condition18_0' => 'Normal mode',
+'condition18_1' => 'Hard mode',
+'condition18_2' => 'Hard mode 2',
+'condition18_3' => 'Hard mode 3',
+'condition18_4' => 'Hard mode 4',
 'condition20_1' => 'Выполнено достижение ',
 'condition20_2' => 'Не выполнено достижение ',
 'condition22' => 'Не бралось и не выполнялось ',
