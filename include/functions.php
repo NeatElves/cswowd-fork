@@ -4,7 +4,7 @@ include_once ("spell_table.php");
 include_once ("talent_table.php");
 include_once ("gameobject_table.php");
 include_once ("enchant_table.php");
-include_once("include/quest_data.php");
+include_once ("quest_data.php");
 
 function getLPageOffset($page, $limit)
 {

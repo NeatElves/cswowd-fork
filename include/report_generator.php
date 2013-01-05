@@ -440,6 +440,13 @@ function r_lootRequire($data)
      if ($type['value2'] > 0) { echo $lang['condition17_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
      else { echo $lang['condition17_2']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
      break;
+   case 18: // CONDITION_INSTANCE_SCRIPT  instance_condition_id    0, 1, 2, 3, 4
+     if ($type['value1'] == 0)  echo $lang['condition18_0'];
+     if ($type['value1'] == 1)  echo $lang['condition18_1'];
+     if ($type['value1'] == 2)  echo $lang['condition18_2'];
+     if ($type['value1'] == 3)  echo $lang['condition18_3'];
+     if ($type['value1'] == 4)  echo $lang['condition18_4'];
+     break;
    case 20: // CONDITION_ACHIEVEMENT  ach_id       0, 1 (0: has achievement, 1: hasn't achievement) for player
      if ($type['value2'] > 0) echo $lang['condition20_1'].$type['value1'];
      else echo $lang['condition20_2'].$type['value1'];
@@ -565,7 +572,7 @@ class LootReportGenerator extends ReportGenerator{
       $this->renderSubList($loot['item']);
       echo "</tbody></table></td>";
     }
-    if ($loot['lootcondition']){echo '<td>'; r_lootRequire($loot); echo '</td>';}
+    if ($loot['condition_id']){echo '<td>'; r_lootRequire($loot); echo '</td>';}
     else echo '<td></td>';
          if ($loot['ChanceOrQuestChance'] < 0) echo "<td align=center>Q".(-$loot['ChanceOrQuestChance'])."%</td>";
     else if ($loot['ChanceOrQuestChance'] > 0) echo "<td align=center>".$loot['ChanceOrQuestChance']."%</td>";
@@ -689,7 +696,7 @@ class ItemReportGenerator extends ReportGenerator{
  {
   global $item_report, $dDB;
   $this->db = &$dDB;
-     $this->column_conf =&$item_report;
+  $this->column_conf =&$item_report;
   $this->db_fields = '`item_template`.`entry`';
   switch ($type){
    case 'vendor' :   $this->table = '(`item_template` join `npc_vendor` ON `item_template`.`entry` = `npc_vendor`.`item`)'; break;
@@ -747,7 +754,7 @@ class ItemReportGenerator extends ReportGenerator{
  {
   $ref_loot =& getRefrenceItemLoot($entry);
   $this->doRequirest('(`item` = ?d  AND `mincountOrRef` > 0) { OR -`mincountOrRef` IN (?a) } GROUP BY `entry`', $entry, count($ref_loot)==0 ? DBSIMPLE_SKIP:array_keys($ref_loot));
-  $this->removeIfAllZero('lootcondition', 'LOOT_REPORT_REQ');
+  $this->removeIfAllZero('condition_id', 'LOOT_REPORT_REQ');
  }
 }
 
@@ -1059,7 +1066,7 @@ class CreatureReportGenerator extends ReportGenerator{
  {
   $ref_loot =& getRefrenceItemLoot($entry);
   $this->doRequirest('(`item` = ?d  AND `mincountOrRef` > 0) { OR -`mincountOrRef` IN (?a) } GROUP BY `entry`', $entry, count($ref_loot)==0 ? DBSIMPLE_SKIP:array_keys($ref_loot));
-  $this->removeIfAllZero('lootcondition', 'LOOT_REPORT_REQ');
+  $this->removeIfAllZero('condition_id', 'LOOT_REPORT_REQ');
  }
  // Position
  function onMap($entry)
@@ -1178,7 +1185,7 @@ class GameobjectReportGenerator extends ReportGenerator{
  {
   $ref_loot =& getRefrenceItemLoot($entry);
   $this->doRequirest('(`item` = ?d  AND `mincountOrRef` > 0) { OR -`mincountOrRef` IN (?a) } GROUP BY `entry`', $entry, count($ref_loot)==0 ? DBSIMPLE_SKIP:array_keys($ref_loot));
-  $this->removeIfAllZero('lootcondition', 'LOOT_REPORT_REQ');
+  $this->removeIfAllZero('condition_id', 'LOOT_REPORT_REQ');
  }
  // Position
  function onMap($entry)
@@ -1471,7 +1478,7 @@ class QuestReportGenerator extends ReportGenerator{
  {
   $ref_loot =& getRefrenceItemLoot($entry);
   $this->doRequirest('(`item` = ?d  AND `mincountOrRef` > 0) { OR -`mincountOrRef` IN (?a) } GROUP BY `entry`', $entry, count($ref_loot)==0 ? DBSIMPLE_SKIP:array_keys($ref_loot));
-  $this->removeIfAllZero('lootcondition', 'LOOT_REPORT_REQ');
+  $this->removeIfAllZero('condition_id', 'LOOT_REPORT_REQ');
  }
 
 }
