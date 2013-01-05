@@ -96,8 +96,6 @@ else
    echo "<tr><th>resistance1</th><td>".$cr['resistance1']."</td><th>resistance2</th><td>".$cr['resistance2']."</td></tr>";
    echo "<tr><th>resistance3</th><td>".$cr['resistance3']."</td><th>resistance4</th><td>".$cr['resistance4']."</td></tr>";
    echo "<tr><th>resistance5</th><td>".$cr['resistance5']."</td><th>resistance6</th><td>".$cr['resistance6']."</td></tr>";
-   echo "<tr><th>spell1</th><td>".$cr['spell1']."</td><th>spell2</th><td>".$cr['spell2']."</td></tr>";
-   echo "<tr><th>spell3</th><td>".$cr['spell3']."</td><th>spell4</th><td>".$cr['spell4']."</td></tr>";
    echo "<tr><th>PetSpellDataId</th><td>".$cr['PetSpellDataId']."</td></tr>";
    echo "<tr><th>mingold</th><td>".$cr['mingold']."</td><th>maxgold</th><td>".$cr['maxgold']."</td></tr>";
    echo "<tr><th>MovementType</th><td>".$cr['MovementType']."</td><th>InhabitType</th><td>".$cr['InhabitType']."</td></tr>";
