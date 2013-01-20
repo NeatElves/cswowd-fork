@@ -970,8 +970,8 @@ function r_OnKillRep($data)
 $npc_report = array(
 'NPC_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level','text'=>$lang['creature_level'], 'draw'=>'r_npcLvl',  'sort_str'=>'`maxlevel` DESC, `name`', 'fields'=>'`maxlevel`, `rank`'),
 'NPC_REPORT_RANK'    =>array('class'=>'small','sort'=>'rank', 'text'=>$lang['creature_level'], 'draw'=>'r_npcLvl',  'sort_str'=>'`rank` DESC, `maxlevel` DESC, `name`', 'fields'=>'`maxlevel`, `rank`'),
-'NPC_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcName', 'sort_str'=>'`name`',                  'fields'=>'`name`, `subname`' ),
-'NPC_REPORT_RNAME'   =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcRName','sort_str'=>'`name`',                  'fields'=>'`name`, `subname`, `faction_A`' ),
+'NPC_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcName', 'sort_str'=>'`name`',                  'fields'=>'`name`, `subname`'),
+'NPC_REPORT_RNAME'   =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcRName','sort_str'=>'`name`',                  'fields'=>'`name`, `subname`, `faction_A`'),
 'NPC_REPORT_REACTION'=>array('class'=>'small','sort'=>'',     'text'=>$lang['creature_react'], 'draw'=>'r_npcReact','sort_str'=>'',                        'fields'=>'`faction_A`'),
 'NPC_REPORT_ROLE'    =>array('class'=>'',     'sort'=>'role', 'text'=>$lang['creature_role'],  'draw'=>'r_npcRole', 'sort_str'=>'`npcflag` DESC',          'fields'=>'`npcflag`'),
 'NPC_REPORT_MAP'     =>array('class'=>'small','sort'=>'',     'text'=>$lang['map'],            'draw'=>'r_npcMap',  'sort_str'=>'',                        'fields'=>''),
@@ -1112,7 +1112,7 @@ function r_objMap($data)   {global $lang; echo '<a href="?map&obj='.$data['entry
 
 // GO report generator config
 $go_report = array(
-'GO_REPORT_NAME' =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['go_name'], 'draw'=>'r_objName', 'sort_str'=>'`name`', 'fields'=>'`name`' ),
+'GO_REPORT_NAME' =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['go_name'], 'draw'=>'r_objName', 'sort_str'=>'`name`', 'fields'=>'`name`'),
 'GO_REPORT_TYPE' =>array('class'=>'',     'sort'=>'type', 'text'=>$lang['go_type'], 'draw'=>'r_objType', 'sort_str'=>'`type`', 'fields'=>'`type`'),
 'GO_REPORT_MAP'  =>array('class'=>'small','sort'=>'',     'text'=>$lang['map'],     'draw'=>'r_objMap',  'sort_str'=>'',       'fields'=>''),
 // loot
@@ -1212,7 +1212,7 @@ class GameobjectReportGenerator extends ReportGenerator{
 //=================================================================
 // Quest list report functions and methods
 //=================================================================
-function r_questLvl($data)    {echo $data['QuestLevel'];}
+function r_questLvl($data) {echo $data['QuestLevel']; if ($data['Type']) echo '<br><FONT size=-3><b>'.getQuestType($data['Type']).'</b></FONT>';}
 function r_questReqLvl($data) {echo $data['MinLevel'];}
 function r_questName($data)
 {
@@ -1365,11 +1365,11 @@ function r_questReward($quest)
    }
  }
 
-  if ($quest['RewRepFaction1'] && $quest['RewRepValue1'])echo getFactionName($quest['RewRepFaction1']).': '.$quest['RewRepValue1'].'<br>';
-  if ($quest['RewRepFaction2'] && $quest['RewRepValue2'])echo getFactionName($quest['RewRepFaction2']).': '.$quest['RewRepValue2'].'<br>';
-  if ($quest['RewRepFaction3'] && $quest['RewRepValue3'])echo getFactionName($quest['RewRepFaction3']).': '.$quest['RewRepValue3'].'<br>';
-  if ($quest['RewRepFaction4'] && $quest['RewRepValue4'])echo getFactionName($quest['RewRepFaction4']).': '.$quest['RewRepValue4'].'<br>';
-  if ($quest['RewRepFaction5'] && $quest['RewRepValue5'])echo getFactionName($quest['RewRepFaction5']).': '.$quest['RewRepValue5'].'<br>';
+  if ($quest['RewRepFaction1'] && $quest['RewRepValue1'])echo getFactionName($quest['RewRepFaction1']).':&nbsp;'.$quest['RewRepValue1'].'<br>';
+  if ($quest['RewRepFaction2'] && $quest['RewRepValue2'])echo getFactionName($quest['RewRepFaction2']).':&nbsp;'.$quest['RewRepValue2'].'<br>';
+  if ($quest['RewRepFaction3'] && $quest['RewRepValue3'])echo getFactionName($quest['RewRepFaction3']).':&nbsp;'.$quest['RewRepValue3'].'<br>';
+  if ($quest['RewRepFaction4'] && $quest['RewRepValue4'])echo getFactionName($quest['RewRepFaction4']).':&nbsp;'.$quest['RewRepValue4'].'<br>';
+  if ($quest['RewRepFaction5'] && $quest['RewRepValue5'])echo getFactionName($quest['RewRepFaction5']).':&nbsp;'.$quest['RewRepValue5'].'<br>';
   if ($quest['RewMoneyMaxLevel'])
     echo $lang['Rew_XP'].' '.getQuestXPValue($quest).' xp<br>';
   if ($quest['RewOrReqMoney'])
@@ -1386,8 +1386,8 @@ $quest_reward_fields =
  `RewOrReqMoney`, `RewMoneyMaxLevel`, `RewSpell`, `RewSpellCast`, `RewMailTemplateId`, `RewMailDelaySecs`';
 
 $quest_report = array(
-'QUEST_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level',  'text'=>$lang['quest_lvl'],     'draw'=>'r_questLvl',   'sort_str'=>'`QuestLevel` DESC',      'fields'=>'`QuestLevel`' ),
-'QUEST_REPORT_REQLEVEL'=>array('class'=>'small','sort'=>'req_lvl','text'=>$lang['quest_reqlvl'],  'draw'=>'r_questReqLvl','sort_str'=>'`MinLevel` DESC',        'fields'=>'`MinLevel`' ),
+'QUEST_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level',  'text'=>$lang['quest_lvl'],     'draw'=>'r_questLvl',   'sort_str'=>'`QuestLevel` DESC',      'fields'=>'`QuestLevel`, `Type`'),
+'QUEST_REPORT_REQLEVEL'=>array('class'=>'small','sort'=>'req_lvl','text'=>$lang['quest_reqlvl'],  'draw'=>'r_questReqLvl','sort_str'=>'`MinLevel` DESC',        'fields'=>'`MinLevel`'),
 'QUEST_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name',   'text'=>$lang['quest_name'],    'draw'=>'r_questName',  'sort_str'=>'`Title`',                'fields'=>'`Title`, `ZoneOrSort`, `RequiredSkill`, `RequiredSkillValue`, `RequiredClasses`, `RequiredRaces`, `QuestFlags`, `SpecialFlags`'),
 'QUEST_REPORT_GIVER'   =>array('class'=>'left', 'sort'=>'',       'text'=>$lang['quest_giver'],   'draw'=>'r_questGiver', 'sort_str'=>'',                       'fields'=>''),
 'QUEST_REPORT_REWARD'  =>array('class'=>'full', 'sort'=>'reward', 'text'=>$lang['quest_rewards'], 'draw'=>'r_questReward','sort_str'=>'`RewMoneyMaxLevel` DESC','fields'=>&$quest_reward_fields),
@@ -1557,17 +1557,17 @@ $reagents= '`Reagent_1`, `Reagent_2`, `Reagent_3`, `Reagent_4`, `Reagent_5`, `Re
 `ReagentCount_1`, `ReagentCount_2`, `ReagentCount_3`, `ReagentCount_4`, `ReagentCount_5`, `ReagentCount_6`, `ReagentCount_7`, `ReagentCount_8`';
 // Spell report generator config
 $spell_report = array(
-'SPELL_REPORT_LEVEL' =>array('class'=>'small','sort'=>'level', 'text'=>$lang['spell_level'],  'draw'=>'r_spellLevel',  'sort_str'=>'`spellLevel`',     'fields'=>'`spellLevel`' ),
-'SPELL_REPORT_ICON'  =>array('class'=>'s_ico','sort'=>'icon',  'text'=>'',                    'draw'=>'r_spellIcon',   'sort_str'=>'`SpellIconID`',    'fields'=>'`SpellIconID`' ),
-'SPELL_REPORT_NAME'  =>array('class'=>'left', 'sort'=>'name',  'text'=>$lang['spell_name'],   'draw'=>'r_spellName',   'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`' ),
+'SPELL_REPORT_LEVEL' =>array('class'=>'small','sort'=>'level', 'text'=>$lang['spell_level'],  'draw'=>'r_spellLevel',  'sort_str'=>'`spellLevel`',     'fields'=>'`spellLevel`'),
+'SPELL_REPORT_ICON'  =>array('class'=>'s_ico','sort'=>'icon',  'text'=>'',                    'draw'=>'r_spellIcon',   'sort_str'=>'`SpellIconID`',    'fields'=>'`SpellIconID`'),
+'SPELL_REPORT_NAME'  =>array('class'=>'left', 'sort'=>'name',  'text'=>$lang['spell_name'],   'draw'=>'r_spellName',   'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`'),
 'SPELL_REPORT_RECIPE'=>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['spell_name'],    'draw'=>'r_spellRecipe', 'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`, `RequiresSpellFocus`, `TotemCategory_1`, `TotemCategory_2`'),
-'SPELL_REPORT_SCHOOL'=>array('class'=>'',     'sort'=>'school','text'=>$lang['spell_school'], 'draw'=>'r_spellSchool', 'sort_str'=>'`SchoolMask`',     'fields'=>'`SchoolMask`' ),
+'SPELL_REPORT_SCHOOL'=>array('class'=>'',     'sort'=>'school','text'=>$lang['spell_school'], 'draw'=>'r_spellSchool', 'sort_str'=>'`SchoolMask`',     'fields'=>'`SchoolMask`'),
 'SPELL_REPORT_REAGENTS'=>array('class'=>'reag','sort'=>'',     'text'=>$lang['spell_reagent'],'draw'=>'r_spellReagents','sort_str'=>'',                'fields'=>&$reagents),
 'SPELL_REPORT_CREATE'=>array('class'=>'skill','sort'=>'',      'text'=>$lang['spell_create'], 'draw'=>'r_spellCreate', 'sort_str'=>'',                 'fields'=>'`EffectItemType_1`, `EffectItemType_2`, `EffectItemType_3`, `EffectBasePoints_1`, `EffectBasePoints_2`, `EffectBasePoints_3`'),
 'SPELL_REPORT_EQUIP'=>array('class'=>'left',  'sort'=>'',      'text'=>'',                    'draw'=>'r_spellEquiped','sort_str'=>'',                 'fields'=>'`EquippedItemClass`, `EquippedItemSubClassMask`, `EquippedItemInventoryTypeMask`'),
 // Skill
 'SKILL_REPORT_LEVEL' =>array('class'=>'small','sort'=>'skill_lvl', 'text'=>$lang['spell_level'],'draw'=>'r_skillLevel', 'sort_str'=>'`min_value`, `spellLevel`, `SpellName`, `id`',  'fields'=>'`min_value`'),
-'SKILL_REPORT_ICON'  =>array('class'=>'skill','sort'=>'skill',     'text'=>'',                  'draw'=>'r_skillIcon',  'sort_str'=>'`SpellIconID`',    'fields'=>'`SpellIconID`, `EffectItemType_1`, `EffectItemType_2`, `EffectItemType_3`, `EffectBasePoints_1`, `EffectBasePoints_2`, `EffectBasePoints_3`' ),
+'SKILL_REPORT_ICON'  =>array('class'=>'skill','sort'=>'skill',     'text'=>'',                  'draw'=>'r_skillIcon',  'sort_str'=>'`SpellIconID`',    'fields'=>'`SpellIconID`, `EffectItemType_1`, `EffectItemType_2`, `EffectItemType_3`, `EffectBasePoints_1`, `EffectBasePoints_2`, `EffectBasePoints_3`'),
 'SKILL_REPORT_NAME'  =>array('class'=>'left', 'sort'=>'skill_name','text'=>$lang['spell_name'], 'draw'=>'r_spellSkill', 'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`, `RequiresSpellFocus`, `TotemCategory_1`, `TotemCategory_2`'),
 );
 
@@ -1695,8 +1695,8 @@ function r_glyphName($data) {$spell=getSpell($data['SpellId']); echo $spell['Spe
 function r_glyphIcon($data) {echo '<img src="'.getSpellIcon($data['iconId']).'">';}
 
 $glyph_report = array(
-'GLYPH_REPORT_ID'  =>array('class'=>'small','sort'=>'','text'=>$lang['glyph_id'  ], 'draw'=>'r_glyphId',  'sort_str'=>'', 'fields'=>'' ),
-'GLYPH_REPORT_NAME'=>array('class'=>'left', 'sort'=>'','text'=>$lang['glyph_name'], 'draw'=>'r_glyphName','sort_str'=>'', 'fields'=>'`SpellId`' ),
+'GLYPH_REPORT_ID'  =>array('class'=>'small','sort'=>'','text'=>$lang['glyph_id'  ], 'draw'=>'r_glyphId',  'sort_str'=>'', 'fields'=>''),
+'GLYPH_REPORT_NAME'=>array('class'=>'left', 'sort'=>'','text'=>$lang['glyph_name'], 'draw'=>'r_glyphName','sort_str'=>'', 'fields'=>'`SpellId`'),
 'GLYPH_REPORT_ICON'=>array('class'=>'i_ico','sort'=>'','text'=>'',                  'draw'=>'r_glyphIcon','sort_str'=>'', 'fields'=>'`iconId`'),
 );
 
@@ -1730,8 +1730,8 @@ function r_rndSuffDetail($data)
 }
 
 $rsuff_report = array(
-'RSUFF_REPORT_ID'      =>array('class'=>'small','sort'=>'',     'text'=>$lang['rand_enchant_id'  ],   'draw'=>'r_rndSuffId',    'sort_str'=>'',       'fields'=>'' ),
-'RSUFF_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['rand_enchant_name'],   'draw'=>'r_rndSuffName',  'sort_str'=>'`name`', 'fields'=>'`name`' ),
+'RSUFF_REPORT_ID'      =>array('class'=>'small','sort'=>'',     'text'=>$lang['rand_enchant_id'  ],   'draw'=>'r_rndSuffId',    'sort_str'=>'',       'fields'=>''),
+'RSUFF_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['rand_enchant_name'],   'draw'=>'r_rndSuffName',  'sort_str'=>'`name`', 'fields'=>'`name`'),
 'RSUFF_REPORT_ENCHANTS'=>array('class'=>'left', 'sort'=>'',     'text'=>$lang['rand_enchant_details'],'draw'=>'r_rndSuffDetail','sort_str'=>'',       'fields'=>'`Prefix_1`, `Prefix_2`, `Prefix_3`, `EnchantID_1`, `EnchantID_2`, `EnchantID_3`'),
 );
 
@@ -1765,8 +1765,8 @@ function r_rndPropDetail($data)
 }
 
 $rprop_report = array(
-'RPROP_REPORT_ID'      =>array('class'=>'small','sort'=>'',     'text'=>$lang['rand_enchant_id'  ],   'draw'=>'r_rndPropId',    'sort_str'=>'',       'fields'=>'' ),
-'RPROP_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['rand_enchant_name'],   'draw'=>'r_rndPropName',  'sort_str'=>'`name`', 'fields'=>'`name`' ),
+'RPROP_REPORT_ID'      =>array('class'=>'small','sort'=>'',     'text'=>$lang['rand_enchant_id'  ],   'draw'=>'r_rndPropId',    'sort_str'=>'',       'fields'=>''),
+'RPROP_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['rand_enchant_name'],   'draw'=>'r_rndPropName',  'sort_str'=>'`name`', 'fields'=>'`name`'),
 'RPROP_REPORT_ENCHANTS'=>array('class'=>'left', 'sort'=>'',     'text'=>$lang['rand_enchant_details'],'draw'=>'r_rndPropDetail','sort_str'=>'',       'fields'=>'`EnchantID_1`, `EnchantID_2`, `EnchantID_3`, `EnchantID_4`, `EnchantID_5`'),
 );
 
@@ -1959,8 +1959,8 @@ function r_factionName($data)  {echo '<a href="?faction='.$data['id'].'">'.$data
 function r_factionDetail($data){echo $data['details'];}
 
 $faction_report = array(
-'FACTION_REPORT_ID'      =>array('class'=>'small','sort'=>'',     'text'=>$lang['faction_id'  ],   'draw'=>'r_factionId',    'sort_str'=>'',       'fields'=>'' ),
-'FACTION_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['faction_name'],   'draw'=>'r_factionName',  'sort_str'=>'`name`', 'fields'=>'`name`' ),
+'FACTION_REPORT_ID'      =>array('class'=>'small','sort'=>'',     'text'=>$lang['faction_id'  ],   'draw'=>'r_factionId',    'sort_str'=>'',       'fields'=>''),
+'FACTION_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['faction_name'],   'draw'=>'r_factionName',  'sort_str'=>'`name`', 'fields'=>'`name`'),
 'FACTION_REPORT_DETAILS' =>array('class'=>'left', 'sort'=>'',     'text'=>$lang['faction_details'],'draw'=>'r_factionDetail','sort_str'=>'',       'fields'=>'`details`'),
 );
 
