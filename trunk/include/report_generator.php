@@ -912,7 +912,7 @@ function r_npcRole($data)
   if ($flag&0x00000002 && getNpcInvolvedrelation($data['entry'])) echo '<img src=images/map_points/active_quest_icon.gif>';
   if ($flag&0x00000070) echo '<img src=images/map_points/trainer_icon.gif>';
   if ($flag&0x00000F80) echo '<img src=images/map_points/vendor_icon.gif>';
-//  if ($flag&0x00001000) echo '<img src=images/map_points/repair.gif>';
+  if ($flag&0x00001000) echo '<img src=images/map_points/repair.png>';
   if ($flag&0x00002000) echo '<img src=images/map_points/taxi_icon.gif>';
   if ($flag&0x00010000) echo '<img src=images/map_points/inn_icon.png>';
   if ($flag&0x00820000) echo '<img src=images/map_points/banker_icon.gif>';
