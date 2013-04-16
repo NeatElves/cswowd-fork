@@ -52,8 +52,8 @@ else
        echo "<div id=mapper>";
      }
      $pointsList = new mapPoints();
-     if ($npc_id)$pointsList->addNpc($npc_id, $map);
-     if ($obj_id)$pointsList->addGo($obj_id, $map);
+     if ($npc_id) $pointsList->addNpc($npc_id, $map);
+     if ($obj_id) $pointsList->addGo($obj_id, $map);
      renderArea($gZoneToAreaImage[$zentry], $width, $pointsList->points);
      if ($ajaxmode==0)
      {
@@ -62,10 +62,11 @@ else
        echo "<script type=\"text/javascript\">cacheMap('$baseLink')</script>";
      }
   }
-  elseif ($map && !isset($_REQUEST['mark']))
+  else if ($map && !isset($_REQUEST['mark']))
   {
-     if ($ajaxmode==0)
-       echo "<div id=mapper>";
+  if ($ajaxmode==0)
+     echo "<div id=mapper>";
+  if ($npc_id || $obj_id)
      renderMap($map, $width, createPointsList($npc_id, $obj_id));
      if ($ajaxmode==0)
      {

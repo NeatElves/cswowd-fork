@@ -222,12 +222,12 @@ if ($quest['ReqSourceId1'] != 0 OR $quest['ReqSourceId2'] != 0 OR
 echo "<tr><td>".getQuestText($quest['Details'])."</td></tr>";
  if ($quest['CompletedText'])
 {
-   echo "<tr><td class = head>$lang[quest_completed]</td></tr>";
+   echo "<tr><td class=head>$lang[quest_completed]</td></tr>";
    echo '<tr><td>'.$quest['CompletedText'].'</td></tr>';
 }
 if ($quest['SrcItemId'] || $quest['SrcSpell'])
 {
- echo "<tr><td class = head>$lang[provided]</td></tr>";
+ echo "<tr><td class=head>$lang[provided]</td></tr>";
  if ($quest['SrcItemId'])
  {
    $item = getItem($quest['SrcItemId'], "`entry`, `name`, `Quality`, `displayid`");
@@ -245,7 +245,7 @@ if ($quest['SrcItemId'] || $quest['SrcSpell'])
   echo " <a href=\"?spell=$spell[id]\">$spell[SpellName]</a></td></tr>";
  }
 }
-echo "<tr><td class = head>$lang[quest_rewards]</td></tr>";
+echo "<tr><td class=head>$lang[quest_rewards]</td></tr>";
 
 if ($quest['RewItemId1'] OR $quest['RewItemId1'] OR $quest['RewItemId1'] OR $quest['RewItemId1'])
 {
@@ -274,18 +274,13 @@ if ($quest['RewMailTemplateId'])
 {
  $MailTime=$quest['RewMailDelaySecs']/60/60;
  $ItemMail=getItemMail($quest['RewMailTemplateId']);
+ echo "<tr><td class=mark>$lang[Rew_mail]&nbsp;$lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
  if ($ItemMail)
   {
-    echo "<tr><td class=mark>$lang[Rew_mail]&nbsp;$lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
     echo "<tr><td class=mark>$lang[Rew_item_mail]</td></tr>";
     echo "<tr><td class=reward>&nbsp;";{show_item($ItemMail);}
-    echo "</td></tr>";
   }
-  else
-  {
-    echo "<tr><td class=mark>$lang[Rew_mail]&nbsp;$lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
     echo "</td></tr>";
-  }
 }
 if ($quest['RewSpell'] || $quest['RewSpellCast'])
 {

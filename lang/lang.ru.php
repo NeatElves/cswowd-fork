@@ -111,7 +111,8 @@ $lang = array(
 'quest_lvl'=>'Уровень',
 'quest_reqlvl'=>'Требует уровень',
 'quest_name'=>'Название задания',
-'quest_giver'=>'Выдаёт',
+'quest_giver'=>'Начало',
+'quest_giver_end'=>'Конец',
 'quest_rewards'=>'Награды',
 
 # Spell report

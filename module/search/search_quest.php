@@ -9,7 +9,7 @@ $allmode = @$_REQUEST['s']=='all';
 // Создаём ссылку на страницу, игнорируем дефолтные значения
 $FindRefrence = "?s=q";
 
-$show_fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
+$show_fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
 //==============================================================================
 // Создаём SQL запрос исходя из заданых пользователем параметров
 //==============================================================================

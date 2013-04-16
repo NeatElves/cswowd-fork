@@ -1242,7 +1242,7 @@ function r_questName($data)
  if (($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_REPEATABLE) && (($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY) ==0) && ($data['QuestFlags'] & (QUEST_FLAGS_DAILY | QUEST_FLAGS_WEEKLY))  == 0)
     echo '<div class=areaname><a href="?s=q&Sfr='.($data['SpecialFlags']).'">'.$lang['quest_type0'].'</a></div>';
 }
-function r_questGiver($data)
+function r_questRelation($data)
 {
   global $dDB;
   // Search creature quest giver
@@ -1267,6 +1267,29 @@ function r_questGiver($data)
   if ($src = $dDB->select("SELECT `entry`, `name`, `Quality` FROM `item_template` WHERE `startquest` = ?d", $data['entry']))
   {
     foreach ($src as $item) {localiseItem($item);r_itemName($item);}
+    return;
+  }
+  echo '---(?)---';
+}
+function r_questInvolvedrelation($data)
+{
+  global $dDB;
+  // Search creature quest giver
+  if ($src = $dDB->select(
+   'SELECT `entry`, `name`, `subname`, `faction_A`
+    FROM  `creature_template` left join `creature_involvedrelation` ON `creature_template`.`entry` = `creature_involvedrelation`.`id`
+    WHERE `creature_involvedrelation`.`quest` = ?d', $data['entry']))
+  {
+    foreach ($src as $creature){localiseCreature($creature);r_npcRName($creature);}
+    return;
+  }
+  // Search GO quest giver
+  if ($src = $dDB->select(
+  'SELECT `entry`, `name`
+   FROM `gameobject_template` left join `gameobject_involvedrelation` ON `gameobject_template`.`entry` = `gameobject_involvedrelation`.`id`
+   WHERE `gameobject_involvedrelation`.`quest` = ?d', $data['entry']))
+  {
+    foreach ($src as $go) {localiseGameobject($go); r_objName($go);}
     return;
   }
   echo '---(?)---';
@@ -1389,7 +1412,8 @@ $quest_report = array(
 'QUEST_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level',  'text'=>$lang['quest_lvl'],     'draw'=>'r_questLvl',   'sort_str'=>'`QuestLevel` DESC',      'fields'=>'`QuestLevel`, `Type`'),
 'QUEST_REPORT_REQLEVEL'=>array('class'=>'small','sort'=>'req_lvl','text'=>$lang['quest_reqlvl'],  'draw'=>'r_questReqLvl','sort_str'=>'`MinLevel` DESC',        'fields'=>'`MinLevel`'),
 'QUEST_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name',   'text'=>$lang['quest_name'],    'draw'=>'r_questName',  'sort_str'=>'`Title`',                'fields'=>'`Title`, `ZoneOrSort`, `RequiredSkill`, `RequiredSkillValue`, `RequiredClasses`, `RequiredRaces`, `QuestFlags`, `SpecialFlags`'),
-'QUEST_REPORT_GIVER'   =>array('class'=>'left', 'sort'=>'',       'text'=>$lang['quest_giver'],   'draw'=>'r_questGiver', 'sort_str'=>'',                       'fields'=>''),
+'QUEST_REPORT_GIVER'   =>array('class'=>'left', 'sort'=>'',       'text'=>$lang['quest_giver'],   'draw'=>'r_questRelation', 'sort_str'=>'',                       'fields'=>''),
+'QUEST_REPORT_GIVER_END'=>array('class'=>'left', 'sort'=>'',       'text'=>$lang['quest_giver_end'],   'draw'=>'r_questInvolvedrelation', 'sort_str'=>'',                       'fields'=>''),
 'QUEST_REPORT_REWARD'  =>array('class'=>'full', 'sort'=>'reward', 'text'=>$lang['quest_rewards'], 'draw'=>'r_questReward','sort_str'=>'`RewMoneyMaxLevel` DESC','fields'=>&$quest_reward_fields),
 // loot
 'LOOT_REPORT_CHANCE'=>array('class'=>'', 'sort'=>'chance', 'text'=>$lang['loot_chance'], 'draw'=>'r_lootChance', 'sort_str'=>'ABS(`ChanceOrQuestChance`) DESC, `Title`', 'fields'=>'`ChanceOrQuestChance`, `mincountOrRef`'),

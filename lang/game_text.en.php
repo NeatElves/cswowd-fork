@@ -18,6 +18,7 @@ $UseorEquip = array(
 '0'=>'Use:',
 '1'=>'Equip:',
 '2'=>'Chance on hit:',
+'3'=>'',
 '4'=>'Soulstone:',
 '5'=>'',
 '6'=>'Use for learn:'

@@ -111,7 +111,8 @@ $lang = array(
 'quest_lvl'=>'Level',
 'quest_reqlvl'=>'Req level',
 'quest_name'=>'Quest name',
-'quest_giver'=>'Quest giver',
+'quest_giver'=>'Start',
+'quest_giver_end'=>'End',
 'quest_rewards'=>'Rewards',
 
 # Spell report
@@ -326,7 +327,7 @@ $lang = array(
 'Rew_item'  => 'Items:',
 'Rew_item_mail'  => 'Items in the letter:',
 'Rew_mail'  => 'Will be sent,',
-'Mail_item_time'  => ' time of delivery: ',
+'Mail_item_time'  => 'time of delivery: ',
 'Mail_time'  => ' hours',
 'item_sel_and' => '&nbsp;+&nbsp;',
 'item_sel_or' => '&nbsp;or&nbsp;',
