@@ -289,7 +289,7 @@ else
   // Quest list reward this item
   //********************************************************************************
   $qReward =& new QuestReportGenerator();
-  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
+  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
   if ($qReward->Init($fields, $baseLink, 'qrewardLIST', $config['fade_limit'], 'name'))
   {
     $qReward->rewardItem($entry);
@@ -299,7 +299,7 @@ else
   // Required for quest (except if this item quest)
   //********************************************************************************
   $reqForQuest =& new QuestReportGenerator();
-  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
+  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
   if ($reqForQuest->Init($fields, $baseLink, 'qreqLIST', $config['fade_limit'], 'name'))
   {
     $reqForQuest->requireItem($entry, $item['startquest']);
@@ -309,7 +309,7 @@ else
   // Give on quest take (except if this item quest)
   //********************************************************************************
   $srcForQuest =& new QuestReportGenerator();
-  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
+  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
   if ($srcForQuest->Init($fields, $baseLink, 'qgiveLIST', $config['fade_limit'], 'name'))
   {
     $srcForQuest->provideItem($entry, $item['startquest']);

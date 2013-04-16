@@ -19,6 +19,7 @@ $UseorEquip = array(
 '0'=>'Исп:',
 '1'=>'Одета:',
 '2'=>'Эффект при попадании:',
+'3'=>'',
 '4'=>'Soulstone:',
 '5'=>'',
 '6'=>'Изучить:'
@@ -59,7 +60,7 @@ $iBonus = array(
 '36'=>'Одета: Рейтинг скорости +%d.',                         // ITEM_MOD_HASTE_RATING             = 36
 '37'=>'Одета: Рейтинг мастерства +%d.',                       // ITEM_MOD_EXPERTISE_RATING         = 37
 '38'=>'Одета: Увеличивает силу атаки на %d.',                 // ITEM_MOD_ATTACK_POWER             = 38
-'39'=>'Одета: Increases ranged attack power by %d.',          // ITEM_MOD_RANGED_ATTACK_POWER      = 39
+'39'=>'Одета: Увеличивает силу атаки дальнего боя на %d.',    // ITEM_MOD_RANGED_ATTACK_POWER      = 39
 '40'=>'Одета: Increases attack power by %d in Cat, Bear, Dire Bear, and Moonkin forms only.',// ITEM_MOD_FERAL_ATTACK_POWER       = 40
 '41'=>'Одета: Increases healing done by magical spells and effects by up to %d.',            // ITEM_MOD_SPELL_HEALING_DONE       = 41
 '42'=>'Одета: Increases damage done by magical spells and effects by up to %d.',             // ITEM_MOD_SPELL_DAMAGE_DONE        = 42

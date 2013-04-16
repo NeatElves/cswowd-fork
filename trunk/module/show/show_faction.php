@@ -93,7 +93,7 @@ else
   // Награда за квест
   //********************************************************************************
   $quest_list =& new QuestReportGenerator();
-  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_REWARD');
+  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
   if ($quest_list->Init($fields, $baseLink, 'questLIST', $config['fade_limit'], 'name'))
   {
     $quest_list->rewardReputation($entry);
