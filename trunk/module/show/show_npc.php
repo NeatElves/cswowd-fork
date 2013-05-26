@@ -33,7 +33,7 @@ else
  $baseLink = '?npc='.$entry;
 
  if ($ajaxmode==0)
- {
+{
  if ($lang['www_creature'])
 	echo "<a href=\"".sprintf($lang['www_creature'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_creature'], $entry)."</a><br>";
   echo "<table cellspacing=0 cellpadding=0 width=500>";
@@ -106,9 +106,7 @@ else
    echo "<tr><th>AIName</th><td>".$cr['AIName']."</td><th>ScriptName</th><td>".$cr['ScriptName']."</td></tr>";
    echo "</tbody></table>";
   }
- }
-
-//==========================================================
+ //==========================================================
  if ($config['show_3d_model_npc']) // Вывод 3D модели НПС
  {
                 echo '<br><span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -266,6 +264,7 @@ else
   echo "</div></div></span>";
   }
  }
+}
 
  createReportTab();
  //********************************************************************************
