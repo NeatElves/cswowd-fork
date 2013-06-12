@@ -49,7 +49,7 @@ if ($filter)
  if ($number <= 0)
     echo $lang['not_found'];
  else if ($number == 1 && $allmode == 0)   // Перенаправляем
-    echo '<meta http-equiv="refresh" content=1;URL=?faction='.$faction_search->data_array[0]['entry'].'>';
+    echo '<meta http-equiv="refresh" content=1;URL=?faction='.$faction_search->data_array[0]['id'].'>';
  else
     $faction_search->createReport($lang['search_results'].' - '.$lang['found'].' '.$number);
 }
