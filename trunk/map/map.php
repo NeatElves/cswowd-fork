@@ -2,7 +2,7 @@
 include_once("../conf.php");
 include_once("zone_tables.php");
 
-mysql_connect($config['hostname'],$config['username'],$config['password']) OR DIE("Не возможно создать соеденение с базой сервера.".mysql_error());
+mysql_connect($config['hostname'],$config['username'],$config['password']) OR DIE("Невозможно создать соединение с базой сервера.".mysql_error());
 mysql_select_db($config['dbName']) or die(mysql_error());
 
 $id = intval(@$_REQUEST['id']);
@@ -27,7 +27,7 @@ if ($zone==0)
 $area = get_Area($zone[5]);
 if ($area==0)
 {
-  echo "<center><table valign=\"bottom\"><tr><td><img src=\"../images/wowd.jpg\"></td></tr><tr><td><center>Карта не найденна(</center></td></tr></table></center>";
+  echo "<center><table valign=\"bottom\"><tr><td><img src=\"../images/wowd.jpg\"></td></tr><tr><td><center>Карта не найдена(</center></td></tr></table></center>";
   die();
 }
 $background = "img/map_image/$areaName/$area[3].jpg";

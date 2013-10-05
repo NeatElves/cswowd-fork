@@ -1,7 +1,7 @@
 <?php
 include_once("../conf.php");
 include_once("zone_tables.php");
-mysql_connect($config['hostname'],$config['username'],$config['password']) OR DIE("Не возможно создать соеденение с базой сервера.".mysql_error());
+mysql_connect($config['hostname'],$config['username'],$config['password']) OR DIE("Невозможно создать соединение с базой сервера.".mysql_error());
 mysql_select_db($config['dbName']) or die(mysql_error());
 
 echo "<html>";
