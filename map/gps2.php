@@ -20,7 +20,7 @@ else
 }
 if ($id == "") { echo "<center><table valign=\"bottom\"><tr><td><img src=\"../images/wowd.jpg\"></td></tr><tr><td><center>Отсутствует запрос</center></td></tr></table></center>"; die(); }
 
-mysql_connect($config['hostname'],$config['username'],$config['password']) OR DIE("Не возможно создать соеденение с базой сервера. Возможно сервер выключен");
+mysql_connect($config['hostname'],$config['username'],$config['password']) OR DIE("Невозможно создать соединение с базой сервера. Возможно сервер выключен");
 mysql_select_db($config['dbName']) or die(mysql_error());
 
 // Предварительный выбор карты берётся 1 моб и определяем его местоположение
