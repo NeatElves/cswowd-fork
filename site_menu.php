@@ -2,7 +2,7 @@
 include_once("include/functions.php");
 include_once("include/map_data.php");
 
-// Нужно соеденится с базой (часть менюшек требует названий оттуда
+// Нужно соединиться с базой (часть менюшек требует названий оттуда
 include_once("include/DbSimple/Generic.php");
 $wDB = DbSimple_Generic::connect("mysql://$config[wusername]:$config[wpassword]@$config[whostname]/$config[wdbName]");
 $wDB->query("SET NAMES ?s", $config['client_charset']);
@@ -529,6 +529,7 @@ $menu = array(
                  array('link'=>'?faq=prof-mining',        'text'=>$lang['prof_mining']),
                  array('link'=>'?faq=prof-skinning',      'text'=>$lang['prof_skinning']),
                  array('link'=>'?faq=prof-tailoring',     'text'=>$lang['prof_taloring']),
+//                 array('link'=>'?faq=prof-inscription',   'text'=>$lang['prof_inscription']),
                  array(                                   'text'=>$lang['prof_secondary']),
                  array('link'=>'?faq=prof-cooking',       'text'=>$lang['prof_cooking']),
                  array('link'=>'?faq=prof-first_aid',     'text'=>$lang['prof_first_aid']),
