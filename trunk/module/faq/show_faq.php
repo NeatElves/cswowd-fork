@@ -54,6 +54,7 @@ $faq_list = array(
 'prof-mining'=>'proffaq/prof-mining.html',
 'prof-skinning'=>'proffaq/prof-skinning.html',
 'prof-tailoring'=>'proffaq/prof-tailoring.html',
+//'prof-inscription'=>'proffaq/prof-inscription.html',
 
 // Race faq
 'race-humans'=>'racefaq/race-humans.html',
