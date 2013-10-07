@@ -529,7 +529,7 @@ $menu = array(
                  array('link'=>'?faq=prof-mining',        'text'=>$lang['prof_mining']),
                  array('link'=>'?faq=prof-skinning',      'text'=>$lang['prof_skinning']),
                  array('link'=>'?faq=prof-tailoring',     'text'=>$lang['prof_taloring']),
-//                 array('link'=>'?faq=prof-inscription',   'text'=>$lang['prof_inscription']),
+                 array('link'=>'?faq=prof-inscription',   'text'=>$lang['prof_inscription']),
                  array(                                   'text'=>$lang['prof_secondary']),
                  array('link'=>'?faq=prof-cooking',       'text'=>$lang['prof_cooking']),
                  array('link'=>'?faq=prof-first_aid',     'text'=>$lang['prof_first_aid']),
