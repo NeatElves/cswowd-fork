@@ -500,7 +500,7 @@ $lang = array(
 'player_s_regen'  => 'Mana Regen:',
 
 # Instance
-'inst_no_map_present' => 'No map data present for',
+'inst_no_map_present' => 'No map data present for ',
 'inst_creature_list'  => 'Creatures on map',
 'inst_go_list'        => 'Objects on map',
 
@@ -654,6 +654,10 @@ $lang = array(
 # Search Faction dialog
 'find_faction'=>'Search faction',
 'faction_name'=>'Faction name',
+
+# Talent calc
+'bild_link'=>'Link',
+'reset_talents'=>'Reset all',
 
 # Side
 'Both'=>'Both',
