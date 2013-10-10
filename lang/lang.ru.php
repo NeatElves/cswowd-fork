@@ -658,6 +658,10 @@ $lang = array(
 'find_faction'=>'Поиск фракции',
 'faction_name'=>'Название',
 
+# Talent calc
+'bild_link'=>'Ссылка',
+'reset_talents'=>'Сбросить все',
+
 # Side
 'Both'=>'Обе',
 'Alliance'=>'Альянс',

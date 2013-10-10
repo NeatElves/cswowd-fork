@@ -56,6 +56,6 @@ if ($cid OR $pid>=0)
  echo '<script type="text/javascript">tc_renderTree("talent");</script>';
 }
 echo '<div class=faq><center>';
-echo '<a href="'.$link.'" id=talent_bild_link>Bild link</a> | <a href="#" onclick="return tc_resetBild();">Reset talents</a>';
+echo '<a href="'.$link.'" id=talent_bild_link>'.$lang['bild_link'].'</a> | <a href="#" onclick="return tc_resetBild();">'.$lang['reset_talents'].'</a>';
 echo '</center></div>';
 ?>
