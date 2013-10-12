@@ -28,7 +28,7 @@ $lang = array(
 'found'             => 'Найдено',
 'not_found'         => 'Не найдено',
 'go_not_found'      => 'Объект не найден',
-'creature_not_found'=> 'Существо не найдено',
+'creature_not_found'=> 'НИП не найден',
 'item_not_found'    => 'Предмет не найден',
 'quest_not_found1'   => 'Задание не найдено',
 'spell_not_found'   => 'Заклинание не найдено',
@@ -37,7 +37,7 @@ $lang = array(
 'search_item_req'   => 'Запрос на поиск предмета',
 'search_set_req'    => 'Запрос на поиск комплекта',
 'search_faction_req'=> 'Запрос на поиск фракции',
-'search_npc_req'    => 'Запрос на поиск НПС',
+'search_npc_req'    => 'Запрос на поиск НИП',
 'search_quest_req'  => 'Запрос на поиск задания',
 'search_go_req'     => 'Запрос на поиск объекта',
 'search_spell_req'  => 'Запрос на поиск заклинания',
@@ -139,7 +139,7 @@ $lang = array(
 
 # Creature report
 'creature_level' => 'Уровень',
-'creature_name'  => 'Название существа',
+'creature_name'  => 'Название НИП',
 'creature_react' => 'Отношение',
 'creature_role'  => 'Назначение',
 
@@ -252,7 +252,7 @@ $lang = array(
 'level' => 'Уровень',
 'spawn_at_event' => 'Появится в событие',
 'despawn_at_event' => 'Исчезнет в событие',
-'view3dnpc' => 'Показать 3D-модель существа',
+'view3dnpc' => 'Показать 3D-модель НИП',
 
 #Loot info
 'loot_details'      => 'Подробнее',
@@ -369,8 +369,8 @@ $lang = array(
 #Faction info
 'faction_contain' =>'Состоит из',
 'faction_in'     => 'Входит в состав',
-'faction_npc' => 'Входят существа',
-'faction_go' => 'Входят ГО',
+'faction_npc' => 'Входят НИП',
+'faction_go' => 'Входят объекты',
 'faction_item' => 'Предметы, требующие репутации',
 'faction_quest_rew' => 'Награды за задания',
 'faction_kill_rew'=> 'Награды за убийство',
@@ -379,7 +379,7 @@ $lang = array(
 #Zone info
 'zone_parent'=>'Часть местности',
 'zone_subzones'=>'Состоит из',
-'zone_npc_in'=>  'Существа',
+'zone_npc_in'=>  'НИП',
 'zone_go_in' =>  'Объекты',
 'zone_fishing_in' => 'Рыбалка',
 
@@ -504,7 +504,7 @@ $lang = array(
 
 # Instance
 'inst_no_map_present' => 'Нет карты для ',
-'inst_creature_list'  => 'Существа на карте',
+'inst_creature_list'  => 'НИП на карте',
 'inst_go_list'        => 'Объекты на карте',
 
 # Achievement
@@ -537,8 +537,8 @@ $lang = array(
 'find'=>'Поиск:',
 'item_lookup'=>'Поиск предметов',
 'quest_lookup'=>'Поиск заданий',
-'creature_lookup'=>'Поиск НПС',
-'creature_by_type'=>'Типы НПС',
+'creature_lookup'=>'Поиск НИП',
+'creature_by_type'=>'Типы НИП',
 'creature_by_family'=>'Подвиды',
 'creature_by_role'=>'Назначение',
 'spell_lookup'=>'Поиск заклинаний',
@@ -631,7 +631,7 @@ $lang = array(
 'item_type' => 'Тип',
 'item_min_level' => 'Mин. уровень',
 'item_max_level' => 'Mакс. уровень',
-'find_mob' =>'Поиск существ',
+'find_mob' =>'Поиск НИП',
 
 # Search Spell dialog
 'find_spell' =>'Поиск заклинаний',

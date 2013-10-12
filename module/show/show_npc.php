@@ -12,12 +12,12 @@ include_once("include/report_generator.php");
   - Что он продаёт
   - Чему обучает
   - Нужен для какого квеста
-  - В какую группу входит существо (kredit)
+  - В какую группу входит НИП (kredit)
   - Какие квесты даёт
   - Какие квесты принимает
-  - Лут с существа
-  - Лут который можно украсть у существа
-  - Лут шкурок с трупа существа
+  - Лут с НИП
+  - Лут который можно украсть у НИП
+  - Лут шкурок с трупа НИП
 */
 $entry = intval(@$_REQUEST['npc']);
 $page  = intval(@$_REQUEST['page']);
@@ -107,7 +107,7 @@ else
    echo "</tbody></table>";
   }
  //==========================================================
- if ($config['show_3d_model_npc']) // Вывод 3D модели НПС
+ if ($config['show_3d_model_npc']) // Вывод 3D модели НИП
  {
                 echo '<br><span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';

@@ -95,7 +95,7 @@ else
        }
      }
      //***********************************
-     // Существа
+     // НИП
      //***********************************
      $creatures_list = $dungeon ? $dDB->selectPage($totalRecords,
      "SELECT
