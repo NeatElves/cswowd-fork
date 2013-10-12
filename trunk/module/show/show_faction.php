@@ -10,7 +10,7 @@ include_once("include/faction_table.php");
  Показывает:
  - Входящие в состав фракции
  - Входит в группу фракций
- - Существа из данной фракции
+ - НИП из данной фракции
    Как можно получить репутацию:
    - Награда за квест
    - Получена от спелла
@@ -61,7 +61,7 @@ else
 
   $templatesId = 0;
   // Состав фракции
-  // Существа из данной фракции
+  // НИП из данной фракции
   $npc =& new CreatureReportGenerator();
   $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_NAME', 'NPC_REPORT_REACTION', 'NPC_REPORT_MAP');
   if ($npc->Init($fields, $baseLink, 'creatureLIST', $config['fade_limit'], 'level'))
@@ -100,7 +100,7 @@ else
     $quest_list->createReport($lang['faction_quest_rew']);
   }
   //********************************************************************************
-  // Награда за существо
+  // Награда за НИП
   //********************************************************************************
   $r_npc =& new CreatureReportGenerator('reputation');
   $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'ONKILL_REPUTATION', 'NPC_REPORT_MAP');
