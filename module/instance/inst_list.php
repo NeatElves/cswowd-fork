@@ -25,8 +25,6 @@ array(60,70,509, 1377, "20 person raid"), // Ruins of Ahn'Qiraj
 array(60,70,531, 1377, "40 person raid"), // Ahn'Qiraj Temple
 array(60,70,469, 1583, "40 person raid Located in Blackrock Mountain"), // Blackwing Lair
 array(60,70,409, 1584, "40 person raid Located in Blackrock Mountain"), // Molten Core
-array(60,70,533,  139, "Most difficult 40 person Raid"), // Naxxramas
-array(60,70,249,   15, "40 person raid"), // Onyxia's Lair
 array(60,67,543, 3483, ""), // Hellfire Citadel: Ramparts
 array(60,68,542, 3483, ""), // Hellfire Citadel: The Blood Furnace
 array(69,77,540, 3483, ""), // Hellfire Citadel: The Shattered Halls
@@ -52,6 +50,32 @@ array(70,77,565, 3522, "25 man raid"), // Gruul's Lair
 array(70,77,568, 3433, ""), // Zul'Aman
 array(70,77,580, 4080, ""), // The Sunwell
 array(70,77,585, 4080, ""), // Magister's Terrace
+array(72,74,601, 65, ""), // Azjol-Nerub
+array(73,75,619, 65, ""), // Ahn'kahet: The Old Kingdom
+array(75,77,608, 4395, ""), // Violet Hold
+array(76,78,604, 66, ""), // Gundrak
+array(78,80,650, 210, ""), // Trial of the Champion
+array(74,76,600, 66, ""), // Drak'Tharon Keep
+array(79,80,575, 495, ""), // Utgarde Pinnacle
+array(69,72,574, 495, ""), // Utgarde Keep
+array(71,73,576, 3537, ""), // The Nexus
+array(79,80,578, 3537, ""), // The Oculus
+array(79,79,595, 440, ""), // The Culling of Stratholme
+array(77,78,599, 67, ""), // Halls of Stone
+array(79,80,602, 67, ""), // Halls of Lightning
+array(80,80,668, 210, ""), // Halls of Reflection
+array(80,80,632, 210, ""), // The Forge of Souls
+array(80,80,658, 210, ""), // Pit of Saron
+//RAIDS
+array(60,70,533,  139, "Most difficult 40 person Raid"), // Naxxramas
+array(60,70,249,   15, "40 person raid"), // Onyxia's Lair
+array(80,80,649, 210, ""), // Trial of the Crusader
+array(80,80,616, 3537, ""), // The Eye of Eternity
+array(80,80,624, 4197, ""), // Vault of Archavon
+array(80,80,603, 67, ""), // Ulduar
+array(80,80,615, 65, ""), // The Obsidian Sanctum
+array(80,80,724, 65, ""), // The Ruby Sanctum
+array(80,80,631, 210, ""), // Icecrown Citadel
 );
 
 function outInstRow($id, $level, $zone, $comment)
