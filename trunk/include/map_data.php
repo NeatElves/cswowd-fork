@@ -445,70 +445,94 @@ function getRenderMapData($map)
 }
 
 $gMapIcon = array(
-'0'=>"EasternKingdoms.gif",
-'1'=>"Kalimdor.gif",
-'30'=>"Battleground.gif",
-'33'=>"ShadowFangKeep.gif",
-'34'=>"StormwindStockades.gif",
-'36'=>"Deadmines.gif",
-'43'=>"WailingCaverns.gif",
-'47'=>"RazorfenKraul.gif",
-'48'=>"BlackfathomDeeps.gif",
-'70'=>"Uldaman.gif",
-'90'=>"Gnomeregan.gif",
-'109'=>"SunkenTemple.gif",
-'129'=>"RazorfenDowns.gif",
-'189'=>"ScarletMonastery.gif",
-'209'=>"ZulFarak.gif",
-'229'=>"BlackrockSpire.gif",
-'230'=>"BlackrockDepths.gif",
-'249'=>"Raid.gif",
-'269'=>"CavernsOfTime.gif",
-'289'=>"Scholomance.gif",
-'309'=>"ZulGurub.gif",
-'329'=>"Stratholme.gif",
-'349'=>"Maraudon.gif",
-'389'=>"RagefireChasm.gif",
-'409'=>"MoltenCore.gif",
-'429'=>"DireMaul.gif",
-'469'=>"BlackwingLair.gif",
-'489'=>"WarsongGulch.gif",
-'509'=>"AQRuins.gif",
-'529'=>"ArathiBasin.gif",
-'530'=>"Outland.gif",
-'531'=>"AQTemple.gif",
-'532'=>"Karazhan.gif",
-'533'=>"Naxxramas.gif",
-'534'=>"HyjalPast.gif",
-'540'=>"HellfireCitadel.gif",
-'542'=>"HellfireCitadel.gif",
-'543'=>"HellfireCitadel.gif",
-'544'=>"HellfireCitadelRaid.gif",
-'545'=>"CoilFang.gif",
-'546'=>"CoilFang.gif",
-'547'=>"CoilFang.gif",
-'548'=>"SerpentshrineCavern.gif",
-'550'=>"TempestKeep.gif",
-'552'=>"TempestKeep.gif",
-'553'=>"TempestKeep.gif",
-'554'=>"TempestKeep.gif",
-'555'=>"Auchindoun.gif",
-'556'=>"Auchindoun.gif",
-'557'=>"Auchindoun.gif",
-'558'=>"Auchindoun.gif",
-'560'=>"CavernsOfTime.gif",
-'564'=>"BlackTemple.gif",
-'565'=>"GruulsLair.gif",
-'568'=>"ZulAman.gif",
-'580'=>"Sunwell.gif",
-'585'=>"MagistersTerrace.gif"
+'0'=>"0.gif",
+'1'=>"1.gif",
+'30'=>"30.gif",
+'33'=>"33.gif",
+'34'=>"34.gif",
+'36'=>"36.gif",
+'43'=>"43.gif",
+'47'=>"47.gif",
+'48'=>"48.gif",
+'70'=>"70.gif",
+'90'=>"90.gif",
+'109'=>"109.gif",
+'129'=>"129.gif",
+'189'=>"189.gif",
+'209'=>"209.gif",
+'229'=>"229.gif",
+'230'=>"230.gif",
+'249'=>"249.gif",
+'269'=>"269.gif",
+'289'=>"289.gif",
+'309'=>"309.gif",
+'329'=>"329.gif",
+'349'=>"349.gif",
+'389'=>"389.gif",
+'409'=>"409.gif",
+'429'=>"429.gif",
+'469'=>"469.gif",
+'489'=>"489.gif",
+'509'=>"509.gif",
+'529'=>"529.gif",
+'530'=>"530.gif",
+'531'=>"531.gif",
+'532'=>"532.gif",
+'533'=>"533.gif",
+'534'=>"534.gif",
+'540'=>"540.gif",
+'542'=>"542.gif",
+'543'=>"543.gif",
+'544'=>"544.gif",
+'545'=>"545.gif",
+'546'=>"546.gif",
+'547'=>"547.gif",
+'548'=>"548.gif",
+'550'=>"550.gif",
+'552'=>"552.gif",
+'553'=>"553.gif",
+'554'=>"554.gif",
+'555'=>"555.gif",
+'556'=>"556.gif",
+'557'=>"557.gif",
+'558'=>"558.gif",
+'560'=>"560.gif",
+'564'=>"564.gif",
+'565'=>"565.gif",
+'568'=>"568.gif",
+'571'=>"571.gif",
+'574'=>"574.gif",
+'575'=>"575.gif",
+'576'=>"576.gif",
+'578'=>"578.gif",
+'580'=>"580.gif",
+'585'=>"585.gif",
+'595'=>"595.gif",
+'599'=>"599.gif",
+'600'=>"600.gif",
+'601'=>"601.gif",
+'602'=>"602.gif",
+'603'=>"603.gif",
+'604'=>"604.gif",
+'608'=>"608.gif",
+'615'=>"615.gif",
+'616'=>"616.gif",
+'619'=>"619.gif",
+'624'=>"624.gif",
+'631'=>"631.gif",
+'632'=>"632.gif",
+'649'=>"649.gif",
+'650'=>"650.gif",
+'658'=>"658.gif",
+'668'=>"668.gif",
+'724'=>"724.gif"
 );
 
 function getMapIcon($map)
 {
  global $gMapIcon;
  $ico = @$gMapIcon[$map];
- if (empty($ico)) $ico = "Uncnown.gif";
+ if (empty($ico)) $ico = "unknown.gif";
  return "images/map_icons/".$ico;
 }
 
@@ -899,7 +923,7 @@ class mapPoints{
     `DeathState`,
     `MovementType`
     FROM `creature` WHERE `id` = ?d {AND `map` = ?d}', $id, $map==-1? DBSIMPLE_SKIP:$map);
-	if ($list) $this->points = array_merge($this->points, $list);
+    if ($list) $this->points = array_merge($this->points, $list);
   }
   //*************************************
   // Add object list
@@ -921,7 +945,7 @@ class mapPoints{
     `spawntimesecs`,
     `state`
     FROM `gameobject` WHERE `id` = ?d {AND `map` = ?d}', $id, $map==-1? DBSIMPLE_SKIP:$map);
-	if ($list) $this->points = array_merge($this->points, $list);
+    if ($list) $this->points = array_merge($this->points, $list);
   }
   //*************************************
   // Add waypoints list
@@ -933,14 +957,14 @@ class mapPoints{
     \'w\' AS `type`,
     `id`,
     `point`,
-	?d AS `map`,
+    ?d AS `map`,
     `position_x`,
     `position_y`,
     `position_z`,
     `waittime`,
     `spell`
     FROM `creature_movement` WHERE `id` = ?d ', $map, $id);
-	if ($list) $this->points = array_merge($this->points, $list);
+    if ($list) $this->points = array_merge($this->points, $list);
   }
 
   //*************************************
@@ -973,13 +997,13 @@ class mapPoints{
        foreach($areaList as $id=>$count)
           $list['area'][]=array('id'=>$id, 'text'=>getAreaNameFromId($id).' - ('.$count.')');
 
-	if ($mapsList)
+    if ($mapsList)
        foreach($mapsList as $id=>$count)
-	   {
-	      if (getRenderGPSMapData($id)) $gpsCount+=$count;
+       {
+          if (getRenderGPSMapData($id)) $gpsCount+=$count;
           $list['map'][]=array('id'=>$id, 'text'=>getMapName($id).' - ('.$count.')');
        }
-	if ($gpsCount)
+    if ($gpsCount)
        $list['gps'][]=array('text'=>'('.$gpsCount.')');
 
     return $list;
