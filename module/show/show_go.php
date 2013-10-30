@@ -337,7 +337,7 @@ else
   else if ($obj['type'] == GAMEOBJECT_TYPE_SPELLCASTER)      $spellid = $obj['data0'];
   if ($spellid)
   {
-    $cast_spell->doRequirest('`id` = ?d', $entry);
+    $cast_spell->doRequirest('`id` = ?d', $spellid);
     $cast_spell->createReport($lang['go_cast_spell']);
   }
  }
