@@ -560,7 +560,7 @@ if ($quest['PrevQuestId'] != 0 OR $quest['NextQuestId'] != 0 OR $needForQuest)
 $needForQuest = $dDB->selectPage($number, "SELECT * FROM `quest_template` WHERE ABS(`PrevQuestId`) = ?d", $quest['entry']);
 if ($needForQuest AND $number > 1) // если == 1 то мы уже вывели это в цепочке
 {
- echo "<tr><td class = head>$lang[req_for_quest]</td></tr>";
+ echo "<tr><td class = head>$lang[req_for_quest_next]</td></tr>";
  foreach ($needForQuest as $nextquest)
  {
   localiseQuest($nextquest);
