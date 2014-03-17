@@ -1,7 +1,7 @@
 <?php
 include("../conf.php");
 include ("zone_tables.php");
-mysql_connect($config['hostname'],$config['username'],$config['password']) OR DIE("Невозможно создать соединение с базой сервера. Возможно сервер выключен");
+mysql_connect($config['hostname'],$config['username'],$config['password']) or die("Unable to connect to the database. Maybe the server is down.");
 mysql_select_db($config['dbName']) or die(mysql_error());
 
 ?>

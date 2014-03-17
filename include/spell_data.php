@@ -2,6 +2,7 @@
 include_once("functions.php");
 
 $gSpellEffect = array(
+'0'=>'None',
 '1'=>'Instakill',
 '2'=>'School damage',
 '3'=>'Dummy',
@@ -145,13 +146,13 @@ $gSpellEffect = array(
 '141'=>'SPELL_EFFECT_141',
 '142'=>'Trigger spell with value',
 '143'=>'Apply area aura owner',
-'144'=>'SPELL_EFFECT_144',
+'144'=>'Knockback from position',
 '145'=>'SPELL_EFFECT_145',
 '146'=>'Activate rune',
 '147'=>'Quest fail',
 '148'=>'SPELL_EFFECT_148',
 '149'=>'Charge 2',
-'150'=>'SPELL_EFFECT_150',
+'150'=>'Quest offer',
 '151'=>'Trigger spell 2',
 '152'=>'SPELL_EFFECT_152',
 '153'=>'Create pet',
@@ -169,7 +170,7 @@ $gSpellEffect = array(
 );
 
 $gSpellAuraName = array(
-'0'=>"NONE",
+'0'=>"None",
 '1'=>"Bind Sight",
 '2'=>"Mod Possess",
 '3'=>"Periodic Damage",
@@ -799,7 +800,7 @@ function getBasePointDesc($spell, $index)
 
   if ($spell['EffectRealPointsPerLevel_'.$index])
     $s.=" + lvl*".$spell['EffectRealPointsPerLevel_'.$index];
-// Увеличивает только макс рандомное значение
+// РЈРІРµР»РёС‡РёРІР°РµС‚ С‚РѕР»СЊРєРѕ РјР°РєСЃ СЂР°РЅРґРѕРјРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 // if ($spell['EffectDicePerLevel_'.$index])
 //   $s.=" + lvl*".$spell['EffectDicePerLevel_'.$index];
   if ($spell['EffectPointsPerComboPoint_'.$index])
@@ -910,13 +911,13 @@ function spellReplace($spell, $text)
 		$var = $result[6] ? $result[6]:$result[7];
 		if (!$var)
 			continue;
-        // l - размер последней величины == 1 ? 0 : 1
+        // l - СЂР°Р·РјРµСЂ РїРѕСЃР»РµРґРЅРµР№ РІРµР»РёС‡РёРЅС‹ == 1 ? 0 : 1
         if ($var[0]=='l')
         {
             $select = explode(':', substr($var, 1));
             $str.=@$select[$lastCount==1 ? 0:1];
         }
-        // g - пол персонжа
+        // g - РїРѕР» РїРµСЂСЃРѕРЅР¶Р°
         else if ($var[0]=='g')
         {
             $select = explode(':', substr($var, 1));
@@ -983,7 +984,7 @@ function get_spell_details($spell_id)
 
 function getSpellCostText($spell)
 {
-  // Заполняем стоимость заклинания
+  // Р—Р°РїРѕР»РЅСЏРµРј СЃС‚РѕРёРјРѕСЃС‚СЊ Р·Р°РєР»РёРЅР°РЅРёСЏ
   $powerType = getPowerTypeName($spell['powerType']);
   $powerCost = "";
   if ($spell['AttributesEx'] & 2)
