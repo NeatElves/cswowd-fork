@@ -2,7 +2,7 @@
 include_once("../conf.php");
 include_once("zone_tables.php");
 
-mysql_connect($config['hostname'],$config['username'],$config['password']) OR DIE("Невозможно создать соединение с базой сервера.".mysql_error());
+mysql_connect($config['hostname'],$config['username'],$config['password']) or die("Unable to connect to the database.".mysql_error());
 mysql_select_db($config['dbName']) or die(mysql_error());
 
 $id = intval(@$_REQUEST['id']);
