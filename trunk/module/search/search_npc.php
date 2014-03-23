@@ -17,50 +17,50 @@ $filter = "";
 // Фильтр имени
 if ($name = mysql_real_escape_string(@$_REQUEST['name']))
 {
-  $filter.= " AND `name` like '%$name%'";
+  $filter.= " AND `Name` like '%$name%'";
   $FindRefrence.="&name=$name";
 }
 // Фильтр дополнительного имени
 if ($subname = mysql_real_escape_string(@$_REQUEST['subname']))
 {
-  $filter.= " AND `subname` like '%$subname%'";
+  $filter.= " AND `SubName` like '%$subname%'";
   $FindRefrence.="&subname=$subname";
 }
 // Level filter
 if ($level_min = intval(@$_REQUEST['level_min']))
 {
-  $filter.= " AND `minlevel` >= '$level_min'";
+  $filter.= " AND `MinLevel` >= '$level_min'";
   $FindRefrence.="&level_min=$level_min";
 }
 if ($level_max = intval(@$_REQUEST['level_max']))
 {
-  $filter.= " AND `maxlevel` <= '$level_max'";
+  $filter.= " AND `MaxLevel` <= '$level_max'";
   $FindRefrence.="&level_max=$level_max";
 }
 // Фильтр по типу
 if ($type = intval(@$_REQUEST['type']))
 {
-  $filter.= " AND `type` = '$type'";
+  $filter.= " AND `CreatureType` = '$type'";
   $FindRefrence.="&type=$type";
 }
 // Фильтр по family
 if ($family = intval(@$_REQUEST['family']))
 {
-  $filter.= " AND `family` = '$family'";
+  $filter.= " AND `Family` = '$family'";
   $FindRefrence.="&family=$family";
 }
 // Фильтр по рангу
 if (isset($_REQUEST['rank']))
 {
   $rank = intval($_REQUEST['rank']);
-  $filter.= " AND `rank` = '$rank'";
+  $filter.= " AND `Rank` = '$rank'";
   $FindRefrence.="&rank=$rank";
 }
 // Фильтр по флагу
 if (isset($_REQUEST['flag']))
 {
   $npc_flag = intval($_REQUEST['flag']);
-  $filter.= " AND (`npcflag`&".(1<<$npc_flag).")";
+  $filter.= " AND (`NpcFlags`&".(1<<$npc_flag).")";
   $FindRefrence.="&flag=$npc_flag";
 }
 // Убираем ненужный AND в начале строки
@@ -98,14 +98,14 @@ if ($filter!="")
    if ($name)
    {
     if (preg_match($config['locales_charset'], $name))
-       $filter = str_replace('`name`', '`name_loc'.$config['locales_lang'].'`', $filter);
+       $filter = str_replace('`Name`', '`name_loc'.$config['locales_lang'].'`', $filter);
     else
        $npc_search->disableNameLocalisation();
    }
    if ($subname)
    {
     if (preg_match($config['locales_charset'], $subname))
-       $filter = str_replace('`subname`', '`subname_loc'.$config['locales_lang'].'`' ,$filter);
+       $filter = str_replace('`SubName`', '`subname_loc'.$config['locales_lang'].'`' ,$filter);
     else
        $npc_search->disableSubnameLocalisation();
    }
@@ -116,7 +116,7 @@ if ($filter!="")
  if ($number <= 0)
     echo $lang['not_found'];
  else if ($number == 1 && $allmode == 0)      // Перенаправляем
-    echo '<meta http-equiv="refresh" content=1;URL=?npc='.$npc_search->data_array[0]['entry'].'>';
+    echo '<meta http-equiv="refresh" content=1;URL=?npc='.$npc_search->data_array[0]['Entry'].'>';
  else
     $npc_search->createReport($lang['search_results'].' - '.$lang['found'].' '.$number);
 }

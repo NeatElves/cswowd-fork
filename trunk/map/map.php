@@ -114,7 +114,7 @@ if ($id)
  }
  else
  {
-  $res = mysql_query("SELECT * FROM `creature_template` WHERE entry = '$id' LIMIT 1") or die(mysql_error());
+  $res = mysql_query("SELECT * FROM `creature_template` WHERE Entry = '$id' LIMIT 1") or die(mysql_error());
   $row = mysql_fetch_array($res);
   mysql_free_result($res);
 

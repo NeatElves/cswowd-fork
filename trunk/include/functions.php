@@ -239,18 +239,18 @@ function localiseCreature(&$creature)
 {
    global $dDB, $config;
    $locale = $config['locales_lang'];
-   if ($locale == 0 OR @$creature['entry'] == 0)
+   if ($locale == 0 OR @$creature['Entry'] == 0)
        return;
    $lang = $dDB->selectRow('-- CACHE: 1h
    SELECT
-   `name_loc'.$locale.'` AS `name`,
-   `subname_loc'.$locale.'` AS `subname`
+   `name_loc'.$locale.'` AS `Name`,
+   `subname_loc'.$locale.'` AS `SubName`
    FROM `locales_creature`
-   WHERE `entry` = ?d', $creature['entry']);
+   WHERE `entry` = ?d', $creature['Entry']);
    if ($lang)
    {
-       if ($lang['name']) $creature['name'] = $lang['name'];
-       if ($lang['subname']) $creature['subname'] = $lang['subname'];
+       if ($lang['Name']) $creature['Name'] = $lang['Name'];
+       if ($lang['SubName']) $creature['SubName'] = $lang['SubName'];
    }
 }
 
@@ -583,7 +583,7 @@ function getCreature($creature_id, $fields = "*")
 {
   global $dDB;
   if ($creature = $dDB->selectRow("-- CACHE: 1h
-  SELECT $fields FROM `creature_template` WHERE `entry` = ?d", $creature_id))
+  SELECT $fields FROM `creature_template` WHERE `Entry` = ?d", $creature_id))
       localiseCreature($creature);
   return $creature;
 }

@@ -43,15 +43,18 @@ else
   echo "</tr>";
   echo "</tbody></table>";
 
-  if ($cr['mingold']) echo "<b>$lang[Rew_money]</b>&nbsp;&nbsp;".money($cr['mingold']);
-  if (($cr['maxgold']) && ($cr['maxgold']>$cr['mingold'])) echo "&nbsp;-&nbsp;".money($cr['maxgold']);
-  if ($cr['mingold']) echo "<br>";
+  if ($cr['MinLootGold']) echo "<b>$lang[Rew_money]</b>&nbsp;&nbsp;".money($cr['MinLootGold']);
+  if (($cr['MaxLootGold']) && ($cr['MaxLootGold']>$cr['MinLootGold'])) echo "&nbsp;-&nbsp;".money($cr['MaxLootGold']);
+  if ($cr['MinLootGold']) echo "<br>";
+
   $heroic=getHeroicList();
   $heroic1=getHeroicList1();
   $heroic2=getHeroicList2();
-  $hentry=isset($heroic[$entry])?$heroic[$entry]:$entry;
-  $hentry1=isset($heroic1[$entry])?$heroic1[$entry]:$entry;
-  $hentry2=isset($heroic2[$entry])?$heroic2[$entry]:$entry;
+
+  $hentry=isset($heroic[$entry])?$heroic[$entry]:0;
+  $hentry1=isset($heroic1[$entry])?$heroic1[$entry]:0;
+  $hentry2=isset($heroic2[$entry])?$heroic2[$entry]:0;
+
   if ($hentry2) 
   echo "<a href=\"?map&npc=$hentry2\">$lang[show_map]&nbsp;(".getCreatureCount($hentry2).")</a><br>";
   else
@@ -60,49 +63,51 @@ else
   else
   if ($hentry) 
   echo "<a href=\"?map&npc=$hentry\">$lang[show_map]&nbsp;(".getCreatureCount($hentry).")</a><br>";
+  else 
+  echo "<a href=\"?map&npc=$entry\">$lang[show_map]&nbsp;(".getCreatureCount($entry).")</a><br>";
 
   if ($config['show_npc_detalis'])
   {
    echo "<br><table class=details width=600>";
    echo "<tbody>";
    echo "<tr><td colspan=4 class=head>$lang[detail_info]</td></tr>";
-   echo "<tr><th>entry</th><td>".$cr['entry']."</td><th>modelid_1</th><td>".$cr['modelid_1']."</td></tr>";
-   echo "<tr><th>difficulty_entry_1</th><td>".$cr['difficulty_entry_1']."</td><th>modelid_2</th><td>".$cr['modelid_2']."</td></tr>";
-   echo "<tr><th>difficulty_entry_2</th><td>".$cr['difficulty_entry_2']."</td><th>modelid_3</th><td>".$cr['modelid_3']."</td></tr>";
-   echo "<tr><th>difficulty_entry_3</th><td>".$cr['difficulty_entry_3']."</td><th>modelid_4</th><td>".$cr['modelid_4']."</td></tr>";
-   echo "<tr><th>name</th><td>".$cr['name']."<br><div class=subname>".$cr['subname']."</div></td>";
+   echo "<tr><th>Entry</th><td>".$cr['Entry']."</td><th>ModelId1</th><td>".$cr['ModelId1']."</td></tr>";
+   echo "<tr><th>DifficultyEntry1</th><td>".$cr['DifficultyEntry1']."</td><th>ModelId2</th><td>".$cr['ModelId2']."</td></tr>";
+   echo "<tr><th>DifficultyEntry2</th><td>".$cr['DifficultyEntry2']."</td><th>ModelId3</th><td>".$cr['ModelId3']."</td></tr>";
+   echo "<tr><th>DifficultyEntry3</th><td>".$cr['DifficultyEntry3']."</td><th>ModelId4</th><td>".$cr['ModelId4']."</td></tr>";
+   echo "<tr><th>Name</th><td>".$cr['Name']."<br><div class=subname>".$cr['SubName']."</div></td>";
    echo "<th>IconName</th><td>".$cr['IconName']."</td></tr>";
-   echo "<tr><th>level</th><td>".$cr['minlevel']." - ".$cr['maxlevel']."</td>";
-   echo "<th>armor</th><td>".$cr['armor']."</td></tr>";
-   echo "<tr><th>health</th><td>".$cr['minhealth']." - ".$cr['maxhealth']."</td>";
-   echo "<th>mana</th><td>".$cr['minmana']." - ".$cr['maxmana']."</td></tr>";
-   echo "<tr><th>faction_A</th><td>".$cr['faction_A']."</td><th>faction_H</th><td>".$cr['faction_H']."</td></tr>";
-   echo "<tr><th>npcflag</th><td>".$cr['npcflag']."</td><th>gossip_menu_id</th><td>".$cr['gossip_menu_id']."</td></tr>";
-   echo "<tr><th>speed_walk</th><td>".$cr['speed_walk']."</td><th>speed_run</th><td>".$cr['speed_run']."</td></tr>";
-   echo "<tr><th>scale</th><td>".$cr['scale']."</td><th>rank</th><td>".$cr['rank']."</td></tr>";
-   echo "<tr><th>mindmg</th><td>".$cr['mindmg']."</td><th>maxdmg</th><td>".$cr['maxdmg']."</td></tr>";
-   echo "<tr><th>dmgschool</th><td>".$cr['dmgschool']."</td><th>dmg_multiplier</th><td>".$cr['dmg_multiplier']."</td></tr>";
-   echo "<tr><th>attackpower</th><td>".$cr['attackpower']."</td><th>rangedattackpower</th><td>".$cr['rangedattackpower']."</td></tr>";
-   echo "<tr><th>baseattacktime</th><td>".$cr['baseattacktime']."</td><th>rangeattacktime</th><td>".$cr['rangeattacktime']."</td></tr>";
-   echo "<tr><th>unit_flags</th><td>".$cr['unit_flags']."</td><th>dynamicflags</th><td>".$cr['dynamicflags']."</td></tr>";
-   echo "<tr><th>unit_class</th><td>".$cr['unit_class']."</td><th>family</th><td>".$cr['family']."</td></tr>";
-   echo "<tr><th>trainer_type</th><td>".$cr['trainer_type']."</td><th>trainer_spell</th><td>".$cr['trainer_spell']."</td></tr>";
-   echo "<tr><th>trainer_class</th><td>".$cr['trainer_class']."</td><th>trainer_race</th><td>".$cr['trainer_race']."</td></tr>";
-   echo "<tr><th>minrangedmg</th><td>".$cr['minrangedmg']."</td><th>maxrangedmg</th><td>".$cr['maxrangedmg']."</td></tr>";
-   echo "<tr><th>type</th><td>".$cr['type']."</td><th>type_flags</th><td>".$cr['type_flags']."</td></tr>";
-   if ($cr['lootid']) echo "<tr><th>lootid</th><td>".$cr['lootid']."</td></tr>";
-   if ($cr['pickpocketloot']) echo "<tr><th>pickpocketloot</th><td>".$cr['pickpocketloot']."</td></tr>";
-   if ($cr['skinloot']) echo "<tr><th>skinloot</th><td>".$cr['skinloot']."</td></tr>";
-   echo "<tr><th>resistance1</th><td>".$cr['resistance1']."</td><th>resistance2</th><td>".$cr['resistance2']."</td></tr>";
-   echo "<tr><th>resistance3</th><td>".$cr['resistance3']."</td><th>resistance4</th><td>".$cr['resistance4']."</td></tr>";
-   echo "<tr><th>resistance5</th><td>".$cr['resistance5']."</td><th>resistance6</th><td>".$cr['resistance6']."</td></tr>";
+   echo "<tr><th>Level</th><td>".$cr['MinLevel']." - ".$cr['MaxLevel']."</td>";
+   echo "<th>Armor</th><td>".$cr['Armor']."</td></tr>";
+   echo "<tr><th>Health</th><td>".$cr['MinLevelHealth']." - ".$cr['MaxLevelHealth']."</td>";
+   echo "<th>Mana</th><td>".$cr['MinLevelMana']." - ".$cr['MaxLevelMana']."</td></tr>";
+   echo "<tr><th>FactionAlliance</th><td>".$cr['FactionAlliance']."</td><th>FactionHorde</th><td>".$cr['FactionHorde']."</td></tr>";
+   echo "<tr><th>NpcFlags</th><td>".$cr['NpcFlags']."</td><th>GossipMenuId</th><td>".$cr['GossipMenuId']."</td></tr>";
+   echo "<tr><th>SpeedWalk</th><td>".$cr['SpeedWalk']."</td><th>SpeedRun</th><td>".$cr['SpeedRun']."</td></tr>";
+   echo "<tr><th>Scale</th><td>".$cr['Scale']."</td><th>Rank</th><td>".$cr['Rank']."</td></tr>";
+   echo "<tr><th>MinMeleeDmg</th><td>".$cr['MinMeleeDmg']."</td><th>MaxMeleeDmg</th><td>".$cr['MaxMeleeDmg']."</td></tr>";
+   echo "<tr><th>MinRangedDmg</th><td>".$cr['MinRangedDmg']."</td><th>MaxRangedDmg</th><td>".$cr['MaxRangedDmg']."</td></tr>";
+   echo "<tr><th>DamageSchool</th><td>".$cr['DamageSchool']."</td><th>DamageMultiplier</th><td>".$cr['DamageMultiplier']."</td></tr>";
+   echo "<tr><th>MeleeAttackPower</th><td>".$cr['MeleeAttackPower']."</td><th>RangedAttackPower</th><td>".$cr['RangedAttackPower']."</td></tr>";
+   echo "<tr><th>MeleeBaseAttackTime</th><td>".$cr['MeleeBaseAttackTime']."</td><th>RangedBaseAttackTime</th><td>".$cr['RangedBaseAttackTime']."</td></tr>";
+   echo "<tr><th>UnitFlags</th><td>".$cr['UnitFlags']."</td><th>DynamicFlags</th><td>".$cr['DynamicFlags']."</td></tr>";
+   echo "<tr><th>UnitClass</th><td>".$cr['UnitClass']."</td><th>Family</th><td>".$cr['Family']."</td></tr>";
+   echo "<tr><th>TrainerType</th><td>".$cr['TrainerType']."</td><th>TrainerSpell</th><td>".$cr['TrainerSpell']."</td></tr>";
+   echo "<tr><th>TrainerClass</th><td>".$cr['TrainerClass']."</td><th>TrainerRace</th><td>".$cr['TrainerRace']."</td></tr>";
+   echo "<tr><th>CreatureType</th><td>".$cr['CreatureType']."</td><th>CreatureTypeFlags</th><td>".$cr['CreatureTypeFlags']."</td></tr>";
+   if ($cr['LootId']) echo "<tr><th>LootId</th><td>".$cr['LootId']."</td></tr>";
+   if ($cr['PickpocketLootId']) echo "<tr><th>PickpocketLootId</th><td>".$cr['PickpocketLootId']."</td></tr>";
+   if ($cr['SkinningLootId']) echo "<tr><th>SkinningLootId</th><td>".$cr['SkinningLootId']."</td></tr>";
+   echo "<tr><th>ResistanceHoly</th><td>".$cr['ResistanceHoly']."</td><th>ResistanceFire</th><td>".$cr['ResistanceFire']."</td></tr>";
+   echo "<tr><th>ResistanceNature</th><td>".$cr['ResistanceNature']."</td><th>ResistanceFrost</th><td>".$cr['ResistanceFrost']."</td></tr>";
+   echo "<tr><th>ResistanceShadow</th><td>".$cr['ResistanceShadow']."</td><th>ResistanceArcane</th><td>".$cr['ResistanceArcane']."</td></tr>";
    if ($cr['PetSpellDataId']) echo "<tr><th>PetSpellDataId</th><td>".$cr['PetSpellDataId']."</td></tr>";
-   if ($cr['mingold'])echo "<tr><th>mingold</th><td>".$cr['mingold']."</td><th>maxgold</th><td>".$cr['maxgold']."</td></tr>";
+   if ($cr['MinLootGold'])echo "<tr><th>MinLootGold</th><td>".$cr['MinLootGold']."</td><th>MaxLootGold</th><td>".$cr['MaxLootGold']."</td></tr>";
    echo "<tr><th>MovementType</th><td>".$cr['MovementType']."</td><th>InhabitType</th><td>".$cr['InhabitType']."</td></tr>";
-   echo "<tr><th>RacialLeader</th><td>".$cr['RacialLeader']."</td><th>RegenHealth</th><td>".$cr['RegenHealth']."</td></tr>";
-   if ($cr['equipment_id']) echo "<tr><th>equipment_id</th><td>".$cr['equipment_id']."</td></tr>";
-   if ($cr['mechanic_immune_mask']) echo "<tr><th>mechanic_immune_mask</th><td>".$cr['mechanic_immune_mask']."</td></tr>";
-   if ($cr['flags_extra']) echo "<tr><th>flags_extra</th><td>".$cr['flags_extra']."</td></tr>";
+   echo "<tr><th>RacialLeader</th><td>".$cr['RacialLeader']."</td><th>RegenerateHealth</th><td>".$cr['RegenerateHealth']."</td></tr>";
+   if ($cr['EquipmentTemplateId']) echo "<tr><th>EquipmentTemplateId</th><td>".$cr['EquipmentTemplateId']."</td></tr>";
+   if ($cr['MechanicImmuneMask']) echo "<tr><th>MechanicImmuneMask</th><td>".$cr['MechanicImmuneMask']."</td></tr>";
+   if ($cr['ExtraFlags']) echo "<tr><th>ExtraFlags</th><td>".$cr['ExtraFlags']."</td></tr>";
    echo "<tr><th>AIName</th><td>".$cr['AIName']."</td><th>ScriptName</th><td>".$cr['ScriptName']."</td></tr>";
    echo "</tbody></table>";
   }
@@ -121,7 +126,7 @@ else
                 echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
                 echo '<div style="display: none;">';
  {
-   if ($cr['modelid_1'])
+   if ($cr['ModelId1'])
    {
                 echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
@@ -131,10 +136,10 @@ else
                 echo "  this.value = '-'; } ";
                 echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
                 echo " this.innerText = ''; ";
-                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display1]&nbsp;($cr[modelid_1])</b></div>";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display1]&nbsp;($cr[ModelId1])</b></div>";
                 echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
                 echo '<div style="display: none;">';
-   switch ($cr['type']):
+   switch ($cr['CreatureType']):
     case 6:
     case 7:
         echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
@@ -142,7 +147,7 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[modelid_1]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[ModelId1]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     break;
     default:
@@ -151,12 +156,12 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[modelid_1]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[ModelId1]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     endswitch;
    echo "</div></div></span>";
    }
-   if ($cr['modelid_2'])
+   if ($cr['ModelId2'])
    {
                 echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
@@ -166,10 +171,10 @@ else
                 echo "  this.value = '-'; } ";
                 echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
                 echo " this.innerText = ''; ";
-                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display2]&nbsp;($cr[modelid_2])</b></div>";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display2]&nbsp;($cr[ModelId2])</b></div>";
                 echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
                 echo '<div style="display: none;">';
-   switch ($cr['type']):
+   switch ($cr['CreatureType']):
     case 6:
     case 7:
         echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
@@ -177,7 +182,7 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[modelid_2]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[ModelId2]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     break;
     default:
@@ -186,12 +191,12 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[modelid_2]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[ModelId2]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     endswitch;
    echo "</div></div></span>";
    }
-   if ($cr['modelid_3'])
+   if ($cr['ModelId3'])
    {
                 echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
@@ -201,10 +206,10 @@ else
                 echo "  this.value = '-'; } ";
                 echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
                 echo " this.innerText = ''; ";
-                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display3]&nbsp;($cr[modelid_3])</b></div>";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display3]&nbsp;($cr[ModelId3])</b></div>";
                 echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
                 echo '<div style="display: none;">';
-   switch ($cr['type']):
+   switch ($cr['CreatureType']):
     case 6:
     case 7:
         echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
@@ -212,7 +217,7 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[modelid_3]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[ModelId3]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     break;
     default:
@@ -221,12 +226,12 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[modelid_3]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[ModelId3]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     endswitch;
    echo "</div></div></span>";
    }
-   if ($cr['modelid_4'])
+   if ($cr['ModelId4'])
    {
                 echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
@@ -236,10 +241,10 @@ else
                 echo "  this.value = '-'; } ";
                 echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
                 echo " this.innerText = ''; ";
-                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display4]&nbsp;($cr[modelid_4])</b></div>";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display4]&nbsp;($cr[ModelId4])</b></div>";
                 echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
                 echo '<div style="display: none;">';
-   switch ($cr['type']):
+   switch ($cr['CreatureType']):
     case 6:
     case 7:
         echo "<object data='http://static.wowhead.com/modelviewer/ModelView.swf' type='application/x-shockwave-flash' height='400' width='600'>
@@ -247,7 +252,7 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[modelid_4]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[ModelId4]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     break;
     default:
@@ -256,7 +261,7 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[modelid_4]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[ModelId4]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     endswitch;
    echo "</div></div></span>";
@@ -290,7 +295,7 @@ else
  //**************************************************
  // Vendor items list
  //**************************************************
- if ($cr['npcflag']&(UNIT_NPC_FLAG_VENDOR|UNIT_NPC_FLAG_VENDOR_AMMO|UNIT_NPC_FLAG_VENDOR_FOOD|UNIT_NPC_FLAG_VENDOR_POISON|UNIT_NPC_FLAG_VENDOR_REAGENT))
+ if ($cr['NpcFlags']&(UNIT_NPC_FLAG_VENDOR|UNIT_NPC_FLAG_VENDOR_AMMO|UNIT_NPC_FLAG_VENDOR_FOOD|UNIT_NPC_FLAG_VENDOR_POISON|UNIT_NPC_FLAG_VENDOR_REAGENT))
  {
   $sold =& new ItemReportGenerator('vendor');
   $fields = array('ITEM_REPORT_ICON','ITEM_REPORT_NAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNT', 'VENDOR_REPORT_INCTIME');
@@ -303,7 +308,7 @@ else
  //**************************************************
  // Train spells
  //**************************************************
- if ($cr['npcflag']&(UNIT_NPC_FLAG_TRAINER|UNIT_NPC_FLAG_TRAINER_CLASS|UNIT_NPC_FLAG_TRAINER_PROFESSION))
+ if ($cr['NpcFlags']&(UNIT_NPC_FLAG_TRAINER|UNIT_NPC_FLAG_TRAINER_CLASS|UNIT_NPC_FLAG_TRAINER_PROFESSION))
  {
   $train =& new NPCTrainerReportGenerator();
   $fields = array('TRAIN_REPORT_LEVEL','TRAIN_REPORT_ICON', 'TRAIN_REPORT_NAME', 'TRAIN_REPORT_SKILL', 'TRAIN_REPORT_VALUE', 'TRAIN_REPORT_COST');
@@ -336,7 +341,7 @@ else
  //**************************************************
  // Give quests
  //**************************************************
- if ($cr['npcflag']&(UNIT_NPC_FLAG_QUESTGIVER))
+ if ($cr['NpcFlags']&(UNIT_NPC_FLAG_QUESTGIVER))
  {
   $giveQuest =& new QuestReportGenerator('npc_giver');
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
@@ -349,7 +354,7 @@ else
  //**************************************************
  // Take quests
  //**************************************************
- if ($cr['npcflag']&(UNIT_NPC_FLAG_QUESTGIVER))
+ if ($cr['NpcFlags']&(UNIT_NPC_FLAG_QUESTGIVER))
  {
   $takeQuest =& new QuestReportGenerator('npc_take');
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
@@ -365,17 +370,17 @@ else
  //**************************************************
  if ($ajaxmode==0)
  {
-  if ($cr['lootid'])
+  if ($cr['LootId'])
   {
    /*
    $loot =& new LootReportGenerator('creature_loot');
    if ($loot->Init($fields, $baseLink, 'lootLIST', $config['fade_limit'], ''))
    {
-     $loot->getLootList($cr['lootid']);
+     $loot->getLootList($cr['LootId']);
      $loot->createReport($lang['can_loot']);
    }*/
    $page_seek = init_pagePerMark($mark, "lootLIST", $page);
-   $rows = getLootList($cr['lootid'], "creature_loot_template", $totalRecords, $page_seek, $config['fade_limit']);
+   $rows = getLootList($cr['LootId'], "creature_loot_template", $totalRecords, $page_seek, $config['fade_limit']);
    renderLootTableList($rows, $lang['can_loot'], $page_seek, $totalRecords, $baseLink, "lootLIST");
   }
  }
@@ -384,10 +389,10 @@ else
  //**************************************************
  if ($ajaxmode==0)
  {
-  if ($cr['pickpocketloot'])
+  if ($cr['PickpocketLootId'])
   {
    $page_seek = init_pagePerMark($mark, "pickpocketLIST", $page);
-   $rows = getLootList($cr['pickpocketloot'], "pickpocketing_loot_template", $totalRecords, $page_seek, $config['fade_limit']);
+   $rows = getLootList($cr['PickpocketLootId'], "pickpocketing_loot_template", $totalRecords, $page_seek, $config['fade_limit']);
    renderLootTableList($rows, $lang['can_pickpocketing'], $page_seek, $totalRecords, $baseLink, "pickpocketLIST");
   }
  }
@@ -396,15 +401,15 @@ else
  //**************************************************
  if ($ajaxmode==0)
  {
-  if ($cr['skinloot'])
+  if ($cr['SkinningLootId'])
   {
    $page_seek = init_pagePerMark($mark, "skinLIST", $page);
-   $rows = getLootList($cr['skinloot'], "skinning_loot_template", $totalRecords, $page_seek, $config['fade_limit']);
-  if ($cr['type_flags'] & CREATURE_TYPEFLAGS_HERBLOOT)
+   $rows = getLootList($cr['SkinningLootId'], "skinning_loot_template", $totalRecords, $page_seek, $config['fade_limit']);
+  if ($cr['CreatureTypeFlags'] & CREATURE_TYPEFLAGS_HERBLOOT)
    renderLootTableList($rows, $lang['give_herb'], $page_seek, $totalRecords, $baseLink, "skinLIST");
-  else if ($cr['type_flags'] & CREATURE_TYPEFLAGS_MININGLOOT)
+  else if ($cr['CreatureTypeFlags'] & CREATURE_TYPEFLAGS_MININGLOOT)
    renderLootTableList($rows, $lang['give_mining'], $page_seek, $totalRecords, $baseLink, "skinLIST");
-  else if ($cr['type_flags'] & CREATURE_TYPEFLAGS_ENGINEERLOOT)
+  else if ($cr['CreatureTypeFlags'] & CREATURE_TYPEFLAGS_ENGINEERLOOT)
    renderLootTableList($rows, $lang['give_engineer'], $page_seek, $totalRecords, $baseLink, "skinLIST");
   else
    renderLootTableList($rows, $lang['give_skin'], $page_seek, $totalRecords, $baseLink, "skinLIST");
