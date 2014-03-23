@@ -316,7 +316,7 @@ function getHeroicList()
   global $dDB, $gheroic;
   if (!$gheroic)
     $gheroic = $dDB->selectCol('-- CACHE: 1h
-	  SELECT `difficulty_entry_1` AS ARRAY_KEY, `entry` FROM `creature_template` WHERE `difficulty_entry_1` <>  0');
+	  SELECT `DifficultyEntry1` AS ARRAY_KEY, `Entry` FROM `creature_template` WHERE `DifficultyEntry1` <> 0');
   return $gheroic;
 }
 
@@ -326,7 +326,7 @@ function getHeroicList1()
   global $dDB, $gheroic1;
   if (!$gheroic1)
     $gheroic1 = $dDB->selectCol('-- CACHE: 1h
-	  SELECT `difficulty_entry_2` AS ARRAY_KEY, `entry` FROM `creature_template` WHERE `difficulty_entry_2` <>  0');
+	  SELECT `DifficultyEntry2` AS ARRAY_KEY, `Entry` FROM `creature_template` WHERE `DifficultyEntry2` <> 0');
   return $gheroic1;
 }
 
@@ -336,7 +336,7 @@ function getHeroicList2()
   global $dDB, $gheroic2;
   if (!$gheroic2)
     $gheroic2 = $dDB->selectCol('-- CACHE: 1h
-	  SELECT `difficulty_entry_3` AS ARRAY_KEY, `entry` FROM `creature_template` WHERE `difficulty_entry_3` <>  0');
+	  SELECT `DifficultyEntry3` AS ARRAY_KEY, `Entry` FROM `creature_template` WHERE `DifficultyEntry3` <> 0');
   return $gheroic2;
 }
 //==============================================================================
@@ -816,100 +816,100 @@ class NPCTrainerReportGenerator extends ReportGenerator{
 //=================================================================
 function r_npcLvl($data)
 {
-  echo $data['maxlevel'];
-  if ($data['rank'])
-    echo '<br><div class=rank>'.getCreatureRank($data['rank']).'</div>';
+  echo $data['MaxLevel'];
+  if ($data['Rank'])
+    echo '<br><div class=rank>'.getCreatureRank($data['Rank']).'</div>';
 }
 function r_npcName($data)
 {
   $h = getHeroicList();
   $h1 = getHeroicList1();
   $h2 = getHeroicList2();
-  if (isset($h[$data['entry']]))
+  if (isset($h[$data['Entry']]))
   {
-    $heroic = getCreature($h[$data['entry']]);
-	$data['name']=$heroic['name'].' (difficulty_1)';
-	$data['name_loc']=$heroic['name'].' (difficulty_1)';
-	$data['subname']=$heroic['subname'];
+    $heroic = getCreature($h[$data['Entry']]);
+	$data['Name']=$heroic['Name'].' (Difficulty1)';
+	$data['name_loc']=$heroic['Name'].' (Difficulty1)';
+	$data['SubName']=$heroic['SubName'];
   }
-  if (isset($h1[$data['entry']]))
+  if (isset($h1[$data['Entry']]))
   {
-    $heroic = getCreature($h1[$data['entry']]);
-	$data['name']=$heroic['name'].' (difficulty_2)';
-	$data['name_loc']=$heroic['name'].' (difficulty_2)';
-	$data['subname']=$heroic['subname'];
+    $heroic = getCreature($h1[$data['Entry']]);
+	$data['Name']=$heroic['Name'].' (Difficulty2)';
+	$data['name_loc']=$heroic['Name'].' (Difficulty2)';
+	$data['SubName']=$heroic['SubName'];
   }
-  if (isset($h2[$data['entry']]))
+  if (isset($h2[$data['Entry']]))
   {
-    $heroic = getCreature($h2[$data['entry']]);
-	$data['name']=$heroic['name'].' (difficulty_3)';
-	$data['name_loc']=$heroic['name'].' (difficulty_3)';
-	$data['subname']=$heroic['subname'];
+    $heroic = getCreature($h2[$data['Entry']]);
+	$data['Name']=$heroic['Name'].' (Difficulty3)';
+	$data['name_loc']=$heroic['Name'].' (Difficulty3)';
+	$data['SubName']=$heroic['SubName'];
   }
-  $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
-  $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['subname'];
-  echo '<a href="?npc='.$data['entry'].'">'.($name?$name:'no name').'</a>';
+  $name    = @$data['name_loc'] ? $data['name_loc'] : $data['Name'];
+  $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['SubName'];
+  echo '<a href="?npc='.$data['Entry'].'">'.($name ? $name : 'no name').'</a>';
   if ($subname)
     echo '<br><div class=subname><a href="?s=n&subname='.$subname.'">&lt;'.$subname.'&gt;</a></div>';
 }
 function r_npcRName($data)
 {
-  $h = getHeroicList();
-  $h1 = getHeroicList1();
-  $h2 = getHeroicList2();
-  if (isset($h[$data['entry']]))
+  $h10 = getHeroicList();
+  $h11 = getHeroicList1();
+  $h12 = getHeroicList2();
+  if (isset($h10[$data['Entry']]))
   {
-    $heroic = getCreature($h[$data['entry']]);
-	$data['name']=$heroic['name'].' (difficulty_1)';
-	$data['name_loc']=$heroic['name'].' (difficulty_1)';
-	$data['subname']=$heroic['subname'];
+    $heroic = getCreature($h10[$data['Entry']]);
+	$data['Name']=$heroic['Name'].' (Difficulty1)';
+	$data['name_loc']=$heroic['Name'].' (Difficulty1)';
+	$data['SubName']=$heroic['SubName'];
   }
-  if (isset($h1[$data['entry']]))
+  if (isset($h11[$data['Entry']]))
   {
-    $heroic = getCreature($h1[$data['entry']]);
-	$data['name']=$heroic['name'].' (difficulty_2)';
-	$data['name_loc']=$heroic['name'].' (difficulty_2)';
-	$data['subname']=$heroic['subname'];
+    $heroic = getCreature($h11[$data['Entry']]);
+	$data['Name']=$heroic['Name'].' (Difficulty2)';
+	$data['name_loc']=$heroic['Name'].' (Difficulty2)';
+	$data['SubName']=$heroic['SubName'];
   }
-  if (isset($h2[$data['entry']]))
+  if (isset($h12[$data['Entry']]))
   {
-    $heroic = getCreature($h2[$data['entry']]);
-	$data['name']=$heroic['name'].' (difficulty_3)';
-	$data['name_loc']=$heroic['name'].' (difficulty_3)';
-	$data['subname']=$heroic['subname'];
+    $heroic = getCreature($h12[$data['Entry']]);
+	$data['Name']=$heroic['Name'].' (Difficulty3)';
+	$data['name_loc']=$heroic['Name'].' (Difficulty3)';
+	$data['SubName']=$heroic['SubName'];
   }
-  $name    = @$data['name_loc'] ? $data['name_loc'] : $data['name'];
-  $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['subname'];
-  echo '<a href="?npc='.$data['entry'].'">'.($name?$name:'no name').'</a> <font size=-3>('.getLoyality($data['faction_A']).')</font>';
+  $name    = @$data['name_loc'] ? $data['name_loc'] : $data['Name'];
+  $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['SubName'];
+  echo '<a href="?npc='.$data['Entry'].'">'.($name ? $name : 'no name').'</a> <font size=-3>('.getLoyality($data['FactionAlliance']).')</font>';
   if ($subname)
     echo '<br><div class=subname><a href="?s=n&subname='.$subname.'">&lt;'.$subname.'&gt;</a></div>';
 }
-function r_npcReact($data)  {echo getLoyality($data['faction_A']);}
+function r_npcReact($data)  {echo getLoyality($data['FactionAlliance']);}
 function r_npcMap($data)
 {
   global $lang;
-  $h = getHeroicList();
-  $h1 = getHeroicList1();
-  $h2 = getHeroicList2();
+  $h20 = getHeroicList();
+  $h21 = getHeroicList1();
+  $h22 = getHeroicList2();
 
-  if (isset($h2[$data['entry']]))
-    echo '<a href="?map&npc='.$h2[$data['entry']].'">'.$lang['map'].'</a>';
+  if (isset($h22[$data['Entry']]))
+    echo '<a href="?map&npc='.$h22[$data['Entry']].'">'.$lang['map'].'</a>';
   else
-  if (isset($h1[$data['entry']]))
-    echo '<a href="?map&npc='.$h1[$data['entry']].'">'.$lang['map'].'</a>';
+  if (isset($h21[$data['Entry']]))
+    echo '<a href="?map&npc='.$h21[$data['Entry']].'">'.$lang['map'].'</a>';
   else
-  if (isset($h[$data['entry']]))
-    echo '<a href="?map&npc='.$h[$data['entry']].'">'.$lang['map'].'</a>';
+  if (isset($h20[$data['Entry']]))
+    echo '<a href="?map&npc='.$h20[$data['Entry']].'">'.$lang['map'].'</a>';
   else
-    echo '<a href="?map&npc='.$data['entry'].'">'.$lang['map'].'</a>';
+    echo '<a href="?map&npc='.$data['Entry'].'">'.$lang['map'].'</a>';
 }
 function r_npcRole($data)
 {
-  $flag = $data['npcflag'];
+  $flag = $data['NpcFlags'];
   if ($flag == 0) {return;}
   if ($flag&0x00000001) echo '<img src=images/map_points/gossip_icon.png>';
-  if ($flag&0x00000002 && getNpcQuestrelation($data['entry'])) echo '<img src=images/map_points/available_quest_icon.gif>';
-  if ($flag&0x00000002 && getNpcInvolvedrelation($data['entry'])) echo '<img src=images/map_points/active_quest_icon.gif>';
+  if ($flag&0x00000002 && getNpcQuestrelation($data['Entry'])) echo '<img src=images/map_points/available_quest_icon.gif>';
+  if ($flag&0x00000002 && getNpcInvolvedrelation($data['Entry'])) echo '<img src=images/map_points/active_quest_icon.gif>';
   if ($flag&0x00000070) echo '<img src=images/map_points/trainer_icon.gif>';
   if ($flag&0x00000F80) echo '<img src=images/map_points/vendor_icon.gif>';
   if ($flag&0x00001000) echo '<img src=images/map_points/repair.png>';
@@ -968,12 +968,12 @@ function r_OnKillRep($data)
 }
 // NPC report generator config
 $npc_report = array(
-'NPC_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level','text'=>$lang['creature_level'], 'draw'=>'r_npcLvl',  'sort_str'=>'`maxlevel` DESC, `name`', 'fields'=>'`maxlevel`, `rank`'),
-'NPC_REPORT_RANK'    =>array('class'=>'small','sort'=>'rank', 'text'=>$lang['creature_level'], 'draw'=>'r_npcLvl',  'sort_str'=>'`rank` DESC, `maxlevel` DESC, `name`', 'fields'=>'`maxlevel`, `rank`'),
-'NPC_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcName', 'sort_str'=>'`name`',                  'fields'=>'`name`, `subname`'),
-'NPC_REPORT_RNAME'   =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcRName','sort_str'=>'`name`',                  'fields'=>'`name`, `subname`, `faction_A`'),
-'NPC_REPORT_REACTION'=>array('class'=>'small','sort'=>'',     'text'=>$lang['creature_react'], 'draw'=>'r_npcReact','sort_str'=>'',                        'fields'=>'`faction_A`'),
-'NPC_REPORT_ROLE'    =>array('class'=>'',     'sort'=>'role', 'text'=>$lang['creature_role'],  'draw'=>'r_npcRole', 'sort_str'=>'`npcflag` DESC',          'fields'=>'`npcflag`'),
+'NPC_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level','text'=>$lang['creature_level'], 'draw'=>'r_npcLvl',  'sort_str'=>'`MaxLevel` DESC, `Name`', 'fields'=>'`MaxLevel`, `Rank`'),
+'NPC_REPORT_RANK'    =>array('class'=>'small','sort'=>'rank', 'text'=>$lang['creature_level'], 'draw'=>'r_npcLvl',  'sort_str'=>'`Rank` DESC, `MaxLevel` DESC, `Name`', 'fields'=>'`MaxLevel`, `Rank`'),
+'NPC_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcName', 'sort_str'=>'`Name`',                  'fields'=>'`Name`, `SubName`'),
+'NPC_REPORT_RNAME'   =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcRName','sort_str'=>'`Name`',                  'fields'=>'`Name`, `SubName`, `FactionAlliance`'),
+'NPC_REPORT_REACTION'=>array('class'=>'small','sort'=>'',     'text'=>$lang['creature_react'], 'draw'=>'r_npcReact','sort_str'=>'',                        'fields'=>'`FactionAlliance`'),
+'NPC_REPORT_ROLE'    =>array('class'=>'',     'sort'=>'role', 'text'=>$lang['creature_role'],  'draw'=>'r_npcRole', 'sort_str'=>'`NpcFlags` DESC',          'fields'=>'`NpcFlags`'),
 'NPC_REPORT_MAP'     =>array('class'=>'small','sort'=>'',     'text'=>$lang['map'],            'draw'=>'r_npcMap',  'sort_str'=>'',                        'fields'=>''),
 // vendor
 'VENDOR_REPORT_COST'   =>array('class'=>'',  'sort'=>'cost', 'text'=>$lang['item_cost'],      'draw'=>'r_vendorCost', 'sort_str'=>'`ExtendedCost`, `name`', 'fields'=>'`ExtendedCost`'),
@@ -1003,15 +1003,15 @@ class CreatureReportGenerator extends ReportGenerator{
   global $npc_report, $dDB;
   $this->db = &$dDB;
   $this->column_conf =&$npc_report;
-  $this->db_fields = '`creature_template`.`entry`';
+  $this->db_fields = '`creature_template`.`Entry`';
   switch ($type) {
-   case 'vendor': $this->table = '(`creature_template` join `npc_vendor` ON `creature_template`.`entry` = `npc_vendor`.`entry`)'; break;
-   case 'trainer':$this->table = '(`creature_template` join `npc_trainer` ON `creature_template`.`entry` = `npc_trainer`.`entry`)'; break;
-   case 'loot':   $this->table = '(`creature_template` join `creature_loot_template` ON `creature_template`.`lootid` = `creature_loot_template`.`entry`)'; break;
-   case 'pick':   $this->table = '(`creature_template` join `pickpocketing_loot_template` ON `creature_template`.`pickpocketloot` = `pickpocketing_loot_template`.`entry`)'; break;
-   case 'skin':   $this->table = '(`creature_template` join `skinning_loot_template` ON `creature_template`.`skinloot` = `skinning_loot_template`.`entry`)'; break;
-   case 'position':$this->table ='(`creature_template` join `creature` ON `creature_template`.`entry` = `creature`.`id`)'; break;
-   case 'reputation':$this->table ='(`creature_template` join `creature_onkill_reputation` ON `creature_template`.`entry` = `creature_onkill_reputation`.`creature_id`)'; break;
+   case 'vendor': $this->table = '(`creature_template` join `npc_vendor` ON `creature_template`.`Entry` = `npc_vendor`.`entry`)'; break;
+   case 'trainer':$this->table = '(`creature_template` join `npc_trainer` ON `creature_template`.`Entry` = `npc_trainer`.`entry`)'; break;
+   case 'loot':   $this->table = '(`creature_template` join `creature_loot_template` ON `creature_template`.`LootId` = `creature_loot_template`.`entry`)'; break;
+   case 'pick':   $this->table = '(`creature_template` join `pickpocketing_loot_template` ON `creature_template`.`PickpocketLootId` = `pickpocketing_loot_template`.`entry`)'; break;
+   case 'skin':   $this->table = '(`creature_template` join `skinning_loot_template` ON `creature_template`.`SkinningLootId` = `skinning_loot_template`.`entry`)'; break;
+   case 'position':$this->table ='(`creature_template` join `creature` ON `creature_template`.`Entry` = `creature`.`id`)'; break;
+   case 'reputation':$this->table ='(`creature_template` join `creature_onkill_reputation` ON `creature_template`.`Entry` = `creature_onkill_reputation`.`creature_id`)'; break;
    default:       $this->table = '`creature_template`'; break;
   }
  }
@@ -1019,16 +1019,16 @@ class CreatureReportGenerator extends ReportGenerator{
  function disableSubnameLocalisation() {$this->dolocale &= ~NPC_LOCALE_SUBNAME;}
  function localiseRequirest($locale, &$tables, &$fields, &$sort_str)
  {
-  $tables.=' LEFT JOIN `locales_creature` ON `creature_template`.`entry` = `locales_creature`.`entry`';
+  $tables.=' LEFT JOIN `locales_creature` ON `creature_template`.`Entry` = `locales_creature`.`entry`';
   if ($this->dolocale & NPC_LOCALE_NAME)
   {
-   $fields   = str_replace('`name`','`name`, `locales_creature`.`name_loc'.$locale.'` AS `name_loc`', $fields);
-   $sort_str = str_replace('`name`','`name_loc`, `name`', $sort_str);
+   $fields   = str_replace('`Name`','`Name`, `locales_creature`.`name_loc'.$locale.'` AS `name_loc`', $fields);
+   $sort_str = str_replace('`Name`','`name_loc`, `Name`', $sort_str);
   }
   if ($this->dolocale & NPC_LOCALE_SUBNAME)
   {
-   $fields   = str_replace('`subname`','`subname`, `locales_creature`.`subname_loc'.$locale.'` AS `subname_loc`', $fields);
-   $sort_str = str_replace('`subname`','`subname_loc`, `subname`', $sort_str);
+   $fields   = str_replace('`SubName`','`SubName`, `locales_creature`.`subname_loc'.$locale.'` AS `subname_loc`', $fields);
+   $sort_str = str_replace('`SubName`','`subname_loc`, `SubName`', $sort_str);
   }
  }
  function castSpell($entry)
@@ -1038,13 +1038,13 @@ class CreatureReportGenerator extends ReportGenerator{
     $rows_2 = $dDB->selectCol('SELECT `creature_id` FROM `creature_ai_scripts` WHERE (`action1_type` = 11 AND `action1_param1`=?d) OR (`action2_type` = 11 AND `action2_param1`=?d) OR (`action3_type` = 11 AND `action3_param1`=?d)', $entry, $entry, $entry);
     $casters = array_unique(array_merge($rows_1, $rows_2));
     if (count($casters))
-       $this->doRequirest('`creature_template`.`entry` in (?a)', $casters);
+       $this->doRequirest('`creature_template`.`Entry` in (?a)', $casters);
  }
  function inFaction($entry)
  {
   global $wDB;
   if ($templatesId =& getFactionTemplates($entry))
-    $this->doRequirest('`faction_A` in (?a) OR `faction_H` in (?a)', $templatesId, $templatesId);
+    $this->doRequirest('`FactionAlliance` in (?a) OR `FactionHorde` in (?a)', $templatesId, $templatesId);
  }
  function soldItem($entry, $price)
  {
@@ -1082,10 +1082,10 @@ class CreatureReportGenerator extends ReportGenerator{
   foreach($this->data_array as $id=>$c)
   {
     $zone = getZoneFromPoint($c['map'], $c['position_x'], $c['position_y'], $c['position_z']);
-    if ($zone!=$area_data[1] || isset($setId[$c['entry']]))
+    if ($zone!=$area_data[1] || isset($setId[$c['Entry']]))
       unset($this->data_array[$id]);
     else
-      $setId[$c['entry']] = 1;
+      $setId[$c['Entry']] = 1;
   }
  }
  // Reputation
@@ -1247,8 +1247,8 @@ function r_questRelation($data)
   global $dDB;
   // Search creature quest giver
   if ($src = $dDB->select(
-   'SELECT `entry`, `name`, `subname`, `faction_A`
-    FROM  `creature_template` left join `creature_questrelation` ON `creature_template`.`entry` = `creature_questrelation`.`id`
+   'SELECT `Entry`, `Name`, `SubName`, `FactionAlliance`
+    FROM  `creature_template` left join `creature_questrelation` ON `creature_template`.`Entry` = `creature_questrelation`.`id`
     WHERE `creature_questrelation`.`quest` = ?d', $data['entry']))
   {
     foreach ($src as $creature){localiseCreature($creature);r_npcRName($creature);}
@@ -1276,8 +1276,8 @@ function r_questInvolvedrelation($data)
   global $dDB;
   // Search creature quest giver
   if ($src = $dDB->select(
-   'SELECT `entry`, `name`, `subname`, `faction_A`
-    FROM  `creature_template` left join `creature_involvedrelation` ON `creature_template`.`entry` = `creature_involvedrelation`.`id`
+   'SELECT `Entry`, `Name`, `SubName`, `FactionAlliance`
+    FROM  `creature_template` left join `creature_involvedrelation` ON `creature_template`.`Entry` = `creature_involvedrelation`.`id`
     WHERE `creature_involvedrelation`.`quest` = ?d', $data['entry']))
   {
     foreach ($src as $creature){localiseCreature($creature);r_npcRName($creature);}
@@ -1683,11 +1683,11 @@ class SpellReportGenerator extends ReportGenerator{
 
   // By creature fields
   for ($i=1;$i<9;$i++)
-    $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `spell'.$i.'` FROM `creature_template_spells` WHERE `entry` = ?d', $creature['entry']));
+    $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `spell'.$i.'` FROM `creature_template_spells` WHERE `entry` = ?d', $creature['Entry']));
 
   // By event AI table
   for ($i=1;$i<=3;$i++)
-    $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `action1_param'.$i.'` as `id` FROM `creature_ai_scripts` WHERE `creature_id` = ?d AND `action'.$i.'_type` = 11', $creature['entry']));
+    $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `action1_param'.$i.'` as `id` FROM `creature_ai_scripts` WHERE `creature_id` = ?d AND `action'.$i.'_type` = 11', $creature['Entry']));
 
   if (count($spell_list))
     $this->doRequirest('`id` IN (?a)', array_unique($spell_list));

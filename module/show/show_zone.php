@@ -76,7 +76,7 @@ else
      }
   }
   createReportTab();
-  function r_npcDungeon($data){global $lang; echo '<a href="?zone='.@$_REQUEST['zone'].'&npc='.$data['entry'].'" onClick="return uploadFromHref(this, \'mapper\');">'.$lang['map'].'</a>';}
+  function r_npcDungeon($data){global $lang; echo '<a href="?zone='.@$_REQUEST['zone'].'&npc='.$data['Entry'].'" onClick="return uploadFromHref(this, \'mapper\');">'.$lang['map'].'</a>';}
   function r_objDungeon($data){global $lang; echo '<a href="?zone='.@$_REQUEST['zone'].'&obj='.$data['entry'].'" onClick="return uploadFromHref(this, \'mapper\');">'.$lang['map'].'</a>';}
   //********************************************************************************
   // Parent zones

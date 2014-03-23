@@ -382,15 +382,15 @@ if ($rows = $dDB->select("SELECT *
                           FROM `creature_template` join `creature_questrelation`
                           WHERE
                           `creature_questrelation`.`quest` = ?d AND
-                          `creature_questrelation`.`id` = `creature_template`.`entry`", $quest['entry']))
+                          `creature_questrelation`.`id` = `creature_template`.`Entry`", $quest['entry']))
 foreach ($rows as $creature)
 {
   localiseCreature($creature);
-  $loyality = getLoyality($creature['faction_A']);
-  echo "<tr><td><a style='float: right;' href=\"?map&npc=$creature[entry]\">$lang[map]</a>";
-  echo "<a href=\"?npc=$creature[entry]\">$creature[name]</a> ($loyality)";
-  if ($creature['subname'] != "")
-   echo "<br><FONT color=#008800 size=-3>&lt;$creature[subname]&gt;</FONT>";
+  $loyality = getLoyality($creature['FactionAlliance']);
+  echo "<tr><td><a style='float: right;' href=\"?map&npc=$creature[Entry]\">$lang[map]</a>";
+  echo "<a href=\"?npc=$creature[Entry]\">$creature[Name]</a> ($loyality)";
+  if ($creature['SubName'] != "")
+   echo "<br><FONT color=#008800 size=-3>&lt;$creature[SubName]&gt;</FONT>";
   echo "</td></tr>";
   $number++;
 }
@@ -426,15 +426,15 @@ if ($rows = $dDB->select("SELECT *
                           FROM `creature_template` join `creature_involvedrelation`
                           WHERE
                           `creature_involvedrelation`.`quest` = ?d AND
-                          `creature_involvedrelation`.`id` = `creature_template`.`entry`", $quest['entry']))
+                          `creature_involvedrelation`.`id` = `creature_template`.`Entry`", $quest['entry']))
 foreach ($rows as $creature)
 {
   localiseCreature($creature);
-  $loyality = getLoyality($creature['faction_A']);
-  echo "<tr><td><a style='float: right;' href=\"?map&npc=$creature[entry]\">$lang[map]</a>";
-  echo "<a href=\"?npc=$creature[entry]\">$creature[name]</a> ($loyality)";
-  if ($creature['subname'] != "")
-   echo "<br><FONT color=#008800 size=-3>&lt;$creature[subname]&gt;</FONT>";
+  $loyality = getLoyality($creature['FactionAlliance']);
+  echo "<tr><td><a style='float: right;' href=\"?map&npc=$creature[Entry]\">$lang[map]</a>";
+  echo "<a href=\"?npc=$creature[Entry]\">$creature[Name]</a> ($loyality)";
+  if ($creature['SubName'] != "")
+   echo "<br><FONT color=#008800 size=-3>&lt;$creature[SubName]&gt;</FONT>";
   echo "</td></tr>";
   $number++;
 }

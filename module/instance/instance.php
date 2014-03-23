@@ -136,7 +136,7 @@ else
          $mapdata['points'][$i]['icentery']=0;
          $mapdata['points'][$i]['href']="\"?npc=".$point['id']."\" onclick=\"return changeSelect('".$id."');\"";
          $tt = "<table class=maptooltip>";
-         $tt.= "<tr><td class=name>".validateText($c['name'])." (".$point['guid'].")</td></tr>";
+         $tt.= "<tr><td class=name>".validateText($c['Name'])." (".$point['guid'].")</td></tr>";
          $tt.= "</table>";
          $mapdata['points'][$i]['tooltip']= $tt;
          $i++;
@@ -196,7 +196,7 @@ else
   //********************************************************************************
   // Creatures on map
   //********************************************************************************
-  function r_npcDungeon($data){global $lang; echo '<a href="?map&npc='.$data['entry'].'" onClick="changeSelect(\'c'.$data['entry'].'\'); return false;">'.$lang['map'].'</a>';}
+  function r_npcDungeon($data){global $lang; echo '<a href="?map&npc='.$data['Entry'].'" onClick="changeSelect(\'c'.$data['Entry'].'\'); return false;">'.$lang['map'].'</a>';}
 
   $creatures =& new CreatureReportGenerator('position');
   $creatures->addColumnConfig('NPC_REPORT_DUNGEON', array('class'=>'small','sort'=>'','text'=>$lang['map'],'draw'=>'r_npcDungeon','sort_str'=>'','fields'=>''));

@@ -111,7 +111,7 @@ while ($row2=mysql_fetch_array($res2))
 {
  if ($row2['id']!=$lastID)
  {
-  $res = mysql_query("SELECT * FROM `creature_template` WHERE entry = '$row2[id]' LIMIT 1") or die(mysql_error());
+  $res = mysql_query("SELECT * FROM `creature_template` WHERE Entry = '$row2[id]' LIMIT 1") or die(mysql_error());
   $row = mysql_fetch_array($res);
   $row['name']=str_replace("'","`",$row['name']);
   $row['name']=str_replace("\"","`",$row['name']);

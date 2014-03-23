@@ -74,12 +74,12 @@ define('UNIT_NPC_FLAG_UNK31', 0x80000000);
 function noBorderCreatureTable($npc)
 {
  global $game_text, $lang;
- $loyality= getLoyality($npc['faction_A']);
- $type = $npc['type'];
- $rank =  $npc['rank'];
- $family =$npc['family'];
- $npcdmgmin = ROUND(($npc['mindmg']+$npc['attackpower'])*$npc['dmg_multiplier']);
- $npcdmgmax = ROUND(($npc['maxdmg']+$npc['attackpower'])*$npc['dmg_multiplier']);
+ $loyality= getLoyality($npc['FactionAlliance']);
+ $type = $npc['CreatureType'];
+ $rank =  $npc['Rank'];
+ $family =$npc['Family'];
+ $npcdmgmin = ROUND(($npc['MinMeleeDmg']+$npc['MeleeAttackPower'])*$npc['DamageMultiplier']);
+ $npcdmgmax = ROUND(($npc['MaxMeleeDmg']+$npc['MeleeAttackPower'])*$npc['DamageMultiplier']);
 
  if ($npc['ScriptName']=="" && $npc['AIName']=="") {$npcscr='No script';}
  else if ($npc['AIName']=="EventAI" && $npc['ScriptName']=="") {$npcscr='EventAI';}
@@ -90,62 +90,62 @@ function noBorderCreatureTable($npc)
  else if ($npc['AIName']=="PetAI" && $npc['ScriptName']=="") {$npcscr='PetAI';}
  else if ($npc['AIName']=="TotemAI" && $npc['ScriptName']=="") {$npcscr='TotemAI';}
  else if ($npc['ScriptName']=="generic_creature") {$npcscr='Caster';}
- else if ($npc['ScriptName']<>"" && $npc['AIName']=="EventAI") {$npcscr='EventAI + SD2';}
+ else if ($npc['ScriptName']<>"" && $npc['AIName']=="EventAI") {$npcscr='EventAI&nbsp;+&nbsp;SD2';}
  else {$npcscr='SD2';}
  
- $npc['name'] = str_replace('(1)', '(difficulty_1)', $npc['name']);
- $npc['name'] = str_replace('(2)', '(difficulty_2)', $npc['name']);
- $npc['name'] = str_replace('(3)', '(difficulty_3)', $npc['name']);
+$npc['Name'] = str_replace('(1)', '(Difficulty1)', $npc['Name']);
+$npc['Name'] = str_replace('(2)', '(Difficulty2)', $npc['Name']);
+$npc['Name'] = str_replace('(3)', '(Difficulty3)', $npc['Name']);
 
  echo "<table class=creature cellspacing=0>";
  echo "<tbody>";
- echo "<tr><td colspan=2><b>$npc[name] ($loyality)</b>";
- if ($npc['subname']!="")
-     echo "<br><FONT color=#008800 size=-3>&lt;$npc[subname]&gt;</FONT>";
+ echo "<tr><td colspan=2><b>$npc[Name]&nbsp;($loyality)</b>";
+ if ($npc['SubName']!="")
+     echo "<br><FONT color=#008800 size=-3>&lt;$npc[SubName]&gt;</FONT>";
  echo "</td></tr>";
 
  if ($rank)
      echo "<td>".$game_text['npc_rank']."</td><td align=right>".getCreatureRank($rank)."</td></tr>";
 
  echo "<tr><td>".$game_text['npc_type']."</td><td align=right>".getCreatureType($type)."</td></tr>";
- if ($npc['family']!=0)
+ if ($npc['Family']!=0)
  echo "<tr><td>".$game_text['npc_family']."</td><td align=right>".getCreatureFamily($family)."</td></tr>";
 
- echo "<tr><td>".$game_text['npc_level']."</td><td align=right>$npc[maxlevel]</td></tr>";
- if ($npc['minhealth']==$npc['maxhealth'])
-     echo "<tr><td>".$game_text['npc_health']."</td><td align=right>$npc[maxhealth]</td></tr>";
+ echo "<tr><td>".$game_text['npc_level']."</td><td align=right>$npc[MaxLevel]</td></tr>";
+ if ($npc['MinLevelHealth']==$npc['MaxLevelHealth'])
+     echo "<tr><td>".$game_text['npc_health']."</td><td align=right>$npc[MaxLevelHealth]</td></tr>";
  else
-     echo "<tr><td>".$game_text['npc_health']."</td><td align=right>$npc[minhealth]-$npc[maxhealth]</td></tr>";
- if ($npc['minmana']!=0)
+     echo "<tr><td>".$game_text['npc_health']."</td><td align=right>$npc[MinLevelHealth]-$npc[MaxLevelHealth]</td></tr>";
+ if ($npc['MinLevelMana']!=0)
  {
-     if ($npc['minmana']!=$npc['maxmana'])
-         echo "<tr><td>".$game_text['npc_mana']."</td><td align=right>$npc[minmana]-$npc[maxmana]</td></tr>";
+     if ($npc['MinLevelMana']!=$npc['MaxLevelMana'])
+         echo "<tr><td>".$game_text['npc_mana']."</td><td align=right>$npc[MinLevelMana]-$npc[MaxLevelMana]</td></tr>";
      else
-         echo "<tr><td>".$game_text['npc_mana']."</td><td align=right>$npc[minmana]</td></tr>";
+         echo "<tr><td>".$game_text['npc_mana']."</td><td align=right>$npc[MinLevelMana]</td></tr>";
  }
- if ($npc['armor']!=0)
-     echo "<tr><td>".$game_text['npc_armor']."</td><td align=right>$npc[armor]</td></tr>";
+ if ($npc['Armor']!=0)
+     echo "<tr><td>".$game_text['npc_armor']."</td><td align=right>$npc[Armor]</td></tr>";
 
  echo "<tr><td>".$game_text['npc_damage']."</td><td align=right>$npcdmgmin&nbsp;-&nbsp;$npcdmgmax</td></tr>";
- echo "<tr><td>".$game_text['npc_ap']."</td><td align=right>$npc[attackpower]</td></tr>";
- $attackTime = $npc['baseattacktime']/1000;
+ echo "<tr><td>".$game_text['npc_ap']."</td><td align=right>$npc[MeleeAttackPower]</td></tr>";
+ $attackTime = $npc['MeleeBaseAttackTime']/1000;
  echo "<tr><td>".$game_text['npc_attack']."</td><td align=right>$attackTime&nbsp;$lang[sec]</td></tr>";
 
- echo "<tr><td>".$game_text['faction']."</td><td align=right>".getFactionTemplateName($npc['faction_A'])."</td></tr>";
+ echo "<tr><td>".$game_text['faction']."</td><td align=right>".getFactionTemplateName($npc['FactionAlliance'])."</td></tr>";
 // echo "<tr><td>Радиус аггро</td><td align=right>$npc[combat_reach]</td></tr>";
-// echo "<tr><td>".$game_text['entry']."</td><td align=right>$npc[entry]</td></tr>";
- if ($npc['modelid_1'])
-  echo "<tr><td>".$game_text['display1']."</td><td align=right>$npc[modelid_1]</td></tr>";
- if ($npc['modelid_2'])
-  echo "<tr><td>".$game_text['display2']."</td><td align=right>$npc[modelid_2]</td></tr>";
- if ($npc['modelid_3'])
-  echo "<tr><td>".$game_text['display3']."</td><td align=right>$npc[modelid_3]</td></tr>";
- if ($npc['modelid_4'])
-  echo "<tr><td>".$game_text['display4']."</td><td align=right>$npc[modelid_4]</td></tr>";
+// echo "<tr><td>".$game_text['entry']."</td><td align=right>$npc[Entry]</td></tr>";
+ if ($npc['ModelId1'])
+  echo "<tr><td>".$game_text['display1']."</td><td align=right>$npc[ModelId1]</td></tr>";
+ if ($npc['ModelId2'])
+  echo "<tr><td>".$game_text['display2']."</td><td align=right>$npc[ModelId2]</td></tr>";
+ if ($npc['ModelId3'])
+  echo "<tr><td>".$game_text['display3']."</td><td align=right>$npc[ModelId3]</td></tr>";
+ if ($npc['ModelId4'])
+  echo "<tr><td>".$game_text['display4']."</td><td align=right>$npc[ModelId4]</td></tr>";
 
  echo "<tr><td>".$game_text['npc_script']."</td><td align=right>$npcscr</td></tr>";
- if ($npc['npcflag'])
-     echo "<tr><td colspan=2>".getCreatureFlagsList($npc['npcflag'])."</td></tr>";
+ if ($npc['NpcFlags'])
+     echo "<tr><td colspan=2>".getCreatureFlagsList($npc['NpcFlags'])."</td></tr>";
 
 // echo "<tr><td colspan=2 class=bottom>This is from MaNGOS database!</td></tr>";
  echo "</tbody></table>";
