@@ -590,12 +590,12 @@ function getCreature($creature_id, $fields = "*")
 
 function getCreatureName($creature_id, $as_ref=1)
 {
- if ($Creature=getCreature($creature_id, "`entry`, `name`"))
+ if ($Creature=getCreature($creature_id, "`Entry`, `Name`"))
  {
-    if ($Creature['name']=="") $Creature['name'] = "npc_$creature_id";
+    if ($Creature['Name']=="") $Creature['Name'] = "npc_$creature_id";
     if ($as_ref)
-        return "<a href=?npc=".$Creature['entry'].">".$Creature['name']."</a>";
-    return $Creature['name'];
+        return "<a href=?npc=".$Creature['Entry'].">".$Creature['Name']."</a>";
+    return $Creature['Name'];
  }
  return "Unknown creature - $creature_id";
 }
