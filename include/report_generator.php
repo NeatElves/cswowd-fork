@@ -640,7 +640,7 @@ function r_itemFlag($data)    {echo dechex($data['Flags']);}
 // Vendor
 function r_vendorCost($data)
 {
-    $flags2 = getItemFlags2($data['entry']);
+    $flags2 = getItemFlags2($data['Entry']);
   if ($data['ExtendedCost']>0)
   {
        $cost = getExtendCost($data['ExtendedCost']);
