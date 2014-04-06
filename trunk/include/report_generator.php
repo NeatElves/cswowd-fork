@@ -640,7 +640,7 @@ function r_itemFlag($data)    {echo dechex($data['Flags']);}
 // Vendor
 function r_vendorCost($data)
 {
-    $flags2 = getItemFlags2($data['Entry']);
+    $flags2 = getItemFlags2($data['entry']);
   if ($data['ExtendedCost']>0)
   {
        $cost = getExtendCost($data['ExtendedCost']);
@@ -966,6 +966,22 @@ function r_OnKillRep($data)
    }
   }
 }
+
+function r_vendorCostN($data)
+{
+    $flags2 = getItemFlags2($data['Entry']);
+  if ($data['ExtendedCost']>0)
+  {
+       $cost = getExtendCost($data['ExtendedCost']);
+       if ($flags2&ITEM_FLAGS2_EXT_COST_REQUIRES_GOLD)
+            echo money($data['BuyPrice']).''.r_excostCost($cost);
+    else
+      r_excostCost($cost);
+  }
+  else
+    echo money($data['BuyPrice']);
+}
+
 // NPC report generator config
 $npc_report = array(
 'NPC_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level','text'=>$lang['creature_level'], 'draw'=>'r_npcLvl',  'sort_str'=>'`MaxLevel` DESC, `Name`', 'fields'=>'`MaxLevel`, `Rank`'),
@@ -976,16 +992,16 @@ $npc_report = array(
 'NPC_REPORT_ROLE'    =>array('class'=>'',     'sort'=>'role', 'text'=>$lang['creature_role'],  'draw'=>'r_npcRole', 'sort_str'=>'`NpcFlags` DESC',          'fields'=>'`NpcFlags`'),
 'NPC_REPORT_MAP'     =>array('class'=>'small','sort'=>'',     'text'=>$lang['map'],            'draw'=>'r_npcMap',  'sort_str'=>'',                        'fields'=>''),
 // vendor
-'VENDOR_REPORT_COST'   =>array('class'=>'',  'sort'=>'cost', 'text'=>$lang['item_cost'],      'draw'=>'r_vendorCost', 'sort_str'=>'`ExtendedCost`, `name`', 'fields'=>'`ExtendedCost`'),
-'VENDOR_REPORT_COUNT'  =>array('class'=>'',  'sort'=>'count','text'=>$lang['item_count'],     'draw'=>'r_vendorCount','sort_str'=>'`sold_count`, `name`',   'fields'=>'`npc_vendor`.`maxcount` AS `sold_count`'),
-'VENDOR_REPORT_INCTIME'=>array('class'=>'',  'sort'=>'time', 'text'=>$lang['item_incrtime'],  'draw'=>'r_vendorTime', 'sort_str'=>'`incrtime`, `name`',     'fields'=>'`incrtime`'),
+'VENDOR_REPORT_COST'   =>array('class'=>'',  'sort'=>'cost', 'text'=>$lang['item_cost'],      'draw'=>'r_vendorCostN', 'sort_str'=>'`ExtendedCost`, `Name`', 'fields'=>'`ExtendedCost`'),
+'VENDOR_REPORT_COUNT'  =>array('class'=>'',  'sort'=>'count','text'=>$lang['item_count'],     'draw'=>'r_vendorCount','sort_str'=>'`sold_count`, `Name`',   'fields'=>'`npc_vendor`.`maxcount` AS `sold_count`'),
+'VENDOR_REPORT_INCTIME'=>array('class'=>'',  'sort'=>'time', 'text'=>$lang['item_incrtime'],  'draw'=>'r_vendorTime', 'sort_str'=>'`incrtime`, `Name`',     'fields'=>'`incrtime`'),
 // trainer
 'TRAINER_REPORT_COST' =>array('class'=>'',    'sort'=>'scost', 'text'=>$lang['trainer_cost'], 'draw'=>'r_trainerCost', 'sort_str'=>'`spellcost`',                'fields'=>'`spellcost`'),
 'TRAINER_REPORT_SPELL'=>array('class'=>'left','sort'=>'',      'text'=>$lang['trainer_spell'],'draw'=>'r_trainerSpell','sort_str'=>'',                           'fields'=>'`spell`'),
 'TRAINER_REPORT_SKILL'=>array('class'=>'',    'sort'=>'skill', 'text'=>$lang['trainer_skill'],'draw'=>'r_trainerSkillReq','sort_str'=>'`reqskill`, `reqskillvalue`','fields'=>'`reqskill`, `reqskillvalue`'),
 'TRAINER_REPORT_LEVEL'=>array('class'=>'',    'sort'=>'slevel','text'=>$lang['trainer_level'],'draw'=>'r_trainerLevel','sort_str'=>'`reqlevel`',                 'fields'=>'`reqlevel`'),
 // loot
-'LOOT_REPORT_CHANCE'=>array('class'=>'', 'sort'=>'chance', 'text'=>$lang['loot_chance'], 'draw'=>'r_lootChance', 'sort_str'=>'ABS(`ChanceOrQuestChance`) DESC, `name`', 'fields'=>'`ChanceOrQuestChance`, `mincountOrRef`'),
+'LOOT_REPORT_CHANCE'=>array('class'=>'', 'sort'=>'chance', 'text'=>$lang['loot_chance'], 'draw'=>'r_lootChance', 'sort_str'=>'ABS(`ChanceOrQuestChance`) DESC, `Name`', 'fields'=>'`ChanceOrQuestChance`, `mincountOrRef`'),
 'LOOT_REPORT_REQ'   =>array('class'=>'', 'sort'=>'',       'text'=>$lang['loot_require'],'draw'=>'r_lootRequire','sort_str'=>'', 'fields'=>'`condition_id`'),
 // reputation
 'ONKILL_REPUTATION' =>array('class'=>'left', 'sort'=>'rep','text'=>$lang['onkill_rep'],'draw'=>'r_OnKillRep','sort_str'=>'`RewOnKillRepValue1` DESC, `RewOnKillRepValue2` DESC', 'fields'=>'`RewOnKillRepFaction1`, `RewOnKillRepValue1`, `MaxStanding1`, `RewOnKillRepValue2`, `RewOnKillRepFaction2`, `MaxStanding2`'),
