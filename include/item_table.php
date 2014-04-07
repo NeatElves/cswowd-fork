@@ -185,12 +185,10 @@ function noBorderItemTable($item, $item_data=0)
  // Extra data
  if ($flags2 & ITEM_FLAGS2_HORDE_ONLY) echo '<tr><td>'.$lang['reqirement'].':&nbsp;'.$lang['Horde'].'</td></tr>';
  if ($flags2 & ITEM_FLAGS2_ALLIANCE_ONLY) echo '<tr><td>'.$lang['reqirement'].':&nbsp;'.$lang['Alliance'].'</td></tr>';
-
  if ($item['SellPrice'])
   echo '<tr><td class=sellprice>&nbsp;'.$lang['sell_price'].':&nbsp;'.money($item['SellPrice']).'</td></tr>';
  else
   echo '<tr><td class=sellprice>&nbsp;'.$lang['no_sell_price'].'</td></tr>';
-// echo '<tr><td class=bottom>This is from MaNGOS database!</td></tr>';
  echo '</tbody></table>';
 }
 
@@ -300,13 +298,10 @@ function renderItemData($item, $item_data=0)
  // Heroic item (green)
  if ($item['Flags'] & ITEM_FLAGS_HEROIC)
      echo '<tr><td class=SpellStat>'.$game_text['item_heroic'].'</td></tr>';
-
  if ($item['area'])
      echo '<tr><td>'.getAreaName($item['area']).'</td></tr>';
-
  if ($item['Map'])
      echo '<tr><td>'.getMapName($item['Map']).'</td></tr>';
-
  if ($item['Flags'] & ITEM_FLAGS_CONJURED)
      echo '<tr><td>'.$game_text['conjured_item'].'</td></tr>';
  // Вывод привязки вещи
@@ -316,7 +311,6 @@ function renderItemData($item, $item_data=0)
  if ($item['Flags' ]& ITEM_FLAGS_OPENABLE)
      echo '<tr><td class=SpellStat>'.$game_text['right_click'].'</td></tr>';
  // <Right Click to Read>
-
  // Вывод уникальности вещи
  if ($item['maxcount']==1)echo '<tr><td class=Unique>'.$game_text['unique'].'</td></tr>';
  if ($item['maxcount'] >1)echo '<tr><td class=Unique>'.$game_text['unique'].'('.$item['maxcount'].')</td></tr>';
