@@ -160,14 +160,19 @@ if ($quest['RequiredSkill'])
  if (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_REPEATABLE) && (($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY) ==0) && ($quest['QuestFlags'] & (QUEST_FLAGS_DAILY | QUEST_FLAGS_WEEKLY))  == 0)
      echo "<tr><td>$lang[item_type]:&nbsp;<a href=\"?s=q&Sfr=".($quest['SpecialFlags'])."\">".$lang['quest_type0']."</a></td></tr>";
 
- if ($quest['RequiredMinRepFaction'])
+ if ($quest['RequiredMinRepFaction'] OR $quest['RequiredMaxRepFaction'])
    echo "<tr><td>$lang[item_faction_rank]:</td></tr>";
 
  if ($quest['RequiredMinRepFaction'])
-   echo "<tr><td> ".getFactionName($quest['RequiredMinRepFaction']).":&nbsp;$quest[RequiredMinRepValue]($lang[item_min_level])</td></tr>";
-
+  {
+    $qrep_data = getReputationDataFromReputation($quest['RequiredMinRepValue']);
+    echo "<tr><td>".getFactionName($quest['RequiredMinRepFaction']).":&nbsp;".$qrep_data['rank_name']."&nbsp;-&nbsp;$quest[RequiredMinRepValue]($lang[item_min_level])</td></tr>";
+  }
  if ($quest['RequiredMaxRepFaction'])
-   echo "<tr><td>".getFactionName($quest['RequiredMaxRepFaction']).":&nbsp;$quest[RequiredMaxRepValue]($lang[item_max_level])</td></tr>";
+  {
+    $qrep_data = getReputationDataFromReputation($quest['RequiredMaxRepValue']);
+    echo "<tr><td>".getFactionName($quest['RequiredMaxRepFaction']).":&nbsp;".$qrep_data['rank_name']."&nbsp;-&nbsp;$quest[RequiredMaxRepValue]($lang[item_max_level])</td></tr>";
+  }
 
  $questobjectives = getQuestText($quest['Objectives']);
  $questrequestitemstext = getQuestText($quest['RequestItemsText']);
@@ -184,7 +189,10 @@ if ($quest['RequiredSkill'])
    echo "<tr><td>$lang[item_faction_rank]:</td></tr>";
 
  if ($quest['RepObjectiveFaction'])
-   echo "<tr><td>".getFactionName($quest['RepObjectiveFaction']).":&nbsp;$quest[RepObjectiveValue]($lang[item_min_level])</td></tr>";
+  {
+    $qrep_data = getReputationDataFromReputation($quest['RepObjectiveValue']);
+    echo "<tr><td>".getFactionName($quest['RepObjectiveFaction']).":&nbsp;".$qrep_data['rank_name']."&nbsp;-&nbsp;$quest[RepObjectiveValue]($lang[item_min_level])</td></tr>";
+  }
 
  if ($quest['ReqItemId1'] OR $quest['ReqItemId2'] OR $quest['ReqItemId3'] OR $quest['ReqItemId4'] OR $quest['ReqItemId5'] OR $quest['ReqItemId6'])
  {
