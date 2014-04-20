@@ -27,24 +27,6 @@
         <input name="s" type="hidden" value="all">
         <input class="ls_search" alt="all" name="name" id="topsearch">
        </form>
-      </td>
-      <td>
-       <select onchange="changeSearch(this);">
-        <option value="site">All</option>
-        <option value="item">Item</option>
-        <option value="itemset">Item Set</option>
-        <option value="quest">Quest</option>
-        <option value="spell">Spell</option>
-        <option value="npc">Npc</option>
-        <option value="object">Object</option>
-        <option value="faction">Faction</option>
-        <option value="area">Area</option>
-        <option value="player">Player</option>
-       </select>
-      </td>
-      <td><a class="searhButton" href="#" onclick="searchClick(this);"></a></td>
-      <td class="sright"></td>
-     </tr>
     </table>
    </div>
   </div>

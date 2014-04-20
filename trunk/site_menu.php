@@ -545,22 +545,22 @@ $menu = array(
     array('link'=>'?faq=raidhill',    'text'=>$lang['about_raid_hill'])
    )
   ),
-  array(
-   'ico'=>'icon-account',
-   'name'=>$lang['menu_5'],
-   'show'=>false,
-   'sub'=>array(
-    array('link'=>'?register',    'text'=>$lang['register']),
-    array('link'=>'?open_search', 'text'=>$lang['open_search'])
-   )
-  ),
+//  array(
+//   'ico'=>'icon-account',
+//   'name'=>$lang['menu_5'],
+//   'show'=>false,
+//   'sub'=>array(
+//    array('link'=>'?register',    'text'=>$lang['register']),
+//    array('link'=>'?open_search', 'text'=>$lang['open_search'])
+//   )
+//  ),
   array(
    'ico'=>'icon-support',
    'name'=>$lang['menu_6'],
    'show'=>false,
    'sub'=>array(
-    array('link'=>'?stat', 'text'=>$lang['statistic']),
-    array('link'=>'map/index.html', 'text'=>$lang['cartograph'], 'target'=>'_blank')
+    array('link'=>'?stat', 'text'=>$lang['statistic'])
+//    array('link'=>'map/index.html', 'text'=>$lang['cartograph'], 'target'=>'_blank')
    )
   )
 );
