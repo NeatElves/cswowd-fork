@@ -101,7 +101,7 @@ function noBorderCreatureTable($npc)
  echo "<tbody>";
  echo "<tr><td colspan=2><b>$npc[Name]&nbsp;($loyality)</b>";
  if ($npc['SubName']!="")
-     echo "<br><FONT color=#008800 size=-3>&lt;$npc[SubName]&gt;</FONT>";
+     echo "<br><font color=#008800 size=-3>&lt;$npc[SubName]&gt;</font>";
  echo "</td></tr>";
  if ($rank)
      echo "<td>".$game_text['npc_rank']."</td><td align=right>".getCreatureRank($rank)."</td></tr>";

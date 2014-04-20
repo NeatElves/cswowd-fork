@@ -16,8 +16,8 @@ function showPlayerQuests($guid)
   global $lang;
   $quests = getCharacterQueststatus($guid);
   // Показ активных квестов
-  echo "<TABLE class=report width=500><TBODY>";
-  echo "<TR><TD colspan=3 class=head>".$lang['player_active_quest']."</TD></TR>";
+  echo "<table class=report width=500><tbody>";
+  echo "<tr><td colspan=3 class=head>".$lang['player_active_quest']."</td></tr>";
   
   if ($quests)
   foreach ($quests as $quest)
@@ -33,6 +33,6 @@ function showPlayerQuests($guid)
     echo '</tr>';
    }
   }
-  echo "</TBODY></TABLE>";
+  echo "</tbody></table>";
 }
 ?>

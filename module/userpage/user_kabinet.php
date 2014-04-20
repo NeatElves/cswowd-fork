@@ -12,8 +12,8 @@ if (isset($_SESSION['account_id']))
  <table class="report" cellpadding="6" cellspacing="1" border="0" width="100%" align="center">
  <tr>
  <td class="alt2" valign="top" nowrap="nowrap">
- <div class="smallfont"><A href="#"><strong>Добро пожаловать, '.$_SESSION['username'].'</strong><br></A>
- <A href="?user">Мой кабинет</A> | <A href="?user=logout">Выход</A>
+ <div class="smallfont"><a href="#"><strong>Добро пожаловать, '.$_SESSION['username'].'</strong><br></a>
+ <a href="?user">Мой кабинет</a> | <a href="?user=logout">Выход</a>
  </div>
  </td>
  </tr>
@@ -21,17 +21,17 @@ if (isset($_SESSION['account_id']))
  $id = $_SESSION['account_id'];
  $rows = $cDB->select("SELECT * FROM `characters` WHERE `account` = ?d", $id);
 
- echo "<TABLE class=report width=500>";
- echo "<TBODY>";
+ echo "<table class=report width=500>";
+ echo "<tbody>";
  if($rows)
  {
   echo "<tr>";
   echo "<th>$lang[player_level]</th>";
-  echo "<th width=1%></TH>";
+  echo "<th width=1%></th>";
   echo "<th width=100%>$lang[player_name]</th>";
   echo "<th>$lang[player_race]</th>";
   echo "<th>$lang[player_class]</th>";
-  echo "<th>$lang[player_zone]</TH>";
+  echo "<th>$lang[player_zone]</th>";
   echo "</tr>\n";
   foreach ($rows as $player)
   {
@@ -55,18 +55,18 @@ if (isset($_SESSION['account_id']))
      $map_name = "&bdquo;".str_replace(' ','&nbsp;',$map_name)."&ldquo;";
 
    $map_name = "<a href=\"map/map.php?x=$player[position_x]&y=$player[position_y]&map=$player[map]\">".$map_name."</a>".$extra_name;
-   echo "<TR>";
-   echo "<TD align=center>$level</TD>";
-   echo "<TD class=pfaction><img width=$imgsize src=\"".getFactionImage($race)."\"></TD>";
-   echo "<TD class=player><A href=?player=$player[guid]>$player[name]</a></TD>";
-   echo "<TD class=prace><img width=$imgsize src=\"".getRaceImage($race,$gender)."\"></TD>";
-   echo "<TD class=pclass><img width=$imgsize src=\"".getClassImage($class)."\"></TD>";
-   echo "<TD class=zone>$map_name</TD>";
-   echo "</TR>\n";
+   echo "<tr>";
+   echo "<td align=center>$level</td>";
+   echo "<td class=pfaction><img width=$imgsize src=\"".getFactionImage($race)."\"></td>";
+   echo "<td class=player><A href=?player=$player[guid]>$player[name]</a></td>";
+   echo "<td class=prace><img width=$imgsize src=\"".getRaceImage($race,$gender)."\"></td>";
+   echo "<td class=pclass><img width=$imgsize src=\"".getClassImage($class)."\"></td>";
+   echo "<td class=zone>$map_name</td>";
+   echo "</tr>\n";
   }
  }
  else
   echo "<tr><td colSpan=6 align=center>".$lang['user_no_char_present']."</td></tr>";
- echo "</TBODY></TABLE>";
+ echo "</tbody></table>";
 }
 ?>

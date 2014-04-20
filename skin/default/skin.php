@@ -8,8 +8,8 @@ include_once("include/simple_cacher.php");
 <table class="foundation" celspacing="0" cellpadding="0" width="99%" border="0">
   <tbody>
   <tr>
-    <td align="center" height="30"><IMG alt="wowd" src="images/wowdsmall.jpg" border="0"></td>
-    <td align="center"><div class="sitetitle"><b>WOWD::<?php  echo $config['servername']; ?></b></div>
+    <td align="center" height="30"><img alt="wowd" src="images/wowdsmall.jpg" border="0"></td>
+    <td align="center"><div class="sitetitle"><b><?php  echo $config['servername']; ?></b></div>
     </td>
   </tr>
   <tr>

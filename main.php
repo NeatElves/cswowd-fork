@@ -88,14 +88,14 @@ $module = isset($modules[$mode]) ? $modules[$mode] : (isset($modules["default"])
 if ($module!=NULL)
     include($module);
 
-echo "<br><div id=debug></div><TABLE class=back>";
-echo "<TBODY>";
-echo "<TR>";
-echo "<TD align=left width=\"33%\"><A href=\"javascript:history.back(1)\">$lang[back]</A></TD>";
-echo "<TD align=center width=\"34%\"></TD>";
-echo "<TD align=right width=\"33%\"></TD>";
-echo "</TR>";
-echo "</TBODY></TABLE>";
+echo "<br><div id=debug></div><table class=back>";
+echo "<tbody>";
+echo "<tr>";
+echo "<td align=left width=\"33%\"><a href=\"javascript:history.back(1)\">$lang[back]</a></td>";
+echo "<td align=center width=\"34%\"></td>";
+echo "<td align=right width=\"33%\"></td>";
+echo "</tr>";
+echo "</tbody></table>";
 
 //*****************************************************************************
 // Show timers (for debug)

@@ -1228,7 +1228,7 @@ class GameobjectReportGenerator extends ReportGenerator{
 //=================================================================
 // Quest list report functions and methods
 //=================================================================
-function r_questLvl($data) {echo $data['QuestLevel']; if ($data['Type']) echo '<br><FONT size=-3><b>'.getQuestType($data['Type']).'</b></FONT>';}
+function r_questLvl($data) {echo $data['QuestLevel']; if ($data['Type']) echo '<br><font size=-3><b>'.getQuestType($data['Type']).'</b></font>';}
 function r_questReqLvl($data) {echo $data['MinLevel'];}
 function r_questName($data)
 {

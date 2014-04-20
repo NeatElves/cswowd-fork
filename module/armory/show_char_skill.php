@@ -59,7 +59,7 @@ function showPlayerSkills($guid)
   {
     ksort($playerSkill);
     // Выводим данные в таблицу
-    echo '<table class=report cellSpacing=0 cellPadding=0><TBODY>';
+    echo '<table class=report cellSpacing=0 cellPadding=0><tbody>';
     echo '<tr><td class=head colspan=3>'.$lang['player_skills'].'</td></tr>';
     foreach($playerSkill as $id=>$skill_data)
     {
