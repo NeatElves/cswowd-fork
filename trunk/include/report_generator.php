@@ -893,15 +893,15 @@ function r_npcMap($data)
   $h22 = getHeroicList2();
 
   if (isset($h22[$data['Entry']]))
-    echo '<a href="?map&npc='.$h22[$data['Entry']].'">'.$lang['map'].'</a>';
+    echo '<a href="?map&npc='.$h22[$data['Entry']].'">'.$lang['show_map'].'&nbsp;('.getCreatureCount($h22[$data['Entry']]).')</a>';
   else
   if (isset($h21[$data['Entry']]))
-    echo '<a href="?map&npc='.$h21[$data['Entry']].'">'.$lang['map'].'</a>';
+    echo '<a href="?map&npc='.$h21[$data['Entry']].'">'.$lang['show_map'].'&nbsp;('.getCreatureCount($h21[$data['Entry']]).')</a>';
   else
   if (isset($h20[$data['Entry']]))
-    echo '<a href="?map&npc='.$h20[$data['Entry']].'">'.$lang['map'].'</a>';
+    echo '<a href="?map&npc='.$h20[$data['Entry']].'">'.$lang['show_map'].'&nbsp;('.getCreatureCount($h20[$data['Entry']]).')</a>';
   else
-    echo '<a href="?map&npc='.$data['Entry'].'">'.$lang['map'].'</a>';
+    echo '<a href="?map&npc='.$data['Entry'].'">'.$lang['show_map'].'&nbsp;('.getCreatureCount($data['Entry']).')</a>';
 }
 function r_npcRole($data)
 {
@@ -1124,7 +1124,7 @@ function r_objName($data)
   echo '<a href="?object='.$data['entry'].'">'.($name?$name:'no name').'</a>';
 }
 function r_objType($data)  {echo getGameobjectType($data['type'], 0);}
-function r_objMap($data)   {global $lang; echo '<a href="?map&obj='.$data['entry'].'">'.$lang['map'].'</a>';}
+function r_objMap($data)   {global $lang; echo '<a href="?map&obj='.$data['entry'].'">'.$lang['show_map'].'&nbsp;('.getGameobjectCount($data['entry']).')</a>';}
 
 // GO report generator config
 $go_report = array(
