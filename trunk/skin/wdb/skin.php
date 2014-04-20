@@ -43,70 +43,70 @@
         <hr>
 
         <?php  echo $lang['find']; ?>:<br>
-        <A href="?s=i"><?php  echo $lang['item_lookup']; ?></A><br>
-        <A href="?s=q"><?php  echo $lang['quest_lookup']; ?></A><br>
-        <A href="?s=s"><?php  echo $lang['spell_lookup']; ?></A><br>
-        <A href="?s=n"><?php  echo $lang['creature_lookup']; ?></A><br>
-        <A href="?s=o"><?php  echo $lang['object_lookup']; ?></A><br>
-        <A href="?s=p"><?php  echo $lang['player_lookup']; ?></A><br>
-        <A href="?auction"><?php  echo $lang['auction']; ?></A><br>
-        <A href="?guild=list"><?php  echo $lang['guild']; ?></A><br />
-        <A href="?instance"><?php  echo $lang['instance']; ?></A><br />  
+        <a href="?s=i"><?php  echo $lang['item_lookup']; ?></a><br>
+        <a href="?s=q"><?php  echo $lang['quest_lookup']; ?></a><br>
+        <a href="?s=s"><?php  echo $lang['spell_lookup']; ?></a><br>
+        <a href="?s=n"><?php  echo $lang['creature_lookup']; ?></a><br>
+        <a href="?s=o"><?php  echo $lang['object_lookup']; ?></a><br>
+        <a href="?s=p"><?php  echo $lang['player_lookup']; ?></a><br>
+        <a href="?auction"><?php  echo $lang['auction']; ?></a><br>
+        <a href="?guild=list"><?php  echo $lang['guild']; ?></a><br />
+        <a href="?instance"><?php  echo $lang['instance']; ?></a><br />  
         <hr>
 
         <span style="display: inline">
 	    <?php  echo $config['servername']; ?></span><br>
 
-        <A href="index.php"><?php  echo $lang['main']; ?></A><br>
+        <a href="index.php"><?php  echo $lang['main']; ?></a><br>
         <hr>
 	    <?php  echo $lang['top_lookup']; ?><br>
-        <A href="?top=money"><?php  echo $lang['top_money']; ?></A><br>
-        <A href="?top=honor"><?php  echo $lang['top_honor']; ?></A><br>
-        <A href="?top=arena2"><?php  echo $lang['top_arena2']; ?></A><br>
-        <A href="?top=arena3"><?php  echo $lang['top_arena3']; ?></A><br>
-        <A href="?top=arena5"><?php  echo $lang['top_arena5']; ?></A><br>
+        <a href="?top=money"><?php  echo $lang['top_money']; ?></a><br>
+        <a href="?top=honor"><?php  echo $lang['top_honor']; ?></a><br>
+        <a href="?top=arena2"><?php  echo $lang['top_arena2']; ?></a><br>
+        <a href="?top=arena3"><?php  echo $lang['top_arena3']; ?></a><br>
+        <a href="?top=arena5"><?php  echo $lang['top_arena5']; ?></a><br>
         <hr>
 
         Primary Skill<br>
-        <A href="?skill=Alchemy">Alchemy</A><br>
-        <A href="?skill=Blacksmithing">Blacksmithing</A><br>
-        <A href="?skill=Enchanting">Enchanting</A><br>
-        <A href="?skill=Engineering">Engineering</A><br>
-        <A href="?skill=Herbalism">Herbalism</A><br>
-        <A href="?skill=Jewelcrafting">Jewelcrafting</A><br>
-        <A href="?skill=Leatherworking">Leatherworking</A><br>
-        <A href="?skill=Mining">Mining</A><br>
-        <A href="?skill=Skinning">Skinning</A><br>
-        <A href="?skill=Tailoring">Tailoring</A><br>
+        <a href="?skill=Alchemy">Alchemy</a><br>
+        <a href="?skill=Blacksmithing">Blacksmithing</a><br>
+        <a href="?skill=Enchanting">Enchanting</a><br>
+        <a href="?skill=Engineering">Engineering</a><br>
+        <a href="?skill=Herbalism">Herbalism</a><br>
+        <a href="?skill=Jewelcrafting">Jewelcrafting</a><br>
+        <a href="?skill=Leatherworking">Leatherworking</a><br>
+        <a href="?skill=Mining">Mining</a><br>
+        <a href="?skill=Skinning">Skinning</a><br>
+        <a href="?skill=Tailoring">Tailoring</a><br>
         <hr>
 
         Secondary Skill<br>
-        <A href="?skill=Cooking">Cooking</A><br>
-        <A href="?skill=First Aid">First Aid</A><br>
-        <A href="?skill=Fishing">Fishing</A><br>
+        <a href="?skill=Cooking">Cooking</a><br>
+        <a href="?skill=First Aid">First Aid</a><br>
+        <a href="?skill=Fishing">Fishing</a><br>
         <hr>
 
         <?php  echo $lang['menu_faq']; ?>:<br>
-        <A href="?faq=classes"><?php  echo $lang['faq_classes']; ?></A><br>
-        <A href="?faq=professions"><?php  echo $lang['faq_professions']; ?></A><br>
-        <A href="?faq=slang"><?php  echo $lang['faq_slang']; ?></A><br>
-        <A href="?faq=step1"><?php  echo $lang['step_1']; ?></A><br>
-        <A href="?faq=aggro"><?php  echo $lang['about_aggro']; ?></A><br>
-	    <A href="?faq=city"><?php  echo $lang['about_city']; ?></A><br>
-	    <A href="?faq=guild"><?php  echo $lang['about_guild']; ?></A><br>
-        <A href="?faq=socket"><?php  echo $lang['about_socket']; ?></A><br>
-        <A href="?faq=macro"><?php  echo $lang['about_macro']; ?></A><br>
-        <A href="?faq=raidhill"><?php  echo $lang['about_raid_hill']; ?></A><br>
+        <a href="?faq=classes"><?php  echo $lang['faq_classes']; ?></a><br>
+        <a href="?faq=professions"><?php  echo $lang['faq_professions']; ?></a><br>
+        <a href="?faq=slang"><?php  echo $lang['faq_slang']; ?></a><br>
+        <a href="?faq=step1"><?php  echo $lang['step_1']; ?></a><br>
+        <a href="?faq=aggro"><?php  echo $lang['about_aggro']; ?></a><br>
+	    <a href="?faq=city"><?php  echo $lang['about_city']; ?></a><br>
+	    <a href="?faq=guild"><?php  echo $lang['about_guild']; ?></a><br>
+        <a href="?faq=socket"><?php  echo $lang['about_socket']; ?></a><br>
+        <a href="?faq=macro"><?php  echo $lang['about_macro']; ?></a><br>
+        <a href="?faq=raidhill"><?php  echo $lang['about_raid_hill']; ?></a><br>
         <hr>
 
 	    <?php  echo $lang['menu_5']; ?>:<br />
-        <A href="?register"><?php  echo $lang['register']; ?></A><br />
+        <a href="?register"><?php  echo $lang['register']; ?></a><br />
         <hr>
 
 	    <?php  echo $lang['menu_6']; ?>:<br />
-        <A href="?stat"><?php  echo $lang['statistic']; ?></A><br />
-        <A href="module/talents/talents.html" target=_blank><?php  echo $lang['talent_calc']; ?></A><br>
-        <A href="map/index.html"><?php  echo $lang['cartograph'];?></A><br>
+        <a href="?stat"><?php  echo $lang['statistic']; ?></a><br />
+        <a href="module/talents/talents.html" target=_blank><?php  echo $lang['talent_calc']; ?></a><br>
+        <a href="map/index.html"><?php  echo $lang['cartograph'];?></a><br>
        </td>
       </tr>
      </table>

@@ -50,7 +50,7 @@ body {
 <body>
 
 <?php
-echo "<CENTER>";
+echo "<center>";
 
 $scale=floatval(@$_REQUEST['scale']);
 if ($scale==0) $scale=1;
@@ -62,11 +62,11 @@ $sizeX = $imageY;
 $sizeY = $imageX+4;
 $tableBorder = 1;
 $tableWidth  = $imageY+$tableBorder*2+8;
-echo "<TABLE border=$tableBorder width=$tableWidth>";
-echo "<TBODY><TR><TD align = center>$name</TD></TR>";
-echo "<TR><TD width=$sizeX height=$sizeY align=left valign=top>";
-echo "<SPAN style=\"position: relative; border: 0px; left: 0; top: 0;\">&nbsp;";
-echo "<IMG src=$background width=$imageY height=$imageX style=\"position: absolute; border: 0px; left: 0; top: 0;\">";
+echo "<table border=$tableBorder width=$tableWidth>";
+echo "<tbody><tr><td align = center>$name</td></tr>";
+echo "<tr><td width=$sizeX height=$sizeY align=left valign=top>";
+echo "<span style=\"position: relative; border: 0px; left: 0; top: 0;\">&nbsp;";
+echo "<img src=$background width=$imageY height=$imageX style=\"position: absolute; border: 0px; left: 0; top: 0;\">";
 if ($x!=0 && $y!=0)
 {
  $x=round($imageX*($x - $areaX1)/($areaX2-$areaX1)-8,0);
@@ -136,10 +136,10 @@ while ($row2=mysql_fetch_array($res2))
     echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $y; top: $x;\"onmouseover=\"this.T_TITLE='<div align=center>$name</div>';return escape('Уровень: $row[minlevel]-$row[maxlevel]<br>Ранг $row[rank]<br>Тип: $NPCType[$type]<br>Жизнь: $row2[curhealth]<br>Урон: $row[mindmg] - $row[maxdmg]<br>Респавн: $time<br>GUID $row2[guid]<br>$posx $posy $row2[position_z] $row2[map]')\"></a>\n";
  }
 }
-echo "</SPAN>";
-echo "</TD></TR></TBODY>";
-echo "</TABLE>";
-echo "</CENTER>";
+echo "</span>";
+echo "</td></tr></tbody>";
+echo "</table>";
+echo "</center>";
 ?>
 
 <script language="JavaScript" type="text/javascript" src="wz_tooltip.js"></script>

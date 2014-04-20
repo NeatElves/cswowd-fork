@@ -56,7 +56,7 @@ while ($row=mysql_fetch_array($res))
  echo "<td><$row[minlevel]-$row[maxlevel]></td>";
  if ($count==0) echo "<td>$row[name]</td>";
  else           echo "<td><a href=\"gps2.php?id=$row[entry]\" target=\"zzz\">$row[name]";
- if ($map!="")  echo "<br><FONT color=#F0F00F size=-2>&lt;$map&gt;</FONT>";
+ if ($map!="")  echo "<br><font color=#F0F00F size=-2>&lt;$map&gt;</font>";
  echo "</a></td>";
  echo "<td>$count</td>";
  echo "</tr>";

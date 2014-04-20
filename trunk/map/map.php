@@ -64,18 +64,18 @@ body {
 <body>
 <?php
 
-echo "<CENTER>";
+echo "<center>";
 //$imageX/=1.5;
 //$imageY/=1.5;
 $sizeX = $imageY;
 $sizeY = $imageX+4;
 $tableBorder = 1;
 $tableWidth  = $imageY+$tableBorder*2+8;
-echo "<TABLE border=$tableBorder width=$tableWidth>";
-echo "<TBODY><TR><TD align = center>$areaName - $zone[4]</TD></TR>";
-echo "<TR><TD width=$sizeX height=$sizeY align=left valign=top>";
-echo "<SPAN style=\"position: relative; border: 0px; left: 0; top: 0;\">&nbsp;";
-echo "<IMG src=$background width=$imageY height=$imageX style=\"position: absolute; border: 0px; left: 0; top: 0;\">";
+echo "<table border=$tableBorder width=$tableWidth>";
+echo "<tbody><tr><td align = center>$areaName - $zone[4]</td></tr>";
+echo "<tr><td width=$sizeX height=$sizeY align=left valign=top>";
+echo "<span style=\"position: relative; border: 0px; left: 0; top: 0;\">&nbsp;";
+echo "<img src=$background width=$imageY height=$imageX style=\"position: absolute; border: 0px; left: 0; top: 0;\">";
 if ($x!=0 && $y!=0)
 {
  $x=round($imageX*($x - $areaX1)/($areaX2-$areaX1)-8,0);
@@ -146,10 +146,10 @@ if ($id)
   }
  }
 }
-echo "</SPAN>";
-echo "</TD></TR></TBODY>";
-echo "</TABLE>";
-echo "</CENTER>";
+echo "</span>";
+echo "</td></tr></tbody>";
+echo "</table>";
+echo "</center>";
 
 ?>
 <script language="JavaScript" type="text/javascript" src="wz_tooltip.js"></script>

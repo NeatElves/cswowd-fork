@@ -90,32 +90,32 @@ else
  echo "<tr><td class=head>$quest[Title]";
 
  if ($quest['Type'])
-   echo "<br><FONT size=-3>&lt;".getQuestType($quest['Type'])."&gt;</FONT>";
+   echo "<br><font size=-3>&lt;".getQuestType($quest['Type'])."&gt;</font>";
 
  if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 1101) && ($quest['RequiredRaces'] !=1791))
  {
-     echo "<br><FONT color=#0000ff>$lang[required_races]&nbsp;$lang[Alliance]&nbsp;</FONT><img width=22 height=22 src='images/player_info/factions_img/alliance.gif'>";
-     echo '<br><FONT color=#0000ff>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace($quest['RequiredRaces']).'</FONT>';
+     echo "<br><font color=#0000ff>$lang[required_races]&nbsp;$lang[Alliance]&nbsp;</font><img width=22 height=22 src='images/player_info/factions_img/alliance.gif'>";
+     echo '<br><font color=#0000ff>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace($quest['RequiredRaces']).'</font>';
  }
  
 if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 690) && ($quest['RequiredRaces'] !=1791))
  {
-     echo "<br><FONT color=#ff0000>$lang[required_races]&nbsp;$lang[Horde]&nbsp;</FONT><img width=22 height=22 src='images/player_info/factions_img/horde.gif'>";
-     echo '<br><FONT color=#ff0000>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace($quest['RequiredRaces']).'</FONT>';
+     echo "<br><font color=#ff0000>$lang[required_races]&nbsp;$lang[Horde]&nbsp;</font><img width=22 height=22 src='images/player_info/factions_img/horde.gif'>";
+     echo '<br><font color=#ff0000>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace($quest['RequiredRaces']).'</font>';
  }
 
 if (($quest['RequiredRaces'] == 0) OR ($quest['RequiredRaces'] == 1791))
  {
      echo "</br>";
-     echo "<br><FONT color=#008800>$lang[required_races]&nbsp;$lang[Both]</FONT>";
-     echo '<br><FONT color=#008800>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace(1791).'</FONT>';
+     echo "<br><font color=#008800>$lang[required_races]&nbsp;$lang[Both]</font>";
+     echo '<br><font color=#008800>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace(1791).'</font>';
  }
 
  if (getAllowableClass($quest['RequiredClasses']))
-     echo '<br><FONT color=#000000>'.$game_text['allowable_class'].'&nbsp;'.getQAllowableClass($quest['RequiredClasses']).'</FONT>';
+     echo '<br><font color=#000000>'.$game_text['allowable_class'].'&nbsp;'.getQAllowableClass($quest['RequiredClasses']).'</font>';
 
  if ($entry == getQuestOld($entry))
-    echo '<br><FONT color=#ff0000><b>'.$lang['quest_marked'].'</FONT></b>';
+    echo '<br><font color=#ff0000><b>'.$lang['quest_marked'].'</font></b>';
 
  echo "</th></tr>";
  echo "</th></tr>";
@@ -145,7 +145,7 @@ if ($quest['RequiredSkill'])
  if (getGameEventQuest($quest['entry']))
   {
   $qevent=getGameEventQuest($quest['entry']);
-   echo '<tr><td>'.$lang['obtained_at_event'].':&nbsp;<FONT color=#E614E6>'.getGameEventName($qevent).'</FONT></td></tr>';
+   echo '<tr><td>'.$lang['obtained_at_event'].':&nbsp;<font color=#E614E6>'.getGameEventName($qevent).'</font></td></tr>';
   }
 
  if ($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
@@ -398,7 +398,7 @@ foreach ($rows as $creature)
   echo "<tr><td><a style='float: right;' href=\"?map&npc=$creature[Entry]\">$lang[map]</a>";
   echo "<a href=\"?npc=$creature[Entry]\">$creature[Name]</a> ($loyality)";
   if ($creature['SubName'] != "")
-   echo "<br><FONT color=#008800 size=-3>&lt;$creature[SubName]&gt;</FONT>";
+   echo "<br><font color=#008800 size=-3>&lt;$creature[SubName]&gt;</font>";
   echo "</td></tr>";
   $number++;
 }
@@ -442,7 +442,7 @@ foreach ($rows as $creature)
   echo "<tr><td><a style='float: right;' href=\"?map&npc=$creature[Entry]\">$lang[map]</a>";
   echo "<a href=\"?npc=$creature[Entry]\">$creature[Name]</a> ($loyality)";
   if ($creature['SubName'] != "")
-   echo "<br><FONT color=#008800 size=-3>&lt;$creature[SubName]&gt;</FONT>";
+   echo "<br><font color=#008800 size=-3>&lt;$creature[SubName]&gt;</font>";
   echo "</td></tr>";
   $number++;
 }

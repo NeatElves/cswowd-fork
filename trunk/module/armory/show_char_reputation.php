@@ -104,8 +104,8 @@ function showPlayerReputation($guid, $class, $race)
   echo "Error";
   return;
  }
- echo '<TABLE class=report cellSpacing=0 cellPadding=0><TBODY>';
- echo '<TR><TD class=head colspan=3>'.$lang['player_reputation'].'</TD></TR>';
+ echo '<table class=report cellSpacing=0 cellPadding=0><tbody>';
+ echo '<tr><td class=head colspan=3>'.$lang['player_reputation'].'</td></tr>';
  dumpRep(0, $rep_tree, $reputation);
  echo '</tbody></table>';
 }

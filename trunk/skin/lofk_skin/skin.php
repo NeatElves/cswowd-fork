@@ -28,7 +28,7 @@ include_once("include/simple_cacher.php");
     <td class="leftmenu">
       <table class="mainmenu">
        <tbody>
-       <tr><td class=top></td></tr>
+       <tr><td class="top"></td></tr>
        <tr>
         <td class="body">
          <!--<?php  echo $lang['search_database']; ?><br> -->

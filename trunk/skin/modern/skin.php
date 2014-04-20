@@ -15,7 +15,7 @@ include_once("include/simple_cacher.php");
            <tr>
             <td class="ugverhfon">&nbsp;</td>
             <td class="topfon">&nbsp;</td>
-            <td class="fonmenu">WOWD::<?php  echo $config['servername']; ?></td>
+            <td class="fonmenu"><?php  echo $config['servername']; ?></td>
             <td class="topfon">&nbsp;</td>
             <td class="ugverhfon2">&nbsp;</td>
            </tr>
@@ -33,7 +33,7 @@ include_once("include/simple_cacher.php");
         <td class="body">
          <!--<?php  echo $lang['search_database']; ?><br> -->
           <form style="display: inline" method="get">
-           <input name="s" type="hidden" value="all"  >
+           <input name="s" type="hidden" value="all">
            <input class="ls_search" alt="all" name="name" style="width: 190;"><br />
           </form>
 <?php

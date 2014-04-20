@@ -293,7 +293,7 @@ function renderItemData($item, $item_data=0)
  }
 
  // Вывод имени
- echo '<tr><td class=name><SPAN class='.$Quality[$colorname].'>'.$item['name'].'</SPAN></td></tr>';
+ echo '<tr><td class=name><span class='.$Quality[$colorname].'>'.$item['name'].'</span></td></tr>';
 
  // Heroic item (green)
  if ($item['Flags'] & ITEM_FLAGS_HEROIC)
