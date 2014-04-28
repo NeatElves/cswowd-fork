@@ -104,7 +104,7 @@ else
    if ($cr['PetSpellDataId']) echo "<tr><th>PetSpellDataId</th><td>".$cr['PetSpellDataId']."</td></tr>";
    if ($cr['MinLootGold'])echo "<tr><th>MinLootGold</th><td>".$cr['MinLootGold']."</td><th>MaxLootGold</th><td>".$cr['MaxLootGold']."</td></tr>";
    echo "<tr><th>MovementType</th><td>".$cr['MovementType']."</td><th>InhabitType</th><td>".$cr['InhabitType']."</td></tr>";
-   echo "<tr><th>RacialLeader</th><td>".$cr['RacialLeader']."</td><th>RegenerateHealth</th><td>".$cr['RegenerateHealth']."</td></tr>";
+   if ($cr['RacialLeader']) echo "<tr><th>RacialLeader</th><td>".$cr['RacialLeader']."</td></tr>";
    if ($cr['EquipmentTemplateId']) echo "<tr><th>EquipmentTemplateId</th><td>".$cr['EquipmentTemplateId']."</td></tr>";
    if ($cr['MechanicImmuneMask']) echo "<tr><th>MechanicImmuneMask</th><td>".$cr['MechanicImmuneMask']."</td></tr>";
    if ($cr['ExtraFlags']) echo "<tr><th>ExtraFlags</th><td>".$cr['ExtraFlags']."</td></tr>";
