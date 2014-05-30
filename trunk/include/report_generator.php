@@ -485,6 +485,10 @@ function r_lootRequire($data)
    case  30: // CONDITION_REPUTATION_RANK_MAX - faction_id, max_rank
      echo getFactionName($type['value1']).'<=('.getReputationRankName($type['value2']).')';
      break;
+   case  32: // CONDITION_SOURCE_AURA - spell_id, effindex
+     $spell = getSpell($type['value1'], '`id`, `SpellIconID`');
+     echo $lang['condition32']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
+     break;
    }
   }
 }

@@ -51,7 +51,7 @@ $lang = array(
 'minustime' =>'действие',
 
 #Condition
-'condition1' => 'Аура ',
+'condition1' => 'Аура на игроке ',
 'condition2' => 'Есть в сумках(нет в банке) ',
 'condition3' => 'Одет ',
 'condition4_1' => 'Не в ',
@@ -85,6 +85,7 @@ $lang = array(
 'condition28_1' => 'Нет ',
 'condition28_2' => ' и нет ',
 'condition29' => 'Не знать ',
+'condition32' => 'Аура на НИП ',
 
 # Item report
 'item_name' => 'Название предмета',
