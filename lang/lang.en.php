@@ -51,7 +51,7 @@ $lang = array(
 'minustime' =>'action',
 
 #Condition
-'condition1' => 'Aura ',
+'condition1' => 'Aura on player ',
 'condition2' => 'Have(bank no) ',
 'condition3' => 'Equipped ',
 'condition4_1' => 'Not in ',
@@ -85,6 +85,7 @@ $lang = array(
 'condition28_1' => 'No ',
 'condition28_2' => ' & no ',
 'condition29' => 'Do not know ',
+'condition32' => 'Aura on NPC ',
 
 # Item report
 'item_name' => 'Item name',
