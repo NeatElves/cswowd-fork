@@ -1,4 +1,4 @@
--- Loot indexes
+# Loot indexes
 # ALTER TABLE `creature_loot_template` DROP INDEX `idx_item`;
 # ALTER TABLE `creature_loot_template` DROP INDEX `idx_ref`;
 CREATE INDEX `idx_item` ON `creature_loot_template`     (`item`);
@@ -43,20 +43,18 @@ CREATE INDEX `idx_ref`  ON `mail_loot_template`   		(`mincountOrRef`);
 # ALTER TABLE `reference_loot_template` DROP INDEX `idx_ref`;
 CREATE INDEX `idx_item` ON `reference_loot_template`    (`item`);
 CREATE INDEX `idx_ref`  ON `reference_loot_template`    (`mincountOrRef`);
-
--- Creature indexes
+# Creature indexes
 # ALTER TABLE `creature_template` DROP INDEX `idx_loot`;
 # ALTER TABLE `creature_template` DROP INDEX `idx_skinloot`;
 # ALTER TABLE `creature_template` DROP INDEX `idx_pickpocketloot`;
 # ALTER TABLE `creature_template` DROP INDEX `idx_factionA`;
 # ALTER TABLE `creature_template` DROP INDEX `idx_factionH`;
-CREATE INDEX `idx_loot`           ON `creature_template` (`lootid`);
-CREATE INDEX `idx_skinloot`       ON `creature_template` (`skinloot`);
-CREATE INDEX `idx_pickpocketloot` ON `creature_template` (`pickpocketloot`);
-CREATE INDEX `idx_factionA`       ON `creature_template` (`faction_A`);
-CREATE INDEX `idx_factionH`       ON `creature_template` (`faction_H`);
-
--- Creature spell indexes
+CREATE INDEX `idx_loot`           ON `creature_template` (`LootId`);
+CREATE INDEX `idx_skinloot`       ON `creature_template` (`SkinningLootId`);
+CREATE INDEX `idx_pickpocketloot` ON `creature_template` (`PickpocketLootId`);
+CREATE INDEX `idx_factionA`       ON `creature_template` (`FactionAlliance`);
+CREATE INDEX `idx_factionH`       ON `creature_template` (`FactionHorde`);
+# Creature spell indexes
 # ALTER TABLE `creature_template_spells` DROP INDEX `idx_spell1`;
 # ALTER TABLE `creature_template_spells` DROP INDEX `idx_spell2`;
 # ALTER TABLE `creature_template_spells` DROP INDEX `idx_spell3`;
@@ -73,20 +71,17 @@ CREATE INDEX `idx_spell5`        ON `creature_template_spells` (`spell5`);
 CREATE INDEX `idx_spell6`        ON `creature_template_spells` (`spell6`);
 CREATE INDEX `idx_spell7`        ON `creature_template_spells` (`spell7`);
 CREATE INDEX `idx_spell8`        ON `creature_template_spells` (`spell8`);
-
--- Trainer
+# Trainer
 # ALTER TABLE `npc_trainer` DROP INDEX `idx_spell`;
 CREATE INDEX `idx_spell`          ON `npc_trainer`       (`spell`);
 # ALTER TABLE `npc_trainer_template` DROP INDEX `idx_spell`;
 CREATE INDEX `idx_spell`          ON `npc_trainer_template`       (`spell`);
-
--- Vendor
+# Vendor
 # ALTER TABLE `npc_vendor` DROP INDEX `idx_sold`;
 CREATE INDEX `idx_sold`           ON `npc_vendor`        (`item`);
 # ALTER TABLE `npc_vendor_template` DROP INDEX `idx_sold`;
 CREATE INDEX `idx_sold`           ON `npc_vendor_template`        (`item`);
-
--- Item indexes
+# Item indexes
 # ALTER TABLE `item_template` DROP INDEX `idx_quest`;
 # ALTER TABLE `item_template` DROP INDEX `idx_reqFaction`;
 # ALTER TABLE `item_template` DROP INDEX `idx_spell1`;
@@ -103,13 +98,12 @@ CREATE INDEX `idx_spell3`          ON `item_template`            (`spellid_3`);
 CREATE INDEX `idx_spell4`          ON `item_template`            (`spellid_4`);
 CREATE INDEX `idx_spell5`          ON `item_template`            (`spellid_5`);
 CREATE INDEX `idx_disenchant`      ON `item_template`            (`DisenchantID`);
-
--- Quest indexes
+# Quest indexes
 # ALTER TABLE `quest_template` DROP INDEX `idx_rewSpell`;
 # ALTER TABLE `quest_template` DROP INDEX `idx_castSpell`;
 CREATE INDEX `idx_rewSpell`        ON `quest_template`           (`RewSpell`);
 CREATE INDEX `idx_castSpell`       ON `quest_template`           (`RewSpellCast`);
-
+#
 # ALTER TABLE `creature_questrelation` DROP INDEX `idx_quest`;
 # ALTER TABLE `gameobject_questrelation` DROP INDEX `idx_quest`;
 # ALTER TABLE `creature_involvedrelation` DROP INDEX `idx_quest`;
@@ -118,8 +112,7 @@ CREATE INDEX `idx_quest`           ON `creature_questrelation`   (`quest`);
 CREATE INDEX `idx_quest`           ON `gameobject_questrelation` (`quest`);
 CREATE INDEX `idx_quest`           ON `creature_involvedrelation`   (`quest`);
 CREATE INDEX `idx_quest`           ON `gameobject_involvedrelation` (`quest`);
-
--- GO indexes
+# GO indexes
 # ALTER TABLE `gameobject_template` DROP INDEX `idx_type`;
 # ALTER TABLE `gameobject_template` DROP INDEX `idx_faction`;
 # ALTER TABLE `gameobject_template` DROP INDEX `idx_data0`;
