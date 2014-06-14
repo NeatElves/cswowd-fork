@@ -13,6 +13,7 @@ bwicons.rar contains BW icons (unpack in images/ should get folder bwicons in it
 guilds.rar contains guild emblems (unpack in images/player_info/ should get folder guilds in it).
 map_image.rar contains map images (unpack in map/img/ should get map_image in it).
 At the root of the site to create a directory cache (I have a www / wowd / cache /) and to allow entry there (to give her 777 for the right Linux users)
+To display statistics for the player, you need to enable the file mangosd.conf PlayerSave.Stats.MinLevel and optionally configure the PlayerSave.Stats.SaveOnlyOnLogout.
 
 Rename file сonf.php.in in сonf.php and edit options.
 
