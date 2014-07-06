@@ -27,6 +27,9 @@
         <input name="s" type="hidden" value="all">
         <input class="ls_search" alt="all" name="name" id="topsearch">
        </form>
+      </td>
+      <td class="sright"></td>
+     </tr>
     </table>
    </div>
   </div>
