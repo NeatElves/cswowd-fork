@@ -52,6 +52,7 @@ else
    echo "<tr><td colspan=4 class=head>$lang[detail_info]</td></tr>";
 //   echo "<tr><th width=100px></th><th></th></tr>";
    echo "<tr><th>Type</th><td colspan=3>".getGameobjectType($obj['type'])."</td></tr>";
+   echo "<tr><th>ScriptName</th><td colspan=3>".$obj['ScriptName']."</td></tr>";
    echo "<tr><th>Flags</th><td colspan=3>";
    if ($flag = $obj['flags'])
    {
@@ -252,8 +253,6 @@ else
       echo "<tr><th>maxSuccessOpens</th><td>".$obj['data3']."</td></tr>";
       echo "<tr><th>lockId</th><td>".$obj['data4']."</td></tr>";
      break;
-     case GAMEOBJECT_TYPE_FISHINGHOLE:
-     break;
      case GAMEOBJECT_TYPE_FLAGDROP:
       echo "<tr><th>data0</th><td>".$obj['data0']."</td>";
       echo "<th>data1</th><td>".$obj['data1']."</td></tr>";
@@ -297,7 +296,7 @@ else
       echo "<tr><th>data0</th><td>".$obj['data0']."</td></tr>";
       echo "<tr><th>data1</th><td>".$obj['data1']."</td></tr>";
      break;
-     case GAMEOBJECT_TYPE_BARBERSHOP:
+     case GAMEOBJECT_TYPE_DESTRUCTIBLE_BUILDING:
      break;
      case GAMEOBJECT_TYPE_BARBER_CHAIR:
      break;
