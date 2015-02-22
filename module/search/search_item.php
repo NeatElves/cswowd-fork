@@ -163,12 +163,12 @@ if ($filter!='')
  // Локализация запроса
  //==============================================================================
  if ($config['locales_lang'] > 0 && $name)
- {
-    if (preg_match($config['locales_charset'], $name))
+// {
+//    if (preg_match($config['locales_charset'], $name))
        $filter = str_replace('`name`', '`name_loc'.$config['locales_lang'].'`', $filter);
     else
        $isearch->disableNameLocalisation();
- }
+// }
 
  $isearch->Init($show_fields, $FindRefrence, 'searchItem', $config['fade_limit'], 'name');
  $isearch->doRequirest($filter);

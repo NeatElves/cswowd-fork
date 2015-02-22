@@ -29,7 +29,7 @@ if ($obj_id = intval(@$_REQUEST['obj']))
 if ($point = @$_REQUEST['point'])
 {
   $ajaxptr.='&point='.$point;
-  $p = split(':', $point);
+  $p = explode(':', $point);
   $pointsList->addPoint(@$p[0], @$p[1], @$p[2], @$p[3]);
   $text = '<br>';//'<center>Point: map='.@$p[0].' x='.@$p[1].' y='.@$p[2].' z='.@$p[3].'</center>';
 }
