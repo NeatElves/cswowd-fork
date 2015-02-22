@@ -1117,6 +1117,22 @@ function getItemFlags2($item_id)
   return $item;
 }
 
+function getMail($quest_id)
+{
+  global $dDB, $config;
+  $getMailId = $dDB->selectCell("-- CACHE: 1h
+  SELECT `datalong` FROM `dbscripts_on_quest_end` WHERE `command` = 38 AND `id` = ?d", $quest_id);
+  return $getMailId;
+}
+
+function getMailTime($quest_id)
+{
+  global $dDB, $config;
+  $getMailTime = $dDB->selectCell("-- CACHE: 1h
+  SELECT `dataint` FROM `dbscripts_on_quest_end` WHERE `command` = 38 AND `id` = ?d", $quest_id);
+  return $getMailTime;
+}
+
 function getItemMail($item_id)
 {
   global $dDB, $config;

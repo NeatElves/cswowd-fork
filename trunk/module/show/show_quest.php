@@ -278,10 +278,10 @@ if ($quest['RewChoiceItemId1'] OR $quest['RewChoiceItemId2'] OR $quest['RewChoic
  if ($quest['RewChoiceItemId6']) {echo $lang['item_sel_or'];show_item($quest['RewChoiceItemId6']);}
  echo "</td></tr>";
 }
-if ($quest['RewMailTemplateId'])
+if (getMail($entry))
 {
- $MailTime=$quest['RewMailDelaySecs']/60/60;
- $ItemMail=getItemMail($quest['RewMailTemplateId']);
+ $MailTime=getMailTime($entry)/60/60;
+ $ItemMail=getItemMail(getMail($entry));
  echo "<tr><td class=mark>$lang[Rew_mail]&nbsp;$lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
  if ($ItemMail)
   {
