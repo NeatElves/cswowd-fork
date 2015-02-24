@@ -142,12 +142,12 @@ if ($filter!="")
  // Локализация запроса
  //==============================================================================
  if ($config['locales_lang'] > 0 && $name)
-// {
-//    if (preg_match($config['locales_charset'], $name))
+ {
+    if (preg_match($config['locales_charset'], $name) || ctype_digit($name))
        $filter = str_replace('`Title`', '`Title_loc'.$config['locales_lang'].'`', $filter);
     else
        $quest_search->disableNameLocalisation();
-// }
+ }
  $quest_search->Init($show_fields, $FindRefrence, 'searchQuest', $config['fade_limit'], 'name');
  $quest_search->doRequirest($filter);
  $number = $quest_search->getTotalDataCount();

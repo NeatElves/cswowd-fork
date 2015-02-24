@@ -96,19 +96,19 @@ if ($filter!="")
  if ($config['locales_lang'] > 0)
  {
    if ($name)
-//   {
-//    if (preg_match($config['locales_charset'], $name))
+   {
+    if (preg_match($config['locales_charset'], $name) || ctype_digit($name))
        $filter = str_replace('`Name`', '`name_loc'.$config['locales_lang'].'`', $filter);
     else
        $npc_search->disableNameLocalisation();
-//   }
+   }
    if ($subname)
-//   {
-//    if (preg_match($config['locales_charset'], $subname))
+   {
+    if (preg_match($config['locales_charset'], $subname) || ctype_digit($subname))
        $filter = str_replace('`SubName`', '`subname_loc'.$config['locales_lang'].'`' ,$filter);
     else
        $npc_search->disableSubnameLocalisation();
-//   }
+   }
  }
  $npc_search->Init($show_fields, $FindRefrence, 'searchNpc', $config['fade_limit'], 'name');
  $npc_search->doRequirest($filter);
