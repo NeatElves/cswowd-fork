@@ -315,7 +315,7 @@ else
  //********************************************************************************
  // Summoned by spell
  //********************************************************************************
- $summoned_by =& new SpellReportGenerator;
+ $summoned_by = new SpellReportGenerator;
  $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_NAME');
  if ($summoned_by->Init($fields, $baseLink, 'summonLIST', $config['fade_limit'], 'name'))
  {
@@ -325,7 +325,7 @@ else
  //********************************************************************************
  //  Cast spells
  //********************************************************************************
- $cast_spell =& new SpellReportGenerator;
+ $cast_spell = new SpellReportGenerator;
  $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_NAME');
  if ($cast_spell->Init($fields, $baseLink, 'castLIST', $config['fade_limit'], 'name'))
  {
@@ -343,7 +343,7 @@ else
  //********************************************************************************
  // How can possible open it (lock info)
  //********************************************************************************
- $locked =& new LockReportGenerator();
+ $locked = new LockReportGenerator();
  $fields = array('LOCK_REPORT_ID', 'LOCK_REPORT_KEY');
  if ($locked->Init($fields, $baseLink, 'lockLIST', $config['fade_limit'], ''))
  {
@@ -365,7 +365,7 @@ else
  //********************************************************************************
  // Required for quest list
  //********************************************************************************
- $reqForQuest =& new QuestReportGenerator();
+ $reqForQuest = new QuestReportGenerator();
  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
  if ($reqForQuest->Init($fields, $baseLink, 'qreqLIST', $config['fade_limit'], 'name'))
  {
@@ -375,7 +375,7 @@ else
  //********************************************************************************
  // Give quest list
  //********************************************************************************
- $giveQuest =& new QuestReportGenerator('go_giver');
+ $giveQuest = new QuestReportGenerator('go_giver');
  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
  if ($giveQuest->Init($fields, $baseLink, 'qgLIST', $config['fade_limit'], 'name'))
  {
@@ -385,7 +385,7 @@ else
  //********************************************************************************
  // Take quest list
  //********************************************************************************
- $takeQuest =& new QuestReportGenerator('go_take');
+ $takeQuest = new QuestReportGenerator('go_take');
  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
  if ($takeQuest->Init($fields, $baseLink, 'qtLIST', $config['fade_limit'], 'name'))
  {

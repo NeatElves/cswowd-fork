@@ -104,7 +104,7 @@ else
   //********************************************************************************
   if ($item['spellid_1'] == 483)
   {
-   $recipe =& new SpellReportGenerator;
+   $recipe = new SpellReportGenerator;
    $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_RECIPE','SPELL_REPORT_REAGENTS', 'SPELL_REPORT_CREATE');
    if ($recipe->Init($fields, $baseLink, 'recipeLIST', $config['fade_limit'], ''))
    {
@@ -168,7 +168,7 @@ else
   //********************************************************************************
   // Является ценой для других предметов
   //********************************************************************************
-  $excost =& new ExCostReportGenerator();
+  $excost = new ExCostReportGenerator();
   $fields = array('EXCOST_REPORT_ID', 'EXCOST_REPORT_ITEM', 'EXCOST_REPORT_COST');
   if ($excost->Init($fields, $baseLink, 'excostLIST', $config['fade_limit'], 'cost'))
   {
@@ -180,7 +180,7 @@ else
   //********************************************************************************
   if ($item['lockid'])
   {
-   $locked =& new LockReportGenerator();
+   $locked = new LockReportGenerator();
    $fields = array('LOCK_REPORT_ID', 'LOCK_REPORT_KEY');
    if ($locked->Init($fields, $baseLink, 'lockLIST', $config['fade_limit'], ''))
    {
@@ -191,7 +191,7 @@ else
   //********************************************************************************
   // This item is key for:
   //********************************************************************************
-  $locked =& new LockReportGenerator();
+  $locked = new LockReportGenerator();
   $fields = array('LOCK_REPORT_ID', 'LOCK_REPORT_HAVE');
   if ($locked->Init($fields, $baseLink, 'lockLIST', $config['fade_limit'], ''))
   {
@@ -203,7 +203,7 @@ else
   //********************************************************************************
   if ($item['startquest'])
   {
-   $giveQuest =& new QuestReportGenerator('item_giver');
+   $giveQuest = new QuestReportGenerator('item_giver');
    $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
    if ($giveQuest->Init($fields, $baseLink, 'qgLIST', $config['fade_limit'], 'name'))
    {
@@ -248,7 +248,7 @@ else
   //********************************************************************************
   // Используется в качестве реагента
   //********************************************************************************
-  $reagent_in =& new SpellReportGenerator;
+  $reagent_in = new SpellReportGenerator;
   $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_RECIPE','SPELL_REPORT_REAGENTS', 'SPELL_REPORT_CREATE');
   if ($reagent_in->Init($fields, $baseLink, 'reagentLIST', $config['fade_limit'], 'icon'))
   {
@@ -258,7 +258,7 @@ else
   //********************************************************************************
   // Spell loot
   //********************************************************************************
-  $created_by =& new SpellReportGenerator;
+  $created_by = new SpellReportGenerator;
   $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_RECIPE','SPELL_REPORT_REAGENTS', 'SPELL_REPORT_CREATE');
   if ($created_by->Init($fields, $baseLink, 'createLIST', $config['fade_limit'], 'name'))
   {
@@ -268,7 +268,7 @@ else
   //********************************************************************************
   // Создана спеллом
   //********************************************************************************
-  $spell_loot =& new SpellReportGenerator;
+  $spell_loot = new SpellReportGenerator;
   $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_RECIPE', 'SPELL_REPORT_REAGENTS');
   if ($spell_loot->Init($fields, $baseLink, 'spelllootLIST', $config['fade_limit'], 'name'))
   {
@@ -278,7 +278,7 @@ else
   //********************************************************************************
   // Продавцы вещи
   //********************************************************************************
-  $vendors =& new CreatureReportGenerator('vendor');
+  $vendors = new CreatureReportGenerator('vendor');
   $fields = array('NPC_REPORT_RNAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNT', 'VENDOR_REPORT_INCTIME', 'NPC_REPORT_MAP');
   if ($vendors->Init($fields, $baseLink, 'vendorLIST', $config['fade_limit'], 'name'))
   {
@@ -288,7 +288,7 @@ else
   //********************************************************************************
   // Quest list reward this item
   //********************************************************************************
-  $qReward =& new QuestReportGenerator();
+  $qReward = new QuestReportGenerator();
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
   if ($qReward->Init($fields, $baseLink, 'qrewardLIST', $config['fade_limit'], 'name'))
   {
@@ -298,7 +298,7 @@ else
   //********************************************************************************
   // Required for quest (except if this item quest)
   //********************************************************************************
-  $reqForQuest =& new QuestReportGenerator();
+  $reqForQuest = new QuestReportGenerator();
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
   if ($reqForQuest->Init($fields, $baseLink, 'qreqLIST', $config['fade_limit'], 'name'))
   {
@@ -308,7 +308,7 @@ else
   //********************************************************************************
   // Give on quest take (except if this item quest)
   //********************************************************************************
-  $srcForQuest =& new QuestReportGenerator();
+  $srcForQuest = new QuestReportGenerator();
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
   if ($srcForQuest->Init($fields, $baseLink, 'qgiveLIST', $config['fade_limit'], 'name'))
   {
@@ -319,7 +319,7 @@ else
   // Quest mail loot
   //********************************************************************************
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'LOOT_REPORT_REQ', 'LOOT_REPORT_CHANCE');
-  $quest_loot =& new QuestReportGenerator('mail_loot');
+  $quest_loot = new QuestReportGenerator('mail_loot');
   if ($quest_loot->Init($fields, $baseLink, 'qlootLIST', $config['fade_limit'], 'chance'))
   {
     $quest_loot->lootItem($entry);
@@ -328,7 +328,7 @@ else
   //********************************************************************************
   // Лут с мобов
   //********************************************************************************
-  $loot =& new CreatureReportGenerator('loot');
+  $loot = new CreatureReportGenerator('loot');
   $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'LOOT_REPORT_REQ', 'LOOT_REPORT_CHANCE', 'NPC_REPORT_MAP');
   if ($loot->Init($fields, $baseLink, 'dropLIST', $config['fade_limit'], 'chance'))
   {
@@ -338,7 +338,7 @@ else
   //********************************************************************************
   // Украдено у мобов
   //********************************************************************************
-  $pick =& new CreatureReportGenerator('pick');
+  $pick = new CreatureReportGenerator('pick');
   $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'LOOT_REPORT_REQ', 'LOOT_REPORT_CHANCE', 'NPC_REPORT_MAP');
   if ($pick->Init($fields, $baseLink, 'pickLIST', $config['fade_limit'], 'chance'))
   {
@@ -348,7 +348,7 @@ else
   //********************************************************************************
   // Ошкурено с мобов
   //********************************************************************************
-  $skin =& new CreatureReportGenerator('skin');
+  $skin = new CreatureReportGenerator('skin');
   $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'LOOT_REPORT_REQ', 'LOOT_REPORT_CHANCE', 'NPC_REPORT_MAP');
   if ($skin->Init($fields, $baseLink, 'skinLIST', $config['fade_limit'], 'chance'))
   {
@@ -358,7 +358,7 @@ else
   //************************************************************************************************************************
   // Лут с обьектов
   //********************************************************************************
-  $go_loot =& new GameobjectReportGenerator('loot');
+  $go_loot = new GameobjectReportGenerator('loot');
   $fields = array('GO_REPORT_NAME', 'GO_REPORT_TYPE', 'LOOT_REPORT_REQ', 'LOOT_REPORT_CHANCE', 'GO_REPORT_MAP');
   if ($go_loot->Init($fields, $baseLink, 'go_lootLIST', $config['fade_limit'], 'chance'))
   {
@@ -368,7 +368,7 @@ else
   //********************************************************************************
   // Лут с вещей
   //********************************************************************************
-  $item_loot =& new ItemReportGenerator('loot');
+  $item_loot = new ItemReportGenerator('loot');
   $fields = array('ITEM_REPORT_ICON', 'ITEM_REPORT_NAME', 'LOOT_REPORT_REQ', 'LOOT_REPORT_CHANCE');
   if ($item_loot->Init($fields, $baseLink, 'lootLIST', $config['fade_limit'], 'chance'))
   {
@@ -378,7 +378,7 @@ else
   //********************************************************************************
   // Лут с очистки руды
   //********************************************************************************
-  $item_loot =& new ItemReportGenerator('prospect');
+  $item_loot = new ItemReportGenerator('prospect');
   if ($item_loot->Init($fields, $baseLink, 'prospectLIST', $config['fade_limit'], 'chance'))
   {
     $item_loot->lootItem($entry);
@@ -387,7 +387,7 @@ else
   //********************************************************************************
   // Лут с milling
   //********************************************************************************
-  $milling_loot =& new ItemReportGenerator('milling');
+  $milling_loot = new ItemReportGenerator('milling');
   if ($milling_loot->Init($fields, $baseLink, 'millingLIST', $config['fade_limit'], 'chance'))
   {
     $milling_loot->lootItem($entry);
@@ -396,7 +396,7 @@ else
   //********************************************************************************
   // Лут с дизэнчанта
   //********************************************************************************
-  $disenchant_loot =& new ItemReportGenerator('disenchant');
+  $disenchant_loot = new ItemReportGenerator('disenchant');
   if ($disenchant_loot->Init($fields, $baseLink, 'disenchantLIST', $config['fade_limit'], 'chance'))
   {
     $disenchant_loot->lootItem($entry);

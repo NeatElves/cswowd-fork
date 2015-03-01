@@ -72,7 +72,7 @@ class DbSimple_Postgresql extends DbSimple_Generic_Database
 
     function& _performNewBlob($blobid=null)
     {
-        $obj =& new DbSimple_Postgresql_Blob($this, $blobid);
+        $obj = new DbSimple_Postgresql_Blob($this, $blobid);
         return $obj;
     }
 

@@ -275,7 +275,7 @@ else
  //********************************************************************************
  // Summoned by spell
  //********************************************************************************
- $summoned_by =& new SpellReportGenerator;
+ $summoned_by = new SpellReportGenerator;
  $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_NAME');
  if ($summoned_by->Init($fields, $baseLink, 'summonLIST', $config['fade_limit'], 'name'))
  {
@@ -285,7 +285,7 @@ else
  //********************************************************************************
  //  Cast spells
  //********************************************************************************
- $cast_spell =& new SpellReportGenerator;
+ $cast_spell = new SpellReportGenerator;
  $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_NAME');
  if ($cast_spell->Init($fields, $baseLink, 'castLIST', $config['fade_limit'], 'name'))
  {
@@ -297,7 +297,7 @@ else
  //**************************************************
  if ($cr['NpcFlags']&(UNIT_NPC_FLAG_VENDOR|UNIT_NPC_FLAG_VENDOR_AMMO|UNIT_NPC_FLAG_VENDOR_FOOD|UNIT_NPC_FLAG_VENDOR_POISON|UNIT_NPC_FLAG_VENDOR_REAGENT))
  {
-  $sold =& new ItemReportGenerator('vendor');
+  $sold = new ItemReportGenerator('vendor');
   $fields = array('ITEM_REPORT_ICON','ITEM_REPORT_NAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNT', 'VENDOR_REPORT_INCTIME');
   if ($sold->Init($fields, $baseLink, 'vendorLIST', $config['fade_limit'], 'name'))
   {
@@ -310,7 +310,7 @@ else
  //**************************************************
  if ($cr['NpcFlags']&(UNIT_NPC_FLAG_TRAINER|UNIT_NPC_FLAG_TRAINER_CLASS|UNIT_NPC_FLAG_TRAINER_PROFESSION))
  {
-  $train =& new NPCTrainerReportGenerator();
+  $train = new NPCTrainerReportGenerator();
   $fields = array('TRAIN_REPORT_LEVEL','TRAIN_REPORT_ICON', 'TRAIN_REPORT_NAME', 'TRAIN_REPORT_SKILL', 'TRAIN_REPORT_VALUE', 'TRAIN_REPORT_COST');
   if ($train->Init($fields, $baseLink, 'trainLIST', $config['fade_limit'], 'level'))
   {
@@ -321,7 +321,7 @@ else
  //********************************************************************************
  // Required for quest list
  //********************************************************************************
- $reqForQuest =& new QuestReportGenerator();
+ $reqForQuest = new QuestReportGenerator();
  $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
  if ($reqForQuest->Init($fields, $baseLink, 'qreqLIST', $config['fade_limit'], 'name'))
  {
@@ -331,7 +331,7 @@ else
  //********************************************************************************
  // Kill kredit list
  //********************************************************************************
- $kredit =& new CreatureReportGenerator();
+ $kredit = new CreatureReportGenerator();
  $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'NPC_REPORT_MAP');
  if ($kredit->Init($fields, $baseLink, 'r_creatureLIST', $config['fade_limit'], 'name'))
  {
@@ -343,7 +343,7 @@ else
  //**************************************************
  if ($cr['NpcFlags']&(UNIT_NPC_FLAG_QUESTGIVER))
  {
-  $giveQuest =& new QuestReportGenerator('npc_giver');
+  $giveQuest = new QuestReportGenerator('npc_giver');
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
   if ($giveQuest->Init($fields, $baseLink, 'qgLIST', $config['fade_limit'], 'name'))
   {
@@ -356,7 +356,7 @@ else
  //**************************************************
  if ($cr['NpcFlags']&(UNIT_NPC_FLAG_QUESTGIVER))
  {
-  $takeQuest =& new QuestReportGenerator('npc_take');
+  $takeQuest = new QuestReportGenerator('npc_take');
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_REWARD');
   if ($takeQuest->Init($fields, $baseLink, 'qtLIST', $config['fade_limit'], 'name'))
   {
@@ -373,7 +373,7 @@ else
   if ($cr['LootId'])
   {
    /*
-   $loot =& new LootReportGenerator('creature_loot');
+   $loot = new LootReportGenerator('creature_loot');
    if ($loot->Init($fields, $baseLink, 'lootLIST', $config['fade_limit'], ''))
    {
      $loot->getLootList($cr['LootId']);
@@ -418,7 +418,7 @@ else
  //**************************************************
  // Reputation
  //**************************************************
-  $r_knpc =& new CreatureReportGenerator('reputation');
+  $r_knpc = new CreatureReportGenerator('reputation');
   $fields = array('ONKILL_REPUTATION');
   if ($r_knpc->Init($fields, $baseLink, 'r_ccreatureLIST', $config['fade_limit'], 'rep'))
   {

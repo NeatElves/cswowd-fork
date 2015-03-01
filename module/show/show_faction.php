@@ -62,7 +62,7 @@ else
   $templatesId = 0;
   // Состав фракции
   // НИП из данной фракции
-  $npc =& new CreatureReportGenerator();
+  $npc = new CreatureReportGenerator();
   $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_NAME', 'NPC_REPORT_REACTION', 'NPC_REPORT_MAP');
   if ($npc->Init($fields, $baseLink, 'creatureLIST', $config['fade_limit'], 'level'))
   {
@@ -70,7 +70,7 @@ else
     $npc->createReport($lang['faction_npc']);
   }
   // Объекты из данной фракции
-  $go =& new GameobjectReportGenerator();
+  $go = new GameobjectReportGenerator();
   $fields = array('GO_REPORT_NAME','GO_REPORT_TYPE','GO_REPORT_MAP');
   if ($go->Init($fields, $baseLink, 'gameobjectLIST', $config['fade_limit'], 'name'))
   {
@@ -80,7 +80,7 @@ else
   //********************************************************************************
   // Вещи требующие данной фракции
   //********************************************************************************
-  $item_req =& new ItemReportGenerator();
+  $item_req = new ItemReportGenerator();
   $fields = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAME','ITEM_REPORT_REQREP_RANK');
   if ($item_req->Init($fields, $baseLink, 'itemreqLIST', $config['fade_limit'], 'rep_rank'))
   {
@@ -92,7 +92,7 @@ else
   //********************************************************************************
   // Награда за квест
   //********************************************************************************
-  $quest_list =& new QuestReportGenerator();
+  $quest_list = new QuestReportGenerator();
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
   if ($quest_list->Init($fields, $baseLink, 'questLIST', $config['fade_limit'], 'name'))
   {
@@ -102,7 +102,7 @@ else
   //********************************************************************************
   // Награда за НИП
   //********************************************************************************
-  $r_npc =& new CreatureReportGenerator('reputation');
+  $r_npc = new CreatureReportGenerator('reputation');
   $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'ONKILL_REPUTATION', 'NPC_REPORT_MAP');
   if ($r_npc->Init($fields, $baseLink, 'r_creatureLIST', $config['fade_limit'], 'rep'))
   {
@@ -113,7 +113,7 @@ else
   //********************************************************************************
   // Награда от спелла
   //********************************************************************************
-  $spell_list =& new SpellReportGenerator;
+  $spell_list = new SpellReportGenerator;
   $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_NAME');
   if ($spell_list->Init($fields, $baseLink, 'spellLIST', $config['fade_limit'], 'name'))
   {
