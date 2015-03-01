@@ -77,7 +77,7 @@ else
   //********************************************************************************
   if ($spell['RequiresSpellFocus'])
   {
-    $focus =& new GameobjectReportGenerator();
+    $focus = new GameobjectReportGenerator();
     $fields = array('GO_REPORT_NAME', 'GO_REPORT_MAP');
     if ($focus->Init($fields, $baseLink, 'focusLIST', $config['fade_limit'], 'name'))
     {
@@ -91,7 +91,7 @@ else
   //********************************************************************************
   if ($spell['SpellFamilyFlags_1'] || $spell['SpellFamilyFlags_2'] || $spell['SpellFamilyFlags_3'])
   {
-    $affected =& new SpellReportGenerator;
+    $affected = new SpellReportGenerator;
     $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_NAME');
     if ($affected->Init($fields, $baseLink, 'affectLIST', $config['fade_limit'], 'name'))
     {
@@ -102,7 +102,7 @@ else
   //******************* Ищем кто или что обучает этому спеллу *********************************
   // Этому спеллу обучают свитки:
   //********************************************************************************
-  $item_cast =& new ItemReportGenerator();
+  $item_cast = new ItemReportGenerator();
   $fields = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAME');
   if ($item_cast->Init($fields, $baseLink, 'itemLIST', $config['fade_limit'], 'name'))
   {
@@ -112,7 +112,7 @@ else
   //********************************************************************************
   // Этому спеллу обучают за выполненный квест
   //********************************************************************************
-  $quest_list =& new QuestReportGenerator();
+  $quest_list = new QuestReportGenerator();
   $fields = array('QUEST_REPORT_LEVEL', 'QUEST_REPORT_NAME', 'QUEST_REPORT_GIVER', 'QUEST_REPORT_GIVER_END', 'QUEST_REPORT_REWARD');
   if ($quest_list->Init($fields, $baseLink, 'questLIST', $config['fade_limit'], 'name'))
   {
@@ -122,7 +122,7 @@ else
   //********************************************************************************
   // Обучает тренер
   //********************************************************************************
-  $trainer =& new CreatureReportGenerator('trainer');
+  $trainer = new CreatureReportGenerator('trainer');
   $fields = array('NPC_REPORT_RNAME', 'TRAINER_REPORT_COST', 'TRAINER_REPORT_SKILL', 'NPC_REPORT_MAP');
   if ($trainer->Init($fields, $baseLink, 'trainerLIST', $config['fade_limit'], 'scost'))
   {
@@ -133,7 +133,7 @@ else
   //********************************************************************************
   // Стартует с помощью другого спелла
   //********************************************************************************
-  $triggers =& new SpellReportGenerator;
+  $triggers = new SpellReportGenerator;
   $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_NAME');
   if ($triggers->Init($fields, $baseLink, 'triggersLIST', $config['fade_limit'], 'name'))
   {
@@ -151,7 +151,7 @@ else
   //********************************************************************************
   // Вещи использующие этот спелл
   //********************************************************************************
-  $item_cast =& new ItemReportGenerator();
+  $item_cast = new ItemReportGenerator();
   $fields = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAME');
   if ($item_cast->Init($fields, $baseLink, 'itemLIST', $config['fade_limit'], 'name'))
   {
@@ -161,7 +161,7 @@ else
   //********************************************************************************
   // Энчанты использующие этот спелл
   //********************************************************************************
-  $enchant =& new EnchantReportGenerator();
+  $enchant = new EnchantReportGenerator();
   $fields = array('ENCH_REPORT_ID','ENCH_REPORT_NAME', 'ENCH_REPORT_GEM');
   if ($enchant->Init($fields, $baseLink, 'enchantLIST', $config['fade_limit'], 'name'))
   {
@@ -171,7 +171,7 @@ else
   //********************************************************************************
   // Ветка Талантов использующие этот спелл
   //********************************************************************************
-  $talent =& new TalentReportGenerator();
+  $talent = new TalentReportGenerator();
   $fields = array('TALENT_REPORT_ID','TALENT_REPORT_NAME');
   if ($talent->Init($fields, $baseLink, 'talentLIST', $config['fade_limit'], ''))
   {
@@ -181,7 +181,7 @@ else
   //********************************************************************************
   // Символы использующие этот спелл
   //********************************************************************************
-  $glyph =& new GlyphReportGenerator();
+  $glyph = new GlyphReportGenerator();
   $fields = array('GLYPH_REPORT_ID', 'GLYPH_REPORT_ICON', 'GLYPH_REPORT_NAME');
   if ($glyph->Init($fields, $baseLink, 'glyphLIST', $config['fade_limit'], ''))
   {
@@ -191,7 +191,7 @@ else
   //********************************************************************************
   // Наборы использующие этот спелл
   //********************************************************************************
-  $sets =& new ItemSetReportGenerator();
+  $sets = new ItemSetReportGenerator();
   $fields = array('SET_REPORT_ID', 'SET_REPORT_NAME', 'SET_REPORT_ITEM');
   if ($sets->Init($fields, $baseLink, 'setLIST', $config['fade_limit'], 'name'))
   {
@@ -201,7 +201,7 @@ else
   //********************************************************************************
   // Мобы кастующие этот спелл
   //********************************************************************************
-  $npc =& new CreatureReportGenerator();
+  $npc = new CreatureReportGenerator();
   $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_NAME', 'NPC_REPORT_REACTION', 'NPC_REPORT_MAP');
   if ($npc->Init($fields, $baseLink, 'creatureLIST', $config['fade_limit'], 'level'))
   {
@@ -211,7 +211,7 @@ else
   //********************************************************************************
   // Кастуют объекты
   //********************************************************************************
-  $go =& new GameobjectReportGenerator();
+  $go = new GameobjectReportGenerator();
   $fields = array('GO_REPORT_NAME','GO_REPORT_TYPE','GO_REPORT_MAP');
   if ($go->Init($fields, $baseLink, 'gameobjectLIST', $config['fade_limit'], 'name'))
   {

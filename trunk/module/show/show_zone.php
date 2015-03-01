@@ -83,7 +83,7 @@ else
   //********************************************************************************
   if ($zentry!=$entry)
   {
-   $parent =& new ZoneReportGenerator();
+   $parent = new ZoneReportGenerator();
    $fields = array('ZONE_REPORT_ID', 'ZONE_REPORT_NAME');
    if ($parent->Init($fields, $baseLink, 'zoneLIST', $config['fade_limit'], 'name'))
    {
@@ -94,7 +94,7 @@ else
   //********************************************************************************
   // Sub zones
   //********************************************************************************
-  $sub =& new ZoneReportGenerator();
+  $sub = new ZoneReportGenerator();
   $fields = array('ZONE_REPORT_ID', 'ZONE_REPORT_NAME');
   if ($sub->Init($fields, $baseLink, 'subzoneLIST', $config['fade_limit'], 'name'))
   {
@@ -104,7 +104,7 @@ else
   //********************************************************************************
   // НИП в зоне
   //********************************************************************************
-  $npc =& new CreatureReportGenerator('position');
+  $npc = new CreatureReportGenerator('position');
   $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'NPC_REPORT_ROLE', 'NPC_REPORT_DUNGEON');
   if ($npc->Init($fields, $baseLink, 'npcLIST', $config['fade_limit'], 'name'))
   {
@@ -118,7 +118,7 @@ else
   //********************************************************************************
   // GO в зоне
   //********************************************************************************
-  $go =& new GameobjectReportGenerator('position');
+  $go = new GameobjectReportGenerator('position');
   $fields = array('GO_REPORT_NAME', 'GO_REPORT_TYPE', 'GO_REPORT_DUNGEON');
   if ($go->Init($fields, $baseLink, 'goLIST', $config['fade_limit'], 'name'))
   {

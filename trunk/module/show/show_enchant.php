@@ -37,7 +37,7 @@ else
   //********************************************************************************
   // Делается спеллом
   //********************************************************************************
-  $spell_list =& new SpellReportGenerator;
+  $spell_list = new SpellReportGenerator;
   $fields = array('SPELL_REPORT_LEVEL','SPELL_REPORT_ICON','SPELL_REPORT_NAME');
   if ($spell_list->Init($fields, $baseLink, 'spellLIST', $config['fade_limit'], 'name'))
   {
@@ -47,7 +47,7 @@ else
   //**************************************************
   // Камни дающие этот энчант
   //**************************************************
-  $sitem_req =& new ItemReportGenerator();
+  $sitem_req = new ItemReportGenerator();
   $fields = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAME');
   if ($sitem_req->Init($fields, $baseLink, 'itemreqLIST', $config['fade_limit'], 'rep_rank'))
   {
@@ -57,7 +57,7 @@ else
   //**************************************************
   // Вещи с бонусами камней, дающие этот энчант
   //**************************************************
-  $item_req =& new ItemReportGenerator();
+  $item_req = new ItemReportGenerator();
   $fields = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAME');
   if ($item_req->Init($fields, $baseLink, 'itemreqLIST', $config['fade_limit'], 'rep_rank'))
   {
@@ -67,7 +67,7 @@ else
   //**************************************************
   // Выбрать рандом энчанты список
   //**************************************************
-  $rnd_propety =& new RandomPropetyReportGenerator();
+  $rnd_propety = new RandomPropetyReportGenerator();
   $fields = array('RPROP_REPORT_ID','RPROP_REPORT_NAME','RPROP_REPORT_ENCHANTS');
   if ($rnd_propety->Init($fields, $baseLink, 'randPropLIST', $config['fade_limit'], 'name'))
   {
@@ -77,7 +77,7 @@ else
   //**************************************************
   // Рандом суффиксы
   //**************************************************
-  $rnd_suffix =& new RandomSuffixReportGenerator();
+  $rnd_suffix = new RandomSuffixReportGenerator();
   $fields = array('RSUFF_REPORT_ID','RSUFF_REPORT_NAME','RSUFF_REPORT_ENCHANTS');
   if ($rnd_suffix->Init($fields, $baseLink, 'randSuffLIST', $config['fade_limit'], 'name'))
   {
