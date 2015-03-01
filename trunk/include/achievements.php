@@ -221,7 +221,7 @@ function renderAchievement($id, &$a, $guid)
   echo '<div class=ach_req id='.$id.'>';
   if ($a['flags']&CUSTOM_ACHIEVEMENT_SHOW)
   {
-    getAchievementValue(&$a, &$value, &$maxvalue);
+    getAchievementValue($a, $value, $maxvalue);
     if ($a['flags']&ACHIEVEMENT_FLAG_BAR)
       echo '<div class="sub bar">'.renderProgress($value, $maxvalue).'</div>';
     else if ($a['flags']&ACHIEVEMENT_FLAG_MAX_USED)
@@ -282,10 +282,10 @@ function renderPlayerAchievementStats($category, $faction, $guid)
   foreach ($baseCat as $id=>$cat)
   {
     $count = array(0,0,0,0);
-    getComplCount($completed, $cat['id'], $faction, &$count);
+    getComplCount($completed, $cat['id'], $faction, $count);
     $subCat = $wDB->select("SELECT `id`, `name` FROM `wowd_achievement_category` WHERE `parent` = ?d", $cat['id']);
     foreach ($subCat as $sub)
-      getComplCount($completed, $sub['id'], $faction, &$count);
+      getComplCount($completed, $sub['id'], $faction, $count);
     $baseCat[$id]['count'] = $count;
     if ($count[2])
     foreach($total as $i=>$t)
@@ -357,7 +357,7 @@ function renderAchievementCategoryList($cat, $faction, $guid)
         echo '<div class=ach_s_list><div class=ach_bar><div class=bar style="width: '.($compl/$total*100).'%;"></div><div class=pr>'.$compl.' / '.$total.'</div></div></div>';
     }
     foreach ($achievements as $id=>$arc)
-      renderAchievement($id, &$achievements[$id], $guid);
+      renderAchievement($id, $achievements[$id], $guid);
   }
   else
   {
@@ -369,7 +369,7 @@ function renderAchievementCategoryList($cat, $faction, $guid)
     {
       echo '<div class="ach_stats'.($i&1 ? ' second' : '').'">';
       // Render requirements
-      echo '<div class=ach_value>'.getAchievementValue($a, &$value, &$maxvalue).'</div>';
+      echo '<div class=ach_value>'.getAchievementValue($a, $value, $maxvalue).'</div>';
       echo $a['name'];
 /*
       echo ' ('.$id.') - 0x'.dechex($a['flags']);

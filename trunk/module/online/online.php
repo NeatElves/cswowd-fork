@@ -56,7 +56,7 @@ else
  $baseLink = '?online';
  $show_fields= array('PL_REPORT_LEVEL', 'PL_REPORT_FACTION', 'PL_REPORT_NAME', 'PL_REPORT_RACE', 'PL_REPORT_CLASS', 'PL_REPORT_POS');
 
-  $list =& new PlayerReportGenerator();
+  $list = new PlayerReportGenerator();
   $list->disableMark();
   $list->Init($show_fields, $baseLink, 'onlineLIST', $config['online_limit'], 'name');
   $list->online();

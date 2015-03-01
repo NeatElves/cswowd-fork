@@ -93,7 +93,7 @@ if ($allmode==0 and $ajaxmode==0)
 
 if ($filter)
 {
- $spell_search =& new SpellReportGenerator;
+ $spell_search = new SpellReportGenerator;
  if (!$allmode)
    $spell_search->disableMark();
  $spell_search->Init($show_fields, $FindRefrence, 'searchSpell', $config['fade_limit'], 'name');

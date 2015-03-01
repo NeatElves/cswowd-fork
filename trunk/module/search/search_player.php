@@ -47,7 +47,7 @@ if ($filter)
 {
  $show_fields= array('PL_REPORT_LEVEL', 'PL_REPORT_RACE', 'PL_REPORT_CLASS', 'PL_REPORT_NAME', 'PL_REPORT_FACTION');
 
- $p_search =& new PlayerReportGenerator();
+ $p_search = new PlayerReportGenerator();
  if (!$allmode)
    $p_search->disableMark();
  $p_search->Init($show_fields, $FindRefrence, 'searchPlayer', $config['fade_limit'], 'name');

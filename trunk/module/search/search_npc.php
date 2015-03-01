@@ -87,7 +87,7 @@ if ($allmode==0 and $ajaxmode==0)
 
 if ($filter!="")
 {
- $npc_search =& new CreatureReportGenerator();
+ $npc_search = new CreatureReportGenerator();
  if (!$allmode)
    $npc_search->disableMark();
  //==============================================================================
