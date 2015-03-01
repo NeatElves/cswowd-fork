@@ -42,7 +42,7 @@ if ($allmode==0 and $ajaxmode==0)
 
 if ($filter)
 {
- $set_search =& new ItemSetReportGenerator();
+ $set_search = new ItemSetReportGenerator();
  if (!$allmode)
    $set_search->disableMark();
  $set_search->Init($show_fields, $FindRefrence, 'searchSet', $config['fade_limit'], 'name');

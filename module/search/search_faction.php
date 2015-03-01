@@ -40,7 +40,7 @@ if ($allmode==0 and $ajaxmode==0)
 
 if ($filter)
 {
- $faction_search =& new FactionReportGenerator();
+ $faction_search = new FactionReportGenerator();
  if (!$allmode)
    $faction_search->disableMark();
  $faction_search->Init($show_fields, $FindRefrence, 'searchFaction', $config['fade_limit'], 'name');

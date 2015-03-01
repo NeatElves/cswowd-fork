@@ -155,7 +155,7 @@ if ($allmode==0 and $ajaxmode==0)
 
 if ($filter!='')
 {
- $isearch =& new ItemReportGenerator;
+ $isearch = new ItemReportGenerator;
  if (!$allmode)
    $isearch->disableMark();
 

@@ -135,7 +135,7 @@ if ($allmode==0 and $ajaxmode==0)
 // Ищем если имеется хоть чтото в запросе
 if ($filter!="")
 {
- $quest_search =& new QuestReportGenerator();
+ $quest_search = new QuestReportGenerator();
  if (!$allmode)
    $quest_search->disableMark();
  //==============================================================================

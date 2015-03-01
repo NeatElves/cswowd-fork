@@ -80,7 +80,7 @@ if ($allmode==0 and $ajaxmode==0)
 
 if ($filter)
 {
- $go_search =& new GameobjectReportGenerator();
+ $go_search = new GameobjectReportGenerator();
  if (!$allmode)
    $go_search->disableMark();
  //==============================================================================
