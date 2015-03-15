@@ -225,14 +225,14 @@ TABLE.item TD.itemdesc   {COLOR: #aaaa00; }
 TABLE.item TD.sellprice  {COLOR: #7777ff;FONT-SIZE: 11px;}
 TABLE.item TD.bottom     {COLOR: #000000;BACKGROUND-COLOR: #aaaaaa;FONT-SIZE: 10px;TEXT-ALIGN: center;}
 
-/*Мар style*/
+/*РњР°СЂ style*/
 TABLE.map                  {background-color: #000000; border-color: #333333;}
 TABLE.map TD               {border-color: #330066;}
 TABLE.map TD.mapname       {color: #FFFFCC; text-align: center;}
 TABLE.map TD.mapname     A {color: #FFFFCC; font-weight: bold;}
 TABLE.map TD div.m_scale   {text-align: right; position: absolute; border: 0px; left: 5px; top: 5px;}
 TABLE.map TD div.m_scale A {color: #FF9900; TEXT-DECORATION: none;}
-/*Мар tooltip style*/
+/*РњР°СЂ tooltip style*/
 TABLE.maptooltip           {color: #FFFFFF; font-size: 12px;}
 TABLE.maptooltip TD        {padding: 0px; white-space: nowrap;}
 TABLE.maptooltip TD.name   {font-size: 14px; text-align: center;}
