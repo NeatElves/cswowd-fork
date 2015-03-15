@@ -5,7 +5,7 @@ include_once("include/report_generator.php");
 // Определяем режим поиска
 $allmode = @$_REQUEST['s']=='all';
 
-// Создаём ссылку на страницу, игнорируем дефолтные значени¤
+// Создаём ссылку на страницу, игнорируем дефолтные значения
 $FindRefrence = "?s=n";
 
 $show_fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_NAME', 'NPC_REPORT_REACTION', 'NPC_REPORT_MAP');
@@ -115,7 +115,7 @@ if ($filter!="")
  $number = $npc_search->getTotalDataCount();
  if ($number <= 0)
     echo $lang['not_found'];
- else if ($number == 1 && $allmode == 0)      // Перенаправл¤ем
+ else if ($number == 1 && $allmode == 0)      // Перенаправляем
     echo '<meta http-equiv="refresh" content=1;URL=?npc='.$npc_search->data_array[0]['Entry'].'>';
  else
     $npc_search->createReport($lang['search_results'].' - '.$lang['found'].' '.$number);
