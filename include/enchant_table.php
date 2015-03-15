@@ -7,7 +7,7 @@ function noBorderEnchantTable($enc)
  global $UseorEquip, $game_text;
  echo "<table class=spell><tbody>";
  echo "<tr><td class=Name>".$enc['description']."</td></tr>";
- // Вывод требования скила
+ // Р’С‹РІРѕРґ С‚СЂРµР±РѕРІР°РЅРёСЏ СЃРєРёР»Р°
  if ($enc['requiredSkill'])
     echo '<tr><td class=req>'.sprintf($game_text['req_skill'], getSkillName($enc['requiredSkill']), $enc['requiredSkillRank']).'</td></tr>';
 

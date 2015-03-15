@@ -1,6 +1,6 @@
 <?php
-// Ïîçæå áóäåò ïåðåíåñåíà â îñíîâíîé ôàéë ÿçûêîâ
-// Ìîäóëü âõîäà, âûõîäà
+// ÐŸÐ¾Ð·Ð¶Ðµ Ð±ÑƒÐ´ÐµÑ‚ Ð¿ÐµÑ€ÐµÐ½ÐµÑÐµÐ½Ð° Ð² Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ Ñ„Ð°Ð¹Ð» ÑÐ·Ñ‹ÐºÐ¾Ð²
+// ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð²Ñ…Ð¾Ð´Ð°, Ð²Ñ‹Ñ…Ð¾Ð´Ð°
 $lang['user_login'] = "Login";
 $lang['user_login_name'] = "Name";
 $lang['user_login_pass'] = "Password";
@@ -9,6 +9,6 @@ $lang['user_login_err_empty'] = "Need input name or password";
 $lang['user_login_err_name_pass'] = "Wrong name or password";
 $lang['user_login_succes']  = "Login  succes, redirecting";
 $lang['user_logout_succes'] = "Logout succes, redirecting";
-// Ìîäóëü êàáèíåòà ïîëüçîâàòåëÿ
+// ÐœÐ¾Ð´ÑƒÐ»ÑŒ ÐºÐ°Ð±Ð¸Ð½ÐµÑ‚Ð° Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 $lang['user_no_char_present'] = "No characters";
 ?>

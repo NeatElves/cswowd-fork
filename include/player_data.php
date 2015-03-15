@@ -13,7 +13,7 @@ $qplevel = array('1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7',
  '31'=>'31','32'=>'32','33'=>'33','34'=>'34','35'=>'35','36'=>'36','37'=>'37','38'=>'38','39'=>'39','40'=>'40','41'=>'41','42'=>'42','43'=>'43','44'=>'44','45'=>'45','46'=>'46','47'=>'47','48'=>'48','49'=>'49','50'=>'50','51'=>'51','52'=>'52','53'=>'53','54'=>'54','55'=>'55','56'=>'56','57'=>'57','58'=>'58','59'=>'59','60'=>'60',
  '61'=>'61','62'=>'62','63'=>'63','64'=>'64','65'=>'65','66'=>'66','67'=>'67','68'=>'68','69'=>'69','70'=>'70','71'=>'71','72'=>'72','73'=>'73','74'=>'74','75'=>'75','76'=>'76','77'=>'77','78'=>'78','79'=>'79','80'=>'80');
 
-// Классы
+// РљР»Р°СЃСЃС‹
 define('CLASS_WARRIOR',1);
 define('CLASS_PALADIN',2);
 define('CLASS_HUNTER',3);
@@ -24,7 +24,7 @@ define('CLASS_SHAMAN',7);
 define('CLASS_MAGE',8);
 define('CLASS_WARLOCK',9);
 define('CLASS_DRUID',11);
-// Тип энергии
+// РўРёРї СЌРЅРµСЂРіРёРё
 define('POWER_MANA', 0);
 define('POWER_RAGE', 1);
 define('POWER_FOCUS', 2);
@@ -32,13 +32,13 @@ define('POWER_ENERGY', 3);
 define('POWER_HAPPINESS', 4);
 define('POWER_RUNE', 5);
 define('POWER_RUNIC_POWER', 6);
-// Тип стата
+// РўРёРї СЃС‚Р°С‚Р°
 define('STAT_STRENGTH', 0);
 define('STAT_AGILITY', 1);
 define('STAT_STAMINA', 2);
 define('STAT_INTELLECT', 3);
 define('STAT_SPIRIT', 4);
-// Тип школы/резиста
+// РўРёРї С€РєРѕР»С‹/СЂРµР·РёСЃС‚Р°
 define('SCHOOL_ARMOR', 0);
 define('SCHOOL_HOLY', 1);
 define('SCHOOL_FIRE', 2);
@@ -46,7 +46,7 @@ define('SCHOOL_NATURE', 3);
 define('SCHOOL_FROST', 4);
 define('SCHOOL_SHADOW', 5);
 define('SCHOOL_ARCANE', 6);
-// Различные константы
+// Р Р°Р·Р»РёС‡РЅС‹Рµ РєРѕРЅСЃС‚Р°РЅС‚С‹
 define('ATTACK_POWER_MAGIC_NUMBER',14);
 define('BLOCK_PER_STRENGTH', 0.5);
 define('HEALTH_PER_STAMINA', 10);

@@ -3,15 +3,15 @@ include_once("include/functions.php");
 include_once("include/gameobject_table.php");
 include_once("include/report_generator.php");
 
-// Определяем режим поиска
+// РћРїСЂРµРґРµР»СЏРµРј СЂРµР¶РёРј РїРѕРёСЃРєР°
 $allmode = @$_REQUEST['s']=='all';
 
-// Создаём ссылку на страницу, игнорируем дефолтные значения
+// РЎРѕР·РґР°С‘Рј СЃСЃС‹Р»РєСѓ РЅР° СЃС‚СЂР°РЅРёС†Сѓ, РёРіРЅРѕСЂРёСЂСѓРµРј РґРµС„РѕР»С‚РЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
 $FindRefrence = "?s=o";
 
 $show_fields = array('GO_REPORT_NAME','GO_REPORT_TYPE','GO_REPORT_MAP');
 //==============================================================================
-// Создаём SQL запрос исходя из заданых пользователем параметров
+// РЎРѕР·РґР°С‘Рј SQL Р·Р°РїСЂРѕСЃ РёСЃС…РѕРґСЏ РёР· Р·Р°РґР°РЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РїР°СЂР°РјРµС‚СЂРѕРІ
 //==============================================================================
 $filter = "";
 // Name filter
@@ -20,14 +20,14 @@ if ($name = mysql_real_escape_string(@$_REQUEST['name']))
   $filter.= " AND `name` like '%$name%'";
   $FindRefrence.="&name=$name";
 }
-// Spell focus фильтр
+// Spell focus С„РёР»СЊС‚СЂ
 if ($spellFocus = intval(@$_REQUEST['focus']))
 {
   $filter.= " AND (`type` = ".GAMEOBJECT_TYPE_SPELL_FOCUS." AND `data0` = $spellFocus)";
   $FindRefrence.="&focus=$spellFocus";
 }
 
-// Lock фильтр
+// Lock С„РёР»СЊС‚СЂ
 $locks = intval(@$_REQUEST['lockSkill']);
 $locki = intval(@$_REQUEST['lockItem']);
 if ($locks OR $locki)
@@ -61,9 +61,9 @@ if ($type = intval(@$_REQUEST['type']))
   $FindRefrence.="&type=$type";
 }
 
-// Убираем ненужный AND в начале строки
+// РЈР±РёСЂР°РµРј РЅРµРЅСѓР¶РЅС‹Р№ AND РІ РЅР°С‡Р°Р»Рµ СЃС‚СЂРѕРєРё
 $filter = substr($filter, 5);
-// Вывод диалога поиска
+// Р’С‹РІРѕРґ РґРёР°Р»РѕРіР° РїРѕРёСЃРєР°
 if ($allmode==0 and $ajaxmode==0)
 {
     echo '<form>';
@@ -84,7 +84,7 @@ if ($filter)
  if (!$allmode)
    $go_search->disableMark();
  //==============================================================================
- // Локализация запроса
+ // Р›РѕРєР°Р»РёР·Р°С†РёСЏ Р·Р°РїСЂРѕСЃР°
  //==============================================================================
  if ($config['locales_lang'] > 0 && $name)
  {
@@ -98,7 +98,7 @@ if ($filter)
  $number = $go_search->getTotalDataCount();
  if ($number <= 0)
     echo $lang['not_found'];
- else if ($number == 1 && $allmode == 0)    // Перенаправляем
+ else if ($number == 1 && $allmode == 0)    // РџРµСЂРµРЅР°РїСЂР°РІР»СЏРµРј
     echo '<meta http-equiv="refresh" content=1;URL=?object='.$go_search->data_array[0]['entry'].'>';
  else
     $go_search->createReport($lang['search_results'].' - '.$lang['found'].' '.$number);

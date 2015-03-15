@@ -2,7 +2,7 @@
 include_once("include/functions.php");
 include_once("include/map_data.php");
 
-// Íóæíî ñîåäèíèòüñÿ ñ áàçîé (÷àñòü ìåíþøåê òðåáóåò íàçâàíèé îòòóäà
+// ÐÑƒÐ¶Ð½Ð¾ ÑÐ¾ÐµÐ´Ð¸Ð½Ð¸Ñ‚ÑŒÑÑ Ñ Ð±Ð°Ð·Ð¾Ð¹ (Ñ‡Ð°ÑÑ‚ÑŒ Ð¼ÐµÐ½ÑŽÑˆÐµÐº Ñ‚Ñ€ÐµÐ±ÑƒÐµÑ‚ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ð¹ Ð¾Ñ‚Ñ‚ÑƒÐ´Ð°
 include_once("include/DbSimple/Generic.php");
 $wDB = DbSimple_Generic::connect("mysql://$config[wusername]:$config[wpassword]@$config[whostname]/$config[wdbName]");
 $wDB->query("SET NAMES ?s", $config['client_charset']);

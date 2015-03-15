@@ -2,25 +2,25 @@
 include_once("include/functions.php");
 include_once("include/report_generator.php");
 
-// Определяем режим поиска
+// СњРїСЂРµРґРµР»В¤РµРј СЂРµР¶РёРј РїРѕРёСЃРєР°
 $allmode = @$_REQUEST['s']=='all';
 
-// Создаём ссылку на страницу, игнорируем дефолтные значения
+// вЂ”РѕР·РґР°Р„Рј СЃСЃС‹Р»РєСѓ РЅР° СЃС‚СЂР°РЅРёС†Сѓ, РёРіРЅРѕСЂРёСЂСѓРµРј РґРµС„РѕР»С‚РЅС‹Рµ Р·РЅР°С‡РµРЅРёВ¤
 $FindRefrence = "?s=n";
 
 $show_fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_NAME', 'NPC_REPORT_REACTION', 'NPC_REPORT_MAP');
 
 //==============================================================================
-// Создаём SQL запрос исходя из заданых пользователем параметров
+// вЂ”РѕР·РґР°Р„Рј SQL Р·Р°РїСЂРѕСЃ РёСЃС…РѕРґВ¤ РёР· Р·Р°РґР°РЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РїР°СЂР°РјРµС‚СЂРѕРІ
 //==============================================================================
 $filter = "";
-// Фильтр имени
+// вЂРёР»СЊС‚СЂ РёРјРµРЅРё
 if ($name = mysql_real_escape_string(@$_REQUEST['name']))
 {
   $filter.= " AND `Name` like '%$name%'";
   $FindRefrence.="&name=$name";
 }
-// Фильтр дополнительного имени
+// вЂРёР»СЊС‚СЂ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРіРѕ РёРјРµРЅРё
 if ($subname = mysql_real_escape_string(@$_REQUEST['subname']))
 {
   $filter.= " AND `SubName` like '%$subname%'";
@@ -37,36 +37,36 @@ if ($level_max = intval(@$_REQUEST['level_max']))
   $filter.= " AND `MaxLevel` <= '$level_max'";
   $FindRefrence.="&level_max=$level_max";
 }
-// Фильтр по типу
+// вЂРёР»СЊС‚СЂ РїРѕ С‚РёРїСѓ
 if ($type = intval(@$_REQUEST['type']))
 {
   $filter.= " AND `CreatureType` = '$type'";
   $FindRefrence.="&type=$type";
 }
-// Фильтр по family
+// вЂРёР»СЊС‚СЂ РїРѕ family
 if ($family = intval(@$_REQUEST['family']))
 {
   $filter.= " AND `Family` = '$family'";
   $FindRefrence.="&family=$family";
 }
-// Фильтр по рангу
+// вЂРёР»СЊС‚СЂ РїРѕ СЂР°РЅРіСѓ
 if (isset($_REQUEST['rank']))
 {
   $rank = intval($_REQUEST['rank']);
   $filter.= " AND `Rank` = '$rank'";
   $FindRefrence.="&rank=$rank";
 }
-// Фильтр по флагу
+// вЂРёР»СЊС‚СЂ РїРѕ С„Р»Р°РіСѓ
 if (isset($_REQUEST['flag']))
 {
   $npc_flag = intval($_REQUEST['flag']);
   $filter.= " AND (`NpcFlags`&".(1<<$npc_flag).")";
   $FindRefrence.="&flag=$npc_flag";
 }
-// Убираем ненужный AND в начале строки
+// вЂќР±РёСЂР°РµРј РЅРµРЅСѓР¶РЅС‹Р№ AND РІ РЅР°С‡Р°Р»Рµ СЃС‚СЂРѕРєРё
 $filter = substr($filter, 5);
 
-// Вывод диалога поиска
+// В¬С‹РІРѕРґ РґРёР°Р»РѕРіР° РїРѕРёСЃРєР°
 if ($allmode==0 and $ajaxmode==0)
 {
     if ($level_min == 0) $level_min = "";
@@ -91,7 +91,7 @@ if ($filter!="")
  if (!$allmode)
    $npc_search->disableMark();
  //==============================================================================
- // Локализация запроса
+ // Р‹РѕРєР°Р»РёР·Р°С†РёВ¤ Р·Р°РїСЂРѕСЃР°
  //==============================================================================
  if ($config['locales_lang'] > 0)
  {
@@ -115,7 +115,7 @@ if ($filter!="")
  $number = $npc_search->getTotalDataCount();
  if ($number <= 0)
     echo $lang['not_found'];
- else if ($number == 1 && $allmode == 0)      // Перенаправляем
+ else if ($number == 1 && $allmode == 0)      // С•РµСЂРµРЅР°РїСЂР°РІР»В¤РµРј
     echo '<meta http-equiv="refresh" content=1;URL=?npc='.$npc_search->data_array[0]['Entry'].'>';
  else
     $npc_search->createReport($lang['search_results'].' - '.$lang['found'].' '.$number);

@@ -6,7 +6,7 @@ $tip   = substr($str,0,1);
 $entry = intval(substr($str,1,10));
 switch ($tip)
 {
-  // Показ вещи
+  // РџРѕРєР°Р· РІРµС‰Рё
   case "i":
   if (substr($str,1,1)=='g')
   {
@@ -24,7 +24,7 @@ switch ($tip)
   else
     echo "Error item $entry";
   break;
-  // Показ  Существа
+  // РџРѕРєР°Р·  РЎСѓС‰РµСЃС‚РІР°
   case "c":
   if ($creature=getCreature($entry))
   {
@@ -34,7 +34,7 @@ switch ($tip)
   else
     echo "Error creature $entry";
   break;
-  // Показ Обьекта
+  // РџРѕРєР°Р· РћР±СЊРµРєС‚Р°
   case "o":
   if ($obj=getGameobject($entry))
   {
@@ -44,21 +44,21 @@ switch ($tip)
   else
     echo "Error object $entry";
   break;
-  // Показ спелла
+  // РџРѕРєР°Р· СЃРїРµР»Р»Р°
   case "s":
   if ($spell=getSpell($entry))
     noBorderSpellTable($spell);
   else
     echo "Error spell $entry";
   break;
-  // Показ энчанта
+  // РџРѕРєР°Р· СЌРЅС‡Р°РЅС‚Р°
   case "e":
   if ($enc=getEnchantment($entry))
     noBorderEnchantTable($enc);
   else
     echo "Error enchant $entry";
   break;
-  // Показ таланта
+  // РџРѕРєР°Р· С‚Р°Р»Р°РЅС‚Р°
   case "t":
   $rank  = intval(substr($str,1,1));
   $entry = intval(substr($str,2,5));
@@ -68,7 +68,7 @@ switch ($tip)
   else
     echo "Error talent $entry - $rank";
   break;
-  // Показ фракции
+  // РџРѕРєР°Р· С„СЂР°РєС†РёРё
   case "f":
   if ($faction=getFaction($entry))
   {

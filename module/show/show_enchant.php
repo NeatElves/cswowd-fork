@@ -4,13 +4,13 @@ include_once("include/enchant_table.php");
 include_once("include/report_generator.php");
 ##########
 /*
- Скрипт показывает энчант по его $entry
- Показывает:
-  - Делается спеллом
-  - Камни дающие этот энчант
-  - Вещи с бонусами камней, дающие этот энчант
-  - Выбрать рандом энчанты список
-  - Рандом суффиксы
+ РЎРєСЂРёРїС‚ РїРѕРєР°Р·С‹РІР°РµС‚ СЌРЅС‡Р°РЅС‚ РїРѕ РµРіРѕ $entry
+ РџРѕРєР°Р·С‹РІР°РµС‚:
+  - Р”РµР»Р°РµС‚СЃСЏ СЃРїРµР»Р»РѕРј
+  - РљР°РјРЅРё РґР°СЋС‰РёРµ СЌС‚РѕС‚ СЌРЅС‡Р°РЅС‚
+  - Р’РµС‰Рё СЃ Р±РѕРЅСѓСЃР°РјРё РєР°РјРЅРµР№, РґР°СЋС‰РёРµ СЌС‚РѕС‚ СЌРЅС‡Р°РЅС‚
+  - Р’С‹Р±СЂР°С‚СЊ СЂР°РЅРґРѕРј СЌРЅС‡Р°РЅС‚С‹ СЃРїРёСЃРѕРє
+  - Р Р°РЅРґРѕРј СЃСѓС„С„РёРєСЃС‹
 */
 
 $entry = intval(@$_REQUEST['enchant']);
@@ -35,7 +35,7 @@ else
   }
   createReportTab();
   //********************************************************************************
-  // Делается спеллом
+  // Р”РµР»Р°РµС‚СЃСЏ СЃРїРµР»Р»РѕРј
   //********************************************************************************
   $spell_list = new SpellReportGenerator;
   $fields = array('SPELL_REPORT_LEVEL','SPELL_REPORT_ICON','SPELL_REPORT_NAME');
@@ -45,7 +45,7 @@ else
     $spell_list->createReport($lang['enchant_by_spell']);
   }
   //**************************************************
-  // Камни дающие этот энчант
+  // РљР°РјРЅРё РґР°СЋС‰РёРµ СЌС‚РѕС‚ СЌРЅС‡Р°РЅС‚
   //**************************************************
   $sitem_req = new ItemReportGenerator();
   $fields = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAME');
@@ -55,7 +55,7 @@ else
     $sitem_req->createReport($lang['enchant_by_gems']);
   }
   //**************************************************
-  // Вещи с бонусами камней, дающие этот энчант
+  // Р’РµС‰Рё СЃ Р±РѕРЅСѓСЃР°РјРё РєР°РјРЅРµР№, РґР°СЋС‰РёРµ СЌС‚РѕС‚ СЌРЅС‡Р°РЅС‚
   //**************************************************
   $item_req = new ItemReportGenerator();
   $fields = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAME');
@@ -65,7 +65,7 @@ else
     $item_req->createReport($lang['enchant_by_socket']);
   }
   //**************************************************
-  // Выбрать рандом энчанты список
+  // Р’С‹Р±СЂР°С‚СЊ СЂР°РЅРґРѕРј СЌРЅС‡Р°РЅС‚С‹ СЃРїРёСЃРѕРє
   //**************************************************
   $rnd_propety = new RandomPropetyReportGenerator();
   $fields = array('RPROP_REPORT_ID','RPROP_REPORT_NAME','RPROP_REPORT_ENCHANTS');
@@ -75,7 +75,7 @@ else
     $rnd_propety->createReport($lang['enchant_by_rand_prop']);
   }
   //**************************************************
-  // Рандом суффиксы
+  // Р Р°РЅРґРѕРј СЃСѓС„С„РёРєСЃС‹
   //**************************************************
   $rnd_suffix = new RandomSuffixReportGenerator();
   $fields = array('RSUFF_REPORT_ID','RSUFF_REPORT_NAME','RSUFF_REPORT_ENCHANTS');

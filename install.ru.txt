@@ -1,4 +1,4 @@
-﻿Скачиваем с SVN папку cswowd, sql, файлы icons.rar, bwicons.rar, guilds.rar и map_image.rar
+Скачиваем с SVN папку cswowd, sql, файлы icons.rar, bwicons.rar, guilds.rar и map_image.rar
 
 В папке cswowd находятся все необходимые php файлы и модули.
 

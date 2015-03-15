@@ -16,7 +16,7 @@ include("lang/game_text.".$config['lang'].".php");
 <script type="text/javascript" src="js/my_tooltip.js"></script>
 <script type="text/javascript" src="js/lightbox.js"></script>
 <?php
-// Ïîäêëþ÷àåì ñêðèïò òîëüêî ïî íåîáõîäèìîñòè
+// ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ ÑÐºÑ€Ð¸Ð¿Ñ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ÑÑ‚Ð¸
 if (!empty($ajax_modules['ls']))
     echo '<script type="text/javascript" src="js/my_livesearch.js"></script>';
 

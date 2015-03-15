@@ -2,15 +2,15 @@
 include_once("include/functions.php");
 include_once("include/report_generator.php");
 
-// Определяем режим поиска
+// РћРїСЂРµРґРµР»СЏРµРј СЂРµР¶РёРј РїРѕРёСЃРєР°
 $allmode = @$_REQUEST['s']=='all';
 
-// Создаём ссылку на страницу, игнорируем дефолтные значения
+// РЎРѕР·РґР°С‘Рј СЃСЃС‹Р»РєСѓ РЅР° СЃС‚СЂР°РЅРёС†Сѓ, РёРіРЅРѕСЂРёСЂСѓРµРј РґРµС„РѕР»С‚РЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
 $FindRefrence = "?s=s";
 
 $show_fields = array('SPELL_REPORT_ICON','SPELL_REPORT_NAME','SPELL_REPORT_SCHOOL');
 //==============================================================================
-// Создаём SQL запрос исходя из заданых пользователем параметров
+// РЎРѕР·РґР°С‘Рј SQL Р·Р°РїСЂРѕСЃ РёСЃС…РѕРґСЏ РёР· Р·Р°РґР°РЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РїР°СЂР°РјРµС‚СЂРѕРІ
 //==============================================================================
 $filter = "";
 // Name filter
@@ -72,10 +72,10 @@ if ($lock = intval(@$_REQUEST['lock']))
   $FindRefrence.="&lock=$lock";
 }
 
-// Убираем ненужный AND в начале строки
+// РЈР±РёСЂР°РµРј РЅРµРЅСѓР¶РЅС‹Р№ AND РІ РЅР°С‡Р°Р»Рµ СЃС‚СЂРѕРєРё
 $filter = substr($filter, 5);
 
-// Вывод диалога поиска
+// Р’С‹РІРѕРґ РґРёР°Р»РѕРіР° РїРѕРёСЃРєР°
 if ($allmode==0 and $ajaxmode==0)
 {
     echo'<form>';
@@ -101,7 +101,7 @@ if ($filter)
  $number = $spell_search->getTotalDataCount();
  if ($number <= 0)
     echo $lang['not_found'];
- else if ($number == 1 && $allmode == 0)   // Перенаправляем
+ else if ($number == 1 && $allmode == 0)   // РџРµСЂРµРЅР°РїСЂР°РІР»СЏРµРј
     echo '<meta http-equiv="refresh" content=1;URL=?spell='.$spell_search->data_array[0]['id'].'>';
  else
     $spell_search->createReport($lang['search_results'].' - '.$lang['found'].' '.$number);

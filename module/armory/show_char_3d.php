@@ -1,13 +1,13 @@
 <?php
-// 3D модель
-// получаем displayid вещи
+// 3D РјРѕРґРµР»СЊ
+// РїРѕР»СѓС‡Р°РµРј displayid РІРµС‰Рё
 function wowhead_did($item)
 {
     global $dDB;
     $displayid = $dDB->selectCell("SELECT displayid FROM item_template WHERE entry = ?d", $item);
     echo $displayid;
 }
-// получаем расу и класс в виде, пригодном для WH 3D просмотрщика
+// РїРѕР»СѓС‡Р°РµРј СЂР°СЃСѓ Рё РєР»Р°СЃСЃ РІ РІРёРґРµ, РїСЂРёРіРѕРґРЅРѕРј РґР»СЏ WH 3D РїСЂРѕСЃРјРѕС‚СЂС‰РёРєР°
 function char_racegender($race, $gender)
 {
     $char_race = array(

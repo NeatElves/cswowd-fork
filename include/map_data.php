@@ -1,10 +1,10 @@
 <?php
 include_once("include/functions.php");
-// Базы данных
+// Р‘Р°Р·С‹ РґР°РЅРЅС‹С…
 
 //******************************************************************************
-// Таблица преобразования глобальных координат в координаты на картинке карты
-// формат id=> Map, areaID, Y1, Y2, X1, X2, filename
+// РўР°Р±Р»РёС†Р° РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РіР»РѕР±Р°Р»СЊРЅС‹С… РєРѕРѕСЂРґРёРЅР°С‚ РІ РєРѕРѕСЂРґРёРЅР°С‚С‹ РЅР° РєР°СЂС‚РёРЅРєРµ РєР°СЂС‚С‹
+// С„РѕСЂРјР°С‚ id=> Map, areaID, Y1, Y2, X1, X2, filename
 $gAreaImagesCoord =array(
 //******************************************************************************
 //************************ Azeroth Areas ***************************************
@@ -224,11 +224,11 @@ function getRenderAreaData($area)
  return @$gAreaImagesCoord[$area];
 }
 
-// Преобразует кординаты для ареа карт  (файл worldMapTransform.dbc)
-// Когда объект физически находится на:
-// - разных картах (карты островов)
-// А вывод идeт на одну картинку но по другим координатам
-// формат map, y1, y2, x1, x2, newmap, dx, dy
+// РџСЂРµРѕР±СЂР°Р·СѓРµС‚ РєРѕСЂРґРёРЅР°С‚С‹ РґР»СЏ Р°СЂРµР° РєР°СЂС‚  (С„Р°Р№Р» worldMapTransform.dbc)
+// РљРѕРіРґР° РѕР±СЉРµРєС‚ С„РёР·РёС‡РµСЃРєРё РЅР°С…РѕРґРёС‚СЃСЏ РЅР°:
+// - СЂР°Р·РЅС‹С… РєР°СЂС‚Р°С… (РєР°СЂС‚С‹ РѕСЃС‚СЂРѕРІРѕРІ)
+// Рђ РІС‹РІРѕРґ РёРґeС‚ РЅР° РѕРґРЅСѓ РєР°СЂС‚РёРЅРєСѓ РЅРѕ РїРѕ РґСЂСѓРіРёРј РєРѕРѕСЂРґРёРЅР°С‚Р°Рј
+// С„РѕСЂРјР°С‚ map, y1, y2, x1, x2, newmap, dx, dy
 $areaMapTransform = array(
 2=>array( 530,    -4000,  -10000,   14000,  5000,   0,    -2400,  2400),
 3=>array( 530,-6933.333,  -16000, 533.333, -8000,   1,10133.333, 17600),
@@ -259,12 +259,12 @@ function transformAreaCoordinates(&$map, &$x, &$y)
    return;
 }
 
-// Преобразует кординаты
-// Когда объект физически находится на:
-// - разных картах (карты островов)
-// - карта многоэтажная
-// А вывод идёт на одну картинку, но по другим координатам
-// формат map, z1, z2, y1, y2, x1, x2, newmap, dx, dy, dz
+// РџСЂРµРѕР±СЂР°Р·СѓРµС‚ РєРѕСЂРґРёРЅР°С‚С‹
+// РљРѕРіРґР° РѕР±СЉРµРєС‚ С„РёР·РёС‡РµСЃРєРё РЅР°С…РѕРґРёС‚СЃСЏ РЅР°:
+// - СЂР°Р·РЅС‹С… РєР°СЂС‚Р°С… (РєР°СЂС‚С‹ РѕСЃС‚СЂРѕРІРѕРІ)
+// - РєР°СЂС‚Р° РјРЅРѕРіРѕСЌС‚Р°Р¶РЅР°СЏ
+// Рђ РІС‹РІРѕРґ РёРґС‘С‚ РЅР° РѕРґРЅСѓ РєР°СЂС‚РёРЅРєСѓ, РЅРѕ РїРѕ РґСЂСѓРіРёРј РєРѕРѕСЂРґРёРЅР°С‚Р°Рј
+// С„РѕСЂРјР°С‚ map, z1, z2, y1, y2, x1, x2, newmap, dx, dy, dz
 $worldMapTransform = array(
 2=>array(530, 2000, -2000, -4000, -10000, 14000,  5000,   0,     -2638,  2496, 0),
 3=>array(530, 2000, -2000, -6933, -16000,   533, -8000,   1, 10133.333, 17600, 0),
@@ -306,7 +306,7 @@ function isDungeon($id)
     return true;
 }
 
-// Собственные данные для показа карт
+// РЎРѕР±СЃС‚РІРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ РїРѕРєР°Р·Р° РєР°СЂС‚
 // id, y1, y2, x1, x2, sizeY, sizeX, filename
 static $gMapCoord =array(
     0=>array( 11200, -16000,  4264, -6936,1632, 672,"../azeroth_8x.jpg"),
@@ -317,7 +317,7 @@ static $gMapCoord =array(
 // 25=>array(      ,       ,      ,      ,    ,    ,"ScottTest.jpg"),             // not use
 // 29=>array(      ,       ,      ,      ,    ,    ,"CashTest.jpg"),              // not use
    30=>array(  1032,  -1676,   296,  -754,1300, 504,"AlteracValley.jpg"),
-   33=>array(    -73,   -317,  2355, 2001, 488, 708,"ShadowfangKeep.jpg"),        // поворот на -69,16 (multilevel map)
+   33=>array(    -73,   -317,  2355, 2001, 488, 708,"ShadowfangKeep.jpg"),        // РїРѕРІРѕСЂРѕС‚ РЅР° -69,16 (multilevel map)
    34=>array(   201,    -11,   158,  -158, 424, 632,"Stockade.jpg"),
 // 35=>array(      ,       ,      ,      ,    ,    ,"unusedStormwindPrison.jpg"), // not use
    36=>array(   128,   -321,  -339, -1151, 898,1623,"Deadmines.jpg"),
@@ -325,7 +325,7 @@ static $gMapCoord =array(
 // 42=>array(      ,       ,      ,      ,    ,    ,"CollinTest.jpg"),            // not use
    43=>array(   192,   -399,   560,  -388,1182,1896,"WailingCaverns.jpg"),
 // 44=>array(      ,       ,      ,      ,    ,    ,"unusedMonastery.jpg"),       // not use
-   47=>array(  2241,   1926,  2044,  1380, 630,1326,"RazorfenKraul.jpg"),         // поворот на 47,29 град
+   47=>array(  2241,   1926,  2044,  1380, 630,1326,"RazorfenKraul.jpg"),         // РїРѕРІРѕСЂРѕС‚ РЅР° 47,29 РіСЂР°Рґ
    48=>array(   -72,   -900,   429,  -507,1656,1872,"BlackfathomDeeps.jpg"),
    70=>array(   189,   -375,   472,   -75,1128,1094,"Uldaman.jpg"),
    90=>array(  -196,   -920,   762,  -146,1448,1816,"Gnomeregan.jpg"),
@@ -342,7 +342,7 @@ static $gMapCoord =array(
   309=>array(-11335, -12568, -1106, -2137, 592, 495,"ZulGurub.jpg"),
   329=>array(  4155,   3373, -2923, -3809,1564,1772,"Stratholme.jpg"),
   349=>array(  1172,   -174,   300,  -819,2692,2238,"Maraudon.jpg"),
-//369=>array(      ,       ,      ,      ,    ,    ,"DeeprunTram.jpg"),           // not use это карта железной дороги между стормом и айроном
+//369=>array(      ,       ,      ,      ,    ,    ,"DeeprunTram.jpg"),           // not use СЌС‚Рѕ РєР°СЂС‚Р° Р¶РµР»РµР·РЅРѕР№ РґРѕСЂРѕРіРё РјРµР¶РґСѓ СЃС‚РѕСЂРјРѕРј Рё Р°Р№СЂРѕРЅРѕРј
   389=>array(    23,   -426,   280,  -113, 898, 786,"OrgrimarInstance.jpg"),
   409=>array(  1338,    483,  -267, -1260,1710,1986,"MoltenCore.jpg"),
   429=>array(   943,   -224,   984,  -876,1167,1860,"DireMaul.jpg"),
@@ -353,7 +353,7 @@ static $gMapCoord =array(
   489=>array(  1698,    827,  1864,   994, 418, 418,"WarsongGulch.jpg"),
   509=>array( -8070, -10257,  2470,   950,1050, 730,"RuinsofAhnQiraj.jpg"),
 //529=>array(      ,       ,      ,      ,    ,    ,"ArathiBasin.jpg"),           // bg
-  531=>array( -7840,  -9372,  2255,   782,3064,2947,"AhnQirajTemple.jpg"),        // Поворот на 21.5 град
+  531=>array( -7840,  -9372,  2255,   782,3064,2947,"AhnQirajTemple.jpg"),        // РџРѕРІРѕСЂРѕС‚ РЅР° 21.5 РіСЂР°Рґ
 //532=>array(      ,       ,      ,      ,    ,    ,"Karazhan.jpg"),              // have many level -> passed
   533=>array(  3569,   2428, -2862, -4080,2282,2436,"Naxxramas.jpg"),
   534=>array(  5958,   4075, -1104, -4123, 904,1449,"TheBattleforMountHyjal.jpg"),
@@ -545,13 +545,13 @@ function getMapIcon($map)
  return "images/map_icons/".$ico;
 }
 
-// Вывод картинки на общей карте GPS
-// формат:
-// posX - координата левого верхнего угла карты
-// posY - координата левого верхнего угла карты
-// y - координата фактическоо расположения карты на изображении
-// x - координата фактическоо расположения карты на изображении
-// scale - масштаб
+// Р’С‹РІРѕРґ РєР°СЂС‚РёРЅРєРё РЅР° РѕР±С‰РµР№ РєР°СЂС‚Рµ GPS
+// С„РѕСЂРјР°С‚:
+// posX - РєРѕРѕСЂРґРёРЅР°С‚Р° Р»РµРІРѕРіРѕ РІРµСЂС…РЅРµРіРѕ СѓРіР»Р° РєР°СЂС‚С‹
+// posY - РєРѕРѕСЂРґРёРЅР°С‚Р° Р»РµРІРѕРіРѕ РІРµСЂС…РЅРµРіРѕ СѓРіР»Р° РєР°СЂС‚С‹
+// y - РєРѕРѕСЂРґРёРЅР°С‚Р° С„Р°РєС‚РёС‡РµСЃРєРѕРѕ СЂР°СЃРїРѕР»РѕР¶РµРЅРёСЏ РєР°СЂС‚С‹ РЅР° РёР·РѕР±СЂР°Р¶РµРЅРёРё
+// x - РєРѕРѕСЂРґРёРЅР°С‚Р° С„Р°РєС‚РёС‡РµСЃРєРѕРѕ СЂР°СЃРїРѕР»РѕР¶РµРЅРёСЏ РєР°СЂС‚С‹ РЅР° РёР·РѕР±СЂР°Р¶РµРЅРёРё
+// scale - РјР°СЃС€С‚Р°Р±
 $gGpsMap = array(
   0=>array(11200, 4264, 128,  960,  0.48/16),
   1=>array(12262, 8536, 192,    0,  0.48/16),
@@ -576,31 +576,31 @@ function getWMOArea($area, $map, $x, $y, $z)
 }
 
 //======================================================
-// Получениие id структуры зоны при имеющихся координатах
-// Реализовано с помощью аналога GPS карты только на картинке
-// цветами обозначены зоны.
+// РџРѕР»СѓС‡РµРЅРёРёРµ id СЃС‚СЂСѓРєС‚СѓСЂС‹ Р·РѕРЅС‹ РїСЂРё РёРјРµСЋС‰РёС…СЃСЏ РєРѕРѕСЂРґРёРЅР°С‚Р°С…
+// Р РµР°Р»РёР·РѕРІР°РЅРѕ СЃ РїРѕРјРѕС‰СЊСЋ Р°РЅР°Р»РѕРіР° GPS РєР°СЂС‚С‹ С‚РѕР»СЊРєРѕ РЅР° РєР°СЂС‚РёРЅРєРµ
+// С†РІРµС‚Р°РјРё РѕР±РѕР·РЅР°С‡РµРЅС‹ Р·РѕРЅС‹.
 $gAreaMaskImage = NULL;
 function getAreaIdFromPoint(&$posMap, $posX, $posY, $posZ)
 {
   global $gAreaMaskImage, $gAreaColors;
-  // Ошибка загрузки картинки - возвращаемся
+  // РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё РєР°СЂС‚РёРЅРєРё - РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ
   if ($gAreaMaskImage == -1)
       return -1;
-  // Если картинка не была еще загружена - грузим ее
+  // Р•СЃР»Рё РєР°СЂС‚РёРЅРєР° РЅРµ Р±С‹Р»Р° РµС‰Рµ Р·Р°РіСЂСѓР¶РµРЅР° - РіСЂСѓР·РёРј РµРµ
   if ($gAreaMaskImage == 0)
   {
       $gAreaMaskImage = imagecreatefrompng("images/map_image/areamask.png");
       if ($gAreaMaskImage == 0)
           return $gAreaMaskImage = -1;
   }
-  // Преобразуем сетку координат
+  // РџСЂРµРѕР±СЂР°Р·СѓРµРј СЃРµС‚РєСѓ РєРѕРѕСЂРґРёРЅР°С‚
   transformWorldCoordinates($posMap, $posX, $posY, $posZ);
-  // Точка присутствует на GPS карте
+  // РўРѕС‡РєР° РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ РЅР° GPS РєР°СЂС‚Рµ
   if ($gps = getRenderGPSMapData($posMap))
   {
       $x = intval($gps[2]+$gps[4]*($gps[0] - $posX));
       $y = intval($gps[3]+$gps[4]*($gps[1] - $posY));
-      // Получаем цвет точки по координатам и вычислем зону
+      // РџРѕР»СѓС‡Р°РµРј С†РІРµС‚ С‚РѕС‡РєРё РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј Рё РІС‹С‡РёСЃР»РµРј Р·РѕРЅСѓ
       if ($area = @imagecolorat($gAreaMaskImage, $y, $x))
          return getWMOArea($area, $posMap, $posX, $posY, $posZ);
   }
@@ -616,7 +616,7 @@ function getZoneFromPoint(&$posMap, $posX, $posY, $posZ)
   return $areaId;
 }
 
-// Возвращает id картинки по координатам
+// Р’РѕР·РІСЂР°С‰Р°РµС‚ id РєР°СЂС‚РёРЅРєРё РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј
 function getAreaImageIdFromPoint(&$posMap, $posX, $posY, $posZ)
 {
   global $gZoneToAreaImage;
@@ -626,7 +626,7 @@ function getAreaImageIdFromPoint(&$posMap, $posX, $posY, $posZ)
   return -1;
 }
 
-// Возвращает имя зоны по координатам
+// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјСЏ Р·РѕРЅС‹ РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј
 function getAreaNameFromPoint($posMap, $posX, $posY, $posZ)
 {
   $areaId = getAreaIdFromPoint($posMap, $posX, $posY, $posZ);
@@ -639,14 +639,14 @@ function getAreaNameFromPoint($posMap, $posX, $posY, $posZ)
   return $zone_data['name'];
 }
 
-// Возвращает имя карты по координатам
+// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјСЏ РєР°СЂС‚С‹ РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј
 function getMapNameFromPoint($posMap, $posX, $posY, $posZ)
 {
   transformWorldCoordinates($posMap, $posX, $posY, $posZ);
   return getMapName($posMap);
 }
 
-// Саllback функция для вывода точек и их информации на картах.
+// РЎР°llback С„СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° С‚РѕС‡РµРє Рё РёС… РёРЅС„РѕСЂРјР°С†РёРё РЅР° РєР°СЂС‚Р°С….
 function defaultMapRenderCallback($data, $x, $y)
 {
    global $lang;
@@ -802,7 +802,7 @@ function renderArea($areaId, $outSizeX = 0, $pointsList = 0, $render = 'defaultA
       echo "$lang[map_no_found]&nbsp;$areaId<br>";
       return;
   }
-  // Данные карты
+  // Р”Р°РЅРЅС‹Рµ РєР°СЂС‚С‹
   $mapId  = $area[0];
   $name   = $area[1] == 0 ? getMapName($mapId): getAreaName($area[1]);
   $areaY1 = $area[2];
@@ -861,7 +861,7 @@ function renderMap($mapId, $outSizeX = 0, $pointsList = 0, $render = 'defaultMap
       echo "$lang[no_image]&nbsp;$mapName&nbsp;($mapId)<br>";
       return;
   }
-  // Данные карты
+  // Р”Р°РЅРЅС‹Рµ РєР°СЂС‚С‹
   $areaX1 = $map[0];
   $areaX2 = $map[1];
   $areaY1 = $map[2];
@@ -1076,7 +1076,7 @@ function get_mapAreaData($areaId, $pointsList = 0)
       return;
   }
   $map = array();
-  // Данные карты
+  // Р”Р°РЅРЅС‹Рµ РєР°СЂС‚С‹
   $mapId  = $area[0];
   $areaY1 = $area[2];
   $areaY2 = $area[3];
