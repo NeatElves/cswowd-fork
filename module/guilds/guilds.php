@@ -40,7 +40,7 @@ if ($guildid)
     }
 	// Create guild members list report
     $show_fields= array('PL_REPORT_LEVEL', 'PL_REPORT_RACE', 'PL_REPORT_CLASS', 'PL_REPORT_NAME', 'PL_REPORT_GRANK', 'PL_REPORT_NOTE');
-    $members =& new PlayerReportGenerator('guild');
+    $members = new PlayerReportGenerator('guild');
     $members->disableMark();
     $members->Init($show_fields, $FindRefrence, 'guildMembers', $config['fade_limit'], 'name');
     $members->guildMembers($guildid);

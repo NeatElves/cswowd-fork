@@ -50,7 +50,7 @@ else
   $prof_list = array('SKILL_REPORT_LEVEL','SKILL_REPORT_ICON','SKILL_REPORT_NAME','SPELL_REPORT_REAGENTS');
   $spell_list= array('SPELL_REPORT_LEVEL','SPELL_REPORT_ICON','SPELL_REPORT_NAME');
 
-  $skill =& new SpellReportGenerator('skill');
+  $skill = new SpellReportGenerator('skill');
   $skill->disable_mark = true;
   if ($skillline['Category'] == 9 OR $skillline['Category'] == 11)
     $skill->Init($prof_list, $baseLink, 'skillLIST', $config['skill_fade_limit'], 'skill_lvl');

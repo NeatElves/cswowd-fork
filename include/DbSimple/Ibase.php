@@ -79,7 +79,7 @@ class DbSimple_Ibase extends DbSimple_Generic_Database
 
     function& _performNewBlob($blobid=null)
     {
-        $obj =& new DbSimple_Ibase_Blob($this, $blobid);
+        $obj = new DbSimple_Ibase_Blob($this, $blobid);
         return $obj;
     }
 

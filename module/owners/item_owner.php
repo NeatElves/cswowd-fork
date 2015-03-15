@@ -31,7 +31,7 @@ else
 
  $show_fields= array('PL_REPORT_LEVEL', 'PL_REPORT_RACE', 'PL_REPORT_CLASS', 'PL_REPORT_NAME', 'PL_REPORT_ITEM');
 
- $p_search =& new PlayerReportGenerator('item');
+ $p_search = new PlayerReportGenerator('item');
  $p_search->disableMark();
  $p_search->Init($show_fields, $FindRefrence, 'searchOwners', $config['fade_limit'], 'name');
  $p_search->itemOwner($itemid);

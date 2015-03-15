@@ -198,7 +198,7 @@ else
   //********************************************************************************
   function r_npcDungeon($data){global $lang; echo '<a href="?map&npc='.$data['Entry'].'" onClick="changeSelect(\'c'.$data['Entry'].'\'); return false;">'.$lang['map'].'</a>';}
 
-  $creatures =& new CreatureReportGenerator('position');
+  $creatures = new CreatureReportGenerator('position');
   $creatures->addColumnConfig('NPC_REPORT_DUNGEON', array('class'=>'small','sort'=>'','text'=>$lang['map'],'draw'=>'r_npcDungeon','sort_str'=>'','fields'=>''));
   $fields = array('NPC_REPORT_RANK', 'NPC_REPORT_RNAME', 'NPC_REPORT_DUNGEON');
   if ($creatures->Init($fields, $baseLink, 'creatureLIST', $config['fade_limit'], 'rank'))
@@ -212,7 +212,7 @@ else
   //********************************************************************************
   function r_goDungeon($data){global $lang; echo '<a href="?map&obj='.$data['entry'].'" onClick="changeSelect(\'o'.$data['entry'].'\'); return false;">'.$lang['map'].'</a>';}
 
-  $go =& new GameobjectReportGenerator('position');
+  $go = new GameobjectReportGenerator('position');
   $go->addColumnConfig('GO_REPORT_DUNGEON', array('class'=>'small','sort'=>'','text'=>$lang['map'],'draw'=>'r_goDungeon','sort_str'=>'','fields'=>''));
   $fields = array('GO_REPORT_NAME', 'GO_REPORT_TYPE', 'GO_REPORT_DUNGEON');
   if ($go->Init($fields, $baseLink, 'objectLIST', $config['fade_limit'], 'name'))
