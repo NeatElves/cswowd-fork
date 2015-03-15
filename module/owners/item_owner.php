@@ -3,7 +3,7 @@ include_once("include/functions.php");
 include_once("include/report_generator.php");
 ##########
 /*
- * —крипт показывает список владельцев вещи по ее id
+ * Скрипт показывает список владельцев вещи по её id
  */
 
 $itemid = intval(@$_REQUEST['itemOwner']);

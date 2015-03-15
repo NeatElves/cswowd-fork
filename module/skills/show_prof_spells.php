@@ -8,7 +8,7 @@ $skill = @$_REQUEST['skill'];
 
 $baseLink = "?skill=$skill";
 
-// √уид указан если перешли из показа игрока
+// Гуид указан если перешли из показа игрока
 if ($guid = intval(@$_REQUEST['guid']))
 {
    $baseLink.= "&guid=$guid";

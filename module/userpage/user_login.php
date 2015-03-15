@@ -2,7 +2,7 @@
 if (@$config == NULL) die ("");
 
 //==============================================================
-// —крипт входа пользовател¤
+// Скрипт входа пользователя
 //==============================================================
 if (empty($_SESSION['account_id']))
 {
@@ -18,7 +18,7 @@ if (empty($_SESSION['account_id']))
    else
    {
      $list = $rDB->selectRow("SELECT * FROM `account` WHERE `username` = ? AND `sha_pass_hash` = SHA1(?)", $username, $username.":".$password);
-     // ќжидаем 3 секунды - чтоб предотвратить подбор парол¤
+     // Ожидаем 3 секунды - чтоб предотвратить подбор пароля
      sleep(3);
      if (empty($list))
        echo $lang['user_login_err_name_pass'];

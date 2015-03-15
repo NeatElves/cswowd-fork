@@ -2,25 +2,25 @@
 include_once("include/functions.php");
 include_once("include/report_generator.php");
 
-// ќпредел¤ем режим поиска
+// Определяем режим поиска
 $allmode = @$_REQUEST['s']=='all';
 
-// —оздаЄм ссылку на страницу, игнорируем дефолтные значени¤
+// Создаём ссылку на страницу, игнорируем дефолтные значени¤
 $FindRefrence = "?s=n";
 
 $show_fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_NAME', 'NPC_REPORT_REACTION', 'NPC_REPORT_MAP');
 
 //==============================================================================
-// —оздаЄм SQL запрос исход¤ из заданых пользователем параметров
+// Создаём SQL запрос исходя из заданых пользователем параметров
 //==============================================================================
 $filter = "";
-// ‘ильтр имени
+// Фильтр имени
 if ($name = mysql_real_escape_string(@$_REQUEST['name']))
 {
   $filter.= " AND `Name` like '%$name%'";
   $FindRefrence.="&name=$name";
 }
-// ‘ильтр дополнительного имени
+// Фильтр дополнительного имени
 if ($subname = mysql_real_escape_string(@$_REQUEST['subname']))
 {
   $filter.= " AND `SubName` like '%$subname%'";
@@ -37,36 +37,36 @@ if ($level_max = intval(@$_REQUEST['level_max']))
   $filter.= " AND `MaxLevel` <= '$level_max'";
   $FindRefrence.="&level_max=$level_max";
 }
-// ‘ильтр по типу
+// Фильтр по типу
 if ($type = intval(@$_REQUEST['type']))
 {
   $filter.= " AND `CreatureType` = '$type'";
   $FindRefrence.="&type=$type";
 }
-// ‘ильтр по family
+// Фильтр по family
 if ($family = intval(@$_REQUEST['family']))
 {
   $filter.= " AND `Family` = '$family'";
   $FindRefrence.="&family=$family";
 }
-// ‘ильтр по рангу
+// Фильтр по рангу
 if (isset($_REQUEST['rank']))
 {
   $rank = intval($_REQUEST['rank']);
   $filter.= " AND `Rank` = '$rank'";
   $FindRefrence.="&rank=$rank";
 }
-// ‘ильтр по флагу
+// Фильтр по флагу
 if (isset($_REQUEST['flag']))
 {
   $npc_flag = intval($_REQUEST['flag']);
   $filter.= " AND (`NpcFlags`&".(1<<$npc_flag).")";
   $FindRefrence.="&flag=$npc_flag";
 }
-// ”бираем ненужный AND в начале строки
+// Убираем ненужный AND в начале строки
 $filter = substr($filter, 5);
 
-// ¬ывод диалога поиска
+// Вывод диалога поиска
 if ($allmode==0 and $ajaxmode==0)
 {
     if ($level_min == 0) $level_min = "";
@@ -91,7 +91,7 @@ if ($filter!="")
  if (!$allmode)
    $npc_search->disableMark();
  //==============================================================================
- // Ћокализаци¤ запроса
+ // Локализация запроса
  //==============================================================================
  if ($config['locales_lang'] > 0)
  {
@@ -115,7 +115,7 @@ if ($filter!="")
  $number = $npc_search->getTotalDataCount();
  if ($number <= 0)
     echo $lang['not_found'];
- else if ($number == 1 && $allmode == 0)      // ѕеренаправл¤ем
+ else if ($number == 1 && $allmode == 0)      // Перенаправл¤ем
     echo '<meta http-equiv="refresh" content=1;URL=?npc='.$npc_search->data_array[0]['Entry'].'>';
  else
     $npc_search->createReport($lang['search_results'].' - '.$lang['found'].' '.$number);
