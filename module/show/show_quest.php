@@ -246,11 +246,12 @@ if ($quest['SrcItemId'] || $quest['SrcSpell'])
  }
  if ($quest['SrcSpell'])
  {
-  $spell=getSpell($quest['SrcSpell']); // Кастуемый спелл
+  $spell = getSpell($quest['SrcSpell']); // Кастуемый спелл
   if ($spell) $spellName = getSpellName($spell);
   else        $spellName = "Spell $quest[SrcSpell]";
+  if ($spell) {
   echo "<tr><td class=reward>&nbsp;";show_spell($spell['id'], $spell['SpellIconID']);
-  echo " <a href=\"?spell=$spell[id]\">$spell[SpellName]</a></td></tr>";
+  echo "<a href=\"?spell=$spell[id]\">$spell[SpellName]</a></td></tr>";}
  }
 }
 echo "<tr><td class=head>$lang[quest_rewards]</td></tr>";
@@ -280,8 +281,8 @@ if ($quest['RewChoiceItemId1'] OR $quest['RewChoiceItemId2'] OR $quest['RewChoic
 }
 if (getMail($entry))
 {
- $MailTime=getMailTime($entry)/60/60;
- $ItemMail=getItemMail(getMail($entry));
+ $MailTime = getMailTime($entry)/60/60;
+ $ItemMail = getItemMail(getMail($entry));
  echo "<tr><td class=mark>$lang[Rew_mail]&nbsp;$lang[Mail_item_time]".$MailTime."$lang[Mail_time]";
  if ($ItemMail)
   {
@@ -293,12 +294,13 @@ if (getMail($entry))
 if ($quest['RewSpell'] || $quest['RewSpellCast'])
 {
  $learn = $quest['RewSpell'] ? $quest['RewSpell'] : $quest['RewSpellCast'];
- $spell=getSpell($learn);
+ $spell = getSpell($learn);
  if ($spell) $spellName = getSpellName($spell);
  else        $spellName = "Spell $learn";
+ if ($spell) {
  echo '<tr><td class=mark>'.($quest['RewSpell']?$lang['learn_spell']:$lang['cast_spell']).'</td></tr>';
  echo "<tr><td class=reward>&nbsp;";show_spell($spell['id'], $spell['SpellIconID']);
- echo " <a href=\"?spell=$spell[id]\">$spell[SpellName]</a></td></tr>";
+ echo "<a href=\"?spell=$spell[id]\">$spell[SpellName]</a></td></tr>";}
 }
 
 for ($i = 1; $i <= 5; $i++) 
