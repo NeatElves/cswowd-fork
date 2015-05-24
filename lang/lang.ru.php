@@ -43,14 +43,14 @@ $lang = array(
 'search_spell_req'  => 'Запрос на поиск заклинания',
 'search_area_req'   => 'Запрос на поиск местности',
 
-#Time
+# Time
 'days' =>'д.',
 'hours' =>'ч.',
 'min' =>'мин.',
 'sec' =>'сек.',
 'minustime' =>'действие',
 
-#Condition
+# Condition
 'condition1' => 'Аура на игроке ',
 'condition2' => 'Есть в сумках(нет в банке) ',
 'condition3' => 'Одет ',
@@ -156,7 +156,7 @@ $lang = array(
 'glyph_id'     => 'id',
 'glyph_name'   => 'Название',
 
-# Random suffix report
+# Random suffix/propety report
 'rand_enchant_id'     => 'id',
 'rand_enchant_name'   => 'Тип',
 'rand_enchant_details'=> 'Дополнительно',
@@ -195,12 +195,12 @@ $lang = array(
 'zone_id'   => 'id',
 'zone_name' => 'Название',
 
-#Area Teleport
+# Area Teleport
 'at_id'  => 'id',
 'at_name'=> 'Название',
 'at_req' => 'Требования',
 
-#Players list
+# Players list
 'pl_guid'=>'guid',
 'pl_name'=>'Имя',
 'pl_race'=>'Раса',
@@ -210,10 +210,10 @@ $lang = array(
 'pl_rank'=>'Ранг',
 'pl_note'=>'Инфо',
 
-// Details (spell, go, npc)
+# Details (spell, go, npc)
 'detail_info' => 'Подробная информация',
 
-//Page
+# Page
 'page' => 'Страница',
 'back' => 'Назад',
 'next' => 'Дальше',
@@ -223,7 +223,7 @@ $lang = array(
 'sell_price' => 'Цена продажи',
 'buy_price' => 'Цена выкупа',
 
-// GO, NPC info
+# GO, NPC info
 'show_map' => 'На карте',
 'money' => 'Деньги',
 'sold'  => 'Продается',
@@ -247,7 +247,7 @@ $lang = array(
 'summoned_by_spell' => 'Призван заклинанием',
 'pool' => 'Пул',
 'id'  => 'id',
-'item_list' => 'Предметы',
+'item_list' => 'Список предметов',
 'reqirement' => 'Требование',
 'drop' => 'Шанс',
 'level' => 'Уровень',
@@ -255,20 +255,19 @@ $lang = array(
 'despawn_at_event' => 'Исчезнет в событие',
 'view3dnpc' => 'Показать 3D-модель НИП',
 
-#Loot info
+# Loot info
 'loot_details'      => 'Подробнее',
 'contain_prospecting_loot' => 'Просеивание',
 'contain_milling_loot'     => 'Измельчение',
 'contain_fishing_loot'     => 'Рыбалка',
 'contain_disenchant_loot'  => 'Распыление',
+
 'item_uses_spell'   => 'Вещи, использующие заклинание',
 'item_use_in_spell' => 'Используется заклинанием:',
 'create_from_spell' => 'Создана заклинанием',
 'loot_from_spell'   => 'Получена заклинанием',
 'prospecting_loot'  => 'Просеяно из руды',
 'milling_loot'      => 'Измельчено из растений',
-
-//'item_loot'         => '(Предметы) Падает с',
 'item_contain_loot' => 'Содержит',
 'disenchant_loot'   => 'Распыляется из',
 'pickpocketing_loot'=> 'Можно украсть у',
@@ -297,7 +296,7 @@ $lang = array(
 'this_item_part_of_set' => 'Этот предмет часть комплекта',
 'item_is_ex_cost'   => 'Обменивается на',
 
-// Quest info
+# Quest info
 'one_of_this_items' => 'Один из этих предметов',
 'obtained_at_level' => 'Доступен с уровня',
 'obtained_at_event' => 'Доступен только в событие',
@@ -335,7 +334,7 @@ $lang = array(
 'item_sel_and' => '&nbsp;+&nbsp;',
 'item_sel_or' => '&nbsp;или&nbsp;',
 'Rew_select_item'  => 'Предметы на выбор:',
-'req_for_quest_next'    => 'Требуется для:',
+'req_for_quest_next'  => 'Требуется для:',
 'additional_info'  => 'Дополнительная информация',
 'quest_completed' => 'По выполнении',
 'quest_marked' => 'Blizzard пометили это задание как устаревшее - его нельзя получить или выполнить.',
@@ -360,16 +359,16 @@ $lang = array(
 'spell_talent' => 'Заклинание является талантом',
 'spell_go_cast' => 'Используется объектом',
 
-#Enchant info
+# Enchant info
 'enchant_by_spell' => 'Зачарован от заклинания',
 'enchant_by_gems'  => 'Зачарован от камня',
 'enchant_by_socket'=> 'Бонус ячеек',
 'enchant_by_rand_prop'=>'Случайное свойство',
 'enchant_by_rand_suff'=>'Случайное дополнение',
 
-#Faction info
+# Faction info
 'faction_contain' =>'Состоит из',
-'faction_in'     => 'Входит в состав',
+'faction_in'  => 'Входит в состав',
 'faction_npc' => 'Входят НИП',
 'faction_go' => 'Входят объекты',
 'faction_item' => 'Предметы, требующие репутации',
@@ -377,14 +376,14 @@ $lang = array(
 'faction_kill_rew'=> 'Награды за убийство',
 'faction_spell_rew'=>'Получено от заклинания',
 
-#Zone info
+# Zone info
 'zone_parent'=>'Часть местности',
 'zone_subzones'=>'Состоит из',
 'zone_npc_in'=>  'НИП',
 'zone_go_in' =>  'Объекты',
 'zone_fishing_in' => 'Рыбалка',
 
-#Show map
+# Show map
 'map_areas'=>'Местности',
 'map_maps'=>'Карты',
 'map_gps'=>'GPS',
@@ -396,7 +395,6 @@ $lang = array(
 'top_money_header' => 'Богатейшие игроки',
 'top_honor_header' => 'Сильнейшие игроки',
 'top_arena_header' => 'Сильнейшие команды арены %d',
-
 'arena_team_name' => 'Название',
 'arena_rating' => 'Рейтинг',
 'arena_team' => 'Состав',
@@ -573,7 +571,7 @@ $lang = array(
 'top_arena3'=>'Toп арена 3x3',
 'top_arena5'=>'Toп арена 5x5',
 
-#Proffesions
+# Proffesions
 'skills_main'=>'Умения',
 'prof_primary'=>'Профессии',
 'prof_alchemy'=>'Алхимия',
@@ -587,7 +585,6 @@ $lang = array(
 'prof_skinning'=>'Снятие шкур',
 'prof_taloring'=>'Шитье',
 'prof_inscription'=>'Начертание',
-
 'prof_secondary'=>'Вторичные навыки',
 'prof_cooking'=>'Кулинария',
 'prof_first_aid'=>'Первая помощь',

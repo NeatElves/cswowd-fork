@@ -43,14 +43,14 @@ $lang = array(
 'search_spell_req'  => 'Spell search',
 'search_area_req'   => 'Area search',
 
-#Time
+# Time
 'days' =>'d.',
 'hours' =>'h.',
 'min' =>'min.',
 'sec' =>'sec.',
 'minustime' =>'action',
 
-#Condition
+# Condition
 'condition1' => 'Aura on player ',
 'condition2' => 'Have(bank no) ',
 'condition3' => 'Equipped ',
@@ -195,12 +195,12 @@ $lang = array(
 'zone_id'   => 'id',
 'zone_name' => 'Name',
 
-#Area Teleport
+# Area Teleport
 'at_id'  => 'id',
 'at_name'=> 'Name',
 'at_req' => 'Reqirements',
 
-#Players list
+# Players list
 'pl_guid'=>'guid',
 'pl_name'=>'Name',
 'pl_race'=>'Race',
@@ -210,7 +210,7 @@ $lang = array(
 'pl_rank'=>'Rank',
 'pl_note'=>'Note',
 
-// Details (spell, go, npc)
+# Details (spell, go, npc)
 'detail_info' => 'Full info',
 
 # Page
@@ -246,6 +246,8 @@ $lang = array(
 'cast_spells' => 'Abilities',
 'summoned_by_spell' => 'Summoned by spell',
 'pool' => 'Pool',
+'id'  => 'id',
+'item_list' => 'Item list',
 'reqirement' => 'Reqirement',
 'drop' => 'Drop',
 'level' => 'Level',
@@ -266,7 +268,6 @@ $lang = array(
 'loot_from_spell'   => 'Loot on spell cast',
 'prospecting_loot'  => 'Prospecting',
 'milling_loot'      => 'Milling from',
-
 'item_contain_loot' => 'Item contain',
 'disenchant_loot'   => 'Disenchant from',
 'pickpocketing_loot'=> 'Pickpocketing from',
@@ -308,9 +309,9 @@ $lang = array(
 'end_q' => 'Get quest',
 'q_next' => 'Next quest:',
 'q_prev' => 'Prev quest:',
-'step' => 'Step ',
 'players_with_this_quest'=>'Players with this quest',
 'players_completed_quest'=>'Players complete this quest',
+'step' => 'Step ',
 'suggestedplayers'=>'Suggested players:',
 'qlimittime'=>'You must perform a',
 'kill' => 'Kill:',
@@ -333,7 +334,7 @@ $lang = array(
 'item_sel_and' => '&nbsp;+&nbsp;',
 'item_sel_or' => '&nbsp;or&nbsp;',
 'Rew_select_item'  => 'Item select:',
-'req_for_quest'    => 'Require for quest:',
+'req_for_quest_next'  => 'Require for quest:',
 'additional_info'  => 'Additional info',
 'quest_completed' => 'Upon completion',
 'quest_marked' => 'This quest was marked obsolete by Blizzard and cannot be obtained or completed.',
@@ -358,16 +359,16 @@ $lang = array(
 'spell_talent' => 'Learned as talent',
 'spell_go_cast' => 'Casted by GO',
 
-#Enchant info
+# Enchant info
 'enchant_by_spell' => 'Enchanted by spell',
 'enchant_by_gems'  => 'Gems',
 'enchant_by_socket'=> 'Socket Bonus',
 'enchant_by_rand_prop'=>'Random propety use',
 'enchant_by_rand_suff'=>'Random suffix use',
 
-#Faction info
+# Faction info
 'faction_contain' =>'Contain',
-'faction_in'     => 'In faction',
+'faction_in'  => 'In faction',
 'faction_npc' => 'Npc in',
 'faction_go' => 'GO in',
 'faction_item' => 'Items',
@@ -375,14 +376,14 @@ $lang = array(
 'faction_kill_rew'=> 'On kill reward',
 'faction_spell_rew'=>'On spell cast',
 
-#Zone info
+# Zone info
 'zone_parent'=>'Parent',
 'zone_subzones'=>'Subzones',
 'zone_npc_in'=>  'NPC in zone',
 'zone_go_in' =>  'GO in zone',
 'zone_fishing_in' => 'Fishing',
 
-#Show map
+# Show map
 'map_areas'=>'Areas',
 'map_maps'=>'Maps',
 'map_gps'=>'GPS',
@@ -422,6 +423,7 @@ $lang = array(
 'auction_seller' => 'Seller',
 'auction_cost'   => 'Cost',
 'auction_bye'    => 'Bye',
+'empty'          => 'Empty',
 'auctionbot'    => 'Auction[bot]',
 
 # Guilds
@@ -430,12 +432,11 @@ $lang = array(
 'guild_leader' => 'Leader',
 'guild_create' => 'Create',
 'guild_members'=> 'Members',
-'empty'          => 'Empty',
 'guild_create_at'=> 'Create at:',
 'guild_money'  => 'Money:',
 'guild_noexist'=> 'No guilds present',
 
-#Arenateams
+# Arenateams
 'arena_this_week' => 'This week',
 'arena_total_stat'=> 'Total stats',
 'arena_played'    => 'Played',
@@ -570,7 +571,7 @@ $lang = array(
 'top_arena3'=>'Top arena 3',
 'top_arena5'=>'Top arena 5',
 
-#Proffesions
+# Proffesions
 'skills_main'=>'Skills',
 'prof_primary'=>'Primary Skills',
 'prof_alchemy'=>'Alchemy',
@@ -584,7 +585,6 @@ $lang = array(
 'prof_skinning'=>'Skinning',
 'prof_taloring'=>'Tailoring',
 'prof_inscription'=>'Inscription',
-
 'prof_secondary'=>'Secondary Skills',
 'prof_cooking'=>'Cooking',
 'prof_first_aid'=>'First Aid',
@@ -668,6 +668,5 @@ $lang = array(
 'Hordeonly'=>'Horde only',
 'Blackwater'=>'Blackwater',
 'items'=>'items',
-
 );
 ?>
