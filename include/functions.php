@@ -703,6 +703,19 @@ function getCreaturePoolTemplate($creature_id)
   return $dDB->selectCell("-- CACHE: 1h
   SELECT `pool_entry` FROM `pool_creature_template` WHERE `id` = ?d", $creature_id);
 }
+
+function getCreatureMovementType($i)
+{
+  global $lang;
+  if ($i == 2)
+   $data = $lang['movementtype2'];
+  if ($i == 1)
+   $data = $lang['movementtype1'];
+  if ($i == 0)
+   $data = $lang['movementtype0'];
+  return $data;
+}
+
 //********************************************************************************
 function getGameobject($gameobject_id, $fields="*")
 {

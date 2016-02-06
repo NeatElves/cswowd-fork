@@ -662,7 +662,9 @@ function defaultMapRenderCallback($data, $x, $y)
    else
      $areaname = '';
    if ($data['type']=='n') {
-    $text = getCreatureName($data['id'], 0)." ($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
+   if ($areaname) $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
+   else $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
+    $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);
    if (getCreatureEvent($data['guid'])>0)
     $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName(getCreatureEvent($data['guid'])), $text, 0, 0);
    if (getCreatureEvent($data['guid'])<0)
@@ -673,7 +675,8 @@ function defaultMapRenderCallback($data, $x, $y)
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
    }
    if ($data['type']=='o') {
-    $text = getGameobjectName($data['id'], 0)." ($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
+   if ($areaname) $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
+   else $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
    if (getGameobjectEvent($data['guid'])>0)
     $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName(getGameobjectEvent($data['guid'])), $text, 0, 0);
    if (getGameobjectEvent($data['guid'])<0)
@@ -704,6 +707,7 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
 
    if ($data['type']=='n') {
     $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$mapname&nbsp;-&nbsp;$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
+    $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);
    if (getCreatureEvent($data['guid'])>0)
     $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName(getCreatureEvent($data['guid'])), $text, 0, 0);
    if (getCreatureEvent($data['guid'])<0)
@@ -1027,7 +1031,7 @@ function getPointData($area_id, &$data, $x, $y)
    $area_data = getArea($area);
    if (!$area_data)
        return 0;
-   $zone     = @$area_data['zone_id'] ? $area_data['zone_id'] : $area;
+   $zone     = $area_data['zone_id'] ? $area_data['zone_id'] : $area;
    $areaname = $area_data['zone_id'] ? getAreaName($zone)." (".$area_data['name'].")" : $area_data['name'];
    $img = 'images/map_points/';
    $img.= ($gZoneToAreaImage[$zone] == $area_id) ? 'gps_icon.png' : 'gps_icon1.png';
@@ -1035,7 +1039,8 @@ function getPointData($area_id, &$data, $x, $y)
    $imgY = 16;
    $name = '';
    if (@$data['type']=='n') {
-    $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);           
+    $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;".getTimeText($data['spawntimesecs']);
+    $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);           
    if (getCreatureEvent($data['guid'])>0)
     $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName(getCreatureEvent($data['guid'])), $text, 0, 0);
    if (getCreatureEvent($data['guid'])<0)
