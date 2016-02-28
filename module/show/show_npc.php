@@ -108,6 +108,7 @@ else
    if ($cr['EquipmentTemplateId']) echo "<tr><th>EquipmentTemplateId</th><td>".$cr['EquipmentTemplateId']."</td></tr>";
    if ($cr['MechanicImmuneMask']) echo "<tr><th>MechanicImmuneMask</th><td>".$cr['MechanicImmuneMask']."</td></tr>";
    if ($cr['ExtraFlags']) echo "<tr><th>ExtraFlags</th><td>".$cr['ExtraFlags']."</td></tr>";
+   echo "<tr><th>TrainerTemplateId</th><td>".$cr['TrainerTemplateId']."</td><th>VendorTemplateId</th><td>".$cr['VendorTemplateId']."</td></tr>";
    echo "<tr><th>AIName</th><td>".$cr['AIName']."</td><th>ScriptName</th><td>".$cr['ScriptName']."</td></tr>";
    echo "</tbody></table>";
   }
@@ -306,6 +307,19 @@ else
   }
  }
  //**************************************************
+ // Vendor items template list
+ //**************************************************
+ if ($cr['NpcFlags']&(UNIT_NPC_FLAG_VENDOR|UNIT_NPC_FLAG_VENDOR_AMMO|UNIT_NPC_FLAG_VENDOR_FOOD|UNIT_NPC_FLAG_VENDOR_POISON|UNIT_NPC_FLAG_VENDOR_REAGENT) && $cr['VendorTemplateId'])
+ {
+  $soldt = new ItemReportGenerator('vendort');
+  $fields = array('ITEM_REPORT_ICON','ITEM_REPORT_NAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNTT', 'VENDOR_REPORT_INCTIME');
+  if ($soldt->Init($fields, $baseLink, 'vendortLIST', $config['fade_limit'], 'name'))
+  {
+    $soldt->vendortItemList($cr['VendorTemplateId']);
+    $soldt->createReport($lang['soldt']);
+  }
+ }
+ //**************************************************
  // Train spells
  //**************************************************
  if ($cr['NpcFlags']&(UNIT_NPC_FLAG_TRAINER|UNIT_NPC_FLAG_TRAINER_CLASS|UNIT_NPC_FLAG_TRAINER_PROFESSION))
@@ -316,6 +330,19 @@ else
   {
     $train->trainSpell($entry);
     $train->createReport($lang['train']);
+  }
+ }
+ //**************************************************
+ // Train template spells
+ //**************************************************
+ if ($cr['NpcFlags']&(UNIT_NPC_FLAG_TRAINER|UNIT_NPC_FLAG_TRAINER_CLASS|UNIT_NPC_FLAG_TRAINER_PROFESSION) && $cr['TrainerTemplateId'])
+ {
+  $traint = new NPCTrainertReportGenerator();
+  $fields = array('TRAIN_REPORT_LEVEL','TRAIN_REPORT_ICON', 'TRAIN_REPORT_NAME', 'TRAIN_REPORT_SKILL', 'TRAIN_REPORT_VALUE', 'TRAIN_REPORT_COST');
+  if ($traint->Init($fields, $baseLink, 'traintLIST', $config['fade_limit'], 'level'))
+  {
+    $traint->trainSpell($cr['TrainerTemplateId']);
+    $traint->createReport($lang['traint']);
   }
  }
  //********************************************************************************

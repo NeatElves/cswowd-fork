@@ -682,6 +682,7 @@ $item_report = array(
 // If set vendor class type
 'VENDOR_REPORT_COST'   =>array('class'=>'', 'sort'=>'cost',    'text'=>$lang['item_cost'],       'draw'=>'r_vendorCost',   'sort_str'=>'`ExtendedCost`, `BuyPrice`',   'fields'=>'`ExtendedCost`, `BuyPrice`'),
 'VENDOR_REPORT_COUNT'  =>array('class'=>'', 'sort'=>'count',   'text'=>$lang['item_count'],      'draw'=>'r_vendorCount',  'sort_str'=>'`sold_count`, `name`',         'fields'=>'`npc_vendor`.`maxcount` AS `sold_count`'),
+'VENDOR_REPORT_COUNTT' =>array('class'=>'',  'sort'=>'count','text'=>$lang['item_count'],     'draw'=>'r_vendorCount','sort_str'=>'`sold_count`, `Name`',   'fields'=>'`npc_vendor_template`.`maxcount` AS `sold_count`'),
 'VENDOR_REPORT_INCTIME'=>array('class'=>'', 'sort'=>'time',    'text'=>$lang['item_incrtime'],   'draw'=>'r_vendorTime',   'sort_str'=>'`incrtime`, `name`',           'fields'=>'`incrtime`'),
 // If set loot class type
 'LOOT_REPORT_CHANCE'=>array('class'=>'', 'sort'=>'chance', 'text'=>$lang['loot_chance'], 'draw'=>'r_lootChance', 'sort_str'=>'ABS(`ChanceOrQuestChance`) DESC, `name`', 'fields'=>'`ChanceOrQuestChance`, `mincountOrRef`'),
@@ -704,6 +705,7 @@ class ItemReportGenerator extends ReportGenerator{
   $this->db_fields = '`item_template`.`entry`';
   switch ($type){
    case 'vendor' :   $this->table = '(`item_template` join `npc_vendor` ON `item_template`.`entry` = `npc_vendor`.`item`)'; break;
+   case 'vendort':   $this->table = '(`item_template` join `npc_vendor_template` ON `item_template`.`entry` = `npc_vendor_template`.`item`)'; break;
    case 'loot':      $this->table = '(`item_loot_template` right join `item_template` ON `item_template`.`entry` = `item_loot_template`.`entry`)'; break;
    case 'disenchant':$this->table = '(`disenchant_loot_template` right join `item_template` ON `item_template`.`DisenchantID` = `disenchant_loot_template`.`entry`)'; break;
    case 'milling':   $this->table = '(`milling_loot_template` right join `item_template` ON `item_template`.`entry` = `milling_loot_template`.`entry`)'; break;
@@ -729,6 +731,12 @@ class ItemReportGenerator extends ReportGenerator{
  function vendorItemList($entry)
  {
    $this->doRequirest('`npc_vendor`.`entry` = ?d', $entry);
+   $this->removeIfAllZero('sold_count', 'VENDOR_REPORT_COUNT');
+   $this->removeIfAllZero('incrtime',   'VENDOR_REPORT_INCTIME');
+ }
+ function vendortItemList($entry)
+ {
+   $this->doRequirest('`npc_vendor_template`.`entry` = ?d', $entry);
    $this->removeIfAllZero('sold_count', 'VENDOR_REPORT_COUNT');
    $this->removeIfAllZero('incrtime',   'VENDOR_REPORT_INCTIME');
  }
@@ -804,6 +812,26 @@ class NPCTrainerReportGenerator extends ReportGenerator{
   $this->db = &$dDB;
   $this->column_conf =&$train_report;
   $this->table = '`npc_trainer`';
+  $this->db_fields = '`entry`';
+ }
+ function trainSpell($entry)
+ {
+  $this->doRequirest('`entry` = ?d', $entry);
+  $this->removeIfAllZero('reqlevel', 'TRAIN_REPORT_LEVEL');
+  $this->removeIfAllZero('reqskill', 'TRAIN_REPORT_SKILL');
+  $this->removeIfAllZero('reqskillvalue', 'TRAIN_REPORT_VALUE');
+ }
+}
+
+class NPCTrainertReportGenerator extends ReportGenerator{
+ // Database depend requirest generator
+ // Select only reuire for report fields from database
+ function NPCTrainertReportGenerator($type='')
+ {
+  global $train_report, $dDB;
+  $this->db = &$dDB;
+  $this->column_conf =&$train_report;
+  $this->table = '`npc_trainer_template`';
   $this->db_fields = '`entry`';
  }
  function trainSpell($entry)
@@ -998,6 +1026,7 @@ $npc_report = array(
 // vendor
 'VENDOR_REPORT_COST'   =>array('class'=>'',  'sort'=>'cost', 'text'=>$lang['item_cost'],      'draw'=>'r_vendorCostN', 'sort_str'=>'`ExtendedCost`, `Name`', 'fields'=>'`ExtendedCost`'),
 'VENDOR_REPORT_COUNT'  =>array('class'=>'',  'sort'=>'count','text'=>$lang['item_count'],     'draw'=>'r_vendorCount','sort_str'=>'`sold_count`, `Name`',   'fields'=>'`npc_vendor`.`maxcount` AS `sold_count`'),
+'VENDOR_REPORT_COUNTT' =>array('class'=>'',  'sort'=>'count','text'=>$lang['item_count'],     'draw'=>'r_vendorCount','sort_str'=>'`sold_count`, `Name`',   'fields'=>'`npc_vendor_template`.`maxcount` AS `sold_count`'),
 'VENDOR_REPORT_INCTIME'=>array('class'=>'',  'sort'=>'time', 'text'=>$lang['item_incrtime'],  'draw'=>'r_vendorTime', 'sort_str'=>'`incrtime`, `Name`',     'fields'=>'`incrtime`'),
 // trainer
 'TRAINER_REPORT_COST' =>array('class'=>'',    'sort'=>'scost', 'text'=>$lang['trainer_cost'], 'draw'=>'r_trainerCost', 'sort_str'=>'`spellcost`',                'fields'=>'`spellcost`'),
@@ -1026,7 +1055,9 @@ class CreatureReportGenerator extends ReportGenerator{
   $this->db_fields = '`creature_template`.`Entry`';
   switch ($type) {
    case 'vendor': $this->table = '(`creature_template` join `npc_vendor` ON `creature_template`.`Entry` = `npc_vendor`.`entry`)'; break;
+   case 'vendort':$this->table = '(`creature_template` join `npc_vendor_template` ON `creature_template`.`VendorTemplateId` = `npc_vendor_template`.`entry`)'; break;
    case 'trainer':$this->table = '(`creature_template` join `npc_trainer` ON `creature_template`.`Entry` = `npc_trainer`.`entry`)'; break;
+   case 'trainert':$this->table = '(`creature_template` join `npc_trainer_template` ON `creature_template`.`Entry` = `npc_trainer_template`.`entry`)'; break;
    case 'loot':   $this->table = '(`creature_template` join `creature_loot_template` ON `creature_template`.`LootId` = `creature_loot_template`.`entry`)'; break;
    case 'pick':   $this->table = '(`creature_template` join `pickpocketing_loot_template` ON `creature_template`.`PickpocketLootId` = `pickpocketing_loot_template`.`entry`)'; break;
    case 'skin':   $this->table = '(`creature_template` join `skinning_loot_template` ON `creature_template`.`SkinningLootId` = `skinning_loot_template`.`entry`)'; break;
@@ -1071,6 +1102,13 @@ class CreatureReportGenerator extends ReportGenerator{
   $this->db_fields.=', '.$price.' AS `BuyPrice`';
   $this->doRequirest('`item` = ?d', $entry);
   $this->removeIfAllZero('sold_count', 'VENDOR_REPORT_COUNT');
+  $this->removeIfAllZero('incrtime',   'VENDOR_REPORT_INCTIME');
+ }
+ function soldtItem($entry, $price)
+ {
+  $this->db_fields.=', '.$price.' AS `BuyPrice`';
+  $this->doRequirest('`item` = ?d', $entry);
+  $this->removeIfAllZero('sold_count', 'VENDOR_REPORT_COUNTT');
   $this->removeIfAllZero('incrtime',   'VENDOR_REPORT_INCTIME');
  }
  function trainSpell($entry)
@@ -1913,6 +1951,10 @@ function r_excostItem($data)
 {
   global $lang, $dDB;
   if ($items = $dDB->selectCol("SELECT `item` FROM `npc_vendor` WHERE ExtendedCost = ?d GROUP BY `item`", $data['id']))
+    foreach ($items as $itemid)
+      show_item($itemid, 0, "sell");
+  else
+  if ($items = $dDB->selectCol("SELECT `item` FROM `npc_vendor_template` WHERE ExtendedCost = ?d GROUP BY `item`", $data['id']))
     foreach ($items as $itemid)
       show_item($itemid, 0, "sell");
   else
