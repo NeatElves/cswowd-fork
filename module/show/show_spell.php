@@ -129,7 +129,16 @@ else
      $trainer->trainSpell($entry);
      $trainer->createReport($lang['npc_spell_train']);
   }
-
+  //********************************************************************************
+  // Обучает template тренер
+  //********************************************************************************
+  $trainert = new CreatureReportGenerator('trainert');
+  $fields = array('NPC_REPORT_RNAME', 'TRAINER_REPORT_COST', 'TRAINER_REPORT_SKILL', 'NPC_REPORT_MAP');
+  if ($trainert->Init($fields, $baseLink, 'trainertLIST', $config['fade_limit'], 'scost'))
+  {
+     $trainert->trainSpell($entry);
+     $trainert->createReport($lang['npc_spell_traint']);
+  }
   //********************************************************************************
   // Стартует с помощью другого спелла
   //********************************************************************************

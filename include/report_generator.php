@@ -1057,7 +1057,7 @@ class CreatureReportGenerator extends ReportGenerator{
    case 'vendor': $this->table = '(`creature_template` join `npc_vendor` ON `creature_template`.`Entry` = `npc_vendor`.`entry`)'; break;
    case 'vendort':$this->table = '(`creature_template` join `npc_vendor_template` ON `creature_template`.`VendorTemplateId` = `npc_vendor_template`.`entry`)'; break;
    case 'trainer':$this->table = '(`creature_template` join `npc_trainer` ON `creature_template`.`Entry` = `npc_trainer`.`entry`)'; break;
-   case 'trainert':$this->table = '(`creature_template` join `npc_trainer_template` ON `creature_template`.`Entry` = `npc_trainer_template`.`entry`)'; break;
+   case 'trainert':$this->table = '(`creature_template` join `npc_trainer_template` ON `creature_template`.`TrainerTemplateId` = `npc_trainer_template`.`entry`)'; break;
    case 'loot':   $this->table = '(`creature_template` join `creature_loot_template` ON `creature_template`.`LootId` = `creature_loot_template`.`entry`)'; break;
    case 'pick':   $this->table = '(`creature_template` join `pickpocketing_loot_template` ON `creature_template`.`PickpocketLootId` = `pickpocketing_loot_template`.`entry`)'; break;
    case 'skin':   $this->table = '(`creature_template` join `skinning_loot_template` ON `creature_template`.`SkinningLootId` = `skinning_loot_template`.`entry`)'; break;

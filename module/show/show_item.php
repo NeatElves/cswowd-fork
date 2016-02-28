@@ -286,6 +286,16 @@ else
     $vendors->createReport($lang['npc_sold_loot']);
   }
   //********************************************************************************
+  // Продавцы template вещи
+  //********************************************************************************
+  $vendorst = new CreatureReportGenerator('vendort');
+  $fields = array('NPC_REPORT_RNAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNTT', 'VENDOR_REPORT_INCTIME', 'NPC_REPORT_MAP');
+  if ($vendorst->Init($fields, $baseLink, 'vendortLIST', $config['fade_limit'], 'name'))
+  {
+    $vendorst->soldtItem($entry, $item['BuyPrice']);
+    $vendorst->createReport($lang['npc_sold_loott']);
+  }
+  //********************************************************************************
   // Quest list reward this item
   //********************************************************************************
   $qReward = new QuestReportGenerator();
