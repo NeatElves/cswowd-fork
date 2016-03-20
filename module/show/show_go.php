@@ -53,7 +53,8 @@ else
 //   echo "<tr><th width=100px></th><th></th></tr>";
    echo "<tr><th>Type</th><td>".getGameobjectType($obj['type'])."</td>";
    echo "<th>Size</th><td>".$obj['size']."</td></tr>";
-   echo "<tr><th>ScriptName</th><td colspan=3>".$obj['ScriptName']."</td></tr>";
+   echo "<tr><th>ScriptName</th><td>".$obj['ScriptName']."</td>";
+   echo "<th>Faction</th><td>".$obj['faction']."</td></tr>";
    echo "<tr><th>Flags</th><td colspan=3>";
    if ($flag = $obj['flags'])
    {
