@@ -138,7 +138,7 @@ function noBorderCreatureTable($npc)
   echo "<tr><td>".$game_text['display4']."</td><td align=right>$npc[ModelId4]</td></tr>";
  echo "<tr><td>".$game_text['npc_script']."</td><td align=right>$npcscr</td></tr>";
  if ($npc['NpcFlags'])
-     echo "<tr><td colspan=2>".getCreatureFlagsList($npc['NpcFlags'])."</td></tr>";
+  echo "<tr><td colspan=2>".getCreatureFlagsList($npc['NpcFlags'])."</td></tr>";
  echo "</tbody></table>";
 }
 function generateCreatureTable($npc)

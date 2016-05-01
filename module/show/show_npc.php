@@ -83,6 +83,8 @@ else
    echo "<th>Mana</th><td>".$cr['MinLevelMana']." - ".$cr['MaxLevelMana']."</td></tr>";
    echo "<tr><th>FactionAlliance</th><td>".$cr['FactionAlliance']."</td><th>FactionHorde</th><td>".$cr['FactionHorde']."</td></tr>";
    echo "<tr><th>NpcFlags</th><td>".$cr['NpcFlags']."</td><th>GossipMenuId</th><td>".$cr['GossipMenuId']."</td></tr>";
+   echo "<tr><th>UnitFlags</th><td>".$cr['UnitFlags']."</td><th>DynamicFlags</th><td>".$cr['DynamicFlags']."</td></tr>";
+   echo "<tr><th>ExtraFlags</th><td>".$cr['ExtraFlags']."</td><th>RegenerateStats</th><td>".$cr['RegenerateStats']."</td></tr>";
    echo "<tr><th>SpeedWalk</th><td>".$cr['SpeedWalk']."</td><th>SpeedRun</th><td>".$cr['SpeedRun']."</td></tr>";
    echo "<tr><th>Scale</th><td>".$cr['Scale']."</td><th>Rank</th><td>".$cr['Rank']."</td></tr>";
    echo "<tr><th>MinMeleeDmg</th><td>".$cr['MinMeleeDmg']."</td><th>MaxMeleeDmg</th><td>".$cr['MaxMeleeDmg']."</td></tr>";
@@ -90,7 +92,6 @@ else
    echo "<tr><th>DamageSchool</th><td>".$cr['DamageSchool']."</td><th>DamageMultiplier</th><td>".$cr['DamageMultiplier']."</td></tr>";
    echo "<tr><th>MeleeAttackPower</th><td>".$cr['MeleeAttackPower']."</td><th>RangedAttackPower</th><td>".$cr['RangedAttackPower']."</td></tr>";
    echo "<tr><th>MeleeBaseAttackTime</th><td>".$cr['MeleeBaseAttackTime']."</td><th>RangedBaseAttackTime</th><td>".$cr['RangedBaseAttackTime']."</td></tr>";
-   echo "<tr><th>UnitFlags</th><td>".$cr['UnitFlags']."</td><th>DynamicFlags</th><td>".$cr['DynamicFlags']."</td></tr>";
    echo "<tr><th>UnitClass</th><td>".$cr['UnitClass']."</td><th>Family</th><td>".$cr['Family']."</td></tr>";
    echo "<tr><th>TrainerType</th><td>".$cr['TrainerType']."</td><th>TrainerSpell</th><td>".$cr['TrainerSpell']."</td></tr>";
    echo "<tr><th>TrainerClass</th><td>".$cr['TrainerClass']."</td><th>TrainerRace</th><td>".$cr['TrainerRace']."</td></tr>";
@@ -107,7 +108,6 @@ else
    if ($cr['RacialLeader']) echo "<tr><th>RacialLeader</th><td>".$cr['RacialLeader']."</td></tr>";
    if ($cr['EquipmentTemplateId']) echo "<tr><th>EquipmentTemplateId</th><td>".$cr['EquipmentTemplateId']."</td></tr>";
    if ($cr['MechanicImmuneMask']) echo "<tr><th>MechanicImmuneMask</th><td>".$cr['MechanicImmuneMask']."</td></tr>";
-   if ($cr['ExtraFlags']) echo "<tr><th>ExtraFlags</th><td>".$cr['ExtraFlags']."</td></tr>";
    echo "<tr><th>TrainerTemplateId</th><td>".$cr['TrainerTemplateId']."</td><th>VendorTemplateId</th><td>".$cr['VendorTemplateId']."</td></tr>";
    echo "<tr><th>AIName</th><td>".$cr['AIName']."</td><th>ScriptName</th><td>".$cr['ScriptName']."</td></tr>";
    echo "</tbody></table>";
