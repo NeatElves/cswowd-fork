@@ -96,6 +96,7 @@ else
    echo "<tr><th>TrainerType</th><td>".$cr['TrainerType']."</td><th>TrainerSpell</th><td>".$cr['TrainerSpell']."</td></tr>";
    echo "<tr><th>TrainerClass</th><td>".$cr['TrainerClass']."</td><th>TrainerRace</th><td>".$cr['TrainerRace']."</td></tr>";
    echo "<tr><th>CreatureType</th><td>".$cr['CreatureType']."</td><th>CreatureTypeFlags</th><td>".$cr['CreatureTypeFlags']."</td></tr>";
+   if ($cr['MinLootGold'])echo "<tr><th>MinLootGold</th><td>".$cr['MinLootGold']."</td><th>MaxLootGold</th><td>".$cr['MaxLootGold']."</td></tr>";
    if ($cr['LootId']) echo "<tr><th>LootId</th><td>".$cr['LootId']."</td></tr>";
    if ($cr['PickpocketLootId']) echo "<tr><th>PickpocketLootId</th><td>".$cr['PickpocketLootId']."</td></tr>";
    if ($cr['SkinningLootId']) echo "<tr><th>SkinningLootId</th><td>".$cr['SkinningLootId']."</td></tr>";
@@ -103,11 +104,10 @@ else
    echo "<tr><th>ResistanceNature</th><td>".$cr['ResistanceNature']."</td><th>ResistanceFrost</th><td>".$cr['ResistanceFrost']."</td></tr>";
    echo "<tr><th>ResistanceShadow</th><td>".$cr['ResistanceShadow']."</td><th>ResistanceArcane</th><td>".$cr['ResistanceArcane']."</td></tr>";
    if ($cr['PetSpellDataId']) echo "<tr><th>PetSpellDataId</th><td>".$cr['PetSpellDataId']."</td></tr>";
-   if ($cr['MinLootGold'])echo "<tr><th>MinLootGold</th><td>".$cr['MinLootGold']."</td><th>MaxLootGold</th><td>".$cr['MaxLootGold']."</td></tr>";
    echo "<tr><th>MovementType</th><td>".$cr['MovementType']."</td><th>InhabitType</th><td>".$cr['InhabitType']."</td></tr>";
    if ($cr['RacialLeader']) echo "<tr><th>RacialLeader</th><td>".$cr['RacialLeader']."</td></tr>";
    if ($cr['EquipmentTemplateId']) echo "<tr><th>EquipmentTemplateId</th><td>".$cr['EquipmentTemplateId']."</td></tr>";
-   if ($cr['MechanicImmuneMask']) echo "<tr><th>MechanicImmuneMask</th><td>".$cr['MechanicImmuneMask']."</td></tr>";
+   echo "<tr><th>MechanicImmuneMask</th><td>".$cr['MechanicImmuneMask']."</td><th>SchoolImmuneMask</th><td>".$cr['SchoolImmuneMask']."</td></tr>";
    echo "<tr><th>TrainerTemplateId</th><td>".$cr['TrainerTemplateId']."</td><th>VendorTemplateId</th><td>".$cr['VendorTemplateId']."</td></tr>";
    echo "<tr><th>AIName</th><td>".$cr['AIName']."</td><th>ScriptName</th><td>".$cr['ScriptName']."</td></tr>";
    echo "</tbody></table>";
