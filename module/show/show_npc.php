@@ -103,11 +103,11 @@ else
    echo "<tr><th>ResistanceHoly</th><td>".$cr['ResistanceHoly']."</td><th>ResistanceFire</th><td>".$cr['ResistanceFire']."</td></tr>";
    echo "<tr><th>ResistanceNature</th><td>".$cr['ResistanceNature']."</td><th>ResistanceFrost</th><td>".$cr['ResistanceFrost']."</td></tr>";
    echo "<tr><th>ResistanceShadow</th><td>".$cr['ResistanceShadow']."</td><th>ResistanceArcane</th><td>".$cr['ResistanceArcane']."</td></tr>";
-   if ($cr['PetSpellDataId']) echo "<tr><th>PetSpellDataId</th><td>".$cr['PetSpellDataId']."</td></tr>";
    echo "<tr><th>MovementType</th><td>".$cr['MovementType']."</td><th>InhabitType</th><td>".$cr['InhabitType']."</td></tr>";
    if ($cr['RacialLeader']) echo "<tr><th>RacialLeader</th><td>".$cr['RacialLeader']."</td></tr>";
    if ($cr['EquipmentTemplateId']) echo "<tr><th>EquipmentTemplateId</th><td>".$cr['EquipmentTemplateId']."</td></tr>";
    echo "<tr><th>MechanicImmuneMask</th><td>".$cr['MechanicImmuneMask']."</td><th>SchoolImmuneMask</th><td>".$cr['SchoolImmuneMask']."</td></tr>";
+   echo "<tr><th>PetSpellDataId</th><td>".$cr['PetSpellDataId']."</td><th>VehicleTemplateId</th><td>".$cr['VehicleTemplateId']."</td></tr>";
    echo "<tr><th>TrainerTemplateId</th><td>".$cr['TrainerTemplateId']."</td><th>VendorTemplateId</th><td>".$cr['VendorTemplateId']."</td></tr>";
    echo "<tr><th>AIName</th><td>".$cr['AIName']."</td><th>ScriptName</th><td>".$cr['ScriptName']."</td></tr>";
    echo "</tbody></table>";
