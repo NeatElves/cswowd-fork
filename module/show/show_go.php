@@ -158,7 +158,7 @@ else
       echo "<tr><th>linkedTrapId</th><td>".($obj['data2']?getGameobjectName($obj['data2']):"n/a")."</td>";
       echo "<th>serverOnly</th><td>".$obj['data3']."</td></tr>";
       echo "<tr><th>questID</th><td>".($obj['data4']?getQuestName($obj['data4']):"n/a")."</td>";
-      echo "<td colspan=2></td></tr>";
+      echo "<th>displayId</th><td>".$obj['displayId']."</td></tr>";
      break;
      case GAMEOBJECT_TYPE_TEXT:
       echo "<tr><th>pageID</th><td>".$obj['data0']."</td></tr>";

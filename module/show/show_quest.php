@@ -90,16 +90,18 @@ else
  echo "<tr><td class=head>$quest[Title]";
 
  if ($quest['Type'])
-   echo "<br><font size=-3>&lt;".getQuestType($quest['Type'])."&gt;</font>";
+   echo "&nbsp;&nbsp;&nbsp;<font size=-3>&lt;".getQuestType($quest['Type'])."&gt;</font>";
 
  if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 1101) && ($quest['RequiredRaces'] !=1791))
  {
+     echo "</br>";
      echo "<br><font color=#0000ff>$lang[required_races]&nbsp;$lang[Alliance]&nbsp;</font><img width=22 height=22 src='images/player_info/factions_img/alliance.gif'>";
      echo '<br><font color=#0000ff>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace($quest['RequiredRaces']).'</font>';
  }
  
 if (getAllowableRace($quest['RequiredRaces']) && ($quest['RequiredRaces'] & 690) && ($quest['RequiredRaces'] !=1791))
  {
+     echo "</br>";
      echo "<br><font color=#ff0000>$lang[required_races]&nbsp;$lang[Horde]&nbsp;</font><img width=22 height=22 src='images/player_info/factions_img/horde.gif'>";
      echo '<br><font color=#ff0000>'.$game_text['allowable_race'].'&nbsp;'.getAllowableRace($quest['RequiredRaces']).'</font>';
  }
