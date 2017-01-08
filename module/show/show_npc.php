@@ -284,6 +284,16 @@ else
     $summoned_by->createReport($lang['summoned_by_spell']);
  }
  //********************************************************************************
+ // Difficulty
+ //********************************************************************************
+ $difficulty = new CreatureReportGenerator();
+ $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'NPC_REPORT_MAP');
+ if ($difficulty->Init($fields, $baseLink, 'diffLIST', $config['fade_limit'], 'name'))
+ {
+    $difficulty->difficultyGroup($entry);
+    $difficulty->createReport($lang['difficulty_entry_group']);
+ }
+ //********************************************************************************
  //  Cast spells
  //********************************************************************************
  $cast_spell = new SpellReportGenerator;
@@ -360,7 +370,7 @@ else
  //********************************************************************************
  $kredit = new CreatureReportGenerator();
  $fields = array('NPC_REPORT_LEVEL', 'NPC_REPORT_RNAME', 'NPC_REPORT_MAP');
- if ($kredit->Init($fields, $baseLink, 'r_creatureLIST', $config['fade_limit'], 'name'))
+ if ($kredit->Init($fields, $baseLink, 'kreditLIST', $config['fade_limit'], 'name'))
  {
     $kredit->kreditGroup($entry);
     $kredit->createReport($lang['kill_kredit_group']);

@@ -241,6 +241,7 @@ $lang = array(
 'npc_spell_traint' => 'Обучают(t)',
 'quest_spell_train' => 'Награда за выполнение задания:',
 'req_for_quest' => 'Цель для',
+'difficulty_entry_group' => 'Основной',
 'kill_kredit_group' => 'Группа',
 'give_quest' => 'Начинает',
 'take_quest' => 'Завершает',

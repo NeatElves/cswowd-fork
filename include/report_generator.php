@@ -1120,6 +1120,10 @@ class CreatureReportGenerator extends ReportGenerator{
  {
   $this->doRequirest('`KillCredit1` = ?d OR `KillCredit2` = ?d', $entry, $entry);
  }
+ function difficultyGroup($entry)
+ {
+  $this->doRequirest('`DifficultyEntry1` = ?d OR `DifficultyEntry2` = ?d OR `DifficultyEntry3` = ?d', $entry, $entry, $entry);
+ }
  function lootItem($entry)
  {
   $ref_loot =& getRefrenceItemLoot($entry);

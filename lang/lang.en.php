@@ -242,6 +242,7 @@ $lang = array(
 'quest_spell_train' => 'Learn from quset',
 'req_for_quest' => 'Required for quest',
 'kill_kredit_group' => 'Group',
+'difficulty_entry_group' => 'Primary',
 'give_quest' => 'Give quest',
 'take_quest' => 'Take quest',
 'give_skin'  => 'Skinning',
