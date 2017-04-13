@@ -57,7 +57,8 @@ else
       `position_x`,
       `position_y`,
       `position_z`,
-      `spawntimesecs`
+      `spawntimesecsmin`
+      `spawntimesecsmax`
       FROM
       `gameobject`
       WHERE
@@ -105,7 +106,8 @@ else
       `position_x`,
       `position_y`,
       `position_z`,
-      `spawntimesecs`
+      `spawntimesecsmin`
+      `spawntimesecsmax`
       FROM
       `creature`
       WHERE

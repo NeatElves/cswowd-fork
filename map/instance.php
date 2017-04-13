@@ -91,7 +91,8 @@ while ($row2=mysql_fetch_array($res2))
  $posx = $row2['position_x'];
  $posy = $row2['position_y'];
  $type = $row['type'];
- $time = get_time_text($row2['spawntimesecs']);
+ $time1 = get_time_text($row2['spawntimesecsmin']);
+ $time2 = get_time_text($row2['spawntimesecsmax']);
 
  if ($row2['id']==$id){$img = "img/gps_icon.png";$centerImage = 8;}
  else                 {$img = "img/iron.gif";    $centerImage = 4;}
@@ -102,7 +103,7 @@ while ($row2=mysql_fetch_array($res2))
     $x=$imageX*($posx - $areaX1)/($areaX2-$areaX1)-$centerImage;
     $y=$imageY*($posy - $areaY1)/($areaY2-$areaY1)-$centerImage;
     $name = validateTextForMap($row['name']);
-    echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $y; top: $x;\"onmouseover=\"this.T_TITLE='<div align=center>$name</div>';return escape('Респавн: $time<br>GUID $row2[guid]<br>$posx $posy $row2[position_z] $row2[map]')\"></a>\n";
+    echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $y; top: $x;\"onmouseover=\"this.T_TITLE='<div align=center>$name</div>';return escape('Респавн: $time1 - $time2<br>GUID $row2[guid]<br>$posx $posy $row2[position_z] $row2[map]')\"></a>\n";
  }
 }
 $res2 = mysql_query("SELECT * FROM `creature` WHERE `map`='$map' ORDER BY `id`") or die(mysql_error());
@@ -122,7 +123,8 @@ while ($row2=mysql_fetch_array($res2))
  $posx = $row2['position_x'];
  $posy = $row2['position_y'];
  $type = $row['type'];
- $time = get_time_text($row2['spawntimesecs']);
+ $time1 = get_time_text($row2['spawntimesecsmin']);
+ $time2 = get_time_text($row2['spawntimesecsmax']);
 
  if ($row2['id']==$id){$img = "img/gps_icon.png";$centerImage = 8;}
  else                 {$img = "img/green.gif";   $centerImage = 2;}
@@ -133,7 +135,7 @@ while ($row2=mysql_fetch_array($res2))
     $x=$imageX*($posx - $areaX1)/($areaX2-$areaX1)-$centerImage;
     $y=$imageY*($posy - $areaY1)/($areaY2-$areaY1)-$centerImage;
     $name = validateTextForMap($row['name']);
-    echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $y; top: $x;\"onmouseover=\"this.T_TITLE='<div align=center>$name</div>';return escape('Уровень: $row[minlevel]-$row[maxlevel]<br>Ранг $row[rank]<br>Тип: $NPCType[$type]<br>Жизнь: $row2[curhealth]<br>Урон: $row[mindmg] - $row[maxdmg]<br>Респавн: $time<br>GUID $row2[guid]<br>$posx $posy $row2[position_z] $row2[map]')\"></a>\n";
+    echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $y; top: $x;\"onmouseover=\"this.T_TITLE='<div align=center>$name</div>';return escape('Уровень: $row[minlevel]-$row[maxlevel]<br>Ранг $row[rank]<br>Тип: $NPCType[$type]<br>Жизнь: $row2[curhealth]<br>Урон: $row[mindmg] - $row[maxdmg]<br>Респавн: $time1 - $time2<br>GUID $row2[guid]<br>$posx $posy $row2[position_z] $row2[map]')\"></a>\n";
  }
 }
 echo "</span>";
