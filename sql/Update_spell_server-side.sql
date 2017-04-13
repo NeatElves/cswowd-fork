@@ -81,3 +81,4 @@ INSERT INTO `wowd_spell` (`Id`,`Attributes`,`CastingTimeIndex`,`ProcChance`,`Dur
 ('21116','256','1','101','30','13','-1','41','17','16','12143','876','Summon Son of Flame H','1'),
 ('21117','256','1','101','30','13','-1','41','17','16','12143','876','Summon Son of Flame A','1'),
 ('21908','256','1','101','0','1','-1','3','1','0','0','1','Lava Burst Randomizer','1');
+UPDATE wowd_spell SET AttributesEx2=AttributesEx2|4 WHERE id IN (29916, 29917)
