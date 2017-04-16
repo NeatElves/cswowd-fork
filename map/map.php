@@ -102,14 +102,14 @@ if ($id)
      if ($type == 3) {$img = "img/iron.gif"; $centerImage = 4; }
      else            {$img = "img/gps_icon.png"; $centerImage = 8; }
      $type = $row['type'];
-     $time1 = get_time_text($row2['spawntimesecsmin']);
-     $time2 = get_time_text($row2['spawntimesecsmax']);
+     if ($row2['spawntimesecsmax'] > $row2['spawntimesecsmin']) $time = get_time_text($row2['spawntimesecsmin'])."&nbsp;-&nbsp;".get_time_text($row2['spawntimesecsmax']);
+     else $time = get_time_text($row2['spawntimesecsmax']);
 
      $x=round($imageX*($posx - $areaX1)/($areaX2-$areaX1)-$centerImage,0);
      $y=round($imageY*($posy - $areaY1)/($areaY2-$areaY1)-$centerImage,0);
      $name = validateTextForMap($row['name']);
      echo "<a href=\"map.php?id=$id&where=$where&x=$posx&y=$posy&map=$row2[map]\">";
-     echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $y; top: $x;\"onmouseover=\"this.T_TITLE='<div align=center>$name</div>';return escape('Респавн: $time1 - $time2<br>GUID $row2[guid]<br>$posy $posx $row2[position_z] $row2[map]')\"></a>\n";
+     echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $y; top: $x;\"onmouseover=\"this.T_TITLE='<div align=center>$name</div>';return escape('Респавн: $time<br>GUID $row2[guid]<br>$posy $posx $row2[position_z] $row2[map]')\"></a>\n";
    }
   }
  }
@@ -135,15 +135,15 @@ if ($id)
       $row['name']=str_replace("'","`",$row['name']);
       $row['name']=str_replace("\"","`",$row['name']);
       $type = $row['type'];
-      $time1 = get_time_text($row2['spawntimesecsmin']);
-      $time2 = get_time_text($row2['spawntimesecsmax']);
+      if ($row2['spawntimesecsmax'] > $row2['spawntimesecsmin']) $time = get_time_text($row2['spawntimesecsmin'])."&nbsp;-&nbsp;".get_time_text($row2['spawntimesecsmax']);
+      else $time = get_time_text($row2['spawntimesecsmax']);
 
       $x=round($imageX*($posx - $areaX1)/($areaX2-$areaX1)-$centerImage,0);
       $y=round($imageY*($posy - $areaY1)/($areaY2-$areaY1)-$centerImage,0);
 
       $name = validateTextForMap($row['name']);
       echo "<a href=\"map.php?id=$id&where=$where&x=$posx&y=$posy&map=$row2[map]\">";
-      echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $y; top: $x;\"onmouseover=\"this.T_TITLE='<div align=center>$name</div>';return escape('Уровень: $row[maxlevel]<br>Тип: $NPCType[$type]<br>Жизнь: $row2[curhealth]<br>Урон: $row[mindmg] - $row[maxdmg]<br>Респавн: $time1 - $time2<br>GUID $row2[guid]<br>$posy $posx $row2[position_z] $row2[map]')\"></a>\n";
+      echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $y; top: $x;\"onmouseover=\"this.T_TITLE='<div align=center>$name</div>';return escape('Уровень: $row[maxlevel]<br>Тип: $NPCType[$type]<br>Жизнь: $row2[curhealth]<br>Урон: $row[mindmg] - $row[maxdmg]<br>Респавн: $time<br>GUID $row2[guid]<br>$posy $posx $row2[position_z] $row2[map]')\"></a>\n";
    }
   }
  }

@@ -165,8 +165,8 @@ while ($row2=mysql_fetch_array($res2))
     $posx = $row2['position_x'];
     $posy = $row2['position_y'];
     $type = $row['type'];
-    $time1 = get_time_text($row2['spawntimesecsmin']);
-    $time2 = get_time_text($row2['spawntimesecsmax']);
+    if ($row2['spawntimesecsmax'] > $row2['spawntimesecsmin']) $time = get_time_text($row2['spawntimesecsmin'])."&nbsp;-&nbsp;".get_time_text($row2['spawntimesecsmax']);
+    else $time = get_time_text($row2['spawntimesecsmax']);
     if ($type == "3") {$img = "img/iron.gif";    $centerImage = 4;}
     else              {$img = "img/gps_icon.png";$centerImage = 8;}
    }
@@ -175,8 +175,8 @@ while ($row2=mysql_fetch_array($res2))
     $posx = $row2['position_x'];
     $posy = $row2['position_y'];
     $type = $row['type'];
-    $time1 = get_time_text($row2['spawntimesecsmin']);
-    $time2 = get_time_text($row2['spawntimesecsmax']);
+    if ($row2['spawntimesecsmax'] > $row2['spawntimesecsmin']) $time = get_time_text($row2['spawntimesecsmin'])."&nbsp;-&nbsp;".get_time_text($row2['spawntimesecsmax']);
+    else $time = get_time_text($row2['spawntimesecsmax']);
 
     $img = "img/gps_icon.png";$centerImage = 8;
 
@@ -220,7 +220,7 @@ while ($row2=mysql_fetch_array($res2))
      echo "<a href=\"map.php?id=$id&where=$where&x=$posx&y=$posy&map=$row2[map]\">";
      echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $x; top: $y;
      \"onmouseover=\"this.T_TITLE='<div align=center>$row[name]</div>';
-    return escape('Респавн: $time1 - $time2<br>GUID $row2[guid]<br>$posy $posx $row2[position_z] $row2[map]')\"
+     return escape('Респавн: $time<br>GUID $row2[guid]<br>$posy $posx $row2[position_z] $row2[map]')\"
      ></a>\n";
    }
    else
@@ -228,7 +228,7 @@ while ($row2=mysql_fetch_array($res2))
      echo "<a href=\"map.php?id=$id&where=$where&x=$posx&y=$posy&map=$row2[map]\">";
      echo "<img src=\"$img\" style=\"position: absolute; border: 0px; left: $x; top: $y;
      \"onmouseover=\"this.T_TITLE='<div align=center>$row[name]</div>';
-    return escape('Уровень: $row[maxlevel]<br>Тип:  $NPCType[$type]<br>Жизнь:   $row2[curhealth]<br>Урон:   $row[mindmg] - $row[maxdmg]<br>Респавн: $time1 - $time2<br>GUID $row2[guid]<br>$posy $posx $row2[position_z] $row2[map]')\"
+     return escape('Уровень: $row[maxlevel]<br>Тип:  $NPCType[$type]<br>Жизнь:   $row2[curhealth]<br>Урон:   $row[mindmg] - $row[maxdmg]<br>Респавн: $time<br>GUID $row2[guid]<br>$posy $posx $row2[position_z] $row2[map]')\"
     ></a>\n";
    }
 }
