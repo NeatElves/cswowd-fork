@@ -691,7 +691,7 @@ function getSpellName($spell, $as_ref=1)
   {
     $name = $spell['SpellName'];
     if ($as_ref)
-        $name = "<a href=\"?spell=$spell[id]\">".$name."</a>";
+        $name = "<a href=\"?spell=$spell[Id]\">".$name."</a>";
     if ($spell['Rank']!="")
         $name.="<br><div class=srank>".$spell['Rank']."</div>";
     return $name;
@@ -794,29 +794,29 @@ function getBasePointDesc($spell, $index)
 {
   if (empty($spell))
       return;
-  $s = $spell['EffectBasePoints_'.$index]+1;
-  if ($spell['EffectDieSides_'.$index] > 1)
-    $s.=" - ".abs($spell['EffectBasePoints_'.$index]+$spell['EffectDieSides_'.$index]);
+  $s = $spell['EffectBaseDice'.$index]+1;
+  if ($spell['EffectDieSides'.$index] > 1)
+    $s.=" - ".abs($spell['EffectBaseDice'.$index]+$spell['EffectDieSides'.$index]);
 
-  if ($spell['EffectRealPointsPerLevel_'.$index])
-    $s.=" + lvl*".$spell['EffectRealPointsPerLevel_'.$index];
+  if ($spell['EffectRealPointsPerLevel'.$index])
+    $s.=" + lvl*".$spell['EffectRealPointsPerLevel'.$index];
 // Увеличивает только макс рандомное значение
 // if ($spell['EffectDicePerLevel_'.$index])
 //   $s.=" + lvl*".$spell['EffectDicePerLevel_'.$index];
-  if ($spell['EffectPointsPerComboPoint_'.$index])
-    $s." + combo*".$spell['EffectPointsPerComboPoint_'.$index];
+  if ($spell['EffectPointsPerComboPoint'.$index])
+    $s." + combo*".$spell['EffectPointsPerComboPoint'.$index];
   return $s;
 }
 
 function getSpellData($spell)
 {
   // Basepoints
-  $s1 = abs($spell['EffectBasePoints_1']+1);
-  $s2 = abs($spell['EffectBasePoints_2']+1);
-  $s3 = abs($spell['EffectBasePoints_3']+1);
-  if ($spell['EffectDieSides_1']>1) $s1.=" - ".abs($spell['EffectBasePoints_1']+$spell['EffectDieSides_1']);
-  if ($spell['EffectDieSides_2']>1) $s2.=" - ".abs($spell['EffectBasePoints_2']+$spell['EffectDieSides_2']);
-  if ($spell['EffectDieSides_3']>1) $s3.=" - ".abs($spell['EffectBasePoints_3']+$spell['EffectDieSides_3']);
+  $s1 = abs($spell['EffectBaseDice1']+1);
+  $s2 = abs($spell['EffectBaseDice2']+1);
+  $s3 = abs($spell['EffectBaseDice3']+1);
+  if ($spell['EffectDieSides1']>1) $s1.=" - ".abs($spell['EffectBaseDice1']+$spell['EffectDieSides1']);
+  if ($spell['EffectDieSides2']>1) $s2.=" - ".abs($spell['EffectBaseDice2']+$spell['EffectDieSides2']);
+  if ($spell['EffectDieSides3']>1) $s3.=" - ".abs($spell['EffectBaseDice3']+$spell['EffectDieSides3']);
 
   $d  = 0;
   if ($spell['DurationIndex'])
@@ -824,9 +824,9 @@ function getSpellData($spell)
      $d = $spell_duration['duration_1']/1000;
 
   // Tick duration
-  $t1 = $spell['EffectAmplitude_1'] ? $spell['EffectAmplitude_1']/1000 : 5;
-  $t2 = $spell['EffectAmplitude_1'] ? $spell['EffectAmplitude_2']/1000 : 5;
-  $t3 = $spell['EffectAmplitude_1'] ? $spell['EffectAmplitude_3']/1000 : 5;
+  $t1 = $spell['EffectAmplitude1'] ? $spell['EffectAmplitude1']/1000 : 5;
+  $t2 = $spell['EffectAmplitude2'] ? $spell['EffectAmplitude2']/1000 : 5;
+  $t3 = $spell['EffectAmplitude3'] ? $spell['EffectAmplitude3']/1000 : 5;
 
   // Points per tick
   $o1 = @intval($s1*$d/$t1);
@@ -845,34 +845,34 @@ function getSpellData($spell)
   $spellData['m1']=$s1;
   $spellData['m2']=$s2;
   $spellData['m3']=$s3;
-  $spellData['x1']= $spell['EffectChainTarget_1'];
-  $spellData['x2']= $spell['EffectChainTarget_2'];
-  $spellData['x3']= $spell['EffectChainTarget_3'];
+  $spellData['x1']= $spell['EffectChainTarget1'];
+  $spellData['x2']= $spell['EffectChainTarget2'];
+  $spellData['x3']= $spell['EffectChainTarget3'];
 //  $spellData['i'] = $spell['MaxAffectedTargets'];
   $spellData['d'] = getTimeText($d);
   $spellData['d1']= getTimeText($d);
   $spellData['d2']= getTimeText($d);
   $spellData['d3']= getTimeText($d);
-  $spellData['v'] = $spell['AffectedTargetLevel'];
+  $spellData['v'] = $spell['MaxAffectedTargets'];
   $spellData['u'] = $spell['StackAmount'];
-  $spellData['a1']= getRadius($spell['EffectRadiusIndex_1']);
-  $spellData['a2']= getRadius($spell['EffectRadiusIndex_2']);
-  $spellData['a3']= getRadius($spell['EffectRadiusIndex_3']);
-  $spellData['b1']= $spell['EffectPointsPerComboPoint_1'];
-  $spellData['b2']= $spell['EffectPointsPerComboPoint_2'];
-  $spellData['b3']= $spell['EffectPointsPerComboPoint_3'];
-  $spellData['e'] = $spell['EffectMultipleValue_1'];
-  $spellData['e1']= $spell['EffectMultipleValue_1'];
-  $spellData['e2']= $spell['EffectMultipleValue_2'];
-  $spellData['e3']= $spell['EffectMultipleValue_3'];
-  $spellData['f1']= $spell['DmgMultiplier_1'];
-  $spellData['f2']= $spell['DmgMultiplier_2'];
-  $spellData['f3']= $spell['DmgMultiplier_3'];
-  $spellData['q1']= $spell['EffectMiscValue_1'];
-  $spellData['q2']= $spell['EffectMiscValue_2'];
-  $spellData['q3']= $spell['EffectMiscValue_3'];
-  $spellData['h'] = $spell['procChance'];
-  $spellData['n'] = $spell['procCharges'];
+  $spellData['a1']= getRadius($spell['EffectRadiusIndex1']);
+  $spellData['a2']= getRadius($spell['EffectRadiusIndex2']);
+  $spellData['a3']= getRadius($spell['EffectRadiusIndex3']);
+  $spellData['b1']= $spell['EffectPointsPerComboPoint1'];
+  $spellData['b2']= $spell['EffectPointsPerComboPoint2'];
+  $spellData['b3']= $spell['EffectPointsPerComboPoint3'];
+  $spellData['e'] = $spell['EffectMultipleValue1'];
+  $spellData['e1']= $spell['EffectMultipleValue1'];
+  $spellData['e2']= $spell['EffectMultipleValue2'];
+  $spellData['e3']= $spell['EffectMultipleValue3'];
+  $spellData['f1']= $spell['DmgMultiplier1'];
+  $spellData['f2']= $spell['DmgMultiplier2'];
+  $spellData['f3']= $spell['DmgMultiplier3'];
+  $spellData['q1']= $spell['EffectMiscValue1'];
+  $spellData['q2']= $spell['EffectMiscValue2'];
+  $spellData['q3']= $spell['EffectMiscValue3'];
+  $spellData['h'] = $spell['ProcChance'];
+  $spellData['n'] = $spell['ProcCharges'];
   $spellData['z'] = "<home>";
   return $spellData;
 }
@@ -907,7 +907,7 @@ function spellReplace($spell, $text)
 		$pos += strlen($result[0]);
 		$op = $result[3];
 		$oparg = $result[4];
-		$lookup = $result[5]? $result[5]:$spell['id'];
+		$lookup = $result[5]? $result[5]:$spell['Id'];
 		$var = $result[6] ? $result[6]:$result[7];
 		if (!$var)
 			continue;
@@ -928,7 +928,7 @@ function spellReplace($spell, $text)
             $spellData = @$cacheSpellData[$lookup];
             if ($spellData == 0)
             {
-                if ($lookup == $spell['id']) $cacheSpellData[$lookup] = getSpellData($spell);
+                if ($lookup == $spell['Id']) $cacheSpellData[$lookup] = getSpellData($spell);
                 else                         $cacheSpellData[$lookup] = getSpellData(getSpell($lookup));
                 $spellData = @$cacheSpellData[$lookup];
             }
@@ -985,7 +985,7 @@ function get_spell_details($spell_id)
 function getSpellCostText($spell)
 {
   // Заполняем стоимость заклинания
-  $powerType = getPowerTypeName($spell['powerType']);
+  $powerType = getPowerTypeName($spell['PowerType']);
   $powerCost = "";
   if ($spell['AttributesEx'] & 2)
     $powerCost = "Uses 100% ".$powerType;
@@ -993,13 +993,13 @@ function getSpellCostText($spell)
   {
     if ($spell['ManaCostPercentage'])
       $powerCost = $spell['ManaCostPercentage']."% of base";
-    else if ($spell['manaCost'])
-      $powerCost = $spell['manaCost'];
+    else if ($spell['ManaCost'])
+      $powerCost = $spell['ManaCost'];
     if ($powerCost)
     {
       $powerCost.= " ".$powerType;
-      if ($spell['manaPerSecond'])
-        $powerCost.= " plus ".$spell['manaPerSecond']." per sec";
+      if ($spell['ManaPerSecond'])
+        $powerCost.= " plus ".$spell['ManaPerSecond']." per sec";
     }
   }
   return $powerCost;

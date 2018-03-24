@@ -54,9 +54,9 @@ else
    {
     echo "<tr>";
     echo "<td valign=top align=right>";
-    if ($spell['activeIconID'] && $spell['SpellIconID']!=$spell['activeIconID'])
+    if ($spell['ActiveIconID'] && $spell['SpellIconID']!=$spell['ActiveIconID'])
     {
-       $buff_icon = getSpellIcon($spell['activeIconID']);
+       $buff_icon = getSpellIcon($spell['ActiveIconID']);
        echo "<br><a href=\"#\"><img border=0 src='$buff_icon' width=64></a>";
     }
     echo "</td>";
@@ -89,13 +89,13 @@ else
   //********************************************************************************
   // Скорее всего спелл может быть улучшен - ищем чем..
   //********************************************************************************
-  if ($spell['SpellFamilyFlags_1'] || $spell['SpellFamilyFlags_2'] || $spell['SpellFamilyFlags_3'])
+  if ($spell['SpellFamilyFlags'] || $spell['SpellFamilyFlags2'] || $spell['SpellFamilyFlags_2'])
   {
     $affected = new SpellReportGenerator;
     $fields = array('SPELL_REPORT_ICON','SPELL_REPORT_NAME');
     if ($affected->Init($fields, $baseLink, 'affectLIST', $config['fade_limit'], 'name'))
     {
-      $affected->affectedBySpells($spell['SpellFamilyName'], $spell['SpellFamilyFlags_1'], $spell['SpellFamilyFlags_2'], $spell['SpellFamilyFlags_3']);
+      $affected->affectedBySpells($spell['SpellFamilyName'], $spell['SpellFamilyFlags'], $spell['SpellFamilyFlags2'], $spell['SpellFamilyFlags_2']);
       $affected->createReport($lang['spell_affected_by']);
     }
   }

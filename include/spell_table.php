@@ -10,12 +10,12 @@ function noBorderSpellTable($spell)
  else
      echo "<tr><td class=Name colspan=2>".$name."</td></tr>";
  $cost = getSpellCostText($spell);
- if ($cost or $spell['rangeIndex']>1)
+ if ($cost or $spell['RangeIndex']>1)
  {
   echo "<tr><td>";
   if ($cost)
       echo $cost."</td><td align=right>";
-  if ($spell['rangeIndex'] > 0 AND $range = getRange($spell['rangeIndex']) AND $range!=0)
+  if ($spell['RangeIndex'] > 0 AND $range = getRange($spell['RangeIndex']) AND $range!=0)
       echo $range." yds range";
   echo "</td></tr>";
  }
@@ -40,13 +40,13 @@ function noBorderSpellTable($spell)
      echo "<tr><td>".$cast_time."</td><td align=right>".$cooldown."</td></tr>";
 
  // Тотем категория
- if ($spell['TotemCategory_1'] OR $spell['TotemCategory_2'])
+ if ($spell['TotemCategory1'] OR $spell['TotemCategory2'])
  {
      echo "<tr><td colspan=2 class=tool> Tools: ";
-     if ($spell['TotemCategory_1'])
-         echo getTotemCategory($spell['TotemCategory_1']);
-     if ($spell['TotemCategory_2'])
-         echo ", ".getTotemCategory($spell['TotemCategory_2']);
+     if ($spell['TotemCategory1'])
+         echo getTotemCategory($spell['TotemCategory1']);
+     if ($spell['TotemCategory2'])
+         echo ", ".getTotemCategory($spell['TotemCategory2']);
      echo "</td></tr>";
  }
 
@@ -73,7 +73,7 @@ function noBorderSpellTable($spell)
  if ($notreqForm)
      echo "<tr><td class=SpellErr colspan=2>Not cast in: ".$notreqForm."</td></tr>";
 
- echo "<tr><td colspan=2 class=SpellDesc><a href=\"?spell=$spell[id]\">".getSpellDesc($spell)."</a></td></tr>";
+ echo "<tr><td colspan=2 class=SpellDesc><a href=\"?spell=$spell[Id]\">".getSpellDesc($spell)."</a></td></tr>";
  echo "</tbody></table>";
 }
 
@@ -98,7 +98,7 @@ function generateSpellBuffTable($spell)
  echo "<table class=spell><tbody>";
  $name = $spell['SpellName'];
  echo "<tr><td class=Name>".$name."</td></tr>";
- echo "<tr><td colSpan=2 class=SpellDesc><a href=\"?spell=$spell[id]\">".getSpellBuff($spell)."</a></td></tr>";
+ echo "<tr><td colSpan=2 class=SpellDesc><a href=\"?spell=$spell[Id]\">".getSpellBuff($spell)."</a></td></tr>";
  echo "</tbody></table>";
 
  echo "</td><td class=br></td></tr>";

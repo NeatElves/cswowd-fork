@@ -1592,11 +1592,11 @@ function r_spellSkill($data)
   r_spellName($data);
   if ($data['RequiresSpellFocus'])
     echo '<div class=reqfocus>'.sprintf($lang['spell_req_focus'], getSpellFocusName($data['RequiresSpellFocus'], 2)).'</div>';
-  if ($data['TotemCategory_1'] OR $data['TotemCategory_2'])
+  if ($data['TotemCategory1'] OR $data['TotemCategory2'])
   {
     $text= '';
-    if ($data['TotemCategory_1']) $text = getTotemCategory($data['TotemCategory_1']);
-    if ($data['TotemCategory_2']) $text.= ", ".getTotemCategory($data['TotemCategory_2']);
+    if ($data['TotemCategory1']) $text = getTotemCategory($data['TotemCategory1']);
+    if ($data['TotemCategory2']) $text.= ", ".getTotemCategory($data['TotemCategory2']);
     echo '<div class=reqfocus>'.sprintf($lang['spell_req_totem'], $text).'</div>';
   }
 }
@@ -1605,22 +1605,22 @@ function r_spellReagents($data)
 {
   echo '<table class=reagents><tr>';
   for ($i=1;$i<9;$i++)
-    if ($data['Reagent_'.$i])
-      echo '<td>'.text_show_item($data['Reagent_'.$i],0,'reagent').'<br>x'.$data['ReagentCount_'.$i].'</td>';
+    if ($data['Reagent'.$i])
+      echo '<td>'.text_show_item($data['Reagent'.$i],0,'reagent').'<br>x'.$data['ReagentCount'.$i].'</td>';
   echo "</tr></table>";
 }
 function r_spellCreate($data)
 {
-  if ($data['EffectItemType_1'] == 0 AND $data['EffectItemType_2'] == 0 AND $data['EffectItemType_3'] == 0)
+  if ($data['EffectItemType1'] == 0 AND $data['EffectItemType2'] == 0 AND $data['EffectItemType3'] == 0)
     return 0;
-  if ($data['EffectItemType_2'] == 0 AND $data['EffectItemType_3'] == 0)
-    echo text_show_item($data['EffectItemType_1']);
+  if ($data['EffectItemType2'] == 0 AND $data['EffectItemType3'] == 0)
+    echo text_show_item($data['EffectItemType1']);
   else
   {
     echo '<table class=reagents><tr>';
     for ($i=1;$i<4;$i++)
-      if ($data['EffectItemType_'.$i])
-        echo '<td>'.text_show_item($data['EffectItemType_'.$i], 0, "reagent").($data['EffectBasePoints_'.$i]>0?'<br>x&nbsp;'.($data['EffectBasePoints_'.$i]+1):'').'</td>';
+      if ($data['EffectItemType'.$i])
+        echo '<td>'.text_show_item($data['EffectItemType'.$i], 0, "reagent").($data['EffectBaseDice'.$i]>0?'<br>x&nbsp;'.($data['EffectBaseDice'.$i]+1):'').'</td>';
     echo '</tr></table>';
   }
   return 1;
@@ -1634,27 +1634,27 @@ function r_spellEquiped($data)
 function r_skillLevel($data) {echo $data['min_value'];}
 function r_skillIcon($data)
 {
-  if ($data['EffectItemType_1'] OR $data['EffectItemType_2'] OR $data['EffectItemType_3'])
+  if ($data['EffectItemType1'] OR $data['EffectItemType2'] OR $data['EffectItemType3'])
     r_spellCreate($data);
   else
     r_spellIcon($data);
 }
-$reagents= '`Reagent_1`, `Reagent_2`, `Reagent_3`, `Reagent_4`, `Reagent_5`, `Reagent_6`, `Reagent_7`, `Reagent_8`,
-`ReagentCount_1`, `ReagentCount_2`, `ReagentCount_3`, `ReagentCount_4`, `ReagentCount_5`, `ReagentCount_6`, `ReagentCount_7`, `ReagentCount_8`';
+$reagents= '`Reagent1`, `Reagent2`, `Reagent3`, `Reagent4`, `Reagent5`, `Reagent6`, `Reagent7`, `Reagent8`,
+`ReagentCount1`, `ReagentCount2`, `ReagentCount3`, `ReagentCount4`, `ReagentCount5`, `ReagentCount6`, `ReagentCount7`, `ReagentCount8`';
 // Spell report generator config
 $spell_report = array(
 'SPELL_REPORT_LEVEL' =>array('class'=>'small','sort'=>'level', 'text'=>$lang['spell_level'],  'draw'=>'r_spellLevel',  'sort_str'=>'`spellLevel`',     'fields'=>'`spellLevel`'),
 'SPELL_REPORT_ICON'  =>array('class'=>'s_ico','sort'=>'icon',  'text'=>'',                    'draw'=>'r_spellIcon',   'sort_str'=>'`SpellIconID`',    'fields'=>'`SpellIconID`'),
 'SPELL_REPORT_NAME'  =>array('class'=>'left', 'sort'=>'name',  'text'=>$lang['spell_name'],   'draw'=>'r_spellName',   'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`'),
-'SPELL_REPORT_RECIPE'=>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['spell_name'],    'draw'=>'r_spellRecipe', 'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`, `RequiresSpellFocus`, `TotemCategory_1`, `TotemCategory_2`'),
+'SPELL_REPORT_RECIPE'=>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['spell_name'],    'draw'=>'r_spellRecipe', 'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`, `RequiresSpellFocus`, `TotemCategory1`, `TotemCategory2`'),
 'SPELL_REPORT_SCHOOL'=>array('class'=>'',     'sort'=>'school','text'=>$lang['spell_school'], 'draw'=>'r_spellSchool', 'sort_str'=>'`SchoolMask`',     'fields'=>'`SchoolMask`'),
 'SPELL_REPORT_REAGENTS'=>array('class'=>'reag','sort'=>'',     'text'=>$lang['spell_reagent'],'draw'=>'r_spellReagents','sort_str'=>'',                'fields'=>&$reagents),
-'SPELL_REPORT_CREATE'=>array('class'=>'skill','sort'=>'',      'text'=>$lang['spell_create'], 'draw'=>'r_spellCreate', 'sort_str'=>'',                 'fields'=>'`EffectItemType_1`, `EffectItemType_2`, `EffectItemType_3`, `EffectBasePoints_1`, `EffectBasePoints_2`, `EffectBasePoints_3`'),
+'SPELL_REPORT_CREATE'=>array('class'=>'skill','sort'=>'',      'text'=>$lang['spell_create'], 'draw'=>'r_spellCreate', 'sort_str'=>'',                 'fields'=>'`EffectItemType1`, `EffectItemType2`, `EffectItemType3`, `EffectBaseDice1`, `EffectBaseDice2`, `EffectBaseDice3`'),
 'SPELL_REPORT_EQUIP'=>array('class'=>'left',  'sort'=>'',      'text'=>'',                    'draw'=>'r_spellEquiped','sort_str'=>'',                 'fields'=>'`EquippedItemClass`, `EquippedItemSubClassMask`, `EquippedItemInventoryTypeMask`'),
 // Skill
 'SKILL_REPORT_LEVEL' =>array('class'=>'small','sort'=>'skill_lvl', 'text'=>$lang['spell_level'],'draw'=>'r_skillLevel', 'sort_str'=>'`min_value`, `spellLevel`, `SpellName`, `id`',  'fields'=>'`min_value`'),
-'SKILL_REPORT_ICON'  =>array('class'=>'skill','sort'=>'skill',     'text'=>'',                  'draw'=>'r_skillIcon',  'sort_str'=>'`SpellIconID`',    'fields'=>'`SpellIconID`, `EffectItemType_1`, `EffectItemType_2`, `EffectItemType_3`, `EffectBasePoints_1`, `EffectBasePoints_2`, `EffectBasePoints_3`'),
-'SKILL_REPORT_NAME'  =>array('class'=>'left', 'sort'=>'skill_name','text'=>$lang['spell_name'], 'draw'=>'r_spellSkill', 'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`, `RequiresSpellFocus`, `TotemCategory_1`, `TotemCategory_2`'),
+'SKILL_REPORT_ICON'  =>array('class'=>'skill','sort'=>'skill',     'text'=>'',                  'draw'=>'r_skillIcon',  'sort_str'=>'`SpellIconID`',    'fields'=>'`SpellIconID`, `EffectItemType1`, `EffectItemType2`, `EffectItemType3`, `EffectBaseDice1`, `EffectBaseDice2`, `EffectBaseDice3`'),
+'SKILL_REPORT_NAME'  =>array('class'=>'left', 'sort'=>'skill_name','text'=>$lang['spell_name'], 'draw'=>'r_spellSkill', 'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`, `RequiresSpellFocus`, `TotemCategory1`, `TotemCategory2`'),
 );
 
 // Spell report class
@@ -1674,25 +1674,25 @@ class SpellReportGenerator extends ReportGenerator{
  {
   $effList = array(50, 76, 104, 105, 106, 107);
   $this->doRequirest(
-  '(`EffectMiscValue_1` = ?d AND `Effect_1` IN (?a)) OR
-   (`EffectMiscValue_2` = ?d AND `Effect_2` IN (?a)) OR
-   (`EffectMiscValue_3` = ?d AND `Effect_3` IN (?a))', $entry, $effList, $entry, $effList, $entry, $effList);
+  '(`EffectMiscValue1` = ?d AND `Effect1` IN (?a)) OR
+   (`EffectMiscValue2` = ?d AND `Effect2` IN (?a)) OR
+   (`EffectMiscValue3` = ?d AND `Effect3` IN (?a))', $entry, $effList, $entry, $effList, $entry, $effList);
  }
  function summonCreature($entry)
  {
   $effList = array(28, 56, 90, 93, 134);
   $this->doRequirest(
-  '(`EffectMiscValue_1` = ?d AND `Effect_1` IN (?a)) OR
-   (`EffectMiscValue_2` = ?d AND `Effect_2` IN (?a)) OR
-   (`EffectMiscValue_3` = ?d AND `Effect_3` IN (?a))', $entry, $effList, $entry, $effList, $entry, $effList);
+  '(`EffectMiscValue1` = ?d AND `Effect1` IN (?a)) OR
+   (`EffectMiscValue2` = ?d AND `Effect2` IN (?a)) OR
+   (`EffectMiscValue3` = ?d AND `Effect3` IN (?a))', $entry, $effList, $entry, $effList, $entry, $effList);
  }
  // List of spells use item as reagent
  function useRegent($entry)
  {
-  $this->doRequirest('`Reagent_1` = ?d OR `Reagent_2`=?d OR `Reagent_3`=?d OR `Reagent_4`=?d OR `Reagent_5`=?d OR `Reagent_6`=?d OR `Reagent_7`=?d OR `Reagent_8`=?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry);
+  $this->doRequirest('`Reagent1` = ?d OR `Reagent2`=?d OR `Reagent3`=?d OR `Reagent4`=?d OR `Reagent5`=?d OR `Reagent6`=?d OR `Reagent7`=?d OR `Reagent8`=?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry);
   $create = 0;
   foreach($this->data_array as &$data)
-    if ($data['EffectItemType_1'] OR $data['EffectItemType_2'] OR $data['EffectItemType_3'])
+    if ($data['EffectItemType1'] OR $data['EffectItemType2'] OR $data['EffectItemType3'])
       $create = 1;
   if (!$create) $this->removeField('SPELL_REPORT_CREATE');
  }
@@ -1701,41 +1701,41 @@ class SpellReportGenerator extends ReportGenerator{
  {
   $eff_list = array(107, 108, 109, 112);
   $this->doRequirest(
-  '(`EffectItemType_1` = ?d AND EffectApplyAuraName_1 NOT IN (?a)) OR
-   (`EffectItemType_2` = ?d AND EffectApplyAuraName_1 NOT IN (?a)) OR
-   (`EffectItemType_3` = ?d AND EffectApplyAuraName_1 NOT IN (?a))', $entry, $eff_list, $entry, $eff_list, $entry, $eff_list);
+  '(`EffectItemType1` = ?d AND EffectApplyAuraName1 NOT IN (?a)) OR
+   (`EffectItemType2` = ?d AND EffectApplyAuraName2 NOT IN (?a)) OR
+   (`EffectItemType3` = ?d AND EffectApplyAuraName3 NOT IN (?a))', $entry, $eff_list, $entry, $eff_list, $entry, $eff_list);
  }
  // List os spells give faction reputation
  function giveReputation($entry)
  {
   $this->doRequirest(
-  '(`EffectMiscValue_1` = ?d AND `Effect_1` = 103) OR
-   (`EffectMiscValue_2` = ?d AND `Effect_2` = 103) OR
-   (`EffectMiscValue_3` = ?d AND `Effect_3` = 103)', $entry, $entry, $entry);
+  '(`EffectMiscValue1` = ?d AND `Effect1` = 103) OR
+   (`EffectMiscValue2` = ?d AND `Effect2` = 103) OR
+   (`EffectMiscValue3` = ?d AND `Effect3` = 103)', $entry, $entry, $entry);
  }
  function triggerFromSpells($entry)
  {
   $this->doRequirest(
-  '`EffectTriggerSpell_1` = ?d OR
-   `EffectTriggerSpell_2` = ?d OR
-   `EffectTriggerSpell_3` = ?d', $entry, $entry, $entry);
+  '`EffectTriggerSpell1` = ?d OR
+   `EffectTriggerSpell2` = ?d OR
+   `EffectTriggerSpell3` = ?d', $entry, $entry, $entry);
  }
  function enchantFromSpells($entry)
  {
   $effList = array(53, 54, 92);
   $this->doRequirest(
-  '(`EffectMiscValue_1` = ?d AND `Effect_1` IN (?a)) OR
-   (`EffectMiscValue_2` = ?d AND `Effect_2` IN (?a)) OR
-   (`EffectMiscValue_3` = ?d AND `Effect_3` IN (?a))', $entry, $effList, $entry, $effList, $entry, $effList);
+  '(`EffectMiscValue1` = ?d AND `Effect1` IN (?a)) OR
+   (`EffectMiscValue2` = ?d AND `Effect2` IN (?a)) OR
+   (`EffectMiscValue3` = ?d AND `Effect3` IN (?a))', $entry, $effList, $entry, $effList, $entry, $effList);
  }
  function affectedBySpells($family, $maskA, $maskB, $maskC)
  {
   $this->doRequirest(
   '`SpellFamilyName` = ?d AND
    (
-     (`EffectApplyAuraName_1` IN (107, 108) AND ( (`EffectSpellClassMaskA_1` & ?d) OR (`EffectSpellClassMaskA_2` & ?d) OR (`EffectSpellClassMaskA_3` & ?d) ) ) OR
-     (`EffectApplyAuraName_2` IN (107, 108) AND ( (`EffectSpellClassMaskB_1` & ?d) OR (`EffectSpellClassMaskB_2` & ?d) OR (`EffectSpellClassMaskB_3` & ?d) ) ) OR
-     (`EffectApplyAuraName_3` IN (107, 108) AND ( (`EffectSpellClassMaskC_1` & ?d) OR (`EffectSpellClassMaskC_2` & ?d) OR (`EffectSpellClassMaskC_3` & ?d) ) )
+     (`EffectApplyAuraName1` IN (107, 108) AND ( (`EffectSpellClassMask1_1` & ?d) OR (`EffectSpellClassMask1_2` & ?d) OR (`EffectSpellClassMask1_3` & ?d) ) ) OR
+     (`EffectApplyAuraName2` IN (107, 108) AND ( (`EffectSpellClassMask2_1` & ?d) OR (`EffectSpellClassMask2_2` & ?d) OR (`EffectSpellClassMask2_3` & ?d) ) ) OR
+     (`EffectApplyAuraName3` IN (107, 108) AND ( (`EffectSpellClassMask3_1` & ?d) OR (`EffectSpellClassMask3_2` & ?d) OR (`EffectSpellClassMask3_3` & ?d) ) )
    )', $family, $maskA, $maskB, $maskC, $maskA, $maskB, $maskC, $maskA, $maskB, $maskC);
  }
  function castByCreature($creature)

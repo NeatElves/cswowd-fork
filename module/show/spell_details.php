@@ -6,8 +6,8 @@ function showAuraInfo($spell, $effect, $aura)
   if ($aura == 0)
      return;
   echo ': '.getSpellAuraName($aura);
-  $misc = $spell['EffectMiscValue_'.$effect];
-  $miscB= $spell['EffectMiscValue2_'.$effect];
+  $misc = $spell['EffectMiscValue'.$effect];
+  $miscB= $spell['EffectMiscValueB'.$effect];
   switch ($aura)
   {
    // Misc - это школа спеллов
@@ -192,7 +192,7 @@ function showAuraInfo($spell, $effect, $aura)
 function showEffectInfo($spell, $effect, $eff_id)
 {
   global $lang;
-  $misc = $spell['EffectMiscValue_'.$effect];
+  $misc = $spell['EffectMiscValue'.$effect];
   switch ($eff_id)
   {
    // школа
@@ -306,10 +306,10 @@ function showEffectInfo($spell, $effect, $eff_id)
   if ($effect==1)
   {
     // Spell target position on map
-    if ($t = getSpellTargetPosition($spell['id']))
+    if ($t = getSpellTargetPosition($spell['Id']))
       echo '<a style="float: right;" href="?map&point='.$t['target_map'].':'.$t['target_position_x'].':'.$t['target_position_y'].':'.$t['target_position_z'].'">'.$lang['map'].'</a>';
     // Spell target
-	if ($s = getSpellScriptTarget($spell['id']))
+	if ($s = getSpellScriptTarget($spell['Id']))
     foreach ($s as $s1)
     {
       if ($s1['type']==0) echo '<br><a style="float: right;" href="?object='.$s1['targetEntry'].'">'.getGameobjectName($s1['targetEntry'],0).'</a>';
@@ -325,18 +325,18 @@ function showEffectData($spell, $effect)
   echo '<th>Effect '.($effect-1).':</th>';
   echo '<td colspan=3>';
 
-  if ($spell['Effect_'.$effect]==0)
+  if ($spell['Effect'.$effect]==0)
   {
       echo 'No Effect';
       return;
   }
   else
   {
-      $eff_id    = $spell['Effect_'.$effect];
-      $aura      = $spell['EffectApplyAuraName_'.$effect];
-      $itemId    = $spell['EffectItemType_'.$effect];
-      $triggerId = $spell['EffectTriggerSpell_'.$effect];
-      $radius    = $spell['EffectRadiusIndex_'.$effect];
+      $eff_id    = $spell['Effect'.$effect];
+      $aura      = $spell['EffectApplyAuraName'.$effect];
+      $itemId    = $spell['EffectItemType'.$effect];
+      $triggerId = $spell['EffectTriggerSpell'.$effect];
+      $radius    = $spell['EffectRadiusIndex'.$effect];
       $amount    = getBasePointDesc($spell, $effect);
       if ($aura == 107 OR $aura == 108 OR $aura == 109 OR $aura == 112)
       {
@@ -350,8 +350,8 @@ function showEffectData($spell, $effect)
       else
           showEffectInfo($spell, $effect, $eff_id);
 
-      if ($spell['EffectAmplitude_'.$effect])
-         echo '<br>Interval: '.($spell['EffectAmplitude_'.$effect]/1000).' sec';
+      if ($spell['EffectAmplitude'.$effect])
+         echo '<br>Interval: '.($spell['EffectAmplitude'.$effect]/1000).' sec';
       // Спелл
       if ($triggerId)
       {
@@ -360,9 +360,9 @@ function showEffectData($spell, $effect)
           {
              echo '<table class=no_border><tbody><tr>';
              echo '<td>';
-             show_spell($trigger['id'], $trigger['SpellIconID'], 'spellinfo');
+             show_spell($trigger['Id'], $trigger['SpellIconID'], 'spellinfo');
              echo '</td>';
-             echo '<td><a href="?spell='.$trigger['id'].'">'.$trigger['SpellName'].'</a><br>Value: '.$amount.'</td>';
+             echo '<td><a href="?spell='.$trigger['Id'].'">'.$trigger['SpellName'].'</a><br>Value: '.$amount.'</td>';
              echo '</tr></tbody></table>';
           }
           else
@@ -422,15 +422,15 @@ function createSpellDetails($spell)
 
    echo '<tr>';
    echo '<th width=13%>Level</th>';
-   echo '<td width=37%>Base '.$spell['baseLevel'].', Max '.$spell['maxLevel'].', Spell '.$spell['spellLevel'].'</td>';
+   echo '<td width=37%>Base '.$spell['BaseLevel'].', Max '.$spell['MaxLevel'].', Spell '.$spell['SpellLevel'].'</td>';
    echo '<th width=20%>Range</th>';
-   echo '<td width=30%>'.getRangeText($spell['rangeIndex']).'</td>';
+   echo '<td width=30%>'.getRangeText($spell['RangeIndex']).'</td>';
    echo '</tr>';
 
    // Время квста и школа (выводятся всегда)
    echo '<tr><th>Cast time</th><td>'.getCastTimeText($spell).'</td><th>School</th><td>'.getSpellSchool($spell['SchoolMask']).'</td></tr>';
 
-   $skillAbility = getSkillLineAbility($spell['id']);
+   $skillAbility = getSkillLineAbility($spell['Id']);
    if ($skillAbility OR $spell['Category'])
    {
     echo '<tr>';
@@ -528,8 +528,8 @@ function createSpellDetails($spell)
     echo '</tr>';
    }
    // Вывод тотм категорий и спеллфокуса
-   $totem1=$spell['TotemCategory_1'];
-   $totem2=$spell['TotemCategory_2'];
+   $totem1=$spell['TotemCategory1'];
+   $totem2=$spell['TotemCategory2'];
    $focus =$spell['RequiresSpellFocus'];
    if ($totem1 OR $totem2 OR $focus)
    {
@@ -551,7 +551,7 @@ function createSpellDetails($spell)
         echo '<td>n/a</td>';
      echo '</tr>';
    }
-   $area=$spell['AreaGroupId'];
+   $area=$spell['AreaId'];
    if ($area)
    {
      echo '<tr>';
@@ -580,8 +580,8 @@ function createSpellDetails($spell)
          echo '<td>n/a</td>';
      echo '</tr>';
    }
-   if ($spell['Reagent_1'] OR $spell['Reagent_2'] OR $spell['Reagent_3'] OR $spell['Reagent_4'] OR
-       $spell['Reagent_5'] OR $spell['Reagent_6'] OR $spell['Reagent_7'] OR $spell['Reagent_8'])
+   if ($spell['Reagent1'] OR $spell['Reagent2'] OR $spell['Reagent3'] OR $spell['Reagent4'] OR
+       $spell['Reagent5'] OR $spell['Reagent6'] OR $spell['Reagent7'] OR $spell['Reagent8'])
    {
      echo '<tr>';
      echo '<th>Reagents</th>';
