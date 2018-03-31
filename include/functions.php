@@ -520,7 +520,7 @@ function show_spell($entry, $iconId=0, $style=0)
   global $wDB;
   if (!$iconId)
       $iconId = $wDB->selectCell('-- CACHE: 1h
-	  SELECT `SpellIconID` FROM `wowd_spell` WHERE `id` = ?d', $entry);
+	  SELECT `SpellIconID` FROM `wowd_spell` WHERE `Id` = ?d', $entry);
   $icon = getSpellIcon($iconId);
   echo '<a href="?spell='.$entry.'"><img'.($style?' class='.$style:'').' src="'.$icon.'"></a>';
   return;
@@ -1312,7 +1312,7 @@ function getRecipeItem($recipe)
     // Получаем спелл которому обучает
     $spell = getSpell($recipe['spellid_2']);
     if ($spell = getSpell($recipe['spellid_2']))
-      return getItem($spell['EffectItemType_1']);
+      return getItem($spell['EffectItemType1']);
   }
   return 0;
 }
@@ -1326,14 +1326,14 @@ function getCount($count)
 function getRecipeReqString($spell)
 {
    $text = "";
-   if ($spell['Reagent_1']) $text.=getItemName($spell['Reagent_1']).getCount($spell['ReagentCount_1']);
-   if ($spell['Reagent_2']) $text.=", ".getItemName($spell['Reagent_2']).getCount($spell['ReagentCount_2']);
-   if ($spell['Reagent_3']) $text.=", ".getItemName($spell['Reagent_3']).getCount($spell['ReagentCount_3']);
-   if ($spell['Reagent_4']) $text.=", ".getItemName($spell['Reagent_4']).getCount($spell['ReagentCount_4']);
-   if ($spell['Reagent_5']) $text.=", ".getItemName($spell['Reagent_5']).getCount($spell['ReagentCount_5']);
-   if ($spell['Reagent_6']) $text.=", ".getItemName($spell['Reagent_6']).getCount($spell['ReagentCount_6']);
-   if ($spell['Reagent_7']) $text.=", ".getItemName($spell['Reagent_7']).getCount($spell['ReagentCount_7']);
-   if ($spell['Reagent_8']) $text.=", ".getItemName($spell['Reagent_8']).getCount($spell['ReagentCount_8']);
+   if ($spell['Reagent1']) $text.=getItemName($spell['Reagent1']).getCount($spell['ReagentCount1']);
+   if ($spell['Reagent2']) $text.=", ".getItemName($spell['Reagent2']).getCount($spell['ReagentCount2']);
+   if ($spell['Reagent3']) $text.=", ".getItemName($spell['Reagent3']).getCount($spell['ReagentCount3']);
+   if ($spell['Reagent4']) $text.=", ".getItemName($spell['Reagent4']).getCount($spell['ReagentCount4']);
+   if ($spell['Reagent5']) $text.=", ".getItemName($spell['Reagent5']).getCount($spell['ReagentCount5']);
+   if ($spell['Reagent6']) $text.=", ".getItemName($spell['Reagent6']).getCount($spell['ReagentCount6']);
+   if ($spell['Reagent7']) $text.=", ".getItemName($spell['Reagent7']).getCount($spell['ReagentCount7']);
+   if ($spell['Reagent8']) $text.=", ".getItemName($spell['Reagent8']).getCount($spell['ReagentCount8']);
    return $text;
 }
 

@@ -582,7 +582,7 @@ function renderItemData($item, $item_data=0)
          echo '<tr><td><a href="?spell='.$item['spellid_2'].'">'.$UseorEquip[$item['spelltrigger_2']].' '.$item['description'].'</a></td></tr>';
          if ($spell = getSpell($item['spellid_2']))
          {
-             if ($ritem = getItem($spell['EffectItemType_1']))
+             if ($ritem = getItem($spell['EffectItemType1']))
              {
                  echo '<tr><td>&nbsp;</td></tr>';
                  renderItemData($ritem);
