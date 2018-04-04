@@ -73,7 +73,7 @@ function noBorderSpellTable($spell)
  if ($notreqForm)
      echo "<tr><td class=SpellErr colspan=2>Not cast in: ".$notreqForm."</td></tr>";
 
- echo "<tr><td colspan=2 class=SpellDesc><a href=\"?spell=$spell[Id]\">".getSpellDesc($spell)."</a></td></tr>";
+ echo "<tr><td colspan=2 class=SpellDesc><a href=\"?spell=$spell[id]\">".getSpellDesc($spell)."</a></td></tr>";
  echo "</tbody></table>";
 }
 
@@ -98,7 +98,7 @@ function generateSpellBuffTable($spell)
  echo "<table class=spell><tbody>";
  $name = $spell['SpellName'];
  echo "<tr><td class=Name>".$name."</td></tr>";
- echo "<tr><td colSpan=2 class=SpellDesc><a href=\"?spell=$spell[Id]\">".getSpellBuff($spell)."</a></td></tr>";
+ echo "<tr><td colSpan=2 class=SpellDesc><a href=\"?spell=$spell[id]\">".getSpellBuff($spell)."</a></td></tr>";
  echo "</tbody></table>";
 
  echo "</td><td class=br></td></tr>";

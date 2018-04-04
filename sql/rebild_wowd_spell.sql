@@ -1,4 +1,3 @@
-ALTER TABLE `wowd_spell` CHANGE `id` `Id` INT(10) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `wowd_spell` CHANGE `unk_320_1` `AttributesEx7` INT(10) UNSIGNED NULL DEFAULT '0';
 ALTER TABLE `wowd_spell` CHANGE `casterAuraSpell` `CasterAuraSpell` INT(10) UNSIGNED NULL DEFAULT '0',
 CHANGE `targetAuraSpell` `TargetAuraSpell` INT(10) UNSIGNED NULL DEFAULT '0',

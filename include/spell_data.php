@@ -691,7 +691,7 @@ function getSpellName($spell, $as_ref=1)
   {
     $name = $spell['SpellName'];
     if ($as_ref)
-        $name = "<a href=\"?spell=$spell[Id]\">".$name."</a>";
+        $name = "<a href=\"?spell=$spell[id]\">".$name."</a>";
     if ($spell['Rank']!="")
         $name.="<br><div class=srank>".$spell['Rank']."</div>";
     return $name;
@@ -907,7 +907,7 @@ function spellReplace($spell, $text)
 		$pos += strlen($result[0]);
 		$op = $result[3];
 		$oparg = $result[4];
-		$lookup = $result[5]? $result[5]:$spell['Id'];
+		$lookup = $result[5]? $result[5]:$spell['id'];
 		$var = $result[6] ? $result[6]:$result[7];
 		if (!$var)
 			continue;
@@ -928,7 +928,7 @@ function spellReplace($spell, $text)
             $spellData = @$cacheSpellData[$lookup];
             if ($spellData == 0)
             {
-                if ($lookup == $spell['Id']) $cacheSpellData[$lookup] = getSpellData($spell);
+                if ($lookup == $spell['id']) $cacheSpellData[$lookup] = getSpellData($spell);
                 else                         $cacheSpellData[$lookup] = getSpellData(getSpell($lookup));
                 $spellData = @$cacheSpellData[$lookup];
             }

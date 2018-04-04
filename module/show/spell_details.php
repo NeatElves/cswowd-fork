@@ -306,10 +306,10 @@ function showEffectInfo($spell, $effect, $eff_id)
   if ($effect==1)
   {
     // Spell target position on map
-    if ($t = getSpellTargetPosition($spell['Id']))
+    if ($t = getSpellTargetPosition($spell['id']))
       echo '<a style="float: right;" href="?map&point='.$t['target_map'].':'.$t['target_position_x'].':'.$t['target_position_y'].':'.$t['target_position_z'].'">'.$lang['map'].'</a>';
     // Spell target
-	if ($s = getSpellScriptTarget($spell['Id']))
+	if ($s = getSpellScriptTarget($spell['id']))
     foreach ($s as $s1)
     {
       if ($s1['type']==0) echo '<br><a style="float: right;" href="?object='.$s1['targetEntry'].'">'.getGameobjectName($s1['targetEntry'],0).'</a>';
@@ -430,7 +430,7 @@ function createSpellDetails($spell)
    // Время квста и школа (выводятся всегда)
    echo '<tr><th>Cast time</th><td>'.getCastTimeText($spell).'</td><th>School</th><td>'.getSpellSchool($spell['SchoolMask']).'</td></tr>';
 
-   $skillAbility = getSkillLineAbility($spell['Id']);
+   $skillAbility = getSkillLineAbility($spell['id']);
    if ($skillAbility OR $spell['Category'])
    {
     echo '<tr>';
