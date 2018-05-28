@@ -360,9 +360,9 @@ function showEffectData($spell, $effect)
           {
              echo '<table class=no_border><tbody><tr>';
              echo '<td>';
-             show_spell($trigger['Id'], $trigger['SpellIconID'], 'spellinfo');
+             show_spell($trigger['id'], $trigger['SpellIconID'], 'spellinfo');
              echo '</td>';
-             echo '<td><a href="?spell='.$trigger['Id'].'">'.$trigger['SpellName'].'</a><br>Value: '.$amount.'</td>';
+             echo '<td><a href="?spell='.$trigger['id'].'">'.$trigger['SpellName'].'</a><br>Value: '.$amount.'</td>';
              echo '</tr></tbody></table>';
           }
           else

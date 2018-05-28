@@ -708,12 +708,12 @@ function getCreatureMovementType($i)
 {
   global $lang;
   if ($i == 2)
-   $data = $lang['movementtype2'];
+    return $lang['movementtype2'];
   if ($i == 1)
-   $data = $lang['movementtype1'];
+    return $lang['movementtype1'];
   if ($i == 0)
-   $data = $lang['movementtype0'];
-  return $data;
+    return $lang['movementtype0'];
+  return "Unknown movement";
 }
 
 //********************************************************************************
