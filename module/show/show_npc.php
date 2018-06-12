@@ -26,7 +26,7 @@ $mark  = @$_REQUEST['mark'];
 $cr=getCreature($entry);
 if (!$cr)
 {
-  RenderError("$lang[creature_not_found]");
+  RenderError($lang['creature_not_found']);
 }
 else
 {
@@ -35,7 +35,7 @@ else
  if ($ajaxmode==0)
 {
  if ($lang['www_creature'])
-	echo "<a href=\"".sprintf($lang['www_creature'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_creature'], $entry)."</a><br>";
+  echo "<a href=\"".sprintf($lang['www_creature'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_creature'], $entry)."</a><br>";
   echo "<table cellspacing=0 cellpadding=0 width=500>";
   echo "<tbody>";
   echo "<tr>";
@@ -45,7 +45,7 @@ else
 
   if ($cr['MinLootGold']) echo "<b>$lang[Rew_money]</b>&nbsp;&nbsp;".money($cr['MinLootGold']);
   if (($cr['MaxLootGold']) && ($cr['MaxLootGold']>$cr['MinLootGold'])) echo "&nbsp;-&nbsp;".money($cr['MaxLootGold']);
-  if ($cr['MinLootGold']) echo "<br>";
+  if ($cr['MinLootGold'] OR $cr['MaxLootGold']) echo "<br>";
 
   $heroic=getHeroicList();
   $heroic1=getHeroicList1();
