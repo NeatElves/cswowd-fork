@@ -252,8 +252,8 @@ if ($quest['SrcItemId'] || $quest['SrcSpell'])
   if ($spell) $spellName = getSpellName($spell);
   else        $spellName = "Spell $quest[SrcSpell]";
   if ($spell) {
-  echo "<tr><td class=reward>&nbsp;";show_spell($spell['Id'], $spell['SpellIconID']);
-  echo "<a href=\"?spell=$spell[Id]\">$spell[SpellName]</a></td></tr>";}
+  echo "<tr><td class=reward>&nbsp;";show_spell($spell['id'], $spell['SpellIconID']);
+  echo "<a href=\"?spell=$spell[id]\">$spell[SpellName]</a></td></tr>";}
  }
 }
 echo "<tr><td class=head>$lang[quest_rewards]</td></tr>";
