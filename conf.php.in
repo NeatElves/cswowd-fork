@@ -9,7 +9,7 @@ $config =array (
 'hostname' => '127.0.0.1',    // mysql hostname
 'username' => 'root',         // mysql username
 'password' => '',             // mysql password
-'dbName' => 'mangos',         // mysql data base name (mangos db)
+'dbName' => 'wotlkmangos',    // mysql data base name (mangos db)
 
 // WowD Database
 'whostname' => '127.0.0.1',   // mysql hostname
@@ -21,13 +21,13 @@ $config =array (
 'rhostname' => '127.0.0.1',   // mysql hostname
 'rusername' => 'root',        // mysql username
 'rpassword' => '',            // mysql password
-'rdbName' =>'realmd',         // mysql data base name (realm db)
+'rdbName' =>'wotlkrealmd',    // mysql data base name (realm db)
 
 // Character database
 'chostname' => '127.0.0.1',   // mysql hostname
 'cusername' => 'root',        // mysql username
 'cpassword' => '',            // mysql password
-'cdbName' =>'characters',     // mysql data base name (characters db)
+'cdbName' =>'wotlkcharacters',// mysql data base name (characters db)
 
 // Server on\off(online status)
 'host' => '127.0.0.1',         // host
