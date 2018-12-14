@@ -47,13 +47,11 @@ CREATE INDEX `idx_ref`  ON `reference_loot_template`    (`mincountOrRef`);
 # ALTER TABLE `creature_template` DROP INDEX `idx_loot`;
 # ALTER TABLE `creature_template` DROP INDEX `idx_skinloot`;
 # ALTER TABLE `creature_template` DROP INDEX `idx_pickpocketloot`;
-# ALTER TABLE `creature_template` DROP INDEX `idx_factionA`;
-# ALTER TABLE `creature_template` DROP INDEX `idx_factionH`;
+# ALTER TABLE `creature_template` DROP INDEX `idx_faction`;
 CREATE INDEX `idx_loot`           ON `creature_template` (`LootId`);
 CREATE INDEX `idx_skinloot`       ON `creature_template` (`SkinningLootId`);
 CREATE INDEX `idx_pickpocketloot` ON `creature_template` (`PickpocketLootId`);
-CREATE INDEX `idx_factionA`       ON `creature_template` (`FactionAlliance`);
-CREATE INDEX `idx_factionH`       ON `creature_template` (`FactionHorde`);
+CREATE INDEX `idx_faction`       ON `creature_template` (`Faction`);
 # Creature spell indexes
 # ALTER TABLE `creature_template_spells` DROP INDEX `idx_spell1`;
 # ALTER TABLE `creature_template_spells` DROP INDEX `idx_spell2`;

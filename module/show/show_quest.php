@@ -398,7 +398,7 @@ if ($rows = $dDB->select("SELECT *
 foreach ($rows as $creature)
 {
   localiseCreature($creature);
-  $loyality = getLoyality($creature['FactionAlliance']);
+  $loyality = getLoyality($creature['Faction']);
   echo "<tr><td><a style='float: right;' href=\"?map&npc=$creature[Entry]\">$lang[map]</a>";
   echo "<a href=\"?npc=$creature[Entry]\">$creature[Name]</a> ($loyality)";
   if ($creature['SubName'] != "")
@@ -442,7 +442,7 @@ if ($rows = $dDB->select("SELECT *
 foreach ($rows as $creature)
 {
   localiseCreature($creature);
-  $loyality = getLoyality($creature['FactionAlliance']);
+  $loyality = getLoyality($creature['Faction']);
   echo "<tr><td><a style='float: right;' href=\"?map&npc=$creature[Entry]\">$lang[map]</a>";
   echo "<a href=\"?npc=$creature[Entry]\">$creature[Name]</a> ($loyality)";
   if ($creature['SubName'] != "")

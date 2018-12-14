@@ -912,11 +912,11 @@ function r_npcRName($data)
   }
   $name    = @$data['name_loc'] ? $data['name_loc'] : $data['Name'];
   $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['SubName'];
-  echo '<a href="?npc='.$data['Entry'].'">'.($name ? $name : 'no name').'</a> <font size=-3>('.getLoyality($data['FactionAlliance']).')</font>';
+  echo '<a href="?npc='.$data['Entry'].'">'.($name ? $name : 'no name').'</a> <font size=-3>('.getLoyality($data['Faction']).')</font>';
   if ($subname)
     echo '<br><div class=subname><a href="?s=n&subname='.$subname.'">&lt;'.$subname.'&gt;</a></div>';
 }
-function r_npcReact($data)  {echo getLoyality($data['FactionAlliance']);}
+function r_npcReact($data)  {echo getLoyality($data['Faction']);}
 function r_npcMap($data)
 {
   global $lang;
@@ -1019,8 +1019,8 @@ $npc_report = array(
 'NPC_REPORT_LEVEL'   =>array('class'=>'small','sort'=>'level','text'=>$lang['creature_level'], 'draw'=>'r_npcLvl',  'sort_str'=>'`MaxLevel` DESC, `Name`', 'fields'=>'`MaxLevel`, `Rank`'),
 'NPC_REPORT_RANK'    =>array('class'=>'small','sort'=>'rank', 'text'=>$lang['creature_level'], 'draw'=>'r_npcLvl',  'sort_str'=>'`Rank` DESC, `MaxLevel` DESC, `Name`', 'fields'=>'`MaxLevel`, `Rank`'),
 'NPC_REPORT_NAME'    =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcName', 'sort_str'=>'`Name`',                  'fields'=>'`Name`, `SubName`'),
-'NPC_REPORT_RNAME'   =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcRName','sort_str'=>'`Name`',                  'fields'=>'`Name`, `SubName`, `FactionAlliance`'),
-'NPC_REPORT_REACTION'=>array('class'=>'small','sort'=>'',     'text'=>$lang['creature_react'], 'draw'=>'r_npcReact','sort_str'=>'',                        'fields'=>'`FactionAlliance`'),
+'NPC_REPORT_RNAME'   =>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['creature_name'],  'draw'=>'r_npcRName','sort_str'=>'`Name`',                  'fields'=>'`Name`, `SubName`, `Faction`'),
+'NPC_REPORT_REACTION'=>array('class'=>'small','sort'=>'',     'text'=>$lang['creature_react'], 'draw'=>'r_npcReact','sort_str'=>'',                        'fields'=>'`Faction`'),
 'NPC_REPORT_ROLE'    =>array('class'=>'',     'sort'=>'role', 'text'=>$lang['creature_role'],  'draw'=>'r_npcRole', 'sort_str'=>'`NpcFlags` DESC',          'fields'=>'`NpcFlags`'),
 'NPC_REPORT_MAP'     =>array('class'=>'small','sort'=>'',     'text'=>$lang['map'],            'draw'=>'r_npcMap',  'sort_str'=>'',                        'fields'=>''),
 // vendor
@@ -1095,7 +1095,7 @@ class CreatureReportGenerator extends ReportGenerator{
  {
   global $wDB;
   if ($templatesId =& getFactionTemplates($entry))
-    $this->doRequirest('`FactionAlliance` in (?a) OR `FactionHorde` in (?a)', $templatesId, $templatesId);
+    $this->doRequirest('`Faction` in (?a)', $templatesId);
  }
  function soldItem($entry, $price)
  {
@@ -1309,7 +1309,7 @@ function r_questRelation($data)
   global $dDB;
   // Search creature quest giver
   if ($src = $dDB->select(
-   'SELECT `Entry`, `Name`, `SubName`, `FactionAlliance`
+   'SELECT `Entry`, `Name`, `SubName`, `Faction`
     FROM  `creature_template` left join `creature_questrelation` ON `creature_template`.`Entry` = `creature_questrelation`.`id`
     WHERE `creature_questrelation`.`quest` = ?d', $data['entry']))
   {
@@ -1338,7 +1338,7 @@ function r_questInvolvedrelation($data)
   global $dDB;
   // Search creature quest giver
   if ($src = $dDB->select(
-   'SELECT `Entry`, `Name`, `SubName`, `FactionAlliance`
+   'SELECT `Entry`, `Name`, `SubName`, `Faction`
     FROM  `creature_template` left join `creature_involvedrelation` ON `creature_template`.`Entry` = `creature_involvedrelation`.`id`
     WHERE `creature_involvedrelation`.`quest` = ?d', $data['entry']))
   {

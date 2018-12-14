@@ -81,7 +81,7 @@ else
    echo "<th>Armor</th><td>".$cr['Armor']."</td></tr>";
    echo "<tr><th>Health</th><td>".$cr['MinLevelHealth']." - ".$cr['MaxLevelHealth']."</td>";
    echo "<th>Mana</th><td>".$cr['MinLevelMana']." - ".$cr['MaxLevelMana']."</td></tr>";
-   echo "<tr><th>FactionAlliance</th><td>".$cr['FactionAlliance']."</td><th>FactionHorde</th><td>".$cr['FactionHorde']."</td></tr>";
+   echo "<th>Faction</th><td>".$cr['Faction']."</td></tr>";
    echo "<tr><th>NpcFlags</th><td>".$cr['NpcFlags']."</td><th>GossipMenuId</th><td>".$cr['GossipMenuId']."</td></tr>";
    echo "<tr><th>UnitFlags</th><td>".$cr['UnitFlags']."</td><th>DynamicFlags</th><td>".$cr['DynamicFlags']."</td></tr>";
    echo "<tr><th>ExtraFlags</th><td>".$cr['ExtraFlags']."</td><th>RegenerateStats</th><td>".$cr['RegenerateStats']."</td></tr>";

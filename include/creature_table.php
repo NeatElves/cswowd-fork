@@ -74,7 +74,7 @@ define('UNIT_NPC_FLAG_UNK31', 0x80000000);
 function noBorderCreatureTable($npc)
 {
  global $game_text, $lang;
- $loyality= getLoyality($npc['FactionAlliance']);
+ $loyality= getLoyality($npc['Faction']);
  $type = $npc['CreatureType'];
  $rank =  $npc['Rank'];
  $family =$npc['Family'];
@@ -121,7 +121,7 @@ function noBorderCreatureTable($npc)
  echo "<tr><td>".$game_text['npc_ap']."</td><td align=right>$npc[MeleeAttackPower]</td></tr>";
  $attackTime = $npc['MeleeBaseAttackTime']/1000;
  echo "<tr><td>".$game_text['npc_attack']."</td><td align=right>$attackTime&nbsp;$lang[sec]</td></tr>";
- echo "<tr><td>".$game_text['faction']."</td><td align=right>".getFactionTemplateName($npc['FactionAlliance'])."</td></tr>";
+ echo "<tr><td>".$game_text['faction']."</td><td align=right>".getFactionTemplateName($npc['Faction'])."</td></tr>";
  if ($npc['ModelId1'])
   echo "<tr><td>".$game_text['display1']."</td><td align=right>$npc[ModelId1]</td></tr>";
  if ($npc['ModelId2'])
