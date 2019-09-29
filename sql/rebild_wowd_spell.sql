@@ -106,6 +106,6 @@ CHANGE `AffectedTargetLevel` `MaxAffectedTargets` INT(10) UNSIGNED NULL DEFAULT 
 CHANGE `DmgMultiplier_1` `DmgMultiplier1` FLOAT NULL DEFAULT '0',
 CHANGE `DmgMultiplier_2` `DmgMultiplier2` FLOAT NULL DEFAULT '0',
 CHANGE `DmgMultiplier_3` `DmgMultiplier3` FLOAT NULL DEFAULT '0';
-ALTER TABLE `wowd_spell` CHANGE `SpellFamilyFlags_1` `SpellFamilyFlags` INT(10) UNSIGNED NULL DEFAULT '0',
+ALTER TABLE `wowd_spell` CHANGE `SpellFamilyFlags_1` `SpellFamilyFlags` BIGINT(20) UNSIGNED NULL DEFAULT '0',
 CHANGE `SpellFamilyFlags_3` `SpellFamilyFlags2` INT(10) UNSIGNED NULL DEFAULT '0';
 ALTER TABLE `wowd_spell` CHANGE `RangeIndex` `RangeIndex` INT(10) UNSIGNED NULL DEFAULT '1';
