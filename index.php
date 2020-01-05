@@ -25,5 +25,5 @@ if (file_exists($skinfile)) include($skinfile);
 else include('skin/default/skin.php');
 ?>
 <br><hr width=90%>
-<center><font size=-1>C.S. WoWD 2007-2019 (fork)</font></center>
+<center><font size=-1>C.S. WoWD 2007-2020 (fork)</font></center>
 </body></html>
