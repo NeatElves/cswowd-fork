@@ -407,7 +407,7 @@ function createSpellDetails($spell)
    global $lang;
    echo '<table class=details width=600><tbody>';
    echo '<tr><td colspan=4 class=head>'.$lang['detail_info'].'</td></tr>';
-   echo '<tr><th>Name</th><td colspan=2>'.$spell['SpellName'].'</td><td align=right>'.$spell['Rank'].'</td></tr>';
+   echo '<tr><th>Name</th><td colspan=2>'.$spell['SpellName'].'</td><td align=right>'.$spell['Rank1'].'</td></tr>';
 
    if ($spell['Description'])
       echo '<tr><th width=60>Info:</th><td colspan=3>'.getSpellDesc($spell).'</td></tr>';

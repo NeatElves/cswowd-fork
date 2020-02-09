@@ -1577,8 +1577,8 @@ function r_spellIcon($data)  {show_spell($data['id'], $data['SpellIconID']);}
 function r_spellName($data)
 {
   echo '<a href="?spell='.$data['id'].'">'.$data['SpellName'].'</a>';
-  if ($data['Rank'])
-    echo '<div class=srank>'.$data['Rank'].'</div>';
+  if ($data['Rank1'])
+    echo '<div class=srank>'.$data['Rank1'].'</div>';
 }
 function r_spellRecipe($data)
 {
@@ -1645,8 +1645,8 @@ $reagents= '`Reagent1`, `Reagent2`, `Reagent3`, `Reagent4`, `Reagent5`, `Reagent
 $spell_report = array(
 'SPELL_REPORT_LEVEL' =>array('class'=>'small','sort'=>'level', 'text'=>$lang['spell_level'],  'draw'=>'r_spellLevel',  'sort_str'=>'`spellLevel`',     'fields'=>'`spellLevel`'),
 'SPELL_REPORT_ICON'  =>array('class'=>'s_ico','sort'=>'icon',  'text'=>'',                    'draw'=>'r_spellIcon',   'sort_str'=>'`SpellIconID`',    'fields'=>'`SpellIconID`'),
-'SPELL_REPORT_NAME'  =>array('class'=>'left', 'sort'=>'name',  'text'=>$lang['spell_name'],   'draw'=>'r_spellName',   'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`'),
-'SPELL_REPORT_RECIPE'=>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['spell_name'],    'draw'=>'r_spellRecipe', 'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`, `RequiresSpellFocus`, `TotemCategory1`, `TotemCategory2`'),
+'SPELL_REPORT_NAME'  =>array('class'=>'left', 'sort'=>'name',  'text'=>$lang['spell_name'],   'draw'=>'r_spellName',   'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank1`'),
+'SPELL_REPORT_RECIPE'=>array('class'=>'left', 'sort'=>'name', 'text'=>$lang['spell_name'],    'draw'=>'r_spellRecipe', 'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank1`, `RequiresSpellFocus`, `TotemCategory1`, `TotemCategory2`'),
 'SPELL_REPORT_SCHOOL'=>array('class'=>'',     'sort'=>'school','text'=>$lang['spell_school'], 'draw'=>'r_spellSchool', 'sort_str'=>'`SchoolMask`',     'fields'=>'`SchoolMask`'),
 'SPELL_REPORT_REAGENTS'=>array('class'=>'reag','sort'=>'',     'text'=>$lang['spell_reagent'],'draw'=>'r_spellReagents','sort_str'=>'',                'fields'=>&$reagents),
 'SPELL_REPORT_CREATE'=>array('class'=>'skill','sort'=>'',      'text'=>$lang['spell_create'], 'draw'=>'r_spellCreate', 'sort_str'=>'',                 'fields'=>'`EffectItemType1`, `EffectItemType2`, `EffectItemType3`, `EffectBaseDice1`, `EffectBaseDice2`, `EffectBaseDice3`'),
@@ -1654,7 +1654,7 @@ $spell_report = array(
 // Skill
 'SKILL_REPORT_LEVEL' =>array('class'=>'small','sort'=>'skill_lvl', 'text'=>$lang['spell_level'],'draw'=>'r_skillLevel', 'sort_str'=>'`min_value`, `spellLevel`, `SpellName`, `id`',  'fields'=>'`min_value`'),
 'SKILL_REPORT_ICON'  =>array('class'=>'skill','sort'=>'skill',     'text'=>'',                  'draw'=>'r_skillIcon',  'sort_str'=>'`SpellIconID`',    'fields'=>'`SpellIconID`, `EffectItemType1`, `EffectItemType2`, `EffectItemType3`, `EffectBaseDice1`, `EffectBaseDice2`, `EffectBaseDice3`'),
-'SKILL_REPORT_NAME'  =>array('class'=>'left', 'sort'=>'skill_name','text'=>$lang['spell_name'], 'draw'=>'r_spellSkill', 'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank`, `RequiresSpellFocus`, `TotemCategory1`, `TotemCategory2`'),
+'SKILL_REPORT_NAME'  =>array('class'=>'left', 'sort'=>'skill_name','text'=>$lang['spell_name'], 'draw'=>'r_spellSkill', 'sort_str'=>'`SpellName`, `id`','fields'=>'`SpellName`, `Rank1`, `RequiresSpellFocus`, `TotemCategory1`, `TotemCategory2`'),
 );
 
 // Spell report class

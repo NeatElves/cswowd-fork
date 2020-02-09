@@ -17,7 +17,7 @@ function noBorderTalentTable($talentTab, $rank)
 
   echo "<table class=spell><tbody>";
   $name = $spell['SpellName'];
-//  if ($spell['Rank']) $name .=" ($spell[Rank])";
+//  if ($spell['Rank1']) $name .=" ($spell[Rank1])";
   echo "<tr><td class=Name>".$name."</td></tr>";
   echo "<tr><td>".$game_text['talent_rank']." $rank / $maxRank</td></tr>";
   echo "<tr><td class=Talent>".getSpellDesc($spell)."</td></tr>";

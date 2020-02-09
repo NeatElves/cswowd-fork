@@ -152,13 +152,13 @@ if ($debug == "skill_line")
 
   if ($n)
       echo "<tr><td colspan=12 class=head>".$skillLine['Name']."(".$skillLine['Category'].")</td></tr>";
-   $spell = getSpell($skill['spellId'],"`id`, `SpellIconID`, `SpellName`, `Rank`");
+   $spell = getSpell($skill['spellId'],"`id`, `SpellIconID`, `SpellName`, `Rank1`");
    if ($spell==0)
      continue;
    echo "<tr>";
 //   echo "<td width=1px>";show_spell($spell['id'], $spell['SpellIconID'], "spell");echo "</td>";
    echo "<td>($skill[spellId])<a href=\"?q=s&entry=$spell[id]\">$spell[SpellName]</a>";
-   if ($spell['Rank'] != "") echo "<div class=srank>($spell[Rank])</div>";
+   if ($spell['Rank1'] != "") echo "<div class=srank>($spell[Rank1])</div>";
    echo "</td>";
    echo "<td>";echo getAllowableRace($skill['RaceMask']);echo "</td>";
    echo "<td>";echo getAllowableClass($skill['ClassMask']);echo "</td>";
@@ -167,9 +167,9 @@ if ($debug == "skill_line")
    echo "<td>".$skill['req_skill_value']."</td>";
    if ($skill['forward_spellid'])
    {
- 	  $spell = getSpell($skill['forward_spellid'],"`id`, `SpellIconID`, `SpellName`, `Rank`");
+      $spell = getSpell($skill['forward_spellid'],"`id`, `SpellIconID`, `SpellName`, `Rank1`");
       echo "<td><a href=\"?q=s&entry=$spell[id]\">$spell[SpellName]</a>";
-      if ($spell['Rank'] != "") echo "<div class=srank>($spell[Rank])</div>";
+      if ($spell['Rank1'] != "") echo "<div class=srank>($spell[Rank1])</div>";
       echo "</td>";
    }
    else
@@ -245,7 +245,7 @@ if ($debug == "chain")
    `wowd_skill_line_ability`.`id` AS `id`,
    `wowd_spell`.`id` AS `SpellId`,
    `wowd_spell`.`SpellName` AS `SpellName`,
-   `wowd_spell`.`Rank` AS `Rank`,
+   `wowd_spell`.`Rank1` AS `Rank1`,
    `wowd_skill_line_ability`.`forward_spellid` AS `forward_spellid`,
    `wowd_spell`.`SpellIconID` AS `SpellIconID`,
    `wowd_spell`.`baseLevel` AS `baseLevel`,
@@ -259,9 +259,9 @@ if ($debug == "chain")
     on `wowd_skill_line_ability`.`spellId` = `wowd_spell`.`id`
    where
     `baseLevel` > 0 AND
-    `Rank` LIKE '%Rank%' AND
+    `Rank1` LIKE '%Rank%' AND
     (`runeCostID` = '0' OR `ManaCostPercentage` = '0' OR `manaCost` = '0')
-   ORDER BY `skillId`, `SpellName`, `baseLevel`, `Rank`"
+   ORDER BY `skillId`, `SpellName`, `baseLevel`, `Rank1`"
    );
   $currentSkill = -1;
   $currentSpell = -1;
@@ -313,7 +313,7 @@ if ($debug == "summon")
      echo "<td>";
 
      $rows = $wDB->select(
-     "SELECT `id`, `SpellIconID`, `SpellName`, `Rank` FROM `wowd_spell`
+     "SELECT `id`, `SpellIconID`, `SpellName`, `Rank1` FROM `wowd_spell`
       WHERE
       ((`Effect_1` = '28' AND `EffectMiscValue2_1` = ".$s['id']." ) OR
        (`Effect_2` = '28' AND `EffectMiscValue2_2` = ".$s['id']." ) OR

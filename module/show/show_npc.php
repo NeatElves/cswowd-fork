@@ -64,6 +64,7 @@ else
   if ($hentry) 
   echo "<a href=\"?map&npc=$hentry\">$lang[show_map]&nbsp;(".getCreatureCount($hentry).")</a><br>";
   else 
+  if ($entry)
   echo "<a href=\"?map&npc=$entry\">$lang[show_map]&nbsp;(".getCreatureCount($entry).")</a><br>";
 
   if ($config['show_npc_detalis'])

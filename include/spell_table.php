@@ -5,8 +5,8 @@ function noBorderSpellTable($spell)
 {
  echo "<table class=spell><tbody>";
  $name = $spell['SpellName'];
- if ($spell['Rank'])
-     echo "<tr><td class=Name>".$name."</td><td class=Rank align=right>".$spell['Rank']."</td></tr>";
+ if ($spell['Rank1'])
+     echo "<tr><td class=Name>".$name."</td><td class=Rank align=right>".$spell['Rank1']."</td></tr>";
  else
      echo "<tr><td class=Name colspan=2>".$name."</td></tr>";
  $cost = getSpellCostText($spell);

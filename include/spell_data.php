@@ -692,8 +692,8 @@ function getSpellName($spell, $as_ref=1)
     $name = $spell['SpellName'];
     if ($as_ref)
         $name = "<a href=\"?spell=$spell[id]\">".$name."</a>";
-    if ($spell['Rank']!="")
-        $name.="<br><div class=srank>".$spell['Rank']."</div>";
+    if ($spell['Rank1']!="")
+        $name.="<br><div class=srank>".$spell['Rank1']."</div>";
     return $name;
   }
   return "No spell";

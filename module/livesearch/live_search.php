@@ -106,12 +106,12 @@ if ($type == 'g' OR $type == 'all')
 // Spell search
 if ($type == 's' OR $type == 'all')
 {
- if ($spells = $wDB->select('SELECT `id`, `SpellName`, `Rank`, `SpellIconID` FROM `wowd_spell` WHERE `SpellName` like ? LIMIT 0, ?d', '%'.$name.'%', $limit))
+ if ($spells = $wDB->select('SELECT `id`, `SpellName`, `Rank1`, `SpellIconID` FROM `wowd_spell` WHERE `SpellName` like ? LIMIT 0, ?d', '%'.$name.'%', $limit))
  foreach ($spells as $spell)
  {
     $n = $spell['SpellName'];
-    if ($spell['Rank'])
-      $n.=' ('.$spell['Rank'].')';
+    if ($spell['Rank1'])
+      $n.=' ('.$spell['Rank1'].')';
     $result['s'][]=array('ico'=>getSpellIcon($spell['SpellIconID'], 0), 'txt'=>$n, 'link'=>'?spell='.$spell['id'], 'type'=>$ls_type_name['s']);
  }
 }
