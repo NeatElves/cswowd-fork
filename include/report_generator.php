@@ -1085,7 +1085,7 @@ class CreatureReportGenerator extends ReportGenerator{
  function castSpell($entry)
  {
     global $dDB;
-    $rows_1 = $dDB->selectCol('SELECT `entry` FROM `creature_template_spells` WHERE `spell1` = ?d OR `spell2` = ?d OR `spell3` = ?d OR `spell4` = ?d OR `spell5` = ?d OR `spell6` = ?d OR `spell7` = ?d OR `spell8` = ?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry);
+    $rows_1 = $dDB->selectCol('SELECT `entry` FROM `creature_template_spells` WHERE `spell1` = ?d OR `spell2` = ?d OR `spell3` = ?d OR `spell4` = ?d OR `spell5` = ?d OR `spell6` = ?d OR `spell7` = ?d OR `spell8` = ?d OR `spell9` = ?d OR `spell10` = ?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry);
     $rows_2 = $dDB->selectCol('SELECT `creature_id` FROM `creature_ai_scripts` WHERE (`action1_type` = 11 AND `action1_param1`=?d) OR (`action2_type` = 11 AND `action2_param1`=?d) OR (`action3_type` = 11 AND `action3_param1`=?d)', $entry, $entry, $entry);
     $casters = array_unique(array_merge($rows_1, $rows_2));
     if (count($casters))

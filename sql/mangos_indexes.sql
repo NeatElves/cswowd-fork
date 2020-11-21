@@ -61,6 +61,8 @@ CREATE INDEX `idx_faction`       ON `creature_template` (`Faction`);
 # ALTER TABLE `creature_template_spells` DROP INDEX `idx_spell6`;
 # ALTER TABLE `creature_template_spells` DROP INDEX `idx_spell7`;
 # ALTER TABLE `creature_template_spells` DROP INDEX `idx_spell8`;
+# ALTER TABLE `creature_template_spells` DROP INDEX `idx_spell9`;
+# ALTER TABLE `creature_template_spells` DROP INDEX `idx_spell10`;
 CREATE INDEX `idx_spell1`        ON `creature_template_spells` (`spell1`);
 CREATE INDEX `idx_spell2`        ON `creature_template_spells` (`spell2`);
 CREATE INDEX `idx_spell3`        ON `creature_template_spells` (`spell3`);
@@ -69,6 +71,8 @@ CREATE INDEX `idx_spell5`        ON `creature_template_spells` (`spell5`);
 CREATE INDEX `idx_spell6`        ON `creature_template_spells` (`spell6`);
 CREATE INDEX `idx_spell7`        ON `creature_template_spells` (`spell7`);
 CREATE INDEX `idx_spell8`        ON `creature_template_spells` (`spell8`);
+CREATE INDEX `idx_spell9`        ON `creature_template_spells` (`spell9`);
+CREATE INDEX `idx_spell10`       ON `creature_template_spells` (`spell10`);
 # Trainer
 # ALTER TABLE `npc_trainer` DROP INDEX `idx_spell`;
 CREATE INDEX `idx_spell`          ON `npc_trainer`       (`spell`);
