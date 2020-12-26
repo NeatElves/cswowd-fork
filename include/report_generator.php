@@ -1744,7 +1744,7 @@ class SpellReportGenerator extends ReportGenerator{
   $spell_list = array();
 
   // By creature fields
-  for ($i=1;$i<9;$i++)
+  for ($i=1;$i<11;$i++)
     $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `spell'.$i.'` FROM `creature_template_spells` WHERE `entry` = ?d', $creature['Entry']));
 
   // By event AI table
