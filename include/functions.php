@@ -707,6 +707,8 @@ function getCreaturePoolTemplate($creature_id)
 function getCreatureMovementType($i)
 {
   global $lang;
+  if ($i == 3)
+    return $lang['movementtype3'];
   if ($i == 2)
     return $lang['movementtype2'];
   if ($i == 1)
