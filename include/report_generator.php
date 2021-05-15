@@ -373,121 +373,102 @@ function r_lootRequire($data)
   foreach ($lootcondition as $type)
   {
   switch ($type['type']){
-   case  1: // CONDITION_AURA - spell_id, effindex
+   case  1: // CONDITION_AURA
      $spell = getSpell($type['value1'], '`id`, `SpellIconID`');
-     echo $lang['condition1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
+     if ($type['flags'] == 0) echo $lang['condition1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
+     if ($type['flags'] == 1) echo $lang['condition1_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
+     if ($type['flags'] == 2) echo $lang['condition1_2']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
      break;
-   case  2: // CONDITION_ITEM - item_id, count
+   case  2: // CONDITION_ITEM
      $item = getItem($type['value1'], '`entry`, `displayid`');
-     echo $lang['condition2'].text_show_item($item['entry'], $item['displayid'], 'quest');
+     if ($type['flags'] == 0) echo $lang['condition2'].text_show_item($item['entry'], $item['displayid'], 'quest');
+     if ($type['flags'] == 1) echo $lang['condition2_1'].text_show_item($item['entry'], $item['displayid'], 'quest');
      if ($type['value2'] > 1) echo 'x'.$type['value2'];
      break;
-   case  3: // CONDITION_ITEM_EQUIPPED -  item_id, 0
+   case  3: // CONDITION_ITEM_EQUIPPED
      $item = getItem($type['value1'], '`entry`, `displayid`');
      echo $lang['condition3'].text_show_item($item['entry'], $item['displayid'], 'quest');
      break;
-   case  4: // CONDITION_AREAID - area_id  0, 1 (0: in (sub)area, 1: not in (sub)area)
+   case  4: // CONDITION_AREAID
      if ($type['value2'] > 0 ) echo $lang['condition4_1'].getAreaName($type['value1']);
      if ($type['value2'] == 0) echo getAreaName($type['value1']);
      break;
-   case  5: // CONDITION_REPUTATION_RANK_MIN - faction_id, min_rank
+   case  5: // CONDITION_REPUTATION_RANK_MIN
      echo getFactionName($type['value1']).'=>('.getReputationRankName($type['value2']).')';
      break;
-   case  6: // CONDITION_TEAM  player_team, 0      (469 - Alliance 67 - Horde)
+   case  6: // CONDITION_TEAM
      echo getFactionName($type['value1']);
      break;
-   case  7: // CONDITION_SKILL skill_id, skill_value
+   case  7: // CONDITION_SKILL
      echo $lang['condition7'].getSkillName($type['value1']);
      if ($type['value2'] > 1) echo ' ('.$type['value2'].')';
      break;
-   case  8: // CONDITION_QUESTREWARDED quest_id, 0
-     echo $lang['condition8'].getQuestName($type['value1']);
+   case  8: // CONDITION_QUESTREWARDED
+     if ($type['flags'] == 0) echo $lang['condition8'].getQuestName($type['value1']);
+     if ($type['flags'] == 1) echo $lang['condition8_1'].getQuestName($type['value1']);
      break;
-   case  9: // CONDITION_QUESTTAKEN quest_id     0,   for condition true while quest active.
-     echo $lang['condition9'].getQuestName($type['value1']);
+   case  9: // CONDITION_QUESTTAKEN
+     if ($type['value2'] == 0) echo $lang['condition9'].getQuestName($type['value1']);
+     if ($type['value2'] == 1) echo $lang['condition9_1'].getQuestName($type['value1']);
+     if ($type['value2'] == 2) echo $lang['condition9_2'].getQuestName($type['value1']);
      break;
-   case 10: // CONDITION_AD_COMMISSION_AURA   0, 0    for condition true while one from AD сommission aura active
+   case 10: // CONDITION_AD_COMMISSION_AURA
      echo $lang['condition10'];
      break;
-   case 11: // CONDITION_NO_AURA  spell_id, effindex
-     $spell = getSpell($type['value1'], '`id`, `SpellIconID`');
-     echo $lang['condition11']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
+   case 12: // CONDITION_ACTIVE_GAME_EVENT
+     if ($type['flags'] == 0) echo $lang['condition12'].getGameEventName($type['value1']);
+     if ($type['flags'] == 1) echo $lang['condition12_1'].getGameEventName($type['value1']);
      break;
-   case 12: // CONDITION_ACTIVE_GAME_EVENT  event_id
-     echo $lang['condition12'].getGameEventName($type['value1']);
-     break;
-   case 13: // CONDITION_AREA_FLAG  area_flag    area_flag_not
+   case 13: // CONDITION_AREA_FLAG
      if ($type['value1'] > 0) echo $lang['condition13_1'].$type['value1'];
      if ($type['value2'] > 0) echo $lang['condition13_2'].$type['value2'];
      break;
-   case 14: // CONDITION_RACE_CLASS  race_mask    class_mask
+   case 14: // CONDITION_RACE_CLASS
      if ($type['value1'] > 0) echo getAllowableRace($type['value1']).'<br>';
      if ($type['value2'] > 0) echo getAllowableClass($type['value2']);
      break;
-   case 15: // CONDITION_LEVEL  player_level     0, 1 or 2
+   case 15: // CONDITION_LEVEL
      if ($type['value1'] > 0) echo $type['value1'];        
      if (($type['value1'] > 0) && ($type['value2'] == 0)) echo $lang['condition15_1'];
      if (($type['value1'] > 0) && ($type['value2'] == 1)) echo $lang['condition15_2'];
      if (($type['value1'] > 0) && ($type['value2'] == 2)) echo $lang['condition15_3'];
      break;
-   case 16: // CONDITION_NOITEM  item_id      count
-     $item = getItem($type['value1'], '`entry`, `displayid`');
-     echo $lang['condition16'].text_show_item($item['entry'], $item['displayid'], 'quest');
-     if ($type['value1'] > 1) echo 'x'.$type['value2'];
-     break;
-   case 17: // CONDITION_SPELL  spell_id     0, 1 (0: has spell, 1: hasn't spell)
+   case 17: // CONDITION_SPELL
      $spell = getSpell($type['value1'], '`id`, `SpellIconID`');
      if ($type['value2'] > 0) { echo $lang['condition17_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
      else { echo $lang['condition17_2']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
      break;
-   case 18: // CONDITION_INSTANCE_SCRIPT  instance_condition_id    0, 1, 2, 3, 4
-     if ($type['value1'] == 0)  echo $lang['condition18_0'];
-     if ($type['value1'] == 1)  echo $lang['condition18_1'];
-     if ($type['value1'] == 2)  echo $lang['condition18_2'];
-     if ($type['value1'] == 3)  echo $lang['condition18_3'];
-     if ($type['value1'] == 4)  echo $lang['condition18_4'];
+   case 18: // CONDITION_INSTANCE_SCRIPT
+     echo $lang['condition18'];
      break;
-   case 20: // CONDITION_ACHIEVEMENT  ach_id       0, 1 (0: has achievement, 1: hasn't achievement) for player
+   case 20: // CONDITION_ACHIEVEMENT
      if ($type['value2'] > 0) echo $lang['condition20_1'].$type['value1'];
      else echo $lang['condition20_2'].$type['value1'];
      break;
-   case 22: // CONDITION_QUEST_NONE  quest_id 
+   case 22: // CONDITION_QUEST_NONE
      if ($type['value1'] > 0) echo $lang['condition22'].getQuestName($type['value1']);
      break;
-   case  23: // CONDITION_ITEM_WITH_BANK- item_id, count
+   case  23: // CONDITION_ITEM_WITH_BANK
      $item = getItem($type['value1'], '`entry`, `displayid`');
-     echo $lang['condition23'].text_show_item($item['entry'], $item['displayid'], 'quest');
+     if ($type['flags'] == 0) echo $lang['condition23'].text_show_item($item['entry'], $item['displayid'], 'quest');
+     if ($type['flags'] == 1) echo $lang['condition23_1'].text_show_item($item['entry'], $item['displayid'], 'quest');
      if ($type['value2'] > 1) echo 'x'.$type['value2'];
      break;
-   case 24: // NOITEM_WITH_BANK  item_id      count
-     $item = getItem($type['value1'], '`entry`, `displayid`');
-     echo $lang['condition24'].text_show_item($item['entry'], $item['displayid'], 'quest');
-     if ($type['value1'] > 1) echo 'x'.$type['value2'];
+   case 26: // CONDITION_ACTIVE_HOLIDAY
+     if ($type['flags'] == 0) echo $lang['condition12'].getGameHolidayName($type['value1']);
+     if ($type['flags'] == 1) echo $lang['condition12_1'].getGameHolidayName($type['value1']);
      break;
-   case 25: // CONDITION_NOT_ACTIVE_GAME_EVENT  event_id
-     echo $lang['condition25'].getGameEventName($type['value1']);
-     break;
-   case 26: // CONDITION_ACTIVE_HOLIDAY  holiday_id
-     echo $lang['condition26'].getGameHolidayName($type['value1']);
-     break;
-   case 27: // CONDITION_NOT_ACTIVE_HOLIDAY  holiday_id
-     echo $lang['condition27'].getGameHolidayName($type['value1']);
-     break;
-   case 28: // CONDITION_LEARNABLE_ABILITY  spell_id     0 or item_id
+   case 28: // CONDITION_LEARNABLE_ABILITY
      $spell = getSpell($type['value1'], '`id`, `SpellIconID`');
      if ($type['value2'] > 0) { $item = getItem($type['value2'], '`entry`, `displayid`'); echo $lang['condition28_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest'); echo $lang['condition28_2'].text_show_item($item['entry'], $item['displayid'], 'quest');}
      else {echo $lang['condition28_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');}
      break;
-   case  29: // CONDITION_SKILL_BELOW skill_id, skill_value
+   case  29: // CONDITION_SKILL_BELOW
      echo $lang['condition29'].getSkillName($type['value1']);
      if ($type['value2'] > 1) echo ' ('.$type['value2'].')';
      break;
-   case  30: // CONDITION_REPUTATION_RANK_MAX - faction_id, max_rank
+   case  30: // CONDITION_REPUTATION_RANK_MAX
      echo getFactionName($type['value1']).'<=('.getReputationRankName($type['value2']).')';
-     break;
-   case  32: // CONDITION_SOURCE_AURA - spell_id, effindex
-     $spell = getSpell($type['value1'], '`id`, `SpellIconID`');
-     echo $lang['condition32']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
      break;
    }
   }
@@ -680,10 +661,11 @@ $item_report = array(
 'ITEM_REPORT_REQREP_RANK'=>array('class'=>'',     'sort'=>'rep_rank','text'=>$lang['item_faction_rank'],'draw'=>'r_itemRepRank', 'sort_str'=>'`RequiredReputationRank` DESC', 'fields'=>'`RequiredReputationFaction`, `RequiredReputationRank`'),
 'ITEM_REPORT_FLAGS'      =>array('class'=>'',     'sort'=>'',        'text'=>'flag',                   'draw'=>'r_itemFlag',     'sort_str'=>'',                             'fields'=>'`Flags`'),
 // If set vendor class type
-'VENDOR_REPORT_COST'   =>array('class'=>'', 'sort'=>'cost',    'text'=>$lang['item_cost'],       'draw'=>'r_vendorCost',   'sort_str'=>'`ExtendedCost`, `BuyPrice`',   'fields'=>'`ExtendedCost`, `BuyPrice`'),
-'VENDOR_REPORT_COUNT'  =>array('class'=>'', 'sort'=>'count',   'text'=>$lang['item_count'],      'draw'=>'r_vendorCount',  'sort_str'=>'`sold_count`, `name`',         'fields'=>'`npc_vendor`.`maxcount` AS `sold_count`'),
-'VENDOR_REPORT_COUNTT' =>array('class'=>'',  'sort'=>'count','text'=>$lang['item_count'],     'draw'=>'r_vendorCount','sort_str'=>'`sold_count`, `Name`',   'fields'=>'`npc_vendor_template`.`maxcount` AS `sold_count`'),
-'VENDOR_REPORT_INCTIME'=>array('class'=>'', 'sort'=>'time',    'text'=>$lang['item_incrtime'],   'draw'=>'r_vendorTime',   'sort_str'=>'`incrtime`, `name`',           'fields'=>'`incrtime`'),
+'VENDOR_REPORT_COST'   =>array('class'=>'', 'sort'=>'cost',  'text'=>$lang['item_cost'],      'draw'=>'r_vendorCost',   'sort_str'=>'`ExtendedCost`, `BuyPrice`',   'fields'=>'`ExtendedCost`, `BuyPrice`'),
+'VENDOR_REPORT_COUNT'  =>array('class'=>'', 'sort'=>'count', 'text'=>$lang['item_count'],     'draw'=>'r_vendorCount',  'sort_str'=>'`sold_count`, `name`',         'fields'=>'`npc_vendor`.`maxcount` AS `sold_count`'),
+'VENDOR_REPORT_COUNTT' =>array('class'=>'', 'sort'=>'count', 'text'=>$lang['item_count'],     'draw'=>'r_vendorCount',  'sort_str'=>'`sold_count`, `Name`',         'fields'=>'`npc_vendor_template`.`maxcount` AS `sold_count`'),
+'VENDOR_REPORT_INCTIME'=>array('class'=>'', 'sort'=>'time',  'text'=>$lang['item_incrtime'],  'draw'=>'r_vendorTime',   'sort_str'=>'`incrtime`, `name`',           'fields'=>'`incrtime`'),
+'VENDOR_REPORT_COND'   =>array('class'=>'', 'sort'=>'',      'text'=>$lang['loot_require'],   'draw'=>'r_lootRequire',  'sort_str'=>'',                             'fields'=>'`condition_id`'),
 // If set loot class type
 'LOOT_REPORT_CHANCE'=>array('class'=>'', 'sort'=>'chance', 'text'=>$lang['loot_chance'], 'draw'=>'r_lootChance', 'sort_str'=>'ABS(`ChanceOrQuestChance`) DESC, `name`', 'fields'=>'`ChanceOrQuestChance`, `mincountOrRef`'),
 'LOOT_REPORT_REQ'   =>array('class'=>'', 'sort'=>'',       'text'=>$lang['loot_require'],'draw'=>'r_lootRequire','sort_str'=>'', 'fields'=>'`condition_id`'),
@@ -1025,9 +1007,10 @@ $npc_report = array(
 'NPC_REPORT_MAP'     =>array('class'=>'small','sort'=>'',     'text'=>$lang['map'],            'draw'=>'r_npcMap',  'sort_str'=>'',                        'fields'=>''),
 // vendor
 'VENDOR_REPORT_COST'   =>array('class'=>'',  'sort'=>'cost', 'text'=>$lang['item_cost'],      'draw'=>'r_vendorCostN', 'sort_str'=>'`ExtendedCost`, `Name`', 'fields'=>'`ExtendedCost`'),
-'VENDOR_REPORT_COUNT'  =>array('class'=>'',  'sort'=>'count','text'=>$lang['item_count'],     'draw'=>'r_vendorCount','sort_str'=>'`sold_count`, `Name`',   'fields'=>'`npc_vendor`.`maxcount` AS `sold_count`'),
-'VENDOR_REPORT_COUNTT' =>array('class'=>'',  'sort'=>'count','text'=>$lang['item_count'],     'draw'=>'r_vendorCount','sort_str'=>'`sold_count`, `Name`',   'fields'=>'`npc_vendor_template`.`maxcount` AS `sold_count`'),
-'VENDOR_REPORT_INCTIME'=>array('class'=>'',  'sort'=>'time', 'text'=>$lang['item_incrtime'],  'draw'=>'r_vendorTime', 'sort_str'=>'`incrtime`, `Name`',     'fields'=>'`incrtime`'),
+'VENDOR_REPORT_COUNT'  =>array('class'=>'',  'sort'=>'count','text'=>$lang['item_count'],     'draw'=>'r_vendorCount', 'sort_str'=>'`sold_count`, `Name`',   'fields'=>'`npc_vendor`.`maxcount` AS `sold_count`'),
+'VENDOR_REPORT_COUNTT' =>array('class'=>'',  'sort'=>'count','text'=>$lang['item_count'],     'draw'=>'r_vendorCount', 'sort_str'=>'`sold_count`, `Name`',   'fields'=>'`npc_vendor_template`.`maxcount` AS `sold_count`'),
+'VENDOR_REPORT_INCTIME'=>array('class'=>'',  'sort'=>'time', 'text'=>$lang['item_incrtime'],  'draw'=>'r_vendorTime',  'sort_str'=>'`incrtime`, `Name`',     'fields'=>'`incrtime`'),
+'VENDOR_REPORT_COND'   =>array('class'=>'',  'sort'=>'',     'text'=>$lang['loot_require'],   'draw'=>'r_lootRequire', 'sort_str'=>'',                       'fields'=>'`condition_id`'),
 // trainer
 'TRAINER_REPORT_COST' =>array('class'=>'',    'sort'=>'scost', 'text'=>$lang['trainer_cost'], 'draw'=>'r_trainerCost', 'sort_str'=>'`spellcost`',                'fields'=>'`spellcost`'),
 'TRAINER_REPORT_SPELL'=>array('class'=>'left','sort'=>'',      'text'=>$lang['trainer_spell'],'draw'=>'r_trainerSpell','sort_str'=>'',                           'fields'=>'`spell`'),

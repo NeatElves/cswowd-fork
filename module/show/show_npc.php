@@ -55,13 +55,13 @@ else
   $hentry1=isset($heroic1[$entry])?$heroic1[$entry]:0;
   $hentry2=isset($heroic2[$entry])?$heroic2[$entry]:0;
 
-  if ($hentry2) 
+  if ($hentry2)
   echo "<a href=\"?map&npc=$hentry2\">$lang[show_map]&nbsp;(".getCreatureCount($hentry2).")</a><br>";
   else
-  if ($hentry1) 
+  if ($hentry1)
   echo "<a href=\"?map&npc=$hentry1\">$lang[show_map]&nbsp;(".getCreatureCount($hentry1).")</a><br>";
   else
-  if ($hentry) 
+  if ($hentry)
   echo "<a href=\"?map&npc=$hentry\">$lang[show_map]&nbsp;(".getCreatureCount($hentry).")</a><br>";
   else 
   if ($entry)
@@ -310,7 +310,7 @@ else
  if ($cr['NpcFlags']&(UNIT_NPC_FLAG_VENDOR|UNIT_NPC_FLAG_VENDOR_AMMO|UNIT_NPC_FLAG_VENDOR_FOOD|UNIT_NPC_FLAG_VENDOR_POISON|UNIT_NPC_FLAG_VENDOR_REAGENT))
  {
   $sold = new ItemReportGenerator('vendor');
-  $fields = array('ITEM_REPORT_ICON','ITEM_REPORT_NAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNT', 'VENDOR_REPORT_INCTIME');
+  $fields = array('ITEM_REPORT_ICON','ITEM_REPORT_NAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNT', 'VENDOR_REPORT_INCTIME', 'VENDOR_REPORT_COND');
   if ($sold->Init($fields, $baseLink, 'vendorLIST', $config['fade_limit'], 'name'))
   {
     $sold->vendorItemList($entry);
@@ -323,7 +323,7 @@ else
  if ($cr['NpcFlags']&(UNIT_NPC_FLAG_VENDOR|UNIT_NPC_FLAG_VENDOR_AMMO|UNIT_NPC_FLAG_VENDOR_FOOD|UNIT_NPC_FLAG_VENDOR_POISON|UNIT_NPC_FLAG_VENDOR_REAGENT) && $cr['VendorTemplateId'])
  {
   $soldt = new ItemReportGenerator('vendort');
-  $fields = array('ITEM_REPORT_ICON','ITEM_REPORT_NAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNTT', 'VENDOR_REPORT_INCTIME');
+  $fields = array('ITEM_REPORT_ICON','ITEM_REPORT_NAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNTT', 'VENDOR_REPORT_INCTIME', 'VENDOR_REPORT_COND');
   if ($soldt->Init($fields, $baseLink, 'vendortLIST', $config['fade_limit'], 'name'))
   {
     $soldt->vendortItemList($cr['VendorTemplateId']);

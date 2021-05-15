@@ -279,7 +279,7 @@ else
   // Продавцы вещи
   //********************************************************************************
   $vendors = new CreatureReportGenerator('vendor');
-  $fields = array('NPC_REPORT_RNAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNT', 'VENDOR_REPORT_INCTIME', 'NPC_REPORT_MAP');
+  $fields = array('NPC_REPORT_RNAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNT', 'VENDOR_REPORT_INCTIME', 'VENDOR_REPORT_COND', 'NPC_REPORT_MAP');
   if ($vendors->Init($fields, $baseLink, 'vendorLIST', $config['fade_limit'], 'name'))
   {
     $vendors->soldItem($entry, $item['BuyPrice']);
@@ -289,7 +289,7 @@ else
   // Продавцы template вещи
   //********************************************************************************
   $vendorst = new CreatureReportGenerator('vendort');
-  $fields = array('NPC_REPORT_RNAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNTT', 'VENDOR_REPORT_INCTIME', 'NPC_REPORT_MAP');
+  $fields = array('NPC_REPORT_RNAME', 'VENDOR_REPORT_COST', 'VENDOR_REPORT_COUNTT', 'VENDOR_REPORT_INCTIME', 'VENDOR_REPORT_COND', 'NPC_REPORT_MAP');
   if ($vendorst->Init($fields, $baseLink, 'vendortLIST', $config['fade_limit'], 'name'))
   {
     $vendorst->soldtItem($entry, $item['BuyPrice']);
