@@ -256,6 +256,7 @@ if ($quest['SrcItemId'] || $quest['SrcSpell'])
   echo "<a href=\"?spell=$spell[id]\">$spell[SpellName]</a></td></tr>";}
  }
 }
+
 echo "<tr><td class=head>$lang[quest_rewards]</td></tr>";
 
 if ($quest['RewItemId1'] OR $quest['RewItemId1'] OR $quest['RewItemId1'] OR $quest['RewItemId1'])
@@ -300,6 +301,9 @@ if ($quest['RewSpell'] || $quest['RewSpellCast'])
  if ($spell) $spellName = getSpellName($spell);
  else        $spellName = "Spell $learn";
  if ($spell) {
+ if ($quest['RewSpell'] && $quest['RewSpellCast'])
+ echo '<tr><td class=mark>'.$lang['cast_spell'].'</td></tr>';
+ else
  echo '<tr><td class=mark>'.($quest['RewSpell']?$lang['learn_spell']:$lang['cast_spell']).'</td></tr>';
  echo "<tr><td class=reward>&nbsp;";show_spell($spell['id'], $spell['SpellIconID']);
  echo "<a href=\"?spell=$spell[id]\">$spell[SpellName]</a></td></tr>";}
