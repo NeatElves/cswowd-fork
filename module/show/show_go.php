@@ -55,7 +55,8 @@ else
    echo "<th>Size</th><td>".$obj['size']."</td></tr>";
    echo "<tr><th>ScriptName</th><td>".$obj['ScriptName']."</td>";
    echo "<th>Faction</th><td>".$obj['faction']."</td></tr>";
-   echo "<tr><th>displayId</th><td colspan=3>".$obj['displayId']."</td></tr>";
+   echo "<tr><th>displayId</th><td>".$obj['displayId']."</td>";
+   echo "<th>ExtraFlags</th><td>".$obj['ExtraFlags']."</td></tr>";
    echo "<tr><th>Flags</th><td colspan=3>";
    if ($flag = $obj['flags'])
    {
