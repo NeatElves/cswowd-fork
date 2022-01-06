@@ -657,6 +657,12 @@ function getCreatureCount($creature_id)
   return $dDB->selectCell("SELECT count(*) FROM `creature` WHERE `id` = ?d", $creature_id);
 }
 
+function getCreatureCountSpawn($creature_id)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `creature_spawn_entry` WHERE `entry` = ?d", $creature_id);
+}
+
 function getCreatureFlagName($flag, $as_ref=1)
 {
   global $gCreatureFlags;
@@ -756,6 +762,12 @@ function getGameobjectCount($gameobject_id)
 {
   global $dDB;
   return $dDB->selectCell("SELECT count(*) FROM `gameobject` WHERE `id` = ?d", $gameobject_id);
+}
+
+function getGameobjectCountSpawn($gameobject_id)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `gameobject_spawn_entry` WHERE `entry` = ?d", $gameobject_id);
 }
 
 function getGameobjectEvent($gameobject_guid)

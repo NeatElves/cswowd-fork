@@ -42,7 +42,7 @@ else
   echo "</tr>";
   if ($obj['mingold']) echo "<td align=center><b><FONT color=#000000>$lang[Rew_money]</b>&nbsp;".money($obj['mingold']);
   if (($obj['maxgold']) && ($obj['maxgold']>$obj['mingold'])) echo "&nbsp;-&nbsp;".money($obj['maxgold']);
-  echo "<tr><td colspan=2 align=center><a href=\"?map&obj=$obj[entry]\">$lang[show_map]&nbsp;(".getGameobjectCount($obj['entry']).")</a></td></tr>";
+  echo "<tr><td colspan=2 align=center><a href=\"?map&obj=$obj[entry]\">$lang[show_map]&nbsp;(".(getGameobjectCount($obj['entry']) + getGameobjectCountSpawn($obj['entry'])).")</a></td></tr>";
   echo "</tbody></table>";
 
   if ($config['show_go_details'])
