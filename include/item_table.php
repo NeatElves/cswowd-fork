@@ -459,7 +459,7 @@ function renderItemData($item, $item_data=0)
 // Вывод времени продолжительности
  if ($item['Duration'])
  {
-  if ($item['ExtraFlags']&2)
+  if ($item['ExtraFlags']&1)
      echo '<tr><td>'.sprintf($game_text['idurationr'], getTimeText($item['Duration'])).'</td></tr>';
  else
     echo '<tr><td>'.sprintf($game_text['iduration'], getTimeText($item['Duration'])).'</td></tr>';
