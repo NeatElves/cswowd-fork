@@ -350,6 +350,7 @@ $lang = array(
 'quest_type1' => 'Daily',
 'quest_type2' => 'Weekly',
 'quest_type3' => 'Monthly',
+'quest_type4' => 'Dungeon finder',
 
 # Spell info
 'spell_casted_by' => 'Creature cast',

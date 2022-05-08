@@ -24,8 +24,10 @@ define('QUEST_FLAGS_AUTO_ACCEPT',   0x00080000);                // quests in sta
 define('QUEST_SPECIAL_FLAG_REPEATABLE',          0x001);     // Set by 1 in SpecialFlags from DB
 define('QUEST_SPECIAL_FLAG_EXPLORATION_OR_EVENT',0x002);     // Set by 2 in SpecialFlags from DB (if required area explore, spell SPELL_EFFECT_QUEST_COMPLETE casting, table `*_script` command SCRIPT_COMMAND_QUEST_EXPLORED use, set from script DLL)
 define('QUEST_SPECIAL_FLAG_MONTHLY',             0x004);     // |4 in SpecialFlags. Quest reset for player at beginning of month.
-define('QUEST_SPECIAL_FLAG_DELIVER',             0x008);     // Internal flag computed only
-define('QUEST_SPECIAL_FLAG_SPEAKTO',             0x010);     // Internal flag computed only
-define('QUEST_SPECIAL_FLAG_KILL_OR_CAST',        0x020);     // Internal flag computed only
-define('QUEST_SPECIAL_FLAG_TIMED',               0x040);     // Internal flag computed only
+define('QUEST_SPECIAL_FLAG_DUNGEON_FINDER_QUEST',0x008);     // |8 in SpecialFlags. Quest used by dungeon finder.
+define('QUEST_SPECIAL_FLAG_DELIVER',             0x010);     // Internal flag computed only
+define('QUEST_SPECIAL_FLAG_SPEAKTO',             0x020);     // Internal flag computed only
+define('QUEST_SPECIAL_FLAG_KILL_OR_CAST',        0x040);     // Internal flag computed only
+define('QUEST_SPECIAL_FLAG_TIMED',               0x080);     // Internal flag computed only
+define('QUEST_SPECIAL_FLAGS_PLAYER_KILL',        0x100);     // Internal flag computed only
 ?>

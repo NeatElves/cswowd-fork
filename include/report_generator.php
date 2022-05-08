@@ -375,10 +375,11 @@ function r_lootRequire($data)
   switch ($type['type']){
    case  1: // CONDITION_AURA
      $spell = getSpell($type['value1'], '`id`, `SpellIconID`');
-     if ($type['flags'] == 0) echo $lang['condition1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
-     if ($type['flags'] == 1) echo $lang['condition1_1']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
-     if ($type['flags'] == 2) echo $lang['condition1_2']; show_spell($spell['id'], $spell['SpellIconID'], 'quest');
-     break;
+     if ($type['flags'] == 0) echo $lang['condition1'];
+     if ($type['flags'] == 1) echo $lang['condition1_1'];
+     if ($type['flags'] == 2) echo $lang['condition1_2'];
+     echo show_spell($spell['id'], $spell['SpellIconID'], 'quest');
+    break;
    case  2: // CONDITION_ITEM
      $item = getItem($type['value1'], '`entry`, `displayid`');
      if ($type['flags'] == 0) echo $lang['condition2'].text_show_item($item['entry'], $item['displayid'], 'quest');
@@ -1278,6 +1279,8 @@ function r_questName($data)
     echo '<div class=classqname>'.getQAllowableClass($data['RequiredClasses']).'</div>';
  if ($data['RequiredSkill'])
     echo '<div class=areaname><a href="?s=q&SkillID='.($data['RequiredSkill']).'">'.getSkillName($data['RequiredSkill'], 0).'('.$data['RequiredSkillValue'].')</a></div>';
+ if ($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_DUNGEON_FINDER_QUEST)
+    echo '<div class=areaname><a href="?s=q&Sfm='.($data['SpecialFlags']).'">'.$lang['quest_type4'].'</a></div>';
  if ($data['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
     echo '<div class=areaname><a href="?s=q&Sfm='.($data['SpecialFlags']).'">'.$lang['quest_type3'].'</a></div>';
  if ($data['QuestFlags'] & QUEST_FLAGS_WEEKLY)
