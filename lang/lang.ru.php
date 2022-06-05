@@ -350,7 +350,7 @@ $lang = array(
 'quest_type1' => 'Ежедневный',
 'quest_type2' => 'Еженедельный',
 'quest_type3' => 'Ежемесячный',
-'quest_type4' => 'Искатель подземелий',
+'quest_type4' => 'Поиск подземелий',
 
 # Spell info
 'spell_casted_by' => 'Используется:',
