@@ -252,6 +252,7 @@ $lang = array(
 'cast_spells' => 'Abilities',
 'summoned_by_spell' => 'Summoned by spell',
 'pool' => 'Pool',
+'spawngroup' => 'Group',
 'id'  => 'id',
 'item_list' => 'Item list',
 'reqirement' => 'Reqirement',
@@ -306,6 +307,7 @@ $lang = array(
 # Quest info
 'one_of_this_items' => 'One of this items',
 'obtained_at_level' => 'Obtained at level',
+'max_at_level' => 'Available by level',
 'obtained_at_event' => 'Available only in the event',
 'required_races' => 'Side:',
 'quest_level' => 'Quest level:',

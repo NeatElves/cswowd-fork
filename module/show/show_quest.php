@@ -136,7 +136,10 @@ if ($quest['RequiredSkill'])
    echo "<a style='float: right;' href=\"?s=q&SkillID=".($quest['RequiredSkill'])."\">".getSkillName($quest['RequiredSkill'], 0)."&nbsp;($quest[RequiredSkillValue])</a>";
 
  if ($quest['MinLevel'])
- echo "$lang[obtained_at_level]&nbsp;$quest[MinLevel]</td></tr>";
+   echo "$lang[obtained_at_level]&nbsp;$quest[MinLevel]<br>";
+
+ if ($quest['MaxLevel'] AND $quest['MaxLevel'] != 255)
+   echo "$lang[max_at_level]&nbsp;$quest[MaxLevel]</td></tr>";
 
  if ($quest['SuggestedPlayers'])
      echo "<tr><td>$lang[suggestedplayers]&nbsp;<b>$quest[SuggestedPlayers]</b></td></tr>";
@@ -237,8 +240,9 @@ echo "<tr><td>".getQuestText($quest['Details'])."</td></tr>";
 }
 if ($quest['SrcItemId'] || $quest['SrcSpell'])
 {
+ if ($quest['SrcItemId'] && $quest['SrcItemId'] != $quest['ReqItemId1'] && $quest['SrcItemId'] != $quest['RewItemId1'])
  echo "<tr><td class=head>$lang[provided]</td></tr>";
- if ($quest['SrcItemId'])
+ if ($quest['SrcItemId'] && $quest['SrcItemId'] != $quest['ReqItemId1'] && $quest['SrcItemId'] != $quest['RewItemId1'])
  {
    $item = getItem($quest['SrcItemId'], "`entry`, `name`, `Quality`, `displayid`");
    echo '<tr><td class=reward>&nbsp;'.text_show_item($item['entry'], $item['displayid']);
@@ -259,7 +263,7 @@ if ($quest['SrcItemId'] || $quest['SrcSpell'])
 
 echo "<tr><td class=head>$lang[quest_rewards]</td></tr>";
 
-if ($quest['RewItemId1'] OR $quest['RewItemId1'] OR $quest['RewItemId1'] OR $quest['RewItemId1'])
+if ($quest['RewItemId1'] OR $quest['RewItemId2'] OR $quest['RewItemId3'] OR $quest['RewItemId4'])
 {
  echo "<tr><td class=mark>$lang[Rew_item]</td></tr>";
  echo "<tr><td class=reward>&nbsp;";

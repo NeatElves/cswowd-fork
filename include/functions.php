@@ -710,6 +710,20 @@ function getCreaturePoolTemplate($creature_id)
   SELECT `pool_entry` FROM `pool_creature_template` WHERE `id` = ?d", $creature_id);
 }
 
+function getSpawnGroupSpawn($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `Id` FROM `spawn_group_spawn` WHERE `Guid` = ?d", $creature_guid);
+}
+
+function getSpawnGroup($Id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `Type` FROM `spawn_group` WHERE `Id` = ?d", $Id);
+}
+
 function getCreatureMovementType($i)
 {
   global $lang;
@@ -790,6 +804,7 @@ function getGameobjectPoolTemplate($gameobject_id)
   return $dDB->selectCell("-- CACHE: 1h
   SELECT `pool_entry` FROM `pool_gameobject_template` WHERE `id` = ?d", $gameobject_id);
 }
+
 //********************************************************************************
 function getFaction($faction_id, $fields="*")
 {

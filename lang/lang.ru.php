@@ -252,6 +252,7 @@ $lang = array(
 'cast_spells' => 'Способности',
 'summoned_by_spell' => 'Призван заклинанием',
 'pool' => 'Пул',
+'spawngroup' => 'Группа',
 'id'  => 'id',
 'item_list' => 'Список предметов',
 'reqirement' => 'Требование',
@@ -306,6 +307,7 @@ $lang = array(
 # Quest info
 'one_of_this_items' => 'Один из этих предметов',
 'obtained_at_level' => 'Доступен с уровня',
+'max_at_level' => 'Доступен по уровень',
 'obtained_at_event' => 'Доступен только в событие',
 'required_races' => 'Сторона:',
 'quest_level' => 'Уровень задания:',
