@@ -312,6 +312,37 @@ function showEffectInfo($spell, $effect, $eff_id)
 	if ($s = getSpellScriptTarget($spell['id']))
     foreach ($s as $s1)
     {
+	if ($effect==1 && ($s1['inverseEffectMask'] == 0 or $s1['inverseEffectMask'] == 2 or $s1['inverseEffectMask'] == 4 or $s1['inverseEffectMask'] == 6))
+      if ($s1['type']==0) echo '<br><a style="float: right;" href="?object='.$s1['targetEntry'].'">'.getGameobjectName($s1['targetEntry'],0).'</a>';
+        else if ($s1['type']==1) echo '<br><a style="float: right;" href="?npc='.$s1['targetEntry'].'">'.getCreatureName($s1['targetEntry'],0).'</a>';
+          else if ($s1['type']==2) echo '<br><a style="float: right;" href="?npc='.$s1['targetEntry'].'">'.getCreatureName($s1['targetEntry'],0).'</a>';
+    }
+  }
+  if ($effect==2)
+  {
+    // Spell target position on map
+    if ($t = getSpellTargetPosition($spell['id']))
+      echo '<a style="float: right;" href="?map&point='.$t['target_map'].':'.$t['target_position_x'].':'.$t['target_position_y'].':'.$t['target_position_z'].'">'.$lang['map'].'</a>';
+    // Spell target
+	if ($s = getSpellScriptTarget($spell['id']))
+    foreach ($s as $s1)
+    {
+    if ($effect==2 && ($s1['inverseEffectMask'] == 0 or $s1['inverseEffectMask'] == 1 or $s1['inverseEffectMask'] == 4 or $s1['inverseEffectMask'] == 5))
+      if ($s1['type']==0) echo '<br><a style="float: right;" href="?object='.$s1['targetEntry'].'">'.getGameobjectName($s1['targetEntry'],0).'</a>';
+        else if ($s1['type']==1) echo '<br><a style="float: right;" href="?npc='.$s1['targetEntry'].'">'.getCreatureName($s1['targetEntry'],0).'</a>';
+          else if ($s1['type']==2) echo '<br><a style="float: right;" href="?npc='.$s1['targetEntry'].'">'.getCreatureName($s1['targetEntry'],0).'</a>';
+    }
+  }
+  if ($effect==3)
+  {
+    // Spell target position on map
+    if ($t = getSpellTargetPosition($spell['id']))
+      echo '<a style="float: right;" href="?map&point='.$t['target_map'].':'.$t['target_position_x'].':'.$t['target_position_y'].':'.$t['target_position_z'].'">'.$lang['map'].'</a>';
+    // Spell target
+	if ($s = getSpellScriptTarget($spell['id']))
+    foreach ($s as $s1)
+    {
+    if ($effect==3 && ($s1['inverseEffectMask'] == 0 or $s1['inverseEffectMask'] == 1 or $s1['inverseEffectMask'] == 2 or $s1['inverseEffectMask'] == 3))
       if ($s1['type']==0) echo '<br><a style="float: right;" href="?object='.$s1['targetEntry'].'">'.getGameobjectName($s1['targetEntry'],0).'</a>';
         else if ($s1['type']==1) echo '<br><a style="float: right;" href="?npc='.$s1['targetEntry'].'">'.getCreatureName($s1['targetEntry'],0).'</a>';
           else if ($s1['type']==2) echo '<br><a style="float: right;" href="?npc='.$s1['targetEntry'].'">'.getCreatureName($s1['targetEntry'],0).'</a>';
