@@ -1735,7 +1735,7 @@ class SpellReportGenerator extends ReportGenerator{
 
   // By event AI table
   for ($i=1;$i<=3;$i++)
-    $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `action1_param'.$i.'` as `id` FROM `creature_ai_scripts` WHERE `creature_id` = ?d AND `action'.$i.'_type` = 11', $creature['Entry']));
+    $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `action'.$i.'_param1` as `id` FROM `creature_ai_scripts` WHERE `creature_id` = ?d AND `action'.$i.'_type` = 11', $creature['Entry']));
 
   if (count($spell_list))
     $this->doRequirest('`id` IN (?a)', array_unique($spell_list));
