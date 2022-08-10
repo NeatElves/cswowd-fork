@@ -145,6 +145,7 @@ $lang = array(
 'movementtype1' => 'случайное',
 'movementtype2' => 'маршрут',
 'movementtype3' => 'путь',
+'movementtype4' => 'линейное',
 
 # Loot report
 'loot_chance' =>'Шанс',

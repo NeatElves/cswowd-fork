@@ -727,15 +727,11 @@ function getSpawnGroup($Id)
 function getCreatureMovementType($i)
 {
   global $lang;
-  if ($i == 3)
-    return $lang['movementtype3'];
-  if ($i == 2)
-    return $lang['movementtype2'];
-  if ($i == 1)
-    return $lang['movementtype1'];
-  if ($i == 0)
-    return $lang['movementtype0'];
-  return "Unknown movement";
+  if ($i > 4)
+    return "Unknown movement";
+  else
+    return $lang['movementtype'.$i.''];
+
 }
 
 //********************************************************************************
