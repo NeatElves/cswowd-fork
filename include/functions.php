@@ -731,7 +731,13 @@ function getCreatureMovementType($i)
     return "Unknown movement";
   else
     return $lang['movementtype'.$i.''];
+}
 
+function getQuestgiverGreeting($creature_id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `Entry` FROM `questgiver_greeting` WHERE `Entry` = ?d", $creature_id);
 }
 
 //********************************************************************************
@@ -1069,7 +1075,7 @@ function getGameEventQuest($quest_id)
 {
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
-  SELECT `event` FROM `game_event_quest` WHERE `quest` = ?d", $quest_id);
+  SELECT GROUP_CONCAT(`event` SEPARATOR ',') FROM `game_event_quest` WHERE `quest` = ?d", $quest_id);
 }
 
 function getGameEventName($event_id)

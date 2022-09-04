@@ -149,8 +149,12 @@ if ($quest['RequiredSkill'])
 
  if (getGameEventQuest($quest['entry']))
   {
-  $qevent=getGameEventQuest($quest['entry']);
-   echo '<tr><td>'.$lang['obtained_at_event'].':&nbsp;<font color=#E614E6>'.getGameEventName($qevent).'</font></td></tr>';
+    $qevent=getGameEventQuest($quest['entry']);
+    $aqev = explode(',', $qevent);
+      foreach ($aqev as $v)
+        {
+          echo '<tr><td>'.$lang['obtained_at_event'].':&nbsp;<font color=#E614E6>'.getGameEventName($v).'</font></td></tr>';
+        }
   }
 
  if ($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
