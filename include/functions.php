@@ -693,7 +693,7 @@ function getCreatureEvent($creature_guid)
 {
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
-  SELECT `event` FROM `game_event_creature` WHERE `guid` = ?d", $creature_guid);
+  SELECT GROUP_CONCAT(`event`) FROM `game_event_creature` WHERE `guid` = ?d", $creature_guid);
 }
 
 function getCreaturePool($creature_guid)
@@ -790,7 +790,7 @@ function getGameobjectEvent($gameobject_guid)
 {
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
-  SELECT `event` FROM `game_event_gameobject` WHERE `guid` = ?d", $gameobject_guid);
+  SELECT GROUP_CONCAT(`event`) FROM `game_event_gameobject` WHERE `guid` = ?d", $gameobject_guid);
 }
 
 function getGameobjectPool($gameobject_guid)
@@ -1075,7 +1075,7 @@ function getGameEventQuest($quest_id)
 {
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
-  SELECT GROUP_CONCAT(`event` SEPARATOR ',') FROM `game_event_quest` WHERE `quest` = ?d", $quest_id);
+  SELECT GROUP_CONCAT(`event`) FROM `game_event_quest` WHERE `quest` = ?d", $quest_id);
 }
 
 function getGameEventName($event_id)
