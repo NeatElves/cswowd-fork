@@ -670,8 +670,8 @@ function defaultMapRenderCallback($data, $x, $y)
    if (getCreatureEvent($data['guid'])) {
     $crev = explode(',', getCreatureEvent($data['guid']));
       foreach ($crev as $v) {
-	    if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
-	    if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
+        if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
+        if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
     }
    if (getCreaturePool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePool($data['guid']).")", $text, 0, 0);
@@ -686,10 +686,10 @@ function defaultMapRenderCallback($data, $x, $y)
    if ($areaname) $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
    else $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$lang[respawn]&nbsp;$spawntime";
    if (getGameobjectEvent($data['guid'])) {
-	$obev = explode(',', getGameobjectEvent($data['guid']));
+    $obev = explode(',', getGameobjectEvent($data['guid']));
       foreach ($obev as $v) {
-	    if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
-	    if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
+        if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
+        if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
     }
    if (getGameobjectPool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPool($data['guid']).")", $text, 0, 0);
@@ -725,8 +725,8 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    if (getCreatureEvent($data['guid'])) {
     $crev = explode(',', getCreatureEvent($data['guid']));
       foreach ($crev as $v) {
-	    if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
-	    if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
+        if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
+        if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
     }
    if (getCreaturePool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePool($data['guid']).")", $text, 0, 0);
@@ -740,10 +740,10 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    else $spawntime = getTimeText($data['spawntimesecsmin']);
     $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$mapname&nbsp;-&nbsp;$areaname<br>$lang[respawn]&nbsp;$spawntime";
    if (getGameobjectEvent($data['guid'])) {
-	$obev = explode(',', getGameobjectEvent($data['guid']));
+    $obev = explode(',', getGameobjectEvent($data['guid']));
       foreach ($obev as $v) {
-	    if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
-	    if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
+        if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
+        if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
     }
    if (getGameobjectPool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPool($data['guid']).")", $text, 0, 0);
@@ -1072,8 +1072,8 @@ function getPointData($area_id, &$data, $x, $y)
    if (getCreatureEvent($data['guid'])) {
     $crev = explode(',', getCreatureEvent($data['guid']));
       foreach ($crev as $v) {
-	    if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
-	    if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
+        if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
+        if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
     }
    if (getCreaturePool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePool($data['guid']).")", $text, 0, 0);
@@ -1087,10 +1087,10 @@ function getPointData($area_id, &$data, $x, $y)
    else $spawntime = getTimeText($data['spawntimesecsmin']);
     $text =getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
    if (getGameobjectEvent($data['guid'])) {
-	$obev = explode(',', getGameobjectEvent($data['guid']));
+    $obev = explode(',', getGameobjectEvent($data['guid']));
       foreach ($obev as $v) {
-	    if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
-	    if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
+        if ($v > 0) $text = substr_replace("<br>$lang[spawn_at_event]&nbsp;-&nbsp;".getGameEventName($v), $text, 0, 0);
+        if ($v < 0) $text = substr_replace("<br>$lang[despawn_at_event]&nbsp;-&nbsp;".getGameEventName(abs($v)), $text, 0, 0); }
     }
    if (getGameobjectPool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPool($data['guid']).")", $text, 0, 0);

@@ -574,8 +574,8 @@ function getTargetsList($mask)
 function getFormNames()
 {
     global $wDB;
-	return $wDB->selectCol('-- CACHE: 1h
-	SELECT `id` AS ARRAY_KEY, `name` FROM `wowd_spell_shapeshift`');
+    return $wDB->selectCol('-- CACHE: 1h
+    SELECT `id` AS ARRAY_KEY, `name` FROM `wowd_spell_shapeshift`');
 }
 
 function getForm($i, $as_ref=1)
@@ -753,7 +753,7 @@ function getRadius($index)
 
   $radius = getSpellRadius($index);
   if (!$radius)
-	return "Err index $index";
+    return "Err index $index";
 
   if ($radius['radius_1']==0 OR $radius['radius_1']==$radius['radius_3'])
     return $radius['radius_3'];
@@ -883,34 +883,34 @@ function spellReplace($spell, $text)
     $values = array( '[',']');
     $text = str_replace($letter, $values, $text);
 
-	$signs = array('+', '-', '/', '*', '%', '^');
+    $signs = array('+', '-', '/', '*', '%', '^');
     $data = $text;
-	$pos = 0;
+    $pos = 0;
     $npos = 0;
-	$str = '';
+    $str = '';
     $cacheSpellData=array(); // Spell data for spell
     $lastCount = 1;
-	while (false!==($npos=strpos($data, '$', $pos)))
-	{
-		if ($npos!=$pos)
-			$str .= substr($data, $pos, $npos-$pos);
-		$pos = $npos+1;
-		if ('$' == substr($data, $pos, 1))
-		{
-			$str .= '$';
-			$pos++;
-			continue;
-		}
+    while (false!==($npos=strpos($data, '$', $pos)))
+    {
+        if ($npos!=$pos)
+            $str .= substr($data, $pos, $npos-$pos);
+        $pos = $npos+1;
+        if ('$' == substr($data, $pos, 1))
+        {
+            $str .= '$';
+            $pos++;
+            continue;
+        }
 
-		if (!preg_match('/^((([+\-\/*])(\d+);)?(\d*)(?:([lg].*?:.*?);|(\w\d*)))/', substr($data, $pos), $result))
-			continue;
-		$pos += strlen($result[0]);
-		$op = $result[3];
-		$oparg = $result[4];
-		$lookup = $result[5]? $result[5]:$spell['id'];
-		$var = $result[6] ? $result[6]:$result[7];
-		if (!$var)
-			continue;
+        if (!preg_match('/^((([+\-\/*])(\d+);)?(\d*)(?:([lg].*?:.*?);|(\w\d*)))/', substr($data, $pos), $result))
+            continue;
+        $pos += strlen($result[0]);
+        $op = $result[3];
+        $oparg = $result[4];
+        $lookup = $result[5]? $result[5]:$spell['id'];
+        $var = $result[6] ? $result[6]:$result[7];
+        if (!$var)
+            continue;
         // l - размер последней величины == 1 ? 0 : 1
         if ($var[0]=='l')
         {
@@ -938,21 +938,21 @@ function spellReplace($spell, $text)
                 {
                      $equation = $base.$op.$oparg;
                      eval("\$base = $equation;");
-		        }
+                }
                 if (is_numeric($base)) $lastCount = $base;
             }
             else
                 $base = $var;
             $str.=$base;
         }
-	}
-	$str.= substr($data, $pos);
-	$str = @preg_replace_callback("/\[.+[+\-\/*\d]\]/", 'my_relpace', $str);
+    }
+    $str.= substr($data, $pos);
+    $str = @preg_replace_callback("/\[.+[+\-\/*\d]\]/", 'my_relpace', $str);
 //    $letter = array('*','/','+','-');
 //    $values = array(' * ', ' / ',' + ',' - ');
 //    $str = str_replace($letter, $values, $str);
 
-	return($str);//."<br /><br />".$text;
+    return($str);//."<br /><br />".$text;
 }
 
 function my_relpace($matches)

@@ -40,9 +40,9 @@ function checkName($username)
  }
  else if(@$_POST['script'] == 'reg')
  {
-	$name = @$_POST['account_name'];
+    $name = @$_POST['account_name'];
     $username = strtoupper(@$_POST['account_name']);
-	$password = strtoupper(@$_POST['account_pass']);
+    $password = strtoupper(@$_POST['account_pass']);
     $email    = @$_POST['account_email'];
     $nameLen  = strlen($name);
     $passLen  = strlen($password);
@@ -65,7 +65,7 @@ function checkName($username)
         echo $lang['reg_err_name_in_use'];
     else
     {
-	    $res = $rDB->query("INSERT INTO `account` (`username`, `sha_pass_hash`, `email`, `last_ip`, `expansion`) VALUES (?, SHA1(?), ?, ?, '2')", $username, $username.":".$password, $email, $ip);
+        $res = $rDB->query("INSERT INTO `account` (`username`, `sha_pass_hash`, `email`, `last_ip`, `expansion`) VALUES (?, SHA1(?), ?, ?, '2')", $username, $username.":".$password, $email, $ip);
         if ($res)
         {
             echo $lang['reg_success'];

@@ -144,7 +144,7 @@ else
          $i++;
        }
      }
-	 // Portals to area
+     // Portals to area
      $teleport_list = $dDB->selectPage($totalRecords,'SELECT * FROM `areatrigger_teleport` WHERE `target_map` = ?d', $mapId);
      if ($teleport_list)
      foreach ($teleport_list as $point)
@@ -166,7 +166,7 @@ else
          $mapdata['points'][$i]['image']="images/map_points/binder_icon.gif";
          $mapdata['points'][$i]['icenterx']=8;
          $mapdata['points'][$i]['icentery']=8;
-		 $mapdata['points'][$i]['href']='';
+         $mapdata['points'][$i]['href']='';
          $mapdata['points'][$i]['tooltip']= validateText($point['name']);
          $i++;
        }

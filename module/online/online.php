@@ -38,9 +38,9 @@ function onlineMapRenderCallback($data, $x, $y)
 
 function onoff_realm()
 {
-	global $config;
-	$s = @fsockopen($config['host'], $config['port'], $errno, $errstr, (float)0.5);
-	if($s){@fclose($s);return true;} else return false;
+    global $config;
+    $s = @fsockopen($config['host'], $config['port'], $errno, $errstr, (float)0.5);
+    if($s){@fclose($s);return true;} else return false;
 }
 
 $online = @$_REQUEST['online'];

@@ -90,7 +90,7 @@ function mergeStrByPoint($str, &$a, &$b)
   if ($x = strpos($str, '.'))
   {
      $a = intval(substr($str, 0, $x));
-	 $b = intval(substr($str, $x + 1, $len - $x));
+     $b = intval(substr($str, $x + 1, $len - $x));
      return;
   }
   $a = intval($str);
@@ -520,7 +520,7 @@ function show_spell($entry, $iconId=0, $style=0)
   global $wDB;
   if (!$iconId)
       $iconId = $wDB->selectCell('-- CACHE: 1h
-	  SELECT `SpellIconID` FROM `wowd_spell` WHERE `Id` = ?d', $entry);
+      SELECT `SpellIconID` FROM `wowd_spell` WHERE `Id` = ?d', $entry);
   $icon = getSpellIcon($iconId);
   echo '<a href="?spell='.$entry.'"><img'.($style?' class='.$style:'').' src="'.$icon.'"></a>';
   return;
@@ -1008,17 +1008,17 @@ function getQuestOld($quest_id)
 function getQuestSort($sort)
 {
     global $wDB;
-	$q = $wDB->selectCol('-- CACHE: 1h
-	SELECT `id` AS ARRAY_KEY, `name` FROM `wowd_quest_sort`');
-	return isset($q[$sort]) ? $q[$sort] : 'Sort_'.$sort;
+    $q = $wDB->selectCol('-- CACHE: 1h
+    SELECT `id` AS ARRAY_KEY, `name` FROM `wowd_quest_sort`');
+    return isset($q[$sort]) ? $q[$sort] : 'Sort_'.$sort;
 }
 
 function getQuestType($type)
 {
     global $wDB;
-	$q = $wDB->selectCol('-- CACHE: 1h
-	SELECT `id` AS ARRAY_KEY, `name` FROM `wowd_quest_info`');
-	return isset($q[$type]) ? $q[$type] : 'Info_'.$type;
+    $q = $wDB->selectCol('-- CACHE: 1h
+    SELECT `id` AS ARRAY_KEY, `name` FROM `wowd_quest_info`');
+    return isset($q[$type]) ? $q[$type] : 'Info_'.$type;
 }
 
 function getNumPalayersCompletedQuest($entry)
@@ -1036,9 +1036,9 @@ function getNumPalayersWithThisQuest($entry)
 function getQuestXPValue($quest)
 {
   if ($quest['QuestLevel'] > 0)
-	$rawXPcount=getRewQuestXP($quest['QuestLevel']);
+    $rawXPcount=getRewQuestXP($quest['QuestLevel']);
   else
-	$rawXPcount=getRewQuestXP(79);
+    $rawXPcount=getRewQuestXP(79);
 
   foreach ($rawXPcount as $field)
   {
@@ -1373,7 +1373,7 @@ function text_show_item($entry, $iconId = 0, $style = 0)
   global $dDB, $config;
   if (!$iconId)
       $iconId = $dDB->selectCell('-- CACHE: 1h
-	  SELECT `displayid` FROM `item_template` WHERE `entry` = ?d', $entry);
+      SELECT `displayid` FROM `item_template` WHERE `entry` = ?d', $entry);
   $icon = getItemIcon($iconId);
   $text = '<a href="?item='.$entry.'"><img'.($style?' class='.$style:'').' src="'.$icon.'"></a>';
   return $text;
@@ -1399,40 +1399,40 @@ function getborderText($text, $posx = 'left', $dx=0, $posy = 'top', $dy=0)
 }
 function show_item_by_data($item_data, $style='item', $posx=0, $posy=0)
 {
-	$guid = $item_data[ITEM_FIELD_GUID];
+    $guid = $item_data[ITEM_FIELD_GUID];
 
-	if (@$item_data[ITEM_FIELD_TYPE] == TYPE_ITEM)
-		$count = $item_data[ITEM_FIELD_STACK_COUNT];
-	else if (@$item_data[ITEM_FIELD_TYPE] == TYPE_CONTAINER)
-		$count = $item_data[CONTAINER_FIELD_NUM_SLOTS];
-	else
-		return;
-	$position="";
-	if ($posx OR $posy)
-		$position.= 'style="position: absolute; left: '.$posx.'px; top: '.$posy.'px; border: 0px;"';
-	$icon = getItemIconFromItemData($item_data);
-	if ($count == 1)
-	{
-		echo '<a style="float: left;" href="?item=g'.$guid.'">';
-		echo "<img class=$style src='$icon' $position></a>";
-	}
-	else
-	{
-		if (empty($position))
-			$position = "style=\"position: relative; left: 0px;top: 0px; border: 0px;float: left;\"";
-		echo "\n<div class=$style $position>";
-		echo '<a href="?item=g'.$guid.'"><img class="'.$style.'" src="'.$icon.'"></a>';
-		echo getborderText($count, 'right', 3, 'bottom', 1);
-		echo "</div>";
-	}
+    if (@$item_data[ITEM_FIELD_TYPE] == TYPE_ITEM)
+        $count = $item_data[ITEM_FIELD_STACK_COUNT];
+    else if (@$item_data[ITEM_FIELD_TYPE] == TYPE_CONTAINER)
+        $count = $item_data[CONTAINER_FIELD_NUM_SLOTS];
+    else
+        return;
+    $position="";
+    if ($posx OR $posy)
+        $position.= 'style="position: absolute; left: '.$posx.'px; top: '.$posy.'px; border: 0px;"';
+    $icon = getItemIconFromItemData($item_data);
+    if ($count == 1)
+    {
+        echo '<a style="float: left;" href="?item=g'.$guid.'">';
+        echo "<img class=$style src='$icon' $position></a>";
+    }
+    else
+    {
+        if (empty($position))
+            $position = "style=\"position: relative; left: 0px;top: 0px; border: 0px;float: left;\"";
+        echo "\n<div class=$style $position>";
+        echo '<a href="?item=g'.$guid.'"><img class="'.$style.'" src="'.$icon.'"></a>';
+        echo getborderText($count, 'right', 3, 'bottom', 1);
+        echo "</div>";
+    }
 }
 
 function show_item_by_guid($guid, $style='item', $posx=0, $posy=0)
 {
-	if ($guid==0)
-		return;
-	if ($item_data = getItemData($guid))
-		show_item_by_data($item_data, $style, $posx, $posy);
+    if ($guid==0)
+        return;
+    if ($item_data = getItemData($guid))
+        show_item_by_data($item_data, $style, $posx, $posy);
 }
 
 function show_item_from_char($id, $guid, $style='item', $posx=0, $posy=0, $empty_item)

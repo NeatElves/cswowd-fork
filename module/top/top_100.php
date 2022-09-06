@@ -145,19 +145,19 @@ else if ($output_mode == "TOP_ARENA")
        $bcolor = ($arena_team_info['BorderColor']+0)&0xFFFFFF;
        $emblem_image = "images/player_info/arena_small_ico.php?type=$type&back=$back&emblem=$emblem&ecolor=$ecolor&border=$border&bcolor=$bcolor";
 
-   	   echo "<tr>";
+       echo "<tr>";
        echo "<td><img src=$emblem_image width=64></td>";
        echo "<td align = center><a href=\"?arenateam=".$arena_team_info['arenateamid']."\">".$arena_team_info['name']."</a></td>";
-	   echo "<td align = center>".$arena_team_info['rating']."</td>";
-	   echo "<td align = center>";
-	   $team = $cDB->select("SELECT * FROM `arena_team_member` WHERE `arenateamid`=?d", $arena_team_info['arenateamid']);
-	   foreach ($team as $team_member)
-	       echo "<a href=?player=$team_member[guid]>".getCharacterName($team_member['guid'])."</a><br>";
-	   echo "</td>";
+       echo "<td align = center>".$arena_team_info['rating']."</td>";
+       echo "<td align = center>";
+       $team = $cDB->select("SELECT * FROM `arena_team_member` WHERE `arenateamid`=?d", $arena_team_info['arenateamid']);
+       foreach ($team as $team_member)
+       echo "<a href=?player=$team_member[guid]>".getCharacterName($team_member['guid'])."</a><br>";
+       echo "</td>";
        echo "</tr>\n";
-	}
+    }
     else
        echo "<tr><td colspan=4 align=center>$lang[empty]</td></tr>";
-	echo "</tbody></table>";
+    echo "</tbody></table>";
 }
 ?>

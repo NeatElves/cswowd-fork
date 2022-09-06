@@ -316,7 +316,7 @@ function getHeroicList()
   global $dDB, $gheroic;
   if (!$gheroic)
     $gheroic = $dDB->selectCol('-- CACHE: 1h
-	  SELECT `DifficultyEntry1` AS ARRAY_KEY, `Entry` FROM `creature_template` WHERE `DifficultyEntry1` <> 0');
+    SELECT `DifficultyEntry1` AS ARRAY_KEY, `Entry` FROM `creature_template` WHERE `DifficultyEntry1` <> 0');
   return $gheroic;
 }
 
@@ -326,7 +326,7 @@ function getHeroicList1()
   global $dDB, $gheroic1;
   if (!$gheroic1)
     $gheroic1 = $dDB->selectCol('-- CACHE: 1h
-	  SELECT `DifficultyEntry2` AS ARRAY_KEY, `Entry` FROM `creature_template` WHERE `DifficultyEntry2` <> 0');
+    SELECT `DifficultyEntry2` AS ARRAY_KEY, `Entry` FROM `creature_template` WHERE `DifficultyEntry2` <> 0');
   return $gheroic1;
 }
 
@@ -336,7 +336,7 @@ function getHeroicList2()
   global $dDB, $gheroic2;
   if (!$gheroic2)
     $gheroic2 = $dDB->selectCol('-- CACHE: 1h
-	  SELECT `DifficultyEntry3` AS ARRAY_KEY, `Entry` FROM `creature_template` WHERE `DifficultyEntry3` <> 0');
+    SELECT `DifficultyEntry3` AS ARRAY_KEY, `Entry` FROM `creature_template` WHERE `DifficultyEntry3` <> 0');
   return $gheroic2;
 }
 //==============================================================================
@@ -843,23 +843,23 @@ function r_npcName($data)
   if (isset($h[$data['Entry']]))
   {
     $heroic = getCreature($h[$data['Entry']]);
-	$data['Name']=$heroic['Name'].' (Difficulty1)';
-	$data['name_loc']=$heroic['Name'].' (Difficulty1)';
-	$data['SubName']=$heroic['SubName'];
+    $data['Name']=$heroic['Name'].' (Difficulty1)';
+    $data['name_loc']=$heroic['Name'].' (Difficulty1)';
+    $data['SubName']=$heroic['SubName'];
   }
   if (isset($h1[$data['Entry']]))
   {
     $heroic = getCreature($h1[$data['Entry']]);
-	$data['Name']=$heroic['Name'].' (Difficulty2)';
-	$data['name_loc']=$heroic['Name'].' (Difficulty2)';
-	$data['SubName']=$heroic['SubName'];
+    $data['Name']=$heroic['Name'].' (Difficulty2)';
+    $data['name_loc']=$heroic['Name'].' (Difficulty2)';
+    $data['SubName']=$heroic['SubName'];
   }
   if (isset($h2[$data['Entry']]))
   {
     $heroic = getCreature($h2[$data['Entry']]);
-	$data['Name']=$heroic['Name'].' (Difficulty3)';
-	$data['name_loc']=$heroic['Name'].' (Difficulty3)';
-	$data['SubName']=$heroic['SubName'];
+    $data['Name']=$heroic['Name'].' (Difficulty3)';
+    $data['name_loc']=$heroic['Name'].' (Difficulty3)';
+    $data['SubName']=$heroic['SubName'];
   }
   $name    = @$data['name_loc'] ? $data['name_loc'] : $data['Name'];
   $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['SubName'];
@@ -875,23 +875,23 @@ function r_npcRName($data)
   if (isset($h10[$data['Entry']]))
   {
     $heroic = getCreature($h10[$data['Entry']]);
-	$data['Name']=$heroic['Name'].' (Difficulty1)';
-	$data['name_loc']=$heroic['Name'].' (Difficulty1)';
-	$data['SubName']=$heroic['SubName'];
+    $data['Name']=$heroic['Name'].' (Difficulty1)';
+    $data['name_loc']=$heroic['Name'].' (Difficulty1)';
+    $data['SubName']=$heroic['SubName'];
   }
   if (isset($h11[$data['Entry']]))
   {
     $heroic = getCreature($h11[$data['Entry']]);
-	$data['Name']=$heroic['Name'].' (Difficulty2)';
-	$data['name_loc']=$heroic['Name'].' (Difficulty2)';
-	$data['SubName']=$heroic['SubName'];
+    $data['Name']=$heroic['Name'].' (Difficulty2)';
+    $data['name_loc']=$heroic['Name'].' (Difficulty2)';
+    $data['SubName']=$heroic['SubName'];
   }
   if (isset($h12[$data['Entry']]))
   {
     $heroic = getCreature($h12[$data['Entry']]);
-	$data['Name']=$heroic['Name'].' (Difficulty3)';
-	$data['name_loc']=$heroic['Name'].' (Difficulty3)';
-	$data['SubName']=$heroic['SubName'];
+    $data['Name']=$heroic['Name'].' (Difficulty3)';
+    $data['name_loc']=$heroic['Name'].' (Difficulty3)';
+    $data['SubName']=$heroic['SubName'];
   }
   $name    = @$data['name_loc'] ? $data['name_loc'] : $data['Name'];
   $subname = @$data['subname_loc'] ? $data['subname_loc'] : $data['SubName'];

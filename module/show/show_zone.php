@@ -110,8 +110,8 @@ else
   {
     $npc->addColumnConfig('NPC_REPORT_DUNGEON', array('class'=>'small','sort'=>'','text'=>$lang['map'],'draw'=>'r_npcDungeon','sort_str'=>'','fields'=>''));
     if (!$area_data)
-      	$npc->onMap($map);
-	else
+        $npc->onMap($map);
+    else
         $npc->onArea($area_data);
     $npc->createReport($lang['zone_npc_in']);
   }
@@ -124,8 +124,8 @@ else
   {
     $go->addColumnConfig('GO_REPORT_DUNGEON', array('class'=>'small','sort'=>'','text'=>$lang['map'],'draw'=>'r_objDungeon','sort_str'=>'','fields'=>''));
     if (!$area_data)
-      	$go->onMap($map);
-	else
+        $go->onMap($map);
+    else
         $go->onArea($area_data);
     $go->createReport($lang['zone_go_in']);
   }

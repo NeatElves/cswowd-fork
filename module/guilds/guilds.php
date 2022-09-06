@@ -22,7 +22,7 @@ if ($guildid)
   {
     // Create guild info table
     if ($ajaxmode==0)
-	{
+    {
       $allow_show_all_info = 0;
       echo '<table class=report width=500>';
       echo '<tbody>';
@@ -38,7 +38,7 @@ if ($guildid)
       echo '</tbody>';
       echo '</table>';
     }
-	// Create guild members list report
+    // Create guild members list report
     $show_fields= array('PL_REPORT_LEVEL', 'PL_REPORT_RACE', 'PL_REPORT_CLASS', 'PL_REPORT_NAME', 'PL_REPORT_GRANK', 'PL_REPORT_NOTE');
     $members = new PlayerReportGenerator('guild');
     $members->disableMark();
@@ -52,15 +52,15 @@ else
     $page    = intval(@$_REQUEST['page']);
     $sort    = @$_REQUEST['sort'];
 
-	$FindRefrence = "?guild";
-	$sortstr = "";
+    $FindRefrence = "?guild";
+    $sortstr = "";
 
-	$rows = $cDB->selectPage($number, "SELECT *
-	                                   FROM `guild`
-	                                   LIMIT ?d, ?d", getPageOffset($page), $config['fade_limit']);
+    $rows = $cDB->selectPage($number, "SELECT *
+                                       FROM `guild`
+                                       LIMIT ?d, ?d", getPageOffset($page), $config['fade_limit']);
     if ($rows)
     {
-    	echo "<table class=report width=500>";
+        echo "<table class=report width=500>";
         echo "<tbody>";
         echo "<tr><td colspan=5 class=head>$lang[guild_list] $number</td></tr>\n";
         // Делаем ссылку для сортировки
@@ -77,8 +77,8 @@ else
         foreach ($rows as $guild)
         {
             $leader = getCharacter($guild['leaderguid'], '`name`, `race`');
-        	if (!$leader)
-        	    continue;
+            if (!$leader)
+                continue;
             echo "<tr>";
             echo "<td><img src=".getGuildEmblem($guild)." width=48></td>";
             echo "<td class=guild>&laquo;<a href=\"?guild=$guild[guildid]\">".$guild['name']."</a>&raquo;</td>";

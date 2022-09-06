@@ -42,8 +42,8 @@ function showPlayerSkills($guid)
     // Категория 12 скрыта
     if ($category == 12)
       continue;
-	$order = $skill_category[$category]['order'];
-	$skill_rev[$order] = $category;
+    $order = $skill_category[$category]['order'];
+    $skill_rev[$order] = $category;
     $playerSkill[$order][] =
     array('id'=>$skillId,
           'Name'=>$skillLine['Name'],
@@ -68,11 +68,11 @@ function showPlayerSkills($guid)
       foreach($skill_data as $skill)
       {
         if ($skill['Description']!='')
-		{
-		  $tip = '<table class=skilltip><tr class=top><td>'.$skill['Name'].'</td></tr><tr><td>'.$skill['Description'].'</td></tr></table>';
+        {
+          $tip = '<table class=skilltip><tr class=top><td>'.$skill['Name'].'</td></tr><tr><td>'.$skill['Description'].'</td></tr></table>';
           echo '<tr '.addTooltip($tip,'BORDER, false, STICKY, false').'>';
         }
-		else
+        else
           echo '<tr>';
         $pct = intval($skill['Skill']/$skill['maxSkill']*100);
         $text = $skill['Skill'];

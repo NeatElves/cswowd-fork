@@ -16,8 +16,8 @@ switch ($tip)
        if ($item = getItem($item_data[ITEM_FIELD_ENTRY]))
          noBorderItemTable($item, $item_data);
      }
-	 else
-       echo "Error item guid $entry";
+       else
+         echo "Error item guid $entry";
   }
   else if ($item=getItem($entry))
     noBorderItemTable($item,0,0);

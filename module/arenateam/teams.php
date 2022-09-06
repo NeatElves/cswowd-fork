@@ -2,11 +2,11 @@
 include_once("include/functions.php");
 
 function count_days( $a, $b ) {
-	$gd_a = getdate( $a );
-	$gd_b = getdate( $b );
-	$a_new = mktime( 12, 0, 0, $gd_a['mon'], $gd_a['mday'], $gd_a['year'] );
-	$b_new = mktime( 12, 0, 0, $gd_b['mon'], $gd_b['mday'], $gd_b['year'] );
-	return round( abs( $a_new - $b_new ) / 86400 );
+    $gd_a = getdate( $a );
+    $gd_b = getdate( $b );
+    $a_new = mktime( 12, 0, 0, $gd_a['mon'], $gd_a['mday'], $gd_a['year'] );
+    $b_new = mktime( 12, 0, 0, $gd_b['mon'], $gd_b['mday'], $gd_b['year'] );
+    return round( abs( $a_new - $b_new ) / 86400 );
 }
 
 $id= intval(@$_REQUEST['arenateam']);
@@ -57,16 +57,16 @@ if ($arenateam_data AND $arenateam_stats AND $arenateam_member)
     <td colspan=5 align=center>".$lang['arena_members_count'].": $total_members</td>
   </tr>
   <tr>
-	<th>".$lang['player_level']."</th>
-	<th>".$lang['player_name']."</th>
+    <th>".$lang['player_level']."</th>
+    <th>".$lang['player_name']."</th>
     <th>".$lang['player_race']."</th>
-	<th>".$lang['player_class']."</th>
-	<th>".$lang['last_login']."</th>
-	<th>".$lang['online']."</th>
-	<th>".$lang['arena_week_games']."</th>
-	<th>".$lang['arena_wins']."</th>
-	<th>".$lang['arena_season_games']."</th>
-	<th>".$lang['arena_wins']."</th>
+    <th>".$lang['player_class']."</th>
+    <th>".$lang['last_login']."</th>
+    <th>".$lang['online']."</th>
+    <th>".$lang['arena_week_games']."</th>
+    <th>".$lang['arena_wins']."</th>
+    <th>".$lang['arena_season_games']."</th>
+    <th>".$lang['arena_wins']."</th>
   </tr>
   ";
  foreach ($arenateam_member as $player)
@@ -79,9 +79,9 @@ if ($arenateam_data AND $arenateam_stats AND $arenateam_member)
                `logout_time`,
                 SUBSTRING_INDEX(SUBSTRING_INDEX(`data`, ' ', ".(UNIT_FIELD_LEVEL+1)."), ' ', -1) AS level,
                (SUBSTRING_INDEX(SUBSTRING_INDEX(`data`, ' ', ".(UNIT_FIELD_BYTES_0+1)."),' ',-1)/(256*256)) & 255 AS gender";
-	if ($char = getCharacter($player['guid'], $fields))
+    if ($char = getCharacter($player['guid'], $fields))
     {
-	    $llogin = count_days($char['logout_time'], time());
+        $llogin = count_days($char['logout_time'], time());
         echo "
         <tr>
          <td align=center>$char[level]</td>

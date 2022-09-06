@@ -23,7 +23,7 @@ function ComputePetBonus($stat, $value, $unitClass)
   }
   elseif($unitClass == CLASS_HUNTER )
   {
-   if($HUNTER_PET_BONUS[$stat])	return $value * $HUNTER_PET_BONUS[$stat];
+   if($HUNTER_PET_BONUS[$stat])    return $value * $HUNTER_PET_BONUS[$stat];
    else return 0;
   }
   return 0;
@@ -45,14 +45,14 @@ function isManaUser($char_data)
 {
  switch ($char_data['class'])
  {
-	case 2:
-	case 3:
-	case 5:
-	case 7:
-	case 8:
-	case 9:
-	case 11:  	$powerType = 0;   break;
-	default: 	$powerType = 1;
+    case 2:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 9:
+    case 11:     $powerType = 0;   break;
+    default:     $powerType = 1;
  }
 
  if ($powerType==0) return true;
@@ -224,16 +224,16 @@ function renderResist($statIndex, $stat, $char_data)
  echo "<tr><td>";
  if ($statIndex==SCHOOL_ARMOR)
  {
-	$levelModifier = $char_data['level'];
-	if ($levelModifier > 59 ) $levelModifier = $levelModifier + (4.5 * ($levelModifier-59));
-	$armorReduction = 0.1*$stat/(8.5*$levelModifier + 40);
-	$armorReduction = $armorReduction/(1+$armorReduction)*100;
-	if ($armorReduction > 75) $armorReduction = 75;
-	if ($armorReduction <  0) $armorReduction = 0;
+    $levelModifier = $char_data['level'];
+    if ($levelModifier > 59 ) $levelModifier = $levelModifier + (4.5 * ($levelModifier-59));
+    $armorReduction = 0.1*$stat/(8.5*$levelModifier + 40);
+    $armorReduction = $armorReduction/(1+$armorReduction)*100;
+    if ($armorReduction > 75) $armorReduction = 75;
+    if ($armorReduction <  0) $armorReduction = 0;
     printf("Reduces Physical Damage taken by %0.2f%%",$armorReduction);
     $petBonus = ComputePetBonus(PET_BONUS_ARMOR, $stat, $class);
-	if( $petBonus > 0 )
-		printf("<br>Increases your pet`s Armor by %d", $petBonus);
+    if( $petBonus > 0 )
+        printf("<br>Increases your pet`s Armor by %d", $petBonus);
     echo "</td></tr>";
     createEndTable($valueClass, $stat);
  }
@@ -288,13 +288,13 @@ function renderStatRow($statIndex, $char_data, $stat)
  }
  else if ($statIndex==STAT_STAMINA)
  {
- 	$baseStam = min(20, $effectiveStat);
-	$moreStam = $effectiveStat - $baseStam;
-	$health   = $baseStam + ($moreStam*HEALTH_PER_STAMINA);
+    $baseStam = min(20, $effectiveStat);
+    $moreStam = $effectiveStat - $baseStam;
+    $health   = $baseStam + ($moreStam*HEALTH_PER_STAMINA);
     printf("Increases Health by %d",$health);
     $petStam = ComputePetBonus(PET_BONUS_STAM, $effectiveStat, $class);
-	if($petStam > 0)
-	  printf("<br />Increases your pet`s Stamina by %d",$petStam);
+    if($petStam > 0)
+      printf("<br />Increases your pet`s Stamina by %d",$petStam);
 
  }
  else if ($statIndex==STAT_INTELLECT)
@@ -750,7 +750,7 @@ function show_player_auras_from_db($guid)
  $buffs  = $cDB->selectCol("SELECT `spell` FROM `character_aura` WHERE `guid` = ?d GROUP BY `spell`", $guid);
  foreach ($buffs as $aura)
  {
-	 echo "<br>";
+     echo "<br>";
      show_spell($aura, 0, 'aura');
  }
 }

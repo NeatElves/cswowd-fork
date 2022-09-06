@@ -144,9 +144,9 @@ if ($allmode==0 and $ajaxmode==0)
     {
         $value = $key[$i];
         $text = getInventoryType($value);
-		if ($type==$value) echo "<option \"selected\" value=$value>$text</option>\n";
-		else               echo "<option value=$value>$text</option>\n";
-	}
+        if ($type==$value) echo "<option \"selected\" value=$value>$text</option>\n";
+        else               echo "<option value=$value>$text</option>\n";
+    }
     echo '</select></td></tr><tr>';
     echo '<tr><td colspan=6 class=bottom><input type=submit value="'.$lang['search'].'">&nbsp;<input type=RESET value="'.$lang['reset'].'"></td></tr>';
     echo '</table>';

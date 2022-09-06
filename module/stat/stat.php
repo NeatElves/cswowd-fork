@@ -5,12 +5,12 @@ include_once("include/simple_cacher.php");
 $module_path = "module/stat";
 function days($time)
 {
-	$d = floor( $time / (3600*24) );
-	$time = $time - $d*3600*24;
-	$h = floor( $time / 3600 );
-	$time = $time - $h*3600;
-	$m = floor( $time / 60 );
-	return sprintf("%d дней. %02d ч. %02d м.", $d, $h, $m);
+    $d = floor( $time / (3600*24) );
+    $time = $time - $d*3600*24;
+    $h = floor( $time / 3600 );
+    $time = $time - $h*3600;
+    $m = floor( $time / 60 );
+    return sprintf("%d дней. %02d ч. %02d м.", $d, $h, $m);
 }
 
 function renderClassStat($list, $data, $total)

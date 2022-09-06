@@ -29,9 +29,9 @@ function generateCharacterBild($guid, $class, $spec)
     foreach($tinfo[$tab] as $row=>$rows)
         foreach($rows as $col=>$data)
         {
-		  $rank = $cDB->selectCell('SELECT `current_rank`  FROM `character_talent` WHERE `guid` = ?d and `spec` = ?d AND `talent_id`=?d', $guid, $spec, $data['TalentID']);
-		  if (isset($rank)) ++$rank;
-			else $rank = 0;
+          $rank = $cDB->selectCell('SELECT `current_rank`  FROM `character_talent` WHERE `guid` = ?d and `spec` = ?d AND `talent_id`=?d', $guid, $spec, $data['TalentID']);
+          if (isset($rank)) ++$rank;
+            else $rank = 0;
           $bild.= $rank;
           $points[$i]+=$rank;
           $total+=$rank;

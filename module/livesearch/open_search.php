@@ -28,14 +28,14 @@
  '<script type="text/javascript">
  function addPlugin()
  {
-	try
-	{
-		window.external.AddSearchProvider(\''.$site.$file.'\');
-	}
-	catch(e)
-	{
-		alert(\'This feature requires either Firefox 2 or Internet Explorer 7.\');
-	}
+    try
+    {
+        window.external.AddSearchProvider(\''.$site.$file.'\');
+    }
+    catch(e)
+    {
+        alert(\'This feature requires either Firefox 2 or Internet Explorer 7.\');
+    }
  }
  </script>';
  $langfile = 'module/livesearch/text_'.$config['lang'].'.php';

@@ -24,7 +24,7 @@ function showPlayerQuests($guid)
   {
    $questId = $quest['quest'];
    if ($questId AND $questinfo=getQuest($questId) AND 
-	(($quest['status'] == 1 OR $quest['status'] == 3 OR $quest['status'] == 5) AND $quest['rewarded'] != 1))
+    (($quest['status'] == 1 OR $quest['status'] == 3 OR $quest['status'] == 5) AND $quest['rewarded'] != 1))
    {
     echo '<tr>';
     echo '<td>';r_questLvl($questinfo); echo '</td>';

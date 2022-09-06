@@ -82,7 +82,7 @@ else
  if ($guid)
    $q_status = $cDB->selectRow("SELECT * FROM `character_queststatus` WHERE `guid` = ?d AND `quest` = ?d", $guid, $entry);
  if ($lang['www_quest'])
-	echo "<a href=\"".sprintf($lang['www_quest'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_quest'], $entry)."</a><br>";
+    echo "<a href=\"".sprintf($lang['www_quest'], $entry)."\" target=\"_blank\"\">".sprintf($lang['www_quest'], $entry)."</a><br>";
 
  echo "<table class=quest width=550>";
  echo "<tbody>";

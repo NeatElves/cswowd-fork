@@ -6,16 +6,16 @@ $type = @$_REQUEST['auction'];
 
 switch ($type) 
 {
-	case "Alliance":	
-	$houseid="(houseid=1 or houseid=2 or houseid=3)";
-	break;
-	case "Horde":
-	$houseid="(houseid=4 or houseid=5 or houseid=6)";
-	break;
-	default:
-	$type="Blackwater";
-	$houseid="(houseid=7)";
-	break;
+    case "Alliance":
+    $houseid="(houseid=1 or houseid=2 or houseid=3)";
+    break;
+    case "Horde":
+    $houseid="(houseid=4 or houseid=5 or houseid=6)";
+    break;
+    default:
+    $type="Blackwater";
+    $houseid="(houseid=7)";
+    break;
 }
 
 $rows = $cDB->selectPage($number,

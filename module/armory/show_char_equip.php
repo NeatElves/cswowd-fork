@@ -14,22 +14,22 @@ function showPlayerEquip($guid, $char, $char_data, $char_stat)
  $health    = $char['health'];
  $maxhealth = $char_stat['maxhealth'];
  switch ($char['class']): 
-	case 1:  	$powerType = 1;   break;
-	case 2:
-	case 3:
-	case 5:
-	case 7:
-	case 8:
-	case 9:
-	case 11:  	$powerType = 0;   break;
-	case 4: 	$powerType = 3;   break;
-	case 6:  	$powerType = 6;   break;
+    case 1:      $powerType = 1;   break;
+    case 2:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 9:
+    case 11:     $powerType = 0;   break;
+    case 4:      $powerType = 3;   break;
+    case 6:      $powerType = 6;   break;
  endswitch;
  switch ($powerType): 
-	case 0:  $power = $char['power1'];  $maxpower = $char_stat['maxpower1']; break;
-	case 1:  $power = $char['power2'];  $maxpower = $char_stat['maxpower2']; break;
-	case 3:  $power = $char['power4'];  $maxpower = $char_stat['maxpower4']; break;  
-	case 6:  $power = $char['power7'];  $maxpower = $char_stat['maxpower7']; break;
+    case 0:  $power = $char['power1'];  $maxpower = $char_stat['maxpower1']; break;
+    case 1:  $power = $char['power2'];  $maxpower = $char_stat['maxpower2']; break;
+    case 3:  $power = $char['power4'];  $maxpower = $char_stat['maxpower4']; break;
+    case 6:  $power = $char['power7'];  $maxpower = $char_stat['maxpower7']; break;
  endswitch;
  // Ярость надо делить на 10
  if ($powerType == POWER_RAGE || $powerType == POWER_RUNIC_POWER)
