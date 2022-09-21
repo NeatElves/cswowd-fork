@@ -733,11 +733,11 @@ function getCreatureMovementType($i)
     return $lang['movementtype'.$i.''];
 }
 
-function getQuestgiverGreeting($creature_id)
+function getQuestgiverGreetingCreature($creature_id)
 {
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
-  SELECT `Entry` FROM `questgiver_greeting` WHERE `Entry` = ?d", $creature_id);
+  SELECT `Entry` FROM `questgiver_greeting` WHERE `Entry` = ?d AND `Type` = 0", $creature_id);
 }
 
 //********************************************************************************
@@ -805,6 +805,13 @@ function getGameobjectPoolTemplate($gameobject_id)
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
   SELECT `pool_entry` FROM `pool_gameobject_template` WHERE `id` = ?d", $gameobject_id);
+}
+
+function getQuestgiverGreetingGameobject($gameobject_id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `Entry` FROM `questgiver_greeting` WHERE `Entry` = ?d AND `Type` = 1", $gameobject_id);
 }
 
 //********************************************************************************

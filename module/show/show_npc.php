@@ -84,7 +84,7 @@ else
    echo "<th>Mana</th><td>".$cr['MinLevelMana']." - ".$cr['MaxLevelMana']."</td></tr>";
    echo "<tr><th>Faction</th><td>".$cr['Faction']."</td><th>Expansion</th><td>".$cr['Expansion']."</td></tr>";
    echo "<tr><th>NpcFlags</th><td>".$cr['NpcFlags']."</td><th>GossipMenuId</th><td>".$cr['GossipMenuId']."</td></tr>";
-   echo "<tr><th>UnitFlags</th><td>".$cr['UnitFlags']."</td><th>QuestgiverGreeting</th><td>".getQuestgiverGreeting($cr['Entry'])."</td></tr>";
+   echo "<tr><th>UnitFlags</th><td>".$cr['UnitFlags']."</td><th>QuestgiverGreeting</th><td>".getQuestgiverGreetingCreature($cr['Entry'])."</td></tr>";
    echo "<tr><th>UnitFlags2</th><td>".$cr['UnitFlags2']."</td><th>DynamicFlags</th><td>".$cr['DynamicFlags']."</td></tr>";
    echo "<tr><th>ExtraFlags</th><td>".$cr['ExtraFlags']."</td><th>RegenerateStats</th><td>".$cr['RegenerateStats']."</td></tr>";
    echo "<tr><th>SpeedWalk</th><td>".$cr['SpeedWalk']."</td><th>SpeedRun</th><td>".$cr['SpeedRun']."</td></tr>";

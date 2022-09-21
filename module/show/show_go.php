@@ -77,7 +77,7 @@ else
      case GAMEOBJECT_TYPE_DOOR:
       echo "<tr><th>startOpen</th><td>".($obj['data0']?"opened":"closed")."</td>";
       echo "<th>lockId</th><td>".($obj['data1'])."</td></tr>";
-      echo "<tr><th>autoCloseTime</th><td>".($obj['data2']/1000)." sec</td>";
+      echo "<tr><th>autoCloseTime</th><td>".($obj['data2']/1000)."&nbsp;".$lang['sec']."</td>";
       echo "<th>noDamageImmune</th><td>".$obj['data3']."</td></tr>";
       echo "<tr><th>openTextID</th><td>".$obj['data4']."</td>";
       echo "<th>closeTextID</th><td>".$obj['data5']."</td></tr>";
@@ -85,7 +85,7 @@ else
      case GAMEOBJECT_TYPE_BUTTON:
       echo "<tr><th>startOpen</th><td>".($obj['data0']?"opened":"closed")."</td>";
       echo "<th>lockId</th><td>".($obj['data1'])."</td></tr>";
-      echo "<tr><th>autoCloseTime</th><td>".($obj['data2']/1000)." sec</td>";
+      echo "<tr><th>autoCloseTime</th><td>".($obj['data2']/1000)."&nbsp;".$lang['sec']."</td>";
       echo "<th>linkedTrap</th><td>".($obj['data3']?getGameobjectName($obj['data3']):"n/a")."</td></tr>";
       echo "<tr><th>noDamageImmune</th><td>".$obj['data4']."</td>";
       echo "<th>large</th><td>".$obj['data5']."</td></tr>";
@@ -96,8 +96,9 @@ else
      case GAMEOBJECT_TYPE_QUESTGIVER:
       echo "<tr><th>lockId</th><td>".$obj['data0']."</td>";
       echo "<th>questList</th><td>".$obj['data1']."</td></tr>";
-      echo "<tr><th>pageMaterial</th><td>".$obj['data2']."</td>";
-      echo "<th>gossipID</th><td>".$obj['data3']."</td></tr>";
+      echo "<tr><th>gossipID</th><td>".$obj['data3']."</td>";
+      echo "<th>pageMaterial</th><td>".$obj['data2']."</td></tr>";
+      echo "<tr><th>QuestgiverGreeting</th><td colspan=3>".getQuestgiverGreetingGameobject($entry)."</td></tr>";
       echo "<tr><th>customAnim</th><td>".$obj['data4']."</td>";
       echo "<th>noDamageImmune</th><td>".$obj['data5']."</td></tr>";
       echo "<tr><th>openTextID</th><td>".$obj['data6']."</td>";
@@ -139,9 +140,9 @@ else
       echo "<tr><th>radius</th><td>".$obj['data2']."</td>";
       echo "<th>spellId</th><td>".($obj['data3']?getSpellNameFromId($obj['data3']):"n/a")."</td></tr>";
       echo "<tr><th>charges</th><td>".$obj['data4']."</td>";
-      echo "<th>cooldown</th><td>".$obj['data5']." sec</td></tr>";
-      echo "<tr><th>autoCloseTime</th><td>".($obj['data6']/1000)." sec</td>";
-      echo "<th>startDelay</th><td>".$obj['data7']." sec</td></tr>";
+      echo "<th>cooldown</th><td>".$obj['data5']."&nbsp;".$lang['sec']."</td></tr>";
+      echo "<tr><th>autoCloseTime</th><td>".($obj['data6']/1000)."&nbsp;".$lang['sec']."</td>";
+      echo "<th>startDelay</th><td>".$obj['data7']."&nbsp;".$lang['sec']."</td></tr>";
       echo "<tr><th>serverOnly</th><td>".$obj['data8']."</td>";
       echo "<th>stealthed</th><td>".$obj['data9']."</td></tr>";
       echo "<tr><th>large</th><td>".$obj['data10']."</td>";
@@ -172,7 +173,7 @@ else
       echo "<tr><th>lockId</th><td>".$obj['data0']."</td>";
       echo "<th>questId</th><td>".($obj['data1']?getQuestName($obj['data1']):"n/a")."</td></tr>";
       echo "<tr><th>eventId</th><td>".$obj['data2']."</td>";
-      echo "<th>autoCloseTime</th><td>".($obj['data3']/1000)." sec</td></tr>";
+      echo "<th>autoCloseTime</th><td>".($obj['data3']/1000)."&nbsp;".$lang['sec']."</td></tr>";
       echo "<tr><th>customAnim</th><td>".$obj['data4']."</td>";
       echo "<th>consumable</th><td>".$obj['data5']."</td></tr>";
       echo "<tr><th>cooldown</th><td>".$obj['data6']."</td>";
