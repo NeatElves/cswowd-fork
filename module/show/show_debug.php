@@ -315,9 +315,9 @@ if ($debug == "summon")
      $rows = $wDB->select(
      "SELECT `id`, `SpellIconID`, `SpellName`, `Rank1` FROM `wowd_spell`
       WHERE
-      ((`Effect_1` = '28' AND `EffectMiscValue2_1` = ".$s['id']." ) OR
-       (`Effect_2` = '28' AND `EffectMiscValue2_2` = ".$s['id']." ) OR
-       (`Effect_3` = '28' AND `EffectMiscValue2_3` = ".$s['id']." ))
+      ((`Effect1` = '28' AND `EffectMiscValueB1` = ".$s['id']." ) OR
+       (`Effect2` = '28' AND `EffectMiscValueB2` = ".$s['id']." ) OR
+       (`Effect3` = '28' AND `EffectMiscValueB3` = ".$s['id']." ))
       -- AND SpellFamilyName > 2
         LIMIT 0, 200");
       foreach ($rows as $spell)

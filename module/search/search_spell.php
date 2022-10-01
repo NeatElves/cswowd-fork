@@ -30,7 +30,7 @@ if ($desc = mysql_real_escape_string(@$_REQUEST['desc']))
 // Mechanic filter
 if ($mech = intval(@$_REQUEST['mech']))
 {
-  $filter.= " AND (`Mechanic` = $mech OR `EffectMechanic_1` = $mech OR `EffectMechanic_2` = $mech OR `EffectMechanic_3` = $mech)";
+  $filter.= " AND (`Mechanic` = $mech OR `EffectMechanic1` = $mech OR `EffectMechanic2` = $mech OR `EffectMechanic3` = $mech)";
   $FindRefrence.="&mech=$mech";
 }
 
@@ -58,7 +58,7 @@ if ($focus = intval(@$_REQUEST['focus']))
 // Spell apply form (aura == 36 - form == misc)
 if ($form = intval(@$_REQUEST['form']))
 {
-  $filter.= " AND ((`EffectApplyAuraName_1` = 36 AND `EffectMiscValue_1` = $form) OR (`EffectApplyAuraName_2` = 36 AND `EffectMiscValue_2` = $form) OR (`EffectApplyAuraName_3` = 36 AND `EffectMiscValue_3` = $form))";
+  $filter.= " AND ((`EffectApplyAuraName1` = 36 AND `EffectMiscValue1` = $form) OR (`EffectApplyAuraName2` = 36 AND `EffectMiscValue2` = $form) OR (`EffectApplyAuraName3` = 36 AND `EffectMiscValue3` = $form))";
   $FindRefrence.="&form=$form";
 }
 
@@ -66,9 +66,9 @@ if ($form = intval(@$_REQUEST['form']))
 if ($lock = intval(@$_REQUEST['lock']))
 {
   $filter.= " AND (
-  (`Effect_1` = 33 AND `EffectMiscValue_1` = $lock) OR
-  (`Effect_2` = 33 AND `EffectMiscValue_2` = $lock) OR
-  (`Effect_3` = 33 AND `EffectMiscValue_3` = $lock))";
+  (`Effect1` = 33 AND `EffectMiscValue1` = $lock) OR
+  (`Effect2` = 33 AND `EffectMiscValue2` = $lock) OR
+  (`Effect3` = 33 AND `EffectMiscValue3` = $lock))";
   $FindRefrence.="&lock=$lock";
 }
 
