@@ -306,10 +306,11 @@ $lang = array(
 'item_is_ex_cost'       => 'Обменивается на',
 
 # Quest info
+'breadcrumb'                     => 'Можно взять только один квест, этот или:',
 'one_of_this_items'              => 'Один из этих предметов',
-'obtained_at_level'              => 'Доступен с уровня',
-'max_at_level'                   => 'Доступен по уровень',
-'obtained_at_event'              => 'Доступен только в событие',
+'obtained_at_level'              => 'Доступен с уровня:',
+'max_at_level'                   => 'Доступен по уровень:',
+'obtained_at_event'              => 'Доступен только в событие:',
 'required_races'                 => 'Сторона:',
 'quest_level'                    => 'Уровень задания:',
 'provided'                       => 'Выдается:',

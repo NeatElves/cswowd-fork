@@ -306,10 +306,11 @@ $lang = array(
 'item_is_ex_cost'       => 'Cost for',
 
 # Quest info
+'breadcrumb'                     => 'You can only take one quest, this or:',
 'one_of_this_items'              => 'One of this items',
-'obtained_at_level'              => 'Obtained at level',
-'max_at_level'                   => 'Available by level',
-'obtained_at_event'              => 'Available only in the event',
+'obtained_at_level'              => 'Obtained at level:',
+'max_at_level'                   => 'Available by level:',
+'obtained_at_event'              => 'Available only in the event:',
 'required_races'                 => 'Side:',
 'quest_level'                    => 'Quest level:',
 'provided'                       => 'Provided:',

@@ -1028,6 +1028,12 @@ function getQuestType($type)
     return isset($q[$type]) ? $q[$type] : 'Info_'.$type;
 }
 
+function getQuestBreadcrumb($quest_id)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT GROUP_CONCAT(`entry`) FROM `quest_template` WHERE `BreadcrumbForQuestId` = ?d", $quest_id);
+}
 function getNumPalayersCompletedQuest($entry)
 {
  global $cDB;
