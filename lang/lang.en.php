@@ -253,6 +253,7 @@ $lang = array(
 'cast_spells'            => 'Abilities',
 'summoned_by_spell'      => 'Summoned by spell',
 'pool'                   => 'Pool',
+'poolt'                   => 'Pool(t)',
 'spawngroup'             => 'Group',
 'id'                     => 'id',
 'item_list'              => 'Item list',

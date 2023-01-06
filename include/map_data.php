@@ -676,7 +676,7 @@ function defaultMapRenderCallback($data, $x, $y)
    if (getCreaturePool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePool($data['guid']).")", $text, 0, 0);
    if (getCreaturePoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
+    $text = substr_replace("<br>$lang[poolt]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
    }
@@ -694,7 +694,7 @@ function defaultMapRenderCallback($data, $x, $y)
    if (getGameobjectPool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPool($data['guid']).")", $text, 0, 0);
    if (getGameobjectPoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
+    $text = substr_replace("<br>$lang[poolt]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
    }
@@ -731,7 +731,7 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    if (getCreaturePool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePool($data['guid']).")", $text, 0, 0);
    if (getCreaturePoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
+    $text = substr_replace("<br>$lang[poolt]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
    }
@@ -748,7 +748,7 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    if (getGameobjectPool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPool($data['guid']).")", $text, 0, 0);
    if (getGameobjectPoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
+    $text = substr_replace("<br>$lang[poolt]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
    }
@@ -1078,7 +1078,7 @@ function getPointData($area_id, &$data, $x, $y)
    if (getCreaturePool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePool($data['guid']).")", $text, 0, 0);
    if (getCreaturePoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
+    $text = substr_replace("<br>$lang[poolt]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
    }
@@ -1095,7 +1095,7 @@ function getPointData($area_id, &$data, $x, $y)
    if (getGameobjectPool($data['guid']))
     $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPool($data['guid']).")", $text, 0, 0);
    if (getGameobjectPoolTemplate($data['id']))
-    $text = substr_replace("<br>$lang[pool]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
+    $text = substr_replace("<br>$lang[poolt]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
    }

@@ -253,6 +253,7 @@ $lang = array(
 'cast_spells'            => 'Способности',
 'summoned_by_spell'      => 'Призван заклинанием',
 'pool'                   => 'Пул',
+'poolt'                   => 'Пул(t)',
 'spawngroup'             => 'Группа',
 'id'                     => 'id',
 'item_list'              => 'Список предметов',
