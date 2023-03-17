@@ -10,7 +10,6 @@ $list = $dDB->select(
    `map`,
    `spawnMask`,
    `phaseMask`,
-   `modelid`,
    `equipment_id`,
    `position_x`,
    `position_y`,
@@ -19,10 +18,6 @@ $list = $dDB->select(
    `spawntimesecsmin`,
    `spawntimesecsmax`,
    `spawndist`,
-   `currentwaypoint`,
-   `curhealth`,
-   `curmana`,
-   `DeathState`,
    `MovementType`
 FROM `creature`
 WHERE `map` = ?d AND `position_x` > ?d AND `position_x` < ?d AND `position_y` > ?d AND `position_y` < ?d', $area_data[0], $area_data[5], $area_data[4], $area_data[3], $area_data[2]);

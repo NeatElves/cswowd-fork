@@ -740,6 +740,25 @@ function getQuestgiverGreetingCreature($creature_id)
   SELECT `Entry` FROM `questgiver_greeting` WHERE `Entry` = ?d AND `Type` = 0", $creature_id);
 }
 
+function getCreatureClasslevelstats($level, $class, $expansion, $multiplier, $number)
+{
+ global $dDB;
+ $status = 0;
+ if ($number==1)
+   $status = $dDB->selectCell("SELECT `BaseHealthExp{$expansion}` FROM `creature_template_classlevelstats` WHERE `Level` = ?d AND `Class` = ?d", $level, $class);
+ if ($number==2)
+   return $dDB->selectCell("SELECT `BaseMana` FROM `creature_template_classlevelstats` WHERE `Level` = ?d AND `Class` = ?d", $level, $class);
+// if ($number==3)
+//   return $dDB->selectCell("SELECT `BaseDamageExp{$expansion}` FROM `creature_template_classlevelstats` WHERE `Level` = ?d AND `Class` = ?d", $level, $class);
+// if ($number==4)
+//   return $dDB->selectCell("SELECT `BaseMeleeAttackPower` FROM `creature_template_classlevelstats` WHERE `Level` = ?d AND `Class` = ?d", $level, $class);
+// if ($number==5)
+//   return $dDB->selectCell("SELECT `BaseRangedAttackPower` FROM `creature_template_classlevelstats` WHERE `Level` = ?d AND `Class` = ?d", $level, $class);
+ if ($number==6)
+   $status = $dDB->selectCell("SELECT `BaseArmor` FROM `creature_template_classlevelstats` WHERE `Level` = ?d AND `Class` = ?d", $level, $class);
+   $status = ROUND ($status * $multiplier);
+   return $status;
+}
 //********************************************************************************
 function getGameobject($gameobject_id, $fields="*")
 {

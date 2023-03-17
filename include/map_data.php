@@ -946,7 +946,6 @@ class mapPoints{
     `map`,
     `spawnMask`,
     `phaseMask`,
-    `modelid`,
     `equipment_id`,
     `position_x`,
     `position_y`,
@@ -955,10 +954,6 @@ class mapPoints{
     `spawntimesecsmin`,
     `spawntimesecsmax`,
     `spawndist`,
-    `currentwaypoint`,
-    `curhealth`,
-    `curmana`,
-    `DeathState`,
     `MovementType`
     FROM `creature` WHERE `id` = ?d {AND `map` = ?d}', $id, $map==-1? DBSIMPLE_SKIP:$map);
     if ($list) $this->points = array_merge($this->points, $list);
@@ -982,7 +977,6 @@ class mapPoints{
     `orientation`,
     `spawntimesecsmin`,
     `spawntimesecsmax`,
-    `state`
     FROM `gameobject` WHERE `id` = ?d {AND `map` = ?d}', $id, $map==-1? DBSIMPLE_SKIP:$map);
     if ($list) $this->points = array_merge($this->points, $list);
   }

@@ -79,9 +79,9 @@ else
    echo "<tr><th>Name</th><td>".$cr['Name']."<br><div class=subname>".$cr['SubName']."</div></td>";
    echo "<th>IconName</th><td>".$cr['IconName']."</td></tr>";
    echo "<tr><th>Level</th><td>".$cr['MinLevel']." - ".$cr['MaxLevel']."</td>";
-   echo "<th>Armor</th><td>".$cr['Armor']."</td></tr>";
-   echo "<tr><th>Health</th><td>".$cr['MinLevelHealth']." - ".$cr['MaxLevelHealth']."</td>";
-   echo "<th>Mana</th><td>".$cr['MinLevelMana']." - ".$cr['MaxLevelMana']."</td></tr>";
+   echo "<th>Armor</th><td>".getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['ArmorMultiplier'], 6)."</td></tr>";
+   echo "<tr><th>Health</th><td>".getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['HealthMultiplier'], 1)." - ".getCreatureClasslevelstats($cr['MaxLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['HealthMultiplier'], 1)."</td>";
+   echo "<th>Mana</th><td>".getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['PowerMultiplier'], 2)." - ".getCreatureClasslevelstats($cr['MaxLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['PowerMultiplier'], 2)."</td></tr>";
    echo "<tr><th>Faction</th><td>".$cr['Faction']."</td><th>Expansion</th><td>".$cr['Expansion']."</td></tr>";
    echo "<tr><th>NpcFlags</th><td>".$cr['NpcFlags']."</td><th>GossipMenuId</th><td>".$cr['GossipMenuId']."</td></tr>";
    echo "<tr><th>UnitFlags</th><td>".$cr['UnitFlags']."</td><th>QuestgiverGreeting</th><td>".getQuestgiverGreetingCreature($cr['Entry'])."</td></tr>";
