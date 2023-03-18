@@ -14,11 +14,12 @@ define('ACHIEVEMENT_FLAG_REALM_FIRST_KILL',  0x0200);        //
 define('CUSTOM_ACHIEVEMENT_SHOW', ACHIEVEMENT_FLAG_SUMM|ACHIEVEMENT_FLAG_MAX_USED|ACHIEVEMENT_FLAG_REQ_COUNT);
 
 define('ACHIEVEMENT_CRITERIA_FLAG_SHOW_PROGRESS_BAR', 0x00000001);   // Show progress as bar
-define('ACHIEVEMENT_CRITERIA_FLAG_HIDE_CRITERIA',     0x00000002);   // Not show criteria in client
-define('ACHIEVEMENT_CRITERIA_FLAG_UNK3',              0x00000004);   // BG related??
-define('ACHIEVEMENT_CRITERIA_FLAG_UNK4',              0x00000008);   //
-define('ACHIEVEMENT_CRITERIA_FLAG_UNK5',              0x00000010);   // not used
+define('ACHIEVEMENT_CRITERIA_FLAG_HIDDEN',            0x00000002);   // Not show criteria in client
+define('ACHIEVEMENT_CRITERIA_FLAG_FAIL_ACHIEVEMENT',  0x00000004);   // BG related??
+define('ACHIEVEMENT_CRITERIA_FLAG_RESET_ON_START ',   0x00000008);   //
+define('ACHIEVEMENT_CRITERIA_FLAG_IS_DATE',           0x00000010);   // not used
 define('ACHIEVEMENT_CRITERIA_FLAG_MONEY_COUNTER',     0x00000020);   // Displays counter as money
+define('ACHIEVEMENT_CRITERIA_FLAG_IS_ACHIEVEMENT_ID', 0x00000040);
 
 $player_total_time_in_days = 0;
 
@@ -231,7 +232,7 @@ function renderAchievement($id, &$a, $guid)
   }
   foreach($a['requirement'] as $r)
   {
-    if ($r['completionFlag']&ACHIEVEMENT_CRITERIA_FLAG_HIDE_CRITERIA)
+    if ($r['completionFlag']&ACHIEVEMENT_CRITERIA_FLAG_HIDDEN)
       continue;
     if ($r['completionFlag']&ACHIEVEMENT_CRITERIA_FLAG_SHOW_PROGRESS_BAR)
       echo '<div class=sub_bar>'.renderProgress(@$r['counter'], $r['value'], $r['completionFlag']&ACHIEVEMENT_CRITERIA_FLAG_MONEY_COUNTER).'</div>';

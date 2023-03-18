@@ -89,10 +89,14 @@ else
    echo "<tr><th>ExtraFlags</th><td>".$cr['ExtraFlags']."</td><th>RegenerateStats</th><td>".$cr['RegenerateStats']."</td></tr>";
    echo "<tr><th>SpeedWalk</th><td>".$cr['SpeedWalk']."</td><th>SpeedRun</th><td>".$cr['SpeedRun']."</td></tr>";
    echo "<tr><th>Scale</th><td>".$cr['Scale']."</td><th>Rank</th><td>".$cr['Rank']."</td></tr>";
-   echo "<tr><th>MinMeleeDmg</th><td>".$cr['MinMeleeDmg']."</td><th>MaxMeleeDmg</th><td>".$cr['MaxMeleeDmg']."</td></tr>";
-   echo "<tr><th>MinRangedDmg</th><td>".$cr['MinRangedDmg']."</td><th>MaxRangedDmg</th><td>".$cr['MaxRangedDmg']."</td></tr>";
+   $MinMeleeDmg = ROUND((getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['DamageVariance'], 3)+(getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['DamageMultiplier'], 4)/14)*($cr['MeleeBaseAttackTime']/1000))*$cr['DamageMultiplier']);
+   $MaxMeleeDmg = ROUND($MinMeleeDmg*1.5);
+   echo "<tr><th>MinMeleeDmg</th><td>$MinMeleeDmg</td><th>MaxMeleeDmg</th><td>$MaxMeleeDmg</td></tr>";
+   $MinRangedDmg = ROUND((getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['DamageVariance'], 3)+(getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['DamageMultiplier'], 5)/14)*($cr['RangedBaseAttackTime']/1000))*$cr['DamageMultiplier']);
+   $MaxRangedDmg = ROUND($MinRangedDmg*1.5);
+   echo "<tr><th>MinRangedDmg</th><td>$MinRangedDmg</td><th>MaxRangedDmg</th><td>$MaxRangedDmg</td></tr>";
    echo "<tr><th>DamageSchool</th><td>".$cr['DamageSchool']."</td><th>DamageMultiplier</th><td>".$cr['DamageMultiplier']."</td></tr>";
-   echo "<tr><th>MeleeAttackPower</th><td>".$cr['MeleeAttackPower']."</td><th>RangedAttackPower</th><td>".$cr['RangedAttackPower']."</td></tr>";
+   echo "<tr><th>MeleeAttackPower</th><td>".getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], 1, 4)."</td><th>RangedAttackPower</th><td>".getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], 1, 5)."</td></tr>";
    echo "<tr><th>MeleeBaseAttackTime</th><td>".$cr['MeleeBaseAttackTime']."</td><th>RangedBaseAttackTime</th><td>".$cr['RangedBaseAttackTime']."</td></tr>";
    echo "<tr><th>UnitClass</th><td>".$cr['UnitClass']."</td><th>Family</th><td>".$cr['Family']."</td></tr>";
    echo "<tr><th>TrainerType</th><td>".$cr['TrainerType']."</td><th>TrainerSpell</th><td>".$cr['TrainerSpell']."</td></tr>";

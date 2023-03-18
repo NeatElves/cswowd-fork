@@ -1,22 +1,22 @@
 <?php
 
 define('UNIT_FLAG_UNK_0', 0x00000001);
-define('UNIT_FLAG_NON_ATTACKABLE', 0x00000002);
-define('UNIT_FLAG_DISABLE_MOVE', 0x00000004);
-define('UNIT_FLAG_PVP_ATTACKABLE', 0x00000008);
+define('UNIT_FLAG_SPAWNING', 0x00000002);
+define('UNIT_FLAG_CLIENT_CONTROL_LOST', 0x00000004);
+define('UNIT_FLAG_PLAYER_CONTROLLED', 0x00000008);
 define('UNIT_FLAG_RENAME', 0x00000010);
 define('UNIT_FLAG_PREPARATION', 0x00000020);
 define('UNIT_FLAG_UNK_6', 0x00000040);
 define('UNIT_FLAG_NOT_ATTACKABLE_1', 0x00000080);
-define('UNIT_FLAG_OOC_NOT_ATTACKABLE', 0x00000100);
-define('UNIT_FLAG_PASSIVE', 0x00000200);
+define('UNIT_FLAG_IMMUNE_TO_PLAYER', 0x00000100);
+define('UNIT_FLAG_IMMUNE_TO_NPC', 0x00000200);
 define('UNIT_FLAG_LOOTING', 0x00000400);
 define('UNIT_FLAG_PET_IN_COMBAT', 0x00000800);
-define('UNIT_FLAG_PVP', 0x00001000);
+define('UNIT_FLAG_PVP_DEPRECATED', 0x00001000);
 define('UNIT_FLAG_SILENCED', 0x00002000);
 define('UNIT_FLAG_UNK_14', 0x00004000);
-define('UNIT_FLAG_UNK_15', 0x00008000);
-define('UNIT_FLAG_UNK_16', 0x00010000);
+define('UNIT_FLAG_SWIMMING', 0x00008000);
+define('UNIT_FLAG_UNTARGETABLE', 0x00010000);
 define('UNIT_FLAG_PACIFIED', 0x00020000);
 define('UNIT_FLAG_STUNNED', 0x00040000);
 define('UNIT_FLAG_IN_COMBAT', 0x00080000);
@@ -24,14 +24,14 @@ define('UNIT_FLAG_TAXI_FLIGHT', 0x00100000);
 define('UNIT_FLAG_DISARMED', 0x00200000);
 define('UNIT_FLAG_CONFUSED', 0x00400000);
 define('UNIT_FLAG_FLEEING', 0x00800000);
-define('UNIT_FLAG_PLAYER_CONTROLLED', 0x01000000);
-define('UNIT_FLAG_NOT_SELECTABLE', 0x02000000);
+define('UNIT_FLAG_POSSESSED', 0x01000000);
+define('UNIT_FLAG_UNINTERACTIBLE', 0x02000000);
 define('UNIT_FLAG_SKINNABLE', 0x04000000);
 define('UNIT_FLAG_MOUNT', 0x08000000);
 define('UNIT_FLAG_UNK_28', 0x10000000);
-define('UNIT_FLAG_UNK_29', 0x20000000);
+define('UNIT_FLAG_PREVENT_ANIM', 0x20000000);
 define('UNIT_FLAG_SHEATHE', 0x40000000);
-define('UNIT_FLAG_UNK_31', 0x80000000);
+define('UNIT_FLAG_IMMUNE', 0x80000000);
 
 define('CREATURE_TYPEFLAGS_HERBLOOT', 0x00000100);
 define('CREATURE_TYPEFLAGS_MININGLOOT', 0x00000200);
@@ -63,7 +63,7 @@ define('UNIT_NPC_FLAG_AUCTIONEER', 0x00200000);
 define('UNIT_NPC_FLAG_STABLEMASTER', 0x00400000);
 define('UNIT_NPC_FLAG_GUILD_BANKER', 0x00800000);
 define('UNIT_NPC_FLAG_SPELLCLIC',  0x01000000);
-define('UNIT_NPC_FLAG_UNK25', 0x02000000);
+define('UNIT_NPC_FLAG_PLAYER_VEHICLE', 0x02000000);
 define('UNIT_NPC_FLAG_UNK26', 0x04000000);
 define('UNIT_NPC_FLAG_UNK27', 0x08000000);
 define('UNIT_NPC_FLAG_UNK28', 0x10000000);
@@ -78,8 +78,8 @@ function noBorderCreatureTable($npc)
  $type = $npc['CreatureType'];
  $rank =  $npc['Rank'];
  $family =$npc['Family'];
- $npcdmgmin = ROUND(($npc['MinMeleeDmg']+$npc['MeleeAttackPower'])*$npc['DamageMultiplier']);
- $npcdmgmax = ROUND(($npc['MaxMeleeDmg']+$npc['MeleeAttackPower'])*$npc['DamageMultiplier']);
+ $npcdmgmin = ROUND((getCreatureClasslevelstats($npc['MinLevel'], $npc['UnitClass'], $npc['Expansion'], $npc['DamageVariance'], 3)+(getCreatureClasslevelstats($npc['MinLevel'], $npc['UnitClass'], $npc['Expansion'], 1, 4)/14)*($npc['MeleeBaseAttackTime']/1000))*$npc['DamageMultiplier']);
+ $npcdmgmax = ROUND($npcdmgmin*1.5);
 
  if ($npc['ScriptName']=="" && $npc['AIName']=="") {$npcscr='No script';}
  else if ($npc['AIName']<>"" && $npc['ScriptName']=="") {$npcscr=$npc['AIName'];}
@@ -105,20 +105,20 @@ function noBorderCreatureTable($npc)
  echo "<tr><td>".$game_text['npc_family']."</td><td align=right>".getCreatureFamily($family)."</td></tr>";
  echo "<tr><td>".$game_text['npc_level']."</td><td align=right>$npc[MaxLevel]</td></tr>";
  if ($npc['MinLevelHealth']==$npc['MaxLevelHealth'])
-     echo "<tr><td>".$game_text['npc_health']."</td><td align=right>$npc[MaxLevelHealth]</td></tr>";
+     echo "<tr><td>".$game_text['npc_health']."</td><td align=right>".getCreatureClasslevelstats($npc['MaxLevel'], $npc['UnitClass'], $npc['Expansion'], $npc['HealthMultiplier'], 1)."</td></tr>";
  else
-     echo "<tr><td>".$game_text['npc_health']."</td><td align=right>$npc[MinLevelHealth]-$npc[MaxLevelHealth]</td></tr>";
+     echo "<tr><td>".$game_text['npc_health']."</td><td align=right>".getCreatureClasslevelstats($npc['MinLevel'], $npc['UnitClass'], $npc['Expansion'], $npc['HealthMultiplier'], 1)." - ".getCreatureClasslevelstats($npc['MaxLevel'], $npc['UnitClass'], $npc['Expansion'], $npc['HealthMultiplier'], 1)."</td></tr>";
  if ($npc['MinLevelMana']!=0)
  {
      if ($npc['MinLevelMana']!=$npc['MaxLevelMana'])
-         echo "<tr><td>".$game_text['npc_mana']."</td><td align=right>$npc[MinLevelMana]-$npc[MaxLevelMana]</td></tr>";
+         echo "<tr><td>".$game_text['npc_mana']."</td><td align=right>".getCreatureClasslevelstats($npc['MinLevel'], $npc['UnitClass'], $npc['Expansion'], $npc['PowerMultiplier'], 2)." - ".getCreatureClasslevelstats($npc['MaxLevel'], $npc['UnitClass'], $npc['Expansion'], $npc['PowerMultiplier'], 2)."</td></tr>";
      else
-         echo "<tr><td>".$game_text['npc_mana']."</td><td align=right>$npc[MinLevelMana]</td></tr>";
+         echo "<tr><td>".$game_text['npc_mana']."</td><td align=right>".getCreatureClasslevelstats($npc['MinLevel'], $npc['UnitClass'], $npc['Expansion'], $npc['PowerMultiplier'], 2)."</td></tr>";
  }
  if ($npc['Armor']!=0)
-     echo "<tr><td>".$game_text['npc_armor']."</td><td align=right>$npc[Armor]</td></tr>";
+     echo "<tr><td>".$game_text['npc_armor']."</td><td align=right>".getCreatureClasslevelstats($npc['MinLevel'], $npc['UnitClass'], $npc['Expansion'], $npc['ArmorMultiplier'], 6)."</td></tr>";
  echo "<tr><td>".$game_text['npc_damage']."</td><td align=right>$npcdmgmin&nbsp;-&nbsp;$npcdmgmax</td></tr>";
- echo "<tr><td>".$game_text['npc_ap']."</td><td align=right>$npc[MeleeAttackPower]</td></tr>";
+ echo "<tr><td>".$game_text['npc_ap']."</td><td align=right>".getCreatureClasslevelstats($npc['MinLevel'], $npc['UnitClass'], $npc['Expansion'], 1, 4)."</td></tr>";
  $attackTime = $npc['MeleeBaseAttackTime']/1000;
  echo "<tr><td>".$game_text['npc_attack']."</td><td align=right>$attackTime&nbsp;$lang[sec]</td></tr>";
  echo "<tr><td>".$game_text['faction']."</td><td align=right>".getFactionTemplateName($npc['Faction'])."</td></tr>";
