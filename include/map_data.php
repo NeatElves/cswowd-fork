@@ -976,7 +976,7 @@ class mapPoints{
     `position_z`,
     `orientation`,
     `spawntimesecsmin`,
-    `spawntimesecsmax`,
+    `spawntimesecsmax`
     FROM `gameobject` WHERE `id` = ?d {AND `map` = ?d}', $id, $map==-1? DBSIMPLE_SKIP:$map);
     if ($list) $this->points = array_merge($this->points, $list);
   }
