@@ -588,6 +588,12 @@ function getCreature($creature_id, $fields = "*")
   return $creature;
 }
 
+function getCreatureID($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT `entry` FROM `creature_spawn_entry` WHERE `guid` = ?d", $creature_guid);
+}
+
 function getCreatureName($creature_id, $as_ref=1)
 {
  if ($Creature=getCreature($creature_id, "`Entry`, `Name`"))
@@ -770,6 +776,13 @@ function getGameobject($gameobject_id, $fields="*")
       localiseGameobject($go);
   return $go;
 }
+
+function getGameobjectID($gameobject_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT `entry` FROM `gameobject_spawn_entry` WHERE `guid` = ?d", $gameobject_guid);
+}
+
 function getGameobjectName($gameobject_id, $as_ref=1)
 {
  if ($gameobject=getGameobject($gameobject_id, "`entry`, `name`"))

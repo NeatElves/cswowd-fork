@@ -301,7 +301,7 @@ function transformWorldCoordinates(&$map, &$x, &$y, &$z)
 // return true if map - dungeon
 function isDungeon($id)
 {
-    if ($id==0 || $id == 1 || $id == 530 || $id ==571)
+    if ($id==0 || $id == 1 || $id == 530 || $id ==571 || $id ==609)
         return false;
     return true;
 }
@@ -664,8 +664,12 @@ function defaultMapRenderCallback($data, $x, $y)
    if ($data['type']=='n') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-   if ($areaname) $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
-   else $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$lang[respawn]&nbsp;$spawntime";
+   if ($areaname) {
+    if ($data['id']) $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
+     else $text = getCreatureName(getCreatureID($data['guid']), 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";}
+      else {
+    if ($data['id'])  $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$lang[respawn]&nbsp;$spawntime";
+	  else $text = getCreatureName(getCreatureID($data['guid']), 0)."&nbsp;($data[guid])<br>$lang[respawn]&nbsp;$spawntime";}
     $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);
    if (getCreatureEvent($data['guid'])) {
     $crev = explode(',', getCreatureEvent($data['guid']));
@@ -683,8 +687,12 @@ function defaultMapRenderCallback($data, $x, $y)
    if ($data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-   if ($areaname) $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
-   else $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$lang[respawn]&nbsp;$spawntime";
+   if ($areaname) {
+    if ($data['id']) $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
+     else $text = getGameobjectName(getGameobjectID($data['guid']), 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";}
+      else {
+    if ($data['id'])  $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$lang[respawn]&nbsp;$spawntime";
+	  else $text = getGameobjectName(getGameobjectID($data['guid']), 0)."&nbsp;($data[guid])<br>$lang[respawn]&nbsp;$spawntime";}
    if (getGameobjectEvent($data['guid'])) {
     $obev = explode(',', getGameobjectEvent($data['guid']));
       foreach ($obev as $v) {
@@ -720,7 +728,8 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    if ($data['type']=='n') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-    $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$mapname&nbsp;-&nbsp;$areaname<br>$lang[respawn]&nbsp;$spawntime";
+   if ($data['id']) $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
+   else $text = getCreatureName(getCreatureID($data['guid']), 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
     $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);
    if (getCreatureEvent($data['guid'])) {
     $crev = explode(',', getCreatureEvent($data['guid']));
@@ -738,7 +747,8 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    if ($data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-    $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$mapname&nbsp;-&nbsp;$areaname<br>$lang[respawn]&nbsp;$spawntime";
+   if ($data['id']) $text = getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
+   else $text = getGameobjectName(getGameobjectID($data['guid']), 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
    if (getGameobjectEvent($data['guid'])) {
     $obev = explode(',', getGameobjectEvent($data['guid']));
       foreach ($obev as $v) {
@@ -957,6 +967,24 @@ class mapPoints{
     `MovementType`
     FROM `creature` WHERE `id` = ?d {AND `map` = ?d}', $id, $map==-1? DBSIMPLE_SKIP:$map);
     if ($list) $this->points = array_merge($this->points, $list);
+    $list = $dDB->select('SELECT
+    \'n\' AS `type`,
+    `guid`,
+    `id`,
+    `map`,
+    `spawnMask`,
+    `phaseMask`,
+    `equipment_id`,
+    `position_x`,
+    `position_y`,
+    `position_z`,
+    `orientation`,
+    `spawntimesecsmin`,
+    `spawntimesecsmax`,
+    `spawndist`,
+    `MovementType`
+    FROM `creature` WHERE `guid` in (SELECT `guid` FROM `creature_spawn_entry` WHERE `entry` = ?d) {AND `map` = ?d}', $id, $map==-1? DBSIMPLE_SKIP:$map);
+    if ($list) $this->points = array_merge($this->points, $list);
   }
   //*************************************
   // Add object list
@@ -978,6 +1006,21 @@ class mapPoints{
     `spawntimesecsmin`,
     `spawntimesecsmax`
     FROM `gameobject` WHERE `id` = ?d {AND `map` = ?d}', $id, $map==-1? DBSIMPLE_SKIP:$map);
+    if ($list) $this->points = array_merge($this->points, $list);
+    $list = $dDB->select('SELECT
+    \'o\' AS `type`,
+    `guid`,
+    `id`,
+    `map`,
+    `spawnMask`,
+    `phaseMask`,
+    `position_x`,
+    `position_y`,
+    `position_z`,
+    `orientation`,
+    `spawntimesecsmin`,
+    `spawntimesecsmax`
+    FROM `gameobject` WHERE `guid` in (SELECT `guid` FROM `gameobject_spawn_entry` WHERE `entry` = ?d) {AND `map` = ?d}', $id, $map==-1? DBSIMPLE_SKIP:$map);
     if ($list) $this->points = array_merge($this->points, $list);
   }
   //*************************************
@@ -1061,7 +1104,8 @@ function getPointData($area_id, &$data, $x, $y)
    if (@$data['type']=='n') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-    $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
+   if ($data['id']) $text = getCreatureName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
+   else $text = getCreatureName(getCreatureID($data['guid']), 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
     $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);           
    if (getCreatureEvent($data['guid'])) {
     $crev = explode(',', getCreatureEvent($data['guid']));
@@ -1079,7 +1123,8 @@ function getPointData($area_id, &$data, $x, $y)
    if (@$data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-    $text =getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
+   if ($data['id']) $text =getGameobjectName($data['id'], 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
+   else $text = getGameobjectName(getGameobjectID($data['guid']), 0)."&nbsp;($data[guid])<br>$areaname<br>$lang[respawn]&nbsp;$spawntime";
    if (getGameobjectEvent($data['guid'])) {
     $obev = explode(',', getGameobjectEvent($data['guid']));
       foreach ($obev as $v) {
