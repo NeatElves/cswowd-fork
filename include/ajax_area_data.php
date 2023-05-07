@@ -10,7 +10,6 @@ $list = $dDB->select(
    `map`,
    `spawnMask`,
    `phaseMask`,
-   `equipment_id`,
    `position_x`,
    `position_y`,
    `position_z`,
