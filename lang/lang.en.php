@@ -255,6 +255,7 @@ $lang = array(
 'pool'                   => 'Pool',
 'poolt'                   => 'Pool(t)',
 'spawngroup'             => 'Group',
+'spawnentry'             => 'Random spawn Id: ',
 'id'                     => 'id',
 'item_list'              => 'Item list',
 'reqirement'             => 'Reqirement',

@@ -730,6 +730,19 @@ function getSpawnGroup($Id)
   SELECT `Type` FROM `spawn_group` WHERE `Id` = ?d", $Id);
 }
 
+function getSpawnCreatureEntry($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `entry` FROM `creature_spawn_entry` WHERE `guid` = ?d", $creature_guid);
+}
+
+function getSpawnCreatureEntryGroup($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT GROUP_CONCAT(`entry`) FROM `creature_spawn_entry` WHERE `guid` = ?d", $creature_guid);
+}
+
 function getCreatureMovementType($i)
 {
   global $lang;
@@ -839,6 +852,19 @@ function getGameobjectPoolTemplate($gameobject_id)
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
   SELECT `pool_entry` FROM `pool_gameobject_template` WHERE `id` = ?d", $gameobject_id);
+}
+
+function getSpawnGameobjectEntry($gameobject_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `entry` FROM `gameobject_spawn_entry` WHERE `guid` = ?d", $gameobject_guid);
+}
+
+function getSpawnGameobjectEntryGroup($gameobject_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT GROUP_CONCAT(`entry`) FROM `gameobject_spawn_entry` WHERE `guid` = ?d", $gameobject_guid);
 }
 
 function getQuestgiverGreetingGameobject($gameobject_id)

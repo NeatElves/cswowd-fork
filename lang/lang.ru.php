@@ -255,6 +255,7 @@ $lang = array(
 'pool'                   => 'Пул',
 'poolt'                   => 'Пул(t)',
 'spawngroup'             => 'Группа',
+'spawnentry'             => 'Случайный спавн Id: ',
 'id'                     => 'id',
 'item_list'              => 'Список предметов',
 'reqirement'             => 'Требование',
