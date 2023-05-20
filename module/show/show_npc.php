@@ -56,16 +56,16 @@ else
   $hentry2 = isset($heroic2[$entry]) ? $heroic2[$entry]:0;
 
   if ($hentry2)
-  echo "<a href=\"?map&npc=$hentry2\">$lang[show_map]&nbsp;(".(getCreatureCount($hentry2) + getCreatureCountSpawn($hentry2)).")</a><br>";
+  echo "<a href=\"?map&npc=$hentry2\">$lang[show_map]&nbsp;(".(getCreatureCount($hentry2) + getCreatureCountSpawn($hentry2) + getCountGroupSpawnCr($hentry2)).")</a><br>";
   else
   if ($hentry1)
-  echo "<a href=\"?map&npc=$hentry1\">$lang[show_map]&nbsp;(".(getCreatureCount($hentry1) + getCreatureCountSpawn($hentry1)).")</a><br>";
+  echo "<a href=\"?map&npc=$hentry1\">$lang[show_map]&nbsp;(".(getCreatureCount($hentry1) + getCreatureCountSpawn($hentry1) + getCountGroupSpawnCr($hentry1)).")</a><br>";
   else
   if ($hentry)
-  echo "<a href=\"?map&npc=$hentry\">$lang[show_map]&nbsp;(".(getCreatureCount($hentry) + getCreatureCountSpawn($hentry)).")</a><br>";
+  echo "<a href=\"?map&npc=$hentry\">$lang[show_map]&nbsp;(".(getCreatureCount($hentry) + getCreatureCountSpawn($hentry) + getCountGroupSpawnCr($hentry)).")</a><br>";
   else 
   if ($entry)
-  echo "<a href=\"?map&npc=$entry\">$lang[show_map]&nbsp;(".(getCreatureCount($entry) + getCreatureCountSpawn($entry)).")</a><br>";
+  echo "<a href=\"?map&npc=$entry\">$lang[show_map]&nbsp;(".(getCreatureCount($entry) + getCreatureCountSpawn($entry) + getCountGroupSpawnCr($entry)).")</a><br>";
 
   if ($config['show_npc_detalis'])
   {

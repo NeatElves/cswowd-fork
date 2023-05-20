@@ -588,12 +588,6 @@ function getCreature($creature_id, $fields = "*")
   return $creature;
 }
 
-function getCreatureID($creature_guid)
-{
-  global $dDB;
-  return $dDB->selectCell("SELECT `entry` FROM `creature_spawn_entry` WHERE `guid` = ?d", $creature_guid);
-}
-
 function getCreatureName($creature_id, $as_ref=1)
 {
  if ($Creature=getCreature($creature_id, "`Entry`, `Name`"))
@@ -669,6 +663,12 @@ function getCreatureCountSpawn($creature_id)
   return $dDB->selectCell("SELECT count(*) FROM `creature_spawn_entry` WHERE `entry` = ?d", $creature_id);
 }
 
+function getCreatureID($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT `entry` FROM `creature_spawn_entry` WHERE `guid` = ?d", $creature_guid);
+}
+
 function getCreatureFlagName($flag, $as_ref=1)
 {
   global $gCreatureFlags;
@@ -716,11 +716,18 @@ function getCreaturePoolTemplate($creature_id)
   SELECT `pool_entry` FROM `pool_creature_template` WHERE `id` = ?d", $creature_id);
 }
 
-function getSpawnGroupSpawn($creature_guid)
+function getSpawnGroupSpawn($guid)
 {
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
-  SELECT `Id` FROM `spawn_group_spawn` WHERE `Guid` = ?d", $creature_guid);
+  SELECT `Id` FROM `spawn_group_spawn` WHERE `Guid` = ?d", $guid);
+}
+
+function getSpawnGroupSpawnE($entry)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `Id` FROM `spawn_group_entry` WHERE `Entry` = ?d", $entry);
 }
 
 function getSpawnGroup($Id)
@@ -743,11 +750,59 @@ function getSpawnCreatureEntryGroup($creature_guid)
   return $dDB->selectCell("SELECT GROUP_CONCAT(`entry`) FROM `creature_spawn_entry` WHERE `guid` = ?d", $creature_guid);
 }
 
+function getIDSGE($guid)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT GROUP_CONCAT(`Entry`) FROM `spawn_group_entry` WHERE `Id` IN (SELECT `Id` FROM `spawn_group_spawn` WHERE `Guid` = ?d)", $guid);
+}
+
+function getCountGroupSpawnCr($entry)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `spawn_group_spawn` 
+  JOIN `spawn_group` ON `spawn_group`.`Id`=`spawn_group_spawn`.`Id`
+  JOIN `spawn_group_entry` ON `spawn_group_entry`.`Id`=`spawn_group_spawn`.`Id`
+  WHERE `type` = 0 AND `Entry` = ?d", $entry);
+}
+
+function getCountGroupSpawnGo($entry)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `spawn_group_spawn` 
+  JOIN `spawn_group` ON `spawn_group`.`Id`=`spawn_group_spawn`.`Id`
+  JOIN `spawn_group_entry` ON `spawn_group_entry`.`Id`=`spawn_group_spawn`.`Id`
+  WHERE `type` = 1 AND `Entry` = ?d", $entry);
+}
+
+function getCreatureLinking($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `creature_linking` WHERE `guid` = ?d", $creature_guid);
+}
+
+function getCreatureTLinking($creature_id)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `creature_linking_template` WHERE `entry` = ?d", $creature_id);
+}
+
+function getCreatureLinkingM($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `creature_linking` WHERE `master_guid` = ?d", $creature_guid);
+}
+
+function getCreatureTLinkingM($creature_id)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `creature_linking_template` WHERE `master_entry` = ?d", $creature_id);
+}
+
 function getCreatureMovementType($i)
 {
   global $lang;
   if ($i > 4)
-    return "Unknown movement";
+    return $lang['movementunk'];
   else
     return $lang['movementtype'.$i.''];
 }

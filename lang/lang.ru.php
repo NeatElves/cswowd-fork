@@ -146,6 +146,7 @@ $lang = array(
 'movementtype2'  => 'маршрут',
 'movementtype3'  => 'путь',
 'movementtype4'  => 'линейное',
+'movementunk'    => 'Неизвестный тип',
 
 # Loot report
 'loot_chance'  => 'Шанс',
@@ -255,7 +256,10 @@ $lang = array(
 'pool'                   => 'Пул',
 'poolt'                   => 'Пул(t)',
 'spawngroup'             => 'Группа',
-'spawnentry'             => 'Случайный спавн Id: ',
+'spawnentry'             => 'Случайный спавн ид: ',
+'spawnguid'              => 'Гуид: ',
+'linking'                => 'НИП пролинкован',
+'tlinking'               => 'НИП пролинкован(t)',
 'id'                     => 'id',
 'item_list'              => 'Список предметов',
 'reqirement'             => 'Требование',

@@ -146,6 +146,7 @@ $lang = array(
 'movementtype2'  => 'waypoint',
 'movementtype3'  => 'path',
 'movementtype4'  => 'linear',
+'movementunk'    => 'Unknown type',
 
 # Loot report
 'loot_chance'  => 'Chance',
@@ -256,6 +257,9 @@ $lang = array(
 'poolt'                   => 'Pool(t)',
 'spawngroup'             => 'Group',
 'spawnentry'             => 'Random spawn Id: ',
+'linking'                => 'Creature linking',
+'tlinking'               => 'Creature Linking(t)',
+'spawnguid'              => 'Guid: ',
 'id'                     => 'id',
 'item_list'              => 'Item list',
 'reqirement'             => 'Reqirement',

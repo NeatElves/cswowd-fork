@@ -24,9 +24,9 @@ else if ($map)
    $obj_id = @$_REQUEST['obj'];
    $list = 0;
    if ($mob_id)
-     $list = $dDB->select("SELECT * FROM `creature` WHERE `id` = ?d", $mob_id);
+    $list = $dDB->select("SELECT * FROM `creature` WHERE `id` = ?d", $mob_id);
    else if ($obj_id)
-     $list = $dDB->select("SELECT * FROM `gameobject` WHERE `id` = ?d", $obj_id);
+    $list = $dDB->select("SELECT * FROM `gameobject` WHERE `id` = ?d", $obj_id);
    renderMap($map, @$_REQUEST['width'], $list);
 }
 ?>
