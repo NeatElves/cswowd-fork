@@ -974,6 +974,7 @@ function getBaseReputationForFaction($faction, $race, $class)
             return $faction['BaseRepValue_'.$i];
     return 0;
 }
+
 function getBaseReputationFlagForFaction($faction, $race, $class)
 {
     if (empty($faction)) return 0;
@@ -985,6 +986,7 @@ function getBaseReputationFlagForFaction($faction, $race, $class)
             return $faction['ReputationFlags_'.$i];
     return 0;
 }
+
 function getReputationRankName($rep)
 {
   global $gReputationRank;
@@ -1004,6 +1006,7 @@ function getReputationDataFromReputation($rep)
          return array('rank'=>$i, 'rank_name'=>$gReputationRank[$i], 'rep'=>$rep - $current, 'max'=>$gRepStep[$i]);
   return array('rank'=>7, 'rank_name'=>$gReputationRank[7], 'rep'=>$gRepStep[7], 'max'=>$gRepStep[7]);
 }
+
 function getFactionType($id)
 {
   global $gFactionType;
@@ -1149,6 +1152,7 @@ function getQuestBreadcrumb($quest_id)
   return $dDB->selectCell("-- CACHE: 1h
   SELECT GROUP_CONCAT(`entry`) FROM `quest_template` WHERE `BreadcrumbForQuestId` = ?d", $quest_id);
 }
+
 function getNumPalayersCompletedQuest($entry)
 {
  global $cDB;

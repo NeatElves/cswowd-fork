@@ -665,10 +665,10 @@ function defaultMapRenderCallback($data, $x, $y)
    if ($data['type']=='n') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-   if ($data['id']) {$text = getCreatureName($data['id'], 0)."&nbsp;".($data['guid']."<br>");
+   if ($data['id']) {$text = getCreatureName($data['id'], 0)."<br>".$lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace($lang['respawn']."&nbsp;".$spawntime, $text, 0, 0);}
-   else {$text = $lang['spawnguid']."&nbsp;".$data['guid']."<br>";
+   else {$text = $lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace("$lang[respawn]&nbsp;$spawntime", $text, 0, 0);}
    $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);
@@ -684,7 +684,7 @@ function defaultMapRenderCallback($data, $x, $y)
     $text = substr_replace("<br>$lang[poolt]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
-   if (getSpawnCreatureEntry($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
+   if (getSpawnCreatureEntry($data['guid']))
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getSpawnCreatureEntryGroup($data['guid']).")", $text, 0, 0);
    if (getIDSGE($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getIDSGE($data['guid']).")", $text, 0, 0);
@@ -700,10 +700,10 @@ function defaultMapRenderCallback($data, $x, $y)
    if ($data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-   if ($data['id']) {$text = getGameobjectName($data['id'], 0)."&nbsp;".($data['guid']."<br>");
+   if ($data['id']) {$text = getGameobjectName($data['id'], 0)."<br>".$lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace($lang['respawn']."&nbsp;".$spawntime, $text, 0, 0);}
-   else {$text = $lang['spawnguid']."&nbsp;".$data['guid']."<br>";
+   else {$text = $lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace("$lang[respawn]&nbsp;$spawntime", $text, 0, 0);}
    if (getGameobjectEvent($data['guid'])) {
@@ -718,7 +718,7 @@ function defaultMapRenderCallback($data, $x, $y)
     $text = substr_replace("<br>$lang[poolt]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
-   if (getSpawnGameobjectEntry($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
+   if (getSpawnGameobjectEntry($data['guid']))
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getSpawnGameobjectEntryGroup($data['guid']).")", $text, 0, 0);
    if (getIDSGE($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getIDSGE($data['guid']).")", $text, 0, 0);
@@ -745,13 +745,13 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    if ($data['type']=='n') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-   if ($data['id']) {$text = getCreatureName($data['id'], 0)."&nbsp;".($data['guid']."<br>");
+   if ($data['id']) {$text = getCreatureName($data['id'], 0)."<br>".$lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace($lang['respawn']."&nbsp;".$spawntime, $text, 0, 0);}
-   else {$text = $lang['spawnguid']."&nbsp;".$data['guid']."<br>";
+   else {$text = $lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace("$lang[respawn]&nbsp;$spawntime", $text, 0, 0);}
-    $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);
+   $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);
    if (getCreatureEvent($data['guid'])) {
     $crev = explode(',', getCreatureEvent($data['guid']));
       foreach ($crev as $v) {
@@ -764,7 +764,7 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
     $text = substr_replace("<br>$lang[poolt]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
-   if (getSpawnCreatureEntry($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
+   if (getSpawnCreatureEntry($data['guid']))
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getSpawnCreatureEntryGroup($data['guid']).")", $text, 0, 0);
    if (getIDSGE($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getIDSGE($data['guid']).")", $text, 0, 0);
@@ -780,10 +780,10 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
    if ($data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-   if ($data['id']) {$text = getGameobjectName($data['id'], 0)."&nbsp;".($data['guid']."<br>");
+   if ($data['id']) {$text = getGameobjectName($data['id'], 0)."<br>".$lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace($lang['respawn']."&nbsp;".$spawntime, $text, 0, 0);}
-   else {$text = $lang['spawnguid']."&nbsp;".$data['guid']."<br>";
+   else {$text = $lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace("$lang[respawn]&nbsp;$spawntime", $text, 0, 0);}
    if (getGameobjectEvent($data['guid'])) {
@@ -798,7 +798,7 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
     $text = substr_replace("<br>$lang[poolt]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
-   if (getSpawnGameobjectEntry($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
+   if (getSpawnGameobjectEntry($data['guid']))
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getSpawnGameobjectEntryGroup($data['guid']).")", $text, 0, 0);
    if (getIDSGE($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getIDSGE($data['guid']).")", $text, 0, 0);
@@ -1176,13 +1176,13 @@ function getPointData($area_id, &$data, $x, $y)
    if (@$data['type']=='n') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-   if ($data['id']) {$text = getCreatureName($data['id'], 0)."&nbsp;".($data['guid']."<br>");
+   if ($data['id']) {$text = getCreatureName($data['id'], 0)."<br>".$lang[spawnguid]."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace($lang['respawn']."&nbsp;".$spawntime, $text, 0, 0);}
-   else {$text = $lang['spawnguid']."&nbsp;".$data['guid']."<br>";
+   else {$text = $lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace("$lang[respawn]&nbsp;$spawntime", $text, 0, 0);}
-    $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);           
+   $text = substr_replace("<br>$lang[movementtype]&nbsp;(".getCreatureMovementType($data['MovementType']).")", $text, 0, 0);           
    if (getCreatureEvent($data['guid'])) {
     $crev = explode(',', getCreatureEvent($data['guid']));
       foreach ($crev as $v) {
@@ -1195,7 +1195,7 @@ function getPointData($area_id, &$data, $x, $y)
     $text = substr_replace("<br>$lang[poolt]&nbsp;(".getCreaturePoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
-   if (getSpawnCreatureEntry($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
+   if (getSpawnCreatureEntry($data['guid']))
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getSpawnCreatureEntryGroup($data['guid']).")", $text, 0, 0);
    if (getIDSGE($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 0)
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getIDSGE($data['guid']).")", $text, 0, 0);
@@ -1211,10 +1211,10 @@ function getPointData($area_id, &$data, $x, $y)
    if (@$data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
    else $spawntime = getTimeText($data['spawntimesecsmin']);
-   if ($data['id']) {$text = getGameobjectName($data['id'], 0)."&nbsp;".($data['guid']."<br>");
+   if ($data['id']) {$text = getGameobjectName($data['id'], 0)."<br>".$lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace($lang['respawn']."&nbsp;".$spawntime, $text, 0, 0);}
-   else {$text = $lang['spawnguid']."&nbsp;".$data['guid']."<br>";
+   else {$text = $lang['spawnguid']."&nbsp;(".$data['guid'].")<br>";
    if ($areaname) $text = substr_replace("$areaname<br>", $text, 0, 0);
    $text = substr_replace("$lang[respawn]&nbsp;$spawntime", $text, 0, 0);}
    if (getGameobjectEvent($data['guid'])) {
@@ -1229,7 +1229,7 @@ function getPointData($area_id, &$data, $x, $y)
     $text = substr_replace("<br>$lang[poolt]&nbsp;(".getGameobjectPoolTemplate($data['id']).")", $text, 0, 0);
    if (getSpawnGroupSpawn($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
     $text = substr_replace("<br>$lang[spawngroup]&nbsp;(".getSpawnGroupSpawn($data['guid']).")", $text, 0, 0);
-   if (getSpawnGameobjectEntry($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
+   if (getSpawnGameobjectEntry($data['guid']))
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getSpawnGameobjectEntryGroup($data['guid']).")", $text, 0, 0);
    if (getIDSGE($data['guid']) AND (getSpawnGroup(getSpawnGroupSpawn($data['guid']))) == 1)
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getIDSGE($data['guid']).")", $text, 0, 0);

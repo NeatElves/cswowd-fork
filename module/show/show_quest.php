@@ -161,6 +161,7 @@ if ($quest['RequiredSkill'])
    echo "$lang[breadcrumb]&nbsp;<font color=red>$quest[BreadcrumbForQuestId]</font></td></tr>";
  if (getQuestBreadcrumb($quest['entry']))
    echo '<tr><td>'.$lang['breadcrumb'].'&nbsp;<font color=red>'.getQuestBreadcrumb($quest['entry']).'</font></td></tr>';
+
  if ($quest['SpecialFlags'] & QUEST_SPECIAL_FLAG_MONTHLY)
      echo "<tr><td>$lang[item_type]:&nbsp;<a href=\"?s=q&Sfm=".($quest['SpecialFlags'])."\">".$lang['quest_type3']."</a></td></tr>";
 
