@@ -1153,6 +1153,15 @@ function getQuestBreadcrumb($quest_id)
   SELECT GROUP_CONCAT(`entry`) FROM `quest_template` WHERE `BreadcrumbForQuestId` = ?d", $quest_id);
 }
 
+function getQuestRequiredCondition($cond_id)
+{
+  global $dDB, $lang;
+  $QRC = $dDB->selectCell("-- CACHE: 1h
+  SELECT `comments` FROM `conditions` WHERE `condition_entry` = ?d", $cond_id);
+  if (!$QRC) $QRC = $lang['quest_cond1'];
+  return $QRC;
+}
+
 function getNumPalayersCompletedQuest($entry)
 {
  global $cDB;
@@ -1464,7 +1473,7 @@ function getItemSet($item_set_id)
 function getItemData($guid)
 {
  global $cDB;
- return explode(' ', $cDB->selectCell("SELECT `data` FROM `item_instance` WHERE `guid` = ?d", $guid));
+ return explode(' ', $cDB->selectCell("SELECT `itemEntry`,`creatorGuid`,`giftCreatorGuid`,`count`,`duration`,`charges`,`flags`,`enchantments`,`randomPropertyId`,`durability`,`playedTime` FROM `item_instance` WHERE `guid` = ?d", $guid));
 }
 
 function getRecipeItem($recipe)
@@ -1572,7 +1581,7 @@ function show_item_from_char($id, $guid, $style='item', $posx=0, $posy=0, $empty
     global $cDB;
     if ($id != 0)
     {
-    $item_data = $cDB->selectCell("SELECT `guid` FROM `item_instance` WHERE `owner_guid`=?d AND (SUBSTRING_INDEX( SUBSTRING_INDEX(`data` , ' ' , 9) , ' ' , -1 )+0)=?d AND (SUBSTRING_INDEX( SUBSTRING_INDEX(`data` , ' ' , 4) , ' ' , -1 )+0)=$id", $guid, $guid, $id);
+    $item_data = $cDB->selectCell("SELECT `guid` FROM `item_instance` WHERE `owner_guid`=?d AND `creatorGuid`=?d AND `itemEntry`=$id", $guid, $guid, $id);
     if ($item_data = getItemData($item_data))
         show_item_by_data($item_data, $style, $posx, $posy);
     }

@@ -83,7 +83,7 @@ $config['talent_calc_max_level'] = 80;
 $modules['player'] = "module/armory/show_character.php";
 $config['show_player_skill']  = 1;         // Вывод скилов при показе игрока (пока что тестовый режим)
 $config['show_player_fields'] = 0;         // Вывод таблицы полей data при показе игрока
-$config['show_player_3d'] = 1;             // Вывод 3D модели игрока
+$config['show_player_3d'] = 0;             // Вывод 3D модели игрока
 
 //==================================================================
 // Вывод вещей на аукционе
