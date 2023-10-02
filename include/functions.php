@@ -774,6 +774,12 @@ function getCountGroupSpawnGo($entry)
   WHERE `type` = 1 AND `Entry` = ?d", $entry);
 }
 
+function getCreatureAddon($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `creature_addon` WHERE `guid` = ?d", $creature_guid);
+}
+
 function getCreatureLinking($creature_guid)
 {
   global $dDB;

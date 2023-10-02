@@ -264,6 +264,7 @@ $lang = array(
 'tlinking'               => 'Пролинкован(t) ведомым',
 'linkingm'               => 'Пролинкован мастером',
 'tlinkingm'              => 'Пролинкован(t) мастером',
+'guidadd'                => 'Запись в creature_addon',
 'id'                     => 'id',
 'item_list'              => 'Список предметов',
 'reqirement'             => 'Требование',

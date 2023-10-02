@@ -263,6 +263,7 @@ $lang = array(
 'tlinking'               => 'Slave linking(t)',
 'linkingm'               => 'Master linking',
 'tlinkingm'              => 'Master linking(t)',
+'guidadd'                => 'Record in creature_addon',
 'spawnguid'              => 'Guid: ',
 'id'                     => 'id',
 'item_list'              => 'Item list',
