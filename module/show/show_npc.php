@@ -87,6 +87,10 @@ else
    echo "<tr><th>UnitFlags</th><td>".$cr['UnitFlags']."</td><th>QuestgiverGreeting</th><td>".getQuestgiverGreetingCreature($cr['Entry'])."</td></tr>";
    echo "<tr><th>UnitFlags2</th><td>".$cr['UnitFlags2']."</td><th>DynamicFlags</th><td>".$cr['DynamicFlags']."</td></tr>";
    echo "<tr><th>ExtraFlags</th><td>".$cr['ExtraFlags']."</td><th>RegenerateStats</th><td>".$cr['RegenerateStats']."</td></tr>";
+   echo "<tr><th>SpellList</th><td>".$cr['SpellList']."</td><th>HoverHeight</th><td>".$cr['HoverHeight']."</td></tr>";
+   echo "<tr><th>Detection</th><td>".$cr['Detection']."</td><th>CallForHelp</th><td>".$cr['CallForHelp']."</td></tr>";
+   echo "<tr><th>StaticFlags1</th><td>".$cr['StaticFlags1']."</td><th>StaticFlags2</th><td>".$cr['StaticFlags2']."</td></tr>";
+   echo "<tr><th>StaticFlags3</th><td>".$cr['StaticFlags3']."</td><th>StaticFlags4</th><td>".$cr['StaticFlags4']."</td></tr>";
    echo "<tr><th>SpeedWalk</th><td>".$cr['SpeedWalk']."</td><th>SpeedRun</th><td>".$cr['SpeedRun']."</td></tr>";
    echo "<tr><th>Scale</th><td>".$cr['Scale']."</td><th>Rank</th><td>".$cr['Rank']."</td></tr>";
    $MinMeleeDmg = ROUND((getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['DamageVariance'], 3)+(getCreatureClasslevelstats($cr['MinLevel'], $cr['UnitClass'], $cr['Expansion'], $cr['DamageMultiplier'], 4)/14)*($cr['MeleeBaseAttackTime']/1000))*$cr['DamageMultiplier']);
@@ -115,6 +119,7 @@ else
    echo "<tr><th>MechanicImmuneMask</th><td>".$cr['MechanicImmuneMask']."</td><th>SchoolImmuneMask</th><td>".$cr['SchoolImmuneMask']."</td></tr>";
    echo "<tr><th>PetSpellDataId</th><td>".$cr['PetSpellDataId']."</td><th>VehicleTemplateId</th><td>".$cr['VehicleTemplateId']."</td></tr>";
    echo "<tr><th>TrainerTemplateId</th><td>".$cr['TrainerTemplateId']."</td><th>VendorTemplateId</th><td>".$cr['VendorTemplateId']."</td></tr>";
+   echo "<tr><th>StringId1</th><td>".$cr['StringId1']."</td><th>StringId2</th><td>".$cr['StringId2']."</td></tr>";
    echo "<tr><th>AIName</th><td>".$cr['AIName']."</td><th>ScriptName</th><td>".$cr['ScriptName']."</td></tr>";
    echo "</tbody></table>";
   }

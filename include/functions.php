@@ -720,21 +720,14 @@ function getSpawnGroupSpawn($guid)
 {
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
-  SELECT `Id` FROM `spawn_group_spawn` WHERE `Guid` = ?d", $guid);
+  SELECT `Id` FROM `spawn_group` WHERE `Id` IN (SELECT `Id` FROM `spawn_group_spawn` WHERE `Guid` = ?d) AND `Type`=0", $guid);
 }
 
-function getSpawnGroupSpawnE($entry)
+function getSpawnGroupSpawnGO($guid)
 {
   global $dDB;
   return $dDB->selectCell("-- CACHE: 1h
-  SELECT `Id` FROM `spawn_group_entry` WHERE `Entry` = ?d", $entry);
-}
-
-function getSpawnGroup($Id)
-{
-  global $dDB;
-  return $dDB->selectCell("-- CACHE: 1h
-  SELECT `Type` FROM `spawn_group` WHERE `Id` = ?d", $Id);
+  SELECT `Id` FROM `spawn_group` WHERE `Id` IN (SELECT `Id` FROM `spawn_group_spawn` WHERE `Guid` = ?d) AND `Type`=1", $guid);
 }
 
 function getSpawnCreatureEntry($creature_guid)
@@ -747,13 +740,13 @@ function getSpawnCreatureEntry($creature_guid)
 function getSpawnCreatureEntryGroup($creature_guid)
 {
   global $dDB;
-  return $dDB->selectCell("SELECT GROUP_CONCAT(`entry`) FROM `creature_spawn_entry` WHERE `guid` = ?d", $creature_guid);
+  return $dDB->selectCell("SELECT GROUP_CONCAT(`Entry`) FROM `creature_spawn_entry` WHERE `guid` = ?d", $creature_guid);
 }
 
 function getIDSGE($guid)
 {
   global $dDB;
-  return $dDB->selectCell("SELECT GROUP_CONCAT(`Entry`) FROM `spawn_group_entry` WHERE `Id` IN (SELECT `Id` FROM `spawn_group_spawn` WHERE `Guid` = ?d)", $guid);
+  return $dDB->selectCell("SELECT GROUP_CONCAT(`Entry`) FROM `spawn_group_entry` WHERE `Id` = ?d", $guid);
 }
 
 function getCountGroupSpawnCr($entry)
