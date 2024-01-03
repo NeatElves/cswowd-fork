@@ -698,6 +698,8 @@ function defaultMapRenderCallback($data, $x, $y)
     $text = substr_replace("<br>$lang[tlinkingm]", $text, 0, 0);
    if (getCreatureAddon($data['guid']))
     $text = substr_replace("<br>$lang[guidadd]", $text, 0, 0);
+   if (getCreatureEventData($data['guid']))
+    $text = substr_replace("<br>$lang[eventdata]", $text, 0, 0);
    }
    if ($data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
@@ -780,6 +782,8 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
     $text = substr_replace("<br>$lang[tlinkingm]", $text, 0, 0);
    if (getCreatureAddon($data['guid']))
     $text = substr_replace("<br>$lang[guidadd]", $text, 0, 0);
+   if (getCreatureEventData($data['guid']))
+    $text = substr_replace("<br>$lang[eventdata]", $text, 0, 0);
    }
    if ($data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
@@ -1213,6 +1217,8 @@ function getPointData($area_id, &$data, $x, $y)
     $text = substr_replace("<br>$lang[tlinkingm]", $text, 0, 0);
    if (getCreatureAddon($data['guid']))
     $text = substr_replace("<br>$lang[guidadd]", $text, 0, 0);
+   if (getCreatureEventData($data['guid']))
+    $text = substr_replace("<br>$lang[eventdata]", $text, 0, 0);
    }
    if (@$data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);

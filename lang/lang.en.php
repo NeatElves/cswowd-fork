@@ -264,6 +264,7 @@ $lang = array(
 'linkingm'               => 'Master linking',
 'tlinkingm'              => 'Master linking(t)',
 'guidadd'                => 'Record in creature_addon',
+'eventdata'              => 'Modifies into an event',
 'spawnguid'              => 'Guid: ',
 'id'                     => 'id',
 'item_list'              => 'Item list',

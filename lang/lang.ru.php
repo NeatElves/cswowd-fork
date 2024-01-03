@@ -265,6 +265,7 @@ $lang = array(
 'linkingm'               => 'Пролинкован мастером',
 'tlinkingm'              => 'Пролинкован(t) мастером',
 'guidadd'                => 'Запись в creature_addon',
+'eventdata'              => 'Видоизменятся в событие',
 'id'                     => 'id',
 'item_list'              => 'Список предметов',
 'reqirement'             => 'Требование',

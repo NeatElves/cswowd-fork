@@ -773,6 +773,12 @@ function getCreatureAddon($creature_guid)
   return $dDB->selectCell("SELECT count(*) FROM `creature_addon` WHERE `guid` = ?d", $creature_guid);
 }
 
+function getCreatureEventData($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `game_event_creature_data` WHERE `guid` = ?d", $creature_guid);
+}
+
 function getCreatureLinking($creature_guid)
 {
   global $dDB;
