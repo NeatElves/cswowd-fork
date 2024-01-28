@@ -162,7 +162,7 @@ else
   //********************************************************************************
   $item_cast = new ItemReportGenerator();
   $fields = array('ITEM_REPORT_LEVEL','ITEM_REPORT_ICON','ITEM_REPORT_NAME');
-  if ($item_cast->Init($fields, $baseLink, 'itemLIST', $config['fade_limit'], 'name'))
+  if ($item_cast->Init($fields, $baseLink, 'itemuLIST', $config['fade_limit'], 'name'))
   {
     $item_cast->useSpell($entry);
     $item_cast->createReport($lang['item_uses_spell']);
