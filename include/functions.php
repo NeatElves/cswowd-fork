@@ -773,6 +773,12 @@ function getCreatureAddon($creature_guid)
   return $dDB->selectCell("SELECT count(*) FROM `creature_addon` WHERE `guid` = ?d", $creature_guid);
 }
 
+function getCreatureTAddon($creature_id)
+{
+  global $dDB;
+  return $dDB->selectCell("SELECT count(*) FROM `creature_template_addon` WHERE `entry` = ?d", $creature_id);
+}
+
 function getCreatureEventData($creature_guid)
 {
   global $dDB;

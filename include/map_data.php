@@ -698,6 +698,8 @@ function defaultMapRenderCallback($data, $x, $y)
     $text = substr_replace("<br>$lang[tlinkingm]", $text, 0, 0);
    if (getCreatureAddon($data['guid']))
     $text = substr_replace("<br>$lang[guidadd]", $text, 0, 0);
+   if (getCreatureTAddon($data['id']))
+    $text = substr_replace("<br>$lang[guidtadd]", $text, 0, 0);
    if (getCreatureEventData($data['guid']))
     $text = substr_replace("<br>$lang[eventdata]", $text, 0, 0);
    }
@@ -782,6 +784,8 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
     $text = substr_replace("<br>$lang[tlinkingm]", $text, 0, 0);
    if (getCreatureAddon($data['guid']))
     $text = substr_replace("<br>$lang[guidadd]", $text, 0, 0);
+   if (getCreatureTAddon($data['id']))
+    $text = substr_replace("<br>$lang[guidtadd]", $text, 0, 0);
    if (getCreatureEventData($data['guid']))
     $text = substr_replace("<br>$lang[eventdata]", $text, 0, 0);
    }
@@ -1217,6 +1221,8 @@ function getPointData($area_id, &$data, $x, $y)
     $text = substr_replace("<br>$lang[tlinkingm]", $text, 0, 0);
    if (getCreatureAddon($data['guid']))
     $text = substr_replace("<br>$lang[guidadd]", $text, 0, 0);
+   if (getCreatureTAddon($data['id']))
+    $text = substr_replace("<br>$lang[guidtadd]", $text, 0, 0);
    if (getCreatureEventData($data['guid']))
     $text = substr_replace("<br>$lang[eventdata]", $text, 0, 0);
    }
