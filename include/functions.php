@@ -767,6 +767,20 @@ function getCountGroupSpawnGo($entry)
   WHERE `type` = 1 AND `Entry` = ?d", $entry);
 }
 
+function getCreatureSpawnMask($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `spawnMask` FROM `creature` WHERE `guid` = ?d", $creature_guid);
+}
+
+function getCreaturePhaseMask($creature_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `phaseMask` FROM `creature` WHERE `guid` = ?d", $creature_guid);
+}
+
 function getCreatureAddon($creature_guid)
 {
   global $dDB;

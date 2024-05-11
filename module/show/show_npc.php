@@ -72,10 +72,10 @@ else
    echo "<br><table class=details width=600>";
    echo "<tbody>";
    echo "<tr><td colspan=4 class=head>$lang[detail_info]</td></tr>";
-   echo "<tr><th>Entry</th><td>".$cr['Entry']."</td><th>ModelId1</th><td>".$cr['ModelId1']."</td></tr>";
-   echo "<tr><th>DifficultyEntry1</th><td>".$cr['DifficultyEntry1']."</td><th>ModelId2</th><td>".$cr['ModelId2']."</td></tr>";
-   echo "<tr><th>DifficultyEntry2</th><td>".$cr['DifficultyEntry2']."</td><th>ModelId3</th><td>".$cr['ModelId3']."</td></tr>";
-   echo "<tr><th>DifficultyEntry3</th><td>".$cr['DifficultyEntry3']."</td><th>ModelId4</th><td>".$cr['ModelId4']."</td></tr>";
+   echo "<tr><th>Entry</th><td>".$cr['Entry']."</td><th>DisplayId1</th><td>".$cr['DisplayId1']."</td></tr>";
+   echo "<tr><th>DifficultyEntry1</th><td>".$cr['DifficultyEntry1']."</td><th>DisplayId2</th><td>".$cr['DisplayId2']."</td></tr>";
+   echo "<tr><th>DifficultyEntry2</th><td>".$cr['DifficultyEntry2']."</td><th>DisplayId3</th><td>".$cr['DisplayId3']."</td></tr>";
+   echo "<tr><th>DifficultyEntry3</th><td>".$cr['DifficultyEntry3']."</td><th>DisplayId4</th><td>".$cr['DisplayId4']."</td></tr>";
    echo "<tr><th>Name</th><td>".$cr['Name']."<br><div class=subname>".$cr['SubName']."</div></td>";
    echo "<th>IconName</th><td>".$cr['IconName']."</td></tr>";
    echo "<tr><th>Level</th><td>".$cr['MinLevel']." - ".$cr['MaxLevel']."</td>";
@@ -138,7 +138,7 @@ else
                 echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
                 echo '<div style="display: none;">';
  {
-   if ($cr['ModelId1'])
+   if ($cr['DisplayId1'])
    {
                 echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
@@ -148,7 +148,7 @@ else
                 echo "  this.value = '-'; } ";
                 echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
                 echo " this.innerText = ''; ";
-                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display1]&nbsp;($cr[ModelId1])</b></div>";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display1]&nbsp;($cr[DisplayId1])</b></div>";
                 echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
                 echo '<div style="display: none;">';
    switch ($cr['CreatureType']):
@@ -159,7 +159,7 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[ModelId1]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[DisplayId1]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     break;
     default:
@@ -168,12 +168,12 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[ModelId1]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[DisplayId1]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     endswitch;
    echo "</div></div></span>";
    }
-   if ($cr['ModelId2'])
+   if ($cr['DisplayId2'])
    {
                 echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
@@ -183,7 +183,7 @@ else
                 echo "  this.value = '-'; } ";
                 echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
                 echo " this.innerText = ''; ";
-                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display2]&nbsp;($cr[ModelId2])</b></div>";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display2]&nbsp;($cr[DisplayId2])</b></div>";
                 echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
                 echo '<div style="display: none;">';
    switch ($cr['CreatureType']):
@@ -194,7 +194,7 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[ModelId2]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[DisplayId2]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     break;
     default:
@@ -203,12 +203,12 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[ModelId2]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[DisplayId2]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     endswitch;
    echo "</div></div></span>";
    }
-   if ($cr['ModelId3'])
+   if ($cr['DisplayId3'])
    {
                 echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
@@ -218,7 +218,7 @@ else
                 echo "  this.value = '-'; } ";
                 echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
                 echo " this.innerText = ''; ";
-                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display3]&nbsp;($cr[ModelId3])</b></div>";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display3]&nbsp;($cr[DisplayId3])</b></div>";
                 echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
                 echo '<div style="display: none;">';
    switch ($cr['CreatureType']):
@@ -229,7 +229,7 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[ModelId3]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[DisplayId3]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     break;
     default:
@@ -238,12 +238,12 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[ModelId3]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[DisplayId3]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     endswitch;
    echo "</div></div></span>";
    }
-   if ($cr['ModelId4'])
+   if ($cr['DisplayId4'])
    {
                 echo '<span><div align="center" style="margin-bottom:1px;font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 echo '<input type="button" value="+" style="width:20px;font-size:9px;margin:0px;padding:0px;" ';
@@ -253,7 +253,7 @@ else
                 echo "  this.value = '-'; } ";
                 echo " else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; ";
                 echo " this.innerText = ''; ";
-                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display4]&nbsp;($cr[ModelId4])</b></div>";
+                echo " this.value = '+'; }\">&nbsp;&nbsp;&nbsp;<b>$game_text[display4]&nbsp;($cr[DisplayId4])</b></div>";
                 echo '<div class="alt2" style="margin: 0px; padding: 0px; border: 0px inset;">';
                 echo '<div style="display: none;">';
    switch ($cr['CreatureType']):
@@ -264,7 +264,7 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[ModelId4]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[DisplayId4]&amp;modelType=32&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     break;
     default:
@@ -273,7 +273,7 @@ else
                 <param value='always' name='allowscriptaccess'>
                 <param value='false' name='menu'>
                 <param name='wmode' value='transparent'>
-                <param value='model=$cr[ModelId4]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
+                <param value='model=$cr[DisplayId4]&amp;modelType=8&amp;contentPath=http://static.wowhead.com/modelviewer/&amp;blur=1' name='flashvars'>
         </object>";
     endswitch;
    echo "</div></div></span>";

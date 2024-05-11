@@ -122,14 +122,14 @@ function noBorderCreatureTable($npc)
  $attackTime = $npc['MeleeBaseAttackTime']/1000;
  echo "<tr><td>".$game_text['npc_attack']."</td><td align=right>$attackTime&nbsp;$lang[sec]</td></tr>";
  echo "<tr><td>".$game_text['faction']."</td><td align=right>".getFactionTemplateName($npc['Faction'])."</td></tr>";
- if ($npc['ModelId1'])
-  echo "<tr><td>".$game_text['display1']."</td><td align=right>$npc[ModelId1]</td></tr>";
- if ($npc['ModelId2'])
-  echo "<tr><td>".$game_text['display2']."</td><td align=right>$npc[ModelId2]</td></tr>";
- if ($npc['ModelId3'])
-  echo "<tr><td>".$game_text['display3']."</td><td align=right>$npc[ModelId3]</td></tr>";
- if ($npc['ModelId4'])
-  echo "<tr><td>".$game_text['display4']."</td><td align=right>$npc[ModelId4]</td></tr>";
+ if ($npc['DisplayId1'])
+  echo "<tr><td>".$game_text['display1']."</td><td align=right>$npc[DisplayId1]</td></tr>";
+ if ($npc['DisplayId2'])
+  echo "<tr><td>".$game_text['display2']."</td><td align=right>$npc[DisplayId2]</td></tr>";
+ if ($npc['DisplayId3'])
+  echo "<tr><td>".$game_text['display3']."</td><td align=right>$npc[DisplayId3]</td></tr>";
+ if ($npc['DisplayId4'])
+  echo "<tr><td>".$game_text['display4']."</td><td align=right>$npc[DisplayId4]</td></tr>";
  echo "<tr><td>".$game_text['npc_script']."</td><td align=right>$npcscr</td></tr>";
  if ($npc['NpcFlags'])
   echo "<tr><td colspan=2>".getCreatureFlagsList($npc['NpcFlags'])."</td></tr>";
