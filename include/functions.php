@@ -947,6 +947,20 @@ function getSpawnGameobjectEntryGroup($gameobject_guid)
   return $dDB->selectCell("SELECT GROUP_CONCAT(`entry`) FROM `gameobject_spawn_entry` WHERE `guid` = ?d", $gameobject_guid);
 }
 
+function getGameobjectSpawnMask($gameobject_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `spawnMask` FROM `gameobject` WHERE `guid` = ?d", $gameobject_guid);
+}
+
+function getGameobjectPhaseMask($gameobject_guid)
+{
+  global $dDB;
+  return $dDB->selectCell("-- CACHE: 1h
+  SELECT `phaseMask` FROM `gameobject` WHERE `guid` = ?d", $gameobject_guid);
+}
+
 function getQuestgiverGreetingGameobject($gameobject_id)
 {
   global $dDB;
@@ -1349,6 +1363,22 @@ function getItemMail($item_id)
   $item = $dDB->selectCell("-- CACHE: 1h
   SELECT `item` FROM `mail_loot_template` WHERE `entry` = ?d", $item_id);
   return $item;
+}
+
+function getStartQuestSpell($quest_id)
+{
+  global $dDB, $config;
+  $getStartQuestSpellId = $dDB->selectCell("-- CACHE: 1h
+  SELECT `datalong` FROM `dbscripts_on_quest_start` WHERE `command` = 15 AND `delay` = 0 AND `id` = ?d", $quest_id);
+  return $getStartQuestSpellId;
+}
+
+function getEndQuestSpell($quest_id)
+{
+  global $dDB, $config;
+  $getEndQuestSpellId = $dDB->selectCell("-- CACHE: 1h
+  SELECT `datalong` FROM `dbscripts_on_quest_end` WHERE `command` = 15 AND `delay` = 0 AND `id` = ?d", $quest_id);
+  return $getEndQuestSpellId;
 }
 
 function getItemBonusText($i, $amount)

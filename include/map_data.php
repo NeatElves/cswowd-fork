@@ -702,6 +702,10 @@ function defaultMapRenderCallback($data, $x, $y)
     $text = substr_replace("<br>$lang[guidtadd]", $text, 0, 0);
    if (getCreatureEventData($data['guid']))
     $text = substr_replace("<br>$lang[eventdata]", $text, 0, 0);
+   if (getCreaturePhaseMask($data['guid']))
+    $text = substr_replace("<br>$lang[phasemask]&nbsp;(".getCreaturePhaseMask($data['guid']).")", $text, 0, 0);
+   if (getCreatureSpawnMask($data['guid']))
+    $text = substr_replace("&nbsp;&nbsp;&nbsp;&nbsp;$lang[spawnmask]&nbsp;(".getCreatureSpawnMask($data['guid']).")", $text, 0, 0);
    }
    if ($data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
@@ -728,6 +732,10 @@ function defaultMapRenderCallback($data, $x, $y)
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getSpawnGameobjectEntryGroup($data['guid']).")", $text, 0, 0);
    if (getIDSGE(getSpawnGroupSpawnGO($data['guid'])))
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getIDSGE(getSpawnGroupSpawnGO($data['guid'])).")", $text, 0, 0);
+   if (getGameobjectPhaseMask($data['guid']))
+    $text = substr_replace("<br>$lang[phasemask]&nbsp;(".getGameobjectPhaseMask($data['guid']).")", $text, 0, 0);
+   if (getGameobjectSpawnMask($data['guid']))
+    $text = substr_replace("&nbsp;&nbsp;&nbsp;&nbsp;$lang[spawnmask]&nbsp;(".getGameobjectSpawnMask($data['guid']).")", $text, 0, 0);
    }
    if ($data['type']=='i')
     $text = $areaname;
@@ -788,6 +796,10 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
     $text = substr_replace("<br>$lang[guidtadd]", $text, 0, 0);
    if (getCreatureEventData($data['guid']))
     $text = substr_replace("<br>$lang[eventdata]", $text, 0, 0);
+   if (getCreaturePhaseMask($data['guid']))
+    $text = substr_replace("<br>$lang[phasemask]&nbsp;(".getCreaturePhaseMask($data['guid']).")", $text, 0, 0);
+   if (getCreatureSpawnMask($data['guid']))
+    $text = substr_replace("&nbsp;&nbsp;&nbsp;&nbsp;$lang[spawnmask]&nbsp;(".getCreatureSpawnMask($data['guid']).")", $text, 0, 0);
    }
    if ($data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
@@ -814,6 +826,10 @@ function defaultAreaRenderCallback($area_id, $data, $x, $y)
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getSpawnGameobjectEntryGroup($data['guid']).")", $text, 0, 0);
    if (getIDSGE(getSpawnGroupSpawnGO($data['guid'])))
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getIDSGE(getSpawnGroupSpawnGO($data['guid'])).")", $text, 0, 0);
+   if (getGameobjectPhaseMask($data['guid']))
+    $text = substr_replace("<br>$lang[phasemask]&nbsp;(".getGameobjectPhaseMask($data['guid']).")", $text, 0, 0);
+   if (getGameobjectSpawnMask($data['guid']))
+    $text = substr_replace("&nbsp;&nbsp;&nbsp;&nbsp;$lang[spawnmask]&nbsp;(".getGameobjectSpawnMask($data['guid']).")", $text, 0, 0);
    }
    if ($data['type']=='i')
     $text = "$mapname - $areaname";
@@ -1225,6 +1241,10 @@ function getPointData($area_id, &$data, $x, $y)
     $text = substr_replace("<br>$lang[guidtadd]", $text, 0, 0);
    if (getCreatureEventData($data['guid']))
     $text = substr_replace("<br>$lang[eventdata]", $text, 0, 0);
+   if (getCreaturePhaseMask($data['guid']))
+    $text = substr_replace("<br>$lang[phasemask]&nbsp;(".getCreaturePhaseMask($data['guid']).")", $text, 0, 0);
+   if (getCreatureSpawnMask($data['guid']))
+    $text = substr_replace("&nbsp;&nbsp;&nbsp;&nbsp;$lang[spawnmask]&nbsp;(".getCreatureSpawnMask($data['guid']).")", $text, 0, 0);
    }
    if (@$data['type']=='o') {
    if ($data['spawntimesecsmax'] > $data['spawntimesecsmin']) $spawntime = getTimeText($data['spawntimesecsmin'])."&nbsp;-&nbsp;".getTimeText($data['spawntimesecsmax']);
@@ -1251,6 +1271,10 @@ function getPointData($area_id, &$data, $x, $y)
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getSpawnGameobjectEntryGroup($data['guid']).")", $text, 0, 0);
    if (getIDSGE(getSpawnGroupSpawnGO($data['guid'])))
     $text = substr_replace("<br>$lang[spawnentry]&nbsp;(".getIDSGE(getSpawnGroupSpawnGO($data['guid'])).")", $text, 0, 0);
+   if (getGameobjectPhaseMask($data['guid']))
+    $text = substr_replace("<br>$lang[phasemask]&nbsp;(".getGameobjectPhaseMask($data['guid']).")", $text, 0, 0);
+   if (getGameobjectSpawnMask($data['guid']))
+    $text = substr_replace("&nbsp;&nbsp;&nbsp;&nbsp;$lang[spawnmask]&nbsp;(".getGameobjectSpawnMask($data['guid']).")", $text, 0, 0);
    }
    return array(
          'id'=>$data['id'],

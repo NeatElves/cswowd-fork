@@ -15,13 +15,13 @@ $lang = array(
 'maplang'=> '_ru',
 
 # Site
-'www_creature'    => 'http://ru.wowhead.com/npc=%d',
-'www_gameobject'  => 'http://ru.wowhead.com/object=%d',
-'www_item'        => 'http://ru.wowhead.com/item=%d',
-'www_spell'       => 'http://ru.wowhead.com/spell=%d',
-'www_quest'       => 'http://ru.wowhead.com/quest=%d',
-'www_faction'     => 'http://ru.wowhead.com/faction=%d',
-'www_zone'        => 'http://ru.wowhead.com/zone=%d',
+'www_creature'    => 'http://wowhead.com/wotlk/ru/npc=%d',
+'www_gameobject'  => 'http://wowhead.com/wotlk/ru/object=%d',
+'www_item'        => 'http://wowhead.com/wotlk/ru/item=%d',
+'www_spell'       => 'http://wowhead.com/wotlk/ru/spell=%d',
+'www_quest'       => 'http://wowhead.com/wotlk/ru/quest=%d',
+'www_faction'     => 'http://wowhead.com/wotlk/ru/faction=%d',
+'www_zone'        => 'http://wowhead.com/wotlk/ru/zone=%d',
 
 # Search
 'search_results'     => 'Результаты поиска',
@@ -274,6 +274,8 @@ $lang = array(
 'level'                  => 'Уровень',
 'spawn_at_event'         => 'Появится в событие',
 'despawn_at_event'       => 'Исчезнет в событие',
+'spawnmask'              => 'Спавн:',
+'phasemask'              => 'Фаза:',
 'view3dnpc'              => 'Показать 3D-модель НИП',
 
 # Loot info

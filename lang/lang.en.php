@@ -15,13 +15,13 @@ $lang = array(
 'maplang' => '',
 
 # Site
-'www_creature'   => 'http://wowhead.com/npc=%d',
-'www_gameobject' => 'http://wowhead.com/object=%d',
-'www_item'       => 'http://wowhead.com/item=%d',
-'www_spell'      => 'http://wowhead.com/spell=%d',
-'www_quest'      => 'http://wowhead.com/quest=%d',
-'www_faction'    => 'http://wowhead.com/faction=%d',
-'www_zone'       => 'http://wowhead.com/zone=%d',
+'www_creature'   => 'http://wowhead.com/wotlk/npc=%d',
+'www_gameobject' => 'http://wowhead.com/wotlk/object=%d',
+'www_item'       => 'http://wowhead.com/wotlk/item=%d',
+'www_spell'      => 'http://wowhead.com/wotlk/spell=%d',
+'www_quest'      => 'http://wowhead.com/wotlk/quest=%d',
+'www_faction'    => 'http://wowhead.com/wotlk/faction=%d',
+'www_zone'       => 'http://wowhead.com/wotlk/zone=%d',
 
 # Search
 'search_results'     => 'Search result',
@@ -274,6 +274,8 @@ $lang = array(
 'level'                  => 'Level',
 'spawn_at_event'         => 'Appear in the event',
 'despawn_at_event'       => 'Disappear in the event',
+'spawnmask'              => 'Spawn:',
+'phasemask'              => 'Phase:',
 'view3dnpc'              => 'Show 3D-model npc',
 
 # Loot info
