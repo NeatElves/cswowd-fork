@@ -1071,7 +1071,8 @@ class CreatureReportGenerator extends ReportGenerator{
     global $dDB;
     $rows_1 = $dDB->selectCol('SELECT `entry` FROM `creature_template_spells` WHERE `spell1` = ?d OR `spell2` = ?d OR `spell3` = ?d OR `spell4` = ?d OR `spell5` = ?d OR `spell6` = ?d OR `spell7` = ?d OR `spell8` = ?d OR `spell9` = ?d OR `spell10` = ?d', $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry, $entry);
     $rows_2 = $dDB->selectCol('SELECT `creature_id` FROM `creature_ai_scripts` WHERE (`action1_type` = 11 AND `action1_param1`=?d) OR (`action2_type` = 11 AND `action2_param1`=?d) OR (`action3_type` = 11 AND `action3_param1`=?d)', $entry, $entry, $entry);
-    $casters = array_unique(array_merge($rows_1, $rows_2));
+    $rows_3 = $dDB->selectCol('SELECT `Entry` FROM `creature_template` WHERE `SpellList` IN (SELECT `Id` FROM `creature_spell_list` WHERE `SpellId` = ?d)', $entry);
+    $casters = array_unique(array_merge($rows_1, $rows_2, $rows_3));
     if (count($casters))
        $this->doRequirest('`creature_template`.`Entry` in (?a)', $casters);
  }
@@ -1198,8 +1199,8 @@ class GameobjectReportGenerator extends ReportGenerator{
   $tables.= ' LEFT JOIN `locales_gameobject` ON `gameobject_template`.`entry` = `locales_gameobject`.`entry`';
   if ($this->dolocale & GO_LOCALE_NAME)
   {
-   $fields = str_replace('`name`',   '`name`, `locales_gameobject`.`name_loc'.$locale.'` AS `name_loc`', $fields);
-   $sort_str= str_replace('`name`', '`name_loc`, `name`', $sort_str);
+   $fields = str_replace('`name`', '`name`, `locales_gameobject`.`name_loc'.$locale.'` AS `name_loc`', $fields);
+   $sort_str = str_replace('`name`', '`name_loc`, `name`', $sort_str);
   }
   $fields = str_replace('`castbarcaption`','`castbarcaption`, `locales_gameobject`.`castbarcaption_loc'.$locale.'` AS `castbarcaption_loc`', $fields);
  }
@@ -1736,6 +1737,10 @@ class SpellReportGenerator extends ReportGenerator{
   // By event AI table
   for ($i=1;$i<=3;$i++)
     $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `action'.$i.'_param1` as `id` FROM `creature_ai_scripts` WHERE `creature_id` = ?d AND `action'.$i.'_type` = 11', $creature['Entry']));
+
+  // By event creature_spell_list
+  for ($i=0;$i<=99;$i++)
+    $spell_list = array_merge($spell_list, $dDB->selectCol('SELECT `SpellId` FROM `creature_spell_list` WHERE `Id` = ?d', $creature['Entry'] * 100 +$i));
 
   if (count($spell_list))
     $this->doRequirest('`id` IN (?a)', array_unique($spell_list));
