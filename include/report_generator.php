@@ -1202,7 +1202,7 @@ class GameobjectReportGenerator extends ReportGenerator{
    $fields = str_replace('`name`', '`name`, `locales_gameobject`.`name_loc'.$locale.'` AS `name_loc`', $fields);
    $sort_str = str_replace('`name`', '`name_loc`, `name`', $sort_str);
   }
-  $fields = str_replace('`castbarcaption`','`castbarcaption`, `locales_gameobject`.`castbarcaption_loc'.$locale.'` AS `castbarcaption_loc`', $fields);
+  $fields = str_replace('`opening_text`','`opening_text`, `locales_gameobject`.`opening_text_loc'.$locale.'` AS `opening_text_loc`', $fields);
  }
  function castSpell($entry)
  {

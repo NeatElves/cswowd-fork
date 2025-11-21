@@ -263,13 +263,13 @@ function localiseGameobject(&$go)
    $lang = $dDB->selectRow('-- CACHE: 1h
    SELECT
    `name_loc'.$locale.'` AS `name`,
-   `castbarcaption_loc'.$locale.'` AS `cast_name`
+   `opening_text_loc'.$locale.'` AS `cast_name`
    FROM `locales_gameobject`
    WHERE `entry` = ?d', $go['entry']);
    if ($lang)
    {
        if ($lang['name']) $go['name'] = $lang['name'];
-       if ($lang['cast_name']) $go['castBarCaption'] = $lang['cast_name'];
+       if ($lang['cast_name']) $go['OpeningText'] = $lang['cast_name'];
    }
 }
 
